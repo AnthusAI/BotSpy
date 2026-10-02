@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "649a460f-9c73-4a8c-9263-1eb68a2ca1cd",
+  "issue_id": "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:25:41.390Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Add MIT license",
+    "description": "",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "df24578c-84aa-452f-b00d-1d86d692bc4a",
+  "issue_id": "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:19.074Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Cursor parity tests and doctor diagnostics",
+    "description": "Done when: parity tests pass on fixtures and doctor reports roots and index drift.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

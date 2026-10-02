@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "7e38ae2f-94b6-444b-abd1-80ffbee14e53",
+  "issue_id": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:14:57.945Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Claude Code adapter",
+    "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: scanner-sentiment adapter, read-only.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

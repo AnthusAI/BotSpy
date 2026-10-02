@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "4255cb0d-d4fb-4300-ac43-fba483fedd76",
+  "issue_id": "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:52.462Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Synthetic fixture and discovery for Claude Code JSONL transcripts",
+    "description": "Fixture mirrors the ~/.claude/projects layout (project dirs, session JSONL, subagent transcripts skipped). Done when: discovery finds sessions from the fixture with correct skip counts.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

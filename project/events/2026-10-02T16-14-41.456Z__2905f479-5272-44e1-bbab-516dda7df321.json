@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "2905f479-5272-44e1-bbab-516dda7df321",
+  "issue_id": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:14:41.456Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "BotSpy: unified coding-agent session history module",
+    "description": "Product = the module itself: one adapter per coding agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later), one standard normalized schema, and a unified agent-session history. Metrics such as the thanks-vs-F-bombs meter and local sentiment analysis are example consumers (examples/ or an optional botspy[metrics] extra), never core work and never core dependencies. Reference for real on-disk formats (read-only): ~/Projects/DataParade-io/scanner-sentiment/src/sentiment/adapters - note the prototype extracted human messages only; BotSpy needs ALL message and part types.",
+    "issue_type": "initiative",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": null,
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

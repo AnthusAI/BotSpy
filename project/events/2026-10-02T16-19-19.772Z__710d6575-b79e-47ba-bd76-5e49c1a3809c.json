@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "710d6575-b79e-47ba-bd76-5e49c1a3809c",
+  "issue_id": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:19:19.772Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Write Gherkin spec: normalized schema",
+    "description": "Author features/schema/*.feature: a session is made of ordered messages whose parts each have a kind (text, thinking, tool_call, tool_result, attachment, system) plus extra passthrough, with concrete examples for every kind. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

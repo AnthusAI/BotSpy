@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "34a3980a-7754-44cd-9ce8-7a866cd780b5",
+  "issue_id": "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:00.247Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Extract all part types from Claude Code transcripts",
+    "description": "Map user, assistant, thinking, tool_call, tool_result, attachment, and system entries to normalized parts with timestamps and provenance. Done when: fixture extraction yields the expected parts and malformed lines are skipped and counted.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "cff4397d-8d1e-4c56-88b9-51d9a47c142a",
+  "issue_id": "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:17.385Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Define typed content-part model with fixed kinds and extra passthrough",
+    "description": "Fixed kind set: text, thinking, tool_call, tool_result, attachment, system; agent-specific data outside the kinds flows through an extensible extra/raw passthrough without loss. Done when: every part kind round-trips through JSON and unknown kinds degrade to extra.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "0add8900-bb01-46b3-8ae5-a3b2b0ae7a2f",
+  "issue_id": "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:33.471Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Guarantee read-only access and safe SQLite/WAL snapshotting",
+    "description": "Adapters never write to source directories; SQLite/WAL sources are read through a safe snapshot copy. Done when: tests prove no source mutation and a WAL database reads correctly through the snapshot path.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

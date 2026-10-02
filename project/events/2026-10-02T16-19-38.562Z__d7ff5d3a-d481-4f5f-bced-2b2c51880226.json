@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "d7ff5d3a-d481-4f5f-bced-2b2c51880226",
+  "issue_id": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:19:38.562Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Write Gherkin spec: Codex adapter behaviors",
+    "description": "Author features/adapters/codex/*.feature: discovery over CODEX_HOME sessions, extraction of all part kinds with line provenance and skip counting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

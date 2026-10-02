@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "df7bfe7e-0ff4-489a-a34b-c3aab41679b3",
+  "issue_id": "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:33.316Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Codex parity tests and doctor diagnostics",
+    "description": "Done when: parity tests pass on fixtures and doctor reports roots.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

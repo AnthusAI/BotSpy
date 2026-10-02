@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "b7b6a07f-150b-4f4b-95ac-95137fda57cc",
+  "issue_id": "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:12.061Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Define session and message record model",
+    "description": "Sessions and messages carry ids, source agent, timestamps, session/project identifiers, and source provenance (file, line or row). Done when: the record model is implemented, validated, and unit-tested with golden JSON.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

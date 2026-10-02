@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "c42a437c-604e-4e75-ba79-30e23f227289",
+  "issue_id": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:15:02.764Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Cursor adapter",
+    "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: scanner-sentiment cursor adapter, read-only.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

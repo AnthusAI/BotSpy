@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "595b6534-2d1a-4b3e-9e16-379f6159f186",
+  "issue_id": "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:21:01.444Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Example: placeholder for similar metrics",
+    "description": "A stub example showing where further session metrics would live, with the same consumer-only constraints. Done when: the stub exists and is referenced from docs.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

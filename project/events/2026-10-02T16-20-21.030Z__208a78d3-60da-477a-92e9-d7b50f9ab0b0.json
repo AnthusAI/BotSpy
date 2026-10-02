@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "208a78d3-60da-477a-92e9-d7b50f9ab0b0",
+  "issue_id": "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:21.030Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement JSON and JSONL export",
+    "description": "Export sessions, messages, and parts to JSON and JSONL with stable field order and schema version. Done when: the feature scenarios in features/export pass.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

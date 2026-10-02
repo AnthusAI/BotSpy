@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "891bd85b-9ff0-4db2-982b-66455e720512",
+  "issue_id": "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:16.853Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement sessions() query API with kind/time/project filters",
+    "description": "botspy.sessions(source=None) returns lazily-iterated sessions; messages and parts iterate in order; filters by source, part kind, time window, and project. Done when: the feature scenarios in features/query pass.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

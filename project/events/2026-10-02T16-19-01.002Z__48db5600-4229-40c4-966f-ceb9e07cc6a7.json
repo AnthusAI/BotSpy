@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "48db5600-4229-40c4-966f-ceb9e07cc6a7",
+  "issue_id": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:19:01.002Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "CLI (features/cli)",
+    "description": "The botspy CLI: list sources, list sessions, dump and export, with source and window flags. Specs first: features/cli/*.feature; implementation generated from the specs.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}
