@@ -24,7 +24,9 @@ jobs:
         uses: astral-sh/setup-uv@v5
 
       - name: Install python-semantic-release
-        run: uv pip install python-semantic-release
+        run: |
+          uv venv
+          uv pip install python-semantic-release
 
       - name: Release
         env:
