@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T19:52:46Z",
+  "built_at": "2026-10-02T19:58:38Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -15,12 +15,12 @@
     "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790958433.619428,
     "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790962740.866395,
     "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790969738.531141,
-    "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790958151.362658,
+    "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790971108.568838,
     "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790970752.651974,
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
     "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790967112.972948,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790970106.05349,
-    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790970125.009177,
+    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790970797.333684,
     "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790959336.030431,
     "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790959336.030562,
     "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790969974.840697,
@@ -43,7 +43,7 @@
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790967581.12394,
     "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790967433.503934,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970763.113461,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970795.81478,
     "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790970761.481187,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790970759.329892,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
@@ -75,7 +75,7 @@
     "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790958447.546378,
     "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790962754.83402,
     "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790967290.854149,
-    "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
+    "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790971106.856783,
     "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790970322.152964,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790969888.333146,
     "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
@@ -83,7 +83,7 @@
     "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790967809.040786,
     "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790968672.54022,
     "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790963724.463677,
-    "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
+    "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790971105.079743,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
     "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790963902.28869,
@@ -548,7 +548,7 @@
       "title": "Codex parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports roots.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -560,10 +560,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "79f1d7ad-a328-4335-9481-38dfc2effd9c",
+          "author": "home",
+          "text": "Parity covered by 7 lib unit tests (discovery order + spawn edges, doctor flags missing rollouts, ordinal order, stored-offset resume, response_item part-kind mapping, usage/compaction/task_complete state, partial+malformed skip counting) plus the 8 executable BDD scenarios (wip tag dropped). SkipCounter gained a partial counter held-back trailing lines count as skipped per the spec, total() includes it. Full gate green.",
+          "created_at": "2026-10-02T19:58:27.648845Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:33.316525Z",
-      "updated_at": "2026-10-02T16:22:29.975775Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:58:28.568543Z",
+      "closed_at": "2026-10-02T19:58:28.568484Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -747,8 +755,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "Codex adapter work covers discovery, extraction, mapping, ordering, resume, and malformed-line handling.",
-      "right_now_updated_at": "2026-10-02T19:42:05.008679Z",
+      "right_now_summary": "The Codex adapter is being tested against fixtures while discovery, extraction, mapping, and malformed-line handling",
+      "right_now_updated_at": "2026-10-02T19:53:17.332516Z",
       "custom": {}
     },
     {
@@ -1522,8 +1530,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is integrating agent adapters, schemas, exports, and tests for unified session history.",
-      "right_now_updated_at": "2026-10-02T19:52:43.113195Z",
+      "right_now_summary": "The team is building and testing a unified session history across five coding agents.",
+      "right_now_updated_at": "2026-10-02T19:53:15.814434Z",
       "custom": {}
     },
     {
@@ -2627,7 +2635,7 @@
       "title": "Extract all part types from Codex session JSONL",
       "description": "Map user, assistant, thinking/reasoning, tool_call, and tool_result entries to normalized parts with line provenance. Done when: fixture extraction yields the expected parts with skip counting.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2639,10 +2647,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "6779cefb-41f7-4336-bcb1-f1873041b32a",
+          "author": "home",
+          "text": "Extraction maps response_item payloads into chapter-1 Messages: user/assistant roles, developer -> System with Origin::Developer, reasoning summaries -> Thinking parts, function_call/function_call_output -> ToolCall/ToolResult (Role::Tool). Explicit ordinal is the authoritative order (shuffled file order normalized to 1,2,3); token_usage_record -> session.usage, compacted -> compaction_windows chain, task_complete -> turn duration_ms/time_to_first_token_ms; byte-offset resume and partial trailing line hold-back verified. Spec wording tightened: token_usage_record lands in session usage (thread scope) and compacted in the compaction window chain, so the two Then steps now read 'session usage carries the token counts' and 'compaction window carries the previous window and the retained context'. Full gate green.",
+          "created_at": "2026-10-02T19:58:26.151033Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:28.178765Z",
-      "updated_at": "2026-10-02T16:22:25.634794Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:58:26.856474Z",
+      "closed_at": "2026-10-02T19:58:26.856403Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2898,7 +2914,7 @@
       "title": "Synthetic fixture and discovery for Codex JSONL sessions",
       "description": "Fixture mirrors the CODEX_HOME sessions layout. Done when: discovery finds session files and reports counts.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2910,10 +2926,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "2d510ac0-35c0-4fcc-8cf6-ebe481dc5f60",
+          "author": "home",
+          "text": "Synthetic Codex fixture + BDD: state_5.sqlite threads index drives discovery (3 threads -> 3 sessions, missing rollouts skipped), spawn edges reported as parent links. CodexSource::new(root) + discover()/doctor() in src/adapters/codex.rs; fixture steps in tests/steps/codex_steps.rs. Full gate green (bdd 94/94).",
+          "created_at": "2026-10-02T19:58:23.606870Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:24.054378Z",
-      "updated_at": "2026-10-02T16:22:20.923802Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:58:25.079613Z",
+      "closed_at": "2026-10-02T19:58:25.079571Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",

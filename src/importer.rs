@@ -24,12 +24,15 @@ pub struct SkipCounter {
     pub malformed: u64,
     /// Records that parsed but carry an unknown record type.
     pub unknown: u64,
+    /// Partial trailing lines held back for the next read. They are
+    /// counted as skipped until the append completes.
+    pub partial: u64,
 }
 
 impl SkipCounter {
     /// Total records skipped for any reason.
     pub fn total(&self) -> u64 {
-        self.malformed + self.unknown
+        self.malformed + self.unknown + self.partial
     }
 }
 

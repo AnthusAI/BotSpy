@@ -2,4 +2,5 @@
 //! Grok Bot, Antigravity) land here, specified under features/03_importers/.
 
 pub mod claude_code;
+pub mod codex;
 pub mod fixture;
