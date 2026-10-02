@@ -36,6 +36,17 @@ For complex work, break the plan into sub-tasks and file them under the parent t
 
 Operational discipline: use the minimum commands needed. To inspect work, run `kbs list --status open --long` once to find the ID, then `kbs show <id>`. Do not guess IDs or spam multiple variants; if the ID is unknown, ask the user.
 
+## Specs come first
+
+BotSpy is a behavior-driven specification project. The Gherkin behavior specifications under `features/` are the backbone and the true source of the project; implementation code is considered generated from the specs. All planning is organized around features and their specs.
+
+The order of work for any feature:
+1. Write or refine the Gherkin feature file (scenarios with concrete examples). On the board this is a spec task; it is done when the scenarios are reviewed and executable — failing or pending is fine before implementation.
+2. Write the step definitions for those scenarios.
+3. Implement the smallest code that makes the scenarios pass.
+
+On the Kanbus board, every feature-area epic starts with its spec-writing task(s), and every implementation task is blocked-by the spec task of its feature area. Implementation tasks are done when their feature scenarios pass.
+
 Editing project/ directly bypasses the record The Way depends on. Do not read or write anything inside project/. Do not inspect issue JSON with tools like cat or jq. All work must pass through Kanbus.
 
 ## The Order of Being
