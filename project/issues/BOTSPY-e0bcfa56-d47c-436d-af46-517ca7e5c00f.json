@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is defining importer protocols, protecting source data, and testing adapter contracts.",
-  "right_now_updated_at": "2026-10-02T19:26:50.911087Z",
+  "right_now_summary": "Importers are being built and tested for streaming changes, safe snapshots, and per-source adapters.",
+  "right_now_updated_at": "2026-10-02T19:30:58.371517Z",
   "custom": {}
 }
