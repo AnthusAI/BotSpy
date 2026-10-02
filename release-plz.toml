@@ -1,10 +1,13 @@
 [workspace]
 changelog_update = true
-# Library only: no crates.io publishing by decision. Bump versions, update
-# the changelog, tag, and create GitHub releases; nothing is uploaded.
+# Library releases: no crates.io publishing yet (Ryan is setting up
+# crates.io; enabling later = flip publish to true and provide a
+# CARGO_REGISTRY_TOKEN secret). The tag + GitHub release is the release.
 publish = false
 git_release_enable = true
-# The crate is not published to crates.io (and will not be), so there is no
-# registry baseline for cargo-semver-checks to compare against; the check
-# only logs "Package `botspy@*.*.*` not found" on every run.
-semver_check = false
+# Git tags are the release source of truth; no registry lookups. Without
+# this, release-plz compares against crates.io, which the crate is not on,
+# and never bumps the version.
+git_only = true
+# Semver convention: features bump minor even while major is 0.
+features_always_increment_minor = true

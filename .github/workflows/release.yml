@@ -1,84 +1,115 @@
 name: Release
 
-# GitFlow: releases are cut from main only. develop is the continuous-
-# integration branch and must never trigger this workflow, so release-plz
-# never opens release PRs against develop.
+# Direct releases under GitFlow: a push to main is the release promotion.
+# The workflow computes the next version from conventional commits, bumps
+# Cargo.toml/Cargo.lock and CHANGELOG.md, commits that directly to main,
+# then tags and creates the GitHub release. No release pull request is
+# ever opened, so the repo's "Allow GitHub Actions to create and approve
+# pull requests" setting is irrelevant.
+#
+# crates.io publishing stays disabled (release-plz.toml: publish = false);
+# the tag + GitHub release is the release. To enable publishing later:
+# set publish = true in release-plz.toml and expose a CARGO_REGISTRY_TOKEN
+# secret to the "Tag and create GitHub release" step (release-plz reads
+# that variable), or switch to crates.io Trusted Publishing via
+# rust-lang/crates-io-auth-action with id-token: write.
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Compute the release without pushing, tagging, or creating a GitHub release
+        type: boolean
+        default: true
 
 permissions:
   contents: write
-  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
-  release-plz:
+  release:
     runs-on: ubuntu-latest
-    concurrency:
-      group: release-plz
-      cancel-in-progress: false
+    env:
+      # release-plz reads GIT_TOKEN (not GITHUB_TOKEN) for its git/forge
+      # operations: committing the release bump, pushing the tag, and
+      # creating the GitHub release. No PR is ever opened, so the repo's
+      # "Allow GitHub Actions to create and approve pull requests" setting
+      # is irrelevant.
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Check PR creation capability
-        id: pr-permission
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_PLZ_TOKEN: ${{ secrets.RELEASE_PLZ_TOKEN }}
-        run: |
-          # release-plz must open a PR to work; GITHUB_TOKEN can be blocked
-          # two ways, each with its own unlock. Run when either path is
-          # available; otherwise skip cleanly instead of pushing an orphan
-          # release-plz-* branch and dying with 403 on every run (47 failed
-          # runs and 46 orphaned branches as of 2026-10-02).
-          #
-          # Path 1: a repository admin enables Settings → Actions → General
-          #   → Workflow permissions → "Allow GitHub Actions to create and
-          #   approve pull requests" (cannot be granted from workflow YAML).
-          # Path 2: a RELEASE_PLZ_TOKEN secret holds a PAT with Contents and
-          #   Pull requests write; it is not subject to that repo setting.
-          if [ -n "$RELEASE_PLZ_TOKEN" ]; then
-            echo "allowed=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if can_approve="$(gh api "repos/$GITHUB_REPOSITORY/actions/permissions/workflow" --jq '.can_approve_pull_request_reviews')"; then
-            if [ "$can_approve" != "true" ]; then
-              echo "::warning::Release pipeline skipped: GITHUB_TOKEN is not permitted to create pull requests and no RELEASE_PLZ_TOKEN secret is set."
-              {
-                echo "## Release pipeline skipped"
-                echo
-                echo "release-plz cannot open its release PR. Unlock with **one** of:"
-                echo
-                echo "1. A repository admin enables"
-                echo '   **Settings → Actions → General → Workflow permissions → "Allow GitHub Actions to create and approve pull requests"**.'
-                echo "2. Add a \`RELEASE_PLZ_TOKEN\` repository secret: a PAT with Contents and Pull requests write."
-                echo
-                echo "After either, push to main or run this workflow manually (workflow_dispatch) to resume releases."
-                echo "No crates.io token is needed: publishing is disabled (release-plz.toml \`publish = false\`)."
-              } >> "$GITHUB_STEP_SUMMARY"
-              echo "allowed=false" >> "$GITHUB_OUTPUT"
-            else
-              echo "allowed=true" >> "$GITHUB_OUTPUT"
-            fi
-          else
-            # Fail open: if the permission cannot be determined, let
-            # release-plz run so a real failure surfaces instead of silently
-            # skipping releases forever.
-            echo "::warning::Could not verify the Actions PR-permission setting; running release-plz anyway."
-            echo "allowed=true" >> "$GITHUB_OUTPUT"
-          fi
+
       - uses: dtolnay/rust-toolchain@stable
-        if: steps.pr-permission.outputs.allowed == 'true'
-      - name: Run release-plz
-        if: steps.pr-permission.outputs.allowed == 'true'
-        uses: MarcoIeni/release-plz-action@v0.5
-        env:
-          # Optional PAT override (RELEASE_PLZ_TOKEN) bypasses the repo
-          # setting that blocks GITHUB_TOKEN from creating PRs; falls back
-          # to the default GITHUB_TOKEN when unset.
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PLZ_TOKEN || secrets.GITHUB_TOKEN }}
-        # Library releases only: version bumps, changelog, tags, GitHub
-        # releases. crates.io publishing is disabled (release-plz.toml:
-        # publish = false) and no binary artifacts are produced.
+
+      - name: Install release-plz
+        run: |
+          curl -sSfL https://github.com/MarcoIeni/release-plz/releases/download/release-plz-v0.3.169/release-plz-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C /tmp
+          sudo install /tmp/release-plz /usr/local/bin/release-plz
+          release-plz --version
+
+      # Belt-and-braces loop guard: pushes made with GITHUB_TOKEN do not
+      # retrigger workflows, but a re-run or a manual push of the release
+      # commit should not recompute the bump. release-plz release stays
+      # idempotent, so a release commit only skips the update.
+      - name: Loop guard
+        id: guard
+        if: github.event_name == 'push'
+        run: |
+          subject="$(git log -1 --pretty=%s)"
+          if [[ "$subject" == chore:\ release* ]]; then
+            echo "Head commit is a release commit; skipping the version bump."
+            echo "skip_update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Non-dry-run dispatches are only meaningful on main; anything else
+      # must use dry_run.
+      - name: Guard dispatch ref
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
+        run: |
+          if [[ "${GITHUB_REF_NAME}" != "main" ]]; then
+            echo "::error::Releases only run from main; dispatch on ${GITHUB_REF_NAME} requires dry_run=true."
+            exit 1
+          fi
+
+      - name: Compute next version and update changelog
+        if: >-
+          (github.event_name == 'push' && steps.guard.outputs.skip_update != 'true')
+          || github.event_name == 'workflow_dispatch'
+        run: release-plz update
+
+      - name: Commit and push release bump
+        if: >-
+          (github.event_name == 'push' && steps.guard.outputs.skip_update != 'true')
+          || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No version bump to commit."
+          else
+            version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "botspy") | .version')"
+            git add -A
+            git commit -m "chore: release botspy v${version}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Dry run — computed release
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run == true
+        run: |
+          version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "botspy") | .version')"
+          echo "Computed next version: ${version}"
+          git diff --stat
+          release-plz release --dry-run -o json
+
+      - name: Tag and create GitHub release
+        if: >-
+          github.event_name == 'push'
+          || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
+        run: release-plz release -o json
