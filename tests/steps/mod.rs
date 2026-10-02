@@ -7,6 +7,7 @@ pub mod claude_code_steps;
 pub mod codex_steps;
 pub mod compaction_steps;
 pub mod cursor_steps;
+pub mod examples_steps;
 pub mod graph_steps;
 pub mod grok_steps;
 pub mod importer_steps;
@@ -138,6 +139,12 @@ pub struct BotSpyWorld {
     pub ag_digest_before: Option<String>,
     /// Digest of the payload DB + WAL after the snapshot read.
     pub ag_digest_after: Option<String>,
+    /// Sessions the example-consumer steps build and score.
+    pub example_sessions: Vec<botspy::Session>,
+    /// The most recent meter report.
+    pub meter_report: Option<examples_steps::MeterReport>,
+    /// Sources of the example consumers, for the public-API checks.
+    pub example_sources: Option<String>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
