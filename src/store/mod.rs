@@ -211,24 +211,23 @@ impl Store {
     /// broken by id). The iterator is a cursor: it reads rows only as the
     /// caller consumes them.
     pub fn sessions(&self) -> SessionIter {
-        self.sessions_counting(None)
+        self.sessions_with_filter(SESSIONS_PAGE_SQL.to_string(), Vec::new(), None, None)
     }
 
     /// The session cursor with shared observability counters (the query
-    /// surface counts rows fetched for spec observability).
-    pub(crate) fn sessions_counting(
+    /// surface counts rows fetched for spec observability), with the
+    /// filter SQL compiled in by the query surface.
+    pub(crate) fn sessions_with_filter(
         &self,
+        sql: String,
+        filter_values: Vec<rusqlite::types::Value>,
+        limit: Option<usize>,
         counters: Option<std::rc::Rc<std::cell::Cell<query::QueryCounters>>>,
     ) -> SessionIter {
         let conn = self
             .reader_conn()
             .expect("reader connection for session iteration");
-        SessionIter {
-            conn,
-            cursor: None,
-            done: false,
-            counters,
-        }
+        SessionIter::new(conn, sql, filter_values, limit, counters)
     }
 
     /// The query surface: one read interface for the engine, ingest,
@@ -403,22 +402,54 @@ fn insert_message(
     Ok(())
 }
 
-/// One page of the session cursor: keyset pagination on the
+/// One row of the session cursor: keyset pagination on the
 /// (last_activity_at, id) order, so each `next()` is one index seek and
-/// rows are read only as they are consumed.
-const SESSIONS_PAGE_SQL: &str = "SELECT id, agent, project_id, started_at, last_activity_at, \
+/// rows are read only as they are consumed. `?1`/`?2` are the cursor
+/// position; `?3`… are filter values appended by the query surface, which
+/// splices its conjuncts between the prefix and the ORDER BY suffix.
+pub(crate) const SESSIONS_PREFIX: &str =
+    "SELECT id, agent, project_id, started_at, last_activity_at, \
      message_count \
      FROM sessions \
-     WHERE ?1 IS NULL OR last_activity_at < ?1 OR (last_activity_at = ?1 AND id > ?2) \
-     ORDER BY last_activity_at DESC, id ASC \
-     LIMIT 1";
+     WHERE (?1 IS NULL OR last_activity_at < ?1 OR (last_activity_at = ?1 AND id > ?2))";
+pub(crate) const SESSIONS_SUFFIX: &str = " ORDER BY last_activity_at DESC, id ASC LIMIT 1";
+pub(crate) const SESSIONS_PAGE_SQL: &str = concat!(
+    "SELECT id, agent, project_id, started_at, last_activity_at, \
+     message_count \
+     FROM sessions \
+     WHERE (?1 IS NULL OR last_activity_at < ?1 OR (last_activity_at = ?1 AND id > ?2))",
+    " ORDER BY last_activity_at DESC, id ASC LIMIT 1"
+);
 
 /// A lazy cursor over the store's sessions, most recent activity first.
 pub struct SessionIter {
     conn: Connection,
+    sql: String,
+    filter_values: Vec<rusqlite::types::Value>,
     cursor: Option<(String, String)>,
     done: bool,
+    remaining: Option<usize>,
     counters: Option<std::rc::Rc<std::cell::Cell<query::QueryCounters>>>,
+}
+
+impl SessionIter {
+    pub(crate) fn new(
+        conn: Connection,
+        sql: String,
+        filter_values: Vec<rusqlite::types::Value>,
+        limit: Option<usize>,
+        counters: Option<std::rc::Rc<std::cell::Cell<query::QueryCounters>>>,
+    ) -> Self {
+        SessionIter {
+            conn,
+            sql,
+            filter_values,
+            cursor: None,
+            done: false,
+            remaining: limit,
+            counters,
+        }
+    }
 }
 
 impl fmt::Debug for SessionIter {
@@ -434,35 +465,49 @@ impl Iterator for SessionIter {
     type Item = SessionSummary;
 
     fn next(&mut self) -> Option<SessionSummary> {
-        if self.done {
+        if self.done || self.remaining == Some(0) {
+            self.done = true;
             return None;
         }
         let (after_activity, after_id) = match &self.cursor {
             Some((activity, id)) => (Some(activity.as_str()), Some(id.as_str())),
             None => (None, None),
         };
-        let row = self
-            .conn
-            .prepare_cached(SESSIONS_PAGE_SQL)
-            .and_then(|mut stmt| {
-                stmt.query_row(params![after_activity, after_id], |row| {
-                    let agent_code: String = row.get("agent")?;
-                    Ok(SessionSummary {
-                        id: row.get("id")?,
-                        agent: agent_from_code(&agent_code).expect("stored agent code is known"),
-                        project_id: row.get("project_id")?,
-                        started_at: row.get("started_at")?,
-                        last_activity_at: row.get("last_activity_at")?,
-                        message_count: row.get::<_, i64>("message_count")? as usize,
-                        metadata: Default::default(),
-                        partial: None,
-                    })
+        let mut values: Vec<rusqlite::types::Value> =
+            Vec::with_capacity(2 + self.filter_values.len());
+        values.push(
+            after_activity
+                .map(|activity| rusqlite::types::Value::from(activity.to_string()))
+                .unwrap_or(rusqlite::types::Value::Null),
+        );
+        values.push(
+            after_id
+                .map(|id| rusqlite::types::Value::from(id.to_string()))
+                .unwrap_or(rusqlite::types::Value::Null),
+        );
+        values.extend(self.filter_values.iter().cloned());
+        let row = self.conn.prepare_cached(&self.sql).and_then(|mut stmt| {
+            stmt.query_row(rusqlite::params_from_iter(values), |row| {
+                let agent_code: String = row.get("agent")?;
+                Ok(SessionSummary {
+                    id: row.get("id")?,
+                    agent: agent_from_code(&agent_code).expect("stored agent code is known"),
+                    project_id: row.get("project_id")?,
+                    started_at: row.get("started_at")?,
+                    last_activity_at: row.get("last_activity_at")?,
+                    message_count: row.get::<_, i64>("message_count")? as usize,
+                    metadata: Default::default(),
+                    partial: None,
                 })
-                .optional()
-            });
+            })
+            .optional()
+        });
         match row {
             Ok(Some(summary)) => {
                 self.cursor = Some((summary.last_activity_at.clone(), summary.id.clone()));
+                if let Some(remaining) = &mut self.remaining {
+                    *remaining -= 1;
+                }
                 if let Some(counters) = &self.counters {
                     let mut next = counters.get();
                     next.rows_fetched += 1;

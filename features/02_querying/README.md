@@ -6,7 +6,7 @@ Implementation is tracked by the Local Store Initiative on the Kanbus
 board (BOTSPY-c7795b); see `src/spec/ch02_querying.rs` for the embedded
 specs and status.
 
-Spec files (all `@wip` until the Local Store implementation lands):
+Spec files (`@wip` until each scenario's implementation task lands):
 
 - `01_iteration.feature` — iteration over sessions, messages, and parts
   in order.

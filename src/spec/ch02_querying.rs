@@ -42,7 +42,7 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: iteration, ingestion, and laziness are green
+//! ## Status: iteration, ingestion, filters, refresh, and laziness are green
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
 //! below. Executable and green: the local store itself
@@ -51,13 +51,13 @@
 //! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
 //! adapter-driven ingestion
 //! ([`05_ingest.feature`](../../features/02_querying/05_ingest.feature)),
+//! engine-pushed-down query filters
+//! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
+//! incremental refresh
+//! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature)),
 //! and query laziness
 //! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
-//! The filter
-//! ([`02_filters.feature`](../../features/02_querying/02_filters.feature))
-//! and refresh
-//! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature))
-//! specs remain `@wip` until their implementation tasks land.
+//! The search specs remain `@wip` until their implementation tasks land.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",

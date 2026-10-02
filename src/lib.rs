@@ -126,6 +126,6 @@ pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};
 pub use store::{
     default_store_path,
     ingest::IngestReport,
-    query::{Query, QueryCounters},
+    query::{MessageFilter, Query, QueryCounters, SessionFilter},
     SessionIter, Store, StoreError,
 };

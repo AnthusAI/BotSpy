@@ -3,7 +3,9 @@
 
 use crate::steps::{adapter_for, parse_agent, BotSpyWorld};
 use botspy::store::Store;
-use botspy::{Adapter, Agent, KnownPart, Message, Part, Role, Session};
+use botspy::{
+    Adapter, Agent, KnownPart, Message, MessageFilter, Part, Role, Session, SessionFilter,
+};
 use cucumber::{given, then, when};
 use std::path::{Path, PathBuf};
 
@@ -500,29 +502,10 @@ fn iteration_yields_texts(world: &mut BotSpyWorld, texts: String) {
 
 #[given(regex = r#"^the session has a message with parts (.+)$"#)]
 fn session_has_message_with_parts(world: &mut BotSpyWorld, kinds: String) {
-    let part = |kind: &str| {
-        Part::Known(match kind {
-            "text" => KnownPart::Text {
-                text: "a text part".to_string(),
-                extra: None,
-            },
-            "thinking" => KnownPart::Thinking {
-                text: Some("a thinking part".to_string()),
-                signature: None,
-                encrypted: None,
-                extra: None,
-            },
-            "tool_call" => KnownPart::ToolCall {
-                id: "call_1".to_string(),
-                name: "read_file".to_string(),
-                arguments: None,
-                status: None,
-                extra: None,
-            },
-            other => panic!("unsupported part kind in feature: {other}"),
-        })
-    };
-    let parts: Vec<Part> = quoted_list(&kinds).iter().map(|kind| part(kind)).collect();
+    let parts: Vec<Part> = quoted_list(&kinds)
+        .iter()
+        .map(|kind| part_of_kind(kind))
+        .collect();
     let mut session = crate::steps::current_session(world);
     session.messages.push(Message {
         role: Role::Assistant,
@@ -540,6 +523,7 @@ fn iterate_parts_of_last_message(world: &mut BotSpyWorld, id: String) {
     let query = store.query();
     let message_count = query.messages(&id).count();
     let last_ordinal = message_count - 1;
+    world.local_message_filter = None;
     world.local_parts = query
         .parts(&id, last_ordinal)
         .expect("the last message exists")
@@ -550,12 +534,31 @@ fn iterate_parts_of_last_message(world: &mut BotSpyWorld, id: String) {
 #[then(regex = r#"^the iteration yields the kinds (.+)(?: in that order)?$"#)]
 fn iteration_yields_kinds(world: &mut BotSpyWorld, kinds: String) {
     let expected = quoted_list(&kinds);
-    let actual: Vec<String> = world
-        .local_parts
-        .iter()
-        .map(|part| part.kind_name().unwrap_or("extra").to_string())
-        .collect();
-    assert_eq!(actual, expected, "the parts iteration is out of order");
+    let actual: Vec<String> = match &world.local_message_filter {
+        // A filtered message iteration: each yielded message carries the
+        // part kind it was selected by.
+        Some(filter) => world
+            .local_messages
+            .iter()
+            .map(|message| {
+                message
+                    .parts
+                    .iter()
+                    .find_map(|part| {
+                        let kind = part.kind_name()?;
+                        (kind == *filter).then(|| kind.to_string())
+                    })
+                    .expect("the yielded message has the filtered kind")
+            })
+            .collect(),
+        // A parts iteration over one message.
+        None => world
+            .local_parts
+            .iter()
+            .map(|part| part.kind_name().unwrap_or("extra").to_string())
+            .collect(),
+    };
+    assert_eq!(actual, expected, "the iteration is out of order");
 }
 
 // 03_laziness.feature — only what was consumed was touched.
@@ -661,7 +664,7 @@ fn iterate_first_messages(world: &mut BotSpyWorld, count: usize, id: String) {
     world.local_query_counters = Some(query.counters());
 }
 
-#[then(regex = r#"^the iteration yields ([0-9]+) messages$"#)]
+#[then(regex = r#"^the iteration yields ([0-9]+) messages?$"#)]
 fn iteration_yields_messages(world: &mut BotSpyWorld, count: usize) {
     assert_eq!(
         world.local_messages.len(),
@@ -760,13 +763,49 @@ fn adapters_served_no_opens(world: &mut BotSpyWorld) {
     assert_eq!(before, after, "unchanged sessions must not be re-opened");
 }
 
-// 02_filters.feature — engine-pushed-down filters (red until
-// BOTSPY-72dc40). 03_laziness.feature's counter steps already landed green
-// with BOTSPY-a927fc.
+// 02_filters.feature — engine-pushed-down filters (BOTSPY-72dc40).
+// 03_laziness.feature's counter steps already landed green with
+// BOTSPY-a927fc.
+
+/// A part of the given kind, for specs that build one-message sessions.
+fn part_of_kind(kind: &str) -> Part {
+    Part::Known(match kind {
+        "text" => KnownPart::Text {
+            text: "a text part".to_string(),
+            extra: None,
+        },
+        "thinking" => KnownPart::Thinking {
+            text: Some("a thinking part".to_string()),
+            signature: None,
+            encrypted: None,
+            extra: None,
+        },
+        "tool_call" => KnownPart::ToolCall {
+            id: "call_1".to_string(),
+            name: "read_file".to_string(),
+            arguments: None,
+            status: None,
+            extra: None,
+        },
+        other => panic!("unsupported part kind in feature: {other}"),
+    })
+}
+
+fn iterate_filtered_sessions(world: &mut BotSpyWorld, filter: &SessionFilter) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    world.local_sessions = query.sessions_with(filter).collect();
+    world.local_query_counters = Some(query.counters());
+}
 
 #[when(regex = r#"^I iterate the sessions filtered by source "([^"]+)"$"#)]
-fn iterate_sessions_filtered_by_source(_world: &mut BotSpyWorld, _agent: String) {
-    todo!("BOTSPY-a2811d: iterate sessions filtered by source")
+fn iterate_sessions_filtered_by_source(world: &mut BotSpyWorld, agent: String) {
+    let filter = SessionFilter {
+        agent: Some(parse_agent(&agent)),
+        ..SessionFilter::default()
+    };
+    iterate_filtered_sessions(world, &filter);
 }
 
 #[given(
@@ -774,51 +813,95 @@ fn iterate_sessions_filtered_by_source(_world: &mut BotSpyWorld, _agent: String)
 )]
 #[allow(clippy::too_many_arguments)]
 fn fixture_sessions_three_projects(
-    _world: &mut BotSpyWorld,
-    _id1: String,
-    _agent1: String,
-    _project1: String,
-    _id2: String,
-    _agent2: String,
-    _project2: String,
-    _id3: String,
-    _agent3: String,
-    _project3: String,
+    world: &mut BotSpyWorld,
+    id1: String,
+    agent1: String,
+    project1: String,
+    id2: String,
+    agent2: String,
+    project2: String,
+    id3: String,
+    agent3: String,
+    project3: String,
 ) {
-    todo!("BOTSPY-a2811d: three fixture sessions in distinct projects")
+    for (id, agent, project) in [
+        (&id1, &agent1, &project1),
+        (&id2, &agent2, &project2),
+        (&id3, &agent3, &project3),
+    ] {
+        let adapter = adapter_for(world, agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(agent),
+            project,
+            "2026-10-01T09:00:00Z",
+        ));
+    }
 }
 
 #[when(regex = r#"^I iterate the sessions filtered by project "([^"]+)"$"#)]
-fn iterate_sessions_filtered_by_project(_world: &mut BotSpyWorld, _project: String) {
-    todo!("BOTSPY-a2811d: iterate sessions filtered by project")
+fn iterate_sessions_filtered_by_project(world: &mut BotSpyWorld, project: String) {
+    let filter = SessionFilter {
+        project: Some(project),
+        ..SessionFilter::default()
+    };
+    iterate_filtered_sessions(world, &filter);
 }
 
 #[given(
     regex = r#"^fixture sessions "([^"]+)" and "([^"]+)" from "([^"]+)" in project "([^"]+)"$"#
 )]
 fn fixture_sessions_two_one_agent(
-    _world: &mut BotSpyWorld,
-    _id1: String,
-    _id2: String,
-    _agent: String,
-    _project: String,
+    world: &mut BotSpyWorld,
+    id1: String,
+    id2: String,
+    agent: String,
+    project: String,
 ) {
-    todo!("BOTSPY-a2811d: two fixture sessions from one agent")
+    for id in [&id1, &id2] {
+        let adapter = adapter_for(world, &agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(&agent),
+            &project,
+            "2026-10-01T09:00:00Z",
+        ));
+    }
 }
 
 #[given(regex = r#"^session "([^"]+)" has a message with a part of kind "([^"]+)"$"#)]
-fn session_has_part_of_kind(_world: &mut BotSpyWorld, _id: String, _kind: String) {
-    todo!("BOTSPY-a2811d: one message with the given part kind")
+fn session_has_part_of_kind(world: &mut BotSpyWorld, id: String, kind: String) {
+    let mut session = crate::steps::find_session(world, &id).expect("fixture session");
+    session.messages.push(Message {
+        role: Role::Assistant,
+        parts: vec![part_of_kind(&kind)],
+        timestamp: Some("2026-10-01T09:00:00Z".to_string()),
+        ..Message::default()
+    });
+    crate::steps::save_session_by_id(world, session);
 }
 
 #[when(regex = r#"^I iterate the sessions filtered by part kind "([^"]+)"$"#)]
-fn iterate_sessions_filtered_by_part_kind(_world: &mut BotSpyWorld, _kind: String) {
-    todo!("BOTSPY-a2811d: iterate sessions filtered by part kind")
+fn iterate_sessions_filtered_by_part_kind(world: &mut BotSpyWorld, kind: String) {
+    let filter = SessionFilter {
+        part_kind: Some(kind),
+        ..SessionFilter::default()
+    };
+    iterate_filtered_sessions(world, &filter);
 }
 
 #[when(regex = r#"^I iterate the messages of session "([^"]+)" filtered by part kind "([^"]+)"$"#)]
-fn iterate_messages_filtered_by_part_kind(_world: &mut BotSpyWorld, _id: String, _kind: String) {
-    todo!("BOTSPY-a2811d: iterate messages filtered by part kind")
+fn iterate_messages_filtered_by_part_kind(world: &mut BotSpyWorld, id: String, kind: String) {
+    ensure_store_ingested(world);
+    let filter = MessageFilter {
+        part_kind: Some(kind.clone()),
+    };
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    world.local_parts.clear();
+    world.local_messages = query.messages_with(&id, &filter).collect();
+    world.local_message_filter = Some(kind);
+    world.local_query_counters = Some(query.counters());
 }
 
 #[given(
@@ -826,18 +909,26 @@ fn iterate_messages_filtered_by_part_kind(_world: &mut BotSpyWorld, _id: String,
 )]
 #[allow(clippy::too_many_arguments)]
 fn fixture_sessions_three_last_active(
-    _world: &mut BotSpyWorld,
-    _id1: String,
-    _at1: String,
-    _id2: String,
-    _at2: String,
-    _id3: String,
-    _at3: String,
+    world: &mut BotSpyWorld,
+    id1: String,
+    at1: String,
+    id2: String,
+    at2: String,
+    id3: String,
+    at3: String,
 ) {
-    todo!("BOTSPY-a2811d: three fixture sessions at distinct times")
+    for (id, at) in [(&id1, &at1), (&id2, &at2), (&id3, &at3)] {
+        let adapter = adapter_for(world, "claude_code");
+        adapter.add_session(fixture_session(id, parse_agent("claude_code"), "demo", at));
+    }
 }
 
 #[when(regex = r#"^I iterate the sessions active after "([^"]+)" and before "([^"]+)"$"#)]
-fn iterate_sessions_active_between(_world: &mut BotSpyWorld, _after: String, _before: String) {
-    todo!("BOTSPY-a2811d: iterate sessions in a time window")
+fn iterate_sessions_active_between(world: &mut BotSpyWorld, after: String, before: String) {
+    let filter = SessionFilter {
+        since: Some(after),
+        until: Some(before),
+        ..SessionFilter::default()
+    };
+    iterate_filtered_sessions(world, &filter);
 }
