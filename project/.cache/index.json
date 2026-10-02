@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T22:17:11Z",
+  "built_at": "2026-10-02T22:34:08Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790979307.923152,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790979307.923531,
@@ -11,7 +11,7 @@
     "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790979307.925376,
     "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790979307.925586,
     "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790979307.925866,
-    "BOTSPY-17e4aad9-d687-4af6-b03b-d863c5f17078.json": 1790979424.057102,
+    "BOTSPY-17e4aad9-d687-4af6-b03b-d863c5f17078.json": 1790980016.90705,
     "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b.json": 1790979307.926175,
     "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790979307.92658,
     "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124.json": 1790979307.926822,
@@ -29,9 +29,9 @@
     "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790979307.931052,
     "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790979307.931436,
     "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790979307.93173,
-    "BOTSPY-3ccc4fc9-1cea-4f5e-a07f-5987d4237b46.json": 1790979417.848329,
+    "BOTSPY-3ccc4fc9-1cea-4f5e-a07f-5987d4237b46.json": 1790979847.983153,
     "BOTSPY-3d9af881-2a80-46cb-968a-e7a4ea83d83c.json": 1790979307.932032,
-    "BOTSPY-3f3ec558-7ae1-4fd0-a80c-c2f39841e1eb.json": 1790979411.785732,
+    "BOTSPY-3f3ec558-7ae1-4fd0-a80c-c2f39841e1eb.json": 1790979740.357475,
     "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790979307.9324,
     "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e.json": 1790979307.932769,
     "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1790979307.933065,
@@ -40,7 +40,7 @@
     "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790979307.933915,
     "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790979307.934293,
     "BOTSPY-493cee0b-bb83-4f55-9ad7-1958aaf81704.json": 1790979307.934596,
-    "BOTSPY-4c8521a3-75c0-49b2-9d36-523f6a0bd6bf.json": 1790979405.386945,
+    "BOTSPY-4c8521a3-75c0-49b2-9d36-523f6a0bd6bf.json": 1790980446.47188,
     "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790979307.934859,
     "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790979307.93524,
     "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e.json": 1790979307.935619,
@@ -101,8 +101,8 @@
     "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790979307.956723,
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790979307.956985,
     "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b.json": 1790979307.957254,
-    "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9.json": 1790979307.957603,
-    "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549.json": 1790979399.738015,
+    "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9.json": 1790979440.676031,
+    "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549.json": 1790980113.040417,
     "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea.json": 1790979307.957798,
     "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790979307.958079,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790979307.958337,
@@ -114,7 +114,7 @@
     "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790979307.960069,
     "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4.json": 1790979307.960402,
     "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790979307.96073,
-    "BOTSPY-bc3ae3db-16a2-4cb4-8e26-ef45702812aa.json": 1790979429.142684,
+    "BOTSPY-bc3ae3db-16a2-4cb4-8e26-ef45702812aa.json": 1790980122.113929,
     "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855.json": 1790979307.961137,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790979307.961444,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790979307.961745,
@@ -458,17 +458,25 @@
       "title": "duplicate session ids across project dirs silently collide: 63 transcripts list as 61 sessions",
       "description": "**Observed on real data (origin/develop `9fc6584`):** `botspy sources` counts **63** claude_code transcripts, but `botspy sessions -o json` lists **61**. `find ~/.claude/projects -name '*.jsonl'` shows two ids present in two project dirs each: `c58ebed2-7ae3-4257-89e9-ae4fd57e8408` and `cecba6ba-dc3e-4b13-b132-501b4600b3da`. `SessionStore::list_sessions` dedupes by session id alone (\"first report wins\"), so one transcript per duplicated id is silently dropped, losing its project and history from the listing. No warning is emitted.\n\n**Repro:**\n1. `./target/release/botspy sources` → claude_code SESSIONS 63.\n2. `./target/release/botspy sessions -o json | length` → 61.\n3. Diff the id sets → `c58ebed2…` and `cecba6ba…` each appear once despite two project dirs holding a transcript per id.\n\n**Expected:** the store must key dedupe on more than the id — at minimum (agent, id, project_id) so the same id under two different projects lists twice (they are distinct histories); a true duplicate (same agent, id and project) still lists once. If identity stays id-only, the store must at least warn about collisions. No data may be silently dropped.\n\n**Suspected code:** `src/session.rs` `SessionStore::list_sessions()` (~line 175-176): `seen.insert(summary.id.clone())`.\n\n**Acceptance criteria:**\n- Regression test with **synthetic fixtures** (the `FixtureAdapter` or a temp-dir adapter layout — never real transcripts): two sessions sharing an id but differing in `project_id` both appear in `list_sessions()`; identical (agent, id, project) triples still dedupe to one row (the existing `duplicate_reports_of_one_session_list_once` behavior is preserved).\n- A listing that drops a candidate must either not happen or say so (warning); the chosen behavior is documented in the method's doc comment.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data (`show` resolves by id; the collision only affects the unified listing).\n- **Overlap with the local-store plan (BOTSPY-c7795b):** linked to task BOTSPY-a48fb1 (\"Implement ingestion: adapters → store, read-only, dedup, lossless round-trip\", epic BOTSPY-6f173d), which re-implements first-report-wins dedup inside the store. The fix here changes the chapter-1 rule in `src/session.rs` only — files that task does not touch (`src/store/*`) — and the store task should adopt the same keying when it lands; the local-store agent is notified on their task.",
       "type": "bug",
-      "status": "open",
+      "status": "closed",
       "priority": 1,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "46808ac9-8c48-4846-8425-114afb56722f",
+          "author": "home",
+          "text": "Fixed on develop (commit 6fa7bf7). SessionStore::list_sessions now dedupes on the (agent, id, project_id) triple instead of id alone: the same id under two project dirs lists twice (both histories), true duplicate reports still list once (pre-existing duplicate_reports_of_one_session_list_once test untouched and green). Identity rule documented in the doc comment; Agent derives PartialOrd/Ord for the set key. Spec-first: scenario 'The same session id under two projects lists twice' with a new synthetic given step (duplicate solo-abc123.jsonl under dupe-demo — no real transcripts), watched red (4 sessions), green (5, both project names present); unit test same_id_under_two_projects_lists_twice covers the cross-adapter case. No warning surface was added since nothing is dropped anymore. All gates green (cargo test 44, bdd 167 passed, clippy/doc -D warnings, fmt). **Local-store link:** this was the dedup overlap with BOTSPY-a48fb1 — the store task should adopt the same triple keying for first-report-wins ingestion; notified on that task. sources, doctor and show were already correct on real data.",
+          "created_at": "2026-10-02T22:24:15.458705Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:17:04.056923Z",
-      "updated_at": "2026-10-02T22:17:04.056947Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T22:24:16.120455Z",
+      "closed_at": "2026-10-02T22:24:16.120428Z",
       "agent": {
         "platform": "cursor",
         "model": "Composer 2.5",
@@ -1063,17 +1071,25 @@
       "title": "sessions claims 'most recent activity first' but orders by id because timestamps are empty",
       "description": "**Observed on real data (origin/develop `9fc6584`):** the `sessions` help text and the doc comment on `SessionStore::list_sessions` promise \"sorted by last activity with the most recent first (ties broken by id)\", but real output is ordered by session id (`00fcdc4d`, `01547c91`, `0423e3fd`, …) — the active-today sessions (2da02ae2, 67537d30, …) appear at arbitrary positions. Root cause is the same empty `last_activity_at` as the discover bug: comparing empty strings is a tie everywhere, so the id tie-break decides the order.\n\n**Repro:**\n1. `./target/release/botspy sessions --limit 20` → rows sorted lexicographically by id, not by activity.\n2. `./target/release/botspy show 2da02ae2` → last activity 2026-10-02; it does not appear first.\n\n**Expected:** with populated timestamps, the listing is ordered by `last_activity_at` descending (ties broken by id, empty timestamps last). The existing sort code is correct once the summaries carry real timestamps — the regression test must pin that behavior so it survives refactors.\n\n**Suspected code:** `src/session.rs` `SessionStore::list_sessions()` (~line 169-183) — the sort itself; fed by `discover()` summaries that are empty (see the discover bug).\n\n**Acceptance criteria:**\n- Regression test with synthetic fixtures: sessions with distinct `last_activity_at` values list most-recent-first; sessions with equal timestamps tie-break by id; sessions with no timestamps list after all timestamped ones.\n- A CLI-level scenario on the fixture home asserts the JSON output order.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data.\n- Blocked-by nature: only observable once the discover bug (BOTSPY-4c8521a3) is fixed; the test lands with it.",
       "type": "bug",
-      "status": "open",
+      "status": "closed",
       "priority": 1,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "92ee3045-2fd0-4129-8e62-1ff4d11ea5c0",
+          "author": "home",
+          "text": "Pinned on develop (commit fc830d0). The sort code in SessionStore::list_sessions was already correct — it degenerated only because summaries carried empty timestamps (fixed by BOTSPY-4c8521a3). Behavior now pinned against regressions: new scenario 'Sessions are ordered most recent activity first' asserts the JSON order on the fixture home (0003 09:20 → 0002 09:10 → 0001 09:00:15 → solo 09-15 12:05; before the discover fix the same run ordered by id); unit test listing_ties_break_by_id_and_empty_timestamps_sort_last covers equal-timestamp id tie-breaks and no-activity sessions sorting last; list_sessions doc comment documents the empty-timestamps-last rule. The red state was the real-data observation in the ticket (id-ordered listing); synthetic fixtures only. All gates green (cargo test, bdd 166 passed, clippy/doc -D warnings, fmt). sources, doctor and show were already correct on real data.",
+          "created_at": "2026-10-02T22:22:25.328759Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:16:57.848122Z",
-      "updated_at": "2026-10-02T22:16:57.848156Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T22:22:25.973922Z",
+      "closed_at": "2026-10-02T22:22:25.973897Z",
       "agent": {
         "platform": "cursor",
         "model": "Composer 2.5",
@@ -1142,17 +1158,25 @@
       "title": "sessions --since always returns 0 sessions; invalid --since value is silently accepted",
       "description": "**Observed on real data (origin/develop `9fc6584`):** `botspy sessions --since 2026-09-30T00:00:00Z` prints \"0 sessions\" although many sessions were active after that instant (e.g. `show 2da02ae2` last activity 2026-10-02T22:03:53Z). `botspy sessions --since bogus` also prints \"0 sessions\" with exit code 0 instead of an error.\n\n**Repro:**\n1. `./target/release/botspy sessions --since 2026-09-30T00:00:00Z` → \"0 sessions\" (should be dozens).\n2. `./target/release/botspy sessions --since bogus` → \"0 sessions\", exit 0, no warning.\n\n**Expected:** `--since` filters to sessions whose last activity is at or after the given timestamp; with populated `last_activity_at` values the filter matches real sessions. A value that is not a valid RFC 3339 timestamp must be rejected as a usage error (non-zero exit, message on stderr), not silently match nothing.\n\n**Suspected code:** `src/cli/mod.rs`, `fn sessions()` (~line 363-366): `summaries.retain(|s| !s.last_activity_at.is_empty() && s.last_activity_at.as_str() >= since)` — with bug 1 (empty timestamps everywhere) the retain drops everything; and `since` is never validated. The `--until` branch (~line 368-372) has the same missing validation.\n\n**Acceptance criteria:**\n- With the synthetic fixture corpus, `sessions --since <ts between fixture sessions>` returns exactly the sessions active at/after `ts`.\n- `sessions --since bogus` (and `--until bogus`) exit non-zero with a stderr message naming the bad flag and value.\n- Regression tests use the synthetic fixture home (`tests/fixtures` corpus + the `extra-demo` solo session), never real transcripts.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data.\n- Depends on BOTSPY-4c8521a3 (populated timestamps) for the filter to have data to match; the validation part is independent.",
       "type": "bug",
-      "status": "open",
+      "status": "closed",
       "priority": 1,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "2c295721-b4cf-487d-baa3-822e19043668",
+          "author": "home",
+          "text": "Fixed on develop (commit f887561). The filter itself started working once BOTSPY-4c8521a3 populated last_activity_at; the new scenario '—since keeps only sessions active at or after the timestamp' pins the window semantics on the fixture home (2 of 4 claude_code sessions). The validation half is new: --since and --until values are checked against RFC 3339 shape (YYYY-MM-DDTHH:MM:SS[.frac][Z|±HH:MM], range-checked); invalid values exit 2 with \"error: invalid value for --since: \\\"bogus\\\" is not an RFC 3339 timestamp\". Spec-first (three scenarios in features/cli/20_sessions.feature, two watched red), validator unit-tested; all gates green (cargo test, bdd 165 passed, clippy/doc -D warnings, fmt). Note: sources, doctor and show were already correct on real data.",
+          "created_at": "2026-10-02T22:21:34.871899Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:16:51.785552Z",
-      "updated_at": "2026-10-02T22:16:51.785585Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T22:21:35.414967Z",
+      "closed_at": "2026-10-02T22:21:35.414945Z",
       "agent": {
         "platform": "cursor",
         "model": "Composer 2.5",
@@ -1445,17 +1469,25 @@
       "title": "sessions listing shows 0 messages, no timestamps and no titles: claude_code discover() never reads transcripts",
       "description": "**Observed on real data (read-only run against `--home` default, origin/develop `9fc6584`):** `botspy sessions` prints `MSGS 0`, `LAST ACTIVITY —`, `TITLE —` and empty `metadata` for **every** claude_code row; `-o json` shows `started_at`: \"\", `last_activity_at`: \"\", `message_count`: 0, `metadata`: {} for all 61 listed sessions. The same sessions open fine: `botspy show 00fcdc4d` reports \"3 messages, started 2026-09-22T10:41:27.032Z\".\n\n**Repro:**\n1. `cargo build --release` at origin/develop; run `./target/release/botspy sessions --limit 5` (real home) → every row `0  —  —`.\n2. `./target/release/botspy sessions --limit 5 -o json` → all `message_count` 0, timestamps empty.\n3. `./target/release/botspy show 00fcdc4d` → same session shows 3 messages with timestamps. Inconsistent.\n\n**Expected:** the listing carries real per-session data — message count, first/last activity timestamps, and title — consistent with `botspy show` for the same id, without writing anything to the source.\n\n**Suspected code:** `ClaudeCodeSource::discover()` in `src/adapters/claude_code.rs` (~line 81-106): it pushes `SessionSummary { id, agent, project_id, ..SessionSummary::default() }` per `.jsonl` file name and never reads the transcript. `extract()` in the same file already parses everything correctly.\n\n**Acceptance criteria:**\n- `discover()` populates `started_at`, `last_activity_at`, `message_count` and title metadata per transcript, matching what `open()`/`show` reports for the same id.\n- Regression test with a **synthetic fixture** (temp-dir transcript or the committed `tests/fixtures` corpus — never real transcripts): a transcript with N timestamped records must list `message_count: N` and the correct first/last timestamps in `discover()` output.\n- `botspy sessions` and `botspy show` agree on message counts and timestamps for the fixture sessions.\n- Read-only guarantee unchanged: no writes into the source tree.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data; only the listing path is broken.\n- Related: the local-store ingestion epic BOTSPY-6f173d builds on `Adapter::discover()` (task BOTSPY-a48fb1) — populated summaries benefit it, and it changes no adapter code, so no conflict.",
       "type": "bug",
-      "status": "open",
+      "status": "closed",
       "priority": 1,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "d7d61eae-8d52-43d4-a096-4f9e647bde64",
+          "author": "home",
+          "text": "Fixed on develop (commit bc4caa7, branch fix/sessions-listing-bugs-a). ClaudeCodeSource::discover() now scans each transcript through a throwaway extractor — side-effect free, does not consume resume offsets — and summaries carry message_count, started_at/last_activity_at and the recorded title, consistent with show. Spec-first: two scenarios added to features/cli/20_sessions.feature (Summaries carry real activity; Human output shows the recorded session title), watched fail (0 msgs / — title), then made green; regression unit test discovery_summaries_carry_activity_from_the_transcripts uses a synthetic temp-dir transcript. Full suite green: cargo test, cargo test --test bdd (162 passed), clippy -D warnings, doc -D warnings, fmt. Verified read-only: no writes to the source tree. Note for follow-up: cursor/codex/grok_bot/antigravity discover() share the same default-summary defect; left to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
+          "created_at": "2026-10-02T22:20:10.727579Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:16:45.386768Z",
-      "updated_at": "2026-10-02T22:16:45.386794Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T22:20:12.219224Z",
+      "closed_at": "2026-10-02T22:20:12.219192Z",
       "agent": {
         "platform": "cursor",
         "model": "Composer 2.5",
@@ -3624,9 +3656,17 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "5c6eb0c7-a39b-4fd1-8492-14753bd515d0",
+          "author": "home",
+          "text": "Heads-up from the sessions-listing bug run: the chapter-1 dedupe rule in SessionStore::list_sessions (src/session.rs) silently drops transcripts when the same session id appears in two project dirs (observed 63→61 on real data; bug BOTSPY-17e4aad9). The fix keys dedupe on (agent, id, project_id). When you implement first-report-wins ingestion here, please adopt the same keying so the store matches the fixed listing rule.",
+          "created_at": "2026-10-02T22:17:20.674888Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:48.369842Z",
-      "updated_at": "2026-10-02T21:44:04.650978Z",
+      "updated_at": "2026-10-02T22:17:20.674913Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
@@ -3649,9 +3689,31 @@
       "parent": null,
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "3cf88de6-4ec3-4880-8bc4-4701d7fedeea",
+          "author": "home",
+          "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+          "created_at": "2026-10-02T22:17:11.919617Z",
+          "comment_type": "default"
+        },
+        {
+          "id": "2a06a265-359b-4d8c-86bd-2decc6d2e189",
+          "author": "home",
+          "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+          "created_at": "2026-10-02T22:17:20.119233Z",
+          "comment_type": "default"
+        },
+        {
+          "id": "101a1bf3-b733-4a2a-97f4-5be60d4acce2",
+          "author": "home",
+          "text": "All five bugs fixed and closed. Each went spec-first (Gherkin scenario(s) in features/cli/20_sessions.feature, watched red, then green) with synthetic-fixture regression tests only — no real transcripts anywhere. Fixes, in order, each ff-landed on develop from fix/sessions-listing-bugs-a:\n- BOTSPY-4c8521a3 bc4caa7 — discover() summaries carry message counts/timestamps/titles via a side-effect-free throwaway scanner.\n- BOTSPY-3f3ec558 f887561 — --since/--until window works and invalid values exit 2 with a stderr message (RFC 3339 validator + unit tests).\n- BOTSPY-3ccc4fc9 fc830d0 — most-recent-first order pinned (CLI order scenario + tie-break/empty-last unit test, doc comment).\n- BOTSPY-17e4aad9 6fa7bf7 — dedupe keyed on (agent, id, project_id); Agent derives PartialOrd/Ord; linked to local-store task BOTSPY-a48fb1 which was notified to adopt the same keying.\n- BOTSPY-bc3ae3db 8e4b9e6 — sessions table aligned in both truncation modes via dynamic column widths; show fragment-elision note left to CLI epic BOTSPY-7c2705.\nEnd-to-end check on the original real-data repro (read-only): sessions --limit 6 now shows real counts (5461/7779/...), true most-recent-first order, aligned in default and --no-truncate modes. Gates after every fix: cargo fmt --all, clippy --all-targets -D warnings, RUSTDOCFLAGS=\"-D warnings\" cargo doc, cargo test, cargo test --test bdd (169 passed, 2 skipped). release.yml/release-plz.toml untouched; no files from the local-store agent's branch (src/store/*, features/02_querying/*, Cargo.toml, src/lib.rs, src/spec/ch02_querying.rs, tests/steps/store_steps.rs) touched. Follow-up recorded: the other four adapters' discover() share the empty-summary defect — belongs to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
+          "created_at": "2026-10-02T22:27:19.581296Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:16:37.268589Z",
-      "updated_at": "2026-10-02T22:16:39.737889Z",
+      "updated_at": "2026-10-02T22:27:19.581323Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
@@ -4050,17 +4112,25 @@
       "title": "sessions human table misaligns: PROJECT column not width-capped, --no-truncate breaks the table entirely",
       "description": "**Observed on real data (origin/develop `9fc6584`):** in `botspy sessions` human output the PROJECT column renders values up to 38 chars (the `render::truncate` cap) inside a 20-char `render::column` slot that only pads and never truncates, so long project ids (`-Users-home-Projects-Apricity`, ``…kanbus-opencode-issue-router-417db0`) push the MSGS / LAST ACTIVITY / TITLE columns out of alignment with the header. With `--no-truncate` the full 36-char uuids and full paths are spliced into fixed-width slots, so every column after SESSION is ragged and the table is unreadable.\n\n**Repro:**\n1. `./target/release/botspy sessions --limit 5` → PROJECT values overflow their column; header and rows do not line up.\n2. `./target/release/botspy sessions --limit 5 --no-truncate` → full ids/paths inserted raw; table completely misaligned.\n\n**Expected:** human tables stay aligned in both modes. In truncated mode each column is capped at its declared width (with a tail-keep ellipsis like `render::truncate`); in `--no-truncate` mode columns widen to fit the longest value (headers still aligned) instead of splicing fixed-width slots. Machine modes are untouched (they never truncate).\n\n**Suspected code:** `src/cli/mod.rs` `fn sessions_human()` (~line 391-434) and `src/cli/render.rs` — `render::column()` pads but never truncates; `render::truncate()` caps at `TRUNCATE_WIDTH = 38`, wider than the PROJECT column's 20.\n\n**Note (folded in, not this fix's scope):** `botspy show` elides each message's parts to a single fragment (`· text  …organization without using Tailscale?` — one line, tail-kept, no length control). Acceptable for a walk-the-messages view, but the elision is undocumented and there is no flag to widen it; worth its own story under the CLI epic BOTSPY-7c2705.\n\n**Acceptance criteria:**\n- Regression scenario on the synthetic fixture home: human `sessions` output has every data row aligned with the header column starts, in both default and `--no-truncate` modes (e.g. assert MSGS/LAST ACTIVITY column positions are identical on header and rows).\n- PROJECT values longer than the column are tail-kept with the ellipsis marker in truncated mode and shown in full in `--no-truncate` mode without breaking alignment.\n- Machine modes unchanged; existing scenarios (`stdout reports`, id truncation footer) stay green.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data.",
       "type": "bug",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "60aa08f5-9b2e-4067-8665-023a5ee5a395",
+          "author": "home",
+          "text": "Fixed on develop (commit 8e4b9e6). sessions_human builds logical cells then pads each column to its widest content, so rows align with the header in both modes: truncated mode caps SESSION at 8 and PROJECT at 20 with a tail-keep ellipsis (…Projects-Chattic-us); --no-truncate widens columns to the full values instead of splicing fixed-width slots. render gains truncate_within(value, keep_full, width) (the old truncate is its 38-char case, callers unchanged) and column_width. Verified on the real-data repro: `sessions --limit 6` and `--no-truncate` both render aligned tables with real MSGS/LAST ACTIVITY values (from BOTSPY-4c8521a3). Spec-first: two scenarios asserting every row's LAST ACTIVITY cell starts at the header position, watched red in both modes, then green; all gates green (cargo test 44, bdd 169 passed, clippy/doc -D warnings, fmt). **Folded-in note (not this fix):** botspy show elides each message to a single tail-kept fragment with no length control — filed as a story candidate under CLI epic BOTSPY-7c2705; left for that epic.",
+          "created_at": "2026-10-02T22:27:04.201043Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T22:17:09.142510Z",
-      "updated_at": "2026-10-02T22:17:09.142537Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T22:27:05.409426Z",
+      "closed_at": "2026-10-02T22:27:05.409399Z",
       "agent": {
         "platform": "cursor",
         "model": "Composer 2.5",
