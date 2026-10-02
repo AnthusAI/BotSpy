@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "077fe9ae-c368-47b8-9946-bad5fd576823",
+  "issue_id": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T21:49:14.429Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "Milestone 6 of the Local Store Initiative (deferred, gated on Ryan): the real embedder — all-MiniLM-L6-v2 through tract (ONNX) on CPU, one model, one set of weights, one engine so vectors are consistent by construction, batch embedding at ingest (the scanner-batch milestone). Justified deferral: the store, schema, DDL, k-NN engine, and hybrid ranking are model-independent and ship fully with the stub; only the model runtime depends on open asset questions (weights/tokenizer acquisition vs the README's nothing-leaves-the-machine promise, cargo feature gating, offline-deterministic CI) posted as a comment on BOTSPY-c7795b. The store records the embedding model id in meta and refuses mixed-model vectors, so this lands later as a clean re-ingest. Do not start before the decision task closes.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+        "to": "Milestone 6 of the Local Store Initiative (UNBLOCKED by Ryan's decision on BOTSPY-bb60bb, recorded on BOTSPY-c7795b): the real embedder — all-MiniLM-L6-v2 through tract (ONNX) on CPU, one model, one set of weights, one engine so vectors are consistent by construction, batch embedding at ingest (the scanner-batch milestone). Decision: the real model is NOT committed to the repo and NOT behind a cargo feature — it is downloaded by a setup step/command once (digest-verified) and cached locally (e.g. ~/.botspy/models/); at runtime nothing leaves the machine and the library makes no network calls; CI runs the real model ungated (downloaded once and cached, or pre-downloaded). The store records the embedding model id in meta and refuses mixed-model vectors. Vector/semantic search specs exercise the real model; the deterministic stub remains only as an internal unit-test seam.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli)."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "6e3bdbaf-0a98-4cdc-8d2e-dc305261e2e2",
+  "issue_id": "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T21:49:12.951Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "**Files:** `features/02_querying/09_semantic_model.feature` (new; gating per the decision task); `tests/steps/store_steps.rs`; `src/store/vector.rs`; `src/spec/ch02_querying.rs` (embed).\n\n**Acceptance:** end-to-end, red first then green: ingest with the MiniLM embedder → semantic search returns the semantically right fixtures → hybrid ranking composes. @wip removed only where CI can run the file ungated; stub-based specs unaffected.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+        "to": "**Files:** `features/02_querying/09_semantic_model.feature` (new; ungated per Ryan's decision — CI runs the real model); `tests/steps/store_steps.rs`; `src/store/vector.rs`; `src/spec/ch02_querying.rs` (embed); `.github/workflows` CI steps (download the model once and cache it, e.g. actions/cache keyed on model version/hash, or a pre-downloaded copy).\n\n**Acceptance:** end-to-end, red first then green: ingest with the real MiniLM embedder → semantic search returns the semantically right fixtures → hybrid ranking composes. Per Ryan's decision (BOTSPY-bb60bb closed): no gating, no @wip, no ignored tests — CI runs the real model on all 8 jobs (incl. Windows and musl); the stub remains an internal unit-test seam only."
+      }
+    }
+  }
+}
