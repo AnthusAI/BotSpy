@@ -52,13 +52,19 @@
 //!   per-conversation DBs and `transcript.jsonl` under
 //!   `~/.gemini/antigravity/`.
 //!
-//! ## Status: specified next
+//! ## Status: contract specified
 //!
-//! The CDC scenarios and the per-agent specs do not exist yet;
-//! `features/03_importers/` holds placeholders only. The old adapter
-//! contract (the [`Adapter`](crate::adapter::Adapter) trait and its
-//! discover/open surface) is folded into this chapter as the in-process
-//! face of the same pipeline.
+//! The adapter contract — the in-process face of this pipeline — is
+//! specified in [`contract.feature`](../../../features/03_importers/contract.feature)
+//! and embedded below, tagged `@wip` until its implementation lands. The
+//! per-agent specs (below) translate the same pipeline to each source.
+//!
+#![doc = concat!(
+    "## Behavior specification\n\n",
+    "### contract.feature\n\n```gherkin\n",
+    include_str!("../../../features/03_importers/contract.feature"),
+    "\n```\n"
+)]
 
 pub mod antigravity;
 pub mod claude_code;
