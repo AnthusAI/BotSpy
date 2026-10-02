@@ -106,7 +106,10 @@ pub mod spec;
 
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
-pub use importer::{JsonlStream, MemorySource, RawRecord, RecordStream, SkipCounter};
+pub use importer::{
+    create_source, JsonlStream, MemorySource, RawRecord, RecordStream, SkipCounter, SourceOptions,
+    UnknownSource,
+};
 pub use schema::{
     content_hash, Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, KnownPart,
     Message, ModelCost, Origin, Part, PartStatus, PartialHistory, PartialReason, Peer, Provenance,
