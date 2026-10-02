@@ -420,6 +420,9 @@
 //!     with [`PartialReason`](crate::schema::PartialReason) on
 //!     [`Session`](crate::session::Session) and
 //!     [`SessionSummary`](crate::session::SessionSummary).
+//! 13. `unified_history.feature` — sessions from all five adapters in one
+//!     unified history with consistent ordering, dedup, and provenance
+//!     (specified with the fixtures epic; `@wip` until implemented).
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -470,5 +473,8 @@
     "\n```\n\n",
     "### 12_raw_blob_escape_hatch.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/12_raw_blob_escape_hatch.feature"),
+    "\n```\n\n",
+    "### unified_history.feature\n\n```gherkin\n",
+    include_str!("../../features/01_structure/unified_history.feature"),
     "\n```\n"
 )]
