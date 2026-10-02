@@ -11,6 +11,7 @@ use crate::session::SessionSummary;
 use serde_json::Value;
 use std::cell::RefCell;
 use std::collections::BTreeSet;
+use std::fmt;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
@@ -97,6 +98,129 @@ fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 
+/// Per-source options an embedder can override.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct SourceOptions {
+    /// Where the source's transcripts live, overriding the default
+    /// location derived from the home directory.
+    pub root: Option<PathBuf>,
+    /// The user's home directory, overriding `$HOME`.
+    pub home: Option<PathBuf>,
+}
+
+/// No source is registered under the requested name.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct UnknownSource {
+    pub name: String,
+}
+
+impl fmt::Display for UnknownSource {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "unknown source {:?}; known sources: claude_code, cursor, codex, grok_bot, antigravity",
+            self.name
+        )
+    }
+}
+
+impl std::error::Error for UnknownSource {}
+
+/// The transcript subdirectory each source owns under the home directory.
+const DEFAULT_SUBDIRS: [(&str, &str); 5] = [
+    ("claude_code", ".claude/projects"),
+    ("cursor", ".cursor"),
+    ("codex", ".codex/sessions"),
+    ("grok_bot", ".grok/sand-client-persistence"),
+    ("antigravity", ".gemini/antigravity"),
+];
+
+/// Create the source adapter registered under `source`, with `options`
+/// overriding its root and home directory.
+pub fn create_source(source: &str, options: &SourceOptions) -> Result<MemorySource, UnknownSource> {
+    let agent = parse_agent(source).ok_or_else(|| UnknownSource {
+        name: source.to_string(),
+    })?;
+    let root = match &options.root {
+        Some(root) => root.clone(),
+        None => {
+            let home = options.home.clone().unwrap_or_else(default_home);
+            let subdir = DEFAULT_SUBDIRS
+                .iter()
+                .find(|(name, _)| *name == source)
+                .map(|(_, subdir)| *subdir)
+                .unwrap_or_default();
+            home.join(subdir)
+        }
+    };
+    Ok(MemorySource::new(agent, root))
+}
+
+fn parse_agent(name: &str) -> Option<Agent> {
+    match name {
+        "claude_code" | "claude-code" => Some(Agent::ClaudeCode),
+        "cursor" => Some(Agent::Cursor),
+        "codex" => Some(Agent::Codex),
+        "grok_bot" | "grok-bot" => Some(Agent::GrokBot),
+        "antigravity" => Some(Agent::Antigravity),
+        _ => None,
+    }
+}
+
+fn default_home() -> PathBuf {
+    std::env::var_os("HOME")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("/"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn every_source_name_creates_a_source() {
+        for (name, _) in DEFAULT_SUBDIRS {
+            let source = create_source(name, &SourceOptions::default())
+                .unwrap_or_else(|err| panic!("{name}: {err}"));
+            assert_eq!(source.agent(), parse_agent(name).expect("known agent"));
+        }
+    }
+
+    #[test]
+    fn root_override_wins_over_the_default_location() {
+        let source = create_source(
+            "cursor",
+            &SourceOptions {
+                root: Some(PathBuf::from("/tmp/elsewhere")),
+                home: Some(PathBuf::from("/tmp/home")),
+            },
+        )
+        .expect("known source");
+        assert_eq!(source.root(), Path::new("/tmp/elsewhere"));
+    }
+
+    #[test]
+    fn home_override_derives_the_default_root() {
+        let source = create_source(
+            "claude_code",
+            &SourceOptions {
+                root: None,
+                home: Some(PathBuf::from("/tmp/home")),
+            },
+        )
+        .expect("known source");
+        assert_eq!(source.root(), Path::new("/tmp/home/.claude/projects"));
+    }
+
+    #[test]
+    fn unknown_sources_fail_with_a_clear_error() {
+        let err = create_source("notepad", &SourceOptions::default())
+            .expect_err("unknown source must fail");
+        assert!(err.to_string().contains("notepad"));
+        assert!(err.to_string().contains("antigravity"));
+    }
+}
+
 /// The reference in-memory source: a directory of JSONL transcripts read
 /// line by line. It never writes to the source root, and it streams —
 /// the whole file is never held in memory.
@@ -122,6 +246,16 @@ impl MemorySource {
             reported: RefCell::new(BTreeSet::new()),
             last_new_ids: RefCell::new(Vec::new()),
         }
+    }
+
+    /// The agent this source taps.
+    pub fn agent(&self) -> Agent {
+        self.agent
+    }
+
+    /// The root directory this source reads transcripts from.
+    pub fn root(&self) -> &Path {
+        &self.root
     }
 
     /// Sessions found under the root, one per `*.jsonl` transcript, with
