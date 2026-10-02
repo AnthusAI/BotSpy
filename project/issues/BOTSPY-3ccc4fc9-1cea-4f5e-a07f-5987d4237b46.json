@@ -3,17 +3,25 @@
   "title": "sessions claims 'most recent activity first' but orders by id because timestamps are empty",
   "description": "**Observed on real data (origin/develop `9fc6584`):** the `sessions` help text and the doc comment on `SessionStore::list_sessions` promise \"sorted by last activity with the most recent first (ties broken by id)\", but real output is ordered by session id (`00fcdc4d`, `01547c91`, `0423e3fd`, …) — the active-today sessions (2da02ae2, 67537d30, …) appear at arbitrary positions. Root cause is the same empty `last_activity_at` as the discover bug: comparing empty strings is a tie everywhere, so the id tie-break decides the order.\n\n**Repro:**\n1. `./target/release/botspy sessions --limit 20` → rows sorted lexicographically by id, not by activity.\n2. `./target/release/botspy show 2da02ae2` → last activity 2026-10-02; it does not appear first.\n\n**Expected:** with populated timestamps, the listing is ordered by `last_activity_at` descending (ties broken by id, empty timestamps last). The existing sort code is correct once the summaries carry real timestamps — the regression test must pin that behavior so it survives refactors.\n\n**Suspected code:** `src/session.rs` `SessionStore::list_sessions()` (~line 169-183) — the sort itself; fed by `discover()` summaries that are empty (see the discover bug).\n\n**Acceptance criteria:**\n- Regression test with synthetic fixtures: sessions with distinct `last_activity_at` values list most-recent-first; sessions with equal timestamps tie-break by id; sessions with no timestamps list after all timestamped ones.\n- A CLI-level scenario on the fixture home asserts the JSON output order.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data.\n- Blocked-by nature: only observable once the discover bug (BOTSPY-4c8521a3) is fixed; the test lands with it.",
   "type": "bug",
-  "status": "open",
+  "status": "closed",
   "priority": 1,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "92ee3045-2fd0-4129-8e62-1ff4d11ea5c0",
+      "author": "home",
+      "text": "Pinned on develop (commit fc830d0). The sort code in SessionStore::list_sessions was already correct — it degenerated only because summaries carried empty timestamps (fixed by BOTSPY-4c8521a3). Behavior now pinned against regressions: new scenario 'Sessions are ordered most recent activity first' asserts the JSON order on the fixture home (0003 09:20 → 0002 09:10 → 0001 09:00:15 → solo 09-15 12:05; before the discover fix the same run ordered by id); unit test listing_ties_break_by_id_and_empty_timestamps_sort_last covers equal-timestamp id tie-breaks and no-activity sessions sorting last; list_sessions doc comment documents the empty-timestamps-last rule. The red state was the real-data observation in the ticket (id-ordered listing); synthetic fixtures only. All gates green (cargo test, bdd 166 passed, clippy/doc -D warnings, fmt). sources, doctor and show were already correct on real data.",
+      "created_at": "2026-10-02T22:22:25.328759Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T22:16:57.848122Z",
-  "updated_at": "2026-10-02T22:16:57.848156Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T22:22:25.973922Z",
+  "closed_at": "2026-10-02T22:22:25.973897Z",
   "agent": {
     "platform": "cursor",
     "model": "Composer 2.5",
