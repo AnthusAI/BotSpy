@@ -5,10 +5,12 @@ use botspy::{CompactionEvent, CompactionWindow, KnownPart, Message, Part, Role};
 use cucumber::{then, when};
 
 fn message_id_of(message: &Message) -> String {
-    message
-        .id
-        .clone()
-        .unwrap_or_else(|| format!("msg-{}", message.timestamp))
+    message.id.clone().unwrap_or_else(|| {
+        format!(
+            "msg-{}",
+            message.timestamp.as_deref().unwrap_or("untimestamped")
+        )
+    })
 }
 
 #[when(
@@ -19,7 +21,7 @@ fn record_compaction_boundary(world: &mut BotSpyWorld, pre: u64, post: u64) {
     let parent = Message {
         id: Some("pre-compaction-context".to_string()),
         role: Role::Assistant,
-        timestamp: "2026-10-01T09:05:00Z".to_string(),
+        timestamp: Some("2026-10-01T09:05:00Z".to_string()),
         parts: vec![Part::Known(KnownPart::Text {
             text: "context about to be compacted".to_string(),
             extra: None,
@@ -42,7 +44,7 @@ fn record_compaction_summary(world: &mut BotSpyWorld, text: String) {
     session.messages.push(Message {
         role: Role::User,
         is_compaction_summary: true,
-        timestamp: "2026-10-01T09:06:00Z".to_string(),
+        timestamp: Some("2026-10-01T09:06:00Z".to_string()),
         parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
         ..Message::default()
     });
@@ -55,7 +57,7 @@ fn record_checkpoint_step(world: &mut BotSpyWorld, text: String) {
     session.messages.push(Message {
         role: Role::Assistant,
         is_compaction_summary: true,
-        timestamp: "2026-10-01T09:06:00Z".to_string(),
+        timestamp: Some("2026-10-01T09:06:00Z".to_string()),
         parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
         ..Message::default()
     });

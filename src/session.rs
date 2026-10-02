@@ -63,6 +63,10 @@ pub struct Session {
     /// The session's local records cover only part of the real history.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub partial: Option<PartialHistory>,
+    /// The transcript file's own mtime, when the agent's records carry no
+    /// usable timestamps. Never fabricated into message timestamps.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub file_modified_at: Option<Timestamp>,
 }
 
 /// A lightweight view of a session for listing across agents.
