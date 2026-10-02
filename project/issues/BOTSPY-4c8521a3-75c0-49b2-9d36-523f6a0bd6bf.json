@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-4c8521a3-75c0-49b2-9d36-523f6a0bd6bf",
+  "title": "sessions listing shows 0 messages, no timestamps and no titles: claude_code discover() never reads transcripts",
+  "description": "**Observed on real data (read-only run against `--home` default, origin/develop `9fc6584`):** `botspy sessions` prints `MSGS 0`, `LAST ACTIVITY —`, `TITLE —` and empty `metadata` for **every** claude_code row; `-o json` shows `started_at`: \"\", `last_activity_at`: \"\", `message_count`: 0, `metadata`: {} for all 61 listed sessions. The same sessions open fine: `botspy show 00fcdc4d` reports \"3 messages, started 2026-09-22T10:41:27.032Z\".\n\n**Repro:**\n1. `cargo build --release` at origin/develop; run `./target/release/botspy sessions --limit 5` (real home) → every row `0  —  —`.\n2. `./target/release/botspy sessions --limit 5 -o json` → all `message_count` 0, timestamps empty.\n3. `./target/release/botspy show 00fcdc4d` → same session shows 3 messages with timestamps. Inconsistent.\n\n**Expected:** the listing carries real per-session data — message count, first/last activity timestamps, and title — consistent with `botspy show` for the same id, without writing anything to the source.\n\n**Suspected code:** `ClaudeCodeSource::discover()` in `src/adapters/claude_code.rs` (~line 81-106): it pushes `SessionSummary { id, agent, project_id, ..SessionSummary::default() }` per `.jsonl` file name and never reads the transcript. `extract()` in the same file already parses everything correctly.\n\n**Acceptance criteria:**\n- `discover()` populates `started_at`, `last_activity_at`, `message_count` and title metadata per transcript, matching what `open()`/`show` reports for the same id.\n- Regression test with a **synthetic fixture** (temp-dir transcript or the committed `tests/fixtures` corpus — never real transcripts): a transcript with N timestamped records must list `message_count: N` and the correct first/last timestamps in `discover()` output.\n- `botspy sessions` and `botspy show` agree on message counts and timestamps for the fixture sessions.\n- Read-only guarantee unchanged: no writes into the source tree.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data; only the listing path is broken.\n- Related: the local-store ingestion epic BOTSPY-6f173d builds on `Adapter::discover()` (task BOTSPY-a48fb1) — populated summaries benefit it, and it changes no adapter code, so no conflict.",
+  "type": "bug",
+  "status": "open",
+  "priority": 1,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T22:16:45.386768Z",
+  "updated_at": "2026-10-02T22:16:45.386794Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "Composer 2.5",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

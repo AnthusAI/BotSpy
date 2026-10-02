@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "1b58de3e-acaa-43f5-b62d-c6a496f1db89",
+  "issue_id": "BOTSPY-17e4aad9-d687-4af6-b03b-d863c5f17078",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T22:17:04.056Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "duplicate session ids across project dirs silently collide: 63 transcripts list as 61 sessions",
+    "description": "**Observed on real data (origin/develop `9fc6584`):** `botspy sources` counts **63** claude_code transcripts, but `botspy sessions -o json` lists **61**. `find ~/.claude/projects -name '*.jsonl'` shows two ids present in two project dirs each: `c58ebed2-7ae3-4257-89e9-ae4fd57e8408` and `cecba6ba-dc3e-4b13-b132-501b4600b3da`. `SessionStore::list_sessions` dedupes by session id alone (\"first report wins\"), so one transcript per duplicated id is silently dropped, losing its project and history from the listing. No warning is emitted.\n\n**Repro:**\n1. `./target/release/botspy sources` → claude_code SESSIONS 63.\n2. `./target/release/botspy sessions -o json | length` → 61.\n3. Diff the id sets → `c58ebed2…` and `cecba6ba…` each appear once despite two project dirs holding a transcript per id.\n\n**Expected:** the store must key dedupe on more than the id — at minimum (agent, id, project_id) so the same id under two different projects lists twice (they are distinct histories); a true duplicate (same agent, id and project) still lists once. If identity stays id-only, the store must at least warn about collisions. No data may be silently dropped.\n\n**Suspected code:** `src/session.rs` `SessionStore::list_sessions()` (~line 175-176): `seen.insert(summary.id.clone())`.\n\n**Acceptance criteria:**\n- Regression test with **synthetic fixtures** (the `FixtureAdapter` or a temp-dir adapter layout — never real transcripts): two sessions sharing an id but differing in `project_id` both appear in `list_sessions()`; identical (agent, id, project) triples still dedupe to one row (the existing `duplicate_reports_of_one_session_list_once` behavior is preserved).\n- A listing that drops a candidate must either not happen or say so (warning); the chosen behavior is documented in the method's doc comment.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data (`show` resolves by id; the collision only affects the unified listing).\n- **Overlap with the local-store plan (BOTSPY-c7795b):** linked to task BOTSPY-a48fb1 (\"Implement ingestion: adapters → store, read-only, dedup, lossless round-trip\", epic BOTSPY-6f173d), which re-implements first-report-wins dedup inside the store. The fix here changes the chapter-1 rule in `src/session.rs` only — files that task does not touch (`src/store/*`) — and the store task should adopt the same keying when it lands; the local-store agent is notified on their task.",
+    "issue_type": "bug",
+    "status": "open",
+    "priority": 1,
+    "assignee": null,
+    "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "Composer 2.5",
+      "name": "Cloud Agent"
+    }
+  }
+}

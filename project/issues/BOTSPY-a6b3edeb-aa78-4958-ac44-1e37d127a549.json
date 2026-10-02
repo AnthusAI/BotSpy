@@ -1,0 +1,40 @@
+{
+  "id": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
+  "title": "sessions listing bugs from first real-data CLI run",
+  "description": "Five bugs found running the merged CLI (PR #1, origin/develop 9fc6584) against Ryan's real ~/.claude data (63 transcripts, read-only). sources, doctor and show work correctly on real data; every bug below is in the sessions listing path (or its interaction with it). Fixes target develop via feature branch; each bug carries repro, expected behavior, suspected code location, and acceptance criteria with a synthetic-fixture regression test (never Ryan's real transcripts).",
+  "type": "epic",
+  "status": "open",
+  "priority": 1,
+  "assignee": null,
+  "creator": null,
+  "parent": null,
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "3cf88de6-4ec3-4880-8bc4-4701d7fedeea",
+      "author": "home",
+      "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+      "created_at": "2026-10-02T22:17:11.919617Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "2a06a265-359b-4d8c-86bd-2decc6d2e189",
+      "author": "home",
+      "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+      "created_at": "2026-10-02T22:17:20.119233Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T22:16:37.268589Z",
+  "updated_at": "2026-10-02T22:17:20.119258Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "Composer 2.5",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
