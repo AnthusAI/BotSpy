@@ -1,22 +1,22 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T19:42:15Z",
+  "built_at": "2026-10-02T19:52:46Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
-    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
+    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
     "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790969941.966444,
     "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790969457.212888,
     "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097.json": 1790959336.030104,
     "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790962783.461002,
     "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790969943.324479,
     "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790958388.713446,
-    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790958047.826535,
+    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790970237.02472,
     "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee.json": 1790963041.186508,
     "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790958433.619428,
     "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790962740.866395,
     "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790969738.531141,
     "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790958151.362658,
-    "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790958107.027429,
+    "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790970752.651974,
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
     "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790967112.972948,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790970106.05349,
@@ -36,16 +36,16 @@
     "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790968119.122848,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
-    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790963958.259849,
+    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790970140.748512,
     "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790970124.044118,
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790970133.677943,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790967581.12394,
     "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790967433.503934,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970131.077737,
-    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790970107.521742,
-    "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970763.113461,
+    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790970761.481187,
+    "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790970759.329892,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
     "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790967449.978958,
@@ -62,7 +62,7 @@
     "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790970132.619872,
     "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790967095.86074,
-    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790958033.021434,
+    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790970229.259646,
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
     "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790967950.39087,
     "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790966955.912435,
@@ -76,7 +76,7 @@
     "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790962754.83402,
     "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790967290.854149,
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
-    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790959336.031627,
+    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790970322.152964,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790969888.333146,
     "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
     "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790960020.137935,
@@ -87,8 +87,8 @@
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
     "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790963902.28869,
-    "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790958123.344149,
-    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790958257.047553,
+    "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790970763.136403,
+    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790970322.153374,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790969201.288206,
     "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790969012.589116,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
@@ -99,7 +99,7 @@
     "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790969740.446433,
     "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
     "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790958219.039163,
-    "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790958243.157955,
+    "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790970230.694657,
     "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790959336.032073,
     "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
     "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790959336.032232,
@@ -147,25 +147,36 @@
       "title": "Write Gherkin spec: Antigravity adapter behaviors",
       "description": "Author features/adapters/antigravity/*.feature: discovery over both roots, protobuf payload decoding, summaries DB reads, extraction of all part kinds, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "b72db5bd-5ba2-49af-bd3d-af73bda4b141",
+          "author": "home",
+          "text": "Spec authored at features/03_importers/antigravity/adapter.feature (7 @wip scenarios): summaries-index discovery, transcript.jsonl as preferred source, record-type mapping (USER_INPUT/PLANNER_RESPONSE/CHECKPOINT/ERROR_MESSAGE), step_index ordering, SQLite payload DB supplying tool-call linkage, hot-WAL snapshot reading, malformed-step skip counting. Embedded in src/spec/ch03_importers/antigravity.rs. All gates green.",
+          "created_at": "2026-10-02T19:42:15.373352Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:19:47.206866Z",
-      "updated_at": "2026-10-02T16:19:47.206913Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:42:18.580298Z",
+      "closed_at": "2026-10-02T19:42:18.580232Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The Gherkin spec for Antigravity adapter behaviors still needs to be written and reviewed.",
-      "right_now_updated_at": "2026-10-02T16:19:48.710258Z",
-      "custom": {}
+      "right_now_summary": "The Antigravity adapter specification is authored, embedded, and all checks pass.",
+      "right_now_updated_at": "2026-10-02T19:42:19.559883Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
@@ -364,25 +375,36 @@
       "title": "Write Gherkin spec: example consumer behaviors",
       "description": "Author features/examples.feature: observable behavior of the example consumers (meter and sentiment over BotSpy sessions), kept as examples not core. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "4d8245aa-285c-4d29-af3e-8b4a21946a81",
+          "author": "home",
+          "text": "Spec authored at features/04_examples/consumers.feature (4 @wip scenarios): thanks-vs-F-bombs meter per session and across the unified history, local sentiment scoring with nothing leaving the machine, and public-API-only consumption with zero core dependencies. New Chapter 4 (src/spec/ch04_examples.rs) registered in the spec index. All gates green.",
+          "created_at": "2026-10-02T19:43:51.974639Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:46.209319Z",
-      "updated_at": "2026-10-02T16:20:46.209343Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:43:55.976494Z",
+      "closed_at": "2026-10-02T19:43:55.976420Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing and reviewing executable Gherkin examples for meter and sentiment consumers.",
-      "right_now_updated_at": "2026-10-02T16:20:47.826242Z",
-      "custom": {}
+      "right_now_summary": "The consumer behavior spec has been authored, registered, and verified with all checks passing.",
+      "right_now_updated_at": "2026-10-02T19:43:57.024113Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
@@ -556,7 +578,7 @@
       "title": "Synthetic fixture and discovery for Claude Code JSONL transcripts",
       "description": "Fixture mirrors the ~/.claude/projects layout (project dirs, session JSONL, subagent transcripts skipped). Done when: discovery finds sessions from the fixture with correct skip counts.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -568,17 +590,25 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "77b90d67-30a3-452f-9901-63662d7f95ac",
+          "author": "home",
+          "text": "Synthetic Claude Code fixture + BDD: discovery finds one session per transcript, sidechain subagents skipped and counted (doctor reports 1 skipped subagent). ClaudeCodeSource::new(root) + discover() in src/adapters/claude_code.rs; fixture steps in tests/steps/claude_code_steps.rs. Full gate green (bdd 86/86, 0 skipped).",
+          "created_at": "2026-10-02T19:52:31.256625Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:16:52.462891Z",
-      "updated_at": "2026-10-02T16:21:45.149157Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:52:32.651755Z",
+      "closed_at": "2026-10-02T19:52:32.651695Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "A fixture is being built to test transcript discovery and skipped subagent counts.",
-      "right_now_updated_at": "2026-10-02T16:21:47.026842Z",
+      "right_now_summary": "A fixture mirrors Claude Code project data so discovery can find sessions and report skipped subagents.",
+      "right_now_updated_at": "2026-10-02T19:45:43.440145Z",
       "custom": {}
     },
     {
@@ -1253,8 +1283,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is defining, building, and testing a read-only Antigravity adapter for both source roots.",
-      "right_now_updated_at": "2026-10-02T17:59:18.259538Z",
+      "right_now_summary": "The team is extracting Antigravity data, building fixtures, and testing parity across both source roots.",
+      "right_now_updated_at": "2026-10-02T19:42:20.746636Z",
       "custom": {}
     },
     {
@@ -1492,8 +1522,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building and testing unified session history adapters, schemas, queries, exports, and docs.",
-      "right_now_updated_at": "2026-10-02T19:42:11.077065Z",
+      "right_now_summary": "The team is integrating agent adapters, schemas, exports, and tests for unified session history.",
+      "right_now_updated_at": "2026-10-02T19:52:43.113195Z",
       "custom": {}
     },
     {
@@ -1530,8 +1560,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The Claude Code adapter is being tested for transcript discovery, parsing, parity, and diagnostic coverage.",
-      "right_now_updated_at": "2026-10-02T19:41:47.521590Z",
+      "right_now_summary": "Parity tests and doctor diagnostics are being checked against the expected Claude Code fixture report.",
+      "right_now_updated_at": "2026-10-02T19:52:41.480747Z",
       "custom": {}
     },
     {
@@ -1539,7 +1569,7 @@
       "title": "Extract all part types from Claude Code transcripts",
       "description": "Map user, assistant, thinking, tool_call, tool_result, attachment, and system entries to normalized parts with timestamps and provenance. Done when: fixture extraction yields the expected parts and malformed lines are skipped and counted.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1551,17 +1581,25 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8b547213-5bba-4ef0-a5d3-ed9c7efc83f7",
+          "author": "home",
+          "text": "Extraction maps user/assistant/system/summary records into chapter-1 Messages (text, thinking, tool calls, tool results), native uuid/parentUuid become provenance record_id/parent_record, cost-state/pr-link/custom-title park in session state, malformed and unknown records skipped with counters, and partial trailing lines are held back until the append completes. Byte-offset resume verified by the appended-records and partial-line scenarios. Full gate green.",
+          "created_at": "2026-10-02T19:52:33.679152Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:00.247708Z",
-      "updated_at": "2026-10-02T16:21:49.859913Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:52:38.049988Z",
+      "closed_at": "2026-10-02T19:52:38.049949Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The work is defining transcript parsing for all entry types, while skipping and counting malformed lines.",
-      "right_now_updated_at": "2026-10-02T16:21:52.244621Z",
+      "right_now_summary": "Claude Code transcripts now extract normalized parts, preserve provenance, and skip malformed lines safely.",
+      "right_now_updated_at": "2026-10-02T19:52:39.329588Z",
       "custom": {}
     },
     {
@@ -2120,25 +2158,36 @@
       "title": "Write Gherkin spec: unified history behaviors",
       "description": "Author features/schema/unified_history.feature: sessions from all five adapters pile into one unified agent-session history with consistent ordering, dedup, and provenance. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "3b237d12-5337-4da6-a6f4-281d85a47e39",
+          "author": "home",
+          "text": "Spec authored at features/01_structure/unified_history.feature (5 @wip scenarios): all five adapters listing together, last-activity ordering across agents, dedup of the same session seen twice, provenance surviving the merge, per-session agent/project identity. Placed under 01_structure (the unified-history layer per the chapter layout) and embedded in src/spec/ch01_structure.rs as item 13. All gates green.",
+          "created_at": "2026-10-02T19:43:43.833230Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:31.544412Z",
-      "updated_at": "2026-10-02T16:20:31.544442Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:43:47.985353Z",
+      "closed_at": "2026-10-02T19:43:47.984388Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The Gherkin spec for unified agent-session history is being written.",
-      "right_now_updated_at": "2026-10-02T16:20:33.020911Z",
-      "custom": {}
+      "right_now_summary": "The unified history spec is authored with five scenarios, and all checks pass.",
+      "right_now_updated_at": "2026-10-02T19:43:49.258815Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432",
@@ -2629,8 +2678,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building and reviewing Rust examples for meters, sentiment analysis, and future session metrics.",
-      "right_now_updated_at": "2026-10-02T16:40:07.210025Z",
+      "right_now_summary": "Rust examples are taking shape: the meter uses fixtures, VADER/GoEmotions support is set, and metrics need a",
+      "right_now_updated_at": "2026-10-02T19:43:59.894219Z",
       "custom": {}
     },
     {
@@ -2959,7 +3008,7 @@
       "title": "Claude Code parity tests and doctor diagnostics",
       "description": "Doctor reports roots, transcript counts, skipped subagents, and issues. Done when: parity tests on the fixture pass and doctor output matches the expected report.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2971,17 +3020,25 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "93477830-bc84-4723-b729-f6824409add0",
+          "author": "home",
+          "text": "Parity covered by 4 lib unit tests (sidechain skipping, parts+provenance mapping, malformed/unknown skip counting, partial trailing line recovery) plus 6 executable BDD scenarios in features/03_importers/claude_code/adapter.feature (wip tag dropped). Doctor diagnostics over the projects root exercised by the sidechain scenario. Full gate green.",
+          "created_at": "2026-10-02T19:52:39.883479Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:05.252532Z",
-      "updated_at": "2026-10-02T16:22:01.811763Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:52:43.136179Z",
+      "closed_at": "2026-10-02T19:52:43.136108Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
       "right_now_summary": "Parity tests and doctor diagnostics are being checked against the expected fixture report.",
-      "right_now_updated_at": "2026-10-02T16:22:03.343832Z",
+      "right_now_updated_at": "2026-10-02T19:45:30.450863Z",
       "custom": {}
     },
     {
@@ -3379,8 +3436,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building synthetic fixtures and cross-adapter history tests with privacy guards.",
-      "right_now_updated_at": "2026-10-02T16:24:03.157585Z",
+      "right_now_summary": "Synthetic fixtures and unified-history tests are complete, with secret-safety checks passing across all adapters.",
+      "right_now_updated_at": "2026-10-02T19:43:50.694015Z",
       "custom": {}
     },
     {
