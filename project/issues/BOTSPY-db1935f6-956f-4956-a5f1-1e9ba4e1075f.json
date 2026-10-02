@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
-  "title": "Implement until spec passes: R6 compaction and summaries",
-  "description": "",
+  "title": "Implement until spec passes: R6 provenance widening",
+  "description": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
   "status": "open",
   "priority": 2,
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T17:34:20.758108Z",
-  "updated_at": "2026-10-02T17:34:27.960184Z",
+  "updated_at": "2026-10-02T17:39:20.287893Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "Work is focused on implementing R6 compaction and summaries until the spec passes.",
-  "right_now_updated_at": "2026-10-02T17:34:29.584089Z",
+  "right_now_summary": "The team is removing wip tags, adding step definitions, and running the BDD tests.",
+  "right_now_updated_at": "2026-10-02T17:39:22.749415Z",
   "custom": {}
 }

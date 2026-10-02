@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing R5 turn grouping against the new Gherkin spec.",
-  "right_now_updated_at": "2026-10-02T17:34:12.066509Z",
+  "right_now_summary": "The Gherkin spec is embedded, but step definitions and passing BDD tests are still needed.",
+  "right_now_updated_at": "2026-10-02T17:39:09.919198Z",
   "custom": {}
 }

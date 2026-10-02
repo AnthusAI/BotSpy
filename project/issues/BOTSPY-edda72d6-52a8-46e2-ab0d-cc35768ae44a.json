@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a",
-  "title": "Implement until spec passes: R9 inline data and attachments",
-  "description": "",
+  "title": "Implement until spec passes: R9 optional timestamps",
+  "description": "Done when: the wip tag is removed from 09_optional_timestamp.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
   "status": "open",
   "priority": 2,
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T17:35:58.550134Z",
-  "updated_at": "2026-10-02T17:36:05.463347Z",
+  "updated_at": "2026-10-02T17:40:07.112900Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing R9 inline data and attachments to meet the specification.",
-  "right_now_updated_at": "2026-10-02T17:36:06.528685Z",
+  "right_now_summary": "The team is implementing optional timestamps and adding steps until the BDD scenarios pass.",
+  "right_now_updated_at": "2026-10-02T17:40:08.700001Z",
   "custom": {}
 }

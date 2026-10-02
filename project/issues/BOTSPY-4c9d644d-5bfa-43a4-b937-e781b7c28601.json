@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601",
-  "title": "Write Gherkin spec: R7 provenance widening",
-  "description": "",
+  "title": "Write Gherkin spec: R7 raw tool-call arguments",
+  "description": "Done when: features/02_schema/07_tool_call_arguments.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
   "type": "sub-task",
   "status": "closed",
   "priority": 2,
@@ -20,14 +20,14 @@
     }
   ],
   "created_at": "2026-10-02T17:34:50.130305Z",
-  "updated_at": "2026-10-02T17:35:14.842980Z",
+  "updated_at": "2026-10-02T17:39:29.078185Z",
   "closed_at": "2026-10-02T17:35:14.842903Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The Gherkin specification for R7 provenance widening is written and embedded in the docs.",
-  "right_now_updated_at": "2026-10-02T17:35:16.097612Z",
+  "right_now_summary": "The Gherkin spec is written and embedded in the chapter docs.",
+  "right_now_updated_at": "2026-10-02T17:39:30.719823Z",
   "custom": {}
 }

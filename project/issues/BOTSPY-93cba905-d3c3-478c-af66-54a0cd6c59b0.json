@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing R7 provenance widening against the documented Gherkin specification.",
-  "right_now_updated_at": "2026-10-02T17:35:17.974726Z",
+  "right_now_summary": "Step definitions are being added so the raw tool-call argument scenarios pass.",
+  "right_now_updated_at": "2026-10-02T17:39:38.498285Z",
   "custom": {}
 }
