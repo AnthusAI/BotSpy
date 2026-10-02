@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is defining and building R9 inline data and attachments without fabricated timestamps.",
-  "right_now_updated_at": "2026-10-02T17:36:08.259179Z",
+  "right_now_summary": "The team is adding optional timestamps and refining BDD steps; the Gherkin spec is documented.",
+  "right_now_updated_at": "2026-10-02T17:40:22.454992Z",
   "custom": {}
 }

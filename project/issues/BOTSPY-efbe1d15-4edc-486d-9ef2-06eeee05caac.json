@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The R4 session graph is being implemented against the completed Gherkin spec.",
-  "right_now_updated_at": "2026-10-02T17:38:38.154808Z",
+  "right_now_summary": "The Gherkin spec is documented, but turn-grouping steps and passing BDD tests still remain.",
+  "right_now_updated_at": "2026-10-02T17:38:44.844363Z",
   "custom": {}
 }

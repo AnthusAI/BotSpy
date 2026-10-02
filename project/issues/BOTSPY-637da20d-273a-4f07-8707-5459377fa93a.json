@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
-  "title": "Implement until spec passes: R5 turn grouping",
-  "description": "",
+  "title": "Implement until spec passes: R5 compaction and summaries",
+  "description": "Done when: the wip tag is removed from 05_compaction.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
   "status": "open",
   "priority": 2,
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T17:33:50.436115Z",
-  "updated_at": "2026-10-02T17:33:56.381838Z",
+  "updated_at": "2026-10-02T17:39:06.451264Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing R5 turn grouping until the spec passes.",
-  "right_now_updated_at": "2026-10-02T17:33:57.904506Z",
+  "right_now_summary": "R5 compaction still needs step definitions and passing BDD tests.",
+  "right_now_updated_at": "2026-10-02T17:39:08.381916Z",
   "custom": {}
 }

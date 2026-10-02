@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084",
-  "title": "Write Gherkin spec: R6 compaction and summaries",
-  "description": "",
+  "title": "Write Gherkin spec: R6 provenance widening",
+  "description": "Done when: features/02_schema/provenance.feature gains the wip-tagged record id, record type, ordinal, and parent pointer scenarios, and they are embedded in the ch02 rustdoc chapter.",
   "type": "sub-task",
   "status": "closed",
   "priority": 2,
@@ -20,14 +20,14 @@
     }
   ],
   "created_at": "2026-10-02T17:34:15.104744Z",
-  "updated_at": "2026-10-02T17:34:41.441960Z",
+  "updated_at": "2026-10-02T17:39:13.568404Z",
   "closed_at": "2026-10-02T17:34:41.441889Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The Gherkin spec for R6 compaction and summaries is written and embedded in the docs.",
-  "right_now_updated_at": "2026-10-02T17:34:43.019077Z",
+  "right_now_summary": "The provenance scenarios are written and embedded in the Chapter 2 Rust docs.",
+  "right_now_updated_at": "2026-10-02T17:39:14.833159Z",
   "custom": {}
 }

@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3",
-  "title": "Implement until spec passes: R8 raw tool-call arguments",
-  "description": "",
+  "title": "Implement until spec passes: R8 inline data and attachments",
+  "description": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
   "status": "open",
   "priority": 2,
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T17:35:28.196159Z",
-  "updated_at": "2026-10-02T17:35:33.674306Z",
+  "updated_at": "2026-10-02T17:39:48.906804Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "Work is underway to make R8 raw tool-call arguments pass the spec.",
-  "right_now_updated_at": "2026-10-02T17:35:35.258547Z",
+  "right_now_summary": "The R8 inline data and attachments work still needs step definitions and passing BDD tests.",
+  "right_now_updated_at": "2026-10-02T17:39:50.343168Z",
   "custom": {}
 }
