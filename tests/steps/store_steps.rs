@@ -457,10 +457,10 @@ fn iteration_yields_ids(world: &mut BotSpyWorld, ids: String) {
     assert_eq!(actual, expected, "the session iteration is out of order");
 }
 
-#[given(regex = r#"^the session has messages "([^"]+)", "([^"]+)", (?:and )?"([^"]+)"$"#)]
-fn session_has_messages(world: &mut BotSpyWorld, text1: String, text2: String, text3: String) {
+#[given(regex = r#"^the session has messages (.+)$"#)]
+fn session_has_messages(world: &mut BotSpyWorld, texts: String) {
     let mut session = crate::steps::current_session(world);
-    for text in [text1, text2, text3] {
+    for text in quoted_list(&texts) {
         session.messages.push(Message {
             role: Role::User,
             parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
@@ -491,22 +491,15 @@ fn first_text(message: &Message) -> String {
         .expect("the message has a text part")
 }
 
-#[then(regex = r#"^the iteration yields the texts (.+) in that order$"#)]
+#[then(regex = r#"^the iteration yields the texts (.+)(?: in that order)?$"#)]
 fn iteration_yields_texts(world: &mut BotSpyWorld, texts: String) {
     let expected = quoted_list(&texts);
     let actual: Vec<String> = world.local_messages.iter().map(first_text).collect();
     assert_eq!(actual, expected, "the message iteration is out of order");
 }
 
-#[given(
-    regex = r#"^the session has a message with parts "([^"]+)", "([^"]+)", (?:and )?"([^"]+)"$"#
-)]
-fn session_has_message_with_parts(
-    world: &mut BotSpyWorld,
-    kind1: String,
-    kind2: String,
-    kind3: String,
-) {
+#[given(regex = r#"^the session has a message with parts (.+)$"#)]
+fn session_has_message_with_parts(world: &mut BotSpyWorld, kinds: String) {
     let part = |kind: &str| {
         Part::Known(match kind {
             "text" => KnownPart::Text {
@@ -529,10 +522,11 @@ fn session_has_message_with_parts(
             other => panic!("unsupported part kind in feature: {other}"),
         })
     };
+    let parts: Vec<Part> = quoted_list(&kinds).iter().map(|kind| part(kind)).collect();
     let mut session = crate::steps::current_session(world);
     session.messages.push(Message {
         role: Role::Assistant,
-        parts: vec![part(&kind1), part(&kind2), part(&kind3)],
+        parts,
         timestamp: Some("2026-10-01T09:00:00Z".to_string()),
         ..Message::default()
     });
@@ -553,7 +547,7 @@ fn iterate_parts_of_last_message(world: &mut BotSpyWorld, id: String) {
     world.local_query_counters = Some(query.counters());
 }
 
-#[then(regex = r#"^the iteration yields the kinds (.+) in that order$"#)]
+#[then(regex = r#"^the iteration yields the kinds (.+)(?: in that order)?$"#)]
 fn iteration_yields_kinds(world: &mut BotSpyWorld, kinds: String) {
     let expected = quoted_list(&kinds);
     let actual: Vec<String> = world
@@ -764,4 +758,86 @@ fn adapters_served_no_opens(world: &mut BotSpyWorld) {
     let before = world.local_open_count_before.expect("open count before");
     let after = world.local_open_count_after.expect("open count after");
     assert_eq!(before, after, "unchanged sessions must not be re-opened");
+}
+
+// 02_filters.feature — engine-pushed-down filters (red until
+// BOTSPY-72dc40). 03_laziness.feature's counter steps already landed green
+// with BOTSPY-a927fc.
+
+#[when(regex = r#"^I iterate the sessions filtered by source "([^"]+)"$"#)]
+fn iterate_sessions_filtered_by_source(_world: &mut BotSpyWorld, _agent: String) {
+    todo!("BOTSPY-a2811d: iterate sessions filtered by source")
+}
+
+#[given(
+    regex = r#"^fixture sessions "([^"]+)" from "([^"]+)" in project "([^"]+)" and "([^"]+)" from "([^"]+)" in project "([^"]+)" and "([^"]+)" from "([^"]+)" in project "([^"]+)"$"#
+)]
+#[allow(clippy::too_many_arguments)]
+fn fixture_sessions_three_projects(
+    _world: &mut BotSpyWorld,
+    _id1: String,
+    _agent1: String,
+    _project1: String,
+    _id2: String,
+    _agent2: String,
+    _project2: String,
+    _id3: String,
+    _agent3: String,
+    _project3: String,
+) {
+    todo!("BOTSPY-a2811d: three fixture sessions in distinct projects")
+}
+
+#[when(regex = r#"^I iterate the sessions filtered by project "([^"]+)"$"#)]
+fn iterate_sessions_filtered_by_project(_world: &mut BotSpyWorld, _project: String) {
+    todo!("BOTSPY-a2811d: iterate sessions filtered by project")
+}
+
+#[given(
+    regex = r#"^fixture sessions "([^"]+)" and "([^"]+)" from "([^"]+)" in project "([^"]+)"$"#
+)]
+fn fixture_sessions_two_one_agent(
+    _world: &mut BotSpyWorld,
+    _id1: String,
+    _id2: String,
+    _agent: String,
+    _project: String,
+) {
+    todo!("BOTSPY-a2811d: two fixture sessions from one agent")
+}
+
+#[given(regex = r#"^session "([^"]+)" has a message with a part of kind "([^"]+)"$"#)]
+fn session_has_part_of_kind(_world: &mut BotSpyWorld, _id: String, _kind: String) {
+    todo!("BOTSPY-a2811d: one message with the given part kind")
+}
+
+#[when(regex = r#"^I iterate the sessions filtered by part kind "([^"]+)"$"#)]
+fn iterate_sessions_filtered_by_part_kind(_world: &mut BotSpyWorld, _kind: String) {
+    todo!("BOTSPY-a2811d: iterate sessions filtered by part kind")
+}
+
+#[when(regex = r#"^I iterate the messages of session "([^"]+)" filtered by part kind "([^"]+)"$"#)]
+fn iterate_messages_filtered_by_part_kind(_world: &mut BotSpyWorld, _id: String, _kind: String) {
+    todo!("BOTSPY-a2811d: iterate messages filtered by part kind")
+}
+
+#[given(
+    regex = r#"^fixture sessions "([^"]+)" last active at "([^"]+)" and "([^"]+)" last active at "([^"]+)" and "([^"]+)" last active at "([^"]+)"$"#
+)]
+#[allow(clippy::too_many_arguments)]
+fn fixture_sessions_three_last_active(
+    _world: &mut BotSpyWorld,
+    _id1: String,
+    _at1: String,
+    _id2: String,
+    _at2: String,
+    _id3: String,
+    _at3: String,
+) {
+    todo!("BOTSPY-a2811d: three fixture sessions at distinct times")
+}
+
+#[when(regex = r#"^I iterate the sessions active after "([^"]+)" and before "([^"]+)"$"#)]
+fn iterate_sessions_active_between(_world: &mut BotSpyWorld, _after: String, _before: String) {
+    todo!("BOTSPY-a2811d: iterate sessions in a time window")
 }
