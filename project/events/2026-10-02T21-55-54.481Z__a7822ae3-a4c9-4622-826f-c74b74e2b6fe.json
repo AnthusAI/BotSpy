@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "a7822ae3-a4c9-4622-826f-c74b74e2b6fe",
+  "issue_id": "BOTSPY-ae38eec9-7b66-4647-bdae-8deca07827a0",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:55:54.481Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Direct release workflow: no release PR, tag and GitHub release on main push",
+    "description": "",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+    "labels": []
+  }
+}

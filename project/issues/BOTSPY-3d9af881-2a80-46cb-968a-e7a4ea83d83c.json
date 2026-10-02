@@ -31,10 +31,17 @@
       "text": "Fixed in c221611 on develop via PR #2; release activation pending repo setting toggle or RELEASE_PLZ_TOKEN secret (Ryan).",
       "created_at": "2026-10-02T21:48:22.237344Z",
       "comment_type": "default"
+    },
+    {
+      "id": "779cf68b-1121-4238-9ffe-eccde17b8f1b",
+      "author": "home",
+      "text": "Superseded follow-up: Ryan rejects the release-PR/approval flow entirely. Rework tracked in BOTSPY-<new>; PR-permission checks and RELEASE_PLZ_TOKEN logic removed; releases are direct (bump+commit to main, tag, GitHub release). See new task under epic 47117d.",
+      "created_at": "2026-10-02T21:55:55.556446Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T21:38:10.750580Z",
-  "updated_at": "2026-10-02T21:48:22.939032Z",
+  "updated_at": "2026-10-02T21:55:55.556472Z",
   "closed_at": "2026-10-02T21:48:22.939Z",
   "agent": {
     "platform": "cursor",
