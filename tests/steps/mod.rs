@@ -1,5 +1,6 @@
 //! Shared world and helpers for the behavior specifications.
 
+pub mod graph_steps;
 pub mod schema_steps;
 pub mod session_steps;
 pub mod status_steps;
@@ -80,14 +81,26 @@ pub fn current_session(world: &BotSpyWorld) -> Session {
         .current_session
         .as_deref()
         .expect("no current fixture session");
-    let adapter = adapter_owning(world, id).expect("current session not found");
-    adapter.open(id).expect("current session vanished")
+    find_session(world, id).expect("current session not found")
+}
+
+/// Find any fixture session by id across all fixture adapters.
+pub fn find_session(world: &BotSpyWorld, id: &str) -> Option<Session> {
+    world.adapters.values().find_map(|a| a.open(id))
 }
 
 /// Persist changes to the current fixture session.
 pub fn save_session(world: &mut BotSpyWorld, session: Session) {
     let id = session.id.clone();
     let adapter = adapter_owning(world, &id).expect("current session not found");
+    adapter.add_session(session);
+}
+
+/// Persist changes to a session looked up by id (any fixture adapter).
+pub fn save_session_by_id(world: &mut BotSpyWorld, session: Session) {
+    let id = session.id.clone();
+    let adapter = adapter_owning(world, &id)
+        .unwrap_or_else(|| panic!("no fixture adapter owns session {id}"));
     adapter.add_session(session);
 }
 

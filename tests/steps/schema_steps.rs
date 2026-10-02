@@ -5,7 +5,7 @@ use botspy::{Adapter, KnownPart, Message, Part, Provenance};
 use cucumber::{given, then, when};
 use serde_json::Value;
 
-#[given(regex = r#"a fixture session "([^"]+)" from agent "([^"]+)" in project "([^"]+)""#)]
+#[given(regex = r#"a fixture session "([^"]+)" from agent "([^"]+)" in project "([^"]+)"$"#)]
 fn fixture_session(world: &mut BotSpyWorld, id: String, agent: String, project: String) {
     let adapter = adapter_for(world, &agent);
     adapter.add_session(new_session(&id, &agent, &project));

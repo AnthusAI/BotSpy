@@ -1,4 +1,3 @@
-@wip
 Feature: Session graph — parents, roots, sub-agents, forks, and battles
   Sessions can be children, forks, or competitors of other sessions. The
   graph (parent_id, root_id, sub-agent kind/name, fork and battle links)
