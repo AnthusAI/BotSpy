@@ -3,7 +3,7 @@
   "title": "Claude Code parity tests and doctor diagnostics",
   "description": "Doctor reports roots, transcript counts, skipped subagents, and issues. Done when: parity tests on the fixture pass and doctor output matches the expected report.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,24 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "93477830-bc84-4723-b729-f6824409add0",
+      "author": "home",
+      "text": "Parity covered by 4 lib unit tests (sidechain skipping, parts+provenance mapping, malformed/unknown skip counting, partial trailing line recovery) plus 6 executable BDD scenarios in features/03_importers/claude_code/adapter.feature (wip tag dropped). Doctor diagnostics over the projects root exercised by the sidechain scenario. Full gate green.",
+      "created_at": "2026-10-02T19:52:39.883479Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:05.252532Z",
-  "updated_at": "2026-10-02T16:22:01.811763Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:52:43.136179Z",
+  "closed_at": "2026-10-02T19:52:43.136108Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
   "right_now_summary": "Parity tests and doctor diagnostics are being checked against the expected fixture report.",
-  "right_now_updated_at": "2026-10-02T16:22:03.343832Z",
+  "right_now_updated_at": "2026-10-02T19:45:30.450863Z",
   "custom": {}
 }
