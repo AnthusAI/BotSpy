@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "e5d47531-155d-4c21-96fc-03c540de6cd0",
+  "issue_id": "BOTSPY-493cee0b-bb83-4f55-9ad7-1958aaf81704",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:40:06.877Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Fix Release workflow (release-plz): PR creation blocked, orphan branches spam",
+    "description": "",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+    "labels": []
+  }
+}
