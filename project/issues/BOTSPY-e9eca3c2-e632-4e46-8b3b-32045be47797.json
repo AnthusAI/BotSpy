@@ -3,7 +3,7 @@
   "title": "Schema R1: Usage and cost metrics on Message and Session",
   "description": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "cfb10329-f7a6-487d-818b-bc4e548fa85d",
+      "author": "home",
+      "text": "R1 done: usage/cost metrics spec implemented and passing (01_usage_tokens.feature un-tagged @wip); see impl sub-task BOTSPY-90ad8e for details.",
+      "created_at": "2026-10-02T18:49:21.166304Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:29:40.027455Z",
-  "updated_at": "2026-10-02T17:56:19.112730Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:49:25.391587Z",
+  "closed_at": "2026-10-02T18:49:25.391538Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "Usage and cost metrics are being implemented and tested against the new BDD specification.",
-  "right_now_updated_at": "2026-10-02T17:56:20.137451Z",
-  "custom": {}
+  "right_now_summary": "Usage and cost metrics are implemented, documented, and passing all seven scenarios.",
+  "right_now_updated_at": "2026-10-02T18:49:26.337909Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

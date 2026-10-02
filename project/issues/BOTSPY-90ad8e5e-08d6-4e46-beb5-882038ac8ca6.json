@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R1 usage and cost metrics",
   "description": "Done when: the wip tag is removed from 01_usage_tokens.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "9384186a-3853-4ce2-9d64-596cf1606975",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/01_usage_tokens.feature; all 7 scenarios pass in cargo test --test bdd (17 scenarios total). Schema: Usage (input/output/cache_read/cache_write/cached_input/reasoning tokens, model — absent fields stay None, never zero), SessionCost with per-model map, RateLimitState, Message.usage/turn_id, Session.usage/cost/rate_limit/turns, Session::turn_usage/thread_usage accumulators. fmt, clippy -D warnings, doc -D warnings, 8 doctests, BDD all green.",
+      "created_at": "2026-10-02T18:49:00.457287Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:31:41.203413Z",
-  "updated_at": "2026-10-02T17:37:57.533626Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:49:14.287919Z",
+  "closed_at": "2026-10-02T18:49:14.287857Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
-  "right_now_updated_at": "2026-10-02T17:37:59.319063Z",
-  "custom": {}
+  "right_now_summary": "The usage and cost metrics spec passes, with all seven scenarios green and the new schema and accumulators implemented.",
+  "right_now_updated_at": "2026-10-02T18:49:15.912286Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
