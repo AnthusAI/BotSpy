@@ -3,7 +3,7 @@
   "title": "Synthetic fixture and discovery for Codex JSONL sessions",
   "description": "Fixture mirrors the CODEX_HOME sessions layout. Done when: discovery finds session files and reports counts.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "2d510ac0-35c0-4fcc-8cf6-ebe481dc5f60",
+      "author": "home",
+      "text": "Synthetic Codex fixture + BDD: state_5.sqlite threads index drives discovery (3 threads -> 3 sessions, missing rollouts skipped), spawn edges reported as parent links. CodexSource::new(root) + discover()/doctor() in src/adapters/codex.rs; fixture steps in tests/steps/codex_steps.rs. Full gate green (bdd 94/94).",
+      "created_at": "2026-10-02T19:58:23.606870Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:24.054378Z",
-  "updated_at": "2026-10-02T16:22:20.923802Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:58:25.079613Z",
+  "closed_at": "2026-10-02T19:58:25.079571Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

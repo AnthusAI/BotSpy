@@ -32,7 +32,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Codex adapter work covers discovery, extraction, mapping, ordering, resume, and malformed-line handling.",
-  "right_now_updated_at": "2026-10-02T19:42:05.008679Z",
+  "right_now_summary": "The Codex adapter is being tested against fixtures while discovery, extraction, mapping, and malformed-line handling",
+  "right_now_updated_at": "2026-10-02T19:53:17.332516Z",
   "custom": {}
 }

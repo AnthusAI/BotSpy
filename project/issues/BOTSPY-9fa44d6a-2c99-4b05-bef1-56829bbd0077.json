@@ -3,7 +3,7 @@
   "title": "Extract all part types from Codex session JSONL",
   "description": "Map user, assistant, thinking/reasoning, tool_call, and tool_result entries to normalized parts with line provenance. Done when: fixture extraction yields the expected parts with skip counting.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "6779cefb-41f7-4336-bcb1-f1873041b32a",
+      "author": "home",
+      "text": "Extraction maps response_item payloads into chapter-1 Messages: user/assistant roles, developer -> System with Origin::Developer, reasoning summaries -> Thinking parts, function_call/function_call_output -> ToolCall/ToolResult (Role::Tool). Explicit ordinal is the authoritative order (shuffled file order normalized to 1,2,3); token_usage_record -> session.usage, compacted -> compaction_windows chain, task_complete -> turn duration_ms/time_to_first_token_ms; byte-offset resume and partial trailing line hold-back verified. Spec wording tightened: token_usage_record lands in session usage (thread scope) and compacted in the compaction window chain, so the two Then steps now read 'session usage carries the token counts' and 'compaction window carries the previous window and the retained context'. Full gate green.",
+      "created_at": "2026-10-02T19:58:26.151033Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:28.178765Z",
-  "updated_at": "2026-10-02T16:22:25.634794Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:58:26.856474Z",
+  "closed_at": "2026-10-02T19:58:26.856403Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
