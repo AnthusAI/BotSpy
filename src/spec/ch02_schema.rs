@@ -19,7 +19,11 @@
 //! [`Provenance`](crate::schema::Provenance), and an optional `extra`
 //! escape hatch (below). Roles back the conversations you know: you ask,
 //! the agent answers (*Scenario: A session's messages are typed user and
-//! assistant messages* in the embedded spec).
+//! assistant messages* in the embedded spec). Shades beyond those four —
+//! developer messages, inter-agent mail, injected and simulated user
+//! content — map by documented conventions; those conventions are
+//! specified in `10_role_mapping.feature` and are pending (see "Pending
+//! schema work" below).
 //!
 //! ## Parts: the anatomy of a message
 //!
@@ -32,9 +36,12 @@
 //! - [`KnownPart::ToolCall`](crate::schema::KnownPart::ToolCall) — the agent invoking a tool: a call `id`, a
 //!   tool `name`, and optional `arguments`;
 //! - [`KnownPart::ToolResult`](crate::schema::KnownPart::ToolResult) — what came back, tied to its call by
-//!   `call_id`;
+//!   `call_id`. Its outcome — error, interrupted, other status — is
+//!   specified in `02_tool_result_status.feature` and pending;
 //! - [`KnownPart::Attachment`](crate::schema::KnownPart::Attachment) — a file the conversation touched: `path`,
-//!   `mime` type, `size`;
+//!   `mime` type, `size`. Inline bytes (Claude Code's base64 images) and
+//!   blob-backed data do not fit this yet — specified in
+//!   `08_inline_data.feature`, pending;
 //! - [`KnownPart::System`](crate::schema::KnownPart::System) — system-level prompts and notices.
 //!
 //! A tool call and its result are two parts in the message stream, joined
@@ -102,7 +109,11 @@
 //! or a `row` (SQLite-style transcript rows). This is what makes "show me
 //! the raw record behind this normalized message" possible — the whole
 //! point of a library named BotSpy. See *Scenario: A message records its
-//! source file and line* in the embedded spec.
+//! source file and line* in the embedded spec. The native record identity —
+//! the agent's own record id and type, an ordinal sort key (Codex numbers
+//! every record; Cursor orders bubbles by header list), and the native
+//! parent pointer (Claude Code's uuid/parentUuid tree) — is specified in
+//! the later scenarios of `provenance.feature` and is pending.
 //!
 //! ```
 //! use botspy::{Provenance, Role, KnownPart, Message, Part};
@@ -170,6 +181,47 @@
 //! `Provenance`. The per-agent mappings and the shared adapter contract are
 //! spec layer 4 — chapter 4, specified next.
 //!
+//! ## Pending schema work (specified, not implemented)
+//!
+//! The on-disk storage survey of all five agents produced twelve schema
+//! recommendations. They are written as Gherkin specs first, tagged `@wip`
+//! (excluded from the executable run until implemented), and embedded at
+//! the end of this chapter. In priority order:
+//!
+//! 1. `01_usage_tokens.feature` — usage and cost metrics on messages and
+//!    sessions (input/output/cache/reasoning tokens, `cost_usd`, model,
+//!    session-level rate-limit/plan state); usage an agent does not persist
+//!    is absent, never zero.
+//! 2. `02_tool_result_status.feature` — error and status flags on tool
+//!    results, tool calls, messages, and turns.
+//! 3. `03_session_graph.feature` — parent/root links, sub-agent kind and
+//!    name, fork points, best-of-N battles, and peer ids.
+//! 4. `04_turn_grouping.feature` — `turn_id`/`parent_turn_id` with
+//!    turn-level timing and errors.
+//! 5. `05_compaction.feature` — compaction events with pre/post token
+//!    counts, summary messages, and compaction window chains.
+//! 6. `provenance.feature` (later scenarios) — native record id, record
+//!    type, ordinal sort key, and native parent pointer.
+//! 7. `07_tool_call_arguments.feature` — raw-string tool-call arguments,
+//!    kept raw, parsed only when the raw string is valid JSON.
+//! 8. `08_inline_data.feature` — inline-data part with media type, content
+//!    hash, and `data_ref` for blob-backed bytes.
+//! 9. `09_optional_timestamp.feature` — optional timestamps; never
+//!    fabricated from file metadata.
+//! 10. `10_role_mapping.feature` — developer, inter-agent, injected, and
+//!     simulated message conventions.
+//! 11. `11_session_metadata.feature` — optional Session metadata: title,
+//!     git coordinates, cwd, archived, pr_url, status, app version, models.
+//! 12. `12_raw_blob_escape_hatch.feature` — `{blob_hash, container}` blob
+//!     references for opaque content, plus partial/cloud-cache session
+//!     flags.
+//!
+//! Until a scenario's implementation lands, the structs above (no error
+//! flag on [`KnownPart::ToolResult`](crate::schema::KnownPart::ToolResult),
+//! narrow [`Provenance`](crate::schema::Provenance), no usage struct) are
+//! the interim truth, and the `@wip` scenarios are the specification those
+//! structs will be changed to satisfy.
+//!
 #![doc = concat!(
     "## Behavior specification\n\n",
     "### message_parts.feature\n\n```gherkin\n",
@@ -180,5 +232,38 @@
     "\n```\n\n",
     "### extra_passthrough.feature\n\n```gherkin\n",
     include_str!("../../features/02_schema/extra_passthrough.feature"),
+    "\n```\n\n",
+    "### 01_usage_tokens.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/01_usage_tokens.feature"),
+    "\n```\n\n",
+    "### 02_tool_result_status.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/02_tool_result_status.feature"),
+    "\n```\n\n",
+    "### 03_session_graph.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/03_session_graph.feature"),
+    "\n```\n\n",
+    "### 04_turn_grouping.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/04_turn_grouping.feature"),
+    "\n```\n\n",
+    "### 05_compaction.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/05_compaction.feature"),
+    "\n```\n\n",
+    "### 07_tool_call_arguments.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/07_tool_call_arguments.feature"),
+    "\n```\n\n",
+    "### 08_inline_data.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/08_inline_data.feature"),
+    "\n```\n\n",
+    "### 09_optional_timestamp.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/09_optional_timestamp.feature"),
+    "\n```\n\n",
+    "### 10_role_mapping.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/10_role_mapping.feature"),
+    "\n```\n\n",
+    "### 11_session_metadata.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/11_session_metadata.feature"),
+    "\n```\n\n",
+    "### 12_raw_blob_escape_hatch.feature (pending)\n\n```gherkin\n",
+    include_str!("../../features/02_schema/12_raw_blob_escape_hatch.feature"),
     "\n```\n"
 )]
