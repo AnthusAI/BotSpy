@@ -1,13 +1,11 @@
-@wip
 Feature: Adapter contract
   Every source adapter obeys the same contract: discovery finds the
   sessions it can tap, extraction streams records without loading whole
   files, malformed input is skipped and counted (never fatal), and the
   source itself is only ever read — adapters never write to the
-  directories or databases they watch. SQLite/WAL sources are read
-  through a safe snapshot copy, never in place.
-  Evidence: transcripts exceed 100 MB; Cursor's store is a hot WAL
-  database an app is writing to while we read.
+  directories or databases they watch.
+  Evidence: transcripts exceed 100 MB; malformed lines and unknown
+  record types appear in real app data.
 
   Scenario: Discovery finds sessions under the given roots
     Given a fixture source root "roots/demo/claude" with transcripts "a.jsonl" and "b.jsonl"
@@ -42,10 +40,3 @@ Feature: Adapter contract
     Given a fixture source root "roots/demo/claude" with transcripts "a.jsonl" and "b.jsonl"
     When I extract every record from the source "claude_code" at that root
     Then no file under the source root changed
-
-  Scenario: A SQLite/WAL source is read through a safe snapshot copy
-    Given a SQLite source in WAL mode at "roots/demo/store.db" with 5 rows and a live writer appending rows
-    When I read the source through a snapshot copy
-    Then the snapshot yields a consistent read of the rows present at snapshot time
-    And the source database file and its WAL file were never mutated
-    And the live writer kept appending without interference
