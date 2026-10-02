@@ -36,10 +36,17 @@
       "text": "Reopened by Ryan's request: build the CLI phase 1 (read-only MVP). Scope per the [cli design](773667dc) — `sources`, `sessions`, `show`, `doctor`, `snapshot` plus global flags, exit codes, and the three output modes, over the existing adapters and the in-memory `SessionStore`. No `import`/`stats`/`search`/`watch` (later phase), and `export` stays out entirely (YAGNI, BOTSPY-3b468d). Specs first under `features/cli/`; implementation generated from the specs. Work happens on branch `feat/cli-phase1`.",
       "created_at": "2026-10-02T20:34:16.423899Z",
       "comment_type": "default"
+    },
+    {
+      "id": "fd7f87e9-d148-4968-9dc2-09c72f1ab2af",
+      "author": "home",
+      "text": "Phase 1 progress: sources, sessions, show, doctor, snapshot all specified (features/cli/) and green. All five verb tasks closed (BOTSPY-62676b, BOTSPY-541f5a, BOTSPY-185f83, BOTSPY-727bb6, BOTSPY-713087); spec task BOTSPY-fd3c5d closed. CLI scenarios: 162 total BDD suite, 160 passed, 2 pre-existing skipped steps. CI fixes on the way: windows bdd stack overflow (runner now on a large-stack thread) and fixture CRLF drift (.gitattributes).",
+      "created_at": "2026-10-02T21:13:39.091588Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:19:01.002893Z",
-  "updated_at": "2026-10-02T20:34:22.273092Z",
+  "updated_at": "2026-10-02T21:13:39.091631Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
@@ -48,5 +55,8 @@
   },
   "right_now_summary": "The CLI is not being built because botspy will remain a library-only project.",
   "right_now_updated_at": "2026-10-02T16:39:34.005392Z",
-  "custom": {}
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
