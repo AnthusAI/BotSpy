@@ -4,7 +4,7 @@
 
 ### BotSpy opens every coding agent's conversation history with one library
 
-*One narrow mission, done completely: mine every coding agent's session history into one central store you can query.*
+*Every AI coding agent's conversation history — Claude Code, Cursor, Codex, Grok Bot, and Antigravity — in one read-only, searchable store.*
 
 BotSpy pops open the conversation history of any coding agent: one adapter
 per agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later),
