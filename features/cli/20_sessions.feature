@@ -70,6 +70,21 @@ Feature: botspy sessions
     Then the exit code is 0
     And stdout contains "Synthetic parser session"
 
+  Scenario: --since keeps only sessions active at or after the timestamp
+    When I run "botspy sessions --source claude_code --since 2026-10-01T09:05:00Z" against the fixture home
+    Then the exit code is 0
+    And stdout reports "2 sessions"
+
+  Scenario: An invalid --since value is rejected
+    When I run "botspy sessions --since bogus" against the fixture home
+    Then the exit code is 2
+    And stderr contains "--since" "bogus"
+
+  Scenario: An invalid --until value is rejected
+    When I run "botspy sessions --until not-a-time" against the fixture home
+    Then the exit code is 2
+    And stderr contains "--until" "not-a-time"
+
   Scenario: An unknown source filter is rejected
     When I run "botspy sessions --source notepad"
     Then the exit code is 1
