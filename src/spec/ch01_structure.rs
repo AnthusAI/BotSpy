@@ -180,9 +180,9 @@
 //!   ([`PartStatus`](crate::schema::PartStatus): ok, error, interrupted; tool
 //!   calls carry a status of their own too, e.g. Cursor's loading).
 //! - [`KnownPart::Attachment`](crate::schema::KnownPart::Attachment) — a file the conversation touched: `path`,
-//!   `mime` type, `size`. Inline bytes (Claude Code's base64 images) and
-//!   blob-backed data do not fit this yet — specified in
-//!   `08_inline_data.feature`, pending;
+//!   `mime` type, `size`. Inline bytes and blob-backed bytes are
+//!   [`KnownPart::InlineData`](crate::schema::KnownPart::InlineData) and
+//!   [`KnownPart::Blob`](crate::schema::KnownPart::Blob);
 //! - [`KnownPart::System`](crate::schema::KnownPart::System) — system-level prompts and notices.
 //!
 //! A tool call and its result are two parts in the message stream, joined
@@ -212,7 +212,7 @@
 //! let assistant = Message {
 //!     role: Role::Assistant,
 //!     parts: vec![
-//!         Part::Known(KnownPart::Thinking { text: "need to read main.rs first".into(), extra: None }),
+//!         Part::Known(KnownPart::Thinking { text: Some("need to read main.rs first".into()), signature: None, encrypted: None, extra: None }),
 //!         call,
 //!     ],
 //!     timestamp: "2026-10-01T09:02:00Z".into(),
@@ -404,13 +404,15 @@
 //!     does not record stay absent.
 //! 12. `12_raw_blob_escape_hatch.feature` — `{blob_hash, container}` blob
 //!     references for opaque content, plus partial/cloud-cache session
-//!     flags.
+//!     flags. Implemented: [`KnownPart::Blob`](crate::schema::KnownPart::Blob)
+//!     (thinking text may be absent with the `signature` or `encrypted`
+//!     blob kept verbatim), [`PartialHistory`](crate::schema::PartialHistory)
+//!     with [`PartialReason`](crate::schema::PartialReason) on
+//!     [`Session`](crate::session::Session) and
+//!     [`SessionSummary`](crate::session::SessionSummary).
 //!
-//! Until a scenario's implementation lands, the structs above (no error
-//! flag on [`KnownPart::ToolResult`](crate::schema::KnownPart::ToolResult),
-//! narrow [`Provenance`](crate::schema::Provenance)) are the interim truth,
-//! and the `@wip` scenarios are the specification those structs will be
-//! changed to satisfy.
+//! The remaining `@wip` scenarios (turn grouping and optional timestamps)
+//! are the specification the structs will be changed to satisfy next.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -459,7 +461,7 @@
     "### 11_session_metadata.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/11_session_metadata.feature"),
     "\n```\n\n",
-    "### 12_raw_blob_escape_hatch.feature (pending)\n\n```gherkin\n",
+    "### 12_raw_blob_escape_hatch.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/12_raw_blob_escape_hatch.feature"),
     "\n```\n"
 )]

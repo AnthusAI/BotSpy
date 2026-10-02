@@ -122,7 +122,17 @@ pub enum KnownPart {
         extra: Option<Value>,
     },
     Thinking {
-        text: String,
+        /// The plain reasoning text, when the agent stored it unencrypted.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        text: Option<String>,
+        /// Signature blob for signed reasoning blocks (Claude thinking
+        /// signature).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        signature: Option<String>,
+        /// Encrypted reasoning content, kept verbatim (Codex
+        /// reasoning.encrypted_content).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        encrypted: Option<String>,
         #[serde(default, skip_serializing_if = "Option::is_none")]
         extra: Option<Value>,
     },
@@ -164,6 +174,14 @@ pub enum KnownPart {
         #[serde(default, skip_serializing_if = "Option::is_none")]
         extra: Option<Value>,
     },
+    Blob {
+        /// Hash of the undecodable payload, content-addressed.
+        blob_hash: String,
+        /// The container the blob lives in (e.g. Cursor `agentKv:blob`).
+        container: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        extra: Option<Value>,
+    },
     System {
         text: String,
         #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -194,6 +212,7 @@ impl Part {
                 KnownPart::ToolResult { .. } => "tool_result",
                 KnownPart::Attachment { .. } => "attachment",
                 KnownPart::InlineData { .. } => "inline_data",
+                KnownPart::Blob { .. } => "blob",
                 KnownPart::System { .. } => "system",
             }),
             Part::Extra(raw) => raw.get("kind").and_then(Value::as_str),
@@ -355,6 +374,27 @@ pub struct SessionMetadata {
     pub models: Vec<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pr_url: Option<String>,
+}
+
+/// Why a session's local history is only partial.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PartialReason {
+    /// The local store is a cache of cloud-side history
+    /// (Cursor conversation-search.db source "cloud-cache").
+    CloudCache,
+    /// The local log is truncated by a cap (Grok Bot entry logs capped at
+    /// 200 entries; full history is server-side).
+    LocalCap,
+}
+
+/// A session whose local records cover only part of the real history.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct PartialHistory {
+    pub reason: PartialReason,
+    /// Free-form detail the agent recorded about the partial view.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub detail: Option<String>,
 }
 
 /// One compaction boundary: the agent summarized its own context.

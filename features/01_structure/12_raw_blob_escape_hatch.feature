@@ -1,4 +1,3 @@
-@wip
 Feature: Raw blob escape hatch and partial-cache provenance
   Content an adapter cannot or should not decode — protobuf blobs,
   encrypted reasoning, signed payloads — is preserved as a blob reference

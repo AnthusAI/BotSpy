@@ -2,8 +2,8 @@
 
 use crate::adapter::Adapter;
 use crate::schema::{
-    Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, Message, Peer, RateLimitState,
-    SessionCost, SessionMetadata, SubagentInfo, Timestamp, Turn, Usage,
+    Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, Message, PartialHistory, Peer,
+    RateLimitState, SessionCost, SessionMetadata, SubagentInfo, Timestamp, Turn, Usage,
 };
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
@@ -60,6 +60,9 @@ pub struct Session {
     /// Optional metadata the agent recorded about the session.
     #[serde(default)]
     pub metadata: SessionMetadata,
+    /// The session's local records cover only part of the real history.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub partial: Option<PartialHistory>,
 }
 
 /// A lightweight view of a session for listing across agents.
@@ -74,6 +77,9 @@ pub struct SessionSummary {
     /// The session's optional metadata, for listing across agents.
     #[serde(default)]
     pub metadata: SessionMetadata,
+    /// Set when the session is only a partial view of the real history.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub partial: Option<PartialHistory>,
 }
 
 impl Session {
@@ -117,6 +123,7 @@ impl From<&Session> for SessionSummary {
             last_activity_at: session.last_activity_at.clone(),
             message_count: session.messages.len(),
             metadata: session.metadata.clone(),
+            partial: session.partial.clone(),
         }
     }
 }
