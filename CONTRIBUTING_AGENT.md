@@ -36,6 +36,20 @@ For complex work, break the plan into sub-tasks and file them under the parent t
 
 Operational discipline: use the minimum commands needed. To inspect work, run `kbs list --status open --long` once to find the ID, then `kbs show <id>`. Do not guess IDs or spam multiple variants; if the ID is unknown, ask the user.
 
+## Git Workflow
+
+`develop` is the continuous-integration branch. `main` is the release branch, promoted from `develop` only when you intend a release.
+
+All new feature-branch work starts from `develop`: branch from `origin/develop`, never from `main`, and open pull requests that target `develop`.
+
+`main` is the release branch. The release-plz workflow runs only from `main`. Do not treat a merge to `develop` as a release. Do not merge product work straight to `main`; promote `develop` to `main` when you intend a release, not as the daily integration path.
+
+Merge accepted, green work into `develop` as soon as it is ready, and continuously push as you go. Do not park completed work on long-lived feature branches waiting for `main`.
+
+**Do not open a pull request for project management.** Kanbus issues, comments, status changes, and `project/wiki` pages commit on `develop` and push. No feature branch, no PR, no review loop. Mixing board files into a product PR is also wrong: land the board on `develop` first.
+
+Multiple agents work in this repo in parallel at any given time and must avoid colliding: each agent uses its own git worktree and feature branch, never checks out branches or edits files in the shared checkout (`~/Projects/BotSpy`), keeps branches short, and merges or rebases from `develop` often.
+
 ## Specs come first
 
 BotSpy is a behavior-driven specification project. The Gherkin behavior specifications under `features/` are the backbone and the true source of the project; implementation code is considered generated from the specs. All planning is organized around features and their specs.
