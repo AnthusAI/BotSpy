@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "2b3799da-8d65-419d-8236-24239084653f",
+  "issue_id": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:25:16.880Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "Product = the module itself: one adapter per coding agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later), one standard normalized schema, and a unified agent-session history. Metrics such as the thanks-vs-F-bombs meter and local sentiment analysis are example consumers (examples/ or an optional botspy[metrics] extra), never core work and never core dependencies. Reference for real on-disk formats (read-only): ~/Projects/DataParade-io/scanner-sentiment/src/sentiment/adapters - note the prototype extracted human messages only; BotSpy needs ALL message and part types.",
+        "to": "Product = the module itself: one adapter per coding agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later), one standard normalized schema, and a unified agent-session history. Metrics such as the thanks-vs-F-bombs meter and local sentiment analysis are example consumers (examples/ or an optional botspy[metrics] extra), never core work and never core dependencies. BotSpy is a behavior-driven specification project: the Gherkin specs under features/ are the backbone and the true source; every feature-area epic starts with spec-writing tasks and implementation tasks are blocked-by them. Reference for real on-disk formats (read-only): ~/Projects/DataParade-io/scanner-sentiment/src/sentiment/adapters - note the prototype extracted human messages only; BotSpy needs ALL message and part types."
+      }
+    }
+  }
+}

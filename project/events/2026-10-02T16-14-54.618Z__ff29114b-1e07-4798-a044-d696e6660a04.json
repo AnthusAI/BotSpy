@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "ff29114b-1e07-4798-a044-d696e6660a04",
+  "issue_id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:14:54.618Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Adapter contract",
+    "description": "Define the shared adapter interface every source adapter implements: discovery, streaming extraction (files can exceed 100MB), skip counters, read-only access to source data, and safe snapshotting of SQLite/WAL sources. Done when the contract is typed, tested, and documented.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

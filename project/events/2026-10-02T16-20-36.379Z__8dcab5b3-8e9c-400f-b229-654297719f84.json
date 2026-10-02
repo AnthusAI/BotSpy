@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "8dcab5b3-8e9c-400f-b229-654297719f84",
+  "issue_id": "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:36.379Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Build synthetic fixture corpus for all five agents",
+    "description": "Synthetic-only fixtures mirroring real on-disk layouts; no real transcripts or secrets. Done when: every adapter fixture is committed with a generator script and a guard test proves no secrets.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

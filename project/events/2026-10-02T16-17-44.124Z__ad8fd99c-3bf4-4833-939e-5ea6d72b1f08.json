@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "ad8fd99c-3bf4-4833-939e-5ea6d72b1f08",
+  "issue_id": "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:44.124Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Extract all part types from Grok Bot transcript blobs",
+    "description": "Decode conversation blobs and map entries to normalized parts with provenance. Done when: fixture extraction yields the expected parts with skip counting.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

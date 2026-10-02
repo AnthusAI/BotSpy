@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "69ba92bf-a636-4709-9205-a765e3c5787d",
+  "issue_id": "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:38.806Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Synthetic fixture and discovery for Grok Bot transcript replicas",
+    "description": "Fixture mirrors base32 blob filenames ending in .transcript.replicas.<conversation-uuid>. Done when: discovery decodes blob names and finds conversations.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

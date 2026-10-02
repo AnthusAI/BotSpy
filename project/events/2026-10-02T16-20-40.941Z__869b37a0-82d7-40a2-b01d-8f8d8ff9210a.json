@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "869b37a0-82d7-40a2-b01d-8f8d8ff9210a",
+  "issue_id": "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:40.941Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Cross-adapter unified history test suite",
+    "description": "Sessions from all adapters pile into one unified agent-session history; ordering, dedup, and provenance verified. Done when: the unified suite passes.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

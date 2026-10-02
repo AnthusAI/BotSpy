@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "3aeda3c5-a67a-4c4f-b2ad-c6a31a5134bf",
+  "issue_id": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:19:25.031Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: adapter contract",
+    "description": "Author features/adapters/contract.feature: discovery finds sessions, extraction streams without loading whole files, malformed input is skipped and counted, sources are read-only. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

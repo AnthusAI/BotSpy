@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "92366f80-f904-4f74-bd7b-b18ebb76b49a",
+  "issue_id": "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:22.464Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Specify schema validation and versioning",
+    "description": "Schema version constant, named validation errors, golden round-trip tests. Done when: malformed parts are rejected with clear errors and the schema version is importable and exported.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

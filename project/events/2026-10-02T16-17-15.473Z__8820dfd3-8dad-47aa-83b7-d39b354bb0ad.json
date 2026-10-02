@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "8820dfd3-8dad-47aa-83b7-d39b354bb0ad",
+  "issue_id": "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:15.473Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Extract all part types from Cursor stores with WAL-safe snapshots",
+    "description": "Read SQLite through a safe snapshot; map composer messages and agent transcript entries to normalized parts with row provenance for SQLite. Done when: fixture extraction yields the expected parts and the source db is byte-identical afterwards.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

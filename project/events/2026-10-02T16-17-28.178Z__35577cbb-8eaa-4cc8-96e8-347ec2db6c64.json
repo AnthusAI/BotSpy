@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "35577cbb-8eaa-4cc8-96e8-347ec2db6c64",
+  "issue_id": "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:28.178Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Extract all part types from Codex session JSONL",
+    "description": "Map user, assistant, thinking/reasoning, tool_call, and tool_result entries to normalized parts with line provenance. Done when: fixture extraction yields the expected parts with skip counting.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "020e6ff8-7bc0-4f33-9584-5fcdc8fd681c",
+  "issue_id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:18:54.561Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Query, export, and CLI",
+        "to": "Query API (features/query)"
+      },
+      "description": {
+        "from": "The public API that feels obvious: botspy.sessions(source=...), iterating sessions then messages then parts, filters by kind/time/project, JSON and JSONL export, and a botspy CLI. Lazy and streaming; read-only end to end.",
+        "to": "The public query API: botspy.sessions(source=None), iterating sessions then messages then parts, with filters by kind, time, and project. Lazy and streaming; read-only. Specs first: features/query/*.feature is the source of truth; implementation is generated from the specs."
+      }
+    }
+  }
+}

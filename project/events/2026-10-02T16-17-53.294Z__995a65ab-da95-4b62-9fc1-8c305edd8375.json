@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "995a65ab-da95-4b62-9fc1-8c305edd8375",
+  "issue_id": "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:53.294Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Synthetic fixture and discovery for Antigravity conversations and summaries DB",
+    "description": "Fixture mirrors ~/.gemini/antigravity and antigravity-cli (conversations dir plus conversation_summaries.db). Done when: discovery finds conversations from both roots.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

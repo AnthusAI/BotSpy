@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "52b24d36-4907-4606-a93b-e1483aca9f28",
+  "issue_id": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:15:24.317Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Docs",
+    "description": "Documentation: quickstart, schema reference with the part-kind model, per-adapter on-disk format matrix, and adapter authoring guide.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

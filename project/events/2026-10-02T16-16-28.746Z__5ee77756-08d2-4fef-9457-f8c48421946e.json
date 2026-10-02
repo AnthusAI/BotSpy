@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "5ee77756-08d2-4fef-9457-f8c48421946e",
+  "issue_id": "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:28.746Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Define adapter protocol: discovery and streaming extraction with skip counters",
+    "description": "Discovery finds sessions under given roots; extraction streams records without loading whole files (transcripts can exceed 100MB); malformed lines and unknown records are skipped and counted, never fatal. Done when: the protocol is typed and a reference in-memory adapter passes tests.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

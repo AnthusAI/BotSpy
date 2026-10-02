@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "aa898d3d-0d6a-4ffb-8527-a018276546f0",
+  "issue_id": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:31.544Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: unified history behaviors",
+    "description": "Author features/schema/unified_history.feature: sessions from all five adapters pile into one unified agent-session history with consistent ordering, dedup, and provenance. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "9088920c-e75c-4111-95e3-a389fe2e43cc",
+  "issue_id": "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:26:01.385Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Adopt specs-first philosophy in README, AGENTS.md, CONTRIBUTING_AGENT.md",
+    "description": "",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

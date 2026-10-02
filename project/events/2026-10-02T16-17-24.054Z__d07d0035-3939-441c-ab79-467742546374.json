@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "d07d0035-3939-441c-ab79-467742546374",
+  "issue_id": "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:24.054Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Synthetic fixture and discovery for Codex JSONL sessions",
+    "description": "Fixture mirrors the CODEX_HOME sessions layout. Done when: discovery finds session files and reports counts.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "a07b5f58-ae89-4257-810c-d1169790224f",
+  "issue_id": "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:16:38.906Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Adapter registry and per-source options",
+    "description": "Create adapters by source name with root and home overrides; unknown sources raise a clear error. Done when: registry tests pass for all five sources with option overrides.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "4f014244-cbf3-4f2a-9511-b7b674c04e38",
+  "issue_id": "BOTSPY-933536ff-9066-4b94-8271-851bdf822246",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:20:56.365Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Example: local sentiment analysis (VADER default, optional GoEmotions transformer)",
+    "description": "Sentiment scoring as an example consumer; VADER as the default local backend, GoEmotions transformer optional behind the metrics extra. Done when: the example runs on fixtures with VADER and documents the optional transformer path.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "604088af-dc53-44ba-b526-826af82496f7",
+  "issue_id": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:19:47.206Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: Antigravity adapter behaviors",
+    "description": "Author features/adapters/antigravity/*.feature: discovery over both roots, protobuf payload decoding, summaries DB reads, extraction of all part kinds, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

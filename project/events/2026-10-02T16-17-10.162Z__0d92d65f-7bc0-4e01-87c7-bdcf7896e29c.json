@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "0d92d65f-7bc0-4e01-87c7-bdcf7896e29c",
+  "issue_id": "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:10.162Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Synthetic fixture and discovery for Cursor IDE and agent stores",
+    "description": "Fixture mirrors the Cursor User dir (state.vscdb composer stores with per-workspace and central indexes) and the ~/.cursor agent transcripts and chats metadata. Done when: discovery unions all composer indexes and finds agent sessions.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

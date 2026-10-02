@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "72ce7296-7e02-46b7-8325-51e89a911663",
+  "issue_id": "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:17:47.935Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Grok Bot parity tests and doctor diagnostics",
+    "description": "Done when: parity tests pass on fixtures and doctor reports the persistence dir.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}
