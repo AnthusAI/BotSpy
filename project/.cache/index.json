@@ -1,36 +1,39 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T17:38:20Z",
+  "built_at": "2026-10-02T17:57:39Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790959336.029796,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
     "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790959336.029978,
     "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790958091.288143,
     "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097.json": 1790959336.030104,
-    "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790962547.141806,
+    "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790962783.461002,
     "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790959336.030266,
     "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790958388.713446,
     "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790958047.826535,
+    "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee.json": 1790963041.186508,
     "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790958433.619428,
-    "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790962450.484173,
+    "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790962740.866395,
     "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790958096.514472,
     "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790958151.362658,
     "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790958107.027429,
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
-    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790962696.217231,
+    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790963728.962416,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790957972.342915,
     "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790958153.481318,
     "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790959336.030431,
     "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790959336.030562,
     "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790959336.030683,
+    "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e.json": 1790963012.202389,
     "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1790962688.720665,
     "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790960002.269669,
     "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790958139.359389,
     "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790959336.030851,
-    "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790962516.097913,
-    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790962252.106485,
+    "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790962984.845732,
+    "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790962770.720409,
+    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790963734.950499,
     "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790958155.975258,
-    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790962247.525235,
+    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790963740.944208,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
     "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790958210.785183,
@@ -38,57 +41,60 @@
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790958168.349955,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
-    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790962484.536307,
-    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790962437.905391,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790962699.402792,
+    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790963746.51768,
+    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790962748.383017,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790963794.632528,
     "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790958124.600785,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
-    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790962452.067008,
+    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790963750.844849,
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790960008.427437,
     "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790958209.179931,
-    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790959336.031128,
+    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790963786.164501,
     "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790959336.031293,
-    "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790958081.914957,
+    "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790963756.680479,
     "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f.json": 1790962672.703638,
-    "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790958086.767529,
+    "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790963761.553539,
     "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790958101.887965,
+    "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790962999.160123,
+    "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39.json": 1790963026.567833,
     "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790957984.968468,
     "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790962695.010316,
     "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790958033.021434,
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
-    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790962535.25951,
+    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790962790.343501,
     "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790962679.319749,
     "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790958245.991392,
     "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
-    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790962517.975206,
+    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790963114.540015,
     "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790957967.597511,
-    "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1790962699.457434,
+    "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790962992.253147,
+    "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1790962701.823111,
     "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790958447.546378,
-    "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790962483.019918,
-    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790962375.873083,
+    "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790962754.83402,
+    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790962708.106209,
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
     "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790959336.031627,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790958076.598149,
     "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
     "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790960020.137935,
-    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790962503.051931,
-    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790962256.113553,
-    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790959336.031789,
+    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790962777.001711,
+    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790963139.228472,
+    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790963724.463677,
     "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
-    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790962688.960644,
+    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790962896.481744,
     "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790958123.344149,
     "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790958257.047553,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790957994.975589,
-    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790962568.259844,
+    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790963764.73052,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
-    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790962548.609604,
-    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790962390.31912,
-    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790962469.584595,
+    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790963769.245167,
+    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790963776.112678,
+    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790962762.749754,
     "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790957975.924478,
     "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790959336.031947,
     "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
@@ -97,17 +103,17 @@
     "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790959336.032073,
     "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
     "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790959336.032232,
-    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790962681.656212,
-    "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790962553.876033,
-    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790962566.532101,
+    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790963780.13772,
+    "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790962821.105181,
+    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790962808.700307,
     "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1790960014.394928,
-    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790962420.981151,
-    "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1790962418.439942,
+    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790963784.411375,
+    "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1790962716.527053,
     "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790958166.810653,
-    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790962406.735005,
+    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790962723.177368,
     "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790959336.032395,
     "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790960033.968221,
-    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790962697.914681,
+    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790963793.022167,
     "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1790959336.032678
   },
   "issues": [
@@ -256,8 +262,8 @@
     },
     {
       "id": "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987",
-      "title": "Write Gherkin spec: R8 raw tool-call arguments",
-      "description": "",
+      "title": "Write Gherkin spec: R8 inline data and attachments",
+      "description": "Done when: features/02_schema/08_inline_data.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
       "status": "closed",
       "priority": 2,
@@ -276,15 +282,15 @@
         }
       ],
       "created_at": "2026-10-02T17:35:21.594201Z",
-      "updated_at": "2026-10-02T17:35:45.951541Z",
+      "updated_at": "2026-10-02T17:39:42.438379Z",
       "closed_at": "2026-10-02T17:35:45.951456Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec for R8 raw tool-call arguments is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:35:47.141506Z",
+      "right_now_summary": "The Gherkin spec is written, tagged, and embedded in the Chapter 2 Rust documentation.",
+      "right_now_updated_at": "2026-10-02T17:39:43.460496Z",
       "custom": {}
     },
     {
@@ -371,6 +377,39 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
+      "title": "Write Gherkin spec: R12 raw blob escape hatch",
+      "description": "Done when: features/02_schema/12_raw_blob_escape_hatch.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+      "type": "sub-task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "aa6740e5-6887-4d3b-b550-ab185e4771da",
+          "author": "home",
+          "text": "Spec written and embedded in the docs (commit 4c81421).",
+          "created_at": "2026-10-02T17:43:52.847699Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T17:41:59.066733Z",
+      "updated_at": "2026-10-02T17:44:00.191683Z",
+      "closed_at": "2026-10-02T17:44:00.191631Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "The Gherkin spec is written, tagged, and embedded in the chapter 2 Rust documentation.",
+      "right_now_updated_at": "2026-10-02T17:44:01.186251Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7",
       "title": "Add Behave BDD scaffolding with normalized-schema feature",
       "description": "",
@@ -405,8 +444,8 @@
     },
     {
       "id": "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63",
-      "title": "Write Gherkin spec: R5 turn grouping",
-      "description": "",
+      "title": "Write Gherkin spec: R5 compaction and summaries",
+      "description": "Done when: features/02_schema/05_compaction.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
       "status": "closed",
       "priority": 2,
@@ -425,15 +464,15 @@
         }
       ],
       "created_at": "2026-10-02T17:33:44.211290Z",
-      "updated_at": "2026-10-02T17:34:09.202960Z",
+      "updated_at": "2026-10-02T17:38:59.873423Z",
       "closed_at": "2026-10-02T17:34:09.202860Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec for R5 turn grouping is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:34:10.483770Z",
+      "right_now_summary": "The Gherkin spec is written, tagged, and embedded in the Chapter 2 Rust documentation.",
+      "right_now_updated_at": "2026-10-02T17:39:00.863699Z",
       "custom": {}
     },
     {
@@ -559,26 +598,26 @@
     {
       "id": "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64",
       "title": "Schema R2: Error/status flags on ToolResult, messages, and turns",
-      "description": "",
+      "description": "Report recommendation 2: status/is_error on ToolResult plus error/aborted status on messages and turns. Feature: features/02_schema/02_tool_result_status.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:01.398542Z",
-      "updated_at": "2026-10-02T17:30:01.398565Z",
+      "updated_at": "2026-10-02T17:55:27.295052Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Tool result status behavior is specified, but implementation and passing BDD tests are still needed.",
-      "right_now_updated_at": "2026-10-02T17:38:16.216789Z",
+      "right_now_summary": "The spec is documented, but the tool result status feature still needs implementation and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:55:28.961915Z",
       "custom": {}
     },
     {
@@ -723,6 +762,39 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e",
+      "title": "Write Gherkin spec: R10 role mapping conventions",
+      "description": "Done when: features/02_schema/10_role_mapping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+      "type": "sub-task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "9815ffbc-ba97-4892-be60-a47f9979fe35",
+          "author": "home",
+          "text": "Spec written and embedded in the docs (commit 4c81421).",
+          "created_at": "2026-10-02T17:43:23.663697Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T17:41:18.010451Z",
+      "updated_at": "2026-10-02T17:43:30.917304Z",
+      "closed_at": "2026-10-02T17:43:30.917224Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "The role-mapping Gherkin spec is written and embedded in the chapter docs.",
+      "right_now_updated_at": "2026-10-02T17:43:32.201901Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf",
       "title": "Write Gherkin spec: R2 tool result status",
       "description": "Done when: features/02_schema/02_tool_result_status.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
@@ -831,9 +903,39 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32",
+      "title": "Implement until spec passes: R10 role mapping conventions",
+      "description": "Done when: the wip tag is removed from 10_role_mapping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+      "type": "sub-task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T17:41:26.866231Z",
+      "updated_at": "2026-10-02T17:43:03.181106Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "No recent work or updates are reported for the R10 role mapping tests.",
+      "right_now_updated_at": "2026-10-02T17:43:04.840872Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601",
-      "title": "Write Gherkin spec: R7 provenance widening",
-      "description": "",
+      "title": "Write Gherkin spec: R7 raw tool-call arguments",
+      "description": "Done when: features/02_schema/07_tool_call_arguments.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
       "status": "closed",
       "priority": 2,
@@ -852,40 +954,40 @@
         }
       ],
       "created_at": "2026-10-02T17:34:50.130305Z",
-      "updated_at": "2026-10-02T17:35:14.842980Z",
+      "updated_at": "2026-10-02T17:39:29.078185Z",
       "closed_at": "2026-10-02T17:35:14.842903Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin specification for R7 provenance widening is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:35:16.097612Z",
+      "right_now_summary": "The Gherkin spec is written and embedded in the chapter docs.",
+      "right_now_updated_at": "2026-10-02T17:39:30.719823Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
       "title": "Schema R11: Optional session metadata (title, git, cwd, PR, status, models)",
-      "description": "",
+      "description": "Report recommendation 11: optional session metadata (title, git_branch, git_commit, cwd, archived, pr_url, status, app_version, models). Feature: features/02_schema/11_session_metadata.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:50.586499Z",
-      "updated_at": "2026-10-02T17:30:50.586532Z",
+      "updated_at": "2026-10-02T17:55:32.877042Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The schema is being updated to support optional session metadata.",
-      "right_now_updated_at": "2026-10-02T17:30:52.105475Z",
+      "right_now_summary": "The team is implementing optional session metadata; the documented BDD scenarios still need to pass.",
+      "right_now_updated_at": "2026-10-02T17:55:34.950147Z",
       "custom": {}
     },
     {
@@ -921,26 +1023,26 @@
     {
       "id": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
       "title": "Schema R10: Role mapping conventions for developer, inter-agent, injected",
-      "description": "",
+      "description": "Report recommendation 10: role mapping conventions for developer, inter-agent, injected, and simulated messages. Feature: features/02_schema/10_role_mapping.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:45.590491Z",
-      "updated_at": "2026-10-02T17:30:45.590549Z",
+      "updated_at": "2026-10-02T17:55:38.922104Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Role mapping conventions for developer, inter-agent, and injected schemas are being defined.",
-      "right_now_updated_at": "2026-10-02T17:30:47.524531Z",
+      "right_now_summary": "The role-mapping spec is documented, but no recent work is reported on its tests.",
+      "right_now_updated_at": "2026-10-02T17:55:40.943612Z",
       "custom": {}
     },
     {
@@ -1150,32 +1252,32 @@
     {
       "id": "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e",
       "title": "Schema R6: Provenance widened with record id, type, ordinal, parent",
-      "description": "",
+      "description": "Report recommendation 6: provenance widened with native record_id, record_type, ordinal/sort key, and native parent pointer. Feature: features/02_schema/provenance.feature (later scenarios).",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:22.289487Z",
-      "updated_at": "2026-10-02T17:30:22.289536Z",
+      "updated_at": "2026-10-02T17:55:44.661789Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R6 compaction and summaries against the new Gherkin spec.",
-      "right_now_updated_at": "2026-10-02T17:34:44.535559Z",
+      "right_now_summary": "The team is adding step definitions, removing WIP tags, and running the BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:55:46.512580Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
-      "title": "Implement until spec passes: R5 turn grouping",
-      "description": "",
+      "title": "Implement until spec passes: R5 compaction and summaries",
+      "description": "Done when: the wip tag is removed from 05_compaction.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -1191,15 +1293,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:33:50.436115Z",
-      "updated_at": "2026-10-02T17:33:56.381838Z",
+      "updated_at": "2026-10-02T17:39:06.451264Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R5 turn grouping until the spec passes.",
-      "right_now_updated_at": "2026-10-02T17:33:57.904506Z",
+      "right_now_summary": "R5 compaction still needs step definitions and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:39:08.381916Z",
       "custom": {}
     },
     {
@@ -1223,8 +1325,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing specs and testing adapters while building the unified session history module.",
-      "right_now_updated_at": "2026-10-02T17:38:19.402525Z",
+      "right_now_summary": "The team is building adapters, schemas, specs, exports, and tests for unified session history.",
+      "right_now_updated_at": "2026-10-02T17:56:34.632250Z",
       "custom": {}
     },
     {
@@ -1348,26 +1450,26 @@
     {
       "id": "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162",
       "title": "Schema R5: First-class compaction and summaries",
-      "description": "",
+      "description": "Report recommendation 5: explicit compaction/summary modeling with pre/post token counts. Feature: features/02_schema/05_compaction.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:17.301854Z",
-      "updated_at": "2026-10-02T17:30:17.301898Z",
+      "updated_at": "2026-10-02T17:55:49.513032Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R5 turn grouping against the new Gherkin spec.",
-      "right_now_updated_at": "2026-10-02T17:34:12.066509Z",
+      "right_now_summary": "The Gherkin spec is ready, but step definitions and passing BDD tests are still needed.",
+      "right_now_updated_at": "2026-10-02T17:55:50.844102Z",
       "custom": {}
     },
     {
@@ -1432,8 +1534,8 @@
     },
     {
       "id": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
-      "title": "Layer 1: Unified session history (features/01_session_history)",
-      "description": "List sessions across agents sorted by last activity, open a session by id, walk its messages in order. Specs first: features/01_session_history/*.feature; implementation generated from the specs.",
+      "title": "Chapter 1: Structure (features/01_structure)",
+      "description": "Chapter 1 of the BotSpy docs: the basic structure of records — the session object, ordered messages, and walking through them — including the message/part anatomy (text, thinking, tool calls and results, attachments, provenance), the extra escape hatch, and the twelve pending schema extensions. Absorbs the old Layer 1 (unified session history) and Layer 2 (normalized schema) epics: their tasks live under this epic now.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -1444,15 +1546,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:40:15.414596Z",
-      "updated_at": "2026-10-02T16:40:15.414624Z",
+      "updated_at": "2026-10-02T17:55:19.479353Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "Session history specs and implementation are complete, with all 11 BDD scenarios passing.",
-      "right_now_updated_at": "2026-10-02T16:41:34.118902Z",
+      "right_now_summary": "Some schema work passes tests, while several documented features still need implementation and BDD coverage.",
+      "right_now_updated_at": "2026-10-02T17:56:26.164180Z",
       "custom": {}
     },
     {
@@ -1497,7 +1599,7 @@
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [
         {
@@ -1507,15 +1609,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T16:16:17.385937Z",
-      "updated_at": "2026-10-02T16:21:19.514317Z",
+      "updated_at": "2026-10-02T17:55:54.900826Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The typed content-part model needs fixed kinds and lossless passthrough for unknown data.",
-      "right_now_updated_at": "2026-10-02T16:21:21.914476Z",
+      "right_now_summary": "The typed content-part model is being defined with fixed kinds and lossless passthrough for unknown data.",
+      "right_now_updated_at": "2026-10-02T17:55:56.679943Z",
       "custom": {}
     },
     {
@@ -1560,7 +1662,7 @@
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [
         {
@@ -1570,15 +1672,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T16:16:22.464357Z",
-      "updated_at": "2026-10-02T16:21:25.235407Z",
+      "updated_at": "2026-10-02T17:55:59.529312Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The schema validation and versioning work has no recent activity.",
-      "right_now_updated_at": "2026-10-02T16:21:26.767388Z",
+      "right_now_summary": "The work defines schema versioning, clear validation errors, and golden round-trip tests.",
+      "right_now_updated_at": "2026-10-02T17:56:01.552467Z",
       "custom": {}
     },
     {
@@ -1609,6 +1711,69 @@
       },
       "right_now_summary": "The adapter registry and per-source overrides are specified, with no recent activity recorded.",
       "right_now_updated_at": "2026-10-02T16:21:41.887392Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf",
+      "title": "Implement until spec passes: R12 raw blob escape hatch",
+      "description": "Done when: the wip tag is removed from 12_raw_blob_escape_hatch.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+      "type": "sub-task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T17:42:05.796020Z",
+      "updated_at": "2026-10-02T17:43:17.049793Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "The raw blob escape hatch still needs step definitions and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:43:19.159482Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
+      "title": "Write Gherkin spec: R11 optional session metadata",
+      "description": "Done when: features/02_schema/11_session_metadata.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+      "type": "sub-task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "f5e953f6-7a2e-43a1-a4a8-26604fff9a27",
+          "author": "home",
+          "text": "Spec written and embedded in the docs (commit 4c81421).",
+          "created_at": "2026-10-02T17:43:38.304567Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T17:41:44.056729Z",
+      "updated_at": "2026-10-02T17:43:44.683118Z",
+      "closed_at": "2026-10-02T17:43:44.683053Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "The Gherkin spec is written and embedded in the chapter documentation.",
+      "right_now_updated_at": "2026-10-02T17:43:46.567227Z",
       "custom": {}
     },
     {
@@ -1761,8 +1926,8 @@
     },
     {
       "id": "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3",
-      "title": "Implement until spec passes: R8 raw tool-call arguments",
-      "description": "",
+      "title": "Implement until spec passes: R8 inline data and attachments",
+      "description": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -1778,15 +1943,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:35:28.196159Z",
-      "updated_at": "2026-10-02T17:35:33.674306Z",
+      "updated_at": "2026-10-02T17:39:48.906804Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Work is underway to make R8 raw tool-call arguments pass the spec.",
-      "right_now_updated_at": "2026-10-02T17:35:35.258547Z",
+      "right_now_summary": "The R8 inline data and attachments work still needs step definitions and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:39:50.343168Z",
       "custom": {}
     },
     {
@@ -1882,7 +2047,7 @@
     {
       "id": "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0",
       "title": "Schema R7: Raw-string tool-call arguments",
-      "description": "",
+      "description": "Report recommendation 7: tool-call arguments that are not JSON objects keep their raw string; parsed only when the raw string is valid JSON. Feature: features/02_schema/07_tool_call_arguments.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
@@ -1893,15 +2058,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:28.792337Z",
-      "updated_at": "2026-10-02T17:30:28.792387Z",
+      "updated_at": "2026-10-02T17:45:13.085266Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R7 provenance widening against the documented Gherkin specification.",
-      "right_now_updated_at": "2026-10-02T17:35:17.974726Z",
+      "right_now_summary": "Step definitions are being added so raw tool-call argument scenarios pass.",
+      "right_now_updated_at": "2026-10-02T17:45:14.539745Z",
       "custom": {}
     },
     {
@@ -1927,6 +2092,36 @@
       },
       "right_now_summary": "The Gherkin adapter contract is being drafted with scenarios for discovery, streaming, malformed input, and read-only",
       "right_now_updated_at": "2026-10-02T16:19:27.596843Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6",
+      "title": "Implement until spec passes: R11 optional session metadata",
+      "description": "Done when: the wip tag is removed from 11_session_metadata.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+      "type": "sub-task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T17:41:49.459Z",
+      "updated_at": "2026-10-02T17:43:10.776548Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "schema-specs"
+      },
+      "right_now_summary": "The team is implementing optional session metadata until its BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T17:43:12.251995Z",
       "custom": {}
     },
     {
@@ -1958,8 +2153,8 @@
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec for R3 tool result status is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:33:08.392850Z",
+      "right_now_summary": "The session graph spec is written and embedded in the chapter docs.",
+      "right_now_updated_at": "2026-10-02T17:38:21.822598Z",
       "custom": {}
     },
     {
@@ -1997,8 +2192,8 @@
     },
     {
       "id": "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084",
-      "title": "Write Gherkin spec: R6 compaction and summaries",
-      "description": "",
+      "title": "Write Gherkin spec: R6 provenance widening",
+      "description": "Done when: features/02_schema/provenance.feature gains the wip-tagged record id, record type, ordinal, and parent pointer scenarios, and they are embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
       "status": "closed",
       "priority": 2,
@@ -2017,21 +2212,21 @@
         }
       ],
       "created_at": "2026-10-02T17:34:15.104744Z",
-      "updated_at": "2026-10-02T17:34:41.441960Z",
+      "updated_at": "2026-10-02T17:39:13.568404Z",
       "closed_at": "2026-10-02T17:34:41.441889Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec for R6 compaction and summaries is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:34:43.019077Z",
+      "right_now_summary": "The provenance scenarios are written and embedded in the Chapter 2 Rust docs.",
+      "right_now_updated_at": "2026-10-02T17:39:14.833159Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86",
-      "title": "Implement until spec passes: R3 tool result status",
-      "description": "",
+      "title": "Implement until spec passes: R3 session graph",
+      "description": "Done when: the wip tag is removed from 03_session_graph.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -2047,15 +2242,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:32:46.537707Z",
-      "updated_at": "2026-10-02T17:32:54.347632Z",
+      "updated_at": "2026-10-02T17:38:26.099797Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R3 tool result status until the specification passes.",
-      "right_now_updated_at": "2026-10-02T17:32:55.872319Z",
+      "right_now_summary": "No recent activity is recorded for the R3 session graph work.",
+      "right_now_updated_at": "2026-10-02T17:38:28.105831Z",
       "custom": {}
     },
     {
@@ -2210,8 +2405,8 @@
     },
     {
       "id": "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171",
-      "title": "Implement until spec passes: R7 provenance widening",
-      "description": "",
+      "title": "Implement until spec passes: R7 raw tool-call arguments",
+      "description": "Done when: the wip tag is removed from 07_tool_call_arguments.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -2227,21 +2422,21 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:34:55.671698Z",
-      "updated_at": "2026-10-02T17:35:01.325708Z",
+      "updated_at": "2026-10-02T17:39:35.635843Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R7 provenance widening until it passes the spec.",
-      "right_now_updated_at": "2026-10-02T17:35:03.051425Z",
+      "right_now_summary": "Step definitions are being added so the raw tool-call argument scenarios pass.",
+      "right_now_updated_at": "2026-10-02T17:39:37.000964Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
       "title": "Schema R12: Raw blob escape hatch and partial-cache provenance",
-      "description": "",
+      "description": "Report recommendation 12: raw-blob escape hatch ({blob_hash, container}) and partial/cloud-cache provenance flags. Feature: features/02_schema/12_raw_blob_escape_hatch.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
@@ -2252,15 +2447,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:54.716744Z",
-      "updated_at": "2026-10-02T17:30:54.716773Z",
+      "updated_at": "2026-10-02T17:45:37.721498Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is defining a raw blob escape hatch and tracking provenance for partial caches.",
-      "right_now_updated_at": "2026-10-02T17:30:56.113040Z",
+      "right_now_summary": "The Gherkin spec is ready, but step definitions and passing BDD tests are still needed.",
+      "right_now_updated_at": "2026-10-02T17:45:39.227708Z",
       "custom": {}
     },
     {
@@ -2272,7 +2467,7 @@
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [
@@ -2285,15 +2480,15 @@
         }
       ],
       "created_at": "2026-10-02T16:19:19.772866Z",
-      "updated_at": "2026-10-02T16:41:18.832128Z",
+      "updated_at": "2026-10-02T17:55:22.779509Z",
       "closed_at": "2026-10-02T16:41:18.832083Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The schema specs are written, executable, and all six scenarios pass.",
-      "right_now_updated_at": "2026-10-02T16:41:21.430122Z",
+      "right_now_summary": "The schema specs are written, executable, and passing six tests.",
+      "right_now_updated_at": "2026-10-02T17:55:24.463533Z",
       "custom": {}
     },
     {
@@ -2384,7 +2579,7 @@
     {
       "id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "title": "Local Store Initiative — SQLite + sqlite-vec + all-MiniLM-L6-v2",
-      "description": "",
+      "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
       "type": "initiative",
       "status": "open",
       "priority": 2,
@@ -2395,15 +2590,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:38:07.357226Z",
-      "updated_at": "2026-10-02T17:38:07.357252Z",
+      "updated_at": "2026-10-02T17:41:35.373365Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "local-store-initiative"
       },
-      "right_now_summary": "The local store initiative centers on SQLite, sqlite-vec, and all-MiniLM-L6-v2.",
-      "right_now_updated_at": "2026-10-02T17:38:08.960287Z",
+      "right_now_summary": "The team is planning a local SQLite-based semantic search store with shared embedding tools.",
+      "right_now_updated_at": "2026-10-02T17:41:36.480054Z",
       "custom": {}
     },
     {
@@ -2494,26 +2689,31 @@
     {
       "id": "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6",
       "title": "Schema R9: Optional timestamps, never fabricated",
-      "description": "",
+      "description": "Report recommendation 9: optional timestamp with a no-fabrication policy; ordering never depends on time. Feature: features/02_schema/09_optional_timestamp.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
-      "dependencies": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e",
+          "type": "blocked-by"
+        }
+      ],
       "comments": [],
       "created_at": "2026-10-02T17:30:39.361804Z",
-      "updated_at": "2026-10-02T17:30:39.361846Z",
+      "updated_at": "2026-10-02T17:56:03.548750Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is defining and building R9 inline data and attachments without fabricated timestamps.",
-      "right_now_updated_at": "2026-10-02T17:36:08.259179Z",
+      "right_now_summary": "The Gherkin spec is documented, and the team is implementing optional timestamps without fabricating values.",
+      "right_now_updated_at": "2026-10-02T17:56:04.729369Z",
       "custom": {}
     },
     {
@@ -2549,57 +2749,57 @@
     {
       "id": "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac",
       "title": "Schema R8: Inline data and content-addressed attachments",
-      "description": "",
+      "description": "Report recommendation 8: image/inline-data part and content-addressed attachment data/data_ref. Feature: features/02_schema/08_inline_data.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:33.837719Z",
-      "updated_at": "2026-10-02T17:30:33.837766Z",
+      "updated_at": "2026-10-02T17:56:07.770854Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The spec is documented, and work continues to make raw tool-call arguments pass it.",
-      "right_now_updated_at": "2026-10-02T17:35:48.609226Z",
+      "right_now_summary": "The Gherkin spec is documented, but step definitions and passing BDD tests are still needed.",
+      "right_now_updated_at": "2026-10-02T17:56:09.244132Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
       "title": "Schema R3: Session graph (parent/root, sub-agents, forks, battles)",
-      "description": "",
+      "description": "Report recommendation 3: session graph — parent_id, root_id, sub-agent kind/name, fork and battle links, partial peer ids. Feature: features/02_schema/03_session_graph.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:07.884797Z",
-      "updated_at": "2026-10-02T17:30:07.884861Z",
+      "updated_at": "2026-10-02T17:56:13.449151Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R3 tool result status while the Gherkin spec is documented.",
-      "right_now_updated_at": "2026-10-02T17:33:10.318827Z",
+      "right_now_summary": "The session graph spec is documented, but no recent work is recorded.",
+      "right_now_updated_at": "2026-10-02T17:56:16.112093Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
-      "title": "Implement until spec passes: R6 compaction and summaries",
-      "description": "",
+      "title": "Implement until spec passes: R6 provenance widening",
+      "description": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -2615,15 +2815,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:34:20.758108Z",
-      "updated_at": "2026-10-02T17:34:27.960184Z",
+      "updated_at": "2026-10-02T17:39:20.287893Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Work is focused on implementing R6 compaction and summaries until the spec passes.",
-      "right_now_updated_at": "2026-10-02T17:34:29.584089Z",
+      "right_now_summary": "The team is removing wip tags, adding step definitions, and running the BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:39:22.749415Z",
       "custom": {}
     },
     {
@@ -2872,57 +3072,70 @@
     {
       "id": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
       "title": "Schema R1: Usage and cost metrics on Message and Session",
-      "description": "",
+      "description": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when).",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
-      "dependencies": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+          "type": "blocked-by"
+        }
+      ],
       "comments": [],
       "created_at": "2026-10-02T17:29:40.027455Z",
-      "updated_at": "2026-10-02T17:29:40.027488Z",
+      "updated_at": "2026-10-02T17:56:19.112730Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
-      "right_now_updated_at": "2026-10-02T17:38:01.645758Z",
+      "right_now_summary": "Usage and cost metrics are being implemented and tested against the new BDD specification.",
+      "right_now_updated_at": "2026-10-02T17:56:20.137451Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176",
-      "title": "Write Gherkin spec: R9 inline data and attachments",
-      "description": "",
+      "title": "Write Gherkin spec: R9 optional timestamps",
+      "description": "Done when: features/02_schema/09_optional_timestamp.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "515ca299-343d-4e4c-a1bd-59707c64baf3",
+          "author": "home",
+          "text": "Spec written and embedded in the docs (commit 4c81421).",
+          "created_at": "2026-10-02T17:40:13.003652Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:35:52.371377Z",
-      "updated_at": "2026-10-02T17:35:52.371407Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T17:40:19.804390Z",
+      "closed_at": "2026-10-02T17:40:19.804324Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is writing a Gherkin spec for R9 inline data and attachments.",
-      "right_now_updated_at": "2026-10-02T17:35:53.875728Z",
+      "right_now_summary": "The Gherkin spec is written and embedded in the chapter docs.",
+      "right_now_updated_at": "2026-10-02T17:40:21.104549Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a",
-      "title": "Implement until spec passes: R9 inline data and attachments",
-      "description": "",
+      "title": "Implement until spec passes: R9 optional timestamps",
+      "description": "Done when: the wip tag is removed from 09_optional_timestamp.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -2938,15 +3151,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:35:58.550134Z",
-      "updated_at": "2026-10-02T17:36:05.463347Z",
+      "updated_at": "2026-10-02T17:40:07.112900Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing R9 inline data and attachments to meet the specification.",
-      "right_now_updated_at": "2026-10-02T17:36:06.528685Z",
+      "right_now_summary": "The team is implementing optional timestamps and adding steps until the BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T17:40:08.700001Z",
       "custom": {}
     },
     {
@@ -2982,32 +3195,32 @@
     {
       "id": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
       "title": "Schema R4: Turn grouping with turn-level timing and errors",
-      "description": "",
+      "description": "Report recommendation 4: turn grouping (turn_id, parent_turn_id) with turn-level timing and errors. Feature: features/02_schema/04_turn_grouping.feature.",
       "type": "task",
       "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
-      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:30:12.456011Z",
-      "updated_at": "2026-10-02T17:30:12.456074Z",
+      "updated_at": "2026-10-02T17:56:23.233372Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The R4 session graph spec is documented, and work continues to make the implementation pass.",
-      "right_now_updated_at": "2026-10-02T17:33:40.979405Z",
+      "right_now_summary": "The Gherkin spec is documented, but turn-grouping steps still need implementation and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:56:24.410607Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
-      "title": "Write Gherkin spec: R4 session graph",
-      "description": "",
+      "title": "Write Gherkin spec: R4 turn grouping",
+      "description": "Done when: features/02_schema/04_turn_grouping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
       "type": "sub-task",
       "status": "closed",
       "priority": 2,
@@ -3026,15 +3239,15 @@
         }
       ],
       "created_at": "2026-10-02T17:33:13.509806Z",
-      "updated_at": "2026-10-02T17:33:37.021107Z",
+      "updated_at": "2026-10-02T17:38:34.337142Z",
       "closed_at": "2026-10-02T17:33:37.021035Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The R4 session graph Gherkin spec is written and embedded in the docs.",
-      "right_now_updated_at": "2026-10-02T17:33:38.439441Z",
+      "right_now_summary": "The Gherkin spec is written and embedded in the chapter documentation.",
+      "right_now_updated_at": "2026-10-02T17:38:36.526235Z",
       "custom": {}
     },
     {
@@ -3069,8 +3282,8 @@
     },
     {
       "id": "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df",
-      "title": "Implement until spec passes: R4 session graph",
-      "description": "",
+      "title": "Implement until spec passes: R4 turn grouping",
+      "description": "Done when: the wip tag is removed from 04_turn_grouping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
       "status": "open",
       "priority": 2,
@@ -3086,15 +3299,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T17:33:19.402916Z",
-      "updated_at": "2026-10-02T17:33:25.460060Z",
+      "updated_at": "2026-10-02T17:38:41.294783Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The R4 session graph is being implemented until the spec passes.",
-      "right_now_updated_at": "2026-10-02T17:33:26.733845Z",
+      "right_now_summary": "The turn-grouping steps still need implementation and passing BDD tests.",
+      "right_now_updated_at": "2026-10-02T17:38:43.177111Z",
       "custom": {}
     },
     {
@@ -3160,24 +3373,39 @@
       "title": "Layer 2: Normalized schema (features/02_schema)",
       "description": "Normalized schema in Rust with serde: Message, Role, Part (Text, Thinking, ToolCall, ToolResult, Attachment, System), Provenance, Timestamp, and raw passthrough via serde_json::Value for agent-specific fields. Specs first: features/02_schema/*.feature.",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "59db986c-ceb8-48f4-8b91-72d5df482bef",
+          "author": "home",
+          "text": "Recorded the twelve schema recommendations from the five-agent storage survey as layer-2 Gherkin specs (features/02_schema/01_usage_tokens, 02_tool_result_status, 03_session_graph, 04_turn_grouping, 05_compaction, provenance extension, 07_tool_call_arguments, 08_inline_data, 09_optional_timestamp, 10_role_mapping, 11_session_metadata, 12_raw_blob_escape_hatch). All new scenarios tagged wip and excluded from the cucumber run (tests/bdd.rs filter) until implemented; embedded in the ch02 rustdoc chapter; spec tasks closed, implementation tasks open with blocked-by deps. Spec commit 4c81421.",
+          "created_at": "2026-10-02T17:44:20.383362Z",
+          "comment_type": "default"
+        },
+        {
+          "id": "c62125b4-585e-4b80-8bc6-44f9620893c6",
+          "author": "home",
+          "text": "Merged into Chapter 1: Structure (BOTSPY-7adf26) per the final chapter order; its tasks were re-parented there. Feature files moved to features/01_structure/ (byte-for-byte identical scenarios).",
+          "created_at": "2026-10-02T17:56:27.645014Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:14:50.761818Z",
-      "updated_at": "2026-10-02T16:39:55.411120Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T17:56:30.845305Z",
+      "closed_at": "2026-10-02T17:56:30.845246Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The schema specs pass, but Rust implementation and related feature work are still underway.",
-      "right_now_updated_at": "2026-10-02T17:38:17.914270Z",
+      "right_now_summary": "Rust schema implementation and BDD step definitions are being added; validation and tests are still needed.",
+      "right_now_updated_at": "2026-10-02T17:56:33.021457Z",
       "custom": {}
     },
     {
@@ -3223,6 +3451,9 @@
       "BOTSPY-933536ff-9066-4b94-8271-851bdf822246",
       "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5"
     ],
+    "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee": [
+      "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf"
+    ],
     "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63": [
       "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a"
     ],
@@ -3230,6 +3461,9 @@
       "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37",
       "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f",
       "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5"
+    ],
+    "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e": [
+      "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32"
     ],
     "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf": [
       "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3"
@@ -3245,6 +3479,9 @@
       "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
       "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef"
     ],
+    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e": [
+      "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6"
+    ],
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f": [
       "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c"
     ],
@@ -3253,6 +3490,9 @@
     ],
     "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f": [
       "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6"
+    ],
+    "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39": [
+      "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6"
     ],
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a": [
       "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
@@ -3298,6 +3538,9 @@
     ],
     "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf": [
       "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6"
+    ],
+    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac": [
+      "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797"
     ],
     "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b": [
       "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df"

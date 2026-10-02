@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "925e2cbd-ea5f-4c1a-b846-83b2d7798ae1",
+  "issue_id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:58:11.803Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Layer 4: Adapter contract (features/04_adapters)",
+        "to": "Chapter 3: Importers / Change Data Capture (features/03_importers)"
+      },
+      "description": {
+        "from": "The Adapter trait contract for the Rust library: discovery, session opening, streaming extraction (with the per-agent adapters), skip counters, read-only access, safe SQLite/WAL snapshotting. Specs first: features/04_adapters.",
+        "to": "Importers as change data capture: detecting new or changed transcripts, handing off to normalization, and retries. Bulk-loading is NOT the model — each importer watches its source and emits normalized records as they appear. The per-agent adapter epics (Claude Code BOTSPY-669e66, Cursor BOTSPY-4661a5, Codex BOTSPY-357602, Grok Bot BOTSPY-5a3bed, Antigravity BOTSPY-55ea2f) are the per-agent translations of this CDC pipeline; each adapter is only the per-agent translation of the Chapter 3 mechanics. Specs first: features/03_importers/ with per-agent subfolders."
+      }
+    }
+  }
+}

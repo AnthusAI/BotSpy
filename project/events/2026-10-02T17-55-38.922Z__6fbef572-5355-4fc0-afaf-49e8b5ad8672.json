@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "6fbef572-5355-4fc0-afaf-49e8b5ad8672",
+  "issue_id": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:55:38.922Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "parent": {
+        "from": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+        "to": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e"
+      }
+    }
+  }
+}

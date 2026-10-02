@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "bbe694d9-4805-4c54-86e9-846a7358f6d6",
+  "issue_id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:58:05.520Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Layer 3: Query and export (features/03_query_export)",
+        "to": "Chapter 2: Querying (features/02_querying)"
+      },
+      "description": {
+        "from": "Rust library API: list/open sessions across agents, filter by agent, kind, time, and project; JSON and JSONL export of the unified history. Specs first: features/03_query_export/*.feature; implementation generated from the specs.",
+        "to": "Querying implemented with SQLite and the sqlite-vec extension underneath. The engine is completely invisible to callers: one query interface, with different query functions on one class and SQLite underneath, so callers never see which engine is running. Supersedes the old property-based filtering over in-memory objects from the former features/03_query_export chapter. Implementation of record: BOTSPY-c7795b (Local Store Initiative). Specs first: features/02_querying/*.feature."
+      }
+    }
+  }
+}
