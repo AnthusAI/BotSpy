@@ -4,3 +4,7 @@ changelog_update = true
 # the changelog, tag, and create GitHub releases; nothing is uploaded.
 publish = false
 git_release_enable = true
+# The crate is not published to crates.io (and will not be), so there is no
+# registry baseline for cargo-semver-checks to compare against; the check
+# only logs "Package `botspy@*.*.*` not found" on every run.
+semver_check = false
