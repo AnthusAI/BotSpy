@@ -10,6 +10,7 @@ pub mod metadata_steps;
 pub mod role_steps;
 pub mod schema_steps;
 pub mod session_steps;
+pub mod sqlite_steps;
 pub mod status_steps;
 pub mod timestamp_steps;
 pub mod turn_steps;
@@ -54,6 +55,18 @@ pub struct BotSpyWorld {
     pub source_digest_after: Option<String>,
     /// Name of the source the reference in-memory source was built for.
     pub source_name: Option<String>,
+    /// Fixture SQLite source database (WAL snapshot steps).
+    pub sqlite_db: Option<std::path::PathBuf>,
+    /// The live writer connection holding the fixture SQLite source.
+    pub sqlite_writer: Option<rusqlite::Connection>,
+    /// Rows present in the source at snapshot time.
+    pub sqlite_rows_at_snapshot: u64,
+    /// Digest of the source db + WAL before the snapshot copy.
+    pub sqlite_digest_before: Option<String>,
+    /// Digest of the source db + WAL after the snapshot copy.
+    pub sqlite_digest_after: Option<String>,
+    /// Rows the snapshot copy reports.
+    pub snapshot_rows: Option<u64>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

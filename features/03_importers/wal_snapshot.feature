@@ -1,4 +1,3 @@
-@wip
 Feature: Read-only sources and safe SQLite/WAL snapshotting
   Adapters never write to the sources they tap. SQLite sources running in
   WAL mode — a live app writing while we read — are read through a safe
