@@ -3,23 +3,34 @@
   "title": "Schema R8: Inline data and content-addressed attachments",
   "description": "Report recommendation 8: image/inline-data part and content-addressed attachment data/data_ref. Feature: features/02_schema/08_inline_data.feature.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "a859379a-c75d-4939-a86f-3a515608bd2b",
+      "author": "home",
+      "text": "R8 done: inline data and content-addressed attachments implemented and passing (08_inline_data.feature un-tagged @wip); see impl sub-task BOTSPY-903c78.",
+      "created_at": "2026-10-02T19:05:57.375169Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:30:33.837719Z",
-  "updated_at": "2026-10-02T17:56:07.770854Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:06:08.191170Z",
+  "closed_at": "2026-10-02T19:06:08.191106Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The Gherkin spec is documented, but step definitions and passing BDD tests are still needed.",
-  "right_now_updated_at": "2026-10-02T17:56:09.244132Z",
-  "custom": {}
+  "right_now_summary": "Inline data and content-addressed attachments are implemented, documented, and passing all four scenarios.",
+  "right_now_updated_at": "2026-10-02T19:06:09.899350Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
