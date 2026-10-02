@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7",
+  "title": "Add Behave BDD scaffolding with normalized-schema feature",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "867c28e5-12c8-4075-b98c-1a081ec2515b",
+      "author": "home",
+      "text": "behave added as dev dependency; features/ tree with environment.py, steps/, and features/schema/normalized_session.feature with implemented steps; behave passes (8 steps) and runs in CI.",
+      "created_at": "2026-10-02T16:27:03.466359Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:25:51.386352Z",
+  "updated_at": "2026-10-02T16:27:11.620694Z",
+  "closed_at": "2026-10-02T16:27:11.620664Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Behave BDD scaffolding and the normalized-schema feature are added, with all eight steps passing in CI.",
+  "right_now_updated_at": "2026-10-02T16:27:13.619082Z",
+  "custom": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+  "title": "Export (features/export)",
+  "description": "JSON and JSONL export of sessions, messages, and parts with stable field order and schema version. Specs first: features/export/*.feature; implementation generated from the specs.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:18:57.677240Z",
+  "updated_at": "2026-10-02T16:18:57.677267Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is writing export specs and building JSON and JSONL output with stable fields and schema versions.",
+  "right_now_updated_at": "2026-10-02T16:23:44.244339Z",
+  "custom": {}
+}

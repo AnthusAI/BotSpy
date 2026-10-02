@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca",
+  "title": "Extract all part types from Antigravity payloads and summaries DB",
+  "description": "Minimal protobuf decoding of user-turn payloads plus the summaries SQLite; map to normalized parts with file/row provenance. Done when: fixture extraction yields the expected parts.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:17:57.950355Z",
+  "updated_at": "2026-10-02T16:23:23.185227Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is extracting payload parts and summary rows into a normalized format with source details.",
+  "right_now_updated_at": "2026-10-02T16:23:24.716529Z",
+  "custom": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "title": "Core normalized schema",
+  "description": "Design the standard normalized schema: sessions, messages, and typed content parts with a small fixed kind set (text, thinking, tool_call, tool_result, attachment, system) plus an extensible extra/raw passthrough. Every record carries timestamps, session/project identifiers, and source provenance (file, line or row). Done when the schema is specified, versioned, and round-trips through JSON.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:14:50.761818Z",
+  "updated_at": "2026-10-02T16:14:50.761841Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The schema still needs implementation, validation, versioning, tests, and review of its JSON examples.",
+  "right_now_updated_at": "2026-10-02T16:21:28.386678Z",
+  "custom": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b",
+  "title": "Write Gherkin spec: CLI behaviors",
+  "description": "Author features/cli/*.feature: listing sources and sessions, dumping sessions, export flags, window and source filters. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:20:01.801940Z",
+  "updated_at": "2026-10-02T16:20:01.802017Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is writing Gherkin scenarios for CLI listings, dumps, exports, and filters.",
+  "right_now_updated_at": "2026-10-02T16:20:03.135790Z",
+  "custom": {}
+}

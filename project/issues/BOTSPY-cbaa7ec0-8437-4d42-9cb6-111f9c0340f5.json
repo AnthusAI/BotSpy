@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5",
+  "title": "Example: placeholder for similar metrics",
+  "description": "A stub example showing where further session metrics would live, with the same consumer-only constraints. Done when: the stub exists and is referenced from docs.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:21:01.444833Z",
+  "updated_at": "2026-10-02T16:24:13.485447Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "A placeholder for similar session metrics still needs to be added and linked from the docs.",
+  "right_now_updated_at": "2026-10-02T16:24:17.047395Z",
+  "custom": {}
+}

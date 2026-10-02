@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351",
+  "title": "Add Kanbus as dev dependency and initialize BOTSPY board",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "aad96e52-59a5-4bcf-a0be-f322a0e0e1f3",
+      "author": "home",
+      "text": "kanbus 0.33.0 installed into the project env via pip; board initialized with kbs 0.32.0, project key BOTSPY; kbs validate passes.",
+      "created_at": "2026-10-02T16:26:22.437266Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:25:32.699953Z",
+  "updated_at": "2026-10-02T16:26:27.191709Z",
+  "closed_at": "2026-10-02T16:26:27.191652Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Kanbus is installed, the BOTSPY board is initialized, and validation passes.",
+  "right_now_updated_at": "2026-10-02T16:26:28.712986Z",
+  "custom": {}
+}

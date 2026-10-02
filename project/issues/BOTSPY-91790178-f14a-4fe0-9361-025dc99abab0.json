@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0",
+  "title": "Example: coding-session thanks-vs-F-bombs meter",
+  "description": "A consumer in examples/ (or an optional botspy[metrics] extra) computing the gratitude-vs-profanity meter over BotSpy sessions. Done when: the example runs on fixtures and imports nothing outside the extra.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:20:51.022007Z",
+  "updated_at": "2026-10-02T16:24:04.361521Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The gratitude-versus-profanity meter example is being prepared to run on BotSpy session fixtures.",
+  "right_now_updated_at": "2026-10-02T16:24:05.990835Z",
+  "custom": {}
+}

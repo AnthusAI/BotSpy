@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd",
+  "title": "Adopt specs-first philosophy in README, AGENTS.md, CONTRIBUTING_AGENT.md",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "a25df232-a8a4-4873-af1e-b979f64071a3",
+      "author": "home",
+      "text": "README, AGENTS.md and CONTRIBUTING_AGENT.md now state that Gherkin specs are the backbone and true source; planning is organized around features; spec -> steps -> implementation.",
+      "created_at": "2026-10-02T16:27:31.111024Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:26:01.385127Z",
+  "updated_at": "2026-10-02T16:27:35.919181Z",
+  "closed_at": "2026-10-02T16:27:35.919142Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The docs now make Gherkin specs the source of truth and guide work from specs to steps to code.",
+  "right_now_updated_at": "2026-10-02T16:27:37.363340Z",
+  "custom": {}
+}

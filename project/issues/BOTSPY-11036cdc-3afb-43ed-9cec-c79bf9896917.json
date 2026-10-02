@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
+  "title": "Stand up BotSpy project infrastructure",
+  "description": "Bootstrap the repo: python package, Kanbus, semantic-release, MIT license, GitHub CI. Done when all setup chores are closed and CI-equivalent checks pass locally.",
+  "type": "initiative",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": null,
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:14:44.408214Z",
+  "updated_at": "2026-10-02T16:14:44.408249Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
+  "right_now_updated_at": "2026-10-02T16:27:40.844347Z",
+  "custom": {}
+}

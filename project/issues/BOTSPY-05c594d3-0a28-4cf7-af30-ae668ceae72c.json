@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "title": "Project setup and tooling",
+  "description": "Chores that stood the project up: python package, Kanbus, semantic-release, MIT license, ruff, GitHub CI. Each closes when its change lands and local checks pass.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:16:03.113577Z",
+  "updated_at": "2026-10-02T16:16:03.113620Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
+  "right_now_updated_at": "2026-10-02T16:27:39.039868Z",
+  "custom": {}
+}

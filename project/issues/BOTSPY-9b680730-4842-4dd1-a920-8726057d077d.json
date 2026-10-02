@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d",
+  "title": "Add GitHub CI and release workflows",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "905cd972-14f5-4f34-be39-3710a46e4803",
+      "author": "home",
+      "text": "ci.yml: push+PR, Python 3.11/3.12 matrix with uv, ruff check + format check, behave, pytest. release.yml: python-semantic-release on push to main with contents+id-token write; PyPI publish commented out.",
+      "created_at": "2026-10-02T16:27:16.752663Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:25:55.772401Z",
+  "updated_at": "2026-10-02T16:27:21.990034Z",
+  "closed_at": "2026-10-02T16:27:21.989934Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "CI runs linting and tests on pushes and PRs, while releases are prepared on main without PyPI publishing.",
+  "right_now_updated_at": "2026-10-02T16:27:27.546045Z",
+  "custom": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a",
+  "title": "Write Gherkin spec: Grok Bot adapter behaviors",
+  "description": "Author features/adapters/grok_bot/*.feature: base32 blob-name discovery, blob decoding, extraction of all part kinds with provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:19:43.416544Z",
+  "updated_at": "2026-10-02T16:19:43.416568Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team needs to write and review executable Gherkin scenarios for Grok Bot adapter behaviors.",
+  "right_now_updated_at": "2026-10-02T16:19:44.967931Z",
+  "custom": {}
+}

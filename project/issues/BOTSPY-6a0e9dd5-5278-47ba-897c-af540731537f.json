@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f",
+  "title": "Extract all part types from Claude Code transcripts",
+  "description": "Map user, assistant, thinking, tool_call, tool_result, attachment, and system entries to normalized parts with timestamps and provenance. Done when: fixture extraction yields the expected parts and malformed lines are skipped and counted.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:17:00.247708Z",
+  "updated_at": "2026-10-02T16:21:49.859913Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The work is defining transcript parsing for all entry types, while skipping and counting malformed lines.",
+  "right_now_updated_at": "2026-10-02T16:21:52.244621Z",
+  "custom": {}
+}

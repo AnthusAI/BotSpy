@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+  "title": "Codex adapter",
+  "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:15:05.963109Z",
+  "updated_at": "2026-10-02T16:15:05.963146Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The Codex adapter is being tested against fixtures while discovery scenarios are written.",
+  "right_now_updated_at": "2026-10-02T16:22:33.479650Z",
+  "custom": {}
+}

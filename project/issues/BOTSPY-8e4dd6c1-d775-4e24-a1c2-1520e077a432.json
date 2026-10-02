@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432",
+  "title": "Implement the botspy CLI",
+  "description": "Subcommands to list sources, list sessions, dump sessions, and export, with source and window flags. Done when: the feature scenarios in features/cli pass.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:20:26.494541Z",
+  "updated_at": "2026-10-02T16:23:45.539436Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The botspy CLI is being built to list sources and sessions, dump sessions, and export data.",
+  "right_now_updated_at": "2026-10-02T16:23:47.536828Z",
+  "custom": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810",
+  "title": "Define session and message record model",
+  "description": "Sessions and messages carry ids, source agent, timestamps, session/project identifiers, and source provenance (file, line or row). Done when: the record model is implemented, validated, and unit-tested with golden JSON.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:16:12.061153Z",
+  "updated_at": "2026-10-02T16:21:14.862003Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The session and message record model still needs implementation, validation, and unit tests with golden JSON.",
+  "right_now_updated_at": "2026-10-02T16:21:16.597755Z",
+  "custom": {}
+}

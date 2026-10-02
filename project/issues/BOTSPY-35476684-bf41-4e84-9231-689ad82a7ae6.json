@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+  "title": "Write Gherkin spec: Claude Code adapter behaviors",
+  "description": "Author features/adapters/claude_code/*.feature: discovery over the projects layout, extraction of all part kinds with timestamps and provenance, skip counting, doctor reporting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:19:30.461263Z",
+  "updated_at": "2026-10-02T16:19:30.461286Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The Claude Code adapter needs executable Gherkin scenarios for discovery, extraction, skip counting, and doctor reports.",
+  "right_now_updated_at": "2026-10-02T16:19:32.342593Z",
+  "custom": {}
+}

@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+  "title": "Grok Bot adapter",
+  "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:15:09.677865Z",
+  "updated_at": "2026-10-02T16:15:09.677908Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is building fixtures, extracting transcript parts, and testing Grok Bot discovery and diagnostics.",
+  "right_now_updated_at": "2026-10-02T16:22:48.346129Z",
+  "custom": {}
+}

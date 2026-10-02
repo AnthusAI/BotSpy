@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89",
+  "title": "Implement JSON and JSONL export",
+  "description": "Export sessions, messages, and parts to JSON and JSONL with stable field order and schema version. Done when: the feature scenarios in features/export pass.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:20:21.030908Z",
+  "updated_at": "2026-10-02T16:23:37.092271Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is implementing JSON and JSONL export with stable fields and schema versioning.",
+  "right_now_updated_at": "2026-10-02T16:23:39.038782Z",
+  "custom": {}
+}

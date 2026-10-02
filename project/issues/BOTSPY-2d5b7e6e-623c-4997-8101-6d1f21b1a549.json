@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549",
+  "title": "Codex parity tests and doctor diagnostics",
+  "description": "Done when: parity tests pass on fixtures and doctor reports roots.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:17:33.316525Z",
+  "updated_at": "2026-10-02T16:22:29.975775Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Parity tests are being checked against fixtures, and doctor is reporting roots.",
+  "right_now_updated_at": "2026-10-02T16:22:31.362164Z",
+  "custom": {}
+}

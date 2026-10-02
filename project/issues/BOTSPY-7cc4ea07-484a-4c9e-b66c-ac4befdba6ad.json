@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad",
+  "title": "Define typed content-part model with fixed kinds and extra passthrough",
+  "description": "Fixed kind set: text, thinking, tool_call, tool_result, attachment, system; agent-specific data outside the kinds flows through an extensible extra/raw passthrough without loss. Done when: every part kind round-trips through JSON and unknown kinds degrade to extra.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:16:17.385937Z",
+  "updated_at": "2026-10-02T16:21:19.514317Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The typed content-part model needs fixed kinds and lossless passthrough for unknown data.",
+  "right_now_updated_at": "2026-10-02T16:21:21.914476Z",
+  "custom": {}
+}

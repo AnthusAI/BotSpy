@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
+  "title": "Write Gherkin spec: Cursor adapter behaviors",
+  "description": "Author features/adapters/cursor/*.feature: discovery across composer indexes and agent transcripts, WAL-safe snapshot reads, extraction of all part kinds with row provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:19:34.633166Z",
+  "updated_at": "2026-10-02T16:19:34.633208Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The Gherkin spec for Cursor adapter behaviors still needs to be written and reviewed.",
+  "right_now_updated_at": "2026-10-02T16:19:35.924368Z",
+  "custom": {}
+}

@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242",
+  "title": "Add Python package skeleton with pytest",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "8d09b3be-094a-458a-91e4-951d87089501",
+      "author": "home",
+      "text": "src/ layout with botspy package, one passing pytest test; venv + pip (uv not installed on this Mac); pytest 9.1.1 green.",
+      "created_at": "2026-10-02T16:26:13.090336Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:25:28.494247Z",
+  "updated_at": "2026-10-02T16:26:18.442635Z",
+  "closed_at": "2026-10-02T16:26:18.442600Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The botspy package skeleton is set up, and its first pytest test passes.",
+  "right_now_updated_at": "2026-10-02T16:26:19.806212Z",
+  "custom": {}
+}

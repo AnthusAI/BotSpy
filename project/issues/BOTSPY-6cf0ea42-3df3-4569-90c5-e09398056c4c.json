@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c",
+  "title": "Add ruff lint and format configuration",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "a4c1ba48-15a2-4e17-813b-5d893cacaad0",
+      "author": "home",
+      "text": "[tool.ruff] configured (line-length 100, target py311); ruff check and ruff format --check pass.",
+      "created_at": "2026-10-02T16:26:53.177368Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:25:46.317670Z",
+  "updated_at": "2026-10-02T16:26:58.040479Z",
+  "closed_at": "2026-10-02T16:26:58.040425Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Ruff is configured for Python 3.11, and lint and format checks pass.",
+  "right_now_updated_at": "2026-10-02T16:26:59.569641Z",
+  "custom": {}
+}

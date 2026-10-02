@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+  "title": "Example use cases (consumers of BotSpy)",
+  "description": "Optional consumers that demonstrate BotSpy: examples/ directory or an optional botspy[metrics] extra. Never in core required dependencies. Must stay blocked-by the Query, export, and CLI epic.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:15:30.614751Z",
+  "updated_at": "2026-10-02T16:15:59.118538Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The team is building and reviewing BotSpy examples, with a metrics placeholder still needed.",
+  "right_now_updated_at": "2026-10-02T16:24:18.869523Z",
+  "custom": {}
+}

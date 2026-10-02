@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
+  "title": "Antigravity parity tests and doctor diagnostics",
+  "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:18:02.632401Z",
+  "updated_at": "2026-10-02T16:23:27.445142Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Parity tests run on fixtures, and doctor checks both roots.",
+  "right_now_updated_at": "2026-10-02T16:23:29.179203Z",
+  "custom": {}
+}

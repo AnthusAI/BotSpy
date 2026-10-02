@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+  "title": "Write Gherkin spec: Codex adapter behaviors",
+  "description": "Author features/adapters/codex/*.feature: discovery over CODEX_HOME sessions, extraction of all part kinds with line provenance and skip counting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:19:38.562847Z",
+  "updated_at": "2026-10-02T16:19:38.562914Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The Gherkin scenarios for Codex adapter discovery and extraction still need to be written and reviewed.",
+  "right_now_updated_at": "2026-10-02T16:19:40.147767Z",
+  "custom": {}
+}
