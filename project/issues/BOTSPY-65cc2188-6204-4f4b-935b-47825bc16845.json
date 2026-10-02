@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is defining and testing adapters, schemas, specs, exports, and cross-platform support.",
-  "right_now_updated_at": "2026-10-02T18:49:29.683052Z",
+  "right_now_summary": "The team is building adapters, schemas, exports, and tests, while writing and reviewing the Gherkin specs.",
+  "right_now_updated_at": "2026-10-02T18:51:56.964484Z",
   "custom": {}
 }
