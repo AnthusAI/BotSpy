@@ -411,6 +411,27 @@ fn json_session_number(world: &mut BotSpyWorld, id: String, key: String, expecte
     assert_eq!(actual, expected, "unexpected {key} of session {id}");
 }
 
+#[then(regex = r#"^the JSON sessions are ordered "(.*)"$"#)]
+fn json_sessions_ordered(world: &mut BotSpyWorld, expected: String) {
+    let entries = json_entries(world);
+    let ids: Vec<&str> = entries
+        .iter()
+        .filter_map(|entry| entry.get("id").and_then(Value::as_str))
+        .collect();
+    let expected: Vec<&str> = expected.split(',').map(str::trim).collect();
+    assert_eq!(
+        ids.len(),
+        expected.len(),
+        "unexpected session count; ids: {ids:?}, expected: {expected:?}"
+    );
+    for (actual, prefix) in ids.iter().zip(expected.iter()) {
+        assert!(
+            actual.starts_with(prefix),
+            "order mismatch: expected {prefix}… got {actual}; ids: {ids:?}"
+        );
+    }
+}
+
 #[then(regex = r#"^every JSON entry has a non-empty "([^"]+)"$"#)]
 fn every_entry_non_empty(world: &mut BotSpyWorld, key: String) {
     for entry in json_entries(world) {

@@ -85,6 +85,11 @@ Feature: botspy sessions
     Then the exit code is 2
     And stderr contains "--until" "not-a-time"
 
+  Scenario: Sessions are ordered most recent activity first
+    When I run "botspy sessions --source claude_code -o json" against the fixture home
+    Then the exit code is 0
+    And the JSON sessions are ordered "00000000-0000-4000-8000-000000000003,00000000-0000-4000-8000-000000000002,00000000-0000-4000-8000-000000000001,solo-abc123"
+
   Scenario: An unknown source filter is rejected
     When I run "botspy sessions --source notepad"
     Then the exit code is 1

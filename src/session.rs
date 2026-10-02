@@ -163,9 +163,9 @@ impl SessionStore {
     }
 
     /// Sessions across all registered agents, sorted by last activity with
-    /// the most recent first (ties broken by id for determinism). The same
-    /// session reported by two discovery passes lists once: first report
-    /// wins.
+    /// the most recent first (ties broken by id for determinism; sessions
+    /// with no recorded activity sort last). The same session reported by
+    /// two discovery passes lists once: first report wins.
     pub fn list_sessions(&self) -> Vec<SessionSummary> {
         let mut all: Vec<SessionSummary> = self
             .adapters
@@ -253,5 +253,18 @@ mod tests {
         store.register(adapter);
         let ids: Vec<String> = store.list_sessions().into_iter().map(|s| s.id).collect();
         assert_eq!(ids, vec!["u7", "u8", "u6"]);
+    }
+
+    #[test]
+    fn listing_ties_break_by_id_and_empty_timestamps_sort_last() {
+        let mut store = SessionStore::new();
+        let adapter = Arc::new(FixtureAdapter::new(crate::Agent::Codex));
+        adapter.add_session(session("u4", ""));
+        adapter.add_session(session("u2", "2026-10-01T12:00:00Z"));
+        adapter.add_session(session("u1", "2026-10-01T12:00:00Z"));
+        adapter.add_session(session("u3", ""));
+        store.register(adapter);
+        let ids: Vec<String> = store.list_sessions().into_iter().map(|s| s.id).collect();
+        assert_eq!(ids, vec!["u1", "u2", "u3", "u4"]);
     }
 }
