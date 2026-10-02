@@ -253,8 +253,9 @@
 //! source file and line* in the embedded spec. The native record identity —
 //! the agent's own record id and type, an ordinal sort key (Codex numbers
 //! every record; Cursor orders bubbles by header list), and the native
-//! parent pointer (Claude Code's uuid/parentUuid tree) — is specified in
-//! the later scenarios of `provenance.feature` and is pending.
+//! parent pointer (Claude Code's uuid/parentUuid tree) — is on
+//! [`Provenance`](crate::schema::Provenance) too: `record_id`, `record_type`,
+//! `ordinal`, and `parent_record`.
 //!
 //! ```
 //! use botspy::{Provenance, Role, KnownPart, Message, Part};
@@ -266,7 +267,7 @@
 //!     provenance: Some(Provenance {
 //!         source_file: "~/.claude/projects/demo/session-abc.jsonl".into(),
 //!         line: Some(17),
-//!         row: None,
+//!         ..Provenance::default()
 //!     }),
 //!     ..Message::default()
 //! };
@@ -373,7 +374,9 @@
 //!    [`CompactionWindow`](crate::schema::CompactionWindow), the message
 //!    compaction-summary flag, and residual context tokens.
 //! 6. `provenance.feature` (later scenarios) — native record id, record
-//!    type, ordinal sort key, and native parent pointer.
+//!    type, ordinal sort key, and native parent pointer. Implemented:
+//!    [`Provenance::record_id`](crate::schema::Provenance::record_id),
+//!    `record_type`, `ordinal`, and `parent_record`.
 //! 7. `07_tool_call_arguments.feature` — raw-string tool-call arguments,
 //!    kept raw, parsed only when the raw string is valid JSON.
 //! 8. `08_inline_data.feature` — inline-data part with media type, content
