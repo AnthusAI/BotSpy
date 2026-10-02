@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "f49aef46-8c1c-4a0d-91da-2641ec541fba",
+  "issue_id": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:51:52.085Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Crate index page in rustdoc, organized around spec layers",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "docs-rustdoc"
+    }
+  }
+}

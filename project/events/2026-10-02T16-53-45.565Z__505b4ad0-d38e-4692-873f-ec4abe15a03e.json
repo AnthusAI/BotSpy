@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "505b4ad0-d38e-4692-873f-ec4abe15a03e",
+  "issue_id": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:53:45.565Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "Documentation: quickstart, schema reference with the part-kind model, per-adapter on-disk format matrix, and adapter authoring guide.",
+        "to": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded .feature files, spec-coverage guard test, rustdoc + doctests in CI)."
+      }
+    }
+  }
+}

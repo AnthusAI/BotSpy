@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "656245f4-1dcc-4863-8683-91457a639707",
+  "issue_id": "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:52:08.923Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Rustdoc and doctests in CI (-D warnings, cargo test --doc)",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "docs-rustdoc"
+    }
+  }
+}

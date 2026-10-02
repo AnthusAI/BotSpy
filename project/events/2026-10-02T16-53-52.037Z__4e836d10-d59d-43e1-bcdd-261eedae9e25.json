@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "4e836d10-d59d-43e1-bcdd-261eedae9e25",
+  "issue_id": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:53:52.037Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded .feature files, spec-coverage guard test, rustdoc + doctests in CI).",
+        "to": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded feature files, spec-coverage guard test, rustdoc and doctests in CI)."
+      }
+    }
+  }
+}

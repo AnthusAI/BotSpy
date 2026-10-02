@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "c93c40ee-dbe5-4c36-aee7-f994fc0624bf",
+  "issue_id": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:52:41.979Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: a test fails if any .feature file under features/ is not embedded in a doc chapter, keeping the docs organized around the specs."
+      }
+    }
+  }
+}
