@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df",
+  "title": "Implement until spec passes: R4 turn grouping",
+  "description": "Done when: the wip tag is removed from 04_turn_grouping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:33:19.402916Z",
+  "updated_at": "2026-10-02T17:38:41.294783Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The R4 session graph is being implemented until the spec passes.",
+  "right_now_updated_at": "2026-10-02T17:33:26.733845Z",
+  "custom": {}
+}

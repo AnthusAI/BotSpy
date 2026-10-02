@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f",
+  "title": "Write Gherkin spec: R1 usage and cost metrics",
+  "description": "Done when: features/02_schema/01_usage_tokens.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "40a0bb1f-917e-4dbe-a651-5f54d1bd89c0",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:31:56.535259Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:31:32.961654Z",
+  "updated_at": "2026-10-02T17:37:50.119187Z",
+  "closed_at": "2026-10-02T17:32:02.883875Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec is written and embedded in the Chapter 2 Rust documentation.",
+  "right_now_updated_at": "2026-10-02T17:37:52.702985Z",
+  "custom": {}
+}

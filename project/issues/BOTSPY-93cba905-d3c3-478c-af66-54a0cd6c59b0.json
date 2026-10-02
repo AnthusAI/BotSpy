@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0",
+  "title": "Schema R7: Raw-string tool-call arguments",
+  "description": "",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T17:30:28.792337Z",
+  "updated_at": "2026-10-02T17:30:28.792387Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team is implementing R7 provenance widening against the documented Gherkin specification.",
+  "right_now_updated_at": "2026-10-02T17:35:17.974726Z",
+  "custom": {}
+}

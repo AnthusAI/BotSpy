@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf",
+  "title": "Write Gherkin spec: R2 tool result status",
+  "description": "Done when: features/02_schema/02_tool_result_status.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "63e82686-741e-4ae3-a3fe-7bb1b498ed2c",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:32:27.335693Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:32:08.535712Z",
+  "updated_at": "2026-10-02T17:38:05.952128Z",
+  "closed_at": "2026-10-02T17:32:34.111883Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec has concrete scenarios and is embedded in the Chapter 2 Rustdoc.",
+  "right_now_updated_at": "2026-10-02T17:38:08.720401Z",
+  "custom": {}
+}

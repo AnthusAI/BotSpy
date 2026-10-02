@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
+  "title": "Schema R1: Usage and cost metrics on Message and Session",
+  "description": "",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T17:29:40.027455Z",
+  "updated_at": "2026-10-02T17:29:40.027488Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
+  "right_now_updated_at": "2026-10-02T17:38:01.645758Z",
+  "custom": {}
+}

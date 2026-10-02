@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
+  "title": "Implement until spec passes: R5 turn grouping",
+  "description": "",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:33:50.436115Z",
+  "updated_at": "2026-10-02T17:33:56.381838Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team is implementing R5 turn grouping until the spec passes.",
+  "right_now_updated_at": "2026-10-02T17:33:57.904506Z",
+  "custom": {}
+}

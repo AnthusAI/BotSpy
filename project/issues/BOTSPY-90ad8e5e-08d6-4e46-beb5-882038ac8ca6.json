@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6",
+  "title": "Implement until spec passes: R1 usage and cost metrics",
+  "description": "Done when: the wip tag is removed from 01_usage_tokens.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:31:41.203413Z",
+  "updated_at": "2026-10-02T17:37:57.533626Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
+  "right_now_updated_at": "2026-10-02T17:37:59.319063Z",
+  "custom": {}
+}

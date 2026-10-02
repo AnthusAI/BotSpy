@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171",
+  "title": "Implement until spec passes: R7 provenance widening",
+  "description": "",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:34:55.671698Z",
+  "updated_at": "2026-10-02T17:35:01.325708Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team is implementing R7 provenance widening until it passes the spec.",
+  "right_now_updated_at": "2026-10-02T17:35:03.051425Z",
+  "custom": {}
+}

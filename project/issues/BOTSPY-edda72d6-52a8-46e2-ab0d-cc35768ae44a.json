@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a",
+  "title": "Implement until spec passes: R9 inline data and attachments",
+  "description": "",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:35:58.550134Z",
+  "updated_at": "2026-10-02T17:36:05.463347Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team is implementing R9 inline data and attachments to meet the specification.",
+  "right_now_updated_at": "2026-10-02T17:36:06.528685Z",
+  "custom": {}
+}

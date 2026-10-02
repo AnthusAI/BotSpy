@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176",
+  "title": "Write Gherkin spec: R9 inline data and attachments",
+  "description": "",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T17:35:52.371377Z",
+  "updated_at": "2026-10-02T17:35:52.371407Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team is writing a Gherkin spec for R9 inline data and attachments.",
+  "right_now_updated_at": "2026-10-02T17:35:53.875728Z",
+  "custom": {}
+}
