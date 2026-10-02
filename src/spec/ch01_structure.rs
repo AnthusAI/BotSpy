@@ -398,6 +398,10 @@
 //!     injected `<system-reminder>` content is split into a `System` part.
 //! 11. `11_session_metadata.feature` — optional Session metadata: title,
 //!     git coordinates, cwd, archived, pr_url, status, app version, models.
+//!     Implemented: [`SessionMetadata`](crate::schema::SessionMetadata) on
+//!     both [`Session`](crate::session::Session) and
+//!     [`SessionSummary`](crate::session::SessionSummary); fields the agent
+//!     does not record stay absent.
 //! 12. `12_raw_blob_escape_hatch.feature` — `{blob_hash, container}` blob
 //!     references for opaque content, plus partial/cloud-cache session
 //!     flags.
@@ -452,7 +456,7 @@
     "### 10_role_mapping.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/10_role_mapping.feature"),
     "\n```\n\n",
-    "### 11_session_metadata.feature (pending)\n\n```gherkin\n",
+    "### 11_session_metadata.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/11_session_metadata.feature"),
     "\n```\n\n",
     "### 12_raw_blob_escape_hatch.feature (pending)\n\n```gherkin\n",

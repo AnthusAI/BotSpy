@@ -108,6 +108,7 @@ pub use adapters::fixture::FixtureAdapter;
 pub use schema::{
     content_hash, Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, KnownPart,
     Message, ModelCost, Origin, Part, PartStatus, Peer, Provenance, RateLimitState, Role,
-    SessionCost, SubagentInfo, Timestamp, ToolArguments, Turn, TurnStatus, Usage, SCHEMA_VERSION,
+    SessionCost, SessionMetadata, SubagentInfo, Timestamp, ToolArguments, Turn, TurnStatus, Usage,
+    SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};

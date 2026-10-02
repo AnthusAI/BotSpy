@@ -1,4 +1,3 @@
-@wip
 Feature: Optional session metadata
   Title, git coordinates, working directory, archive state, PR links,
   status, app version, and models are named optional Session fields so
