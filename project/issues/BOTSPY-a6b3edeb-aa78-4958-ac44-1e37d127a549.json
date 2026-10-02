@@ -24,10 +24,17 @@
       "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
       "created_at": "2026-10-02T22:17:20.119233Z",
       "comment_type": "default"
+    },
+    {
+      "id": "101a1bf3-b733-4a2a-97f4-5be60d4acce2",
+      "author": "home",
+      "text": "All five bugs fixed and closed. Each went spec-first (Gherkin scenario(s) in features/cli/20_sessions.feature, watched red, then green) with synthetic-fixture regression tests only — no real transcripts anywhere. Fixes, in order, each ff-landed on develop from fix/sessions-listing-bugs-a:\n- BOTSPY-4c8521a3 bc4caa7 — discover() summaries carry message counts/timestamps/titles via a side-effect-free throwaway scanner.\n- BOTSPY-3f3ec558 f887561 — --since/--until window works and invalid values exit 2 with a stderr message (RFC 3339 validator + unit tests).\n- BOTSPY-3ccc4fc9 fc830d0 — most-recent-first order pinned (CLI order scenario + tie-break/empty-last unit test, doc comment).\n- BOTSPY-17e4aad9 6fa7bf7 — dedupe keyed on (agent, id, project_id); Agent derives PartialOrd/Ord; linked to local-store task BOTSPY-a48fb1 which was notified to adopt the same keying.\n- BOTSPY-bc3ae3db 8e4b9e6 — sessions table aligned in both truncation modes via dynamic column widths; show fragment-elision note left to CLI epic BOTSPY-7c2705.\nEnd-to-end check on the original real-data repro (read-only): sessions --limit 6 now shows real counts (5461/7779/...), true most-recent-first order, aligned in default and --no-truncate modes. Gates after every fix: cargo fmt --all, clippy --all-targets -D warnings, RUSTDOCFLAGS=\"-D warnings\" cargo doc, cargo test, cargo test --test bdd (169 passed, 2 skipped). release.yml/release-plz.toml untouched; no files from the local-store agent's branch (src/store/*, features/02_querying/*, Cargo.toml, src/lib.rs, src/spec/ch02_querying.rs, tests/steps/store_steps.rs) touched. Follow-up recorded: the other four adapters' discover() share the empty-summary defect — belongs to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
+      "created_at": "2026-10-02T22:27:19.581296Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T22:16:37.268589Z",
-  "updated_at": "2026-10-02T22:17:20.119258Z",
+  "updated_at": "2026-10-02T22:27:19.581323Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
