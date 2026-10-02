@@ -57,7 +57,8 @@
 //! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature)),
 //! and query laziness
 //! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
-//! The search specs remain `@wip` until their implementation tasks land.
+//! The search specs are specified-red (`@wip`) until their implementation
+//! tasks land.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -78,5 +79,11 @@
     "\n```\n\n",
     "### 06_refresh.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/06_refresh.feature"),
+    "\n```\n\n",
+    "### 07_text_search.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/07_text_search.feature"),
+    "\n```\n\n",
+    "### 08_vector_search.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/08_vector_search.feature"),
     "\n```\n"
 )]
