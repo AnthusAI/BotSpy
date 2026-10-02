@@ -3,23 +3,34 @@
   "title": "Schema R10: Role mapping conventions for developer, inter-agent, injected",
   "description": "Report recommendation 10: role mapping conventions for developer, inter-agent, injected, and simulated messages. Feature: features/02_schema/10_role_mapping.feature.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "106ddbd6-734b-4fbc-94de-777ecf9a285c",
+      "author": "home",
+      "text": "R10 done: role mapping conventions implemented and passing (10_role_mapping.feature un-tagged @wip); see impl sub-task BOTSPY-4782d9.",
+      "created_at": "2026-10-02T19:08:30.118634Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:30:45.590491Z",
-  "updated_at": "2026-10-02T17:55:38.922104Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:08:37.334373Z",
+  "closed_at": "2026-10-02T19:08:37.334311Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The role-mapping spec is documented, but no recent work is reported on its tests.",
-  "right_now_updated_at": "2026-10-02T17:55:40.943612Z",
-  "custom": {}
+  "right_now_summary": "Role-mapping conventions are implemented, documented, and passing all five scenarios.",
+  "right_now_updated_at": "2026-10-02T19:08:39.122561Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
