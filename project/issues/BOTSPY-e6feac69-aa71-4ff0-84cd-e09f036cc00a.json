@@ -3,7 +3,7 @@
   "title": "Implement sessions() query API with kind/time/project filters",
   "description": "botspy.sessions(source=None) returns lazily-iterated sessions; messages and parts iterate in order; filters by source, part kind, time window, and project. Done when: the feature scenarios in features/query pass.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,24 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "263da7f4-289e-42a4-8d52-48630976292e",
+      "author": "home",
+      "text": "superseded: the Python sessions() API was removed in the Rust pivot; the query API is specified under the Layer 3 epic",
+      "created_at": "2026-10-02T16:39:36.017745Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:20:16.853251Z",
-  "updated_at": "2026-10-02T16:23:32.156510Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:39:41.615469Z",
+  "closed_at": "2026-10-02T16:39:41.615441Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The sessions() query API is specified, but no recent work is reported.",
-  "right_now_updated_at": "2026-10-02T16:23:33.968424Z",
+  "right_now_summary": "The Python sessions() API was removed, and its query design now lives under the Layer 3 epic.",
+  "right_now_updated_at": "2026-10-02T16:39:44.030938Z",
   "custom": {}
 }

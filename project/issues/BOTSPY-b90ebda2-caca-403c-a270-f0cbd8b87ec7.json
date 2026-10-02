@@ -3,23 +3,31 @@
   "title": "Write Gherkin spec: normalized schema",
   "description": "Author features/schema/*.feature: a session is made of ordered messages whose parts each have a kind (text, thinking, tool_call, tool_result, attachment, system) plus extra passthrough, with concrete examples for every kind. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "7337768b-3b99-4485-8348-9712a6b768dd",
+      "author": "home",
+      "text": "Specs written and executable: features/02_schema/message_parts.feature, provenance.feature, extra_passthrough.feature; 6 scenarios green via cargo test --test bdd.",
+      "created_at": "2026-10-02T16:41:14.862308Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:19.772866Z",
-  "updated_at": "2026-10-02T16:19:19.772901Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:41:18.832128Z",
+  "closed_at": "2026-10-02T16:41:18.832083Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Gherkin schema spec still needs writing and review with examples for every message part kind.",
-  "right_now_updated_at": "2026-10-02T16:19:21.422426Z",
+  "right_now_summary": "The schema specs are written, executable, and all six scenarios pass.",
+  "right_now_updated_at": "2026-10-02T16:41:21.430122Z",
   "custom": {}
 }

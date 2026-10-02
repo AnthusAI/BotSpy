@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+  "title": "Layer 1: Unified session history (features/01_session_history)",
+  "description": "List sessions across agents sorted by last activity, open a session by id, walk its messages in order. Specs first: features/01_session_history/*.feature; implementation generated from the specs.",
+  "type": "epic",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:40:15.414596Z",
+  "updated_at": "2026-10-02T16:40:15.414624Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "Session history specs and implementation are complete, with all 11 BDD scenarios passing.",
+  "right_now_updated_at": "2026-10-02T16:41:34.118902Z",
+  "custom": {}
+}

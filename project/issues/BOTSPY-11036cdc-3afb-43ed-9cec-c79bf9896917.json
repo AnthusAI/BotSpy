@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
-  "right_now_updated_at": "2026-10-02T16:27:40.844347Z",
+  "right_now_summary": "The project is shifting from Python to Rust as its setup and tooling take shape.",
+  "right_now_updated_at": "2026-10-02T16:40:52.117291Z",
   "custom": {}
 }

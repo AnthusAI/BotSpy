@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
-  "title": "Example use cases (consumers of BotSpy)",
-  "description": "Optional consumers that demonstrate BotSpy: examples/ directory or an optional botspy[metrics] extra. Never in core required dependencies. Must stay blocked-by the Query, export, and CLI epic.",
+  "title": "Example use cases (consumers of the BotSpy library)",
+  "description": "Optional examples that consume the botspy Rust library directly as Rust code (examples/ in the crate or integration tests): the thanks-vs-F-bombs meter, local sentiment analysis (VADER default, optional GoEmotions transformer), and a placeholder for similar metrics. No binary, no CLI, no extra crate; blocked-by the Layer 3: Query and export epic.",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T16:15:30.614751Z",
-  "updated_at": "2026-10-02T16:15:59.118538Z",
+  "updated_at": "2026-10-02T16:40:06.017258Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building and reviewing BotSpy examples, with a metrics placeholder still needed.",
-  "right_now_updated_at": "2026-10-02T16:24:18.869523Z",
+  "right_now_summary": "The team is building and reviewing Rust examples for meters, sentiment analysis, and future session metrics.",
+  "right_now_updated_at": "2026-10-02T16:40:07.210025Z",
   "custom": {}
 }

@@ -1,0 +1,38 @@
+{
+  "id": "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097",
+  "title": "Implement SessionStore, SessionSummary and the in-memory fixture adapter in Rust",
+  "description": "SessionStore over registered adapters, SessionSummary, sorted listing, open by id with UnknownSession error, FixtureAdapter as the reference Adapter implementation. Done when: the layer 1 feature scenarios pass via cargo test --test bdd.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [
+    {
+      "id": "dd853f8a-f540-4aec-abaf-ce684dd8b45d",
+      "author": "home",
+      "text": "SessionStore, SessionSummary, UnknownSession and FixtureAdapter implemented in src/session.rs, src/adapter.rs, src/adapters/fixture.rs; all 11 bdd scenarios pass, clippy -D warnings and rustfmt clean.",
+      "created_at": "2026-10-02T16:41:24.687020Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:40:28.146466Z",
+  "updated_at": "2026-10-02T16:41:30.431514Z",
+  "closed_at": "2026-10-02T16:41:30.431463Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "SessionStore and FixtureAdapter are implemented, and all 11 BDD scenarios pass.",
+  "right_now_updated_at": "2026-10-02T16:41:31.915444Z",
+  "custom": {}
+}

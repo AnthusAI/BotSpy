@@ -3,23 +3,31 @@
   "title": "CLI (features/cli)",
   "description": "The botspy CLI: list sources, list sessions, dump and export, with source and window flags. Specs first: features/cli/*.feature; implementation generated from the specs.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "cadd7aaa-7f96-4c34-831e-cec868095d9e",
+      "author": "home",
+      "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+      "created_at": "2026-10-02T16:39:08.064735Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:01.002893Z",
-  "updated_at": "2026-10-02T16:19:01.002948Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:39:11.453317Z",
+  "closed_at": "2026-10-02T16:39:11.453279Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building the CLI and writing specs for listings, dumps, exports, and filters.",
-  "right_now_updated_at": "2026-10-02T16:23:48.682820Z",
+  "right_now_summary": "The CLI is not being built because botspy will remain a library-only project.",
+  "right_now_updated_at": "2026-10-02T16:39:34.005392Z",
   "custom": {}
 }
