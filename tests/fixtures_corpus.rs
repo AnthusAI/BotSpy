@@ -665,13 +665,18 @@ fn fixtures_contain_no_secrets() {
         }
     }
     if let Ok(home) = std::env::var("HOME") {
-        for rel in list_relative(&committed) {
-            let bytes = std::fs::read(committed.join(&rel)).expect("read fixture file");
-            let text = String::from_utf8_lossy(&bytes).into_owned();
-            assert!(
-                !text.contains(&home),
-                "fixture {rel} leaks the real home directory path"
-            );
+        // An empty or relative HOME would make contains() trivially true or
+        // meaningless (musl cross containers set HOME=""), so only check a
+        // plausible absolute home path.
+        if home.len() > 1 && home.starts_with('/') {
+            for rel in list_relative(&committed) {
+                let bytes = std::fs::read(committed.join(&rel)).expect("read fixture file");
+                let text = String::from_utf8_lossy(&bytes).into_owned();
+                assert!(
+                    !text.contains(&home),
+                    "fixture {rel} leaks the real home directory path"
+                );
+            }
         }
     }
 }
