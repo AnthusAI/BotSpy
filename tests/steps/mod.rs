@@ -5,6 +5,7 @@ pub mod blob_steps;
 pub mod claude_code_steps;
 pub mod codex_steps;
 pub mod compaction_steps;
+pub mod cursor_steps;
 pub mod graph_steps;
 pub mod importer_steps;
 pub mod inline_steps;
@@ -87,6 +88,28 @@ pub struct BotSpyWorld {
     pub cx_discovery: Option<botspy::adapters::codex::CodexDiscovery>,
     /// Result of the most recent Codex extraction pass.
     pub cx_extraction: Option<botspy::adapters::codex::CodexExtraction>,
+    /// Cursor KV store file under construction (Cursor steps).
+    pub cur_store: Option<std::path::PathBuf>,
+    /// The Cursor KV source watching that store.
+    pub cur_source: Option<botspy::adapters::cursor::CursorSource>,
+    /// Composer id the current Cursor fixture extracts.
+    pub cur_composer: Option<String>,
+    /// Result of the most recent Cursor KV discovery.
+    pub cur_discovery: Option<botspy::adapters::cursor::CursorDiscovery>,
+    /// Result of the most recent Cursor composer extraction.
+    pub cur_extraction: Option<botspy::adapters::cursor::CursorExtraction>,
+    /// Cursor CLI projects root under construction.
+    pub cur_cli_root: Option<std::path::PathBuf>,
+    /// The Cursor CLI source watching that root.
+    pub cur_cli_source: Option<botspy::adapters::cursor::CursorCliSource>,
+    /// Result of the most recent Cursor CLI discovery.
+    pub cur_cli_discovery: Option<botspy::adapters::cursor::CursorCliDiscovery>,
+    /// The live app writer holding the fixture Cursor KV store.
+    pub cur_writer: Option<rusqlite::Connection>,
+    /// Digest of the store + WAL before the snapshot read.
+    pub cur_digest_before: Option<String>,
+    /// Digest of the store + WAL after the snapshot read.
+    pub cur_digest_after: Option<String>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

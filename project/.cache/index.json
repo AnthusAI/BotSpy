@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T19:58:38Z",
+  "built_at": "2026-10-02T20:06:24Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -59,7 +59,7 @@
     "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790969522.115241,
     "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790968662.239435,
     "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39.json": 1790963026.567833,
-    "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
+    "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790971582.956761,
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790970132.619872,
     "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790967095.86074,
     "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790970229.259646,
@@ -78,7 +78,7 @@
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790971106.856783,
     "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790970322.152964,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790969888.333146,
-    "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
+    "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790971580.737688,
     "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790960020.137935,
     "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790967809.040786,
     "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790968672.54022,
@@ -91,7 +91,7 @@
     "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790970322.153374,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790969201.288206,
     "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790969012.589116,
-    "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
+    "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790971579.081531,
     "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790967969.899864,
     "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790967301.695344,
     "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790967568.526876,
@@ -2059,7 +2059,7 @@
       "title": "Cursor parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports roots and index drift.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2071,10 +2071,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "ad7c6222-865f-43f4-a130-aaca9a044907",
+          "author": "home",
+          "text": "Parity covered by 6 lib unit tests (discovery + changed detection, headers-order extraction, role/thinking/tool-call mapping, blob part mapping, doctor flags missing store, CLI transcripts discovery + extraction with thinking) plus 7 executable BDD scenarios (wip tag dropped; feature wording prefixed with the agent name so step regexes stay distinct from Codex). Doctor reports composers, bubble count, and issues. Full gate green.",
+          "created_at": "2026-10-02T20:06:22.238424Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:19.074255Z",
-      "updated_at": "2026-10-02T16:22:15.559505Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:06:22.956646Z",
+      "closed_at": "2026-10-02T20:06:22.956602Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2744,7 +2752,7 @@
       "title": "Extract all part types from Cursor stores with WAL-safe snapshots",
       "description": "Read SQLite through a safe snapshot; map composer messages and agent transcript entries to normalized parts with row provenance for SQLite. Done when: fixture extraction yields the expected parts and the source db is byte-identical afterwards.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2756,10 +2764,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "0a34167c-0f05-41ce-81d4-26a5704b3152",
+          "author": "home",
+          "text": "Extraction maps bubbles into chapter-1 Messages in fullConversationHeadersOnly order (bubble keys b3,b1,b2 normalized to b1,b2,b3): type 1 -> User text, type 2 -> Assistant with thinking and toolFormerData -> ToolCall, toolResultBlob -> Blob part with blob_hash + container agentKv:blob. Changed composers re-detected by lastUpdatedAt (only composer-2 after the app bumps it). The hot WAL store is read exclusively through snapshot_sqlite snapshot copies - digest-verified never mutated, live app keeps writing. Full gate green.",
+          "created_at": "2026-10-02T20:06:19.962040Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:15.473642Z",
-      "updated_at": "2026-10-02T16:22:10.973048Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:06:20.737532Z",
+      "closed_at": "2026-10-02T20:06:20.737488Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -3177,7 +3193,7 @@
       "title": "Synthetic fixture and discovery for Cursor IDE and agent stores",
       "description": "Fixture mirrors the Cursor User dir (state.vscdb composer stores with per-workspace and central indexes) and the ~/.cursor agent transcripts and chats metadata. Done when: discovery unions all composer indexes and finds agent sessions.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3189,10 +3205,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "085d069c-907a-4d4b-8c9d-cad7b307b6fa",
+          "author": "home",
+          "text": "Synthetic Cursor fixtures + BDD: state.vscdb cursorDiskKV KV store drives composer discovery from composerHeaders (3 composers -> 3 sessions); CLI agent transcripts discovered per project dir under agent-transcripts/. CursorSource (KV) and CursorCliSource (transcripts) in src/adapters/cursor.rs; fixture steps in tests/steps/cursor_steps.rs. Full gate green (bdd 101/101).",
+          "created_at": "2026-10-02T20:06:17.426271Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:10.162622Z",
-      "updated_at": "2026-10-02T16:22:06.439876Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:06:19.081389Z",
+      "closed_at": "2026-10-02T20:06:19.081352Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
