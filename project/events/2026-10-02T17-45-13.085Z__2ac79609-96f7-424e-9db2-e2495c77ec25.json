@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "2ac79609-96f7-424e-9db2-e2495c77ec25",
+  "issue_id": "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:13.085Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 7: tool-call arguments that are not JSON objects keep their raw string; parsed only when the raw string is valid JSON. Feature: features/02_schema/07_tool_call_arguments.feature."
+      }
+    }
+  }
+}

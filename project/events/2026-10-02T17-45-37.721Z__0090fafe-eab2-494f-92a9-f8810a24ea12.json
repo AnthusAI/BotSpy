@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "0090fafe-eab2-494f-92a9-f8810a24ea12",
+  "issue_id": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:37.721Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 12: raw-blob escape hatch ({blob_hash, container}) and partial/cloud-cache provenance flags. Feature: features/02_schema/12_raw_blob_escape_hatch.feature."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "afcf2baa-5ddd-4d8f-9c54-2ad49a4a13f0",
+  "issue_id": "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:44:49.137Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 2: status/is_error on ToolResult plus error/aborted status on messages and turns. Feature: features/02_schema/02_tool_result_status.feature."
+      }
+    }
+  }
+}

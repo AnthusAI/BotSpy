@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "908bc9fb-f003-4ed7-9427-7af39ea96ad0",
+  "issue_id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:41:59.066Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: R12 raw blob escape hatch",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

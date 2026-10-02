@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "59779c25-0123-4bc5-a928-9c72fabbd0a1",
+  "issue_id": "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:42:25.522Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 10_role_mapping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

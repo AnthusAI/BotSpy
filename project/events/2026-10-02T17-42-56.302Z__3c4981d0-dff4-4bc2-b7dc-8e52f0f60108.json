@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "3c4981d0-dff4-4bc2-b7dc-8e52f0f60108",
+  "issue_id": "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:42:56.302Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 12_raw_blob_escape_hatch.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}
