@@ -22,6 +22,7 @@ use std::path::PathBuf;
 use std::sync::Arc;
 
 use clap::{Parser, Subcommand, ValueEnum};
+use serde_json::Value;
 
 use crate::adapter::Adapter;
 use crate::adapters::antigravity::AntigravitySource;
@@ -609,8 +610,152 @@ fn show_human(session: &Session, selected: Option<usize>, no_truncate: bool) -> 
     out
 }
 
-fn doctor(_args: DoctorArgs) -> RunOutcome {
-    todo!("doctor verb (BOTSPY-727bb6)")
+fn doctor(args: DoctorArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let names = match selected_sources(&args.global.source) {
+        Ok(names) => names,
+        Err(err) => return err.into_outcome(),
+    };
+    let options = args.global.options();
+    let facts = doctor_facts(&names, &options);
+    match args.global.output {
+        OutputMode::Json => {
+            let entries: Vec<serde_json::Value> =
+                facts.iter().map(|fact| fact.report.clone()).collect();
+            RunOutcome::ok(format!(
+                "{}\n",
+                serde_json::to_string_pretty(&entries).expect("doctor reports serialize")
+            ))
+        }
+        OutputMode::Ndjson => {
+            let lines: Vec<String> = facts
+                .iter()
+                .map(|fact| serde_json::to_string(&fact.report).expect("doctor report serializes"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => RunOutcome::ok(doctor_human(&facts)),
+    }
+}
+
+/// One source's doctor facts: its report as JSON (with the source name
+/// inserted), plus the pieces the human renderer needs. Doctor reports;
+/// it does not gate, so issues never change the exit code.
+struct DoctorFacts {
+    name: String,
+    status: &'static str,
+    counts: String,
+    issues: Vec<String>,
+    report: serde_json::Value,
+}
+
+fn doctor_facts(names: &[String], options: &SourceOptions) -> Vec<DoctorFacts> {
+    names
+        .iter()
+        .map(|name| {
+            let root = resolved_root(name, options);
+            let (counts, report) = match name.as_str() {
+                "claude_code" => {
+                    let report = ClaudeCodeSource::new(root).doctor();
+                    let counts = format!(
+                        "{} project dirs, {} transcripts",
+                        report.project_dirs, report.transcripts
+                    );
+                    (
+                        counts,
+                        serde_json::to_value(&report).expect("report serializes"),
+                    )
+                }
+                "cursor" => {
+                    let report = CursorSource::new(root).doctor();
+                    let counts =
+                        format!("{} composers, {} bubbles", report.composers, report.bubbles);
+                    (
+                        counts,
+                        serde_json::to_value(&report).expect("report serializes"),
+                    )
+                }
+                "codex" => {
+                    let report = CodexSource::new(root).doctor();
+                    let counts = format!("{} threads", report.threads);
+                    (
+                        counts,
+                        serde_json::to_value(&report).expect("report serializes"),
+                    )
+                }
+                "grok_bot" => {
+                    let report = GrokBotSource::new(root).doctor();
+                    let counts = format!(
+                        "{} entry logs, {} cloud agents",
+                        report.entry_logs, report.cloud_agents
+                    );
+                    (
+                        counts,
+                        serde_json::to_value(&report).expect("report serializes"),
+                    )
+                }
+                _ => {
+                    let report = AntigravitySource::new(root).doctor();
+                    let counts = format!(
+                        "{} conversations, {} transcripts",
+                        report.conversations, report.transcripts
+                    );
+                    (
+                        counts,
+                        serde_json::to_value(&report).expect("report serializes"),
+                    )
+                }
+            };
+            let mut report = report;
+            report["source"] = serde_json::Value::String(name.clone());
+            let issues = report["issues"]
+                .as_array()
+                .expect("issues list")
+                .iter()
+                .filter_map(Value::as_str)
+                .map(str::to_string)
+                .collect();
+            let status = if report["issues"]
+                .as_array()
+                .is_some_and(|issues| issues.is_empty())
+            {
+                "ok"
+            } else {
+                "warn"
+            };
+            DoctorFacts {
+                name: name.clone(),
+                status,
+                counts,
+                issues,
+                report,
+            }
+        })
+        .collect()
+}
+
+fn doctor_human(facts: &[DoctorFacts]) -> String {
+    let mut out = String::new();
+    for fact in facts {
+        out.push_str(&format!(
+            "{}  {}  {}, {} {}\n",
+            render::column(&fact.name, 12),
+            render::column(fact.status, 4),
+            fact.counts,
+            fact.issues.len(),
+            if fact.issues.len() == 1 {
+                "issue"
+            } else {
+                "issues"
+            }
+        ));
+        for issue in &fact.issues {
+            out.push_str(&format!("  {issue}\n"));
+        }
+    }
+    out
 }
 
 fn snapshot(_args: SnapshotArgs) -> RunOutcome {

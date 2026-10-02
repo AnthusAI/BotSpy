@@ -30,7 +30,7 @@ pub struct AntigravityDiscovery {
 }
 
 /// Diagnostics over an Antigravity data root.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, serde::Serialize)]
 pub struct AntigravityReport {
     pub root: PathBuf,
     pub conversations: usize,

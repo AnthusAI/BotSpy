@@ -49,7 +49,7 @@ pub struct CodexDiscovery {
 }
 
 /// Diagnostics over a Codex home root.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, serde::Serialize)]
 pub struct CodexReport {
     pub root: PathBuf,
     pub threads: usize,
