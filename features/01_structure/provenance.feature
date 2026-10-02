@@ -16,21 +16,18 @@ Feature: Provenance
     When I record a message with role "user" at "2026-10-01T09:01:00Z" with text "hello" and provenance "state.vscdb" row 17
     Then the last message provenance is file "state.vscdb" row 17
 
-  @wip
   Scenario: A message records its native record id and type
     Given a fixture session "p3" from agent "claude_code" in project "demo"
     When I record a message with role "assistant" at "2026-10-01T09:02:00Z" and provenance record id "bfc63cd8-uuid" of type "assistant"
     Then the last message provenance has record id "bfc63cd8-uuid"
     And the last message provenance has record type "assistant"
 
-  @wip
   Scenario: A message records its ordinal sort key
     Given a fixture session "p4" from agent "codex" in project "demo"
     When I record a message with role "assistant" at "2026-10-01T09:03:00Z" and provenance "rollout.jsonl" line 512 with ordinal 511
     Then the last message provenance has ordinal 511
     And the messages are ordered by their ordinal, not their file position
 
-  @wip
   Scenario: A message records its native parent pointer
     Given a fixture session "p5" from agent "claude_code" in project "demo"
     When I record a message with role "assistant" at "2026-10-01T09:04:00Z" and provenance record id "child-uuid" with parent record "parent-uuid"

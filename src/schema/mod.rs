@@ -319,13 +319,25 @@ pub struct Turn {
 }
 
 /// Where a record came from on disk.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Provenance {
     pub source_file: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub line: Option<u64>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub row: Option<u64>,
+    /// The agent's own record id (Claude uuid, Codex record id, Cursor row id).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub record_id: Option<String>,
+    /// The agent's own record type (Claude type field and friends).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub record_type: Option<String>,
+    /// The agent's ordinal/sort key, when it numbers records (Codex).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub ordinal: Option<u64>,
+    /// The native parent pointer (Claude parentUuid and friends).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub parent_record: Option<String>,
 }
 
 /// A message inside a session: ordered typed parts.

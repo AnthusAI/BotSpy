@@ -1,6 +1,6 @@
 //! Steps for the normalized schema (layer 2).
 
-use crate::steps::{adapter_for, adapter_owning, data_rows, header, BotSpyWorld};
+use crate::steps::{adapter_for, adapter_owning, current_session, data_rows, header, BotSpyWorld};
 use botspy::{Adapter, KnownPart, Message, Part, Provenance};
 use cucumber::{given, then, when};
 use serde_json::Value;
@@ -127,6 +127,7 @@ fn record_provenance_line(
                 source_file: file,
                 line: Some(line),
                 row: None,
+                ..Provenance::default()
             }),
             ..Message::default()
         },
@@ -154,6 +155,7 @@ fn record_provenance_row(
                 source_file: file,
                 line: None,
                 row: Some(row),
+                ..Provenance::default()
             }),
             ..Message::default()
         },
@@ -293,4 +295,153 @@ fn part_raw_field(world: &mut BotSpyWorld, index: usize, field: String, expected
         })
         .unwrap_or_default();
     assert_eq!(actual, expected);
+}
+
+#[when(
+    regex = r#"I record a message with role "([^"]+)" at "([^"]+)" and provenance record id "([^"]+)" of type "([^"]+)""#
+)]
+fn record_provenance_record_id(
+    world: &mut BotSpyWorld,
+    role: String,
+    timestamp: String,
+    record_id: String,
+    record_type: String,
+) {
+    record_message(
+        world,
+        Message {
+            role: crate::steps::session_steps::parse_role(&role),
+            parts: vec![Part::Known(KnownPart::Text {
+                text: "recorded with native identity".to_string(),
+                extra: None,
+            })],
+            timestamp,
+            provenance: Some(Provenance {
+                source_file: "transcript.jsonl".to_string(),
+                record_id: Some(record_id),
+                record_type: Some(record_type),
+                ..Provenance::default()
+            }),
+            ..Message::default()
+        },
+    );
+}
+
+#[when(
+    regex = r#"I record a message with role "([^"]+)" at "([^"]+)" and provenance "([^"]+)" line ([0-9]+) with ordinal ([0-9]+)"#
+)]
+fn record_provenance_ordinal(
+    world: &mut BotSpyWorld,
+    role: String,
+    timestamp: String,
+    file: String,
+    line: u64,
+    ordinal: u64,
+) {
+    record_message(
+        world,
+        Message {
+            role: crate::steps::session_steps::parse_role(&role),
+            parts: vec![Part::Known(KnownPart::Text {
+                text: "recorded with an ordinal sort key".to_string(),
+                extra: None,
+            })],
+            timestamp,
+            provenance: Some(Provenance {
+                source_file: file,
+                line: Some(line),
+                ordinal: Some(ordinal),
+                ..Provenance::default()
+            }),
+            ..Message::default()
+        },
+    );
+}
+
+#[when(
+    regex = r#"I record a message with role "([^"]+)" at "([^"]+)" and provenance record id "([^"]+)" with parent record "([^"]+)""#
+)]
+fn record_provenance_parent(
+    world: &mut BotSpyWorld,
+    role: String,
+    timestamp: String,
+    record_id: String,
+    parent_record: String,
+) {
+    record_message(
+        world,
+        Message {
+            role: crate::steps::session_steps::parse_role(&role),
+            parts: vec![Part::Known(KnownPart::Text {
+                text: "recorded with a native parent pointer".to_string(),
+                extra: None,
+            })],
+            timestamp,
+            provenance: Some(Provenance {
+                source_file: "transcript.jsonl".to_string(),
+                record_id: Some(record_id),
+                parent_record: Some(parent_record),
+                ..Provenance::default()
+            }),
+            ..Message::default()
+        },
+    );
+}
+
+#[then(regex = r#"the last message provenance has record id "([^"]+)""#)]
+fn provenance_record_id(world: &mut BotSpyWorld, record_id: String) {
+    let provenance = last_message(world)
+        .provenance
+        .expect("message has no provenance");
+    assert_eq!(provenance.record_id.as_deref(), Some(record_id.as_str()));
+}
+
+#[then(regex = r#"the last message provenance has record type "([^"]+)""#)]
+fn provenance_record_type(world: &mut BotSpyWorld, record_type: String) {
+    let provenance = last_message(world)
+        .provenance
+        .expect("message has no provenance");
+    assert_eq!(
+        provenance.record_type.as_deref(),
+        Some(record_type.as_str())
+    );
+}
+
+#[then(regex = r#"the last message provenance has ordinal ([0-9]+)"#)]
+fn provenance_ordinal(world: &mut BotSpyWorld, ordinal: u64) {
+    let provenance = last_message(world)
+        .provenance
+        .expect("message has no provenance");
+    assert_eq!(provenance.ordinal, Some(ordinal));
+}
+
+#[then(regex = r#"the messages are ordered by their ordinal, not their file position"#)]
+fn ordered_by_ordinal(world: &mut BotSpyWorld) {
+    let ordinals: Vec<Option<u64>> = current_session(world)
+        .messages
+        .iter()
+        .map(|m| m.provenance.as_ref().and_then(|p| p.ordinal))
+        .collect();
+    assert!(
+        ordinals.iter().any(|o| o.is_some()),
+        "no message carries an ordinal"
+    );
+    let mut last: Option<u64> = None;
+    for ordinal in ordinals.into_iter().flatten() {
+        if let Some(previous) = last {
+            assert!(
+                ordinal >= previous,
+                "messages are not ordered by ordinal: {previous} then {ordinal}"
+            );
+        }
+        last = Some(ordinal);
+    }
+}
+
+#[then(regex = r#"the last message provenance has parent record "([^"]+)""#)]
+fn provenance_parent_record(world: &mut BotSpyWorld, parent: String) {
+    let provenance = last_message(world)
+        .provenance
+        .expect("message has no provenance");
+    assert_eq!(provenance.parent_record.as_deref(), Some(parent.as_str()));
 }
