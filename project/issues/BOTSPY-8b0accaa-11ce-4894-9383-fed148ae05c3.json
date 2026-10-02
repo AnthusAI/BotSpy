@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R2 tool result status",
   "description": "Done when: the wip tag is removed from 02_tool_result_status.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "fd5d6210-a5c8-4639-ab5d-8c50d1c9495c",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/02_tool_result_status.feature; all 7 scenarios pass (24 total). Schema: PartStatus (ok/error/interrupted/loading/failed/success) on ToolResult and ToolCall, TurnStatus (completed/failed/aborted) with aborted_reason and error on Turn, Message.is_error flag; turn end markers close turns. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T18:51:29.345788Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:32:14.670732Z",
-  "updated_at": "2026-10-02T17:38:13.566786Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:51:34.885994Z",
+  "closed_at": "2026-10-02T18:51:34.885954Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The tool result status spec still needs implementation and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:38:15.009474Z",
-  "custom": {}
+  "right_now_summary": "The tool result status spec is implemented, and all seven scenarios pass.",
+  "right_now_updated_at": "2026-10-02T18:51:35.860361Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
