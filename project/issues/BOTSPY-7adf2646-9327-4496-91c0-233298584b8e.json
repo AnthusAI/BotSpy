@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Core session schemas and tests pass, while metadata, role mapping, timestamps, and turn grouping still need work.",
-  "right_now_updated_at": "2026-10-02T18:55:02.960355Z",
+  "right_now_summary": "Core structure tests pass, while optional fields, role mapping, timestamps, and turn grouping still need work.",
+  "right_now_updated_at": "2026-10-02T18:57:38.478940Z",
   "custom": {}
 }

@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is writing specs and building adapters, schemas, exports, tests, and release automation.",
-  "right_now_updated_at": "2026-10-02T18:55:04.297798Z",
+  "right_now_summary": "The team is building adapters, schemas, specs, tests, exports, and docs for unified coding-agent history.",
+  "right_now_updated_at": "2026-10-02T18:57:40.366901Z",
   "custom": {}
 }
