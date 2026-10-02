@@ -1,4 +1,3 @@
-@wip
 Feature: Compaction and summarization are first-class
   Agents summarize their own context. A compaction event is modeled with
   pre/post token counts and the summary is visible as a message, so the

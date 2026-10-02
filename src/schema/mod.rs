@@ -265,6 +265,33 @@ pub struct Peer {
     pub has_local_transcript: bool,
 }
 
+/// One compaction boundary: the agent summarized its own context.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct CompactionEvent {
+    /// Token count in context before compaction.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub pre_tokens: Option<u64>,
+    /// Token count in context after compaction.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub post_tokens: Option<u64>,
+    /// The message the boundary logically follows (Claude Code
+    /// compactMetadata.logicalParentUuid).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub logical_parent_message_id: Option<String>,
+}
+
+/// One link in a compaction window chain (Codex compacted records): the
+/// window replaced the history after its previous window and records what
+/// it retained.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct CompactionWindow {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub previous_window: Option<String>,
+    /// What this window retained, as the agent recorded it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub retained_context: Option<String>,
+}
+
 /// Life-cycle state of a turn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -304,6 +331,9 @@ pub struct Provenance {
 /// A message inside a session: ordered typed parts.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Message {
+    /// The agent's own record id for this message (Claude uuid and friends).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     pub role: Role,
     pub parts: Vec<Part>,
     pub timestamp: Timestamp,
