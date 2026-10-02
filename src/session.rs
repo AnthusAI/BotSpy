@@ -1,14 +1,14 @@
 //! The unified agent-session history.
 
 use crate::adapter::Adapter;
-use crate::schema::{Agent, Message, Timestamp};
+use crate::schema::{Agent, Message, RateLimitState, SessionCost, Timestamp, Turn, Usage};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::fmt;
 use std::sync::Arc;
 
 /// One coding-agent session: ordered messages plus identifiers.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Session {
     pub id: String,
     pub agent: Agent,
@@ -16,10 +16,20 @@ pub struct Session {
     pub started_at: Timestamp,
     pub last_activity_at: Timestamp,
     pub messages: Vec<Message>,
+    /// Turn registry: turns referenced by the session's messages.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub turns: BTreeMap<String, Turn>,
+    /// Usage the agent persisted at thread/session scope.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub usage: Option<Usage>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub cost: Option<SessionCost>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub rate_limit: Option<RateLimitState>,
 }
 
 /// A lightweight view of a session for listing across agents.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct SessionSummary {
     pub id: String,
     pub agent: Agent,
@@ -27,6 +37,37 @@ pub struct SessionSummary {
     pub started_at: Timestamp,
     pub last_activity_at: Timestamp,
     pub message_count: usize,
+}
+
+impl Session {
+    /// Usage accumulated over one turn: the sum of the usages its messages
+    /// record. `None` when the turn has no message carrying usage.
+    pub fn turn_usage(&self, turn_id: &str) -> Option<Usage> {
+        let mut total = Usage::default();
+        let mut any = false;
+        for message in &self.messages {
+            if message.turn_id.as_deref() == Some(turn_id) {
+                if let Some(usage) = &message.usage {
+                    total.add(usage);
+                    any = true;
+                }
+            }
+        }
+        any.then_some(total)
+    }
+
+    /// Usage accumulated over the whole thread: the sum of the turn usages.
+    pub fn thread_usage(&self) -> Option<Usage> {
+        let mut total = Usage::default();
+        let mut any = false;
+        for turn_id in self.turns.keys() {
+            if let Some(usage) = self.turn_usage(turn_id) {
+                total.add(&usage);
+                any = true;
+            }
+        }
+        any.then_some(total)
+    }
 }
 
 impl From<&Session> for SessionSummary {

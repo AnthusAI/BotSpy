@@ -24,7 +24,7 @@ fn fixture_sessions(world: &mut BotSpyWorld, agent: String, step: &cucumber::ghe
             project_id: row[1].clone(),
             started_at: row[2].clone(),
             last_activity_at: row[3].clone(),
-            messages: Vec::new(),
+            ..Session::default()
         });
     }
 }
@@ -41,8 +41,7 @@ fn session_messages(world: &mut BotSpyWorld, id: String, step: &cucumber::gherki
                 text: row[2].clone(),
                 extra: None,
             })],
-            provenance: None,
-            extra: None,
+            ..botspy::Message::default()
         })
         .collect();
     adapter.add_session(session);

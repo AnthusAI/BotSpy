@@ -75,9 +75,9 @@
 //!             extra: None,
 //!         })],
 //!         timestamp: "2026-10-01T09:01:00Z".into(),
-//!         provenance: None,
-//!         extra: None,
+//!         ..Message::default()
 //!     }],
+//!     ..Session::default()
 //! });
 //! store.register(adapter);
 //!
@@ -105,5 +105,8 @@ pub mod spec;
 
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
-pub use schema::{Agent, KnownPart, Message, Part, Provenance, Role, Timestamp, SCHEMA_VERSION};
+pub use schema::{
+    Agent, KnownPart, Message, ModelCost, Part, Provenance, RateLimitState, Role, SessionCost,
+    Timestamp, Turn, Usage, SCHEMA_VERSION,
+};
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
