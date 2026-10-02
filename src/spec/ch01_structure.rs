@@ -161,9 +161,9 @@
 //! the agent answers (*Scenario: A session's messages are typed user and
 //! assistant messages* in the embedded spec). Shades beyond those four —
 //! developer messages, inter-agent mail, injected and simulated user
-//! content — map by documented conventions; those conventions are
-//! specified in `10_role_mapping.feature` and are pending (see "Pending
-//! schema work" below).
+//! content — map by documented conventions
+//! ([`Origin`](crate::schema::Origin); see "Pending schema work" below for
+//! the mapping spec).
 //!
 //! ## Parts: the anatomy of a message
 //!
@@ -392,7 +392,10 @@
 //! 9. `09_optional_timestamp.feature` — optional timestamps; never
 //!    fabricated from file metadata.
 //! 10. `10_role_mapping.feature` — developer, inter-agent, injected, and
-//!     simulated message conventions.
+//!     simulated message conventions. Implemented:
+//!     [`Origin`](crate::schema::Origin) plus
+//!     [`Message::author`](crate::schema::Message::author) and `recipient`;
+//!     injected `<system-reminder>` content is split into a `System` part.
 //! 11. `11_session_metadata.feature` — optional Session metadata: title,
 //!     git coordinates, cwd, archived, pr_url, status, app version, models.
 //! 12. `12_raw_blob_escape_hatch.feature` — `{blob_hash, container}` blob
@@ -446,7 +449,7 @@
     "### 09_optional_timestamp.feature (pending)\n\n```gherkin\n",
     include_str!("../../features/01_structure/09_optional_timestamp.feature"),
     "\n```\n\n",
-    "### 10_role_mapping.feature (pending)\n\n```gherkin\n",
+    "### 10_role_mapping.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/10_role_mapping.feature"),
     "\n```\n\n",
     "### 11_session_metadata.feature (pending)\n\n```gherkin\n",

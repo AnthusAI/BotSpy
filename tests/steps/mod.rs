@@ -4,6 +4,7 @@ pub mod arguments_steps;
 pub mod compaction_steps;
 pub mod graph_steps;
 pub mod inline_steps;
+pub mod role_steps;
 pub mod schema_steps;
 pub mod session_steps;
 pub mod status_steps;

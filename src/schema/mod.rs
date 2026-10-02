@@ -355,6 +355,30 @@ pub struct CompactionWindow {
     pub retained_context: Option<String>,
 }
 
+/// A native message shade mapped by convention onto the four roles.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Origin {
+    /// Codex role `developer`: system-level instructions from the developer.
+    Developer,
+    /// Codex `agent_message`: inter-agent mail between agent sessions.
+    AgentMessage,
+    /// Cursor `isSimulatedMsg`: user content injected by tooling, not typed
+    /// by a human.
+    Simulated,
+}
+
+impl Origin {
+    pub fn parse(name: &str) -> Option<Self> {
+        match name {
+            "developer" => Some(Self::Developer),
+            "agent_message" => Some(Self::AgentMessage),
+            "simulated" => Some(Self::Simulated),
+            _ => None,
+        }
+    }
+}
+
 /// Life-cycle state of a turn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -424,6 +448,16 @@ pub struct Message {
     /// The message carries an agent-written compaction summary.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub is_compaction_summary: bool,
+    /// The native shade this message came from, when it maps by convention
+    /// (developer, inter-agent mail, simulated user).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub origin: Option<Origin>,
+    /// The persona or agent session that authored the message.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub author: Option<String>,
+    /// The recipient of inter-agent mail.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub recipient: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub extra: Option<Value>,
 }
