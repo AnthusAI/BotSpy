@@ -11,7 +11,7 @@ Feature: botspy sources
     When I run "botspy sources --no-truncate" against the fixture home
     Then the exit code is 0
     And stdout contains "claude_code", "cursor", "codex", "grok_bot" and "antigravity"
-    And stdout contains ".claude/projects"
+    And stdout contains ".claude" and "projects"
     And stdout contains "sand-client-persistence"
 
   Scenario: JSON output carries name, root, status and session count

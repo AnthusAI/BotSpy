@@ -34,14 +34,25 @@ fn scratch(tag: &str) -> PathBuf {
     dir
 }
 
-fn symlink_entry(link_path: &Path, target: &Path) {
-    std::os::unix::fs::symlink(target, link_path).unwrap_or_else(|err| {
-        panic!(
-            "symlink {} -> {}: {err}",
-            link_path.display(),
-            target.display()
-        )
-    });
+/// Copy a file or a whole directory tree into the fixture home. Copies
+/// (not symlinks) keep the fixture home portable and guarantee the
+/// committed corpus itself is never written to.
+fn copy_entry(target: &Path, link_path: &Path) {
+    if target.is_dir() {
+        std::fs::create_dir_all(link_path).expect("create copied dir");
+        for entry in std::fs::read_dir(target).expect("read copied dir") {
+            let entry = entry.expect("copied dir entry").path();
+            copy_entry(&entry, &link_path.join(file_name(&entry)));
+        }
+    } else {
+        std::fs::copy(target, link_path).unwrap_or_else(|err| {
+            panic!(
+                "copy {} -> {}: {err}",
+                target.display(),
+                link_path.display()
+            )
+        });
+    }
 }
 
 fn file_name(path: &Path) -> String {
@@ -77,30 +88,26 @@ fn build_home(home: &Path, sources: &[&str]) {
             "claude_code" => {
                 let projects = home.join(".claude/projects");
                 std::fs::create_dir_all(&projects).expect("create projects dir");
-                let corpus = claude_projects_root();
-                for entry in std::fs::read_dir(&corpus).expect("corpus claude projects") {
-                    let project = entry.expect("corpus entry").path();
-                    symlink_entry(&projects.join(file_name(&project)), &project);
-                }
+                copy_entry(&claude_projects_root(), &projects);
                 write_solo_session(home);
             }
             "cursor" => {
                 std::fs::create_dir_all(home.join(".cursor")).expect("create .cursor");
-                symlink_entry(&home.join(".cursor/state.vscdb"), &cursor_store_path());
+                copy_entry(&cursor_store_path(), &home.join(".cursor/state.vscdb"));
             }
-            "codex" => symlink_entry(&home.join(".codex"), &corpus_root().join("codex")),
+            "codex" => copy_entry(&corpus_root().join("codex"), &home.join(".codex")),
             "grok_bot" => {
                 std::fs::create_dir_all(home.join(".grok")).expect("create .grok");
-                symlink_entry(
-                    &home.join(".grok/sand-client-persistence"),
+                copy_entry(
                     &corpus_root().join("grok_bot/sand-client-persistence"),
+                    &home.join(".grok/sand-client-persistence"),
                 );
             }
             "antigravity" => {
                 std::fs::create_dir_all(home.join(".gemini")).expect("create .gemini");
-                symlink_entry(
-                    &home.join(".gemini/antigravity"),
+                copy_entry(
                     &corpus_root().join("antigravity"),
+                    &home.join(".gemini/antigravity"),
                 );
             }
             other => panic!("unknown fixture source {other}"),
