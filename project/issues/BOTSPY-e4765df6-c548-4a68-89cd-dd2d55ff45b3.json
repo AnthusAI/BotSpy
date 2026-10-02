@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building synthetic fixtures and cross-adapter history tests with privacy guards.",
-  "right_now_updated_at": "2026-10-02T16:24:03.157585Z",
+  "right_now_summary": "Synthetic fixtures and unified-history tests are complete, with secret-safety checks passing across all adapters.",
+  "right_now_updated_at": "2026-10-02T19:43:50.694015Z",
   "custom": {}
 }
