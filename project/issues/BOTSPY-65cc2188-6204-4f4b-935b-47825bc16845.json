@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is writing specs and building adapters, the CLI, exports, schema, tests, and release packaging.",
-  "right_now_updated_at": "2026-10-02T16:25:19.281105Z",
+  "right_now_summary": "Teams are writing specs, testing adapters, and finishing exports, CI, models, and cross-adapter tests.",
+  "right_now_updated_at": "2026-10-02T16:41:47.708609Z",
   "custom": {}
 }

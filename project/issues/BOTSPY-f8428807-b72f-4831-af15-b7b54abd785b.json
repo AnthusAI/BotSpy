@@ -3,23 +3,31 @@
   "title": "Write Gherkin spec: CLI behaviors",
   "description": "Author features/cli/*.feature: listing sources and sessions, dumping sessions, export flags, window and source filters. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "af7ffb49-f797-49cd-bd8a-1d684a8aa3a5",
+      "author": "home",
+      "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+      "created_at": "2026-10-02T16:39:25.406850Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:20:01.801940Z",
-  "updated_at": "2026-10-02T16:20:01.802017Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:39:30.457978Z",
+  "closed_at": "2026-10-02T16:39:30.457920Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is writing Gherkin scenarios for CLI listings, dumps, exports, and filters.",
-  "right_now_updated_at": "2026-10-02T16:20:03.135790Z",
+  "right_now_summary": "The CLI Gherkin specification will not be developed because the project is library-only.",
+  "right_now_updated_at": "2026-10-02T16:39:32.330361Z",
   "custom": {}
 }

@@ -3,23 +3,31 @@
   "title": "Export (features/export)",
   "description": "JSON and JSONL export of sessions, messages, and parts with stable field order and schema version. Specs first: features/export/*.feature; implementation generated from the specs.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "0d94ed85-eaad-44b0-bad5-296dbf8ef93f",
+      "author": "home",
+      "text": "superseded: export is folded into the Layer 3: Query and export epic",
+      "created_at": "2026-10-02T16:39:47.020734Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:18:57.677240Z",
-  "updated_at": "2026-10-02T16:18:57.677267Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:39:50.147723Z",
+  "closed_at": "2026-10-02T16:39:50.147663Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is writing export specs and building JSON and JSONL output with stable fields and schema versions.",
-  "right_now_updated_at": "2026-10-02T16:23:44.244339Z",
+  "right_now_summary": "The team is writing export specs and implementing JSON and JSONL output with stable fields and schema versions.",
+  "right_now_updated_at": "2026-10-02T16:39:51.507309Z",
   "custom": {}
 }

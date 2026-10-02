@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3",
+  "title": "Configure release-plz for library releases",
+  "description": "release-plz workflow on main: version bumps, changelog, tags, GitHub releases for the library crate; no binary release assets; crates.io publish disabled (release-plz.toml publish = false). Done when: the release workflow runs green on main.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "ac491aa8-7cb7-4279-bbd5-989b59f12170",
+      "author": "home",
+      "text": "release.yml runs release-plz-action on main; release-plz.toml sets publish = false (no crates.io) and no binary artifacts.",
+      "created_at": "2026-10-02T16:41:35.620380Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T16:40:36.837640Z",
+  "updated_at": "2026-10-02T16:41:42.120187Z",
+  "closed_at": "2026-10-02T16:41:42.120132Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "BotSpy bootstrap"
+  },
+  "right_now_summary": "The main-branch workflow now creates library versions, changelogs, tags, and GitHub releases without publishing to",
+  "right_now_updated_at": "2026-10-02T16:41:43.817315Z",
+  "custom": {}
+}

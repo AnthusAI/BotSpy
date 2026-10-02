@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
-  "title": "Packaging and release",
-  "description": "Ship the module: wheel/sdist, console-script entry point, optional botspy[metrics] extra for example consumers, versioning and changelog via python-semantic-release on main.",
+  "title": "Cross-platform build and release (Rust library)",
+  "description": "Library crate releases only: release-plz on main for versioning, changelog, tags and GitHub releases; no binary artifacts, no crates.io publish. CI builds and runs the tests (unit + bdd) per target: macOS aarch64 and x86_64, Linux x86_64 and aarch64 (AWS; gnu natively, musl via cross), Windows MSVC. rustfmt + clippy -D warnings.",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -12,14 +12,14 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T16:15:27.329103Z",
-  "updated_at": "2026-10-02T16:15:27.329131Z",
+  "updated_at": "2026-10-02T16:40:02.978520Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The module is being prepared for release with packages, a CLI entry point, extras, and automated versioning.",
-  "right_now_updated_at": "2026-10-02T16:15:29.009974Z",
+  "right_now_summary": "Release automation is set up; cross-platform CI and tests still need to be added and pass on all targets.",
+  "right_now_updated_at": "2026-10-02T16:41:45.578993Z",
   "custom": {}
 }

@@ -3,7 +3,7 @@
   "title": "Implement the botspy CLI",
   "description": "Subcommands to list sources, list sessions, dump sessions, and export, with source and window flags. Done when: the feature scenarios in features/cli pass.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,24 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "7c54ecd4-d7ea-43f4-bce3-302387f9633c",
+      "author": "home",
+      "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+      "created_at": "2026-10-02T16:39:15.031394Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:20:26.494541Z",
-  "updated_at": "2026-10-02T16:23:45.539436Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T16:39:19.743534Z",
+  "closed_at": "2026-10-02T16:39:19.743508Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The botspy CLI is being built to list sources and sessions, dump sessions, and export data.",
-  "right_now_updated_at": "2026-10-02T16:23:47.536828Z",
+  "right_now_summary": "The CLI will not be built; botspy remains a library-only project.",
+  "right_now_updated_at": "2026-10-02T16:39:21.858556Z",
   "custom": {}
 }
