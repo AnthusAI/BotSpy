@@ -55,14 +55,23 @@
 //! ## Status: contract specified
 //!
 //! The adapter contract — the in-process face of this pipeline — is
-//! specified in [`contract.feature`](../../../features/03_importers/contract.feature)
-//! and embedded below, tagged `@wip` until its implementation lands. The
-//! per-agent specs (below) translate the same pipeline to each source.
+//! specified in [`contract.feature`](../../../features/03_importers/contract.feature),
+//! embedded below, and implemented: the typed protocol lives in
+//! [`importer`](crate::importer) ([`RecordStream`](crate::importer::RecordStream),
+//! [`SkipCounter`](crate::importer::SkipCounter), [`RawRecord`](crate::importer::RawRecord))
+//! with [`MemorySource`](crate::importer::MemorySource) as the reference
+//! in-memory source. The WAL-snapshot scenarios live in
+//! [`wal_snapshot.feature`](../../../features/03_importers/wal_snapshot.feature)
+//! (tagged `@wip` until implemented). The per-agent specs (below)
+//! translate the same pipeline to each source.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
     "### contract.feature\n\n```gherkin\n",
     include_str!("../../../features/03_importers/contract.feature"),
+    "\n```\n\n",
+    "### wal_snapshot.feature\n\n```gherkin\n",
+    include_str!("../../../features/03_importers/wal_snapshot.feature"),
     "\n```\n"
 )]
 

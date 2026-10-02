@@ -4,6 +4,7 @@ pub mod arguments_steps;
 pub mod blob_steps;
 pub mod compaction_steps;
 pub mod graph_steps;
+pub mod importer_steps;
 pub mod inline_steps;
 pub mod metadata_steps;
 pub mod role_steps;
@@ -33,6 +34,26 @@ pub struct BotSpyWorld {
     pub current_session: Option<String>,
     /// Turn id of the most recently recorded turn, when a step made one.
     pub last_turn: Option<String>,
+    /// Fixture source root under construction (importer contract steps).
+    pub source_root: Option<std::path::PathBuf>,
+    /// The reference in-memory source for the current root.
+    pub memory_source: Option<botspy::importer::MemorySource>,
+    /// Sessions from the most recent discovery.
+    pub discovered: Vec<botspy::SessionSummary>,
+    /// New ids reported by each discovery round, in order.
+    pub discovery_rounds: Vec<Vec<String>>,
+    /// Records pulled by the most recent extraction.
+    pub extracted: Vec<botspy::importer::RawRecord>,
+    /// Skips reported by the most recent extraction.
+    pub skipped: botspy::importer::SkipCounter,
+    /// Peak in-memory buffering of the most recent extraction.
+    pub peak_buffered: usize,
+    /// Digest of the source tree before extraction.
+    pub source_digest_before: Option<String>,
+    /// Digest of the source tree after extraction.
+    pub source_digest_after: Option<String>,
+    /// Name of the source the reference in-memory source was built for.
+    pub source_name: Option<String>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
