@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "7a6024f5-5a75-4c82-9e02-ed4038e1e8c1",
+  "issue_id": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:40:02.978Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Packaging and release",
+        "to": "Cross-platform build and release (Rust library)"
+      },
+      "description": {
+        "from": "Ship the module: wheel/sdist, console-script entry point, optional botspy[metrics] extra for example consumers, versioning and changelog via python-semantic-release on main.",
+        "to": "Library crate releases only: release-plz on main for versioning, changelog, tags and GitHub releases; no binary artifacts, no crates.io publish. CI builds and runs the tests (unit + bdd) per target: macOS aarch64 and x86_64, Linux x86_64 and aarch64 (AWS; gnu natively, musl via cross), Windows MSVC. rustfmt + clippy -D warnings."
+      }
+    }
+  }
+}

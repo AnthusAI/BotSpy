@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "3d0a8e83-6fb0-4d8c-b572-2ff7d9d52ef3",
+  "issue_id": "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:40:41.669Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Add cross-platform CI matrix running library tests per target",
+    "description": "Native runners: ubuntu x86_64, ubuntu-24.04-arm, macos-14 (aarch64), macos-13 (x86_64), windows-latest (msvc); musl x86_64 and aarch64 via cross for AWS. Each target builds the library and runs unit tests + cargo test --test bdd; rustfmt and clippy -D warnings gate every push/PR. Done when: all targets are green.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

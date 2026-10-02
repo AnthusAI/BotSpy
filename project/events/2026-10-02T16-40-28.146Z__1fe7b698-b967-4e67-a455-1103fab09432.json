@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "1fe7b698-b967-4e67-a455-1103fab09432",
+  "issue_id": "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:40:28.146Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement SessionStore, SessionSummary and the in-memory fixture adapter in Rust",
+    "description": "SessionStore over registered adapters, SessionSummary, sorted listing, open by id with UnknownSession error, FixtureAdapter as the reference Adapter implementation. Done when: the layer 1 feature scenarios pass via cargo test --test bdd.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}
