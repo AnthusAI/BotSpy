@@ -23,3 +23,9 @@ Spec files (`@wip` until each scenario's implementation task lands):
 - `06_refresh.feature` — incremental refresh: only new/changed sessions
   re-opened, gone sessions pruned, idempotent, unchanged sessions never
   re-opened from their adapters (open-count proof).
+- `07_text_search.feature` — FTS5 text search: ranked, case-insensitive,
+  composes with the session filters; no match is empty, never an error.
+- `08_vector_search.feature` — semantic and hybrid search: nearest
+  sessions with scores over the embedder's session embeddings, caller-
+  chosen k, reciprocal-rank-fusion hybrid ranking, clean empty semantic
+  result without an embedder, and the meta model-id mismatch policy.

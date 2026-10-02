@@ -932,3 +932,81 @@ fn iterate_sessions_active_between(world: &mut BotSpyWorld, after: String, befor
     };
     iterate_filtered_sessions(world, &filter);
 }
+// 07_text_search.feature and 08_vector_search.feature — search specs
+// (red until BOTSPY-e5be2f / BOTSPY-7e1836). No production search code
+// exists yet; every step below is a todo!().
+
+#[given(regex = r#"^session "([^"]+)" has messages (.+)$"#)]
+fn session_by_id_has_messages(_world: &mut BotSpyWorld, _id: String, _texts: String) {
+    todo!("BOTSPY-e2f3fb: add messages to a fixture session by id")
+}
+
+#[given(regex = r#"^the store was opened with the "([^"]+)" embedder$"#)]
+fn store_opened_with_embedder(_world: &mut BotSpyWorld, _model: String) {
+    todo!("BOTSPY-e2f3fb: open a store configured with an embedder")
+}
+
+#[when(regex = r#"^I search the store for "([^"]+)"$"#)]
+fn search_store(_world: &mut BotSpyWorld, _query: String) {
+    todo!("BOTSPY-e2f3fb: full-text search the store")
+}
+
+#[when(regex = r#"^I search the store for "([^"]+)" filtered by source "([^"]+)"$"#)]
+fn search_store_filtered(_world: &mut BotSpyWorld, _query: String, _agent: String) {
+    todo!("BOTSPY-e2f3fb: full-text search composed with a source filter")
+}
+
+#[when(regex = r#"^I search the store semantically for "([^"]+)"$"#)]
+fn search_store_semantically(_world: &mut BotSpyWorld, _query: String) {
+    todo!("BOTSPY-e2f3fb: semantic (vector) search the store")
+}
+
+#[when(regex = r#"^I search the store semantically for "([^"]+)" with k ([0-9]+)$"#)]
+fn search_store_semantically_with_k(_world: &mut BotSpyWorld, _query: String, _k: usize) {
+    todo!("BOTSPY-e2f3fb: semantic search with a caller-chosen k")
+}
+
+#[when(regex = r#"^I run the hybrid search for "([^"]+)"$"#)]
+fn run_hybrid_search(_world: &mut BotSpyWorld, _query: String) {
+    todo!("BOTSPY-e2f3fb: hybrid (FTS + vector, RRF) search")
+}
+
+#[when(regex = r#"^I ingest into the store with an embedder claiming model "([^"]+)"$"#)]
+fn ingest_with_other_model(_world: &mut BotSpyWorld, _model: String) {
+    todo!("BOTSPY-e2f3fb: ingest with a mismatched embedder model id")
+}
+
+#[then(regex = r#"^the search yields ([0-9]+) sessions?$"#)]
+fn search_yields_count(_world: &mut BotSpyWorld, _count: usize) {
+    todo!("BOTSPY-e2f3fb: assert the search result count")
+}
+
+#[then(regex = r#"^the search yields sessions (.+)(?: in that order)?$"#)]
+fn search_yields_sessions(_world: &mut BotSpyWorld, _ids: String) {
+    todo!("BOTSPY-e2f3fb: assert the search result session ids")
+}
+
+#[then(regex = r#"^the search yields no sessions$"#)]
+fn search_yields_nothing(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-e2f3fb: assert the search result is empty")
+}
+
+#[then(regex = r#"^the search yields the matched texts (.+)$"#)]
+fn search_yields_matched_texts(_world: &mut BotSpyWorld, _texts: String) {
+    todo!("BOTSPY-e2f3fb: assert the matched message texts")
+}
+
+#[then(regex = r#"^every search result carries a score$"#)]
+fn search_results_carry_scores(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-e2f3fb: assert every search result has a score")
+}
+
+#[then(regex = r#"^searching the store for "([^"]+)" still yields sessions (.+)$"#)]
+fn search_still_yields(_world: &mut BotSpyWorld, _query: String, _ids: String) {
+    todo!("BOTSPY-e2f3fb: text search is unaffected by the missing embedder")
+}
+
+#[then(regex = r#"^the ingest fails with a model mismatch error$"#)]
+fn ingest_fails_model_mismatch(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-e2f3fb: assert the clean model-mismatch error")
+}
