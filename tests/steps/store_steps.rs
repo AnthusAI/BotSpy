@@ -287,15 +287,21 @@ fn a_store_at(world: &mut BotSpyWorld, path: String) {
 #[when(regex = r#"^I ingest the registered adapters into the store$"#)]
 fn ingest_registered_adapters(world: &mut BotSpyWorld) {
     let store = world.local_store.as_ref().expect("a store");
-    let adapters: Vec<std::sync::Arc<dyn Adapter>> = world
+    let adapters = registered_adapters(world);
+    world.ingest_report = Some(store.ingest(&adapters).expect("ingest succeeds"));
+}
+
+/// Every registered fixture adapter, as the store's ingestion surface
+/// receives them.
+fn registered_adapters(world: &BotSpyWorld) -> Vec<std::sync::Arc<dyn Adapter>> {
+    world
         .adapters
         .values()
         .map(|adapter| {
             let owned: std::sync::Arc<dyn Adapter> = adapter.clone();
             owned
         })
-        .collect();
-    world.ingest_report = Some(store.ingest(&adapters).expect("ingest succeeds"));
+        .collect()
 }
 
 #[then(regex = r#"^the ingest reports ([0-9]+) new sessions?$"#)]
@@ -682,19 +688,21 @@ fn session_not_fully_materialized(world: &mut BotSpyWorld) {
 
 // 06_refresh.feature — incremental refresh (red until BOTSPY-d5b2c4).
 
-#[given(regex = r#"^a fixture session "([^"]+)" from "([^"]+)" is registered$"#)]
+#[when(regex = r#"^a fixture session "([^"]+)" from "([^"]+)" is registered$"#)]
 fn fixture_session_registered(world: &mut BotSpyWorld, id: String, agent: String) {
     adapter_for(world, &agent).add_session(fixture_session(
         &id,
         parse_agent(&agent),
         "demo",
-        "2026-10-01T11:00:00Z",
+        "2026-10-01T09:00:00Z",
     ));
 }
 
 #[when(regex = r#"^I refresh the store$"#)]
-fn refresh_the_store(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-5893ab: run a refresh pass")
+fn refresh_the_store(world: &mut BotSpyWorld) {
+    let store = world.local_store.as_ref().expect("a store");
+    let adapters = registered_adapters(world);
+    world.ingest_report = Some(store.refresh(&adapters).expect("refresh succeeds"));
 }
 
 #[then(
@@ -707,7 +715,7 @@ fn refresh_reports(world: &mut BotSpyWorld, new: usize, updated: usize, pruned: 
     assert_eq!(report.pruned, pruned, "refresh report pruned sessions");
 }
 
-#[given(regex = r#"^session "([^"]+)" gets another message at "([^"]+)"$"#)]
+#[when(regex = r#"^session "([^"]+)" gets another message at "([^"]+)"$"#)]
 fn session_gets_another_message(world: &mut BotSpyWorld, id: String, at: String) {
     let mut session = crate::steps::find_session(world, &id).expect("fixture session");
     session.messages.push(Message {
@@ -723,7 +731,7 @@ fn session_gets_another_message(world: &mut BotSpyWorld, id: String, at: String)
     crate::steps::save_session_by_id(world, session);
 }
 
-#[given(regex = r#"^session "([^"]+)" is removed from its adapter$"#)]
+#[when(regex = r#"^session "([^"]+)" is removed from its adapter$"#)]
 fn session_removed_from_adapter(world: &mut BotSpyWorld, id: String) {
     let adapter = crate::steps::adapter_owning(world, &id).expect("the session's adapter");
     assert!(adapter.remove_session(&id), "the session was removed");
