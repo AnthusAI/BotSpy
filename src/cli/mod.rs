@@ -1,0 +1,380 @@
+//! The `botspy` command line: a thin shell over the library.
+//!
+//! Every verb is one library call plus rendering — no business logic
+//! lives here. The CLI owns flags, exit codes, and formatting only:
+//!
+//! - `0` success (including empty results and skipped records)
+//! - `1` target not found (unknown session id or unknown source)
+//! - `2` usage error (bad flags, misuse of `--root`)
+//! - `3` source failure (unreadable root/store, snapshot error)
+//!
+//! The store builder wires the real adapters by source name, deriving
+//! each adapter's root from `--home` (or `BOTSPY_HOME`, or `$HOME`) the
+//! way each agent really lays its files out — which for Codex and Cursor
+//! differs from the reference registry's `DEFAULT_SUBDIRS` (Codex keeps
+//! its `state_5.sqlite` threads index at `~/.codex`, not in `sessions/`;
+//! Cursor's adapter wants the KV store file, not the directory).
+
+use std::ffi::OsString;
+use std::path::PathBuf;
+use std::sync::Arc;
+
+use clap::{Parser, Subcommand, ValueEnum};
+
+use crate::adapter::Adapter;
+use crate::adapters::antigravity::AntigravitySource;
+use crate::adapters::claude_code::ClaudeCodeSource;
+use crate::adapters::codex::CodexSource;
+use crate::adapters::cursor::CursorSource;
+use crate::adapters::grok_bot::GrokBotSource;
+use crate::importer::SourceOptions;
+use crate::schema::Agent;
+use crate::session::{SessionStore, UnknownSession};
+use crate::importer::UnknownSource;
+
+/// Every source the registry knows, in registry order.
+pub const ALL_SOURCES: [&str; 5] = [
+    "claude_code",
+    "cursor",
+    "codex",
+    "grok_bot",
+    "antigravity",
+];
+
+/// Parse and run one `botspy` invocation. The first argument is the
+/// program name, as in `std::env::args_os`.
+pub fn run_from<I, T>(argv: I) -> RunOutcome
+where
+    I: IntoIterator<Item = T>,
+    T: Into<OsString> + Clone,
+{
+    match Cli::try_parse_from(argv) {
+        Ok(cli) => execute(cli),
+        Err(err) => {
+            let rendered = err.render().to_string();
+            let (stdout, stderr) = if err.use_stderr() {
+                (String::new(), rendered)
+            } else {
+                (rendered, String::new())
+            };
+            RunOutcome {
+                code: i32::from(err.exit_code()),
+                stdout,
+                stderr,
+            }
+        }
+    }
+}
+
+/// The outcome of one CLI run: exit code plus what was written where.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct RunOutcome {
+    pub code: i32,
+    pub stdout: String,
+    pub stderr: String,
+}
+
+impl RunOutcome {
+    fn ok(stdout: String) -> Self {
+        Self {
+            code: 0,
+            stdout,
+            stderr: String::new(),
+        }
+    }
+
+    fn fail(code: i32, stderr: String) -> Self {
+        Self {
+            code,
+            stdout: String::new(),
+            stderr,
+        }
+    }
+}
+
+#[derive(Debug, Parser)]
+#[command(
+    name = "botspy",
+    version,
+    about = "Pop open the conversation history of any coding agent.",
+    after_help = "Read-only, always: botspy never writes to the sources it taps."
+)]
+pub struct Cli {
+    #[command(subcommand)]
+    pub command: Command,
+}
+
+#[derive(Debug, Subcommand)]
+pub enum Command {
+    /// Inspect the source registry: roots, session counts, status.
+    Sources(SourcesArgs),
+    /// List sessions across every source, most recent activity first.
+    Sessions(SessionsArgs),
+    /// Open one session; walk its messages.
+    Show(ShowArgs),
+    /// Per-source diagnostics: counts, issues, and what was skipped.
+    Doctor(DoctorArgs),
+    /// Take a WAL-safe snapshot of a SQLite source and inspect it.
+    Snapshot(SnapshotArgs),
+}
+
+/// Flags shared by every verb.
+#[derive(Debug, clap::Args)]
+pub struct GlobalArgs {
+    /// Restrict to these source names (repeatable).
+    #[arg(short = 's', long = "source", value_name = "SOURCE")]
+    pub source: Vec<String>,
+
+    /// Override the root of the single selected source.
+    #[arg(long, requires = "source", value_name = "PATH")]
+    pub root: Option<PathBuf>,
+
+    /// Override the home directory the default roots derive from.
+    #[arg(long, value_name = "PATH")]
+    pub home: Option<PathBuf>,
+
+    /// Output mode: human (truncated), json, or ndjson (one record per
+    /// line). Machine modes never truncate.
+    #[arg(short = 'o', long = "output", value_enum, default_value = "human")]
+    pub output: OutputMode,
+
+    /// Show full ids and paths in human output.
+    #[arg(long)]
+    pub no_truncate: bool,
+}
+
+impl GlobalArgs {
+    fn options(&self) -> SourceOptions {
+        SourceOptions {
+            root: self.root.clone(),
+            home: self.home.clone(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+pub enum OutputMode {
+    Human,
+    Json,
+    Ndjson,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct SourcesArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct SessionsArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// Filter by project id.
+    #[arg(long, value_name = "ID")]
+    pub project: Option<String>,
+
+    /// Only sessions active at or after this timestamp.
+    #[arg(long, value_name = "TS")]
+    pub since: Option<String>,
+
+    /// Only sessions active at or before this timestamp.
+    #[arg(long, value_name = "TS")]
+    pub until: Option<String>,
+
+    /// Cap the number of listed sessions.
+    #[arg(long, value_name = "N")]
+    pub limit: Option<usize>,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct ShowArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// Session id, or any unambiguous prefix of one.
+    #[arg(value_name = "SESSION")]
+    pub session: String,
+
+    /// Show one message by its 1-based ordinal.
+    #[arg(long, value_name = "N")]
+    pub message: Option<usize>,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct DoctorArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct SnapshotArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// Source name, or a path to a SQLite database.
+    #[arg(value_name = "SOURCE|PATH")]
+    pub target: String,
+
+    /// Directory the snapshot copy lands in.
+    #[arg(long, value_name = "DIR")]
+    pub out: Option<PathBuf>,
+}
+
+fn execute(cli: Cli) -> RunOutcome {
+    match cli.command {
+        Command::Sources(args) => sources(args),
+        Command::Sessions(args) => sessions(args),
+        Command::Show(args) => show(args),
+        Command::Doctor(args) => doctor(args),
+        Command::Snapshot(args) => snapshot(args),
+    }
+}
+
+fn sources(args: SourcesArgs) -> RunOutcome {
+    todo!("sources verb (BOTSPY-62676b)")
+}
+
+fn sessions(args: SessionsArgs) -> RunOutcome {
+    todo!("sessions verb (BOTSPY-541f5a)")
+}
+
+fn show(args: ShowArgs) -> RunOutcome {
+    todo!("show verb (BOTSPY-185f83)")
+}
+
+fn doctor(args: DoctorArgs) -> RunOutcome {
+    todo!("doctor verb (BOTSPY-727bb6)")
+}
+
+fn snapshot(args: SnapshotArgs) -> RunOutcome {
+    todo!("snapshot verb (BOTSPY-713087)")
+}
+
+/// Build a store of the real adapters for `sources` (every source when
+/// empty), honoring `options`. All names are validated before anything
+/// is resolved, so an unknown name fails without touching the
+/// filesystem.
+pub fn build_store(
+    sources: &[String],
+    options: &SourceOptions,
+) -> Result<SessionStore, UnknownSource> {
+    let names: Vec<&str> = if sources.is_empty() {
+        ALL_SOURCES.to_vec()
+    } else {
+        sources.iter().map(String::as_str).collect()
+    };
+    for name in &names {
+        if !ALL_SOURCES.contains(name) {
+            return Err(UnknownSource {
+                name: (*name).to_string(),
+            });
+        }
+    }
+    let mut store = SessionStore::new();
+    for name in names {
+        store.register(Arc::from(real_source(name, options)?));
+    }
+    Ok(store)
+}
+
+/// The adapter behind a source name, rooted at its resolved location.
+fn real_source(name: &str, options: &SourceOptions) -> Result<Box<dyn Adapter>, UnknownSource> {
+    if !ALL_SOURCES.contains(&name) {
+        return Err(UnknownSource {
+            name: name.to_string(),
+        });
+    }
+    let root = resolved_root(name, options);
+    Ok(match name {
+        "claude_code" => Box::new(ClaudeCodeSource::new(root)),
+        "cursor" => Box::new(CursorSource::new(root)),
+        "codex" => Box::new(CodexSource::new(root)),
+        "grok_bot" => Box::new(GrokBotSource::new(root)),
+        _ => Box::new(AntigravitySource::new(root)),
+    })
+}
+
+/// The root a source resolves to: the `--root` override, or the
+/// location derived from the home directory.
+pub fn resolved_root(name: &str, options: &SourceOptions) -> PathBuf {
+    if let Some(root) = &options.root {
+        return root.clone();
+    }
+    let home = home_of(options);
+    match name {
+        "claude_code" => home.join(".claude/projects"),
+        "cursor" => home.join(".cursor/state.vscdb"),
+        "codex" => home.join(".codex"),
+        "grok_bot" => home.join(".grok/sand-client-persistence"),
+        _ => home.join(".gemini/antigravity"),
+    }
+}
+
+/// The home the default roots derive from: `--home`, then `BOTSPY_HOME`,
+/// then `$HOME`.
+fn home_of(options: &SourceOptions) -> PathBuf {
+    options
+        .home
+        .clone()
+        .or_else(|| std::env::var_os("BOTSPY_HOME").map(PathBuf::from))
+        .unwrap_or_else(default_home)
+}
+
+fn default_home() -> PathBuf {
+    std::env::var_os("HOME")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("/"))
+}
+
+/// The registry name of an agent.
+pub fn agent_name(agent: Agent) -> &'static str {
+    match agent {
+        Agent::ClaudeCode => "claude_code",
+        Agent::Cursor => "cursor",
+        Agent::Codex => "codex",
+        Agent::GrokBot => "grok_bot",
+        Agent::Antigravity => "antigravity",
+    }
+}
+
+/// The agent behind a registry name.
+fn agent_of(name: &str) -> Option<Agent> {
+    match name {
+        "claude_code" => Some(Agent::ClaudeCode),
+        "cursor" => Some(Agent::Cursor),
+        "codex" => Some(Agent::Codex),
+        "grok_bot" => Some(Agent::GrokBot),
+        "antigravity" => Some(Agent::Antigravity),
+        _ => None,
+    }
+}
+
+/// `--root` pairs with exactly one source; anything else is a usage
+/// error.
+fn check_root(args: &GlobalArgs) -> Option<RunOutcome> {
+    if args.root.is_some() && args.source.len() != 1 {
+        return Some(RunOutcome::fail(
+            2,
+            "error: --root needs exactly one --source\n".to_string(),
+        ));
+    }
+    None
+}
+
+/// Map a library error onto the CLI's exit codes.
+trait IntoOutcome {
+    fn into_outcome(self) -> RunOutcome;
+}
+
+impl IntoOutcome for UnknownSource {
+    fn into_outcome(self) -> RunOutcome {
+        RunOutcome::fail(1, format!("error: {self}\n"))
+    }
+}
+
+impl IntoOutcome for UnknownSession {
+    fn into_outcome(self) -> RunOutcome {
+        RunOutcome::fail(1, format!("error: {self}\n"))
+    }
+}

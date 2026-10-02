@@ -14,7 +14,7 @@ use crate::schema::{
 };
 use crate::session::SessionSummary;
 use serde_json::Value;
-use std::cell::RefCell;
+use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};
@@ -59,7 +59,7 @@ pub struct ClaudeExtraction {
 pub struct ClaudeCodeSource {
     root: PathBuf,
     /// Per-session byte offsets, so extraction resumes where it stopped.
-    offsets: RefCell<BTreeMap<String, u64>>,
+    offsets: Mutex<BTreeMap<String, u64>>,
 }
 
 impl ClaudeCodeSource {
@@ -67,7 +67,7 @@ impl ClaudeCodeSource {
     pub fn new(root: impl Into<PathBuf>) -> Self {
         Self {
             root: root.into(),
-            offsets: RefCell::new(BTreeMap::new()),
+            offsets: Mutex::new(BTreeMap::new()),
         }
     }
 
@@ -164,7 +164,12 @@ impl ClaudeCodeSource {
     pub fn extract(&self, session_id: &str) -> Option<ClaudeExtraction> {
         let path = self.transcript_path(session_id);
         let mut file = File::open(&path).ok()?;
-        let offset = *self.offsets.borrow().get(session_id).unwrap_or(&0);
+        let offset = *self
+            .offsets
+            .lock()
+            .expect("offsets")
+            .get(session_id)
+            .unwrap_or(&0);
         file.seek(SeekFrom::Start(offset)).ok()?;
         let mut text = String::new();
         file.read_to_string(&mut text).ok()?;
@@ -245,7 +250,8 @@ impl ClaudeCodeSource {
         // back, the offset stays at its start so the next read resumes
         // there.
         self.offsets
-            .borrow_mut()
+            .lock()
+            .expect("offsets")
             .insert(session_id.to_string(), offset + consumed as u64);
         Some(ClaudeExtraction {
             session,

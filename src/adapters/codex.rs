@@ -22,7 +22,7 @@ use crate::schema::{
 use crate::session::SessionSummary;
 use rusqlite::OpenFlags;
 use serde_json::Value;
-use std::cell::RefCell;
+use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};
@@ -75,7 +75,7 @@ pub struct CodexSource {
     root: PathBuf,
     /// Per-thread rollout byte offsets, so extraction resumes where it
     /// stopped (thread_history_1.sqlite stores these).
-    offsets: RefCell<BTreeMap<String, u64>>,
+    offsets: Mutex<BTreeMap<String, u64>>,
 }
 
 impl CodexSource {
@@ -83,7 +83,7 @@ impl CodexSource {
     pub fn new(root: impl Into<PathBuf>) -> Self {
         Self {
             root: root.into(),
-            offsets: RefCell::new(BTreeMap::new()),
+            offsets: Mutex::new(BTreeMap::new()),
         }
     }
 
@@ -96,7 +96,8 @@ impl CodexSource {
     /// thread_history_1.sqlite would have recorded it).
     pub fn set_offset(&self, session_id: &str, offset: u64) {
         self.offsets
-            .borrow_mut()
+            .lock()
+            .expect("offsets")
             .insert(session_id.to_string(), offset);
     }
 
@@ -179,7 +180,12 @@ impl CodexSource {
     pub fn extract(&self, session_id: &str) -> Option<CodexExtraction> {
         let path = self.rollout_path(session_id)?;
         let mut file = File::open(&path).ok()?;
-        let offset = *self.offsets.borrow().get(session_id).unwrap_or(&0);
+        let offset = *self
+            .offsets
+            .lock()
+            .expect("offsets")
+            .get(session_id)
+            .unwrap_or(&0);
         file.seek(SeekFrom::Start(offset)).ok()?;
         let mut text = String::new();
         file.read_to_string(&mut text).ok()?;
@@ -251,7 +257,8 @@ impl CodexSource {
         }
 
         self.offsets
-            .borrow_mut()
+            .lock()
+            .expect("offsets")
             .insert(session_id.to_string(), offset + consumed as u64);
         Some(CodexExtraction {
             session,

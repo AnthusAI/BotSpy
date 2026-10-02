@@ -10,10 +10,12 @@
 //!
 //! ## What BotSpy is not
 //!
-//! BotSpy is a **library only**: no CLI, no binary, no server, no C
-//! interface/FFI. What ships is the `botspy` library crate. Metrics such as
-//! the coding-session thanks-vs-F-bombs meter or local sentiment analysis
-//! are **example consumers** of the library, not part of it.
+//! BotSpy is a **library crate plus its `botspy` CLI** — a thin,
+//! read-only shell over the library (phase 1: `sources`, `sessions`,
+//! `show`, `doctor`, `snapshot`). There is no server and no C
+//! interface/FFI. Metrics such as the coding-session thanks-vs-F-bombs
+//! meter or local sentiment analysis are **example consumers** of the
+//! library, not part of it.
 //!
 //! ## Specs are the source of truth
 //!
@@ -99,6 +101,7 @@
 
 pub mod adapter;
 pub mod adapters;
+pub mod cli;
 pub mod importer;
 pub mod schema;
 pub mod session;
