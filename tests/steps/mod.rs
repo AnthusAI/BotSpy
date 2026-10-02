@@ -2,6 +2,7 @@
 
 pub mod schema_steps;
 pub mod session_steps;
+pub mod usage_steps;
 
 use botspy::{
     Adapter, Agent, FixtureAdapter, Message, Session, SessionStore, SessionSummary, UnknownSession,
@@ -20,6 +21,8 @@ pub struct BotSpyWorld {
     pub walked: Option<Result<Vec<Message>, UnknownSession>>,
     /// Session id the schema steps record into.
     pub current_session: Option<String>,
+    /// Turn id of the most recently recorded turn, when a step made one.
+    pub last_turn: Option<String>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
@@ -68,4 +71,30 @@ pub fn adapter_owning(world: &BotSpyWorld, id: &str) -> Option<Arc<FixtureAdapte
         .values()
         .find(|adapter| adapter.open(id).is_some())
         .cloned()
+}
+
+/// Load the current fixture session (by id) through its owning adapter.
+pub fn current_session(world: &BotSpyWorld) -> Session {
+    let id = world
+        .current_session
+        .as_deref()
+        .expect("no current fixture session");
+    let adapter = adapter_owning(world, id).expect("current session not found");
+    adapter.open(id).expect("current session vanished")
+}
+
+/// Persist changes to the current fixture session.
+pub fn save_session(world: &mut BotSpyWorld, session: Session) {
+    let id = session.id.clone();
+    let adapter = adapter_owning(world, &id).expect("current session not found");
+    adapter.add_session(session);
+}
+
+/// The most recently recorded message of the current fixture session.
+pub fn last_message(world: &BotSpyWorld) -> Message {
+    current_session(world)
+        .messages
+        .last()
+        .cloned()
+        .expect("no messages recorded")
 }

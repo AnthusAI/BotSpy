@@ -56,7 +56,7 @@
 //!     project_id: "demo".into(),
 //!     started_at: "2026-10-01T08:00:00Z".into(),
 //!     last_activity_at: "2026-10-01T11:00:00Z".into(),
-//!     messages: vec![],
+//!     ..Session::default()
 //! });
 //! let codex = Arc::new(FixtureAdapter::new(Agent::Codex));
 //! codex.add_session(Session {
@@ -65,7 +65,7 @@
 //!     project_id: "infra".into(),
 //!     started_at: "2026-10-01T07:00:00Z".into(),
 //!     last_activity_at: "2026-10-01T09:30:00Z".into(),
-//!     messages: vec![],
+//!     ..Session::default()
 //! });
 //! store.register(claude);
 //! store.register(codex);
@@ -103,10 +103,10 @@
 //!                     extra: None,
 //!                 })],
 //!                 timestamp: format!("2026-10-01T09:{:02}:00Z", i + 1),
-//!                 provenance: None,
-//!                 extra: None,
+//!                 ..botspy::Message::default()
 //!             })
 //!             .collect(),
+//!         ..Session::default()
 //!     }
 //! }
 //!
@@ -211,15 +211,13 @@
 //!         call,
 //!     ],
 //!     timestamp: "2026-10-01T09:02:00Z".into(),
-//!     provenance: None,
-//!     extra: None,
+//!     ..Message::default()
 //! };
 //! let tool = Message {
 //!     role: Role::Tool,
 //!     parts: vec![result],
 //!     timestamp: "2026-10-01T09:02:01Z".into(),
-//!     provenance: None,
-//!     extra: None,
+//!     ..Message::default()
 //! };
 //!
 //! // A message is a conversation chunk; its parts are its content.
@@ -267,7 +265,7 @@
 //!         line: Some(17),
 //!         row: None,
 //!     }),
-//!     extra: None,
+//!     ..Message::default()
 //! };
 //!
 //! let provenance = message.provenance.as_ref().unwrap();
@@ -344,7 +342,12 @@
 //! 1. `01_usage_tokens.feature` — usage and cost metrics on messages and
 //!    sessions (input/output/cache/reasoning tokens, `cost_usd`, model,
 //!    session-level rate-limit/plan state); usage an agent does not persist
-//!    is absent, never zero.
+//!    is absent, never zero. Implemented: [`Usage`](crate::schema::Usage),
+//!    [`SessionCost`](crate::schema::SessionCost),
+//!    [`RateLimitState`](crate::schema::RateLimitState), and the
+//!    [`Session::turn_usage`](crate::session::Session::turn_usage) /
+//!    [`Session::thread_usage`](crate::session::Session::thread_usage)
+//!    accumulators.
 //! 2. `02_tool_result_status.feature` — error and status flags on tool
 //!    results, tool calls, messages, and turns.
 //! 3. `03_session_graph.feature` — parent/root links, sub-agent kind and
@@ -371,9 +374,9 @@
 //!
 //! Until a scenario's implementation lands, the structs above (no error
 //! flag on [`KnownPart::ToolResult`](crate::schema::KnownPart::ToolResult),
-//! narrow [`Provenance`](crate::schema::Provenance), no usage struct) are
-//! the interim truth, and the `@wip` scenarios are the specification those
-//! structs will be changed to satisfy.
+//! narrow [`Provenance`](crate::schema::Provenance)) are the interim truth,
+//! and the `@wip` scenarios are the specification those structs will be
+//! changed to satisfy.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -392,7 +395,7 @@
     "### extra_passthrough.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/extra_passthrough.feature"),
     "\n```\n\n",
-    "### 01_usage_tokens.feature (pending)\n\n```gherkin\n",
+    "### 01_usage_tokens.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/01_usage_tokens.feature"),
     "\n```\n\n",
     "### 02_tool_result_status.feature (pending)\n\n```gherkin\n",

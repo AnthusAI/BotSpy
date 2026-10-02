@@ -1,4 +1,3 @@
-@wip
 Feature: Usage and cost metrics on messages and sessions
   Token usage (input, output, cache read/write, reasoning) is first-class
   data on messages where the agent persists it, cost is session-level, and

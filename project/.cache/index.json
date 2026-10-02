@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T17:57:39Z",
+  "built_at": "2026-10-02T17:59:33Z",
   "file_mtimes": {
-    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790959336.029796,
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790963887.823961,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
     "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790959336.029978,
     "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790958091.288143,
@@ -20,14 +20,14 @@
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
     "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790963728.962416,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790957972.342915,
-    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790958153.481318,
+    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790963951.179898,
     "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790959336.030431,
     "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790959336.030562,
     "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790959336.030683,
     "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e.json": 1790963012.202389,
     "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1790962688.720665,
     "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790960002.269669,
-    "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790958139.359389,
+    "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790963941.518161,
     "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790959336.030851,
     "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790962984.845732,
     "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790962770.720409,
@@ -36,15 +36,15 @@
     "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790963740.944208,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
-    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790958210.785183,
+    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790963958.259849,
     "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790957980.148867,
-    "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790958168.349955,
+    "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790963954.812328,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790963746.51768,
     "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790962748.383017,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790963794.632528,
-    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790958124.600785,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790963959.878342,
+    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790963938.441066,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
@@ -86,7 +86,7 @@
     "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
-    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790962896.481744,
+    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790963902.28869,
     "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790958123.344149,
     "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790958257.047553,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790957994.975589,
@@ -96,7 +96,7 @@
     "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790963776.112678,
     "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790962762.749754,
     "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790957975.924478,
-    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790959336.031947,
+    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790963892.978556,
     "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
     "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790958219.039163,
     "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790958243.157955,
@@ -119,8 +119,8 @@
   "issues": [
     {
       "id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
-      "title": "Layer 3: Query and export (features/03_query_export)",
-      "description": "Rust library API: list/open sessions across agents, filter by agent, kind, time, and project; JSON and JSONL export of the unified history. Specs first: features/03_query_export/*.feature; implementation generated from the specs.",
+      "title": "Chapter 2: Querying (features/02_querying)",
+      "description": "Querying implemented with SQLite and the sqlite-vec extension underneath. The engine is completely invisible to callers: one query interface, with different query functions on one class and SQLite underneath, so callers never see which engine is running. Supersedes the old property-based filtering over in-memory objects from the former features/03_query_export chapter. Implementation of record: BOTSPY-c7795b (Local Store Initiative). Specs first: features/02_querying/*.feature.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -131,15 +131,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:15:16.948650Z",
-      "updated_at": "2026-10-02T16:39:53.304756Z",
+      "updated_at": "2026-10-02T17:58:05.520212Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The query API scenarios still need to be written and reviewed.",
-      "right_now_updated_at": "2026-10-02T16:39:54.313491Z",
+      "right_now_summary": "Querying uses SQLite and sqlite-vec, but its Gherkin scenarios still need writing and review.",
+      "right_now_updated_at": "2026-10-02T17:58:07.823434Z",
       "custom": {}
     },
     {
@@ -657,17 +657,30 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8e3ad940-8701-46a9-8306-b942674f0fad",
+          "author": "home",
+          "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+          "created_at": "2026-10-02T17:58:35.211064Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "glm-5.3-flash",
+            "name": "chapter-restructure"
+          }
+        }
+      ],
       "created_at": "2026-10-02T16:15:05.963109Z",
-      "updated_at": "2026-10-02T16:15:05.963146Z",
+      "updated_at": "2026-10-02T17:59:09.347769Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The Codex adapter is being tested against fixtures while discovery scenarios are written.",
-      "right_now_updated_at": "2026-10-02T16:22:33.479650Z",
+      "right_now_summary": "The adapter maps session parts while tests and fixtures are checked, and discovery scenarios still need review.",
+      "right_now_updated_at": "2026-10-02T17:59:11.179217Z",
       "custom": {}
     },
     {
@@ -864,17 +877,30 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "12b53a6b-321c-4428-ada0-3087826daa4f",
+          "author": "home",
+          "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+          "created_at": "2026-10-02T17:58:32.277149Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "glm-5.3-flash",
+            "name": "chapter-restructure"
+          }
+        }
+      ],
       "created_at": "2026-10-02T16:15:02.764860Z",
-      "updated_at": "2026-10-02T16:15:02.764908Z",
+      "updated_at": "2026-10-02T17:59:00.385085Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building and testing a WAL-safe Cursor adapter that finds stores and extracts all parts.",
-      "right_now_updated_at": "2026-10-02T16:22:19.358902Z",
+      "right_now_summary": "The team is locating Cursor data, building safe snapshots, extracting records, and checking tests and specifications.",
+      "right_now_updated_at": "2026-10-02T17:59:01.517878Z",
       "custom": {}
     },
     {
@@ -1123,17 +1149,30 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "4ae7aa97-8368-4c8d-9888-1efebc4ee0e7",
+          "author": "home",
+          "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+          "created_at": "2026-10-02T17:58:40.727501Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "glm-5.3-flash",
+            "name": "chapter-restructure"
+          }
+        }
+      ],
       "created_at": "2026-10-02T16:15:13.217276Z",
-      "updated_at": "2026-10-02T16:15:13.217295Z",
+      "updated_at": "2026-10-02T17:59:16.900529Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building fixtures, extracting payloads, and testing Antigravity adapter behavior.",
-      "right_now_updated_at": "2026-10-02T16:23:30.784867Z",
+      "right_now_summary": "The team is defining, building, and testing a read-only Antigravity adapter for both source roots.",
+      "right_now_updated_at": "2026-10-02T17:59:18.259538Z",
       "custom": {}
     },
     {
@@ -1173,17 +1212,30 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "7cbffef5-e51b-4774-bd2b-e79e7cddb712",
+          "author": "home",
+          "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+          "created_at": "2026-10-02T17:58:38.168491Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "glm-5.3-flash",
+            "name": "chapter-restructure"
+          }
+        }
+      ],
       "created_at": "2026-10-02T16:15:09.677865Z",
-      "updated_at": "2026-10-02T16:15:09.677908Z",
+      "updated_at": "2026-10-02T17:59:12.937483Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building fixtures, extracting transcript parts, and testing Grok Bot discovery and diagnostics.",
-      "right_now_updated_at": "2026-10-02T16:22:48.346129Z",
+      "right_now_summary": "The team is building fixtures, writing scenarios, and normalizing Grok Bot transcript parts.",
+      "right_now_updated_at": "2026-10-02T17:59:14.812203Z",
       "custom": {}
     },
     {
@@ -1325,8 +1377,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building adapters, schemas, specs, exports, and tests for unified session history.",
-      "right_now_updated_at": "2026-10-02T17:56:34.632250Z",
+      "right_now_summary": "The team is writing specs, building adapters and schemas, and adding tests across the module.",
+      "right_now_updated_at": "2026-10-02T17:59:19.877524Z",
       "custom": {}
     },
     {
@@ -1341,17 +1393,30 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "80296d13-a77e-4ec9-9caf-d87740f51690",
+          "author": "home",
+          "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+          "created_at": "2026-10-02T17:58:27.962387Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "glm-5.3-flash",
+            "name": "chapter-restructure"
+          }
+        }
+      ],
       "created_at": "2026-10-02T16:14:57.945584Z",
-      "updated_at": "2026-10-02T16:14:57.945634Z",
+      "updated_at": "2026-10-02T17:58:56.805297Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building and testing the Claude Code adapter, including transcript parsing, discovery, skip counts, and",
-      "right_now_updated_at": "2026-10-02T16:22:04.597542Z",
+      "right_now_summary": "The adapter is being tested for transcript discovery, parsing, skip counts, and doctor diagnostics.",
+      "right_now_updated_at": "2026-10-02T17:58:58.440727Z",
       "custom": {}
     },
     {
@@ -2579,7 +2644,7 @@
     {
       "id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "title": "Local Store Initiative — SQLite + sqlite-vec + all-MiniLM-L6-v2",
-      "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
+      "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## Role in the documentation\n\nThis initiative implements Chapter 2: Querying (epic BOTSPY-047770): SQLite and the sqlite-vec extension underneath one query interface, with the engine completely invisible to callers.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
       "type": "initiative",
       "status": "open",
       "priority": 2,
@@ -2590,15 +2655,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T17:38:07.357226Z",
-      "updated_at": "2026-10-02T17:41:35.373365Z",
+      "updated_at": "2026-10-02T17:58:21.000961Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "local-store-initiative"
       },
-      "right_now_summary": "The team is planning a local SQLite-based semantic search store with shared embedding tools.",
-      "right_now_updated_at": "2026-10-02T17:41:36.480054Z",
+      "right_now_summary": "The initiative is documented, but no code or Cargo changes have been made yet.",
+      "right_now_updated_at": "2026-10-02T17:58:22.288176Z",
       "custom": {}
     },
     {
@@ -2853,8 +2918,8 @@
     },
     {
       "id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
-      "title": "Layer 4: Adapter contract (features/04_adapters)",
-      "description": "The Adapter trait contract for the Rust library: discovery, session opening, streaming extraction (with the per-agent adapters), skip counters, read-only access, safe SQLite/WAL snapshotting. Specs first: features/04_adapters.",
+      "title": "Chapter 3: Importers / Change Data Capture (features/03_importers)",
+      "description": "Importers as change data capture: detecting new or changed transcripts, handing off to normalization, and retries. Bulk-loading is NOT the model — each importer watches its source and emits normalized records as they appear. The per-agent adapter epics (Claude Code BOTSPY-669e66, Cursor BOTSPY-4661a5, Codex BOTSPY-357602, Grok Bot BOTSPY-5a3bed, Antigravity BOTSPY-55ea2f) are the per-agent translations of this CDC pipeline; each adapter is only the per-agent translation of the Chapter 3 mechanics. Specs first: features/03_importers/ with per-agent subfolders.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -2865,15 +2930,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:14:54.618100Z",
-      "updated_at": "2026-10-02T16:39:58.022447Z",
+      "updated_at": "2026-10-02T17:58:11.803556Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The adapter contract is being defined, including discovery, streaming, skip counts, read-only access, and safe",
-      "right_now_updated_at": "2026-10-02T16:39:59.650001Z",
+      "right_now_summary": "The team is defining importer adapters for safe discovery, streaming extraction, retries, and read-only source access.",
+      "right_now_updated_at": "2026-10-02T17:58:12.978258Z",
       "custom": {}
     },
     {

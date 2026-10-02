@@ -19,7 +19,7 @@ fn new_session(id: &str, agent: &str, project: &str) -> botspy::Session {
         project_id: project.to_string(),
         started_at: "2026-10-01T09:00:00Z".to_string(),
         last_activity_at: "2026-10-01T09:00:00Z".to_string(),
-        messages: Vec::new(),
+        ..botspy::Session::default()
     }
 }
 
@@ -99,8 +99,7 @@ fn record_parts(
             role: crate::steps::session_steps::parse_role(&role),
             parts,
             timestamp,
-            provenance: None,
-            extra: None,
+            ..Message::default()
         },
     );
 }
@@ -127,7 +126,7 @@ fn record_provenance_line(
                 line: Some(line),
                 row: None,
             }),
-            extra: None,
+            ..Message::default()
         },
     );
 }
@@ -154,7 +153,7 @@ fn record_provenance_row(
                 line: None,
                 row: Some(row),
             }),
-            extra: None,
+            ..Message::default()
         },
     );
 }
