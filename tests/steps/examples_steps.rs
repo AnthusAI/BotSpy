@@ -11,7 +11,11 @@ use cucumber::{given, then, when};
 #[path = "../../examples/meter/scoring.rs"]
 mod meter_scoring;
 
+#[path = "../../examples/sentiment/scoring.rs"]
+mod sentiment_scoring;
+
 pub use meter_scoring::MeterReport;
+pub use sentiment_scoring::SentimentReport;
 
 fn text_session(id: &str, texts: &[&str]) -> Session {
     Session {
@@ -95,16 +99,34 @@ fn meter_scores_history(world: &mut BotSpyWorld) {
 
 #[when(regex = r#"^an example consumer is built against the published crate$"#)]
 fn example_consumer_built(world: &mut BotSpyWorld) {
-    let manifest = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
-    let main = manifest.join("examples/meter/main.rs");
-    let scoring = manifest.join("examples/meter/scoring.rs");
-    assert!(main.is_file(), "the meter example binary is missing");
-    assert!(scoring.is_file(), "the meter scoring module is missing");
-    world.example_sources = Some(
-        std::fs::read_to_string(&main).expect("read meter main")
-            + "\n"
-            + &std::fs::read_to_string(&scoring).expect("read meter scoring"),
-    );
+    // Read every example source: all of them must honor the consumer
+    // constraints, not just one.
+    let examples = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("examples");
+    let mut files: Vec<std::path::PathBuf> = walk_sources(&examples);
+    files.sort();
+    assert!(!files.is_empty(), "no example sources found");
+    let mut sources = String::new();
+    for file in files {
+        sources.push_str(&std::fs::read_to_string(&file).expect("read example source"));
+        sources.push('\n');
+    }
+    world.example_sources = Some(sources);
+}
+
+fn walk_sources(root: &std::path::Path) -> Vec<std::path::PathBuf> {
+    let mut files = Vec::new();
+    let Ok(entries) = std::fs::read_dir(root) else {
+        return files;
+    };
+    for entry in entries.flatten() {
+        let path = entry.path();
+        if path.is_dir() {
+            files.extend(walk_sources(&path));
+        } else if path.extension().and_then(|ext| ext.to_str()) == Some("rs") {
+            files.push(path);
+        }
+    }
+    files
 }
 
 #[then(regex = r#"^it reports ([0-9]+) thanks and ([0-9]+) F-bombs?$"#)]
@@ -165,6 +187,22 @@ const DEPENDENCY_FREE_ROOTS: &[&str] = &[
     "super::",
     "self::",
     "scoring::",
+    "common::",
+];
+
+/// Substrings that would mean the examples reach for the network; sentiment
+/// must score entirely in-process.
+const NETWORK_MARKERS: &[&str] = &[
+    "http",
+    "reqwest",
+    "ureq",
+    "hyper",
+    "curl",
+    "socket",
+    "tcpstream",
+    "tokio",
+    "async-std",
+    "upload",
 ];
 
 #[then(regex = r#"^it uses only the public API surface$"#)]
@@ -230,6 +268,51 @@ fn adds_no_dependency(world: &mut BotSpyWorld) {
         assert!(
             !dependencies.contains(extra),
             "the core library picked up the example-only dependency {extra:?}"
+        );
+    }
+}
+
+#[when(regex = r#"^the sentiment example scores the session$"#)]
+fn sentiment_scores_session(world: &mut BotSpyWorld) {
+    let session = world.example_sessions.first().expect("no session to score");
+    world.sentiment_report = Some(sentiment_scoring::score_session(session));
+}
+
+#[then(
+    regex = r#"^it reports ([0-9]+) positive, ([0-9]+) negative, and ([0-9]+) neutral messages?$"#
+)]
+fn sentiment_reports_counts(world: &mut BotSpyWorld, positive: u64, negative: u64, neutral: u64) {
+    let report = world
+        .sentiment_report
+        .as_ref()
+        .expect("no sentiment report");
+    assert_eq!(
+        report.positive, positive,
+        "the sentiment example counted the wrong positives"
+    );
+    assert_eq!(
+        report.negative, negative,
+        "the sentiment example counted the wrong negatives"
+    );
+    assert_eq!(
+        report.neutral, neutral,
+        "the sentiment example counted the wrong neutrals"
+    );
+}
+
+#[then(regex = r#"^no message text leaves the machine$"#)]
+fn no_message_text_leaves(world: &mut BotSpyWorld) {
+    // Scoring is a pure in-process function over &str; the proof here is that
+    // the example sources import nothing network-capable at all.
+    if world.example_sources.is_none() {
+        example_consumer_built(world);
+    }
+    let sources = world.example_sources.as_ref().expect("no example sources");
+    let lowered = sources.to_lowercase();
+    for marker in NETWORK_MARKERS {
+        assert!(
+            !lowered.contains(marker),
+            "example sources look network-capable: {marker:?}"
         );
     }
 }

@@ -143,6 +143,8 @@ pub struct BotSpyWorld {
     pub example_sessions: Vec<botspy::Session>,
     /// The most recent meter report.
     pub meter_report: Option<examples_steps::MeterReport>,
+    /// The most recent sentiment report.
+    pub sentiment_report: Option<examples_steps::SentimentReport>,
     /// Sources of the example consumers, for the public-API checks.
     pub example_sources: Option<String>,
 }
