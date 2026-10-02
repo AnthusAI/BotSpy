@@ -1,4 +1,3 @@
-@wip
 Feature: Inline data and content-addressed attachments
   Images and other inline bytes are a part kind of their own, identified
   by a content hash; file-backed attachments keep path, mime, and size.
