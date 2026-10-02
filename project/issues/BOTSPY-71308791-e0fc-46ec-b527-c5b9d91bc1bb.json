@@ -1,0 +1,29 @@
+{
+  "id": "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb",
+  "title": "Implement botspy snapshot",
+  "description": "botspy snapshot <source|path>: WAL-safe snapshot of a SQLite source via snapshot_sqlite, proving the source was not mutated (digest_files), reporting event counts (count_events). Spec: features/cli/snapshot.feature.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T20:34:33.297968Z",
+  "updated_at": "2026-10-02T21:12:20.100194Z",
+  "closed_at": "2026-10-02T21:12:20.100157Z",
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

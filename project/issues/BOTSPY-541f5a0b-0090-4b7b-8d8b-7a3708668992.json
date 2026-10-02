@@ -1,0 +1,37 @@
+{
+  "id": "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992",
+  "title": "Implement botspy sessions",
+  "description": "botspy sessions: unified listing across every source, most recent activity first (SessionStore::list_sessions). Filters --source/--project/--since/--until, --limit. -o json is [SessionSummary] serialized. Spec: features/cli/sessions.feature.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [
+    {
+      "id": "a726cb07-652c-43c9-9183-93102675c889",
+      "author": "home",
+      "text": "Done: sessions verb passes all 10 scenarios in features/cli/20_sessions.feature — unified listing over the real adapters via SessionStore::list_sessions, --source (repeatable) / --project / --since / --until / --limit filters, human table (truncated ids, count footer), json/ndjson machine modes, unknown source exit 1. The --project scenario asserts its full id via --no-truncate since human mode truncates ids by design.",
+      "created_at": "2026-10-02T21:01:48.105057Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T20:34:31.133498Z",
+  "updated_at": "2026-10-02T21:01:49.147798Z",
+  "closed_at": "2026-10-02T21:01:49.147775Z",
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

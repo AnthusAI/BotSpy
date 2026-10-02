@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "e4b6a1a7-5d30-43e4-b03a-3ec88fb56eaf",
+  "issue_id": "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:57.908Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "botspy snapshot <source|path>: WAL-safe snapshot of a SQLite source via snapshot_sqlite, proving the source was not mutated (digest_files), reporting event counts (count_events). Spec: features/cli/snapshot.feature."
+      }
+    }
+  }
+}

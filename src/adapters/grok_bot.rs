@@ -34,7 +34,7 @@ pub struct GrokDiscovery {
 }
 
 /// Diagnostics over a Grok Bot persistence directory.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, serde::Serialize)]
 pub struct GrokReport {
     pub root: PathBuf,
     pub entry_logs: usize,

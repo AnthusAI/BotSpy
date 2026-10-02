@@ -1,0 +1,37 @@
+{
+  "id": "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b",
+  "title": "Implement botspy show",
+  "description": "botspy show <session-id>: open one session (SessionStore::open) and render header + messages. --message N selects one message. -o json is the full Session; -o ndjson streams one Message per line. Unknown id is exit 1. Spec: features/cli/show.feature.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [
+    {
+      "id": "50c86859-ea87-404a-a5c0-408056024f1f",
+      "author": "home",
+      "text": "Done: show verb passes all 9 scenarios in features/cli/30_show.feature — id/prefix resolution against the unified listing (exact wins, ambiguous lists candidates, unknown exits 1), human rendering (header, #N role ts message lines, indented part lines), --message N selection with out-of-range exit 1, json = full Session, ndjson = one Message per line. Prefix-success scenario asserts the resolved full id via --no-truncate.",
+      "created_at": "2026-10-02T21:03:40.814301Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T20:34:31.920683Z",
+  "updated_at": "2026-10-02T21:03:41.587316Z",
+  "closed_at": "2026-10-02T21:03:41.587227Z",
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

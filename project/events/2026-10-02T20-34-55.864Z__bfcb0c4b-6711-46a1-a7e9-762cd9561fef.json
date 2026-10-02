@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "bfcb0c4b-6711-46a1-a7e9-762cd9561fef",
+  "issue_id": "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:55.864Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "botspy sessions: unified listing across every source, most recent activity first (SessionStore::list_sessions). Filters --source/--project/--since/--until, --limit. -o json is [SessionSummary] serialized. Spec: features/cli/sessions.feature."
+      }
+    }
+  }
+}

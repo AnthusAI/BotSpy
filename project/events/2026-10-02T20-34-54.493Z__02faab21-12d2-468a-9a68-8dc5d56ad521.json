@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "02faab21-12d2-468a-9a68-8dc5d56ad521",
+  "issue_id": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:54.493Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Write the executable Gherkin specs for the five phase-1 verbs under features/cli/ (sources, sessions, show, doctor, snapshot) before any implementation: observable behavior only — output modes, exit codes, filters, snapshot safety. See them fail first. Embeds them in a new spec chapter (src/spec) to satisfy the docs-coverage guardrail."
+      }
+    }
+  }
+}

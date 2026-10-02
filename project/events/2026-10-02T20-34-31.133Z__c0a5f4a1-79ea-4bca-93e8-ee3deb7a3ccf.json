@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "c0a5f4a1-79ea-4bca-93e8-ee3deb7a3ccf",
+  "issue_id": "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T20:34:31.133Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Implement botspy sessions",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}

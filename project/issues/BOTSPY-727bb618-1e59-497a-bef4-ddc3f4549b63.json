@@ -1,0 +1,29 @@
+{
+  "id": "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63",
+  "title": "Implement botspy doctor",
+  "description": "botspy doctor: per-source diagnostics via each adapter's doctor() — root/store, counts, issues. Reports, does not gate: exit 0 unless a source is unreadable (3). Spec: features/cli/doctor.feature.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T20:34:32.603635Z",
+  "updated_at": "2026-10-02T21:08:33.526740Z",
+  "closed_at": "2026-10-02T21:08:33.526704Z",
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
