@@ -272,3 +272,126 @@ fn open_default_store(world: &mut BotSpyWorld) {
         std::env::remove_var("BOTSPY_HOME");
     }
 }
+
+// 05_ingest.feature — adapter-driven ingestion into the store (red until
+// BOTSPY-a48fb1), plus the 01_iteration.feature steps (red until
+// BOTSPY-a927fc): fixture adapters → store → ingest → iterate.
+
+#[given(regex = r#"^a store at "([^"]+)"$"#)]
+fn a_store_at(_world: &mut BotSpyWorld, _path: String) {
+    todo!("BOTSPY-2c0dc3: open a fresh store at the path")
+}
+
+#[when(regex = r#"^I ingest the registered adapters into the store$"#)]
+fn ingest_registered_adapters(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: drive the registered adapters into the store")
+}
+
+#[then(regex = r#"^the ingest reports ([0-9]+) new sessions?$"#)]
+fn ingest_reports_new_sessions(_world: &mut BotSpyWorld, _count: usize) {
+    todo!("BOTSPY-2c0dc3: the ingest report's new-session count")
+}
+
+#[given(regex = r#"^fixture session "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)"$"#)]
+fn fixture_session_two_adapters(
+    _world: &mut BotSpyWorld,
+    _id1: String,
+    _agent1: String,
+    _id2: String,
+    _agent2: String,
+) {
+    todo!("BOTSPY-2c0dc3: the same session id reported by two adapters")
+}
+
+#[when(regex = r#"^I open session "([^"]+)" from the store$"#)]
+fn open_session_from_store(_world: &mut BotSpyWorld, _id: String) {
+    todo!("BOTSPY-2c0dc3: materialize one session out of the store")
+}
+
+#[then(regex = r#"^it equals the session the adapter returns$"#)]
+fn opened_equals_adapter_session(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: lossless round-trip, PartialEq")
+}
+
+#[when(regex = r#"^I snapshot the adapters' sessions digest$"#)]
+fn snapshot_sessions_digest(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: hash the adapters' sessions before/after")
+}
+
+#[when(regex = r#"^I snapshot the adapters' sessions digest again$"#)]
+fn snapshot_sessions_digest_again(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: hash the adapters' sessions after the ingest")
+}
+
+#[then(regex = r#"^the sources are unchanged by the ingest$"#)]
+fn sources_unchanged_by_ingest(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: the digests match")
+}
+
+// 01_iteration.feature — cross-source iteration through the store.
+
+#[given(
+    regex = r#"^fixture sessions "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)"$"#
+)]
+#[allow(clippy::too_many_arguments)]
+fn fixture_sessions_three_agents(
+    _world: &mut BotSpyWorld,
+    _id1: String,
+    _agent1: String,
+    _id2: String,
+    _agent2: String,
+    _id3: String,
+    _agent3: String,
+) {
+    todo!("BOTSPY-2c0dc3: three fixture sessions from three agents")
+}
+
+#[when(regex = r#"^I iterate the sessions$"#)]
+fn iterate_the_sessions(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-2c0dc3: iterate the store's sessions")
+}
+
+#[then(regex = r#"^the iteration yields ([0-9]+) sessions?$"#)]
+fn iteration_yields_count(_world: &mut BotSpyWorld, _count: usize) {
+    todo!("BOTSPY-2c0dc3: the session iteration count")
+}
+
+#[then(regex = r#"^the iteration yields sessions (.+)$"#)]
+fn iteration_yields_ids(_world: &mut BotSpyWorld, _ids: String) {
+    todo!("BOTSPY-2c0dc3: the session iteration ids in order")
+}
+
+#[given(regex = r#"^the session has messages "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
+fn session_has_messages(_world: &mut BotSpyWorld, _text1: String, _text2: String, _text3: String) {
+    todo!("BOTSPY-2c0dc3: three text messages on the current fixture session")
+}
+
+#[when(regex = r#"^I iterate the messages of session "([^"]+)"$"#)]
+fn iterate_messages_of_session(_world: &mut BotSpyWorld, _id: String) {
+    todo!("BOTSPY-2c0dc3: stream the session's messages from the store")
+}
+
+#[then(regex = r#"^the iteration yields the texts (.+) in that order$"#)]
+fn iteration_yields_texts(_world: &mut BotSpyWorld, _texts: String) {
+    todo!("BOTSPY-2c0dc3: message texts in order")
+}
+
+#[given(regex = r#"^the session has a message with parts "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
+fn session_has_message_with_parts(
+    _world: &mut BotSpyWorld,
+    _kind1: String,
+    _kind2: String,
+    _kind3: String,
+) {
+    todo!("BOTSPY-2c0dc3: one message with the given part kinds")
+}
+
+#[when(regex = r#"^I iterate the parts of the last message of session "([^"]+)"$"#)]
+fn iterate_parts_of_last_message(_world: &mut BotSpyWorld, _id: String) {
+    todo!("BOTSPY-2c0dc3: stream the last message's parts from the store")
+}
+
+#[then(regex = r#"^the iteration yields the kinds (.+) in that order$"#)]
+fn iteration_yields_kinds(_world: &mut BotSpyWorld, _kinds: String) {
+    todo!("BOTSPY-2c0dc3: part kinds in order")
+}
