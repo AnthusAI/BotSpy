@@ -410,16 +410,17 @@ fn sessions(args: SessionsArgs) -> RunOutcome {
 }
 
 fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
-    let mut out = String::new();
-    out.push_str(&format!(
-        "{}  {}  {}  {}  {}  {}\n",
-        render::column("SESSION", 8),
-        render::column("AGENT", 12),
-        render::column("PROJECT", 20),
-        render::number_str("MSGS", 4),
-        render::column("LAST ACTIVITY", 20),
-        "TITLE"
-    ));
+    // Rows are built as logical cells first, then padded to the widest
+    // cell per column: in both modes every data row stays aligned with
+    // the header, no matter how long ids, projects, or titles are.
+    let mut cells: Vec<[String; 6]> = vec![[
+        "SESSION".to_string(),
+        "AGENT".to_string(),
+        "PROJECT".to_string(),
+        "MSGS".to_string(),
+        "LAST ACTIVITY".to_string(),
+        "TITLE".to_string(),
+    ]];
     let mut truncated = false;
     for summary in summaries {
         let id = if no_truncate || summary.id.chars().count() <= 8 {
@@ -438,14 +439,34 @@ fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
             .title
             .clone()
             .unwrap_or_else(|| render::DASH.to_string());
+        cells.push([
+            id,
+            agent_name(summary.agent).to_string(),
+            render::truncate_within(&summary.project_id, no_truncate, 20),
+            summary.message_count.to_string(),
+            activity,
+            render::truncate(&title, no_truncate),
+        ]);
+    }
+    let width = |column: usize| {
+        render::column_width(
+            &cells
+                .iter()
+                .map(|row| row[column].as_str())
+                .collect::<Vec<_>>(),
+        )
+    };
+    let (id_w, project_w, msgs_w, activity_w) = (width(0), width(2), width(3), width(4));
+    let mut out = String::new();
+    for cell in &cells {
         out.push_str(&format!(
             "{}  {}  {}  {}  {}  {}\n",
-            render::column(&id, 8),
-            render::column(agent_name(summary.agent), 12),
-            render::column(&render::truncate(&summary.project_id, no_truncate), 20),
-            render::number(summary.message_count, 4),
-            render::column(&activity, 20),
-            render::truncate(&title, no_truncate)
+            render::column(&cell[0], id_w),
+            render::column(&cell[1], 12),
+            render::column(&cell[2], project_w),
+            render::number_str(&cell[3], msgs_w),
+            render::column(&cell[4], activity_w),
+            cell[5]
         ));
     }
     let mut footer = render::count_line(summaries.len());

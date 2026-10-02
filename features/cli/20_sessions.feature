@@ -97,6 +97,16 @@ Feature: botspy sessions
     And stdout reports "5 sessions"
     And stdout contains "extra-demo" "dupe-demo"
 
+  Scenario: Human output keeps the table aligned with long project ids
+    When I run "botspy sessions" against the fixture home
+    Then the exit code is 0
+    And the sessions table aligns the LAST ACTIVITY column
+
+  Scenario: --no-truncate keeps the table aligned with full values
+    When I run "botspy sessions --no-truncate" against the fixture home
+    Then the exit code is 0
+    And the sessions table aligns the LAST ACTIVITY column
+
   Scenario: An unknown source filter is rejected
     When I run "botspy sessions --source notepad"
     Then the exit code is 1

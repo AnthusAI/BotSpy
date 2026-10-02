@@ -11,12 +11,18 @@ pub const TRUNCATE_WIDTH: usize = 38;
 /// Truncate a long value for human output, keeping its tail (the most
 /// specific part of a path) and marking the cut.
 pub fn truncate(value: &str, keep_full: bool) -> String {
-    if keep_full || value.chars().count() <= TRUNCATE_WIDTH {
+    truncate_within(value, keep_full, TRUNCATE_WIDTH)
+}
+
+/// Truncate a long value to a specific column width, keeping its tail
+/// (the most specific part of a path) and marking the cut.
+pub fn truncate_within(value: &str, keep_full: bool, width: usize) -> String {
+    if keep_full || width == 0 || value.chars().count() <= width {
         value.to_string()
     } else {
         let tail: String = value
             .chars()
-            .skip(value.chars().count() - (TRUNCATE_WIDTH - 1))
+            .skip(value.chars().count() - (width - 1))
             .collect();
         format!("…{tail}")
     }
@@ -30,6 +36,15 @@ pub fn column(value: &str, width: usize) -> String {
     } else {
         format!("{value}{}", " ".repeat(width - visible))
     }
+}
+
+/// The width a column needs so every value, including the header, fits.
+pub fn column_width(values: &[&str]) -> usize {
+    values
+        .iter()
+        .map(|value| value.chars().count())
+        .max()
+        .unwrap_or(0)
 }
 
 /// The dash human output shows for values an agent never recorded.
