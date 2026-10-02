@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R11 optional session metadata",
   "description": "Done when: the wip tag is removed from 11_session_metadata.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "3da0f295-d6d1-417a-8d52-fd4bc2409344",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/11_session_metadata.feature; all 7 scenarios pass (59 total). Schema: SessionMetadata { title, git_branch, git_commit, git_origin_url, cwd, archived, pinned, status, app_version, models (ordered, mid-session changes visible), pr_url } carried on Session and SessionSummary; absent metadata stays absent. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T19:10:50.972208Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:41:49.459Z",
-  "updated_at": "2026-10-02T17:43:10.776548Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:10:57.805601Z",
+  "closed_at": "2026-10-02T19:10:57.805551Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing optional session metadata until its BDD scenarios pass.",
-  "right_now_updated_at": "2026-10-02T17:43:12.251995Z",
-  "custom": {}
+  "right_now_summary": "Session metadata is implemented, and all seven scenarios pass.",
+  "right_now_updated_at": "2026-10-02T19:10:59.197609Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
