@@ -17,3 +17,6 @@ Spec files (all `@wip` until the Local Store implementation lands):
   persistence across reopens, a reader querying while an ingest commits,
   clean typed errors for files that are not a store, and the
   BOTSPY_HOME-derived default path.
+- `05_ingest.feature` — ingesting the registered adapters into the store:
+  report counts, first-report-wins dedup, lossless round-trip, sources
+  stay read-only, empty registry is a no-op.

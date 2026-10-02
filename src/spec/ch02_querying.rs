@@ -68,5 +68,8 @@
     "\n```\n\n",
     "### 04_store.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/04_store.feature"),
+    "\n```\n\n",
+    "### 05_ingest.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/05_ingest.feature"),
     "\n```\n"
 )]
