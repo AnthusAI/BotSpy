@@ -184,6 +184,8 @@ pub struct BotSpyWorld {
     pub local_digest_after: Option<String>,
     /// The part-kind filter of the most recent filtered message iteration.
     pub local_message_filter: Option<String>,
+    /// The hits of the most recent store search (text or semantic).
+    pub local_search_hits: Vec<botspy::SearchHit>,
     /// The fixture adapters' open() call count before a refresh pass.
     pub local_open_count_before: Option<usize>,
     /// The fixture adapters' open() call count after a refresh pass.

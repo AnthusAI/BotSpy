@@ -6,6 +6,7 @@
 
 use crate::schema::{Agent, Message, Part};
 use crate::session::{Session, UnknownSession};
+use crate::store::text::{self, SearchHit};
 use crate::store::{agent_code, SessionIter, Store, StoreError, SESSIONS_PREFIX, SESSIONS_SUFFIX};
 use rusqlite::types::Value;
 use rusqlite::{params, OptionalExtension};
@@ -41,38 +42,45 @@ pub struct MessageFilter {
     pub part_kind: Option<String>,
 }
 
-/// The session SQL and its filter values (?3 onward) for a filter.
-fn sessions_sql_and_values(filter: &SessionFilter) -> (String, Vec<Value>) {
-    let mut sql = SESSIONS_PREFIX.to_string();
+/// The WHERE conjuncts (" AND …") and their values (?first_index onward)
+/// for a session filter — shared by the session cursor and search.
+fn filter_conjuncts(filter: &SessionFilter, first_index: usize) -> (String, Vec<Value>) {
+    let mut conjuncts = String::new();
     let mut values = Vec::new();
     if let Some(agent) = &filter.agent {
-        let index = values.len() + 3;
-        sql.push_str(&format!(" AND agent = ?{index}"));
+        let index = first_index + values.len();
+        conjuncts.push_str(&format!(" AND agent = ?{index}"));
         values.push(Value::from(agent_code(agent).to_string()));
     }
     if let Some(project) = &filter.project {
-        let index = values.len() + 3;
-        sql.push_str(&format!(" AND project_id = ?{index}"));
+        let index = first_index + values.len();
+        conjuncts.push_str(&format!(" AND project_id = ?{index}"));
         values.push(Value::from(project.clone()));
     }
     if let Some(kind) = &filter.part_kind {
-        let index = values.len() + 3;
-        sql.push_str(&format!(
+        let index = first_index + values.len();
+        conjuncts.push_str(&format!(
             " AND EXISTS (SELECT 1 FROM parts WHERE parts.session_id = sessions.id AND parts.kind = ?{index})"
         ));
         values.push(Value::from(kind.clone()));
     }
     if let Some(since) = &filter.since {
-        let index = values.len() + 3;
-        sql.push_str(&format!(" AND last_activity_at >= ?{index}"));
+        let index = first_index + values.len();
+        conjuncts.push_str(&format!(" AND last_activity_at >= ?{index}"));
         values.push(Value::from(since.clone()));
     }
     if let Some(until) = &filter.until {
-        let index = values.len() + 3;
-        sql.push_str(&format!(" AND last_activity_at <= ?{index}"));
+        let index = first_index + values.len();
+        conjuncts.push_str(&format!(" AND last_activity_at <= ?{index}"));
         values.push(Value::from(until.clone()));
     }
-    sql.push_str(SESSIONS_SUFFIX);
+    (conjuncts, values)
+}
+
+/// The session SQL and its filter values (?3 onward) for a filter.
+fn sessions_sql_and_values(filter: &SessionFilter) -> (String, Vec<Value>) {
+    let (conjuncts, values) = filter_conjuncts(filter, 3);
+    let sql = format!("{SESSIONS_PREFIX}{conjuncts}{SESSIONS_SUFFIX}");
     (sql, values)
 }
 
@@ -192,6 +200,24 @@ impl<'s> Query<'s> {
             done: false,
             counters: Rc::clone(&self.counters),
         }
+    }
+
+    /// Full-text search over the stored messages (FTS5): sessions with
+    /// more matching messages rank first, then better (lower) bm25 rank,
+    /// then id. Each hit locates the matched part and its text. A query
+    /// that matches nothing is an empty result, never an error.
+    pub fn search(&self, query: &str) -> Vec<SearchHit> {
+        self.search_with(query, &SessionFilter::default())
+    }
+
+    /// Full-text search composed with a session filter.
+    pub fn search_with(&self, query: &str, filter: &SessionFilter) -> Vec<SearchHit> {
+        let conn = self
+            .store
+            .reader_conn()
+            .expect("reader connection for text search");
+        let (conjuncts, values) = filter_conjuncts(filter, 2);
+        text::search(&conn, query, &conjuncts, &values).expect("store text search failed")
     }
 
     /// The parts of one message, in part-ordinal order, rebuilt losslessly
