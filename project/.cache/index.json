@@ -1,0 +1,2003 @@
+{
+  "version": 1,
+  "built_at": "2026-10-02T16:32:22Z",
+  "file_mtimes": {
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790958215.144004,
+    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
+    "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790958459.042245,
+    "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790958091.288143,
+    "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790958460.844789,
+    "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790958388.713446,
+    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790958047.826535,
+    "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790958433.619428,
+    "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790958096.514472,
+    "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790958151.362658,
+    "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790958107.027429,
+    "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
+    "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790957972.342915,
+    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790958153.481318,
+    "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790958224.244948,
+    "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790958139.359389,
+    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790957729.010111,
+    "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790958155.975258,
+    "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
+    "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
+    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790958210.785183,
+    "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790957980.148867,
+    "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790958168.349955,
+    "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
+    "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790958319.281409,
+    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790958124.600785,
+    "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
+    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
+    "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
+    "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790958209.179931,
+    "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790958228.683426,
+    "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790958081.914957,
+    "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790958086.767529,
+    "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790958101.887965,
+    "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
+    "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790957984.968468,
+    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790958033.021434,
+    "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790958227.537219,
+    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790958245.991392,
+    "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
+    "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790957967.597511,
+    "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790958447.546378,
+    "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
+    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790958258.869688,
+    "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790958076.598149,
+    "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
+    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790957961.422925,
+    "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
+    "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
+    "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
+    "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790958123.344149,
+    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790958257.047553,
+    "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790957994.975589,
+    "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
+    "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790957975.924478,
+    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790958103.285731,
+    "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
+    "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790958219.039163,
+    "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790958243.157955,
+    "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
+    "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790958213.96894,
+    "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790958166.810653,
+    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790958003.136255,
+    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790957725.872003,
+    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790958088.387245
+  },
+  "issues": [
+    {
+      "id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+      "title": "Query API (features/query)",
+      "description": "The public query API: botspy.sessions(source=None), iterating sessions then messages then parts, with filters by kind, time, and project. Lazy and streaming; read-only. Specs first: features/query/*.feature is the source of truth; implementation is generated from the specs.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:16.948650Z",
+      "updated_at": "2026-10-02T16:18:54.561798Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The query API specs need writing and review, while the sessions API has no recent work reported.",
+      "right_now_updated_at": "2026-10-02T16:23:35.143502Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+      "title": "Write Gherkin spec: Antigravity adapter behaviors",
+      "description": "Author features/adapters/antigravity/*.feature: discovery over both roots, protobuf payload decoding, summaries DB reads, extraction of all part kinds, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:47.206866Z",
+      "updated_at": "2026-10-02T16:19:47.206913Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin spec for Antigravity adapter behaviors still needs to be written and reviewed.",
+      "right_now_updated_at": "2026-10-02T16:19:48.710258Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "title": "Project setup and tooling",
+      "description": "Chores that stood the project up: python package, Kanbus, semantic-release, MIT license, ruff, GitHub CI. Each closes when its change lands and local checks pass.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:03.113577Z",
+      "updated_at": "2026-10-02T16:16:03.113620Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
+      "right_now_updated_at": "2026-10-02T16:27:39.039868Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25",
+      "title": "Define adapter protocol: discovery and streaming extraction with skip counters",
+      "description": "Discovery finds sessions under given roots; extraction streams records without loading whole files (transcripts can exceed 100MB); malformed lines and unknown records are skipped and counted, never fatal. Done when: the protocol is typed and a reference in-memory adapter passes tests.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:28.746374Z",
+      "updated_at": "2026-10-02T16:21:29.962592Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The adapter protocol is being defined for discovery, streaming extraction, and counted skips.",
+      "right_now_updated_at": "2026-10-02T16:21:31.287672Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
+      "title": "Stand up BotSpy project infrastructure",
+      "description": "Bootstrap the repo: python package, Kanbus, semantic-release, MIT license, GitHub CI. Done when all setup chores are closed and CI-equivalent checks pass locally.",
+      "type": "initiative",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": null,
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:14:44.408214Z",
+      "updated_at": "2026-10-02T16:14:44.408249Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
+      "right_now_updated_at": "2026-10-02T16:27:40.844347Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351",
+      "title": "Add Kanbus as dev dependency and initialize BOTSPY board",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "aad96e52-59a5-4bcf-a0be-f322a0e0e1f3",
+          "author": "home",
+          "text": "kanbus 0.33.0 installed into the project env via pip; board initialized with kbs 0.32.0, project key BOTSPY; kbs validate passes.",
+          "created_at": "2026-10-02T16:26:22.437266Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:32.699953Z",
+      "updated_at": "2026-10-02T16:26:27.191709Z",
+      "closed_at": "2026-10-02T16:26:27.191652Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Kanbus is installed, the BOTSPY board is initialized, and validation passes.",
+      "right_now_updated_at": "2026-10-02T16:26:28.712986Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+      "title": "Write Gherkin spec: example consumer behaviors",
+      "description": "Author features/examples.feature: observable behavior of the example consumers (meter and sentiment over BotSpy sessions), kept as examples not core. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:46.209319Z",
+      "updated_at": "2026-10-02T16:20:46.209343Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing and reviewing executable Gherkin examples for meter and sentiment consumers.",
+      "right_now_updated_at": "2026-10-02T16:20:47.826242Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7",
+      "title": "Add Behave BDD scaffolding with normalized-schema feature",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "867c28e5-12c8-4075-b98c-1a081ec2515b",
+          "author": "home",
+          "text": "behave added as dev dependency; features/ tree with environment.py, steps/, and features/schema/normalized_session.feature with implemented steps; behave passes (8 steps) and runs in CI.",
+          "created_at": "2026-10-02T16:27:03.466359Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:51.386352Z",
+      "updated_at": "2026-10-02T16:27:11.620694Z",
+      "closed_at": "2026-10-02T16:27:11.620664Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Behave BDD scaffolding and the normalized-schema feature are added, with all eight steps passing in CI.",
+      "right_now_updated_at": "2026-10-02T16:27:13.619082Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad",
+      "title": "Guarantee read-only access and safe SQLite/WAL snapshotting",
+      "description": "Adapters never write to source directories; SQLite/WAL sources are read through a safe snapshot copy. Done when: tests prove no source mutation and a WAL database reads correctly through the snapshot path.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:33.471787Z",
+      "updated_at": "2026-10-02T16:21:35.009151Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is ensuring read-only access and safe snapshotting for SQLite/WAL sources.",
+      "right_now_updated_at": "2026-10-02T16:21:36.514148Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549",
+      "title": "Codex parity tests and doctor diagnostics",
+      "description": "Done when: parity tests pass on fixtures and doctor reports roots.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:33.316525Z",
+      "updated_at": "2026-10-02T16:22:29.975775Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Parity tests are being checked against fixtures, and doctor is reporting roots.",
+      "right_now_updated_at": "2026-10-02T16:22:31.362164Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37",
+      "title": "Synthetic fixture and discovery for Claude Code JSONL transcripts",
+      "description": "Fixture mirrors the ~/.claude/projects layout (project dirs, session JSONL, subagent transcripts skipped). Done when: discovery finds sessions from the fixture with correct skip counts.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:52.462891Z",
+      "updated_at": "2026-10-02T16:21:45.149157Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "A fixture is being built to test transcript discovery and skipped subagent counts.",
+      "right_now_updated_at": "2026-10-02T16:21:47.026842Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca",
+      "title": "Extract all part types from Antigravity payloads and summaries DB",
+      "description": "Minimal protobuf decoding of user-turn payloads plus the summaries SQLite; map to normalized parts with file/row provenance. Done when: fixture extraction yields the expected parts.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:57.950355Z",
+      "updated_at": "2026-10-02T16:23:23.185227Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is extracting payload parts and summary rows into a normalized format with source details.",
+      "right_now_updated_at": "2026-10-02T16:23:24.716529Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+      "title": "Write Gherkin spec: Claude Code adapter behaviors",
+      "description": "Author features/adapters/claude_code/*.feature: discovery over the projects layout, extraction of all part kinds with timestamps and provenance, skip counting, doctor reporting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:30.461263Z",
+      "updated_at": "2026-10-02T16:19:30.461286Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Claude Code adapter needs executable Gherkin scenarios for discovery, extraction, skip counting, and doctor reports.",
+      "right_now_updated_at": "2026-10-02T16:19:32.342593Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+      "title": "Codex adapter",
+      "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:05.963109Z",
+      "updated_at": "2026-10-02T16:15:05.963146Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Codex adapter is being tested against fixtures while discovery scenarios are written.",
+      "right_now_updated_at": "2026-10-02T16:22:33.479650Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+      "title": "Export (features/export)",
+      "description": "JSON and JSONL export of sessions, messages, and parts with stable field order and schema version. Specs first: features/export/*.feature; implementation generated from the specs.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:18:57.677240Z",
+      "updated_at": "2026-10-02T16:18:57.677267Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing export specs and building JSON and JSONL output with stable fields and schema versions.",
+      "right_now_updated_at": "2026-10-02T16:23:44.244339Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+      "title": "Cursor adapter",
+      "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: scanner-sentiment cursor adapter, read-only.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:02.764860Z",
+      "updated_at": "2026-10-02T16:15:02.764908Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building and testing a WAL-safe Cursor adapter that finds stores and extracts all parts.",
+      "right_now_updated_at": "2026-10-02T16:22:19.358902Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+      "title": "Packaging and release",
+      "description": "Ship the module: wheel/sdist, console-script entry point, optional botspy[metrics] extra for example consumers, versioning and changelog via python-semantic-release on main.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:27.329103Z",
+      "updated_at": "2026-10-02T16:15:27.329131Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The module is being prepared for release with packages, a CLI entry point, extras, and automated versioning.",
+      "right_now_updated_at": "2026-10-02T16:15:29.009974Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
+      "title": "Synthetic fixture and discovery for Grok Bot transcript replicas",
+      "description": "Fixture mirrors base32 blob filenames ending in .transcript.replicas.<conversation-uuid>. Done when: discovery decodes blob names and finds conversations.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:38.806010Z",
+      "updated_at": "2026-10-02T16:22:34.526153Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building a fixture and discovery logic for Grok Bot transcript replicas.",
+      "right_now_updated_at": "2026-10-02T16:22:35.970689Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd",
+      "title": "Adopt specs-first philosophy in README, AGENTS.md, CONTRIBUTING_AGENT.md",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "a25df232-a8a4-4873-af1e-b979f64071a3",
+          "author": "home",
+          "text": "README, AGENTS.md and CONTRIBUTING_AGENT.md now state that Gherkin specs are the backbone and true source; planning is organized around features; spec -> steps -> implementation.",
+          "created_at": "2026-10-02T16:27:31.111024Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:26:01.385127Z",
+      "updated_at": "2026-10-02T16:27:35.919181Z",
+      "closed_at": "2026-10-02T16:27:35.919142Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The docs now make Gherkin specs the source of truth and guide work from specs to steps to code.",
+      "right_now_updated_at": "2026-10-02T16:27:37.363340Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7",
+      "title": "Add python-semantic-release config at version 0.1.0",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "4e5f6e50-647b-4660-b7c9-4e01babc9053",
+          "author": "home",
+          "text": "[tool.semantic_release] in pyproject.toml: version from pyproject (0.1.0), branch main, conventional commits, changelog generation, build via uv build.",
+          "created_at": "2026-10-02T16:26:31.536425Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:37.354901Z",
+      "updated_at": "2026-10-02T16:26:35.673110Z",
+      "closed_at": "2026-10-02T16:26:35.673043Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The project is setting up semantic-release 0.1.0 in pyproject.toml.",
+      "right_now_updated_at": "2026-10-02T16:26:37.210453Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+      "title": "Antigravity adapter",
+      "description": "Tap Antigravity history: ~/.gemini/antigravity and antigravity-cli roots (conversations with protobuf user-turn payloads, conversation_summaries.db SQLite). Extract ALL part types. Reference: scanner-sentiment antigravity adapter, read-only.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:13.217276Z",
+      "updated_at": "2026-10-02T16:15:13.217295Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building fixtures, extracting payloads, and testing Antigravity adapter behavior.",
+      "right_now_updated_at": "2026-10-02T16:23:30.784867Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+      "title": "Write Gherkin spec: Codex adapter behaviors",
+      "description": "Author features/adapters/codex/*.feature: discovery over CODEX_HOME sessions, extraction of all part kinds with line provenance and skip counting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:38.562847Z",
+      "updated_at": "2026-10-02T16:19:38.562914Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin scenarios for Codex adapter discovery and extraction still need to be written and reviewed.",
+      "right_now_updated_at": "2026-10-02T16:19:40.147767Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+      "title": "Grok Bot adapter",
+      "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:09.677865Z",
+      "updated_at": "2026-10-02T16:15:09.677908Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building fixtures, extracting transcript parts, and testing Grok Bot discovery and diagnostics.",
+      "right_now_updated_at": "2026-10-02T16:22:48.346129Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103",
+      "title": "Add MIT license",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "a09e5b3c-df9e-4f03-bbc3-df31ebe0777e",
+          "author": "home",
+          "text": "LICENSE added with standard MIT text, Copyright (c) 2026 Ryan Porter; license = \"MIT\" in pyproject.toml.",
+          "created_at": "2026-10-02T16:26:43.001040Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:41.390105Z",
+      "updated_at": "2026-10-02T16:26:47.727932Z",
+      "closed_at": "2026-10-02T16:26:47.727789Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The MIT license was added to the repository and declared in pyproject.toml.",
+      "right_now_updated_at": "2026-10-02T16:26:48.942605Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e",
+      "title": "Synthetic fixture and discovery for Antigravity conversations and summaries DB",
+      "description": "Fixture mirrors ~/.gemini/antigravity and antigravity-cli (conversations dir plus conversation_summaries.db). Done when: discovery finds conversations from both roots.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:53.294810Z",
+      "updated_at": "2026-10-02T16:22:50.208845Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building a fixture to discover Antigravity conversations from both roots.",
+      "right_now_updated_at": "2026-10-02T16:22:52.118547Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "title": "BotSpy: unified coding-agent session history module",
+      "description": "Product = the module itself: one adapter per coding agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later), one standard normalized schema, and a unified agent-session history. Metrics such as the thanks-vs-F-bombs meter and local sentiment analysis are example consumers (examples/ or an optional botspy[metrics] extra), never core work and never core dependencies. BotSpy is a behavior-driven specification project: the Gherkin specs under features/ are the backbone and the true source; every feature-area epic starts with spec-writing tasks and implementation tasks are blocked-by them. Reference for real on-disk formats (read-only): ~/Projects/DataParade-io/scanner-sentiment/src/sentiment/adapters - note the prototype extracted human messages only; BotSpy needs ALL message and part types.",
+      "type": "initiative",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": null,
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:14:41.456613Z",
+      "updated_at": "2026-10-02T16:25:16.880424Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing specs and building adapters, the CLI, exports, schema, tests, and release packaging.",
+      "right_now_updated_at": "2026-10-02T16:25:19.281105Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+      "title": "Claude Code adapter",
+      "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: scanner-sentiment adapter, read-only.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:14:57.945584Z",
+      "updated_at": "2026-10-02T16:14:57.945634Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building and testing the Claude Code adapter, including transcript parsing, discovery, skip counts, and",
+      "right_now_updated_at": "2026-10-02T16:22:04.597542Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f",
+      "title": "Extract all part types from Claude Code transcripts",
+      "description": "Map user, assistant, thinking, tool_call, tool_result, attachment, and system entries to normalized parts with timestamps and provenance. Done when: fixture extraction yields the expected parts and malformed lines are skipped and counted.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:00.247708Z",
+      "updated_at": "2026-10-02T16:21:49.859913Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The work is defining transcript parsing for all entry types, while skipping and counting malformed lines.",
+      "right_now_updated_at": "2026-10-02T16:21:52.244621Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f",
+      "title": "Build synthetic fixture corpus for all five agents",
+      "description": "Synthetic-only fixtures mirroring real on-disk layouts; no real transcripts or secrets. Done when: every adapter fixture is committed with a generator script and a guard test proves no secrets.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:36.379370Z",
+      "updated_at": "2026-10-02T16:23:50.080898Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building synthetic fixtures for all five agents with generators and secret-safety tests.",
+      "right_now_updated_at": "2026-10-02T16:23:52.253939Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c",
+      "title": "Add ruff lint and format configuration",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "a4c1ba48-15a2-4e17-813b-5d893cacaad0",
+          "author": "home",
+          "text": "[tool.ruff] configured (line-length 100, target py311); ruff check and ruff format --check pass.",
+          "created_at": "2026-10-02T16:26:53.177368Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:46.317670Z",
+      "updated_at": "2026-10-02T16:26:58.040479Z",
+      "closed_at": "2026-10-02T16:26:58.040425Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Ruff is configured for Python 3.11, and lint and format checks pass.",
+      "right_now_updated_at": "2026-10-02T16:26:59.569641Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
+      "title": "Antigravity parity tests and doctor diagnostics",
+      "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:18:02.632401Z",
+      "updated_at": "2026-10-02T16:23:27.445142Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Parity tests run on fixtures, and doctor checks both roots.",
+      "right_now_updated_at": "2026-10-02T16:23:29.179203Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+      "title": "CLI (features/cli)",
+      "description": "The botspy CLI: list sources, list sessions, dump and export, with source and window flags. Specs first: features/cli/*.feature; implementation generated from the specs.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:01.002893Z",
+      "updated_at": "2026-10-02T16:19:01.002948Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building the CLI and writing specs for listings, dumps, exports, and filters.",
+      "right_now_updated_at": "2026-10-02T16:23:48.682820Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad",
+      "title": "Define typed content-part model with fixed kinds and extra passthrough",
+      "description": "Fixed kind set: text, thinking, tool_call, tool_result, attachment, system; agent-specific data outside the kinds flows through an extensible extra/raw passthrough without loss. Done when: every part kind round-trips through JSON and unknown kinds degrade to extra.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:17.385937Z",
+      "updated_at": "2026-10-02T16:21:19.514317Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The typed content-part model needs fixed kinds and lossless passthrough for unknown data.",
+      "right_now_updated_at": "2026-10-02T16:21:21.914476Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4",
+      "title": "Specify schema validation and versioning",
+      "description": "Schema version constant, named validation errors, golden round-trip tests. Done when: malformed parts are rejected with clear errors and the schema version is importable and exported.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:22.464357Z",
+      "updated_at": "2026-10-02T16:21:25.235407Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The schema validation and versioning work has no recent activity.",
+      "right_now_updated_at": "2026-10-02T16:21:26.767388Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611",
+      "title": "Adapter registry and per-source options",
+      "description": "Create adapters by source name with root and home overrides; unknown sources raise a clear error. Done when: registry tests pass for all five sources with option overrides.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:38.906Z",
+      "updated_at": "2026-10-02T16:21:40.335135Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The adapter registry and per-source overrides are specified, with no recent activity recorded.",
+      "right_now_updated_at": "2026-10-02T16:21:41.887392Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a",
+      "title": "Cursor parity tests and doctor diagnostics",
+      "description": "Done when: parity tests pass on fixtures and doctor reports roots and index drift.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:19.074255Z",
+      "updated_at": "2026-10-02T16:22:15.559505Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Parity tests and doctor diagnostics are being checked against fixtures and index drift.",
+      "right_now_updated_at": "2026-10-02T16:22:17.351204Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a",
+      "title": "Write Gherkin spec: Grok Bot adapter behaviors",
+      "description": "Author features/adapters/grok_bot/*.feature: base32 blob-name discovery, blob decoding, extraction of all part kinds with provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:43.416544Z",
+      "updated_at": "2026-10-02T16:19:43.416568Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team needs to write and review executable Gherkin scenarios for Grok Bot adapter behaviors.",
+      "right_now_updated_at": "2026-10-02T16:19:44.967931Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
+      "title": "Write Gherkin spec: unified history behaviors",
+      "description": "Author features/schema/unified_history.feature: sessions from all five adapters pile into one unified agent-session history with consistent ordering, dedup, and provenance. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:31.544412Z",
+      "updated_at": "2026-10-02T16:20:31.544442Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin spec for unified agent-session history is being written.",
+      "right_now_updated_at": "2026-10-02T16:20:33.020911Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432",
+      "title": "Implement the botspy CLI",
+      "description": "Subcommands to list sources, list sessions, dump sessions, and export, with source and window flags. Done when: the feature scenarios in features/cli pass.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:26.494541Z",
+      "updated_at": "2026-10-02T16:23:45.539436Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The botspy CLI is being built to list sources and sessions, dump sessions, and export data.",
+      "right_now_updated_at": "2026-10-02T16:23:47.536828Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0",
+      "title": "Example: coding-session thanks-vs-F-bombs meter",
+      "description": "A consumer in examples/ (or an optional botspy[metrics] extra) computing the gratitude-vs-profanity meter over BotSpy sessions. Done when: the example runs on fixtures and imports nothing outside the extra.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:51.022007Z",
+      "updated_at": "2026-10-02T16:24:04.361521Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The gratitude-versus-profanity meter example is being prepared to run on BotSpy session fixtures.",
+      "right_now_updated_at": "2026-10-02T16:24:05.990835Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-933536ff-9066-4b94-8271-851bdf822246",
+      "title": "Example: local sentiment analysis (VADER default, optional GoEmotions transformer)",
+      "description": "Sentiment scoring as an example consumer; VADER as the default local backend, GoEmotions transformer optional behind the metrics extra. Done when: the example runs on fixtures with VADER and documents the optional transformer path.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:56.365459Z",
+      "updated_at": "2026-10-02T16:24:08.282936Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The example uses VADER by default, with an optional GoEmotions transformer path.",
+      "right_now_updated_at": "2026-10-02T16:24:09.848025Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
+      "title": "Write Gherkin spec: adapter contract",
+      "description": "Author features/adapters/contract.feature: discovery finds sessions, extraction streams without loading whole files, malformed input is skipped and counted, sources are read-only. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:25.031954Z",
+      "updated_at": "2026-10-02T16:19:25.032012Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin adapter contract is being drafted with scenarios for discovery, streaming, malformed input, and read-only",
+      "right_now_updated_at": "2026-10-02T16:19:27.596843Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d",
+      "title": "Add GitHub CI and release workflows",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "905cd972-14f5-4f34-be39-3710a46e4803",
+          "author": "home",
+          "text": "ci.yml: push+PR, Python 3.11/3.12 matrix with uv, ruff check + format check, behave, pytest. release.yml: python-semantic-release on push to main with contents+id-token write; PyPI publish commented out.",
+          "created_at": "2026-10-02T16:27:16.752663Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:55.772401Z",
+      "updated_at": "2026-10-02T16:27:21.990034Z",
+      "closed_at": "2026-10-02T16:27:21.989934Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "CI runs linting and tests on pushes and PRs, while releases are prepared on main without PyPI publishing.",
+      "right_now_updated_at": "2026-10-02T16:27:27.546045Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
+      "title": "Extract all part types from Codex session JSONL",
+      "description": "Map user, assistant, thinking/reasoning, tool_call, and tool_result entries to normalized parts with line provenance. Done when: fixture extraction yields the expected parts with skip counting.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:28.178765Z",
+      "updated_at": "2026-10-02T16:22:25.634794Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The extractor maps all Codex session parts to normalized records with line tracking and skip counts.",
+      "right_now_updated_at": "2026-10-02T16:22:27.459558Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+      "title": "Example use cases (consumers of BotSpy)",
+      "description": "Optional consumers that demonstrate BotSpy: examples/ directory or an optional botspy[metrics] extra. Never in core required dependencies. Must stay blocked-by the Query, export, and CLI epic.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:30.614751Z",
+      "updated_at": "2026-10-02T16:15:59.118538Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building and reviewing BotSpy examples, with a metrics placeholder still needed.",
+      "right_now_updated_at": "2026-10-02T16:24:18.869523Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810",
+      "title": "Define session and message record model",
+      "description": "Sessions and messages carry ids, source agent, timestamps, session/project identifiers, and source provenance (file, line or row). Done when: the record model is implemented, validated, and unit-tested with golden JSON.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:16:12.061153Z",
+      "updated_at": "2026-10-02T16:21:14.862003Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The session and message record model still needs implementation, validation, and unit tests with golden JSON.",
+      "right_now_updated_at": "2026-10-02T16:21:16.597755Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99",
+      "title": "Extract all part types from Cursor stores with WAL-safe snapshots",
+      "description": "Read SQLite through a safe snapshot; map composer messages and agent transcript entries to normalized parts with row provenance for SQLite. Done when: fixture extraction yields the expected parts and the source db is byte-identical afterwards.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:15.473642Z",
+      "updated_at": "2026-10-02T16:22:10.973048Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building WAL-safe snapshots and normalized part extraction without altering the source database.",
+      "right_now_updated_at": "2026-10-02T16:22:12.644842Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
+      "title": "Write Gherkin spec: normalized schema",
+      "description": "Author features/schema/*.feature: a session is made of ordered messages whose parts each have a kind (text, thinking, tool_call, tool_result, attachment, system) plus extra passthrough, with concrete examples for every kind. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:19.772866Z",
+      "updated_at": "2026-10-02T16:19:19.772901Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin schema spec still needs writing and review with examples for every message part kind.",
+      "right_now_updated_at": "2026-10-02T16:19:21.422426Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef",
+      "title": "Synthetic fixture and discovery for Codex JSONL sessions",
+      "description": "Fixture mirrors the CODEX_HOME sessions layout. Done when: discovery finds session files and reports counts.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:24.054378Z",
+      "updated_at": "2026-10-02T16:22:20.923802Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "A fixture is being built to mirror CODEX_HOME and test session discovery and counts.",
+      "right_now_updated_at": "2026-10-02T16:22:22.594966Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88",
+      "title": "Write Gherkin spec: export behaviors",
+      "description": "Author features/export/*.feature: JSON and JSONL export round-trips into the schema with stable field order and schema version. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:57.948695Z",
+      "updated_at": "2026-10-02T16:19:57.948752Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing and reviewing Gherkin scenarios for JSON and JSONL export behavior.",
+      "right_now_updated_at": "2026-10-02T16:19:59.465963Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705",
+      "title": "Extract all part types from Grok Bot transcript blobs",
+      "description": "Decode conversation blobs and map entries to normalized parts with provenance. Done when: fixture extraction yields the expected parts with skip counting.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:44.124269Z",
+      "updated_at": "2026-10-02T16:22:40.096917Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is extracting and normalizing parts from Grok Bot transcript blobs.",
+      "right_now_updated_at": "2026-10-02T16:22:41.803782Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5",
+      "title": "Claude Code parity tests and doctor diagnostics",
+      "description": "Doctor reports roots, transcript counts, skipped subagents, and issues. Done when: parity tests on the fixture pass and doctor output matches the expected report.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:05.252532Z",
+      "updated_at": "2026-10-02T16:22:01.811763Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Parity tests and doctor diagnostics are being checked against the expected fixture report.",
+      "right_now_updated_at": "2026-10-02T16:22:03.343832Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5",
+      "title": "Example: placeholder for similar metrics",
+      "description": "A stub example showing where further session metrics would live, with the same consumer-only constraints. Done when: the stub exists and is referenced from docs.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:21:01.444833Z",
+      "updated_at": "2026-10-02T16:24:13.485447Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "A placeholder for similar session metrics still needs to be added and linked from the docs.",
+      "right_now_updated_at": "2026-10-02T16:24:17.047395Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117",
+      "title": "Write Gherkin spec: query API behaviors",
+      "description": "Author features/query/*.feature: sessions(source=None) iteration, message and part iteration, filters by kind, time, and project; laziness. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:53.520622Z",
+      "updated_at": "2026-10-02T16:19:53.520656Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin scenarios for query API behavior still need to be written and reviewed.",
+      "right_now_updated_at": "2026-10-02T16:19:54.974904Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9",
+      "title": "Synthetic fixture and discovery for Cursor IDE and agent stores",
+      "description": "Fixture mirrors the Cursor User dir (state.vscdb composer stores with per-workspace and central indexes) and the ~/.cursor agent transcripts and chats metadata. Done when: discovery unions all composer indexes and finds agent sessions.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:10.162622Z",
+      "updated_at": "2026-10-02T16:22:06.439876Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Work is focused on finding Cursor composer stores and agent sessions across workspace and central indexes.",
+      "right_now_updated_at": "2026-10-02T16:22:08.268726Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
+      "title": "Write Gherkin spec: Cursor adapter behaviors",
+      "description": "Author features/adapters/cursor/*.feature: discovery across composer indexes and agent transcripts, WAL-safe snapshot reads, extraction of all part kinds with row provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:19:34.633166Z",
+      "updated_at": "2026-10-02T16:19:34.633208Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The Gherkin spec for Cursor adapter behaviors still needs to be written and reviewed.",
+      "right_now_updated_at": "2026-10-02T16:19:35.924368Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+      "title": "Adapter contract",
+      "description": "Define the shared adapter interface every source adapter implements: discovery, streaming extraction (files can exceed 100MB), skip counters, read-only access to source data, and safe snapshotting of SQLite/WAL sources. Done when the contract is typed, tested, and documented.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:14:54.618100Z",
+      "updated_at": "2026-10-02T16:14:54.618126Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is defining and testing the shared adapter contract, including streaming, safe snapshots, and skip handling.",
+      "right_now_updated_at": "2026-10-02T16:21:43.285484Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242",
+      "title": "Add Python package skeleton with pytest",
+      "description": "",
+      "type": "chore",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "8d09b3be-094a-458a-91e4-951d87089501",
+          "author": "home",
+          "text": "src/ layout with botspy package, one passing pytest test; venv + pip (uv not installed on this Mac); pytest 9.1.1 green.",
+          "created_at": "2026-10-02T16:26:13.090336Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:25:28.494247Z",
+      "updated_at": "2026-10-02T16:26:18.442635Z",
+      "closed_at": "2026-10-02T16:26:18.442600Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The botspy package skeleton is set up, and its first pytest test passes.",
+      "right_now_updated_at": "2026-10-02T16:26:19.806212Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89",
+      "title": "Implement JSON and JSONL export",
+      "description": "Export sessions, messages, and parts to JSON and JSONL with stable field order and schema version. Done when: the feature scenarios in features/export pass.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:21.030908Z",
+      "updated_at": "2026-10-02T16:23:37.092271Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is implementing JSON and JSONL export with stable fields and schema versioning.",
+      "right_now_updated_at": "2026-10-02T16:23:39.038782Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+      "title": "Fixtures and tests (synthetic only)",
+      "description": "Synthetic-only fixture corpus per agent mirroring real on-disk layouts (never real transcripts or secrets), plus cross-adapter unified-history tests and privacy guards.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:21.213326Z",
+      "updated_at": "2026-10-02T16:15:21.213363Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is building synthetic fixtures and cross-adapter history tests with privacy guards.",
+      "right_now_updated_at": "2026-10-02T16:24:03.157585Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c",
+      "title": "Cross-adapter unified history test suite",
+      "description": "Sessions from all adapters pile into one unified agent-session history; ordering, dedup, and provenance verified. Done when: the unified suite passes.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:40.941649Z",
+      "updated_at": "2026-10-02T16:23:59.797931Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The unified history test suite covers ordering, deduplication, and provenance across all adapters.",
+      "right_now_updated_at": "2026-10-02T16:24:01.688283Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a",
+      "title": "Implement sessions() query API with kind/time/project filters",
+      "description": "botspy.sessions(source=None) returns lazily-iterated sessions; messages and parts iterate in order; filters by source, part kind, time window, and project. Done when: the feature scenarios in features/query pass.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:16.853251Z",
+      "updated_at": "2026-10-02T16:23:32.156510Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The sessions() query API is specified, but no recent work is reported.",
+      "right_now_updated_at": "2026-10-02T16:23:33.968424Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882",
+      "title": "Grok Bot parity tests and doctor diagnostics",
+      "description": "Done when: parity tests pass on fixtures and doctor reports the persistence dir.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T16:17:47.935370Z",
+      "updated_at": "2026-10-02T16:22:44.669767Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Parity tests and doctor diagnostics are awaiting fixture checks and persistence-directory reporting.",
+      "right_now_updated_at": "2026-10-02T16:22:46.810374Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b",
+      "title": "Write Gherkin spec: CLI behaviors",
+      "description": "Author features/cli/*.feature: listing sources and sessions, dumping sessions, export flags, window and source filters. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:20:01.801940Z",
+      "updated_at": "2026-10-02T16:20:01.802017Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing Gherkin scenarios for CLI listings, dumps, exports, and filters.",
+      "right_now_updated_at": "2026-10-02T16:20:03.135790Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "title": "Docs",
+      "description": "Documentation: quickstart, schema reference with the part-kind model, per-adapter on-disk format matrix, and adapter authoring guide.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:15:24.317480Z",
+      "updated_at": "2026-10-02T16:15:24.317513Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The docs cover the quickstart, schema, on-disk formats, and adapter guide.",
+      "right_now_updated_at": "2026-10-02T16:15:25.871770Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+      "title": "Core normalized schema",
+      "description": "Design the standard normalized schema: sessions, messages, and typed content parts with a small fixed kind set (text, thinking, tool_call, tool_result, attachment, system) plus an extensible extra/raw passthrough. Every record carries timestamps, session/project identifiers, and source provenance (file, line or row). Done when the schema is specified, versioned, and round-trips through JSON.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:14:50.761818Z",
+      "updated_at": "2026-10-02T16:14:50.761841Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The schema still needs implementation, validation, versioning, tests, and review of its JSON examples.",
+      "right_now_updated_at": "2026-10-02T16:21:28.386678Z",
+      "custom": {}
+    }
+  ],
+  "reverse_deps": {
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28": [
+      "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c"
+    ],
+    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1": [
+      "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca",
+      "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e",
+      "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7"
+    ],
+    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148": [
+      "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0",
+      "BOTSPY-933536ff-9066-4b94-8271-851bdf822246",
+      "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5"
+    ],
+    "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6": [
+      "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37",
+      "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f",
+      "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5"
+    ],
+    "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad": [
+      "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549",
+      "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
+      "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef"
+    ],
+    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f": [
+      "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c"
+    ],
+    "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a": [
+      "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
+      "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705",
+      "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882"
+    ],
+    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014": [
+      "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f",
+      "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c"
+    ],
+    "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3": [
+      "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25",
+      "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad",
+      "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611"
+    ],
+    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7": [
+      "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad",
+      "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4",
+      "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810"
+    ],
+    "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88": [
+      "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89"
+    ],
+    "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117": [
+      "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a"
+    ],
+    "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1": [
+      "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a",
+      "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99",
+      "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9"
+    ],
+    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b": [
+      "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432"
+    ]
+  }
+}

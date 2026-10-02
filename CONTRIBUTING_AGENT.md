@@ -42,7 +42,7 @@ BotSpy is a behavior-driven specification project. The Gherkin behavior specific
 
 The order of work for any feature:
 1. Write or refine the Gherkin feature file (scenarios with concrete examples). On the board this is a spec task; it is done when the scenarios are reviewed and executable — failing or pending is fine before implementation.
-2. Write the step definitions for those scenarios.
+2. Write the Rust step definitions for those scenarios (cucumber crate, `cargo test --test bdd`).
 3. Implement the smallest code that makes the scenarios pass.
 
 On the Kanbus board, every feature-area epic starts with its spec-writing task(s), and every implementation task is blocked-by the spec task of its feature area. Implementation tasks are done when their feature scenarios pass.
