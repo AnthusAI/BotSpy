@@ -23,8 +23,22 @@ fn not_wip(
     !tags.any(|tag| tag == "wip")
 }
 
-#[tokio::main]
-async fn main() {
+/// The MSVC default main-thread stack (1 MB) is too small for the
+/// cucumber runner on Windows (STATUS_STACK_OVERFLOW at startup), so the
+/// future is driven on a thread with a generous stack instead.
+fn main() {
+    std::thread::Builder::new()
+        .stack_size(64 * 1024 * 1024)
+        .spawn(|| {
+            let runtime = tokio::runtime::Runtime::new().expect("tokio runtime");
+            runtime.block_on(run());
+        })
+        .expect("spawn bdd runner thread")
+        .join()
+        .expect("bdd runner thread finished");
+}
+
+async fn run() {
     BotSpyWorld::cucumber()
         .filter_run_and_exit("features", not_wip)
         .await;
