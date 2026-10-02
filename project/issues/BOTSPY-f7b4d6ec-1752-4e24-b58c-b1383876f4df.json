@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R4 turn grouping",
   "description": "Done when: the wip tag is removed from 04_turn_grouping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "123f96e3-18c1-4ff7-aa93-6cd4a83d8df0",
+      "author": "home",
+      "text": "turn_steps registered; turn-ensuring steps set last_turn, position/duration steps 569Xlanchored to avoid ambiguity with the longer variants. 15 features / 70 scenarios / 274 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests pass.",
+      "created_at": "2026-10-02T19:20:05.450354Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:33:19.402916Z",
-  "updated_at": "2026-10-02T17:38:41.294783Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:20:12.728211Z",
+  "closed_at": "2026-10-02T19:20:12.728124Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The turn-grouping steps still need implementation and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:38:43.177111Z",
-  "custom": {}
+  "right_now_summary": "Turn grouping is implemented, and all BDD scenarios, formatting, lint, and documentation checks pass.",
+  "right_now_updated_at": "2026-10-02T19:20:14.536408Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

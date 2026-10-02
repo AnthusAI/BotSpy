@@ -3,23 +3,34 @@
   "title": "Schema R4: Turn grouping with turn-level timing and errors",
   "description": "Report recommendation 4: turn grouping (turn_id, parent_turn_id) with turn-level timing and errors. Feature: features/02_schema/04_turn_grouping.feature.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "be25a15a-2f31-4338-a212-9efb32acee42",
+      "author": "home",
+      "text": "R4 done: Turn.duration_ms/time_to_first_token_ms, Message.turn_position (TurnPosition promptIndex/turnIndex) and step_duration_ms. Only 09 remains @wip in Chapter 1.",
+      "created_at": "2026-10-02T19:20:19.299789Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:30:12.456011Z",
-  "updated_at": "2026-10-02T17:56:23.233372Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:20:23.948427Z",
+  "closed_at": "2026-10-02T19:20:23.948394Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The Gherkin spec is documented, but turn-grouping steps still need implementation and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:56:24.410607Z",
-  "custom": {}
+  "right_now_summary": "Turn grouping, timing, and errors are implemented, documented, and passing all checks.",
+  "right_now_updated_at": "2026-10-02T19:20:25.683440Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

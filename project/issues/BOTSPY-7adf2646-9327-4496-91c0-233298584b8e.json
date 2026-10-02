@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Most structure work passes its tests; typed parts, timestamps, and turn grouping still need implementation.",
-  "right_now_updated_at": "2026-10-02T19:11:25.763141Z",
+  "right_now_summary": "Core structure is largely implemented, while typed parts and timestamps are still being defined.",
+  "right_now_updated_at": "2026-10-02T19:20:27.936710Z",
   "custom": {}
 }
