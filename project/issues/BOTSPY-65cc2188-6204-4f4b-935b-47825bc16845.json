@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Teams are writing specs and testing adapters, exports, fixtures, and cross-platform support.",
-  "right_now_updated_at": "2026-10-02T17:45:42.590553Z",
+  "right_now_summary": "The team is writing specs, building adapters and schemas, and adding tests across the module.",
+  "right_now_updated_at": "2026-10-02T17:59:19.877524Z",
   "custom": {}
 }

@@ -10,16 +10,29 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "7cbffef5-e51b-4774-bd2b-e79e7cddb712",
+      "author": "home",
+      "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+      "created_at": "2026-10-02T17:58:38.168491Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "chapter-restructure"
+      }
+    }
+  ],
   "created_at": "2026-10-02T16:15:09.677865Z",
-  "updated_at": "2026-10-02T16:15:09.677908Z",
+  "updated_at": "2026-10-02T17:59:12.937483Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building fixtures, extracting transcript parts, and testing Grok Bot discovery and diagnostics.",
-  "right_now_updated_at": "2026-10-02T16:22:48.346129Z",
+  "right_now_summary": "The team is building fixtures, writing scenarios, and normalizing Grok Bot transcript parts.",
+  "right_now_updated_at": "2026-10-02T17:59:14.812203Z",
   "custom": {}
 }

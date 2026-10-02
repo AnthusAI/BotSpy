@@ -3,7 +3,7 @@
   "title": "Layer 2: Normalized schema (features/02_schema)",
   "description": "Normalized schema in Rust with serde: Message, Role, Part (Text, Thinking, ToolCall, ToolResult, Attachment, System), Provenance, Timestamp, and raw passthrough via serde_json::Value for agent-specific fields. Specs first: features/02_schema/*.feature.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -17,17 +17,24 @@
       "text": "Recorded the twelve schema recommendations from the five-agent storage survey as layer-2 Gherkin specs (features/02_schema/01_usage_tokens, 02_tool_result_status, 03_session_graph, 04_turn_grouping, 05_compaction, provenance extension, 07_tool_call_arguments, 08_inline_data, 09_optional_timestamp, 10_role_mapping, 11_session_metadata, 12_raw_blob_escape_hatch). All new scenarios tagged wip and excluded from the cucumber run (tests/bdd.rs filter) until implemented; embedded in the ch02 rustdoc chapter; spec tasks closed, implementation tasks open with blocked-by deps. Spec commit 4c81421.",
       "created_at": "2026-10-02T17:44:20.383362Z",
       "comment_type": "default"
+    },
+    {
+      "id": "c62125b4-585e-4b80-8bc6-44f9620893c6",
+      "author": "home",
+      "text": "Merged into Chapter 1: Structure (BOTSPY-7adf26) per the final chapter order; its tasks were re-parented there. Feature files moved to features/01_structure/ (byte-for-byte identical scenarios).",
+      "created_at": "2026-10-02T17:56:27.645014Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:14:50.761818Z",
-  "updated_at": "2026-10-02T17:44:20.383405Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T17:56:30.845305Z",
+  "closed_at": "2026-10-02T17:56:30.845246Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The schema specs are documented, while teams implement missing fields and BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:45:40.826952Z",
+  "right_now_summary": "Rust schema implementation and BDD step definitions are being added; validation and tests are still needed.",
+  "right_now_updated_at": "2026-10-02T17:56:33.021457Z",
   "custom": {}
 }

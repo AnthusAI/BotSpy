@@ -7,19 +7,19 @@
   "priority": 2,
   "assignee": null,
   "creator": null,
-  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T17:30:01.398542Z",
-  "updated_at": "2026-10-02T17:44:49.137103Z",
+  "updated_at": "2026-10-02T17:55:27.295052Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The spec is documented, but implementation and passing BDD tests are still needed.",
-  "right_now_updated_at": "2026-10-02T17:44:50.244312Z",
+  "right_now_summary": "The spec is documented, but the tool result status feature still needs implementation and passing BDD tests.",
+  "right_now_updated_at": "2026-10-02T17:55:28.961915Z",
   "custom": {}
 }

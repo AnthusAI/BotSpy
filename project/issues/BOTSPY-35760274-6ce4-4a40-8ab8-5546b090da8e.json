@@ -10,16 +10,29 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "8e3ad940-8701-46a9-8306-b942674f0fad",
+      "author": "home",
+      "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+      "created_at": "2026-10-02T17:58:35.211064Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "chapter-restructure"
+      }
+    }
+  ],
   "created_at": "2026-10-02T16:15:05.963109Z",
-  "updated_at": "2026-10-02T16:15:05.963146Z",
+  "updated_at": "2026-10-02T17:59:09.347769Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Codex adapter is being tested against fixtures while discovery scenarios are written.",
-  "right_now_updated_at": "2026-10-02T16:22:33.479650Z",
+  "right_now_summary": "The adapter maps session parts while tests and fixtures are checked, and discovery scenarios still need review.",
+  "right_now_updated_at": "2026-10-02T17:59:11.179217Z",
   "custom": {}
 }

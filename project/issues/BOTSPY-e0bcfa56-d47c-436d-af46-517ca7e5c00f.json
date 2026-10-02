@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
-  "title": "Layer 4: Adapter contract (features/04_adapters)",
-  "description": "The Adapter trait contract for the Rust library: discovery, session opening, streaming extraction (with the per-agent adapters), skip counters, read-only access, safe SQLite/WAL snapshotting. Specs first: features/04_adapters.",
+  "title": "Chapter 3: Importers / Change Data Capture (features/03_importers)",
+  "description": "Importers as change data capture: detecting new or changed transcripts, handing off to normalization, and retries. Bulk-loading is NOT the model — each importer watches its source and emits normalized records as they appear. The per-agent adapter epics (Claude Code BOTSPY-669e66, Cursor BOTSPY-4661a5, Codex BOTSPY-357602, Grok Bot BOTSPY-5a3bed, Antigravity BOTSPY-55ea2f) are the per-agent translations of this CDC pipeline; each adapter is only the per-agent translation of the Chapter 3 mechanics. Specs first: features/03_importers/ with per-agent subfolders.",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -12,14 +12,14 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T16:14:54.618100Z",
-  "updated_at": "2026-10-02T16:39:58.022447Z",
+  "updated_at": "2026-10-02T17:58:11.803556Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The adapter contract is being defined, including discovery, streaming, skip counts, read-only access, and safe",
-  "right_now_updated_at": "2026-10-02T16:39:59.650001Z",
+  "right_now_summary": "The team is defining importer adapters for safe discovery, streaming extraction, retries, and read-only source access.",
+  "right_now_updated_at": "2026-10-02T17:58:12.978258Z",
   "custom": {}
 }

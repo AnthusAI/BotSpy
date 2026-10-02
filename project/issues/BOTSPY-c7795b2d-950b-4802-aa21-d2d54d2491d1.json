@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
   "title": "Local Store Initiative — SQLite + sqlite-vec + all-MiniLM-L6-v2",
-  "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
+  "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## Role in the documentation\n\nThis initiative implements Chapter 2: Querying (epic BOTSPY-047770): SQLite and the sqlite-vec extension underneath one query interface, with the engine completely invisible to callers.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
   "type": "initiative",
   "status": "open",
   "priority": 2,
@@ -12,14 +12,14 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T17:38:07.357226Z",
-  "updated_at": "2026-10-02T17:41:35.373365Z",
+  "updated_at": "2026-10-02T17:58:21.000961Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "local-store-initiative"
   },
-  "right_now_summary": "The team is planning a local SQLite-based semantic search store with shared embedding tools.",
-  "right_now_updated_at": "2026-10-02T17:41:36.480054Z",
+  "right_now_summary": "The initiative is documented, but no code or Cargo changes have been made yet.",
+  "right_now_updated_at": "2026-10-02T17:58:22.288176Z",
   "custom": {}
 }

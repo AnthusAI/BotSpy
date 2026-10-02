@@ -10,16 +10,29 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "12b53a6b-321c-4428-ada0-3087826daa4f",
+      "author": "home",
+      "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+      "created_at": "2026-10-02T17:58:32.277149Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "chapter-restructure"
+      }
+    }
+  ],
   "created_at": "2026-10-02T16:15:02.764860Z",
-  "updated_at": "2026-10-02T16:15:02.764908Z",
+  "updated_at": "2026-10-02T17:59:00.385085Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building and testing a WAL-safe Cursor adapter that finds stores and extracts all parts.",
-  "right_now_updated_at": "2026-10-02T16:22:19.358902Z",
+  "right_now_summary": "The team is locating Cursor data, building safe snapshots, extracting records, and checking tests and specifications.",
+  "right_now_updated_at": "2026-10-02T17:59:01.517878Z",
   "custom": {}
 }

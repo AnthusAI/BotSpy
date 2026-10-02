@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
-  "title": "Layer 3: Query and export (features/03_query_export)",
-  "description": "Rust library API: list/open sessions across agents, filter by agent, kind, time, and project; JSON and JSONL export of the unified history. Specs first: features/03_query_export/*.feature; implementation generated from the specs.",
+  "title": "Chapter 2: Querying (features/02_querying)",
+  "description": "Querying implemented with SQLite and the sqlite-vec extension underneath. The engine is completely invisible to callers: one query interface, with different query functions on one class and SQLite underneath, so callers never see which engine is running. Supersedes the old property-based filtering over in-memory objects from the former features/03_query_export chapter. Implementation of record: BOTSPY-c7795b (Local Store Initiative). Specs first: features/02_querying/*.feature.",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -12,14 +12,14 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T16:15:16.948650Z",
-  "updated_at": "2026-10-02T16:39:53.304756Z",
+  "updated_at": "2026-10-02T17:58:05.520212Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The query API scenarios still need to be written and reviewed.",
-  "right_now_updated_at": "2026-10-02T16:39:54.313491Z",
+  "right_now_summary": "Querying uses SQLite and sqlite-vec, but its Gherkin scenarios still need writing and review.",
+  "right_now_updated_at": "2026-10-02T17:58:07.823434Z",
   "custom": {}
 }
