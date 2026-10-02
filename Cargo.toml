@@ -5,6 +5,16 @@ edition = "2021"
 description = "Pop open the conversation history of any coding agent: one adapter per agent, one normalized schema, one unified agent-session history."
 license = "MIT"
 repository = "https://github.com/AnthusAI/BotSpy"
+readme = "README.md"
+keywords = ["coding-agents", "chat-history", "sessions", "ai", "cli"]
+categories = ["development-tools", "text-processing"]
+# Keep the packaged crate lean for crates.io (10 MB limit): no Kanbus
+# board data, no fixtures, no local tooling.
+exclude = [
+    "/project",
+    "/.kanbus.yml",
+    "/tests/fixtures",
+]
 
 [dependencies]
 rusqlite = { version = "0.40.2", features = ["backup", "bundled"] }

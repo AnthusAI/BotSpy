@@ -1,13 +1,13 @@
 [workspace]
 changelog_update = true
-# Library releases: no crates.io publishing yet (Ryan is setting up
-# crates.io; enabling later = flip publish to true and provide a
-# CARGO_REGISTRY_TOKEN secret). The tag + GitHub release is the release.
-publish = false
+# Publish to crates.io as part of each release (token from the
+# CARGO_REGISTRY_TOKEN Actions secret). A release = version bump commit,
+# tag, GitHub release, and crates.io upload.
+publish = true
 git_release_enable = true
-# Git tags are the release source of truth; no registry lookups. Without
-# this, release-plz compares against crates.io, which the crate is not on,
-# and never bumps the version.
-git_only = true
-# Semver convention: features bump minor even while major is 0.
+# Features bump minor even while major is 0.
 features_always_increment_minor = true
+# The semver check compares against the published crate, so it only works
+# once the first release exists on crates.io. Re-enable (delete this
+# line) after the first release.
+semver_check = false
