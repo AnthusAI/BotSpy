@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "18abe7f9-30c2-4067-95c5-483651f54f0b",
+  "issue_id": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:52:04.339Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Spec-coverage test: every .feature file must be embedded in a chapter",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "docs-rustdoc"
+    }
+  }
+}

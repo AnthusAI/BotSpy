@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "cc4317f1-2a99-4d7d-993b-464776c4a6b6",
+  "issue_id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:52:37.110Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: src/spec/ holds one doc-only chapter module per spec layer mirroring features/0N_*, with narrative prose, runnable doctests, intra-doc links to real types, and each chapter's .feature files embedded verbatim via include_str!."
+      }
+    }
+  }
+}

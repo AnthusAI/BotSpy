@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "06cb769c-4d25-4a6b-a98c-a14f14275efa",
+  "issue_id": "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:52:48.752Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: CI runs RUSTDOCFLAGS=-D warnings cargo doc --no-deps (broken intra-doc links fail) and cargo test --doc on every target."
+      }
+    }
+  }
+}

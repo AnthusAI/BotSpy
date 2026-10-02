@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "3cea5335-36b5-4505-89ee-311e78f1557e",
+  "issue_id": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:52:28.371Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: src/lib.rs crate docs introduce BotSpy (what it is, what it is not), explain docs-organized-around-specs, list chapters with intra-doc links, and include a running drill-down doctest."
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T16:32:22Z",
+  "built_at": "2026-10-02T16:52:17Z",
   "file_mtimes": {
-    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790958215.144004,
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790959336.029796,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
-    "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790958459.042245,
+    "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790959336.029978,
     "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790958091.288143,
-    "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790958460.844789,
+    "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097.json": 1790959336.030104,
+    "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790959336.030266,
     "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790958388.713446,
     "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790958047.826535,
     "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790958433.619428,
@@ -16,9 +17,12 @@
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790957972.342915,
     "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790958153.481318,
-    "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790958224.244948,
+    "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790959336.030431,
+    "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790959336.030562,
+    "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790959336.030683,
+    "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790959914.828035,
     "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790958139.359389,
-    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790957729.010111,
+    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790959336.030851,
     "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790958155.975258,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
@@ -27,29 +31,32 @@
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790958168.349955,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790958319.281409,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790959934.730968,
     "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790958124.600785,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
+    "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790959919.541376,
     "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790958209.179931,
-    "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790958228.683426,
+    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790959336.031128,
+    "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790959336.031293,
     "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790958081.914957,
     "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790958086.767529,
     "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790958101.887965,
     "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790957984.968468,
     "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790958033.021434,
-    "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790958227.537219,
+    "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
     "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790958245.991392,
     "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
     "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790957967.597511,
     "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790958447.546378,
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
-    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790958258.869688,
+    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790959336.031627,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790958076.598149,
     "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
-    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790957961.422925,
+    "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790959930.565927,
+    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790959336.031789,
     "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790958161.804275,
@@ -58,22 +65,25 @@
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790957994.975589,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
     "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790957975.924478,
-    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790958103.285731,
+    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790959336.031947,
     "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
     "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790958219.039163,
     "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790958243.157955,
+    "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790959336.032073,
     "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
-    "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790958213.96894,
+    "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790959336.032232,
+    "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1790959925.577069,
     "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790958166.810653,
-    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790958003.136255,
-    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790957725.872003,
-    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790958088.387245
+    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790959336.032395,
+    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790959932.878281,
+    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790959336.032558,
+    "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1790959336.032678
   },
   "issues": [
     {
       "id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
-      "title": "Query API (features/query)",
-      "description": "The public query API: botspy.sessions(source=None), iterating sessions then messages then parts, with filters by kind, time, and project. Lazy and streaming; read-only. Specs first: features/query/*.feature is the source of truth; implementation is generated from the specs.",
+      "title": "Layer 3: Query and export (features/03_query_export)",
+      "description": "Rust library API: list/open sessions across agents, filter by agent, kind, time, and project; JSON and JSONL export of the unified history. Specs first: features/03_query_export/*.feature; implementation generated from the specs.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -84,15 +94,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:15:16.948650Z",
-      "updated_at": "2026-10-02T16:18:54.561798Z",
+      "updated_at": "2026-10-02T16:39:53.304756Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The query API specs need writing and review, while the sessions API has no recent work reported.",
-      "right_now_updated_at": "2026-10-02T16:23:35.143502Z",
+      "right_now_summary": "The query API scenarios still need to be written and reviewed.",
+      "right_now_updated_at": "2026-10-02T16:39:54.313491Z",
       "custom": {}
     },
     {
@@ -141,8 +151,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "Project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
-      "right_now_updated_at": "2026-10-02T16:27:39.039868Z",
+      "right_now_summary": "The project is shifting from Python to Rust while its setup and tooling take shape.",
+      "right_now_updated_at": "2026-10-02T16:40:49.572785Z",
       "custom": {}
     },
     {
@@ -176,6 +186,44 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097",
+      "title": "Implement SessionStore, SessionSummary and the in-memory fixture adapter in Rust",
+      "description": "SessionStore over registered adapters, SessionSummary, sorted listing, open by id with UnknownSession error, FixtureAdapter as the reference Adapter implementation. Done when: the layer 1 feature scenarios pass via cargo test --test bdd.",
+      "type": "task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [
+        {
+          "id": "dd853f8a-f540-4aec-abaf-ce684dd8b45d",
+          "author": "home",
+          "text": "SessionStore, SessionSummary, UnknownSession and FixtureAdapter implemented in src/session.rs, src/adapter.rs, src/adapters/fixture.rs; all 11 bdd scenarios pass, clippy -D warnings and rustfmt clean.",
+          "created_at": "2026-10-02T16:41:24.687020Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:40:28.146466Z",
+      "updated_at": "2026-10-02T16:41:30.431514Z",
+      "closed_at": "2026-10-02T16:41:30.431463Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "SessionStore and FixtureAdapter are implemented, and all 11 BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T16:41:31.915444Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
       "title": "Stand up BotSpy project infrastructure",
       "description": "Bootstrap the repo: python package, Kanbus, semantic-release, MIT license, GitHub CI. Done when all setup chores are closed and CI-equivalent checks pass locally.",
@@ -196,8 +244,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The project setup is nearly complete, with tooling, docs, CI, and tests in place and passing.",
-      "right_now_updated_at": "2026-10-02T16:27:40.844347Z",
+      "right_now_summary": "The project is shifting from Python to Rust as its setup and tooling take shape.",
+      "right_now_updated_at": "2026-10-02T16:40:52.117291Z",
       "custom": {}
     },
     {
@@ -466,24 +514,115 @@
       "title": "Export (features/export)",
       "description": "JSON and JSONL export of sessions, messages, and parts with stable field order and schema version. Specs first: features/export/*.feature; implementation generated from the specs.",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "0d94ed85-eaad-44b0-bad5-296dbf8ef93f",
+          "author": "home",
+          "text": "superseded: export is folded into the Layer 3: Query and export epic",
+          "created_at": "2026-10-02T16:39:47.020734Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:18:57.677240Z",
-      "updated_at": "2026-10-02T16:18:57.677267Z",
+      "updated_at": "2026-10-02T16:39:50.147723Z",
+      "closed_at": "2026-10-02T16:39:50.147663Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The team is writing export specs and implementing JSON and JSONL output with stable fields and schema versions.",
+      "right_now_updated_at": "2026-10-02T16:39:51.507309Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3",
+      "title": "Configure release-plz for library releases",
+      "description": "release-plz workflow on main: version bumps, changelog, tags, GitHub releases for the library crate; no binary release assets; crates.io publish disabled (release-plz.toml publish = false). Done when: the release workflow runs green on main.",
+      "type": "task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "ac491aa8-7cb7-4279-bbd5-989b59f12170",
+          "author": "home",
+          "text": "release.yml runs release-plz-action on main; release-plz.toml sets publish = false (no crates.io) and no binary artifacts.",
+          "created_at": "2026-10-02T16:41:35.620380Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:40:36.837640Z",
+      "updated_at": "2026-10-02T16:41:42.120187Z",
+      "closed_at": "2026-10-02T16:41:42.120132Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The main-branch workflow now creates library versions, changelogs, tags, and GitHub releases without publishing to",
+      "right_now_updated_at": "2026-10-02T16:41:43.817315Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a",
+      "title": "Add cross-platform CI matrix running library tests per target",
+      "description": "Native runners: ubuntu x86_64, ubuntu-24.04-arm, macos-14 (aarch64), macos-13 (x86_64), windows-latest (msvc); musl x86_64 and aarch64 via cross for AWS. Each target builds the library and runs unit tests + cargo test --test bdd; rustfmt and clippy -D warnings gate every push/PR. Done when: all targets are green.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:40:41.669682Z",
+      "updated_at": "2026-10-02T16:40:41.669723Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing export specs and building JSON and JSONL output with stable fields and schema versions.",
-      "right_now_updated_at": "2026-10-02T16:23:44.244339Z",
+      "right_now_summary": "The cross-platform CI matrix still needs setup and green tests on every target.",
+      "right_now_updated_at": "2026-10-02T16:40:43.464962Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
+      "title": "Crate index page in rustdoc, organized around spec layers",
+      "description": "",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:51:52.085097Z",
+      "updated_at": "2026-10-02T16:51:52.085142Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "docs-rustdoc"
+      },
+      "right_now_summary": "The rustdoc crate index page is being organized around specification layers.",
+      "right_now_updated_at": "2026-10-02T16:51:54.827718Z",
       "custom": {}
     },
     {
@@ -513,8 +652,8 @@
     },
     {
       "id": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
-      "title": "Packaging and release",
-      "description": "Ship the module: wheel/sdist, console-script entry point, optional botspy[metrics] extra for example consumers, versioning and changelog via python-semantic-release on main.",
+      "title": "Cross-platform build and release (Rust library)",
+      "description": "Library crate releases only: release-plz on main for versioning, changelog, tags and GitHub releases; no binary artifacts, no crates.io publish. CI builds and runs the tests (unit + bdd) per target: macOS aarch64 and x86_64, Linux x86_64 and aarch64 (AWS; gnu natively, musl via cross), Windows MSVC. rustfmt + clippy -D warnings.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -525,15 +664,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:15:27.329103Z",
-      "updated_at": "2026-10-02T16:15:27.329131Z",
+      "updated_at": "2026-10-02T16:40:02.978520Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The module is being prepared for release with packages, a CLI entry point, extras, and automated versioning.",
-      "right_now_updated_at": "2026-10-02T16:15:29.009974Z",
+      "right_now_summary": "Release automation is set up; cross-platform CI and tests still need to be added and pass on all targets.",
+      "right_now_updated_at": "2026-10-02T16:41:45.578993Z",
       "custom": {}
     },
     {
@@ -791,8 +930,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing specs and building adapters, the CLI, exports, schema, tests, and release packaging.",
-      "right_now_updated_at": "2026-10-02T16:25:19.281105Z",
+      "right_now_summary": "The team is writing specs and testing adapters, exports, schemas, fixtures, and cross-platform support.",
+      "right_now_updated_at": "2026-10-02T16:52:14.730662Z",
       "custom": {}
     },
     {
@@ -914,6 +1053,31 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
+      "title": "Chapter per spec layer with narrative prose, doctests, embedded Gherkin",
+      "description": "",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:51:57.909875Z",
+      "updated_at": "2026-10-02T16:51:57.909906Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "docs-rustdoc"
+      },
+      "right_now_summary": "The chapter is being shaped around spec layers, narrative prose, doctests, and embedded Gherkin.",
+      "right_now_updated_at": "2026-10-02T16:51:59.540694Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
       "title": "Antigravity parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
@@ -944,9 +1108,9 @@
       "custom": {}
     },
     {
-      "id": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
-      "title": "CLI (features/cli)",
-      "description": "The botspy CLI: list sources, list sessions, dump and export, with source and window flags. Specs first: features/cli/*.feature; implementation generated from the specs.",
+      "id": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+      "title": "Layer 1: Unified session history (features/01_session_history)",
+      "description": "List sessions across agents sorted by last activity, open a session by id, walk its messages in order. Specs first: features/01_session_history/*.feature; implementation generated from the specs.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -956,16 +1120,49 @@
       "labels": [],
       "dependencies": [],
       "comments": [],
-      "created_at": "2026-10-02T16:19:01.002893Z",
-      "updated_at": "2026-10-02T16:19:01.002948Z",
+      "created_at": "2026-10-02T16:40:15.414596Z",
+      "updated_at": "2026-10-02T16:40:15.414624Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building the CLI and writing specs for listings, dumps, exports, and filters.",
-      "right_now_updated_at": "2026-10-02T16:23:48.682820Z",
+      "right_now_summary": "Session history specs and implementation are complete, with all 11 BDD scenarios passing.",
+      "right_now_updated_at": "2026-10-02T16:41:34.118902Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+      "title": "CLI (features/cli)",
+      "description": "The botspy CLI: list sources, list sessions, dump and export, with source and window flags. Specs first: features/cli/*.feature; implementation generated from the specs.",
+      "type": "epic",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "cadd7aaa-7f96-4c34-831e-cec868095d9e",
+          "author": "home",
+          "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+          "created_at": "2026-10-02T16:39:08.064735Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:19:01.002893Z",
+      "updated_at": "2026-10-02T16:39:11.453317Z",
+      "closed_at": "2026-10-02T16:39:11.453279Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The CLI is not being built because botspy will remain a library-only project.",
+      "right_now_updated_at": "2026-10-02T16:39:34.005392Z",
       "custom": {}
     },
     {
@@ -1143,7 +1340,7 @@
       "title": "Implement the botspy CLI",
       "description": "Subcommands to list sources, list sessions, dump sessions, and export, with source and window flags. Done when: the feature scenarios in features/cli pass.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1155,17 +1352,25 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "7c54ecd4-d7ea-43f4-bce3-302387f9633c",
+          "author": "home",
+          "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+          "created_at": "2026-10-02T16:39:15.031394Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:26.494541Z",
-      "updated_at": "2026-10-02T16:23:45.539436Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T16:39:19.743534Z",
+      "closed_at": "2026-10-02T16:39:19.743508Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The botspy CLI is being built to list sources and sessions, dump sessions, and export data.",
-      "right_now_updated_at": "2026-10-02T16:23:47.536828Z",
+      "right_now_summary": "The CLI will not be built; botspy remains a library-only project.",
+      "right_now_updated_at": "2026-10-02T16:39:21.858556Z",
       "custom": {}
     },
     {
@@ -1318,8 +1523,8 @@
     },
     {
       "id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
-      "title": "Example use cases (consumers of BotSpy)",
-      "description": "Optional consumers that demonstrate BotSpy: examples/ directory or an optional botspy[metrics] extra. Never in core required dependencies. Must stay blocked-by the Query, export, and CLI epic.",
+      "title": "Example use cases (consumers of the BotSpy library)",
+      "description": "Optional examples that consume the botspy Rust library directly as Rust code (examples/ in the crate or integration tests): the thanks-vs-F-bombs meter, local sentiment analysis (VADER default, optional GoEmotions transformer), and a placeholder for similar metrics. No binary, no CLI, no extra crate; blocked-by the Layer 3: Query and export epic.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -1335,15 +1540,15 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T16:15:30.614751Z",
-      "updated_at": "2026-10-02T16:15:59.118538Z",
+      "updated_at": "2026-10-02T16:40:06.017258Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is building and reviewing BotSpy examples, with a metrics placeholder still needed.",
-      "right_now_updated_at": "2026-10-02T16:24:18.869523Z",
+      "right_now_summary": "The team is building and reviewing Rust examples for meters, sentiment analysis, and future session metrics.",
+      "right_now_updated_at": "2026-10-02T16:40:07.210025Z",
       "custom": {}
     },
     {
@@ -1407,28 +1612,61 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6",
+      "title": "Rustdoc and doctests in CI (-D warnings, cargo test --doc)",
+      "description": "",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:52:08.923583Z",
+      "updated_at": "2026-10-02T16:52:08.923616Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "docs-rustdoc"
+      },
+      "right_now_summary": "Rustdoc and doctests need to pass CI with warnings denied.",
+      "right_now_updated_at": "2026-10-02T16:52:10.565517Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
       "title": "Write Gherkin spec: normalized schema",
       "description": "Author features/schema/*.feature: a session is made of ordered messages whose parts each have a kind (text, thinking, tool_call, tool_result, attachment, system) plus extra passthrough, with concrete examples for every kind. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "7337768b-3b99-4485-8348-9712a6b768dd",
+          "author": "home",
+          "text": "Specs written and executable: features/02_schema/message_parts.feature, provenance.feature, extra_passthrough.feature; 6 scenarios green via cargo test --test bdd.",
+          "created_at": "2026-10-02T16:41:14.862308Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:19:19.772866Z",
-      "updated_at": "2026-10-02T16:19:19.772901Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T16:41:18.832128Z",
+      "closed_at": "2026-10-02T16:41:18.832083Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The Gherkin schema spec still needs writing and review with examples for every message part kind.",
-      "right_now_updated_at": "2026-10-02T16:19:21.422426Z",
+      "right_now_summary": "The schema specs are written, executable, and all six scenarios pass.",
+      "right_now_updated_at": "2026-10-02T16:41:21.430122Z",
       "custom": {}
     },
     {
@@ -1658,8 +1896,8 @@
     },
     {
       "id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
-      "title": "Adapter contract",
-      "description": "Define the shared adapter interface every source adapter implements: discovery, streaming extraction (files can exceed 100MB), skip counters, read-only access to source data, and safe snapshotting of SQLite/WAL sources. Done when the contract is typed, tested, and documented.",
+      "title": "Layer 4: Adapter contract (features/04_adapters)",
+      "description": "The Adapter trait contract for the Rust library: discovery, session opening, streaming extraction (with the per-agent adapters), skip counters, read-only access, safe SQLite/WAL snapshotting. Specs first: features/04_adapters.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -1670,15 +1908,15 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:14:54.618100Z",
-      "updated_at": "2026-10-02T16:14:54.618126Z",
+      "updated_at": "2026-10-02T16:39:58.022447Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is defining and testing the shared adapter contract, including streaming, safe snapshots, and skip handling.",
-      "right_now_updated_at": "2026-10-02T16:21:43.285484Z",
+      "right_now_summary": "The adapter contract is being defined, including discovery, streaming, skip counts, read-only access, and safe",
+      "right_now_updated_at": "2026-10-02T16:39:59.650001Z",
       "custom": {}
     },
     {
@@ -1770,6 +2008,39 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6",
+      "title": "Write Gherkin spec: unified session history",
+      "description": "Author features/01_session_history/*.feature: listing sessions across two agents sorted by last activity, opening a session by id, walking messages in order, unknown session id error, with concrete examples and Examples tables. Done when: scenarios are reviewed and executable.",
+      "type": "task",
+      "status": "closed",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "9f5e3ef8-faa3-46a0-80f4-e34048556485",
+          "author": "home",
+          "text": "Specs written and executable: features/01_session_history/list_sessions.feature and open_session.feature; 5 scenarios green via cargo test --test bdd.",
+          "created_at": "2026-10-02T16:41:03.362848Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-02T16:40:23.316961Z",
+      "updated_at": "2026-10-02T16:41:08.647169Z",
+      "closed_at": "2026-10-02T16:41:08.647143Z",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "Session history specs are written and executable, with five scenarios passing.",
+      "right_now_updated_at": "2026-10-02T16:41:10.885037Z",
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c",
       "title": "Cross-adapter unified history test suite",
       "description": "Sessions from all adapters pile into one unified agent-session history; ordering, dedup, and provenance verified. Done when: the unified suite passes.",
@@ -1808,7 +2079,7 @@
       "title": "Implement sessions() query API with kind/time/project filters",
       "description": "botspy.sessions(source=None) returns lazily-iterated sessions; messages and parts iterate in order; filters by source, part kind, time window, and project. Done when: the feature scenarios in features/query pass.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1820,17 +2091,50 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "263da7f4-289e-42a4-8d52-48630976292e",
+          "author": "home",
+          "text": "superseded: the Python sessions() API was removed in the Rust pivot; the query API is specified under the Layer 3 epic",
+          "created_at": "2026-10-02T16:39:36.017745Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:16.853251Z",
-      "updated_at": "2026-10-02T16:23:32.156510Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T16:39:41.615469Z",
+      "closed_at": "2026-10-02T16:39:41.615441Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The sessions() query API is specified, but no recent work is reported.",
-      "right_now_updated_at": "2026-10-02T16:23:33.968424Z",
+      "right_now_summary": "The Python sessions() API was removed, and its query design now lives under the Layer 3 epic.",
+      "right_now_updated_at": "2026-10-02T16:39:44.030938Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
+      "title": "Spec-coverage test: every .feature file must be embedded in a chapter",
+      "description": "",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:52:04.339723Z",
+      "updated_at": "2026-10-02T16:52:04.339776Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "docs-rustdoc"
+      },
+      "right_now_summary": "The team is checking that every .feature file is embedded in a chapter.",
+      "right_now_updated_at": "2026-10-02T16:52:05.576239Z",
       "custom": {}
     },
     {
@@ -1868,24 +2172,32 @@
       "title": "Write Gherkin spec: CLI behaviors",
       "description": "Author features/cli/*.feature: listing sources and sessions, dumping sessions, export flags, window and source filters. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "af7ffb49-f797-49cd-bd8a-1d684a8aa3a5",
+          "author": "home",
+          "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
+          "created_at": "2026-10-02T16:39:25.406850Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:01.801940Z",
-      "updated_at": "2026-10-02T16:20:01.802017Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T16:39:30.457978Z",
+      "closed_at": "2026-10-02T16:39:30.457920Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing Gherkin scenarios for CLI listings, dumps, exports, and filters.",
-      "right_now_updated_at": "2026-10-02T16:20:03.135790Z",
+      "right_now_summary": "The CLI Gherkin specification will not be developed because the project is library-only.",
+      "right_now_updated_at": "2026-10-02T16:39:32.330361Z",
       "custom": {}
     },
     {
@@ -1909,14 +2221,14 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The docs cover the quickstart, schema, on-disk formats, and adapter guide.",
-      "right_now_updated_at": "2026-10-02T16:15:25.871770Z",
+      "right_now_summary": "The team is organizing the docs and checking that rustdoc, doctests, and embedded features pass CI.",
+      "right_now_updated_at": "2026-10-02T16:52:12.877929Z",
       "custom": {}
     },
     {
       "id": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
-      "title": "Core normalized schema",
-      "description": "Design the standard normalized schema: sessions, messages, and typed content parts with a small fixed kind set (text, thinking, tool_call, tool_result, attachment, system) plus an extensible extra/raw passthrough. Every record carries timestamps, session/project identifiers, and source provenance (file, line or row). Done when the schema is specified, versioned, and round-trips through JSON.",
+      "title": "Layer 2: Normalized schema (features/02_schema)",
+      "description": "Normalized schema in Rust with serde: Message, Role, Part (Text, Thinking, ToolCall, ToolResult, Attachment, System), Provenance, Timestamp, and raw passthrough via serde_json::Value for agent-specific fields. Specs first: features/02_schema/*.feature.",
       "type": "epic",
       "status": "open",
       "priority": 2,
@@ -1927,15 +2239,40 @@
       "dependencies": [],
       "comments": [],
       "created_at": "2026-10-02T16:14:50.761818Z",
-      "updated_at": "2026-10-02T16:14:50.761841Z",
+      "updated_at": "2026-10-02T16:39:55.411120Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The schema still needs implementation, validation, versioning, tests, and review of its JSON examples.",
-      "right_now_updated_at": "2026-10-02T16:21:28.386678Z",
+      "right_now_summary": "The schema specs pass, but Rust models, validation, tests, and unknown-data handling still need work.",
+      "right_now_updated_at": "2026-10-02T16:41:23.285001Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be",
+      "title": "Pivot BotSpy from Python to Rust",
+      "description": "Single Rust library crate (no binary/CLI/server/FFI); Python package, behave, pytest, ruff, python-semantic-release removed; cucumber-rs runs the specs; release-plz replaces python-semantic-release. Done when: cargo test/clippy/fmt are green and CI passes on all targets.",
+      "type": "chore",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T16:40:46.543793Z",
+      "updated_at": "2026-10-02T16:40:46.543826Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "BotSpy bootstrap"
+      },
+      "right_now_summary": "The project is moving from Python to a single Rust library crate.",
+      "right_now_updated_at": "2026-10-02T16:40:48.090019Z",
       "custom": {}
     }
   ],
@@ -1995,6 +2332,9 @@
       "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a",
       "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99",
       "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9"
+    ],
+    "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6": [
+      "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097"
     ],
     "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b": [
       "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432"
