@@ -90,6 +90,13 @@ Feature: botspy sessions
     Then the exit code is 0
     And the JSON sessions are ordered "00000000-0000-4000-8000-000000000003,00000000-0000-4000-8000-000000000002,00000000-0000-4000-8000-000000000001,solo-abc123"
 
+  Scenario: The same session id under two projects lists twice
+    Given a fixture home with the same session id in two projects
+    When I run "botspy sessions --source claude_code" against the fixture home
+    Then the exit code is 0
+    And stdout reports "5 sessions"
+    And stdout contains "extra-demo" "dupe-demo"
+
   Scenario: An unknown source filter is rejected
     When I run "botspy sessions --source notepad"
     Then the exit code is 1

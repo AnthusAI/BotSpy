@@ -133,6 +133,26 @@ fn fixture_home_subset(world: &mut BotSpyWorld, list: String) {
     world.cli_home = Some(home);
 }
 
+/// A synthetic duplicate: the same session id recorded under two
+/// different project directories, the real-data collision shape that
+/// dedupe by id alone silently collapsed.
+#[given(expr = "a fixture home with the same session id in two projects")]
+fn fixture_home_duplicate_id(world: &mut BotSpyWorld) {
+    let home = scratch("home-duplicate");
+    build_home(&home, &["claude_code"]);
+    let dupe = home.join(".claude/projects/dupe-demo");
+    std::fs::create_dir_all(&dupe).expect("create duplicate project dir");
+    std::fs::write(
+        dupe.join("solo-abc123.jsonl"),
+        concat!(
+            r#"{"type":"user","uuid":"u1","timestamp":"2026-09-15T13:00:00Z","message":{"role":"user","content":"hello from the duplicate project"}}"#,
+            "\n",
+        ),
+    )
+    .expect("write duplicate transcript");
+    world.cli_home = Some(home);
+}
+
 fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
     let mut argv: Vec<String> = vec!["botspy".to_string()];
     argv.extend(expand(args).split_whitespace().map(str::to_string));

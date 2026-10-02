@@ -164,8 +164,10 @@ impl SessionStore {
 
     /// Sessions across all registered agents, sorted by last activity with
     /// the most recent first (ties broken by id for determinism; sessions
-    /// with no recorded activity sort last). The same session reported by
-    /// two discovery passes lists once: first report wins.
+    /// with no recorded activity sort last). A session reported twice by
+    /// discovery lists once — first report wins — where identity is the
+    /// (agent, id, project_id) triple: the same id under two different
+    /// projects is two distinct histories and lists twice.
     pub fn list_sessions(&self) -> Vec<SessionSummary> {
         let mut all: Vec<SessionSummary> = self
             .adapters
@@ -173,7 +175,13 @@ impl SessionStore {
             .flat_map(|adapter| adapter.discover())
             .collect();
         let mut seen = BTreeSet::new();
-        all.retain(|summary| seen.insert(summary.id.clone()));
+        all.retain(|summary| {
+            seen.insert((
+                summary.agent,
+                summary.id.clone(),
+                summary.project_id.clone(),
+            ))
+        });
         all.sort_by(|a, b| {
             b.last_activity_at
                 .cmp(&a.last_activity_at)
@@ -266,5 +274,30 @@ mod tests {
         store.register(adapter);
         let ids: Vec<String> = store.list_sessions().into_iter().map(|s| s.id).collect();
         assert_eq!(ids, vec!["u1", "u2", "u3", "u4"]);
+    }
+
+    #[test]
+    fn same_id_under_two_projects_lists_twice() {
+        let mut store = SessionStore::new();
+        let first = Arc::new(FixtureAdapter::new(crate::Agent::Codex));
+        first.add_session(Session {
+            project_id: "proj-a".to_string(),
+            ..session("u9", "2026-10-01T09:00:00Z")
+        });
+        let second = Arc::new(FixtureAdapter::new(crate::Agent::Codex));
+        second.add_session(Session {
+            project_id: "proj-b".to_string(),
+            ..session("u9", "2026-10-01T10:00:00Z")
+        });
+        store.register(first);
+        store.register(second);
+        let listed = store.list_sessions();
+        assert_eq!(listed.len(), 2, "distinct histories must both list");
+        let mut projects: Vec<&str> = listed
+            .iter()
+            .map(|summary| summary.project_id.as_str())
+            .collect();
+        projects.sort_unstable();
+        assert_eq!(projects, vec!["proj-a", "proj-b"]);
     }
 }
