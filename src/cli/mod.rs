@@ -32,7 +32,7 @@ use crate::adapters::grok_bot::GrokBotSource;
 use crate::importer::SourceOptions;
 use crate::importer::UnknownSource;
 use crate::schema::Agent;
-use crate::session::{SessionStore, UnknownSession};
+use crate::session::{SessionStore, SessionSummary, UnknownSession};
 
 /// Every source the registry knows, in registry order.
 pub const ALL_SOURCES: [&str; 5] = ["claude_code", "cursor", "codex", "grok_bot", "antigravity"];
@@ -336,8 +336,103 @@ fn sources_human(facts: &[SourceFacts], no_truncate: bool) -> String {
     out
 }
 
-fn sessions(_args: SessionsArgs) -> RunOutcome {
-    todo!("sessions verb (BOTSPY-541f5a)")
+fn sessions(args: SessionsArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let options = args.global.options();
+    let store = match build_store(&args.global.source, &options) {
+        Ok(store) => store,
+        Err(err) => return err.into_outcome(),
+    };
+    let mut summaries = store.list_sessions();
+    if !args.global.source.is_empty() {
+        let agents: Vec<Agent> = args
+            .global
+            .source
+            .iter()
+            .filter_map(|name| agent_of(name))
+            .collect();
+        summaries.retain(|summary| agents.contains(&summary.agent));
+    }
+    if let Some(project) = &args.project {
+        summaries.retain(|summary| &summary.project_id == project);
+    }
+    if let Some(since) = &args.since {
+        summaries.retain(|summary| {
+            !summary.last_activity_at.is_empty() && summary.last_activity_at.as_str() >= since
+        });
+    }
+    if let Some(until) = &args.until {
+        summaries.retain(|summary| {
+            summary.last_activity_at.is_empty() || summary.last_activity_at.as_str() <= until
+        });
+    }
+    if let Some(limit) = args.limit {
+        summaries.truncate(limit);
+    }
+    match args.global.output {
+        OutputMode::Json => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::to_string_pretty(&summaries).expect("summaries serialize")
+        )),
+        OutputMode::Ndjson => {
+            let lines: Vec<String> = summaries
+                .iter()
+                .map(|summary| serde_json::to_string(summary).expect("summary serializes"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => RunOutcome::ok(sessions_human(&summaries, args.global.no_truncate)),
+    }
+}
+
+fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
+    let mut out = String::new();
+    out.push_str(&format!(
+        "{}  {}  {}  {}  {}  {}\n",
+        render::column("SESSION", 8),
+        render::column("AGENT", 12),
+        render::column("PROJECT", 20),
+        render::number_str("MSGS", 4),
+        render::column("LAST ACTIVITY", 20),
+        "TITLE"
+    ));
+    let mut truncated = false;
+    for summary in summaries {
+        let id = if no_truncate || summary.id.chars().count() <= 8 {
+            summary.id.clone()
+        } else {
+            truncated = true;
+            summary.id.chars().take(8).collect()
+        };
+        let activity = if summary.last_activity_at.is_empty() {
+            render::DASH.to_string()
+        } else {
+            summary.last_activity_at.clone()
+        };
+        let title = summary
+            .metadata
+            .title
+            .clone()
+            .unwrap_or_else(|| render::DASH.to_string());
+        out.push_str(&format!(
+            "{}  {}  {}  {}  {}  {}\n",
+            render::column(&id, 8),
+            render::column(agent_name(summary.agent), 12),
+            render::column(&render::truncate(&summary.project_id, no_truncate), 20),
+            render::number(summary.message_count, 4),
+            render::column(&activity, 20),
+            render::truncate(&title, no_truncate)
+        ));
+    }
+    let mut footer = render::count_line(summaries.len());
+    if truncated {
+        footer.push_str(" (use --no-truncate for full ids)");
+    }
+    out.push_str(&footer);
+    out.push('\n');
+    out
 }
 
 fn show(_args: ShowArgs) -> RunOutcome {
