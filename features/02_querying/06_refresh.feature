@@ -1,4 +1,3 @@
-@wip
 Feature: Incremental refresh
   Refresh keeps the store in step with its sources without re-mining
   everything: a pass opens only the sessions whose summaries changed,
@@ -39,13 +38,13 @@ Feature: Incremental refresh
     Then the iteration yields sessions "f6"
 
   Scenario: Refresh is idempotent
-    Given fixture sessions "f8" from "claude_code" and "f9" from "cursor" and "f10" from "codex"
+    Given fixture sessions "f8" from "claude_code" and "f9" from "cursor" and "g0" from "codex"
     And a store at "refresh-idempotent/store.db"
     When I ingest the registered adapters into the store
     And I refresh the store
     Then the refresh reports 0 new sessions, 0 updated, and 0 pruned
     When I iterate the sessions
-    Then the iteration yields sessions "f8", "f9", and "f10"
+    Then the iteration yields sessions "f8", "f9", and "g0"
 
   Scenario: Unchanged sessions are not re-opened from their adapters
     Given fixture sessions "f11" from "claude_code" and "f12" from "cursor"
@@ -53,6 +52,6 @@ Feature: Incremental refresh
     When I ingest the registered adapters into the store
     And I snapshot the adapters' open count
     And I refresh the store
-    Then the refresh reports 0 new sessions, 0 updated, and 0 pruned
     And I snapshot the adapters' open count again
-    Then the adapters served no session opens during the refresh
+    Then the refresh reports 0 new sessions, 0 updated, and 0 pruned
+    And the adapters served no session opens during the refresh

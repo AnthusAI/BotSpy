@@ -7,9 +7,9 @@
 
 use crate::adapter::Adapter;
 use crate::session::{Session, UnknownSession};
-use crate::store::{sqlite_error, upsert_session, Store, StoreError};
+use crate::store::{session_content_hash, sqlite_error, upsert_session, Store, StoreError};
 use rusqlite::{params, OptionalExtension};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::sync::Arc;
 
 /// What one ingest or refresh pass reports, per outcome.
@@ -121,5 +121,93 @@ impl Store {
 impl From<UnknownSession> for StoreError {
     fn from(unknown: UnknownSession) -> Self {
         StoreError::UnknownSession { id: unknown.id }
+    }
+}
+
+impl Store {
+    /// Keep the store in step with its sources without re-mining
+    /// everything: staleness is judged from the discover summaries
+    /// (id, last_activity_at, message_count), so unchanged sessions are
+    /// never opened from their adapters; changed sessions are opened and
+    /// re-ingested only when the content hash actually moved; sessions the
+    /// sources no longer report are pruned. One transaction per pass.
+    pub fn refresh(&self, adapters: &[Arc<dyn Adapter>]) -> Result<IngestReport, StoreError> {
+        let tx = self
+            .conn
+            .unchecked_transaction()
+            .map_err(sqlite_error("begin refresh transaction"))?;
+        let stored: BTreeMap<String, (String, i64, String)> = {
+            let mut map = BTreeMap::new();
+            let mut stmt = self
+                .conn
+                .prepare("SELECT id, last_activity_at, message_count, content_hash FROM sessions")
+                .map_err(sqlite_error("list stored sessions"))?;
+            let rows = stmt
+                .query_map([], |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, i64>(2)?,
+                        row.get::<_, String>(3)?,
+                    ))
+                })
+                .map_err(sqlite_error("list stored sessions"))?;
+            for row in rows {
+                let (id, last_activity, message_count, content_hash) =
+                    row.map_err(sqlite_error("list stored sessions"))?;
+                map.insert(id, (last_activity, message_count, content_hash));
+            }
+            map
+        };
+        let mut report = IngestReport::default();
+        let mut reported: BTreeSet<String> = BTreeSet::new();
+        for adapter in adapters {
+            for summary in adapter.discover() {
+                if !reported.insert(summary.id.clone()) {
+                    continue;
+                }
+                let stale = match stored.get(&summary.id) {
+                    None => true,
+                    Some((last_activity_at, message_count, _)) => {
+                        *last_activity_at != summary.last_activity_at
+                            || *message_count != summary.message_count as i64
+                    }
+                };
+                if !stale {
+                    report.unchanged += 1;
+                    continue;
+                }
+                let Some(session) = adapter.open(&summary.id) else {
+                    continue;
+                };
+                match stored.get(&summary.id) {
+                    None => {
+                        upsert_session(&tx, &session)?;
+                        report.new += 1;
+                    }
+                    Some((_, _, content_hash)) => {
+                        let hash = session_content_hash(&session)?;
+                        if hash == *content_hash {
+                            report.unchanged += 1;
+                            continue;
+                        }
+                        upsert_session(&tx, &session)?;
+                        report.updated += 1;
+                    }
+                }
+            }
+        }
+        for id in stored.keys() {
+            if reported.contains(id) {
+                continue;
+            }
+            tx.execute("DELETE FROM message_fts WHERE session_id = ?1", params![id])
+                .map_err(sqlite_error("prune session"))?;
+            tx.execute("DELETE FROM sessions WHERE id = ?1", params![id])
+                .map_err(sqlite_error("prune session"))?;
+            report.pruned += 1;
+        }
+        tx.commit().map_err(sqlite_error("commit refresh"))?;
+        Ok(report)
     }
 }
