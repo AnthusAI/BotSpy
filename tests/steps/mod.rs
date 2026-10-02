@@ -1,6 +1,7 @@
 //! Shared world and helpers for the behavior specifications.
 
 pub mod arguments_steps;
+pub mod blob_steps;
 pub mod compaction_steps;
 pub mod graph_steps;
 pub mod inline_steps;

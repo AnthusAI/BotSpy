@@ -37,7 +37,12 @@ fn part_from_row(columns: &[String], row: &[String]) -> Part {
     let text = cell("text");
     match kind.as_str() {
         "text" => Part::Known(KnownPart::Text { text, extra: None }),
-        "thinking" => Part::Known(KnownPart::Thinking { text, extra: None }),
+        "thinking" => Part::Known(KnownPart::Thinking {
+            text: Some(text),
+            signature: None,
+            encrypted: None,
+            extra: None,
+        }),
         "system" => Part::Known(KnownPart::System { text, extra: None }),
         "tool_call" => Part::Known(KnownPart::ToolCall {
             id: cell("id"),
