@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R5 compaction and summaries",
   "description": "Done when: the wip tag is removed from 05_compaction.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "bd992485-73c2-4ddc-8058-4c91cf2a6804",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/05_compaction.feature; all 6 scenarios pass (37 total). Schema: CompactionEvent (pre_tokens, post_tokens, logical_parent_message_id via new Message.id), CompactionWindow chain (previous_window, retained_context), Message.is_compaction_summary, Session.residual_context_tokens. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T18:57:00.924033Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:33:50.436115Z",
-  "updated_at": "2026-10-02T17:39:06.451264Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:57:11.483868Z",
+  "closed_at": "2026-10-02T18:57:11.483795Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "R5 compaction still needs step definitions and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:39:08.381916Z",
-  "custom": {}
+  "right_now_summary": "The compaction spec is implemented, and all six BDD scenarios pass.",
+  "right_now_updated_at": "2026-10-02T18:57:13.503561Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
