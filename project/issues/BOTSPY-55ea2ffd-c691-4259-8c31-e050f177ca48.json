@@ -10,16 +10,29 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "4ae7aa97-8368-4c8d-9888-1efebc4ee0e7",
+      "author": "home",
+      "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+      "created_at": "2026-10-02T17:58:40.727501Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "chapter-restructure"
+      }
+    }
+  ],
   "created_at": "2026-10-02T16:15:13.217276Z",
-  "updated_at": "2026-10-02T16:15:13.217295Z",
+  "updated_at": "2026-10-02T17:59:16.900529Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building fixtures, extracting payloads, and testing Antigravity adapter behavior.",
-  "right_now_updated_at": "2026-10-02T16:23:30.784867Z",
+  "right_now_summary": "The team is defining, building, and testing a read-only Antigravity adapter for both source roots.",
+  "right_now_updated_at": "2026-10-02T17:59:18.259538Z",
   "custom": {}
 }

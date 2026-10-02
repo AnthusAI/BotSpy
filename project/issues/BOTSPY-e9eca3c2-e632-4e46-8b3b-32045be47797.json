@@ -7,7 +7,7 @@
   "priority": 2,
   "assignee": null,
   "creator": null,
-  "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [
     {
@@ -17,14 +17,14 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T17:29:40.027455Z",
-  "updated_at": "2026-10-02T17:44:44.096269Z",
+  "updated_at": "2026-10-02T17:56:19.112730Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The usage and cost schema is being implemented and tested against the embedded BDD specification.",
-  "right_now_updated_at": "2026-10-02T17:44:45.391035Z",
+  "right_now_summary": "Usage and cost metrics are being implemented and tested against the new BDD specification.",
+  "right_now_updated_at": "2026-10-02T17:56:20.137451Z",
   "custom": {}
 }

@@ -10,16 +10,29 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "80296d13-a77e-4ec9-9caf-d87740f51690",
+      "author": "home",
+      "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
+      "created_at": "2026-10-02T17:58:27.962387Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "chapter-restructure"
+      }
+    }
+  ],
   "created_at": "2026-10-02T16:14:57.945584Z",
-  "updated_at": "2026-10-02T16:14:57.945634Z",
+  "updated_at": "2026-10-02T17:58:56.805297Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building and testing the Claude Code adapter, including transcript parsing, discovery, skip counts, and",
-  "right_now_updated_at": "2026-10-02T16:22:04.597542Z",
+  "right_now_summary": "The adapter is being tested for transcript discovery, parsing, skip counts, and doctor diagnostics.",
+  "right_now_updated_at": "2026-10-02T17:58:58.440727Z",
   "custom": {}
 }
