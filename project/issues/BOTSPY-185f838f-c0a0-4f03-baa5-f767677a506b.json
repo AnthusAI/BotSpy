@@ -3,7 +3,7 @@
   "title": "Implement botspy show",
   "description": "botspy show <session-id>: open one session (SessionStore::open) and render header + messages. --message N selects one message. -o json is the full Session; -o ndjson streams one Message per line. Unknown id is exit 1. Spec: features/cli/show.feature.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -19,10 +19,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "50c86859-ea87-404a-a5c0-408056024f1f",
+      "author": "home",
+      "text": "Done: show verb passes all 9 scenarios in features/cli/30_show.feature — id/prefix resolution against the unified listing (exact wins, ambiguous lists candidates, unknown exits 1), human rendering (header, #N role ts message lines, indented part lines), --message N selection with out-of-range exit 1, json = full Session, ndjson = one Message per line. Prefix-success scenario asserts the resolved full id via --no-truncate.",
+      "created_at": "2026-10-02T21:03:40.814301Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T20:34:31.920683Z",
-  "updated_at": "2026-10-02T20:34:56.477005Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T21:03:41.587316Z",
+  "closed_at": "2026-10-02T21:03:41.587227Z",
   "right_now_summary": null,
   "right_now_updated_at": null,
   "custom": {}
