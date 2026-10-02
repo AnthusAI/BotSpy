@@ -15,9 +15,22 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "393cd64b-5187-4c69-bb02-ff7be0b5ef64",
+      "author": "home",
+      "text": "T11 done: specified search — 07_text_search.feature (FTS5, ranked, case-insensitive, composes with filters, no-match-is-empty, punctuation-safe) and 08_vector_search.feature (semantic k-NN with scores, caller-chosen k, RRF hybrid, no-embedder clean-empty, meta model-id mismatch policy) embedded in ch02_querying.rs; red todo!() steps; @wip kept on both. Note: 08's spec wording follows Ryan's settled decision (real MiniLM embedder, stub = internal test seam only). Committed to feat/local-store (PR #4).",
+      "created_at": "2026-10-02T22:57:37.419715Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:53.374328Z",
-  "updated_at": "2026-10-02T21:44:16.298469Z",
+  "updated_at": "2026-10-02T22:57:37.419730Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",

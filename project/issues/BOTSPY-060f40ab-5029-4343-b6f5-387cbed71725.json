@@ -19,9 +19,22 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "6e4e8689-27e8-4d6f-937d-1a6d5e307d37",
+      "author": "home",
+      "text": "T10 done: laziness proven by the QueryCounters already landed with BOTSPY-a927fc — taking the first session performs exactly one open, dropping the iterator stops work, message iteration fetches only consumed rows (03_laziness.feature green, no eager path found). Committed to feat/local-store (PR #4); closes when it merges to develop.",
+      "created_at": "2026-10-02T22:57:36.806560Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:52.647393Z",
-  "updated_at": "2026-10-02T21:44:15.518544Z",
+  "updated_at": "2026-10-02T22:57:36.806578Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
