@@ -1,8 +1,12 @@
 name: Release
 
+# GitFlow: releases are promoted from main only, so release-plz runs on
+# pushes to main (and via workflow_dispatch for manual runs). It never
+# runs on develop; develop pushes must not create release PRs or branches.
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,7 +26,14 @@ jobs:
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional override: if the repo setting "Allow GitHub Actions to
+          # create and approve pull requests" is disabled, GITHUB_TOKEN gets
+          # HTTP 403 when release-plz opens its release PR (it can still push
+          # branches and tags, which is how stale release-plz-* branches piled
+          # up). Set the RELEASE_PLZ_TOKEN secret to a PAT with Contents and
+          # Pull requests write to bypass that restriction; when unset, the
+          # default GITHUB_TOKEN is used.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLZ_TOKEN || secrets.GITHUB_TOKEN }}
         # Library releases only: version bumps, changelog, tags, GitHub
         # releases. crates.io publishing is disabled (release-plz.toml:
         # publish = false) and no binary artifacts are produced.
