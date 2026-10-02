@@ -323,9 +323,10 @@ cargo clippy --all-targets -- -D warnings
 cargo fmt --all --check
 ```
 
-The spec-first workflow behind those commands is in the appendix below.
+The spec-first workflow behind those commands is described in the last
+section, [The spec-first workflow](#the-spec-first-workflow).
 
-## Appendix: the spec-first workflow
+## The spec-first workflow
 
 Specs are the source of truth. BotSpy is a behavior-driven specification
 project: the Gherkin behavior specifications under `features/` are the
