@@ -3,7 +3,7 @@
   "title": "Example: placeholder for similar metrics",
   "description": "A stub example showing where further session metrics would live, with the same consumer-only constraints. Done when: the stub exists and is referenced from docs.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "d29c5fa2-cd55-436f-85c6-f0eb0a22c99f",
+      "author": "home",
+      "text": "home: Stub landed at examples/metrics_stub/main.rs — a SessionMetric extension point (name + score(&Session) via the public API only) with a placeholder implementation, candidate metrics documented in the module docs (code-time share, interruption count, topic drift, turn latency), runnable over the committed corpus via cargo run --example metrics_stub. Same consumer-only constraints as the meter and sentiment examples; the existing 'Examples depend only on the public API' scenario automatically scans it since it walks all of examples/. Referenced from docs: README intro now points at examples/meter, examples/sentiment, and examples/metrics_stub; the system-flow diagram's store-backed scanning node was relabeled for accuracy (examples consume per-source sources today, not the store). Mermaid re-validated with Mermaid 11. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24 features/118 scenarios/448 steps, spec_docs_coverage, 37 lib tests, fixture corpus guards, all three examples run.",
+      "created_at": "2026-10-02T20:31:48.779041Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:21:01.444833Z",
-  "updated_at": "2026-10-02T16:24:13.485447Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T20:31:49.687973Z",
+  "closed_at": "2026-10-02T20:31:49.687953Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
