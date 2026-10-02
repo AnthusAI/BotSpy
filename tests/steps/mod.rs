@@ -19,6 +19,7 @@ pub mod schema_steps;
 pub mod session_steps;
 pub mod sqlite_steps;
 pub mod status_steps;
+pub mod store_steps;
 pub mod timestamp_steps;
 pub mod turn_steps;
 pub mod unified_steps;

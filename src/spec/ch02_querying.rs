@@ -51,8 +51,13 @@
 //! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
 //! filters by source, project, part kind, and time window
 //! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
-//! and laziness
-//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
+//! laziness
+//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)),
+//! and the local store itself: opening at a caller-given path (parent
+//! directories created), persistence across reopens, a reader on a second
+//! connection querying while an ingest commits, clean typed errors for
+//! files that are not a store, and the BOTSPY_HOME-derived default path
+//! ([`04_store.feature`](../../features/02_querying/04_store.feature)).
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -64,5 +69,8 @@
     "\n```\n\n",
     "### 03_laziness.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/03_laziness.feature"),
+    "\n```\n\n",
+    "### 04_store.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/04_store.feature"),
     "\n```\n"
 )]
