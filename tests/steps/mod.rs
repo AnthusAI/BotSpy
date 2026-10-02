@@ -182,6 +182,8 @@ pub struct BotSpyWorld {
     pub local_digest_before: Option<String>,
     /// Digest of the fixture adapters' sessions after an ingest pass.
     pub local_digest_after: Option<String>,
+    /// The part-kind filter of the most recent filtered message iteration.
+    pub local_message_filter: Option<String>,
     /// The fixture adapters' open() call count before a refresh pass.
     pub local_open_count_before: Option<usize>,
     /// The fixture adapters' open() call count after a refresh pass.

@@ -4,12 +4,95 @@
 //! which engine (SQLite, sqlite-vec) executes the query. No SQL string, no
 //! SQLite type, and no vector index leaks through the API.
 
-use crate::schema::{Message, Part};
+use crate::schema::{Agent, Message, Part};
 use crate::session::{Session, UnknownSession};
-use crate::store::{SessionIter, Store, StoreError};
+use crate::store::{agent_code, SessionIter, Store, StoreError, SESSIONS_PREFIX, SESSIONS_SUFFIX};
+use rusqlite::types::Value;
 use rusqlite::{params, OptionalExtension};
 use std::cell::Cell;
 use std::rc::Rc;
+
+/// Filters for session iteration — composable, engine-pushed-down: the
+/// WHERE clauses are compiled into the existing prepared statements, so
+/// the engine filters and callers never materialize everything to compare
+/// properties themselves. The surface mirrors the `botspy sessions` CLI
+/// flags (--source/--project/--since/--until/--limit) so a future CLI verb
+/// over the store is a thin shell.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct SessionFilter {
+    /// Only sessions from this agent (--source).
+    pub agent: Option<Agent>,
+    /// Only sessions in this project (--project).
+    pub project: Option<String>,
+    /// Only sessions with at least one part of this kind.
+    pub part_kind: Option<String>,
+    /// Only sessions last active at or after this instant (--since).
+    pub since: Option<String>,
+    /// Only sessions last active at or before this instant (--until).
+    pub until: Option<String>,
+    /// At most this many sessions (--limit).
+    pub limit: Option<usize>,
+}
+
+/// Filters for message iteration.
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct MessageFilter {
+    /// Only messages with at least one part of this kind.
+    pub part_kind: Option<String>,
+}
+
+/// The session SQL and its filter values (?3 onward) for a filter.
+fn sessions_sql_and_values(filter: &SessionFilter) -> (String, Vec<Value>) {
+    let mut sql = SESSIONS_PREFIX.to_string();
+    let mut values = Vec::new();
+    if let Some(agent) = &filter.agent {
+        let index = values.len() + 3;
+        sql.push_str(&format!(" AND agent = ?{index}"));
+        values.push(Value::from(agent_code(agent).to_string()));
+    }
+    if let Some(project) = &filter.project {
+        let index = values.len() + 3;
+        sql.push_str(&format!(" AND project_id = ?{index}"));
+        values.push(Value::from(project.clone()));
+    }
+    if let Some(kind) = &filter.part_kind {
+        let index = values.len() + 3;
+        sql.push_str(&format!(
+            " AND EXISTS (SELECT 1 FROM parts WHERE parts.session_id = sessions.id AND parts.kind = ?{index})"
+        ));
+        values.push(Value::from(kind.clone()));
+    }
+    if let Some(since) = &filter.since {
+        let index = values.len() + 3;
+        sql.push_str(&format!(" AND last_activity_at >= ?{index}"));
+        values.push(Value::from(since.clone()));
+    }
+    if let Some(until) = &filter.until {
+        let index = values.len() + 3;
+        sql.push_str(&format!(" AND last_activity_at <= ?{index}"));
+        values.push(Value::from(until.clone()));
+    }
+    sql.push_str(SESSIONS_SUFFIX);
+    (sql, values)
+}
+
+pub(crate) const MESSAGES_PREFIX: &str = "SELECT ordinal, message_json FROM messages \
+     WHERE session_id = ?1 AND (?2 IS NULL OR ordinal > ?2)";
+pub(crate) const MESSAGES_SUFFIX: &str = " ORDER BY ordinal ASC LIMIT 1";
+/// The message SQL and its filter values (?3 onward) for a filter.
+fn messages_sql_and_values(filter: &MessageFilter) -> (String, Vec<Value>) {
+    let mut sql = MESSAGES_PREFIX.to_string();
+    let mut values = Vec::new();
+    if let Some(kind) = &filter.part_kind {
+        sql.push_str(
+            " AND EXISTS (SELECT 1 FROM parts WHERE parts.session_id = messages.session_id \
+             AND parts.message_ordinal = messages.ordinal AND parts.kind = ?3)",
+        );
+        values.push(Value::from(kind.clone()));
+    }
+    sql.push_str(MESSAGES_SUFFIX);
+    (sql, values)
+}
 
 /// Query observability counters — the same streaming discipline the
 /// importer protocol exposes (`peak_buffered`/`SkipCounter` precedent):
@@ -57,8 +140,16 @@ impl<'s> Query<'s> {
     /// broken by id — the chapter-1 order). The iterator is a cursor: rows
     /// are read only as the caller consumes them.
     pub fn sessions(&self) -> SessionIter {
+        self.sessions_with(&SessionFilter::default())
+    }
+
+    /// Sessions matching the filter, same lazy cursor. The engine does the
+    /// filtering — the WHERE clauses are compiled into the prepared
+    /// statement, never evaluated in caller memory.
+    pub fn sessions_with(&self, filter: &SessionFilter) -> SessionIter {
+        let (sql, values) = sessions_sql_and_values(filter);
         self.store
-            .sessions_counting(Some(Rc::clone(&self.counters)))
+            .sessions_with_filter(sql, values, filter.limit, Some(Rc::clone(&self.counters)))
     }
 
     /// Materialize one session out of the store: the serde JSON columns
@@ -81,13 +172,22 @@ impl<'s> Query<'s> {
     /// cursor: each `next()` reads one message row, so taking the first
     /// few messages never reads the rest.
     pub fn messages(&self, session_id: &str) -> MessagesIter {
+        self.messages_with(session_id, &MessageFilter::default())
+    }
+
+    /// The session's messages matching the filter, same lazy cursor, the
+    /// filter compiled into the prepared statement.
+    pub fn messages_with(&self, session_id: &str, filter: &MessageFilter) -> MessagesIter {
         let conn = self
             .store
             .reader_conn()
             .expect("reader connection for message iteration");
+        let (sql, filter_values) = messages_sql_and_values(filter);
         MessagesIter {
             conn,
             session_id: session_id.to_string(),
+            sql,
+            filter_values,
             cursor: None,
             done: false,
             counters: Rc::clone(&self.counters),
@@ -127,15 +227,12 @@ impl<'s> Query<'s> {
 pub struct MessagesIter {
     conn: rusqlite::Connection,
     session_id: String,
+    sql: String,
+    filter_values: Vec<Value>,
     cursor: Option<i64>,
     done: bool,
     counters: SharedCounters,
 }
-
-const MESSAGES_PAGE_SQL: &str = "SELECT ordinal, message_json FROM messages \
-     WHERE session_id = ?1 AND (?2 IS NULL OR ordinal > ?2) \
-     ORDER BY ordinal ASC \
-     LIMIT 1";
 
 impl Iterator for MessagesIter {
     type Item = Message;
@@ -145,18 +242,19 @@ impl Iterator for MessagesIter {
             return None;
         }
         let after = self.cursor;
-        let row = self
-            .conn
-            .prepare_cached(MESSAGES_PAGE_SQL)
-            .and_then(|mut stmt| {
-                stmt.query_row(params![self.session_id, after], |row| {
-                    Ok((
-                        row.get::<_, i64>("ordinal")?,
-                        row.get::<_, String>("message_json")?,
-                    ))
-                })
-                .optional()
-            });
+        let mut values: Vec<Value> = Vec::with_capacity(2 + self.filter_values.len());
+        values.push(Value::from(self.session_id.clone()));
+        values.push(after.map(Value::from).unwrap_or(Value::Null));
+        values.extend(self.filter_values.iter().cloned());
+        let row = self.conn.prepare_cached(&self.sql).and_then(|mut stmt| {
+            stmt.query_row(rusqlite::params_from_iter(values), |row| {
+                Ok((
+                    row.get::<_, i64>("ordinal")?,
+                    row.get::<_, String>("message_json")?,
+                ))
+            })
+            .optional()
+        });
         match row {
             Ok(Some((ordinal, message_json))) => {
                 self.cursor = Some(ordinal);
