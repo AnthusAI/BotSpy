@@ -1,0 +1,1 @@
+{"capped":true,"continuedServerSide":true,"entries":[{"role":"user","seq":1,"text":"capped entry one","type":"message"},{"role":"user","seq":2,"text":"capped entry two","type":"message"}]}

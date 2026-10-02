@@ -1,0 +1,7 @@
+{"type":"user","uuid":"u1","parentUuid":"","timestamp":"2026-10-01T09:00:00Z","message":{"role":"user","content":"kick off the parser work"}}
+{"type":"assistant","uuid":"u2","parentUuid":"u1","timestamp":"2026-10-01T09:00:05Z","message":{"role":"assistant","content":[{"type":"thinking","thinking":"reading the transcript stream","signature":"sig"},{"type":"tool_use","id":"call_synth_1","name":"read_file","input":{"path":"main.rs"}}]}}
+{"type":"user","uuid":"u3","parentUuid":"u2","timestamp":"2026-10-01T09:00:10Z","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"call_synth_1","content":"contents"}]}}
+{"type":"assistant","uuid":"u4","parentUuid":"u3","timestamp":"2026-10-01T09:00:15Z","message":{"role":"assistant","content":[{"type":"text","text":"the parser work is done"}]}}
+{"type":"cost-state","totalCostUsd":0.42,"totalApiDurationMs":1200}
+{"type":"pr-link","url":"https://github.com/synth/repo/pull/1"}
+{"type":"custom-title","title":"Synthetic parser session"}

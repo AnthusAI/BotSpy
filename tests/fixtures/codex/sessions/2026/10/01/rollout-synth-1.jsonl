@@ -1,0 +1,9 @@
+{"ordinal":1,"timestamp":"2026-10-01T09:00:00Z","type":"response_item","payload":{"type":"message","id":"m1","role":"user","content":[{"type":"input_text","text":"run the tests"}]}}
+{"ordinal":2,"timestamp":"2026-10-01T09:00:05Z","type":"response_item","payload":{"type":"message","id":"m2","role":"assistant","content":[{"type":"output_text","text":"On it."}]}}
+{"ordinal":3,"timestamp":"2026-10-01T09:00:06Z","type":"response_item","payload":{"type":"message","id":"m3","role":"developer","content":[{"type":"input_text","text":"Be concise."}]}}
+{"ordinal":4,"timestamp":"2026-10-01T09:00:07Z","type":"response_item","payload":{"type":"reasoning","summary":[{"type":"summary_text","text":"thinking it through"}]}}
+{"ordinal":5,"timestamp":"2026-10-01T09:00:08Z","type":"response_item","payload":{"type":"function_call","call_id":"call_synth_1","name":"shell","arguments":"{\"cmd\":[\"cargo\",\"test\"]}"}}
+{"ordinal":6,"timestamp":"2026-10-01T09:00:20Z","type":"response_item","payload":{"type":"function_call_output","call_id":"call_synth_1","output":"all tests pass"}}
+{"ordinal":7,"type":"token_usage_record","payload":{"input_tokens":1200,"cached_input_tokens":300,"output_tokens":800,"reasoning_tokens":150,"model":"synthetic-model"}}
+{"ordinal":8,"type":"compacted","payload":{"window_id":"w2","previous_window":"w1","retained_context":"synthetic summary so far"}}
+{"ordinal":9,"type":"task_complete","payload":{"turn_id":"turn-synth-1","duration_ms":42000,"time_to_first_token_ms":900}}
