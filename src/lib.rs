@@ -106,7 +106,7 @@ pub mod spec;
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
 pub use schema::{
-    Agent, KnownPart, Message, ModelCost, Part, Provenance, RateLimitState, Role, SessionCost,
-    Timestamp, Turn, Usage, SCHEMA_VERSION,
+    Agent, KnownPart, Message, ModelCost, Part, PartStatus, Provenance, RateLimitState, Role,
+    SessionCost, Timestamp, Turn, TurnStatus, Usage, SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};

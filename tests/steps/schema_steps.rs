@@ -43,11 +43,13 @@ fn part_from_row(columns: &[String], row: &[String]) -> Part {
             id: cell("id"),
             name: cell("name"),
             arguments: None,
+            status: None,
             extra: None,
         }),
         "tool_result" => Part::Known(KnownPart::ToolResult {
             call_id: cell("call_id"),
             text: (!text.is_empty()).then_some(text),
+            status: None,
             extra: None,
         }),
         "attachment" => Part::Known(KnownPart::Attachment {

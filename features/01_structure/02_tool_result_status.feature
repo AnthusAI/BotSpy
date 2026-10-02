@@ -1,4 +1,3 @@
-@wip
 Feature: Error and status flags on tool results, messages, and turns
   Tool results carry their outcome (ok, error, interrupted), tool calls
   keep their own status, and messages and turns can be flagged as failed
