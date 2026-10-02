@@ -15,9 +15,22 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "ee8b2507-cb3b-484b-823a-0fa7621ef367",
+      "author": "home",
+      "text": "Store skeleton implemented on `feat/local-store` (PR https://github.com/AnthusAI/BotSpy/pull/4, CI pending before merge): `04_store.feature` green, `@wip` removed; WAL + DDL v1 + default path + lazy session iteration + minimal `ingest_sessions`. Walking-skeleton unit tests prove vec_version(), vec0 k-NN, FTS5. Deviation: sqlite-vec pinned to stable 0.1.9 — the planned 0.1.10-alpha.4 (and alpha.3) are broken upstream: the crate defaults SQLITE_VEC_ENABLE_DISKANN=1 but the shipped tarball omits sqlite-vec-diskann.c, so it cannot compile on any target.",
+      "created_at": "2026-10-02T22:13:31.447089Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:46.999215Z",
-  "updated_at": "2026-10-02T21:54:48.922287Z",
+  "updated_at": "2026-10-02T22:13:31.447110Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
