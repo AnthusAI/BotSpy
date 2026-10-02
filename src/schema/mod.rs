@@ -59,6 +59,43 @@ impl PartStatus {
     }
 }
 
+/// Tool-call arguments in whatever form the agent wrote them. The raw
+/// form is always kept; JSON is parsed only once, never double-decoded.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct ToolArguments {
+    /// Structured arguments the agent passed as a JSON object.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub value: Option<Value>,
+    /// The raw string form (JS source, a JSON-encoded string parameter).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub raw: Option<String>,
+    /// The first parse of `raw`, present when the raw string is valid JSON.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub parsed: Option<Value>,
+}
+
+impl ToolArguments {
+    /// Arguments from a raw string: kept verbatim, parsed when valid JSON.
+    pub fn from_raw(raw: impl Into<String>) -> Self {
+        let raw = raw.into();
+        let parsed = serde_json::from_str(&raw).ok();
+        Self {
+            value: None,
+            raw: Some(raw),
+            parsed,
+        }
+    }
+
+    /// Arguments from a JSON object the agent passed as structured data.
+    pub fn from_value(value: Value) -> Self {
+        Self {
+            value: Some(value),
+            raw: None,
+            parsed: None,
+        }
+    }
+}
+
 /// A part with one of the fixed kinds.
 ///
 /// `extra` carries agent-specific fields the schema does not model yet, so
@@ -80,7 +117,7 @@ pub enum KnownPart {
         id: String,
         name: String,
         #[serde(default, skip_serializing_if = "Option::is_none")]
-        arguments: Option<Value>,
+        arguments: Option<ToolArguments>,
         #[serde(default, skip_serializing_if = "Option::is_none")]
         status: Option<PartStatus>,
         #[serde(default, skip_serializing_if = "Option::is_none")]

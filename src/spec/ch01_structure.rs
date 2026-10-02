@@ -191,12 +191,14 @@
 //! linkage is by `call_id`, not position.
 //!
 //! ```
-//! use botspy::{KnownPart, Message, Part, Role};
+//! use botspy::{KnownPart, Message, Part, Role, ToolArguments};
 //!
 //! let call = Part::Known(KnownPart::ToolCall {
 //!     id: "call_9".into(),
 //!     name: "read_file".into(),
-//!     arguments: Some(serde_json::json!({"path": "src/main.rs"})),
+//!     arguments: Some(ToolArguments::from_value(
+//!         serde_json::json!({"path": "src/main.rs"}),
+//!     )),
 //!     status: None,
 //!     extra: None,
 //! });
@@ -378,7 +380,10 @@
 //!    [`Provenance::record_id`](crate::schema::Provenance::record_id),
 //!    `record_type`, `ordinal`, and `parent_record`.
 //! 7. `07_tool_call_arguments.feature` — raw-string tool-call arguments,
-//!    kept raw, parsed only when the raw string is valid JSON.
+//!    kept raw, parsed only when the raw string is valid JSON. Implemented:
+//!    [`ToolArguments`](crate::schema::ToolArguments) (`value` for
+//!    structured objects, `raw` kept verbatim, `parsed` from the first
+//!    parse — never double-decoded).
 //! 8. `08_inline_data.feature` — inline-data part with media type, content
 //!    hash, and `data_ref` for blob-backed bytes.
 //! 9. `09_optional_timestamp.feature` — optional timestamps; never
@@ -429,7 +434,7 @@
     "### 05_compaction.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/05_compaction.feature"),
     "\n```\n\n",
-    "### 07_tool_call_arguments.feature (pending)\n\n```gherkin\n",
+    "### 07_tool_call_arguments.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/07_tool_call_arguments.feature"),
     "\n```\n\n",
     "### 08_inline_data.feature (pending)\n\n```gherkin\n",
