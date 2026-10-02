@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: adapter contract",
   "description": "Author features/adapters/contract.feature: discovery finds sessions, extraction streams without loading whole files, malformed input is skipped and counted, sources are read-only. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "0efe6666-bb29-4c36-b4b2-6608a6cf9530",
+      "author": "home",
+      "text": "Contract spec authored at features/03_importers/contract.feature: discovery under roots, incremental detection, streaming extraction (bounded memory), malformed/unknown records skipped and counted, no source mutation, and WAL snapshot-copy reading. Tagged @wip; embedded in src/spec/ch03_importers/mod.rs. All gates green.",
+      "created_at": "2026-10-02T19:26:44.916403Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:25.031954Z",
-  "updated_at": "2026-10-02T16:19:25.032012Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:26:49.069109Z",
+  "closed_at": "2026-10-02T19:26:49.069035Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Gherkin adapter contract is being drafted with scenarios for discovery, streaming, malformed input, and read-only",
-  "right_now_updated_at": "2026-10-02T16:19:27.596843Z",
-  "custom": {}
+  "right_now_summary": "The adapter contract spec is authored, embedded, and all checks pass.",
+  "right_now_updated_at": "2026-10-02T19:26:49.938595Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
