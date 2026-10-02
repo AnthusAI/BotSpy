@@ -127,5 +127,6 @@ pub use store::{
     default_store_path,
     ingest::IngestReport,
     query::{MessageFilter, Query, QueryCounters, SessionFilter},
+    text::SearchHit,
     SessionIter, Store, StoreError,
 };

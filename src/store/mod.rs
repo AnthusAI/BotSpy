@@ -10,6 +10,7 @@
 pub mod ingest;
 pub mod migrations;
 pub mod query;
+pub mod text;
 
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
 use crate::session::{Session, SessionSummary};

@@ -1,4 +1,3 @@
-@wip
 Feature: Text search
   The store answers "which sessions mention this?" over every source: a
   full-text match (FTS5) over the message text projections written at
@@ -41,9 +40,10 @@ Feature: Text search
     Then the search yields sessions "p1" only
 
   Scenario: Search composes with the session filters
-    Given fixture sessions "f1" from "claude_code" in project "web" and "f2" from "cursor" in project "web"
+    Given fixture sessions "f1" from "claude_code" in project "web" and "f2" from "cursor" in project "web" and "f3" from "codex" in project "cli"
     And session "f1" has messages "fix the login bug"
     And session "f2" has messages "fix the login bug"
+    And session "f3" has messages "fix the login bug"
     When I search the store for "login" filtered by source "cursor"
     Then the search yields sessions "f2" only
 

@@ -42,7 +42,8 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: iteration, ingestion, filters, refresh, and laziness are green
+//! ## Status: iteration, ingestion, filters, refresh, text search, and
+//! laziness are green
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
 //! below. Executable and green: the local store itself
@@ -55,10 +56,11 @@
 //! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
 //! incremental refresh
 //! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature)),
+//! text search
+//! ([`07_text_search.feature`](../../features/02_querying/07_text_search.feature)),
 //! and query laziness
 //! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
-//! The search specs are specified-red (`@wip`) until their implementation
-//! tasks land.
+//! The vector-search spec remains `@wip` until the MiniLM epic lands.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
