@@ -2,6 +2,7 @@
 
 pub mod arguments_steps;
 pub mod blob_steps;
+pub mod claude_code_steps;
 pub mod compaction_steps;
 pub mod graph_steps;
 pub mod importer_steps;
@@ -67,6 +68,14 @@ pub struct BotSpyWorld {
     pub sqlite_digest_after: Option<String>,
     /// Rows the snapshot copy reports.
     pub snapshot_rows: Option<u64>,
+    /// Claude Code source root under construction (Claude Code steps).
+    pub cc_root: Option<std::path::PathBuf>,
+    /// The Claude Code source watching that root.
+    pub cc_source: Option<botspy::adapters::claude_code::ClaudeCodeSource>,
+    /// Transcript file name the current Claude Code fixture uses.
+    pub cc_transcript: Option<String>,
+    /// Result of the most recent Claude Code extraction pass.
+    pub cc_extraction: Option<botspy::adapters::claude_code::ClaudeExtraction>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

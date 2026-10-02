@@ -103,7 +103,7 @@ fn root_with_unknown(world: &mut BotSpyWorld, root: String, known: usize, unknow
     write_transcript(&base, "unknown.jsonl", &lines);
 }
 
-#[when(regex = r#"^I discover sessions from the source "([^"]+)" at that root$"#)]
+#[when(regex = r#"^I discover sessions from the source "([^"]+)" at that root(?: again)?$"#)]
 fn discover_from_source(world: &mut BotSpyWorld, source: String) {
     let discovered = source_for(world, &source).discover();
     let new_ids = world
@@ -205,7 +205,7 @@ fn single_transcript_id(world: &BotSpyWorld) -> String {
     transcripts.remove(0)
 }
 
-#[then(regex = r#"^discovery yields ([0-9]+) sessions$"#)]
+#[then(regex = r#"^discovery yields ([0-9]+) sessions?$"#)]
 fn discovery_yields(world: &mut BotSpyWorld, count: usize) {
     assert_eq!(
         world.discovered.len(),
@@ -254,7 +254,7 @@ fn extraction_yields(world: &mut BotSpyWorld, count: usize) {
     );
 }
 
-#[then(regex = r#"^extraction reports ([0-9]+) skipped records$"#)]
+#[then(regex = r#"^extraction reports ([0-9]+) skipped records?$"#)]
 fn extraction_skips(world: &mut BotSpyWorld, count: u64) {
     assert_eq!(
         world.skipped.total(),
