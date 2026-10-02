@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R10 role mapping conventions",
   "description": "Done when: the wip tag is removed from 10_role_mapping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "87ebdff7-9409-4ed8-acb2-dc353bdbbec0",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/10_role_mapping.feature; all 5 scenarios pass (52 total). Schema: Origin enum (developer, agent_message, simulated) on Message, Message.author and Message.recipient; injected <system-reminder> blocks split out of user text into a System part. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T19:08:12.149174Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:41:26.866231Z",
-  "updated_at": "2026-10-02T17:43:03.181106Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:08:20.357048Z",
+  "closed_at": "2026-10-02T19:08:20.357012Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "No recent work or updates are reported for the R10 role mapping tests.",
-  "right_now_updated_at": "2026-10-02T17:43:04.840872Z",
-  "custom": {}
+  "right_now_summary": "The role-mapping spec is implemented, its five scenarios pass, and the wip tag is removed.",
+  "right_now_updated_at": "2026-10-02T19:08:22.005434Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
