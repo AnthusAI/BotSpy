@@ -1,4 +1,3 @@
-@wip
 Feature: botspy show
   Open one session from the unified history and walk its messages. A
   session is addressed by the agent's own stable id, or by any
@@ -44,7 +43,7 @@ Feature: botspy show
     And stderr contains "nosuchsession"
 
   Scenario: A long id may be abbreviated to an unambiguous prefix
-    When I run "botspy show solo" against the fixture home
+    When I run "botspy show solo --no-truncate" against the fixture home
     Then the exit code is 0
     And stdout contains "solo-abc123"
 

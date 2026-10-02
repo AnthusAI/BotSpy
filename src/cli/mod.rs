@@ -31,8 +31,8 @@ use crate::adapters::cursor::CursorSource;
 use crate::adapters::grok_bot::GrokBotSource;
 use crate::importer::SourceOptions;
 use crate::importer::UnknownSource;
-use crate::schema::Agent;
-use crate::session::{SessionStore, SessionSummary, UnknownSession};
+use crate::schema::{Agent, KnownPart, Message, Part, Role};
+use crate::session::{Session, SessionStore, SessionSummary, UnknownSession};
 
 /// Every source the registry knows, in registry order.
 pub const ALL_SOURCES: [&str; 5] = ["claude_code", "cursor", "codex", "grok_bot", "antigravity"];
@@ -435,8 +435,178 @@ fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
     out
 }
 
-fn show(_args: ShowArgs) -> RunOutcome {
-    todo!("show verb (BOTSPY-185f83)")
+fn show(args: ShowArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let options = args.global.options();
+    let store = match build_store(&args.global.source, &options) {
+        Ok(store) => store,
+        Err(err) => return err.into_outcome(),
+    };
+    let id = match resolve_session_id(&store, &args.session) {
+        Ok(id) => id,
+        Err(outcome) => return outcome,
+    };
+    let session = match store.open(&id) {
+        Ok(session) => session,
+        Err(err) => return err.into_outcome(),
+    };
+    let selected: Option<usize> = match args.message {
+        Some(ordinal) => match session.messages.get(ordinal - 1) {
+            Some(_) => Some(ordinal),
+            None => {
+                return RunOutcome::fail(
+                    1,
+                    format!(
+                        "error: message {ordinal} not found in session {} ({} messages)\n",
+                        id,
+                        session.messages.len()
+                    ),
+                )
+            }
+        },
+        None => None,
+    };
+    match args.global.output {
+        OutputMode::Json => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::to_string_pretty(&session).expect("session serializes")
+        )),
+        OutputMode::Ndjson => {
+            let messages: Vec<&Message> = match selected {
+                Some(ordinal) => vec![&session.messages[ordinal - 1]],
+                None => session.messages.iter().collect(),
+            };
+            let lines: Vec<String> = messages
+                .iter()
+                .map(|message| serde_json::to_string(message).expect("message serializes"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => {
+            RunOutcome::ok(show_human(&session, selected, args.global.no_truncate))
+        }
+    }
+}
+
+/// Resolve a session id or unambiguous prefix against the unified
+/// listing. An exact id wins; an ambiguous prefix is an error listing
+/// the candidates, never a guess.
+fn resolve_session_id(store: &SessionStore, input: &str) -> Result<String, RunOutcome> {
+    let ids: Vec<String> = store
+        .list_sessions()
+        .into_iter()
+        .map(|summary| summary.id)
+        .collect();
+    if ids.iter().any(|id| id == input) {
+        return Ok(input.to_string());
+    }
+    let candidates: Vec<&String> = ids.iter().filter(|id| id.starts_with(input)).collect();
+    match candidates.len() {
+        1 => Ok(candidates[0].clone()),
+        0 => Err(UnknownSession {
+            id: input.to_string(),
+        }
+        .into_outcome()),
+        _ => Err(RunOutcome::fail(
+            1,
+            format!(
+                "error: ambiguous session id {:?}, candidates: {}\n",
+                input,
+                candidates
+                    .iter()
+                    .map(|id| id.as_str())
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            ),
+        )),
+    }
+}
+
+fn role_name(role: Role) -> &'static str {
+    match role {
+        Role::User => "user",
+        Role::Assistant => "assistant",
+        Role::System => "system",
+        Role::Tool => "tool",
+    }
+}
+
+/// One line per part: its kind and a short human summary.
+fn part_line(part: &Part, no_truncate: bool) -> String {
+    let kind = part.kind_name().unwrap_or("part").to_string();
+    let summary: Option<String> = match part {
+        Part::Known(KnownPart::Text { text, .. }) => Some(text.clone()),
+        Part::Known(KnownPart::Thinking { text, .. }) => {
+            Some(text.clone().unwrap_or_else(|| "(none)".to_string()))
+        }
+        Part::Known(KnownPart::ToolCall { name, .. }) => Some(name.clone()),
+        Part::Known(KnownPart::ToolResult { text, .. }) => {
+            Some(text.clone().unwrap_or_else(|| "(none)".to_string()))
+        }
+        Part::Known(KnownPart::System { text, .. }) => Some(text.clone()),
+        _ => None,
+    };
+    let summary = summary
+        .as_deref()
+        .and_then(|text| text.lines().next())
+        .unwrap_or_default();
+    if summary.is_empty() {
+        format!("· {kind}")
+    } else {
+        format!("· {kind}  {}", render::truncate(summary, no_truncate))
+    }
+}
+
+fn show_human(session: &Session, selected: Option<usize>, no_truncate: bool) -> String {
+    let id = if no_truncate || session.id.chars().count() <= 8 {
+        session.id.clone()
+    } else {
+        session.id.chars().take(8).collect()
+    };
+    let mut out = format!(
+        "Session {} ({}, {}) — {} messages, started {}\n",
+        id,
+        agent_name(session.agent),
+        session.project_id,
+        session.messages.len(),
+        if session.started_at.is_empty() {
+            render::DASH
+        } else {
+            &session.started_at
+        }
+    );
+    let messages: Vec<(usize, &Message)> = match selected {
+        Some(ordinal) => session
+            .messages
+            .get(ordinal - 1)
+            .map(|message| vec![(ordinal, message)])
+            .unwrap_or_default(),
+        None => session
+            .messages
+            .iter()
+            .enumerate()
+            .map(|(index, message)| (index + 1, message))
+            .collect(),
+    };
+    for (ordinal, message) in messages {
+        let timestamp = message
+            .timestamp
+            .as_deref()
+            .filter(|timestamp| !timestamp.is_empty())
+            .unwrap_or(render::DASH);
+        out.push_str(&format!(
+            "#{} {} {}\n",
+            ordinal,
+            role_name(message.role),
+            timestamp
+        ));
+        for part in &message.parts {
+            out.push_str(&format!("  {}\n", part_line(part, no_truncate)));
+        }
+    }
+    out
 }
 
 fn doctor(_args: DoctorArgs) -> RunOutcome {
