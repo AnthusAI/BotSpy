@@ -20,6 +20,7 @@ pub mod sqlite_steps;
 pub mod status_steps;
 pub mod timestamp_steps;
 pub mod turn_steps;
+pub mod unified_steps;
 pub mod usage_steps;
 
 use botspy::{
