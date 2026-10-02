@@ -14,11 +14,11 @@ use crate::schema::{
 };
 use crate::session::SessionSummary;
 use serde_json::Value;
-use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};
 use std::path::{Path, PathBuf};
+use std::sync::Mutex;
 
 /// What discovery saw under the projects root.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]

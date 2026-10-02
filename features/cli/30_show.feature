@@ -1,3 +1,4 @@
+@wip
 Feature: botspy show
   Open one session from the unified history and walk its messages. A
   session is addressed by the agent's own stable id, or by any

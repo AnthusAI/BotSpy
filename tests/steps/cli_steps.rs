@@ -86,10 +86,7 @@ fn build_home(home: &Path, sources: &[&str]) {
             }
             "cursor" => {
                 std::fs::create_dir_all(home.join(".cursor")).expect("create .cursor");
-                symlink_entry(
-                    &home.join(".cursor/state.vscdb"),
-                    &cursor_store_path(),
-                );
+                symlink_entry(&home.join(".cursor/state.vscdb"), &cursor_store_path());
             }
             "codex" => symlink_entry(&home.join(".codex"), &corpus_root().join("codex")),
             "grok_bot" => {
@@ -151,8 +148,14 @@ fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
 /// output itself, not from this placeholder.
 fn expand(text: &str) -> String {
     text.replace("{out_dir}", &scratch("out").to_string_lossy())
-        .replace("{claude_projects_root}", &claude_projects_root().to_string_lossy())
-        .replace("{cursor_store_path}", &cursor_store_path().to_string_lossy())
+        .replace(
+            "{claude_projects_root}",
+            &claude_projects_root().to_string_lossy(),
+        )
+        .replace(
+            "{cursor_store_path}",
+            &cursor_store_path().to_string_lossy(),
+        )
 }
 
 #[when(regex = r#"^I run "botspy (.*?)" against the fixture home$"#)]
@@ -241,22 +244,22 @@ fn exit_code(world: &mut BotSpyWorld, code: String) {
     );
 }
 
-#[then(regex = r#"^stdout contains (.+)$"#)]
+#[then(regex = r#"^stdout contains (".*")$"#)]
 fn stdout_contains(world: &mut BotSpyWorld, text: String) {
     assert_all_in("stdout", &run(world).stdout, &text);
 }
 
-#[then(regex = r#"^stdout does not contain (.+)$"#)]
+#[then(regex = r#"^stdout does not contain (".*")$"#)]
 fn stdout_not_contains(world: &mut BotSpyWorld, text: String) {
     assert_none_in("stdout", &run(world).stdout, &text);
 }
 
-#[then(regex = r#"^stderr contains (.+)$"#)]
+#[then(regex = r#"^stderr contains (".*")$"#)]
 fn stderr_contains(world: &mut BotSpyWorld, text: String) {
     assert_all_in("stderr", &run(world).stderr, &text);
 }
 
-#[then(regex = r#"^stderr mentions (.+)$"#)]
+#[then(regex = r#"^stderr mentions (".*")$"#)]
 fn stderr_mentions(world: &mut BotSpyWorld, text: String) {
     assert_all_in("stderr", &run(world).stderr, &text);
 }
@@ -274,10 +277,7 @@ fn stdout_reports(world: &mut BotSpyWorld, expected: String) {
 fn stdout_json_array(world: &mut BotSpyWorld, count: String) {
     let value = json(world);
     let count = count.parse::<usize>().expect("numeric count");
-    assert!(
-        value.is_array(),
-        "stdout is not a JSON array: {value:?}"
-    );
+    assert!(value.is_array(), "stdout is not a JSON array: {value:?}");
     let entries = value.as_array().expect("array");
     assert_eq!(
         entries.len(),
@@ -306,7 +306,10 @@ fn stdout_json_object_with(world: &mut BotSpyWorld, key: String, expected: Strin
 #[then(regex = r#"^stdout parses as NDJSON with ([0-9]+) lines$"#)]
 fn stdout_ndjson(world: &mut BotSpyWorld, count: String) {
     let stdout = &run(world).stdout;
-    let lines: Vec<&str> = stdout.lines().filter(|line| !line.trim().is_empty()).collect();
+    let lines: Vec<&str> = stdout
+        .lines()
+        .filter(|line| !line.trim().is_empty())
+        .collect();
     let count = count.parse::<usize>().expect("numeric count");
     assert_eq!(
         lines.len(),
@@ -343,7 +346,11 @@ fn json_entry_string(world: &mut BotSpyWorld, name: String, key: String, expecte
         .get(&key)
         .and_then(Value::as_str)
         .unwrap_or_else(|| panic!("missing or non-string {key} in {name}: {entry:?}"));
-    assert_eq!(actual, expand_captured(&expected), "unexpected {key} of {name}");
+    assert_eq!(
+        actual,
+        expand_captured(&expected),
+        "unexpected {key} of {name}"
+    );
 }
 
 #[then(regex = r#"^the JSON entry "([^"]+)" has "([^"]+)" (-?[0-9]+)$"#)]
@@ -384,10 +391,7 @@ fn every_entry_equals(world: &mut BotSpyWorld, key: String, expected: String) {
 fn every_entry_has_keys(world: &mut BotSpyWorld, first: String, second: String, third: String) {
     for entry in json_entries(world) {
         for key in [&first, &second, &third] {
-            assert!(
-                entry.get(key).is_some(),
-                "missing {key}: {entry:?}"
-            );
+            assert!(entry.get(key).is_some(), "missing {key}: {entry:?}");
         }
     }
 }

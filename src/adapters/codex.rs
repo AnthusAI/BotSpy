@@ -22,11 +22,11 @@ use crate::schema::{
 use crate::session::SessionSummary;
 use rusqlite::OpenFlags;
 use serde_json::Value;
-use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};
 use std::path::{Path, PathBuf};
+use std::sync::Mutex;
 
 /// One row of the threads index (`state_5.sqlite`).
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
