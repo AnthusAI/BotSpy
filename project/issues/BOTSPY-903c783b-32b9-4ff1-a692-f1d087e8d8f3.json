@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R8 inline data and attachments",
   "description": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "13448286-4513-463d-8c7f-9436c2e132bf",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/08_inline_data.feature; all 4 scenarios pass (47 total). Schema: KnownPart::InlineData { mime, data (base64 or None), data_ref } with content_hash (sha2 SHA-256 hex over the base64 payload); blob-backed parts carry data_ref without data. New dependency: sha2 0.10. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T19:05:41.024911Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:35:28.196159Z",
-  "updated_at": "2026-10-02T17:39:48.906804Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:05:48.773015Z",
+  "closed_at": "2026-10-02T19:05:48.772939Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The R8 inline data and attachments work still needs step definitions and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:39:50.343168Z",
-  "custom": {}
+  "right_now_summary": "The inline data spec passes, with step definitions added and all four scenarios green.",
+  "right_now_updated_at": "2026-10-02T19:05:50.390429Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
