@@ -100,7 +100,19 @@ jobs:
           version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "botspy") | .version')"
           echo "Computed next version: ${version}"
           git diff --stat
+          # release-plz release --dry-run still runs cargo's packaging
+          # checks, which refuse a dirty tree. Commit the computed bump
+          # locally (never pushed) so the dry run can verify the tag,
+          # GitHub release, and crates.io upload, then reset.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "chore: release botspy v${version} (dry run)"
+            committed=true
+          fi
           release-plz release --dry-run -o json
+          if [ "${committed:-}" = "true" ]; then git reset --hard HEAD~1; fi
 
       - name: Tag and create GitHub release
         if: >-
