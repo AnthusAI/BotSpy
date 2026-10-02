@@ -342,6 +342,26 @@ fn sessions(args: SessionsArgs) -> RunOutcome {
     if let Some(out) = check_root(&args.global) {
         return out;
     }
+    if let Some(value) = &args.since {
+        if !valid_rfc3339(value) {
+            return RunOutcome::fail(
+                2,
+                format!(
+                    "error: invalid value for --since: {value:?} is not an RFC 3339 timestamp\n"
+                ),
+            );
+        }
+    }
+    if let Some(value) = &args.until {
+        if !valid_rfc3339(value) {
+            return RunOutcome::fail(
+                2,
+                format!(
+                    "error: invalid value for --until: {value:?} is not an RFC 3339 timestamp\n"
+                ),
+            );
+        }
+    }
     let options = args.global.options();
     let store = match build_store(&args.global.source, &options) {
         Ok(store) => store,
@@ -435,6 +455,69 @@ fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
     out.push_str(&footer);
     out.push('\n');
     out
+}
+
+/// Whether a value is an RFC 3339 timestamp: `YYYY-MM-DDTHH:MM:SS`, an
+/// optional fractional second, and a `Z` or `±HH:MM` offset. The
+/// activity-window filters compare the library's recorded timestamps
+/// lexicographically, so the argument must share that shape — an
+/// off-shape value would silently match nothing.
+fn valid_rfc3339(value: &str) -> bool {
+    if !value.is_ascii() {
+        return false;
+    }
+    let b = value.as_bytes();
+    let digits = |start: usize, len: usize| b[start..start + len].iter().all(u8::is_ascii_digit);
+    let two = |start: usize| (b[start] - b'0') as usize * 10 + (b[start + 1] - b'0') as usize;
+    if b.len() < 20
+        || !digits(0, 4)
+        || b[4] != b'-'
+        || !digits(5, 2)
+        || b[7] != b'-'
+        || !digits(8, 2)
+        || !matches!(b[10], b'T' | b't')
+        || !digits(11, 2)
+        || b[13] != b':'
+        || !digits(14, 2)
+        || b[16] != b':'
+        || !digits(17, 2)
+    {
+        return false;
+    }
+    let month = two(5);
+    let day = two(8);
+    let hour = two(11);
+    let minute = two(14);
+    let second = two(17);
+    if !(1..=12).contains(&month)
+        || !(1..=31).contains(&day)
+        || hour > 23
+        || minute > 59
+        || second > 60
+    {
+        return false;
+    }
+    let mut rest = &b[19..];
+    if rest.first() == Some(&b'.') {
+        let fraction = rest[1..]
+            .iter()
+            .take_while(|byte| byte.is_ascii_digit())
+            .count();
+        if fraction == 0 {
+            return false;
+        }
+        rest = &rest[1 + fraction..];
+    }
+    match rest {
+        [b'Z'] | [b'z'] => true,
+        [sign, first, second, b':', third, fourth] => {
+            (*sign == b'+' || *sign == b'-')
+                && [*first, *second, *third, *fourth]
+                    .iter()
+                    .all(|byte| byte.is_ascii_digit())
+        }
+        _ => false,
+    }
 }
 
 fn show(args: ShowArgs) -> RunOutcome {
@@ -1009,5 +1092,41 @@ impl IntoOutcome for UnknownSource {
 impl IntoOutcome for UnknownSession {
     fn into_outcome(self) -> RunOutcome {
         RunOutcome::fail(1, format!("error: {self}\n"))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::valid_rfc3339;
+
+    #[test]
+    fn accepts_recorded_timestamp_shapes() {
+        for value in [
+            "2026-10-01T09:00:00Z",
+            "2026-10-01T09:00:00.032Z",
+            "2026-10-01t09:00:00z",
+            "2026-10-01T09:00:00-04:00",
+            "2026-10-01T09:00:60Z",
+        ] {
+            assert!(valid_rfc3339(value), "must accept {value}");
+        }
+    }
+
+    #[test]
+    fn rejects_off_shape_values() {
+        for value in [
+            "bogus",
+            "",
+            "2026-10-01",
+            "2026-13-01T09:00:00Z",
+            "2026-10-32T09:00:00Z",
+            "2026-10-01T24:00:00Z",
+            "2026-10-01T09:00Z",
+            "2026-10-01T09:00:00",
+            "2026-10-01T09:00:00+04",
+            "2026-10-01T09:00:00.βZ",
+        ] {
+            assert!(!valid_rfc3339(value), "must reject {value}");
+        }
     }
 }
