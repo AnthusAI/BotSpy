@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T17:59:33Z",
+  "built_at": "2026-10-02T19:23:58Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790963887.823961,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790957988.711561,
@@ -18,7 +18,7 @@
     "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790958151.362658,
     "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790958107.027429,
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
-    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790963728.962416,
+    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790967112.972948,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790957972.342915,
     "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790963951.179898,
     "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790959336.030431,
@@ -29,11 +29,11 @@
     "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790960002.269669,
     "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790963941.518161,
     "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790959336.030851,
-    "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790962984.845732,
+    "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790968102.005875,
     "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790962770.720409,
-    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790963734.950499,
+    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790968284.738922,
     "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790958155.975258,
-    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790963740.944208,
+    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790968119.122848,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790958457.363622,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790958397.210853,
     "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790963958.259849,
@@ -41,47 +41,47 @@
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790963954.812328,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
-    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790963746.51768,
-    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790962748.383017,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790963959.878342,
+    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790967581.12394,
+    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790967433.503934,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790969016.199112,
     "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790963938.441066,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790958112.244918,
     "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
-    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790963750.844849,
+    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790967449.978958,
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790960008.427437,
     "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790958209.179931,
-    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790963786.164501,
+    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790969014.150354,
     "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790959336.031293,
     "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790963756.680479,
     "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f.json": 1790962672.703638,
     "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790963761.553539,
     "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790958101.887965,
-    "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790962999.160123,
+    "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790968662.239435,
     "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39.json": 1790963026.567833,
     "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790958137.352239,
     "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790957984.968468,
-    "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790962695.010316,
+    "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790967095.86074,
     "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790958033.021434,
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
-    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790962790.343501,
-    "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790962679.319749,
+    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790967950.39087,
+    "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790966955.912435,
     "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790958245.991392,
     "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
-    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790963114.540015,
+    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790967833.466788,
     "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790957967.597511,
-    "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790962992.253147,
+    "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790968259.198128,
     "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1790962701.823111,
     "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790958447.546378,
     "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790962754.83402,
-    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790962708.106209,
+    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790967290.854149,
     "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790958147.460118,
     "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790959336.031627,
     "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790958076.598149,
     "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790958132.645443,
     "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790960020.137935,
-    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790962777.001711,
-    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790963139.228472,
+    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790967809.040786,
+    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790968672.54022,
     "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790963724.463677,
     "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790958142.595245,
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790957999.466631,
@@ -90,11 +90,11 @@
     "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790958123.344149,
     "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790958257.047553,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790957994.975589,
-    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790963764.73052,
+    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790969012.589116,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790958128.269,
-    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790963769.245167,
-    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790963776.112678,
-    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790962762.749754,
+    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790967969.899864,
+    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790967301.695344,
+    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790967568.526876,
     "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790957975.924478,
     "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790963892.978556,
     "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790958379.806618,
@@ -103,17 +103,17 @@
     "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790959336.032073,
     "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
     "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790959336.032232,
-    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790963780.13772,
+    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790966966.338228,
     "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790962821.105181,
-    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790962808.700307,
+    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790969001.92734,
     "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1790960014.394928,
-    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790963784.411375,
+    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790968825.683701,
     "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1790962716.527053,
     "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790958166.810653,
-    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790962723.177368,
+    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790968814.53668,
     "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790959336.032395,
     "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790960033.968221,
-    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790963793.022167,
+    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790968674.367489,
     "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1790959336.032678
   },
   "issues": [
@@ -600,25 +600,36 @@
       "title": "Schema R2: Error/status flags on ToolResult, messages, and turns",
       "description": "Report recommendation 2: status/is_error on ToolResult plus error/aborted status on messages and turns. Feature: features/02_schema/02_tool_result_status.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "d843fe89-d121-4d35-a4f4-21bb6f97575d",
+          "author": "home",
+          "text": "R2 done: error/status flags implemented and passing (02_tool_result_status.feature un-tagged @wip); see impl sub-task BOTSPY-8b0acc.",
+          "created_at": "2026-10-02T18:51:42.013093Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:01.398542Z",
-      "updated_at": "2026-10-02T17:55:27.295052Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:51:51.871955Z",
+      "closed_at": "2026-10-02T18:51:51.871884Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The spec is documented, but the tool result status feature still needs implementation and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:55:28.961915Z",
-      "custom": {}
+      "right_now_summary": "Error and status flags are implemented, and all seven scenarios pass.",
+      "right_now_updated_at": "2026-10-02T18:51:52.972535Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
@@ -933,7 +944,7 @@
       "title": "Implement until spec passes: R10 role mapping conventions",
       "description": "Done when: the wip tag is removed from 10_role_mapping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -945,18 +956,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "87ebdff7-9409-4ed8-acb2-dc353bdbbec0",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/10_role_mapping.feature; all 5 scenarios pass (52 total). Schema: Origin enum (developer, agent_message, simulated) on Message, Message.author and Message.recipient; injected <system-reminder> blocks split out of user text into a System part. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T19:08:12.149174Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:41:26.866231Z",
-      "updated_at": "2026-10-02T17:43:03.181106Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:08:20.357048Z",
+      "closed_at": "2026-10-02T19:08:20.357012Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "No recent work or updates are reported for the R10 role mapping tests.",
-      "right_now_updated_at": "2026-10-02T17:43:04.840872Z",
-      "custom": {}
+      "right_now_summary": "The role-mapping spec is implemented, its five scenarios pass, and the wip tag is removed.",
+      "right_now_updated_at": "2026-10-02T19:08:22.005434Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601",
@@ -996,25 +1018,36 @@
       "title": "Schema R11: Optional session metadata (title, git, cwd, PR, status, models)",
       "description": "Report recommendation 11: optional session metadata (title, git_branch, git_commit, cwd, archived, pr_url, status, app_version, models). Feature: features/02_schema/11_session_metadata.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "b1fc162a-8071-4798-8575-c62f462c3acd",
+          "author": "home",
+          "text": "R11 done: optional session metadata implemented and passing (11_session_metadata.feature un-tagged @wip); see impl sub-task BOTSPY-9677d2.",
+          "created_at": "2026-10-02T19:11:05.716593Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:50.586499Z",
-      "updated_at": "2026-10-02T17:55:32.877042Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:11:23.685048Z",
+      "closed_at": "2026-10-02T19:11:23.685013Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing optional session metadata; the documented BDD scenarios still need to pass.",
-      "right_now_updated_at": "2026-10-02T17:55:34.950147Z",
-      "custom": {}
+      "right_now_summary": "Optional session metadata is implemented, documented, and passing all seven scenarios.",
+      "right_now_updated_at": "2026-10-02T19:11:24.738637Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
@@ -1051,25 +1084,36 @@
       "title": "Schema R10: Role mapping conventions for developer, inter-agent, injected",
       "description": "Report recommendation 10: role mapping conventions for developer, inter-agent, injected, and simulated messages. Feature: features/02_schema/10_role_mapping.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "106ddbd6-734b-4fbc-94de-777ecf9a285c",
+          "author": "home",
+          "text": "R10 done: role mapping conventions implemented and passing (10_role_mapping.feature un-tagged @wip); see impl sub-task BOTSPY-4782d9.",
+          "created_at": "2026-10-02T19:08:30.118634Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:45.590491Z",
-      "updated_at": "2026-10-02T17:55:38.922104Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:08:37.334373Z",
+      "closed_at": "2026-10-02T19:08:37.334311Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The role-mapping spec is documented, but no recent work is reported on its tests.",
-      "right_now_updated_at": "2026-10-02T17:55:40.943612Z",
-      "custom": {}
+      "right_now_summary": "Role-mapping conventions are implemented, documented, and passing all five scenarios.",
+      "right_now_updated_at": "2026-10-02T19:08:39.122561Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd",
@@ -1306,32 +1350,43 @@
       "title": "Schema R6: Provenance widened with record id, type, ordinal, parent",
       "description": "Report recommendation 6: provenance widened with native record_id, record_type, ordinal/sort key, and native parent pointer. Feature: features/02_schema/provenance.feature (later scenarios).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8c23d13c-9781-4675-b3b1-953ebcbfaf8b",
+          "author": "home",
+          "text": "R6 done: provenance widening implemented and passing; see impl sub-task BOTSPY-db1935.",
+          "created_at": "2026-10-02T18:59:33.217434Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:22.289487Z",
-      "updated_at": "2026-10-02T17:55:44.661789Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:59:40.132309Z",
+      "closed_at": "2026-10-02T18:59:40.132236Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is adding step definitions, removing WIP tags, and running the BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:55:46.512580Z",
-      "custom": {}
+      "right_now_summary": "Provenance now includes record ID, type, ordinal, and parent fields, with all 40 BDD scenarios passing.",
+      "right_now_updated_at": "2026-10-02T18:59:41.123655Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
       "title": "Implement until spec passes: R5 compaction and summaries",
       "description": "Done when: the wip tag is removed from 05_compaction.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1343,18 +1398,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "bd992485-73c2-4ddc-8058-4c91cf2a6804",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/05_compaction.feature; all 6 scenarios pass (37 total). Schema: CompactionEvent (pre_tokens, post_tokens, logical_parent_message_id via new Message.id), CompactionWindow chain (previous_window, retained_context), Message.is_compaction_summary, Session.residual_context_tokens. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T18:57:00.924033Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:33:50.436115Z",
-      "updated_at": "2026-10-02T17:39:06.451264Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:57:11.483868Z",
+      "closed_at": "2026-10-02T18:57:11.483795Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "R5 compaction still needs step definitions and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:39:08.381916Z",
-      "custom": {}
+      "right_now_summary": "The compaction spec is implemented, and all six BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T18:57:13.503561Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
@@ -1377,8 +1443,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "The team is writing specs, building adapters and schemas, and adding tests across the module.",
-      "right_now_updated_at": "2026-10-02T17:59:19.877524Z",
+      "right_now_summary": "The team is building specs, adapters, schemas, exports, tests, and release tooling for the unified history library.",
+      "right_now_updated_at": "2026-10-02T19:23:36.197599Z",
       "custom": {}
     },
     {
@@ -1517,25 +1583,36 @@
       "title": "Schema R5: First-class compaction and summaries",
       "description": "Report recommendation 5: explicit compaction/summary modeling with pre/post token counts. Feature: features/02_schema/05_compaction.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "b7cabf97-a5fc-4090-b660-0c9f571e2961",
+          "author": "home",
+          "text": "R5 done: compaction and summaries implemented and passing (05_compaction.feature un-tagged @wip); see impl sub-task BOTSPY-637da2.",
+          "created_at": "2026-10-02T18:57:19.695630Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:17.301854Z",
-      "updated_at": "2026-10-02T17:55:49.513032Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:57:29.100672Z",
+      "closed_at": "2026-10-02T18:57:29.100593Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec is ready, but step definitions and passing BDD tests are still needed.",
-      "right_now_updated_at": "2026-10-02T17:55:50.844102Z",
-      "custom": {}
+      "right_now_summary": "Compaction and summary modeling is implemented, documented, and passing all six BDD scenarios.",
+      "right_now_updated_at": "2026-10-02T18:57:29.978687Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
@@ -1618,8 +1695,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "Some schema work passes tests, while several documented features still need implementation and BDD coverage.",
-      "right_now_updated_at": "2026-10-02T17:56:26.164180Z",
+      "right_now_summary": "Most schema pieces pass; the typed content-part model and versioning work are still being defined.",
+      "right_now_updated_at": "2026-10-02T19:23:34.150016Z",
       "custom": {}
     },
     {
@@ -1783,7 +1860,7 @@
       "title": "Implement until spec passes: R12 raw blob escape hatch",
       "description": "Done when: the wip tag is removed from 12_raw_blob_escape_hatch.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1795,18 +1872,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "c95b4bea-3f63-456e-b273-7ef3f4dd4365",
+          "author": "home",
+          "text": "blob_steps registered and cleaned (no duplicate last-message-kinds step, container parsed from <container>:<kind>:<hash>); given steps set current_session. 14 features / 64 scenarios / 253 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests all pass.",
+          "created_at": "2026-10-02T19:17:32.736703Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:42:05.796020Z",
-      "updated_at": "2026-10-02T17:43:17.049793Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:17:40.456003Z",
+      "closed_at": "2026-10-02T19:17:40.455901Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The raw blob escape hatch still needs step definitions and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:43:19.159482Z",
-      "custom": {}
+      "right_now_summary": "The blob escape hatch steps are implemented, and all BDD scenarios and checks pass.",
+      "right_now_updated_at": "2026-10-02T19:17:42.239044Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
@@ -1901,7 +1989,7 @@
       "title": "Implement until spec passes: R2 tool result status",
       "description": "Done when: the wip tag is removed from 02_tool_result_status.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1913,18 +2001,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "fd5d6210-a5c8-4639-ab5d-8c50d1c9495c",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/02_tool_result_status.feature; all 7 scenarios pass (24 total). Schema: PartStatus (ok/error/interrupted/loading/failed/success) on ToolResult and ToolCall, TurnStatus (completed/failed/aborted) with aborted_reason and error on Turn, Message.is_error flag; turn end markers close turns. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T18:51:29.345788Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:32:14.670732Z",
-      "updated_at": "2026-10-02T17:38:13.566786Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:51:34.885994Z",
+      "closed_at": "2026-10-02T18:51:34.885954Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The tool result status spec still needs implementation and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:38:15.009474Z",
-      "custom": {}
+      "right_now_summary": "The tool result status spec is implemented, and all seven scenarios pass.",
+      "right_now_updated_at": "2026-10-02T18:51:35.860361Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
@@ -1994,7 +2093,7 @@
       "title": "Implement until spec passes: R8 inline data and attachments",
       "description": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2006,25 +2105,36 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "13448286-4513-463d-8c7f-9436c2e132bf",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/08_inline_data.feature; all 4 scenarios pass (47 total). Schema: KnownPart::InlineData { mime, data (base64 or None), data_ref } with content_hash (sha2 SHA-256 hex over the base64 payload); blob-backed parts carry data_ref without data. New dependency: sha2 0.10. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T19:05:41.024911Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:35:28.196159Z",
-      "updated_at": "2026-10-02T17:39:48.906804Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:05:48.773015Z",
+      "closed_at": "2026-10-02T19:05:48.772939Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The R8 inline data and attachments work still needs step definitions and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:39:50.343168Z",
-      "custom": {}
+      "right_now_summary": "The inline data spec passes, with step definitions added and all four scenarios green.",
+      "right_now_updated_at": "2026-10-02T19:05:50.390429Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6",
       "title": "Implement until spec passes: R1 usage and cost metrics",
       "description": "Done when: the wip tag is removed from 01_usage_tokens.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2036,18 +2146,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "9384186a-3853-4ce2-9d64-596cf1606975",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/01_usage_tokens.feature; all 7 scenarios pass in cargo test --test bdd (17 scenarios total). Schema: Usage (input/output/cache_read/cache_write/cached_input/reasoning tokens, model — absent fields stay None, never zero), SessionCost with per-model map, RateLimitState, Message.usage/turn_id, Session.usage/cost/rate_limit/turns, Session::turn_usage/thread_usage accumulators. fmt, clippy -D warnings, doc -D warnings, 8 doctests, BDD all green.",
+          "created_at": "2026-10-02T18:49:00.457287Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:31:41.203413Z",
-      "updated_at": "2026-10-02T17:37:57.533626Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:49:14.287919Z",
+      "closed_at": "2026-10-02T18:49:14.287857Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
-      "right_now_updated_at": "2026-10-02T17:37:59.319063Z",
-      "custom": {}
+      "right_now_summary": "The usage and cost metrics spec passes, with all seven scenarios green and the new schema and accumulators implemented.",
+      "right_now_updated_at": "2026-10-02T18:49:15.912286Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0",
@@ -2114,25 +2235,36 @@
       "title": "Schema R7: Raw-string tool-call arguments",
       "description": "Report recommendation 7: tool-call arguments that are not JSON objects keep their raw string; parsed only when the raw string is valid JSON. Feature: features/02_schema/07_tool_call_arguments.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "370737c0-3812-4f88-86f2-b99ab96744e2",
+          "author": "home",
+          "text": "R7 done: raw-string tool-call arguments implemented and passing (07_tool_call_arguments.feature un-tagged @wip); see impl sub-task BOTSPY-b3b9f1.",
+          "created_at": "2026-10-02T19:03:33.973889Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:28.792337Z",
-      "updated_at": "2026-10-02T17:45:13.085266Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:03:44.573918Z",
+      "closed_at": "2026-10-02T19:03:44.573858Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Step definitions are being added so raw tool-call argument scenarios pass.",
-      "right_now_updated_at": "2026-10-02T17:45:14.539745Z",
-      "custom": {}
+      "right_now_summary": "Raw-string tool-call arguments are implemented, documented, and passing all three BDD scenarios.",
+      "right_now_updated_at": "2026-10-02T19:03:53.466356Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
@@ -2164,7 +2296,7 @@
       "title": "Implement until spec passes: R11 optional session metadata",
       "description": "Done when: the wip tag is removed from 11_session_metadata.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2176,18 +2308,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "3da0f295-d6d1-417a-8d52-fd4bc2409344",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/11_session_metadata.feature; all 7 scenarios pass (59 total). Schema: SessionMetadata { title, git_branch, git_commit, git_origin_url, cwd, archived, pinned, status, app_version, models (ordered, mid-session changes visible), pr_url } carried on Session and SessionSummary; absent metadata stays absent. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T19:10:50.972208Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:41:49.459Z",
-      "updated_at": "2026-10-02T17:43:10.776548Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:10:57.805601Z",
+      "closed_at": "2026-10-02T19:10:57.805551Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing optional session metadata until its BDD scenarios pass.",
-      "right_now_updated_at": "2026-10-02T17:43:12.251995Z",
-      "custom": {}
+      "right_now_summary": "Session metadata is implemented, and all seven scenarios pass.",
+      "right_now_updated_at": "2026-10-02T19:10:59.197609Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1",
@@ -2293,7 +2436,7 @@
       "title": "Implement until spec passes: R3 session graph",
       "description": "Done when: the wip tag is removed from 03_session_graph.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2305,18 +2448,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8ceef309-10b1-4d0e-aaba-84e18a4dd030",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/03_session_graph.feature; all 8 scenarios pass (31 total). Schema: Session.parent_id/root_id, SubagentInfo (kind, nesting_depth), ForkPoint.ordinal, BattleLink (battle_id, winning_conversation_id on the winner), Peer (peer_id, status, has_local_transcript=false). fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T18:54:42.466134Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:32:46.537707Z",
-      "updated_at": "2026-10-02T17:38:26.099797Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:54:49.450991Z",
+      "closed_at": "2026-10-02T18:54:49.450918Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "No recent activity is recorded for the R3 session graph work.",
-      "right_now_updated_at": "2026-10-02T17:38:28.105831Z",
-      "custom": {}
+      "right_now_summary": "The session graph spec passes all eight scenarios, with step definitions and schema updates complete.",
+      "right_now_updated_at": "2026-10-02T18:54:50.853682Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
@@ -2473,7 +2627,7 @@
       "title": "Implement until spec passes: R7 raw tool-call arguments",
       "description": "Done when: the wip tag is removed from 07_tool_call_arguments.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2485,43 +2639,65 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "526a7023-f4d6-418f-ab58-ff4d67a82f25",
+          "author": "home",
+          "text": "Implemented until the spec passes. @wip dropped from features/01_structure/07_tool_call_arguments.feature; all 3 scenarios pass (43 total). Schema: ToolCall.arguments now Option<ToolArguments> — value (structured JSON object), raw (kept verbatim), parsed (first parse only, never double-decoded). Gherkin-level \" escapes in feature text handled in the fixture steps, not the library. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T19:03:19.600452Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:34:55.671698Z",
-      "updated_at": "2026-10-02T17:39:35.635843Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:03:26.864511Z",
+      "closed_at": "2026-10-02T19:03:26.864462Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Step definitions are being added so the raw tool-call argument scenarios pass.",
-      "right_now_updated_at": "2026-10-02T17:39:37.000964Z",
-      "custom": {}
+      "right_now_summary": "Tool-call argument support is implemented, and all three BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T19:03:29.040070Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
       "title": "Schema R12: Raw blob escape hatch and partial-cache provenance",
       "description": "Report recommendation 12: raw-blob escape hatch ({blob_hash, container}) and partial/cloud-cache provenance flags. Feature: features/02_schema/12_raw_blob_escape_hatch.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "040b0f2c-2e8e-4cb9-aa49-e68dc5fef5b8",
+          "author": "home",
+          "text": "R12 done: KnownPart::Blob escape hatch, Thinking with optional text/signature/encrypted, PartialHistory/PartialReason flags on Session and SessionSummary. All 12 Chapter 1 structure features except 04/09 implemented; spec doc updated.",
+          "created_at": "2026-10-02T19:17:46.466090Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:54.716744Z",
-      "updated_at": "2026-10-02T17:45:37.721498Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:17:51.320739Z",
+      "closed_at": "2026-10-02T19:17:51.320674Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec is ready, but step definitions and passing BDD tests are still needed.",
-      "right_now_updated_at": "2026-10-02T17:45:39.227708Z",
-      "custom": {}
+      "right_now_summary": "The blob escape hatch and partial-cache provenance flags are implemented, tested, and documented.",
+      "right_now_updated_at": "2026-10-02T19:17:52.539779Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7",
@@ -2756,7 +2932,7 @@
       "title": "Schema R9: Optional timestamps, never fabricated",
       "description": "Report recommendation 9: optional timestamp with a no-fabrication policy; ordering never depends on time. Feature: features/02_schema/09_optional_timestamp.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2768,18 +2944,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "fef3b9b2-1eb6-480c-82cd-e3cb8bc987b0",
+          "author": "home",
+          "text": "R9 done: Message.timestamp is Option<Timestamp>, ordering never depends on it, Session.file_modified_at carries the transcript mtime. All 12 Chapter 1 schema recommendations now implemented and @wip-free.",
+          "created_at": "2026-10-02T19:23:26.760880Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:39.361804Z",
-      "updated_at": "2026-10-02T17:56:03.548750Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:23:31.664399Z",
+      "closed_at": "2026-10-02T19:23:31.664358Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec is documented, and the team is implementing optional timestamps without fabricating values.",
-      "right_now_updated_at": "2026-10-02T17:56:04.729369Z",
-      "custom": {}
+      "right_now_summary": "Optional timestamps are implemented without fabricated values, and ordering never depends on time.",
+      "right_now_updated_at": "2026-10-02T19:23:32.588785Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9",
@@ -2816,57 +3003,79 @@
       "title": "Schema R8: Inline data and content-addressed attachments",
       "description": "Report recommendation 8: image/inline-data part and content-addressed attachment data/data_ref. Feature: features/02_schema/08_inline_data.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "a859379a-c75d-4939-a86f-3a515608bd2b",
+          "author": "home",
+          "text": "R8 done: inline data and content-addressed attachments implemented and passing (08_inline_data.feature un-tagged @wip); see impl sub-task BOTSPY-903c78.",
+          "created_at": "2026-10-02T19:05:57.375169Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:33.837719Z",
-      "updated_at": "2026-10-02T17:56:07.770854Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:06:08.191170Z",
+      "closed_at": "2026-10-02T19:06:08.191106Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec is documented, but step definitions and passing BDD tests are still needed.",
-      "right_now_updated_at": "2026-10-02T17:56:09.244132Z",
-      "custom": {}
+      "right_now_summary": "Inline data and content-addressed attachments are implemented, documented, and passing all four scenarios.",
+      "right_now_updated_at": "2026-10-02T19:06:09.899350Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
       "title": "Schema R3: Session graph (parent/root, sub-agents, forks, battles)",
       "description": "Report recommendation 3: session graph — parent_id, root_id, sub-agent kind/name, fork and battle links, partial peer ids. Feature: features/02_schema/03_session_graph.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "0d007419-9a00-48d4-a2a0-c5a3dffbc915",
+          "author": "home",
+          "text": "R3 done: session graph implemented and passing (03_session_graph.feature un-tagged @wip); see impl sub-task BOTSPY-9dcf08.",
+          "created_at": "2026-10-02T18:54:54.830128Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:07.884797Z",
-      "updated_at": "2026-10-02T17:56:13.449151Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:55:00.673053Z",
+      "closed_at": "2026-10-02T18:55:00.673020Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The session graph spec is documented, but no recent work is recorded.",
-      "right_now_updated_at": "2026-10-02T17:56:16.112093Z",
-      "custom": {}
+      "right_now_summary": "The session graph schema is implemented, documented, and passing all eight scenarios.",
+      "right_now_updated_at": "2026-10-02T18:55:01.694699Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
       "title": "Implement until spec passes: R6 provenance widening",
       "description": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2878,18 +3087,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "183f75ee-7c78-4afb-9899-18ec8bbfa36a",
+          "author": "home",
+          "text": "Implemented until the spec passes. The three @wip scenarios in features/01_structure/provenance.feature are un-tagged and pass (40 scenarios total). Schema: Provenance widened with record_id, record_type, ordinal, parent_record (all Option, serde default); ordering step checks non-decreasing ordinals. fmt/clippy/doc/doctests/BDD green.",
+          "created_at": "2026-10-02T18:59:21.419771Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:34:20.758108Z",
-      "updated_at": "2026-10-02T17:39:20.287893Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:59:27.182100Z",
+      "closed_at": "2026-10-02T18:59:27.182048Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is removing wip tags, adding step definitions, and running the BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:39:22.749415Z",
-      "custom": {}
+      "right_now_summary": "Provenance now includes the new fields, and all 40 BDD scenarios pass.",
+      "right_now_updated_at": "2026-10-02T18:59:28.526696Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
@@ -3139,7 +3359,7 @@
       "title": "Schema R1: Usage and cost metrics on Message and Session",
       "description": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when).",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3151,18 +3371,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "cfb10329-f7a6-487d-818b-bc4e548fa85d",
+          "author": "home",
+          "text": "R1 done: usage/cost metrics spec implemented and passing (01_usage_tokens.feature un-tagged @wip); see impl sub-task BOTSPY-90ad8e for details.",
+          "created_at": "2026-10-02T18:49:21.166304Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:29:40.027455Z",
-      "updated_at": "2026-10-02T17:56:19.112730Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T18:49:25.391587Z",
+      "closed_at": "2026-10-02T18:49:25.391538Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "Usage and cost metrics are being implemented and tested against the new BDD specification.",
-      "right_now_updated_at": "2026-10-02T17:56:20.137451Z",
-      "custom": {}
+      "right_now_summary": "Usage and cost metrics are implemented, documented, and passing all seven scenarios.",
+      "right_now_updated_at": "2026-10-02T18:49:26.337909Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176",
@@ -3202,7 +3433,7 @@
       "title": "Implement until spec passes: R9 optional timestamps",
       "description": "Done when: the wip tag is removed from 09_optional_timestamp.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3214,18 +3445,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "8e3be47d-022d-4592-8d98-c5a0bc2bdac1",
+          "author": "home",
+          "text": "timestamp_steps registered; message order asserted by text, mtime recorded on Session.file_modified_at and checked to stay outside message timestamps. 16 features / 73 scenarios / 284 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests pass.",
+          "created_at": "2026-10-02T19:23:14.268975Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:35:58.550134Z",
-      "updated_at": "2026-10-02T17:40:07.112900Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:23:20.246227Z",
+      "closed_at": "2026-10-02T19:23:20.246184Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The team is implementing optional timestamps and adding steps until the BDD scenarios pass.",
-      "right_now_updated_at": "2026-10-02T17:40:08.700001Z",
-      "custom": {}
+      "right_now_summary": "Optional timestamp support is implemented, and all tests, formatting, lint, and documentation checks pass.",
+      "right_now_updated_at": "2026-10-02T19:23:21.924025Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
@@ -3262,25 +3504,36 @@
       "title": "Schema R4: Turn grouping with turn-level timing and errors",
       "description": "Report recommendation 4: turn grouping (turn_id, parent_turn_id) with turn-level timing and errors. Feature: features/02_schema/04_turn_grouping.feature.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "be25a15a-2f31-4338-a212-9efb32acee42",
+          "author": "home",
+          "text": "R4 done: Turn.duration_ms/time_to_first_token_ms, Message.turn_position (TurnPosition promptIndex/turnIndex) and step_duration_ms. Only 09 remains @wip in Chapter 1.",
+          "created_at": "2026-10-02T19:20:19.299789Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:30:12.456011Z",
-      "updated_at": "2026-10-02T17:56:23.233372Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:20:23.948427Z",
+      "closed_at": "2026-10-02T19:20:23.948394Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The Gherkin spec is documented, but turn-grouping steps still need implementation and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:56:24.410607Z",
-      "custom": {}
+      "right_now_summary": "Turn grouping, timing, and errors are implemented, documented, and passing all checks.",
+      "right_now_updated_at": "2026-10-02T19:20:25.683440Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
@@ -3350,7 +3603,7 @@
       "title": "Implement until spec passes: R4 turn grouping",
       "description": "Done when: the wip tag is removed from 04_turn_grouping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
       "type": "sub-task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3362,18 +3615,29 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "123f96e3-18c1-4ff7-aa93-6cd4a83d8df0",
+          "author": "home",
+          "text": "turn_steps registered; turn-ensuring steps set last_turn, position/duration steps 569Xlanchored to avoid ambiguity with the longer variants. 15 features / 70 scenarios / 274 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests pass.",
+          "created_at": "2026-10-02T19:20:05.450354Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:33:19.402916Z",
-      "updated_at": "2026-10-02T17:38:41.294783Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T19:20:12.728211Z",
+      "closed_at": "2026-10-02T19:20:12.728124Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
         "name": "schema-specs"
       },
-      "right_now_summary": "The turn-grouping steps still need implementation and passing BDD tests.",
-      "right_now_updated_at": "2026-10-02T17:38:43.177111Z",
-      "custom": {}
+      "right_now_summary": "Turn grouping is implemented, and all BDD scenarios, formatting, lint, and documentation checks pass.",
+      "right_now_updated_at": "2026-10-02T19:20:14.536408Z",
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
     },
     {
       "id": "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b",
@@ -3469,8 +3733,8 @@
         "model": "glm-5.3-flash",
         "name": "BotSpy bootstrap"
       },
-      "right_now_summary": "Rust schema implementation and BDD step definitions are being added; validation and tests are still needed.",
-      "right_now_updated_at": "2026-10-02T17:56:33.021457Z",
+      "right_now_summary": "Schema specs are in place; raw arguments and blob provenance work, while the core session model still needs",
+      "right_now_updated_at": "2026-10-02T19:17:54.367222Z",
       "custom": {}
     },
     {

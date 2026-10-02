@@ -42,9 +42,27 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: specified next
+//! ## Status: specified, awaiting the local store
 //!
-//! No query scenarios exist yet — `features/02_querying/` is a
-//! placeholder, and this page is the outline the specs will be written
-//! against. When the specs land, they will be embedded here like chapter
-//! 1's, and the query interface will be built to make them pass.
+//! The query scenarios live in `features/02_querying/` and are embedded
+//! below, tagged `@wip` until the Local Store implementation lands. They
+//! pin down the query surface the engine will be built to satisfy:
+//! iteration over sessions, messages, and parts
+//! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
+//! filters by source, project, part kind, and time window
+//! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
+//! and laziness
+//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
+//!
+#![doc = concat!(
+    "## Behavior specification\n\n",
+    "### 01_iteration.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/01_iteration.feature"),
+    "\n```\n\n",
+    "### 02_filters.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/02_filters.feature"),
+    "\n```\n\n",
+    "### 03_laziness.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/03_laziness.feature"),
+    "\n```\n"
+)]
