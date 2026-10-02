@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Importers are being built and tested for streaming changes, safe snapshots, and per-source adapters.",
-  "right_now_updated_at": "2026-10-02T19:30:58.371517Z",
+  "right_now_summary": "Importers now support typed streaming, safe SQLite snapshots, and registry-based adapters with passing checks.",
+  "right_now_updated_at": "2026-10-02T19:32:03.239591Z",
   "custom": {}
 }
