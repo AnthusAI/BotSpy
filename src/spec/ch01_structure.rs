@@ -367,7 +367,12 @@
 //!    [`BattleLink`](crate::schema::BattleLink), and
 //!    [`Peer`](crate::schema::Peer).
 //! 4. `04_turn_grouping.feature` — `turn_id`/`parent_turn_id` with
-//!    turn-level timing and errors.
+//!    turn-level timing and errors. Implemented: [`Turn`](crate::schema::Turn)
+//!    with `status`/`aborted_reason`/`error` and `duration_ms` /
+//!    `time_to_first_token_ms`, plus [`Message::turn_id`](crate::schema::Message::turn_id),
+//!    [`TurnPosition`](crate::schema::TurnPosition) (Claude's
+//!    `promptIndex`/`turnIndex`), and [`Message::step_duration_ms`](crate::schema::Message::step_duration_ms)
+//!    (Cursor's `stepDurationMs`).
 //! 5. `05_compaction.feature` — compaction events with pre/post token
 //!    counts, summary messages, and compaction window chains. Implemented:
 //!    [`CompactionEvent`](crate::schema::CompactionEvent) (with
@@ -411,8 +416,8 @@
 //!     [`Session`](crate::session::Session) and
 //!     [`SessionSummary`](crate::session::SessionSummary).
 //!
-//! The remaining `@wip` scenarios (turn grouping and optional timestamps)
-//! are the specification the structs will be changed to satisfy next.
+//! The remaining `@wip` scenarios (optional timestamps) are the
+//! specification the structs will be changed to satisfy next.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -440,7 +445,7 @@
     "### 03_session_graph.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/03_session_graph.feature"),
     "\n```\n\n",
-    "### 04_turn_grouping.feature (pending)\n\n```gherkin\n",
+    "### 04_turn_grouping.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/04_turn_grouping.feature"),
     "\n```\n\n",
     "### 05_compaction.feature\n\n```gherkin\n",
