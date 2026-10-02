@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "0324f23e-8210-4f2d-9255-c66676bb4dd7",
+  "issue_id": "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T20:34:32.603Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Implement botspy doctor",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}

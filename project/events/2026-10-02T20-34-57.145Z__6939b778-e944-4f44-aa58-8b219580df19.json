@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "6939b778-e944-4f44-aa58-8b219580df19",
+  "issue_id": "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:57.145Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "botspy doctor: per-source diagnostics via each adapter's doctor() — root/store, counts, issues. Reports, does not gate: exit 0 unless a source is unreadable (3). Spec: features/cli/doctor.feature."
+      }
+    }
+  }
+}
