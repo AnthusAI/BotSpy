@@ -36,7 +36,7 @@ fn session_messages(world: &mut BotSpyWorld, id: String, step: &cucumber::gherki
     session.messages = data_rows(step)
         .map(|row| botspy::Message {
             role: parse_role(&row[0]),
-            timestamp: row[1].clone(),
+            timestamp: Some(row[1].clone()),
             parts: vec![Part::Known(KnownPart::Text {
                 text: row[2].clone(),
                 extra: None,

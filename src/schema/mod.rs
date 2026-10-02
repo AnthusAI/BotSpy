@@ -519,7 +519,10 @@ pub struct Message {
     pub id: Option<String>,
     pub role: Role,
     pub parts: Vec<Part>,
-    pub timestamp: Timestamp,
+    /// The native timestamp, when the agent records one. Absent — never
+    /// fabricated — for transcripts that carry no timestamps.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub timestamp: Option<Timestamp>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub provenance: Option<Provenance>,
     #[serde(default, skip_serializing_if = "Option::is_none")]

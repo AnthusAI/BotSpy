@@ -83,7 +83,7 @@ fn record_message(world: &mut BotSpyWorld, message: Message) {
         .expect("no current fixture session");
     let adapter = adapter_owning(world, &id).expect("current session not found");
     let mut session = adapter.open(&id).expect("current session vanished");
-    let last_activity = message.timestamp.clone();
+    let last_activity = message.timestamp.clone().unwrap_or_default();
     session.messages.push(message);
     session.last_activity_at = last_activity;
     adapter.add_session(session);
@@ -105,7 +105,7 @@ fn record_parts(
         Message {
             role: crate::steps::session_steps::parse_role(&role),
             parts,
-            timestamp,
+            timestamp: Some(timestamp),
             ..Message::default()
         },
     );
@@ -127,7 +127,7 @@ fn record_provenance_line(
         Message {
             role: crate::steps::session_steps::parse_role(&role),
             parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
-            timestamp,
+            timestamp: Some(timestamp),
             provenance: Some(Provenance {
                 source_file: file,
                 line: Some(line),
@@ -155,7 +155,7 @@ fn record_provenance_row(
         Message {
             role: crate::steps::session_steps::parse_role(&role),
             parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
-            timestamp,
+            timestamp: Some(timestamp),
             provenance: Some(Provenance {
                 source_file: file,
                 line: None,
@@ -320,7 +320,7 @@ fn record_provenance_record_id(
                 text: "recorded with native identity".to_string(),
                 extra: None,
             })],
-            timestamp,
+            timestamp: Some(timestamp),
             provenance: Some(Provenance {
                 source_file: "transcript.jsonl".to_string(),
                 record_id: Some(record_id),
@@ -351,7 +351,7 @@ fn record_provenance_ordinal(
                 text: "recorded with an ordinal sort key".to_string(),
                 extra: None,
             })],
-            timestamp,
+            timestamp: Some(timestamp),
             provenance: Some(Provenance {
                 source_file: file,
                 line: Some(line),
@@ -381,7 +381,7 @@ fn record_provenance_parent(
                 text: "recorded with a native parent pointer".to_string(),
                 extra: None,
             })],
-            timestamp,
+            timestamp: Some(timestamp),
             provenance: Some(Provenance {
                 source_file: "transcript.jsonl".to_string(),
                 record_id: Some(record_id),

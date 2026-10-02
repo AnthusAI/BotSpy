@@ -74,7 +74,7 @@
 //!             text: "please fix the bug".into(),
 //!             extra: None,
 //!         })],
-//!         timestamp: "2026-10-01T09:01:00Z".into(),
+//!         timestamp: Some("2026-10-01T09:01:00Z".into()),
 //!         ..Message::default()
 //!     }],
 //!     ..Session::default()

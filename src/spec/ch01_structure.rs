@@ -102,7 +102,7 @@
 //!                     text: (*line).into(),
 //!                     extra: None,
 //!                 })],
-//!                 timestamp: format!("2026-10-01T09:{:02}:00Z", i + 1),
+//!                 timestamp: Some(format!("2026-10-01T09:{:02}:00Z", i + 1)),
 //!                 ..botspy::Message::default()
 //!             })
 //!             .collect(),
@@ -155,15 +155,16 @@
 //!
 //! Inside a session, every message has a [`Role`](crate::schema::Role)
 //! (`User`, `Assistant`, `System`, `Tool`), an ordered `parts` list, an
-//! RFC 3339 UTC `timestamp`, optional
+//! optional RFC 3339 UTC `timestamp` (absent — never fabricated — when the
+//! agent records no time for the record), optional
 //! [`Provenance`](crate::schema::Provenance), and an optional `extra`
 //! escape hatch (below). Roles back the conversations you know: you ask,
 //! the agent answers (*Scenario: A session's messages are typed user and
 //! assistant messages* in the embedded spec). Shades beyond those four —
 //! developer messages, inter-agent mail, injected and simulated user
 //! content — map by documented conventions
-//! ([`Origin`](crate::schema::Origin); see "Pending schema work" below for
-//! the mapping spec).
+//! ([`Origin`](crate::schema::Origin); see "Schema recommendations" below
+//! for the mapping spec).
 //!
 //! ## Parts: the anatomy of a message
 //!
@@ -215,13 +216,13 @@
 //!         Part::Known(KnownPart::Thinking { text: Some("need to read main.rs first".into()), signature: None, encrypted: None, extra: None }),
 //!         call,
 //!     ],
-//!     timestamp: "2026-10-01T09:02:00Z".into(),
+//!     timestamp: Some("2026-10-01T09:02:00Z".into()),
 //!     ..Message::default()
 //! };
 //! let tool = Message {
 //!     role: Role::Tool,
 //!     parts: vec![result],
-//!     timestamp: "2026-10-01T09:02:01Z".into(),
+//!     timestamp: Some("2026-10-01T09:02:01Z".into()),
 //!     ..Message::default()
 //! };
 //!
@@ -265,7 +266,7 @@
 //! let message = Message {
 //!     role: Role::User,
 //!     parts: vec![Part::Known(KnownPart::Text { text: "hello".into(), extra: None })],
-//!     timestamp: "2026-10-01T09:01:00Z".into(),
+//!     timestamp: Some("2026-10-01T09:01:00Z".into()),
 //!     provenance: Some(Provenance {
 //!         source_file: "~/.claude/projects/demo/session-abc.jsonl".into(),
 //!         line: Some(17),
@@ -338,12 +339,11 @@
 //! put in the field. Because the sort key comes from the records, listing
 //! is deterministic for a given snapshot of disk.
 //!
-//! ## Pending schema work (specified, not implemented)
+//! ## Schema recommendations (specified and implemented)
 //!
 //! The on-disk storage survey of all five agents produced twelve schema
-//! recommendations. They are written as Gherkin specs first, tagged `@wip`
-//! (excluded from the executable run until implemented), and embedded at
-//! the end of this chapter. In priority order:
+//! recommendations. They were written as Gherkin specs first and are
+//! embedded at the end of this chapter. In priority order:
 //!
 //! 1. `01_usage_tokens.feature` — usage and cost metrics on messages and
 //!    sessions (input/output/cache/reasoning tokens, `cost_usd`, model,
@@ -395,7 +395,12 @@
 //!    [`content_hash`](crate::schema::content_hash) (SHA-256) and
 //!    `data_ref` for blob-backed bytes.
 //! 9. `09_optional_timestamp.feature` — optional timestamps; never
-//!    fabricated from file metadata.
+//!    fabricated from file metadata. Implemented:
+//!    [`Message::timestamp`](crate::schema::Message::timestamp) is
+//!    `Option<Timestamp>`, ordering never depends on it, and the transcript
+//!    file's own mtime is recorded as
+//!    [`Session::file_modified_at`](crate::session::Session::file_modified_at),
+//!    outside message timestamps.
 //! 10. `10_role_mapping.feature` — developer, inter-agent, injected, and
 //!     simulated message conventions. Implemented:
 //!     [`Origin`](crate::schema::Origin) plus
@@ -415,9 +420,6 @@
 //!     with [`PartialReason`](crate::schema::PartialReason) on
 //!     [`Session`](crate::session::Session) and
 //!     [`SessionSummary`](crate::session::SessionSummary).
-//!
-//! The remaining `@wip` scenarios (optional timestamps) are the
-//! specification the structs will be changed to satisfy next.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -457,7 +459,7 @@
     "### 08_inline_data.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/08_inline_data.feature"),
     "\n```\n\n",
-    "### 09_optional_timestamp.feature (pending)\n\n```gherkin\n",
+    "### 09_optional_timestamp.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/09_optional_timestamp.feature"),
     "\n```\n\n",
     "### 10_role_mapping.feature\n\n```gherkin\n",

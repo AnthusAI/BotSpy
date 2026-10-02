@@ -20,7 +20,7 @@ fn record_developer_message(world: &mut BotSpyWorld, text: String) {
         Message {
             role: Role::System,
             origin: Some(Origin::Developer),
-            timestamp: "2026-10-01T09:00:00Z".to_string(),
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
             parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
             ..Message::default()
         },
@@ -43,7 +43,7 @@ fn record_inter_agent_message(
             origin: Some(Origin::AgentMessage),
             author: Some(author),
             recipient: Some(recipient),
-            timestamp: "2026-10-01T09:00:00Z".to_string(),
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
             parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
             ..Message::default()
         },
@@ -57,7 +57,7 @@ fn record_authored_message(world: &mut BotSpyWorld, author: String) {
         Message {
             role: Role::Assistant,
             author: Some(author),
-            timestamp: "2026-10-01T09:00:00Z".to_string(),
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
             parts: vec![Part::Known(KnownPart::Text {
                 text: "the persona speaks".to_string(),
                 extra: None,
@@ -76,7 +76,7 @@ fn record_user_with_reminder(world: &mut BotSpyWorld) {
         world,
         Message {
             role: Role::User,
-            timestamp: "2026-10-01T09:00:00Z".to_string(),
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
             parts: vec![
                 Part::Known(KnownPart::Text {
                     text: own,
@@ -109,7 +109,7 @@ fn record_simulated_message(world: &mut BotSpyWorld, reason: String) {
         Message {
             role: Role::User,
             origin: Some(Origin::Simulated),
-            timestamp: "2026-10-01T09:00:00Z".to_string(),
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
             parts: vec![Part::Known(KnownPart::Text {
                 text: format!("simulated: {reason}"),
                 extra: None,

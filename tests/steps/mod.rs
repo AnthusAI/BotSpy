@@ -10,6 +10,7 @@ pub mod role_steps;
 pub mod schema_steps;
 pub mod session_steps;
 pub mod status_steps;
+pub mod timestamp_steps;
 pub mod turn_steps;
 pub mod usage_steps;
 
@@ -124,8 +125,8 @@ pub fn last_message(world: &BotSpyWorld) -> Message {
 /// `last_activity_at` from the message timestamp when it has one.
 pub fn record_message_on_current(world: &mut BotSpyWorld, message: Message) {
     let mut session = current_session(world);
-    if !message.timestamp.is_empty() {
-        session.last_activity_at = message.timestamp.clone();
+    if let Some(ts) = &message.timestamp {
+        session.last_activity_at = ts.clone();
     }
     session.messages.push(message);
     save_session(world, session);

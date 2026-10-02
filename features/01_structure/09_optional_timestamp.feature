@@ -1,4 +1,3 @@
-@wip
 Feature: Timestamps are optional and never fabricated
   Some agents write no timestamps at all. A message without a native time
   has no timestamp, and ordering never depends on it.
