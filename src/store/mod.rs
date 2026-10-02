@@ -7,6 +7,7 @@
 //! (registered as an auto extension before any connection opens) for
 //! similarity search, and the bundled SQLite's FTS5 for text search.
 
+pub mod assets;
 pub mod embed;
 pub mod embed_minilm;
 pub mod ingest;
