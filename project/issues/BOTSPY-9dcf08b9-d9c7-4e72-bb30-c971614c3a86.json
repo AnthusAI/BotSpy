@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R3 session graph",
   "description": "Done when: the wip tag is removed from 03_session_graph.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "8ceef309-10b1-4d0e-aaba-84e18a4dd030",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/03_session_graph.feature; all 8 scenarios pass (31 total). Schema: Session.parent_id/root_id, SubagentInfo (kind, nesting_depth), ForkPoint.ordinal, BattleLink (battle_id, winning_conversation_id on the winner), Peer (peer_id, status, has_local_transcript=false). fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T18:54:42.466134Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:32:46.537707Z",
-  "updated_at": "2026-10-02T17:38:26.099797Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:54:49.450991Z",
+  "closed_at": "2026-10-02T18:54:49.450918Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "No recent activity is recorded for the R3 session graph work.",
-  "right_now_updated_at": "2026-10-02T17:38:28.105831Z",
-  "custom": {}
+  "right_now_summary": "The session graph spec passes all eight scenarios, with step definitions and schema updates complete.",
+  "right_now_updated_at": "2026-10-02T18:54:50.853682Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
