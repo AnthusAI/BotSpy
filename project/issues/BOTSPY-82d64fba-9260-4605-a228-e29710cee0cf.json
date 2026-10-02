@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R12 raw blob escape hatch",
   "description": "Done when: the wip tag is removed from 12_raw_blob_escape_hatch.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "c95b4bea-3f63-456e-b273-7ef3f4dd4365",
+      "author": "home",
+      "text": "blob_steps registered and cleaned (no duplicate last-message-kinds step, container parsed from <container>:<kind>:<hash>); given steps set current_session. 14 features / 64 scenarios / 253 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests all pass.",
+      "created_at": "2026-10-02T19:17:32.736703Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:42:05.796020Z",
-  "updated_at": "2026-10-02T17:43:17.049793Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:17:40.456003Z",
+  "closed_at": "2026-10-02T19:17:40.455901Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The raw blob escape hatch still needs step definitions and passing BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:43:19.159482Z",
-  "custom": {}
+  "right_now_summary": "The blob escape hatch steps are implemented, and all BDD scenarios and checks pass.",
+  "right_now_updated_at": "2026-10-02T19:17:42.239044Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

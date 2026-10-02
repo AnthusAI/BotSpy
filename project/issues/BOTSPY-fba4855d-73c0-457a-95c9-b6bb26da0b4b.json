@@ -34,7 +34,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Specs are ready, raw tool-call arguments work, but the core schema and BDD tests still need implementation.",
-  "right_now_updated_at": "2026-10-02T19:03:55.351501Z",
+  "right_now_summary": "Schema specs are in place; raw arguments and blob provenance work, while the core session model still needs",
+  "right_now_updated_at": "2026-10-02T19:17:54.367222Z",
   "custom": {}
 }

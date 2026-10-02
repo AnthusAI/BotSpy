@@ -3,23 +3,34 @@
   "title": "Schema R12: Raw blob escape hatch and partial-cache provenance",
   "description": "Report recommendation 12: raw-blob escape hatch ({blob_hash, container}) and partial/cloud-cache provenance flags. Feature: features/02_schema/12_raw_blob_escape_hatch.feature.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "040b0f2c-2e8e-4cb9-aa49-e68dc5fef5b8",
+      "author": "home",
+      "text": "R12 done: KnownPart::Blob escape hatch, Thinking with optional text/signature/encrypted, PartialHistory/PartialReason flags on Session and SessionSummary. All 12 Chapter 1 structure features except 04/09 implemented; spec doc updated.",
+      "created_at": "2026-10-02T19:17:46.466090Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:30:54.716744Z",
-  "updated_at": "2026-10-02T17:45:37.721498Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:17:51.320739Z",
+  "closed_at": "2026-10-02T19:17:51.320674Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The Gherkin spec is ready, but step definitions and passing BDD tests are still needed.",
-  "right_now_updated_at": "2026-10-02T17:45:39.227708Z",
-  "custom": {}
+  "right_now_summary": "The blob escape hatch and partial-cache provenance flags are implemented, tested, and documented.",
+  "right_now_updated_at": "2026-10-02T19:17:52.539779Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
