@@ -24,7 +24,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building and reviewing Rust examples for meters, sentiment analysis, and future session metrics.",
-  "right_now_updated_at": "2026-10-02T16:40:07.210025Z",
+  "right_now_summary": "Rust examples are taking shape: the meter uses fixtures, VADER/GoEmotions support is set, and metrics need a",
+  "right_now_updated_at": "2026-10-02T19:43:59.894219Z",
   "custom": {}
 }

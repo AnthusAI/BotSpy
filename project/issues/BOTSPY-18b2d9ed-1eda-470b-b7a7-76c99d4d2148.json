@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: example consumer behaviors",
   "description": "Author features/examples.feature: observable behavior of the example consumers (meter and sentiment over BotSpy sessions), kept as examples not core. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "4d8245aa-285c-4d29-af3e-8b4a21946a81",
+      "author": "home",
+      "text": "Spec authored at features/04_examples/consumers.feature (4 @wip scenarios): thanks-vs-F-bombs meter per session and across the unified history, local sentiment scoring with nothing leaving the machine, and public-API-only consumption with zero core dependencies. New Chapter 4 (src/spec/ch04_examples.rs) registered in the spec index. All gates green.",
+      "created_at": "2026-10-02T19:43:51.974639Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:20:46.209319Z",
-  "updated_at": "2026-10-02T16:20:46.209343Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:43:55.976494Z",
+  "closed_at": "2026-10-02T19:43:55.976420Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is writing and reviewing executable Gherkin examples for meter and sentiment consumers.",
-  "right_now_updated_at": "2026-10-02T16:20:47.826242Z",
-  "custom": {}
+  "right_now_summary": "The consumer behavior spec has been authored, registered, and verified with all checks passing.",
+  "right_now_updated_at": "2026-10-02T19:43:57.024113Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
