@@ -3,7 +3,7 @@
   "title": "Extract all part types from Grok Bot transcript blobs",
   "description": "Decode conversation blobs and map entries to normalized parts with provenance. Done when: fixture extraction yields the expected parts with skip counting.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "a7a2b1cb-7e75-4f27-9c86-dab637145c55",
+      "author": "home",
+      "text": "Extraction maps entry logs into chapter-1 Messages ordered by the explicit seq (shuffled file order normalized): message entries -> Text parts with role mapping and persona author preserved on message.author; voice-call entries stay opaque as Part::Extra verbatim; unknown types and malformed lines counted. A capped log (capped:true, 200 entries, server-side continuation) flags the session as PartialHistory{reason: LocalCap}. Cloud-agent records surface as discovery session stubs carrying status and PR metadata. Full gate green.",
+      "created_at": "2026-10-02T20:10:36.401152Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:44.124269Z",
-  "updated_at": "2026-10-02T16:22:40.096917Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T20:10:37.103367Z",
+  "closed_at": "2026-10-02T20:10:37.103299Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
