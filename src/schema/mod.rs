@@ -558,7 +558,7 @@ pub struct Message {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::session::{Session, SessionSummary};
+    use crate::session::Session;
 
     /// Every fixed part kind survives a JSON round trip with its `kind`
     /// tag intact.
