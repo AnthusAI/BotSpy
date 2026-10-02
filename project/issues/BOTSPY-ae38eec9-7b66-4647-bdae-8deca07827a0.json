@@ -3,7 +3,7 @@
   "title": "Direct release workflow: no release PR, tag and GitHub release on main push",
   "description": "",
   "type": "chore",
-  "status": "backlog",
+  "status": "in_progress",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -20,7 +20,7 @@
     }
   ],
   "created_at": "2026-10-02T21:55:54.481422Z",
-  "updated_at": "2026-10-02T22:34:35.010876Z",
+  "updated_at": "2026-10-02T22:38:39.201025Z",
   "closed_at": null,
   "right_now_summary": null,
   "right_now_updated_at": null,
