@@ -20,7 +20,6 @@ Feature: The botspy command
 
   Scenario: BOTSPY_HOME redirects the default roots
     Given a fixture home built from the synthetic corpus
-    And BOTSPY_HOME is the fixture home
-    When I run "botspy sources --no-truncate"
+    When I run "botspy sources --no-truncate" with BOTSPY_HOME at the fixture home
     Then the exit code is 0
     And stdout contains the full claude projects path

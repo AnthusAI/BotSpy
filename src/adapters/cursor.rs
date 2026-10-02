@@ -16,7 +16,7 @@ use crate::session::SessionSummary;
 use crate::snapshot::snapshot_sqlite;
 use rusqlite::OpenFlags;
 use serde_json::Value;
-use std::cell::RefCell;
+use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -73,7 +73,7 @@ pub struct CursorSource {
     store: PathBuf,
     /// `lastUpdatedAt` observed per composer on the previous discovery, so
     /// changed composers can be re-detected.
-    observed: RefCell<BTreeMap<String, String>>,
+    observed: Mutex<BTreeMap<String, String>>,
 }
 
 impl CursorSource {
@@ -81,7 +81,7 @@ impl CursorSource {
     pub fn new(store: impl Into<PathBuf>) -> Self {
         Self {
             store: store.into(),
-            observed: RefCell::new(BTreeMap::new()),
+            observed: Mutex::new(BTreeMap::new()),
         }
     }
 
@@ -138,7 +138,7 @@ impl CursorSource {
                 continue;
             };
             let stamp = last_updated_at(&composer);
-            let mut observed = self.observed.borrow_mut();
+            let mut observed = self.observed.lock().expect("observed");
             if observed.get(&id) != Some(&stamp) {
                 stats.changed.push(id.clone());
             }
