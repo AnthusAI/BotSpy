@@ -182,6 +182,16 @@ prefix is an error listing the candidates, never a guess.
   source file, WAL, and shm are never touched.
 - There is no network, no telemetry, no server. BotSpy reads local files
   and prints local answers; nothing leaves the machine.
+- **One honest exception:** semantic search runs a real embedding model
+  (quantized all-MiniLM-L6-v2 via ONNX on your CPU). Its weights and
+  tokenizer are fetched once — only when you explicitly run the setup
+  step (`cargo run --example setup_models`), digest-verified, and cached
+  under `~/.botspy/models/` (`BOTSPY_MODELS` overrides the location).
+  After that, everything is fully offline: the runtime library makes no
+  network calls, queries nothing, and reports no telemetry. A store
+  opened without the model still does everything except semantic
+  search; if the model is missing, that returns a clean error, never a
+  silent download.
 
 Both read-only behavior and WAL-safe snapshotting are pinned by executed
 specifications: [`features/03_importers/contract.feature`](features/03_importers/contract.feature)

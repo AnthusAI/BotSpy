@@ -62,6 +62,20 @@
 //! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
 //! The vector-search spec remains `@wip` until the MiniLM epic lands.
 //!
+//! ## Model assets: fetched once at setup, never at runtime
+//!
+//! The embedding model is not committed to the repository, and the
+//! runtime library makes no network calls — ever. A one-time setup step
+//! (`cargo run --example setup_models`, or the equivalent
+//! [`fetch_assets`](crate::store::assets::fetch_assets) call) downloads
+//! the quantized all-MiniLM-L6-v2 ONNX weights and its tokenizer exactly
+//! once, verifies each file against a pinned SHA-256 digest (a
+//! truncated or tampered download never lands in the cache), and caches
+//! it under the models dir (`BOTSPY_MODELS` or `$HOME/.botspy/models`).
+//! Setup is idempotent: already-verified files are left untouched.
+//! After setup the store is fully offline — nothing leaves the machine,
+//! and a missing model is a clean typed error, never a silent download.
+//!
 #![doc = concat!(
     "## Behavior specification\n\n",
     "### 01_iteration.feature\n\n```gherkin\n",

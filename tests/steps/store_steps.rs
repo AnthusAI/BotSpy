@@ -564,8 +564,9 @@ fn iteration_yields_kinds(world: &mut BotSpyWorld, kinds: String) {
 
 // 03_laziness.feature — only what was consumed was touched.
 
-#[when(regex = r#"^I take the first ([0-9]+) sessions? from the iteration$"#)]
-fn take_first_sessions(world: &mut BotSpyWorld, count: usize) {
+/// Consume the first `count` sessions of a fresh iteration, opening each:
+/// the laziness specs assert on the query counters either way.
+fn take_and_open_sessions(world: &mut BotSpyWorld, count: usize) {
     ensure_store_ingested(world);
     let store = world.local_store.as_ref().expect("no store is open");
     let (summaries, opened_id, counters) = {
@@ -584,24 +585,14 @@ fn take_first_sessions(world: &mut BotSpyWorld, count: usize) {
     world.local_query_counters = Some(counters);
 }
 
+#[when(regex = r#"^I take the first ([0-9]+) sessions? from the iteration$"#)]
+fn take_first_sessions(world: &mut BotSpyWorld, count: usize) {
+    take_and_open_sessions(world, count);
+}
+
 #[when(regex = r#"^I iterate ([0-9]+) sessions? and drop the iterator$"#)]
 fn iterate_and_drop(world: &mut BotSpyWorld, count: usize) {
-    ensure_store_ingested(world);
-    let store = world.local_store.as_ref().expect("no store is open");
-    let (summaries, opened_id, counters) = {
-        let query = store.query();
-        let mut summaries = Vec::new();
-        let mut opened_id = None;
-        for summary in query.sessions().take(count) {
-            let session = query.open(&summary.id).expect("the session opens");
-            opened_id = Some(session.id);
-            summaries.push(summary);
-        }
-        (summaries, opened_id, query.counters())
-    };
-    world.local_sessions = summaries;
-    world.local_opened_id = opened_id;
-    world.local_query_counters = Some(counters);
+    take_and_open_sessions(world, count);
 }
 
 #[then(regex = r#"^only session "([^"]+)" was opened$"#)]
@@ -935,8 +926,8 @@ fn iterate_sessions_active_between(world: &mut BotSpyWorld, after: String, befor
 }
 // 07_text_search.feature — FTS5 text search (green with BOTSPY-e5be2f).
 // 08_vector_search.feature's semantic steps stay todo!() until the
-// vector-search epic (BOTSPY-7e1836); the shared "the search yields"
-// steps below serve both.
+// vector-search implementation (BOTSPY-c8c597); the shared "the search
+// yields" steps below serve both.
 
 #[given(regex = r#"^session "([^"]+)" has messages (.+)$"#)]
 fn session_by_id_has_messages(world: &mut BotSpyWorld, id: String, texts: String) {
@@ -953,7 +944,7 @@ fn session_by_id_has_messages(world: &mut BotSpyWorld, id: String, texts: String
 
 #[given(regex = r#"^the store was opened with the "([^"]+)" embedder$"#)]
 fn store_opened_with_embedder(_world: &mut BotSpyWorld, _model: String) {
-    todo!("BOTSPY-7e1836: open a store configured with an embedder")
+    todo!("BOTSPY-c8c597: open a store configured with an embedder")
 }
 
 #[when(regex = r#"^I search the store for "([^"]+)"$"#)]
@@ -978,22 +969,22 @@ fn search_store_filtered(world: &mut BotSpyWorld, query: String, agent: String) 
 
 #[when(regex = r#"^I search the store semantically for "([^"]+)"$"#)]
 fn search_store_semantically(_world: &mut BotSpyWorld, _query: String) {
-    todo!("BOTSPY-7e1836: semantic (vector) search the store")
+    todo!("BOTSPY-c8c597: semantic (vector) search the store")
 }
 
 #[when(regex = r#"^I search the store semantically for "([^"]+)" with k ([0-9]+)$"#)]
 fn search_store_semantically_with_k(_world: &mut BotSpyWorld, _query: String, _k: usize) {
-    todo!("BOTSPY-7e1836: semantic search with a caller-chosen k")
+    todo!("BOTSPY-c8c597: semantic search with a caller-chosen k")
 }
 
 #[when(regex = r#"^I run the hybrid search for "([^"]+)"$"#)]
 fn run_hybrid_search(_world: &mut BotSpyWorld, _query: String) {
-    todo!("BOTSPY-7e1836: hybrid (FTS + vector, RRF) search")
+    todo!("BOTSPY-c8c597: hybrid (FTS + vector, RRF) search")
 }
 
 #[when(regex = r#"^I ingest into the store with an embedder claiming model "([^"]+)"$"#)]
 fn ingest_with_other_model(_world: &mut BotSpyWorld, _model: String) {
-    todo!("BOTSPY-7e1836: ingest with a mismatched embedder model id")
+    todo!("BOTSPY-c8c597: ingest with a mismatched embedder model id")
 }
 
 /// The search's result sessions, best first (one entry per session).
@@ -1058,15 +1049,15 @@ fn search_yields_matched_texts(world: &mut BotSpyWorld, texts: String) {
 
 #[then(regex = r#"^every search result carries a score$"#)]
 fn search_results_carry_scores(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-7e1836: assert every search result has a score")
+    todo!("BOTSPY-c8c597: assert every search result has a score")
 }
 
 #[then(regex = r#"^searching the store for "([^"]+)" still yields sessions (.+)$"#)]
 fn search_still_yields(_world: &mut BotSpyWorld, _query: String, _ids: String) {
-    todo!("BOTSPY-7e1836: text search is unaffected by the missing embedder")
+    todo!("BOTSPY-c8c597: text search is unaffected by the missing embedder")
 }
 
 #[then(regex = r#"^the ingest fails with a model mismatch error$"#)]
 fn ingest_fails_model_mismatch(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-7e1836: assert the clean model-mismatch error")
+    todo!("BOTSPY-c8c597: assert the clean model-mismatch error")
 }
