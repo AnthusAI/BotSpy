@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "49461d6b-625d-4949-8962-110a2ea4c29a",
+  "issue_id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:34:20.758Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement until spec passes: R6 compaction and summaries",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

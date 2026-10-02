@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "c6d4569c-973f-4ef4-a41b-6c0ddef402fd",
+  "issue_id": "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:35:21.594Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Write Gherkin spec: R8 raw tool-call arguments",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "dba40490-8b21-45bc-9bc7-d1a784ecfaae",
+  "issue_id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:34.337Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R4 session graph",
+        "to": "Write Gherkin spec: R4 turn grouping"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/04_turn_grouping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

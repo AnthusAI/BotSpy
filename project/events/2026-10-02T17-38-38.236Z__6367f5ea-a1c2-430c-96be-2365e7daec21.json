@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "6367f5ea-a1c2-430c-96be-2365e7daec21",
+  "issue_id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:38.236Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights. OPEN QUESTION (deployment): bundle the weights vs fetch on first launch.\n\n## 4. Runners\n\nThe Rust side uses candle, tract (ONNX), or burn. The Swift/Mac side uses MLX (mature bindings, mlx-community conversions). There are no first-class Rust MLX bindings, so Rust shells out or uses ONNX, and MLX lives in the Swift layer.\n\n## 5. Core design rule: one model, one set of weights\n\nThe ONNX export and the MLX conversion must produce bit-identical vectors, so the store doesn't care which side did the embedding.\n\n## 6. Performance targets\n\nQuery embedding under 100 ms on MLX (Apple Silicon), 50–200 ms on CPU via tract. Scanner batch embedding is where MLX GPU batching earns its keep (seconds vs minutes).\n\n## Open questions\n\n- Bundle the weights vs fetch on first launch.\n- How bit-identical vectors across ONNX/tract and MLX will be verified. Floating-point kernels usually differ slightly, so a golden-vector test with an exact or tolerance-based comparison is TBD; Ryan decides.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via Rust ONNX/tract\n- Swift/MLX embedding with a cross-runner vector-parity check\n- Scanner batch embedding"
+      }
+    }
+  }
+}

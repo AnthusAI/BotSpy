@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "e83e46dd-9b48-4d45-951b-612a3c355264",
+  "issue_id": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:30:45.590Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Schema R10: Role mapping conventions for developer, inter-agent, injected",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

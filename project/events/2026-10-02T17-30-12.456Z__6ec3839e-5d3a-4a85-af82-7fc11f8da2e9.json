@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "6ec3839e-5d3a-4a85-af82-7fc11f8da2e9",
+  "issue_id": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:30:12.456Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Schema R4: Turn grouping with turn-level timing and errors",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

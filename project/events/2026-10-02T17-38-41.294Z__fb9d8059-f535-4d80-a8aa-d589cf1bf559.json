@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "fb9d8059-f535-4d80-a8aa-d589cf1bf559",
+  "issue_id": "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:41.294Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R4 session graph",
+        "to": "Implement until spec passes: R4 turn grouping"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 04_turn_grouping.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

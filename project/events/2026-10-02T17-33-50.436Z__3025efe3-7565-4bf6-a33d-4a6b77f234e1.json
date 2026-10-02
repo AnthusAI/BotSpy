@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "3025efe3-7565-4bf6-a33d-4a6b77f234e1",
+  "issue_id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:33:50.436Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement until spec passes: R5 turn grouping",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}
