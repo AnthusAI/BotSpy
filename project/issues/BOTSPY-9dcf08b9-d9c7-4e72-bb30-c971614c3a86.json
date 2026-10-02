@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86",
+  "title": "Implement until spec passes: R3 session graph",
+  "description": "Done when: the wip tag is removed from 03_session_graph.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:32:46.537707Z",
+  "updated_at": "2026-10-02T17:38:26.099797Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "No recent activity is recorded for the R3 session graph work.",
+  "right_now_updated_at": "2026-10-02T17:38:28.105831Z",
+  "custom": {}
+}

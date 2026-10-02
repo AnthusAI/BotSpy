@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
+  "title": "Write Gherkin spec: R4 turn grouping",
+  "description": "Done when: features/02_schema/04_turn_grouping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "1e6a4733-d535-4b5d-bf5b-ce3eb31fd08d",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:33:31.399200Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:33:13.509806Z",
+  "updated_at": "2026-10-02T17:38:34.337142Z",
+  "closed_at": "2026-10-02T17:33:37.021035Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec is written and embedded in the chapter documentation.",
+  "right_now_updated_at": "2026-10-02T17:38:36.526235Z",
+  "custom": {}
+}

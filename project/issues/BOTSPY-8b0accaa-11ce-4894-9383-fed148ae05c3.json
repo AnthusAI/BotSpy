@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3",
+  "title": "Implement until spec passes: R2 tool result status",
+  "description": "Done when: the wip tag is removed from 02_tool_result_status.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T17:32:14.670732Z",
+  "updated_at": "2026-10-02T17:38:13.566786Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The tool result status spec still needs implementation and passing BDD tests.",
+  "right_now_updated_at": "2026-10-02T17:38:15.009474Z",
+  "custom": {}
+}

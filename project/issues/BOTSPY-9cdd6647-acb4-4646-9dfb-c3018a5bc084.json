@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084",
+  "title": "Write Gherkin spec: R6 compaction and summaries",
+  "description": "",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "5f7c1723-3062-4005-8e5a-f15775e48c44",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:34:34.981773Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:34:15.104744Z",
+  "updated_at": "2026-10-02T17:34:41.441960Z",
+  "closed_at": "2026-10-02T17:34:41.441889Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec for R6 compaction and summaries is written and embedded in the docs.",
+  "right_now_updated_at": "2026-10-02T17:34:43.019077Z",
+  "custom": {}
+}

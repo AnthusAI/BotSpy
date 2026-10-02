@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63",
+  "title": "Write Gherkin spec: R5 turn grouping",
+  "description": "",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "b1fcd384-770e-4dfd-91dd-731f586bcc2f",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:34:02.801293Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:33:44.211290Z",
+  "updated_at": "2026-10-02T17:34:09.202960Z",
+  "closed_at": "2026-10-02T17:34:09.202860Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec for R5 turn grouping is written and embedded in the docs.",
+  "right_now_updated_at": "2026-10-02T17:34:10.483770Z",
+  "custom": {}
+}
