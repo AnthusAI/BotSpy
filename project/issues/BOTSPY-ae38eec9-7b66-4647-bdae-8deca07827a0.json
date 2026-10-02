@@ -1,0 +1,28 @@
+{
+  "id": "BOTSPY-ae38eec9-7b66-4647-bdae-8deca07827a0",
+  "title": "Direct release workflow: no release PR, tag and GitHub release on main push",
+  "description": "",
+  "type": "chore",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "e3312733-c5eb-480c-b5ca-c65b93a400af",
+      "author": "home",
+      "text": "Design: push to main = promotion. Workflow runs release-plz update (bump Cargo.toml/Cargo.lock + CHANGELOG.md from conventional commits), commits directly to main with GITHUB_TOKEN, then release-plz release creates the tag and GitHub release (publish=false, crates.io untouched for now). No PR is opened at any point; the 'Allow GitHub Actions to create and approve pull requests' repo setting becomes irrelevant; B's PR-permission check and RELEASE_PLZ_TOKEN fallback removed. workflow_dispatch with dry_run (default true) computes next version + tag without pushing/tagging/releasing. Loop safety: GITHUB_TOKEN pushes do not retrigger workflows, and release-plz release is idempotent against existing tags (v1.0.0 from semantic-release noted: 123 commits since that tag, no GH release attached — dry run will show computed next version; tag not touched by me). Existing v1.0.0 tag accounted for in dry run. Cargo publish dry-run to be reported (size/metadata/fixtures), but publishing stays off until Ryan sets up crates.io.",
+      "created_at": "2026-10-02T21:56:06.732772Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T21:55:54.481422Z",
+  "updated_at": "2026-10-02T21:56:06.732793Z",
+  "closed_at": null,
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
