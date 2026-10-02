@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "4cff7ea4-c608-40f7-b340-8854e54114e8",
+  "issue_id": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:39:55.411Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Core normalized schema",
+        "to": "Layer 2: Normalized schema (features/02_schema)"
+      },
+      "description": {
+        "from": "Design the standard normalized schema: sessions, messages, and typed content parts with a small fixed kind set (text, thinking, tool_call, tool_result, attachment, system) plus an extensible extra/raw passthrough. Every record carries timestamps, session/project identifiers, and source provenance (file, line or row). Done when the schema is specified, versioned, and round-trips through JSON.",
+        "to": "Normalized schema in Rust with serde: Message, Role, Part (Text, Thinking, ToolCall, ToolResult, Attachment, System), Provenance, Timestamp, and raw passthrough via serde_json::Value for agent-specific fields. Specs first: features/02_schema/*.feature."
+      }
+    }
+  }
+}

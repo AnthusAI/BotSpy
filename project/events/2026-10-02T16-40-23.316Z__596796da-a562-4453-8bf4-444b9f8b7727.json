@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "596796da-a562-4453-8bf4-444b9f8b7727",
+  "issue_id": "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:40:23.316Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: unified session history",
+    "description": "Author features/01_session_history/*.feature: listing sessions across two agents sorted by last activity, opening a session by id, walking messages in order, unknown session id error, with concrete examples and Examples tables. Done when: scenarios are reviewed and executable.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

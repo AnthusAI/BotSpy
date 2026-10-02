@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "8c24887a-f7ac-45b9-991f-a80e2114db84",
+  "issue_id": "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T16:40:46.543Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Pivot BotSpy from Python to Rust",
+    "description": "Single Rust library crate (no binary/CLI/server/FFI); Python package, behave, pytest, ruff, python-semantic-release removed; cucumber-rs runs the specs; release-plz replaces python-semantic-release. Done when: cargo test/clippy/fmt are green and CI passes on all targets.",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "BotSpy bootstrap"
+    }
+  }
+}

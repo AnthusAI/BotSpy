@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "a24317e4-7a1e-4367-98ec-3dbd0840456b",
+  "issue_id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:39:58.022Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Adapter contract",
+        "to": "Layer 4: Adapter contract (features/04_adapters)"
+      },
+      "description": {
+        "from": "Define the shared adapter interface every source adapter implements: discovery, streaming extraction (files can exceed 100MB), skip counters, read-only access to source data, and safe snapshotting of SQLite/WAL sources. Done when the contract is typed, tested, and documented.",
+        "to": "The Adapter trait contract for the Rust library: discovery, session opening, streaming extraction (with the per-agent adapters), skip counters, read-only access, safe SQLite/WAL snapshotting. Specs first: features/04_adapters."
+      }
+    }
+  }
+}

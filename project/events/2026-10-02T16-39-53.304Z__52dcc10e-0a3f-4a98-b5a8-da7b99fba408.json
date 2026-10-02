@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "52dcc10e-0a3f-4a98-b5a8-da7b99fba408",
+  "issue_id": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:39:53.304Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Query API (features/query)",
+        "to": "Layer 3: Query and export (features/03_query_export)"
+      },
+      "description": {
+        "from": "The public query API: botspy.sessions(source=None), iterating sessions then messages then parts, with filters by kind, time, and project. Lazy and streaming; read-only. Specs first: features/query/*.feature is the source of truth; implementation is generated from the specs.",
+        "to": "Rust library API: list/open sessions across agents, filter by agent, kind, time, and project; JSON and JSONL export of the unified history. Specs first: features/03_query_export/*.feature; implementation generated from the specs."
+      }
+    }
+  }
+}

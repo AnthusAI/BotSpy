@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "ef31c56d-5f9a-4ea1-b4e1-198c7203e217",
+  "issue_id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T16:40:06.017Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Example use cases (consumers of BotSpy)",
+        "to": "Example use cases (consumers of the BotSpy library)"
+      },
+      "description": {
+        "from": "Optional consumers that demonstrate BotSpy: examples/ directory or an optional botspy[metrics] extra. Never in core required dependencies. Must stay blocked-by the Query, export, and CLI epic.",
+        "to": "Optional examples that consume the botspy Rust library directly as Rust code (examples/ in the crate or integration tests): the thanks-vs-F-bombs meter, local sentiment analysis (VADER default, optional GoEmotions transformer), and a placeholder for similar metrics. No binary, no CLI, no extra crate; blocked-by the Layer 3: Query and export epic."
+      }
+    }
+  }
+}
