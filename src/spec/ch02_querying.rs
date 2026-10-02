@@ -75,5 +75,8 @@
     "\n```\n\n",
     "### 05_ingest.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/05_ingest.feature"),
+    "\n```\n\n",
+    "### 06_refresh.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/06_refresh.feature"),
     "\n```\n"
 )]

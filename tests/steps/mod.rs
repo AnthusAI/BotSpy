@@ -182,6 +182,10 @@ pub struct BotSpyWorld {
     pub local_digest_before: Option<String>,
     /// Digest of the fixture adapters' sessions after an ingest pass.
     pub local_digest_after: Option<String>,
+    /// The fixture adapters' open() call count before a refresh pass.
+    pub local_open_count_before: Option<usize>,
+    /// The fixture adapters' open() call count after a refresh pass.
+    pub local_open_count_after: Option<usize>,
     /// The BOTSPY_HOME value before the store steps overrode it.
     pub saved_botspy_home: Option<std::ffi::OsString>,
 }
