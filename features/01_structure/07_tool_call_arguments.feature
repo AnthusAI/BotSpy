@@ -1,4 +1,3 @@
-@wip
 Feature: Tool-call arguments that are not JSON objects
   Some agents pass arguments as raw strings — JavaScript source or
   JSON-encoded strings. Arguments keep their raw form; when the raw
