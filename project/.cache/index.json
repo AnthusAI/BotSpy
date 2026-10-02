@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T20:10:47Z",
+  "built_at": "2026-10-02T20:14:42Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -17,7 +17,7 @@
     "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790969738.531141,
     "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790971108.568838,
     "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790970752.651974,
-    "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790958204.71675,
+    "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790972070.561928,
     "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790967112.972948,
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790970106.05349,
     "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790970797.333684,
@@ -40,7 +40,7 @@
     "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790970124.044118,
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790970133.677943,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790958408.942812,
-    "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790958172.118803,
+    "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790972068.858166,
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790967581.12394,
     "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790967433.503934,
     "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970795.81478,
@@ -50,7 +50,7 @@
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
     "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790967449.978958,
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790960008.427437,
-    "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790958209.179931,
+    "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790972072.054762,
     "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790969900.010814,
     "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790959336.031293,
     "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790969878.415587,
@@ -624,7 +624,7 @@
       "title": "Extract all part types from Antigravity payloads and summaries DB",
       "description": "Minimal protobuf decoding of user-turn payloads plus the summaries SQLite; map to normalized parts with file/row provenance. Done when: fixture extraction yields the expected parts.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -636,10 +636,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "f0370ff4-b50f-44a0-aeab-dac56e62156b",
+          "author": "home",
+          "text": "Extraction maps transcript steps into chapter-1 Messages ordered by explicit step_index (shuffled file order normalized): USER_INPUT -> User, PLANNER_RESPONSE -> Assistant, CHECKPOINT -> compaction summary, ERROR_MESSAGE -> error System message, created_at -> timestamps. The payload DB (read through a snapshot copy) supplies tool-call linkage the transcript lacks via its tool_links table keyed by step_index: TOOL_CALL records get the DB call id and a linked ToolResult message. Hot WAL DBs digest-verified never mutated; live app keeps writing. Malformed steps and unknown types skipped with counters. Full gate green.",
+          "created_at": "2026-10-02T20:14:29.657280Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:57.950355Z",
-      "updated_at": "2026-10-02T16:23:23.185227Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:14:30.561799Z",
+      "closed_at": "2026-10-02T20:14:30.561749Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -1415,7 +1423,7 @@
       "title": "Synthetic fixture and discovery for Antigravity conversations and summaries DB",
       "description": "Fixture mirrors ~/.gemini/antigravity and antigravity-cli (conversations dir plus conversation_summaries.db). Done when: discovery finds conversations from both roots.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1427,10 +1435,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "d739fb1b-e693-4621-90ad-1670f3466ab9",
+          "author": "home",
+          "text": "Synthetic Antigravity fixture + BDD: conversation_summaries.db drives conversation discovery (3 conversations -> 3 sessions); brain/<id>/.system_generated/logs/transcript.jsonl preferred with per-conversation payload.db fallback for linkage. AntigravitySource::new(root) + discover()/doctor() in src/adapters/antigravity.rs; fixture steps in tests/steps/antigravity_steps.rs. Full gate green (bdd 114/114).",
+          "created_at": "2026-10-02T20:14:28.080282Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:17:53.294810Z",
-      "updated_at": "2026-10-02T16:22:50.208845Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:14:28.858055Z",
+      "closed_at": "2026-10-02T20:14:28.858013Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -1752,7 +1768,7 @@
       "title": "Antigravity parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1764,10 +1780,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "a6de70cb-3051-4b8f-be50-9915b3b3221f",
+          "author": "home",
+          "text": "Parity covered by 7 lib unit tests (discovery, doctor flags missing transcripts, type mapping incl. checkpoint/error flags, step_index ordering, payload-DB tool linkage, hot-DB snapshot read with live WAL, malformed/unknown skip counting) plus 7 executable BDD scenarios (wip tag dropped; wording adjusted to keep step regexes distinct: 'the Antigravity importer ...', 'extraction maps N good records', 'the live app kept writing rows without interference'). Full gate green.",
+          "created_at": "2026-10-02T20:14:31.237884Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:18:02.632401Z",
-      "updated_at": "2026-10-02T16:23:27.445142Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:14:32.054637Z",
+      "closed_at": "2026-10-02T20:14:32.054600Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",

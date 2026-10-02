@@ -1,5 +1,6 @@
 //! Shared world and helpers for the behavior specifications.
 
+pub mod antigravity_steps;
 pub mod arguments_steps;
 pub mod blob_steps;
 pub mod claude_code_steps;
@@ -121,6 +122,22 @@ pub struct BotSpyWorld {
     pub gb_discovery: Option<botspy::adapters::grok_bot::GrokDiscovery>,
     /// Result of the most recent Grok Bot extraction pass.
     pub gb_extraction: Option<botspy::adapters::grok_bot::GrokExtraction>,
+    /// Antigravity data root under construction (Antigravity steps).
+    pub ag_root: Option<std::path::PathBuf>,
+    /// The Antigravity source watching that root.
+    pub ag_source: Option<botspy::adapters::antigravity::AntigravitySource>,
+    /// Conversation id the current Antigravity fixture extracts.
+    pub ag_conversation: Option<String>,
+    /// Result of the most recent Antigravity discovery.
+    pub ag_discovery: Option<botspy::adapters::antigravity::AntigravityDiscovery>,
+    /// Result of the most recent Antigravity extraction pass.
+    pub ag_extraction: Option<botspy::adapters::antigravity::AntigravityExtraction>,
+    /// The live app writer holding the fixture Antigravity payload DB.
+    pub ag_writer: Option<rusqlite::Connection>,
+    /// Digest of the payload DB + WAL before the snapshot read.
+    pub ag_digest_before: Option<String>,
+    /// Digest of the payload DB + WAL after the snapshot read.
+    pub ag_digest_after: Option<String>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
