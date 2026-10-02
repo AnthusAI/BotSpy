@@ -554,3 +554,145 @@ pub struct Message {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub extra: Option<Value>,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::session::{Session, SessionSummary};
+
+    /// Every fixed part kind survives a JSON round trip with its `kind`
+    /// tag intact.
+    #[test]
+    fn part_kinds_round_trip_through_json() {
+        let parts = vec![
+            Part::Known(KnownPart::Text {
+                text: "hello".into(),
+                extra: None,
+            }),
+            Part::Known(KnownPart::Thinking {
+                text: Some("why".into()),
+                signature: Some("sig".into()),
+                encrypted: None,
+                extra: None,
+            }),
+            Part::Known(KnownPart::ToolCall {
+                id: "call_1".into(),
+                name: "read_file".into(),
+                arguments: Some(ToolArguments::from_value(serde_json::json!({"path": "x"}))),
+                status: Some(PartStatus::Loading),
+                extra: None,
+            }),
+            Part::Known(KnownPart::ToolResult {
+                call_id: "call_1".into(),
+                text: Some("contents".into()),
+                status: Some(PartStatus::Error),
+                extra: None,
+            }),
+            Part::Known(KnownPart::Attachment {
+                path: "docs/spec.md".into(),
+                mime: "text/markdown".into(),
+                size: 4123,
+                extra: None,
+            }),
+            Part::Known(KnownPart::InlineData {
+                mime: "image/png".into(),
+                data: Some("aGk=".into()),
+                data_ref: Some(content_hash("aGk=")),
+                extra: None,
+            }),
+            Part::Known(KnownPart::Blob {
+                blob_hash: "9d2c".into(),
+                container: "agentKv:blob".into(),
+                extra: None,
+            }),
+            Part::Known(KnownPart::System {
+                text: "notice".into(),
+                extra: None,
+            }),
+        ];
+        for part in parts {
+            let json = serde_json::to_value(&part).expect("part serializes");
+            assert!(
+                json.get("kind").and_then(Value::as_str).is_some(),
+                "part lost its kind tag: {json}"
+            );
+            let round_tripped: Part = serde_json::from_value(json).expect("part deserializes");
+            assert_eq!(round_tripped, part, "part did not survive the round trip");
+        }
+    }
+
+    /// Agent-specific part kinds outside the fixed set degrade to the raw
+    /// passthrough, preserving the payload verbatim — including its `kind`.
+    #[test]
+    fn unknown_kinds_degrade_to_extra_verbatim() {
+        let raw = serde_json::json!({"kind": "quantum_flux", "payload": [1, 2, 3]});
+        let part: Part = serde_json::from_value(raw.clone()).expect("raw part parses");
+        assert_eq!(part.kind_name(), Some("quantum_flux"));
+        assert_eq!(part.as_extra(), Some(&raw));
+        let round_tripped = serde_json::to_value(&part).expect("raw part serializes");
+        assert_eq!(round_tripped, raw, "raw passthrough was not verbatim");
+    }
+
+    /// A fully-populated session — turns, usage, cost, metadata, partial
+    /// flags, provenance — round-trips through JSON unchanged.
+    #[test]
+    fn populated_session_round_trips_through_json() {
+        let mut session = Session {
+            id: "s1".into(),
+            agent: Agent::Cursor,
+            project_id: "demo".into(),
+            started_at: "2026-10-01T09:00:00Z".into(),
+            last_activity_at: "2026-10-01T10:00:00Z".into(),
+            parent_id: Some("s0".into()),
+            root_id: Some("s0".into()),
+            residual_context_tokens: Some(512),
+            ..Session::default()
+        };
+        session.messages.push(Message {
+            id: Some("m1".into()),
+            role: Role::Assistant,
+            parts: vec![Part::Known(KnownPart::Text {
+                text: "hi".into(),
+                extra: None,
+            })],
+            timestamp: Some("2026-10-01T09:30:00Z".into()),
+            provenance: Some(Provenance {
+                source_file: "store.db".into(),
+                row: Some(17),
+                record_id: Some("row-17".into()),
+                ordinal: Some(3),
+                ..Provenance::default()
+            }),
+            turn_id: Some("turn-1".into()),
+            turn_position: Some(TurnPosition {
+                prompt_index: 0,
+                turn_index: 1,
+            }),
+            step_duration_ms: Some(420),
+            ..Message::default()
+        });
+        session.turns.insert(
+            "turn-1".into(),
+            Turn {
+                id: "turn-1".into(),
+                status: Some(TurnStatus::Completed),
+                duration_ms: Some(14300),
+                time_to_first_token_ms: Some(850),
+                ..Turn::default()
+            },
+        );
+        session.partial = Some(PartialHistory {
+            reason: PartialReason::CloudCache,
+            detail: Some("cloud-cache".into()),
+        });
+        let json = serde_json::to_value(&session).expect("session serializes");
+        let round_tripped: Session = serde_json::from_value(json).expect("session deserializes");
+        assert_eq!(round_tripped, session);
+    }
+
+    /// The schema version constant is importable and stable.
+    #[test]
+    fn schema_version_is_stable() {
+        assert_eq!(SCHEMA_VERSION, 1);
+    }
+}
