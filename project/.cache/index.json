@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T20:25:42Z",
+  "built_at": "2026-10-02T20:31:53Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -66,8 +66,8 @@
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
     "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790967950.39087,
     "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790966955.912435,
-    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790972613.547723,
-    "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
+    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790972879.784416,
+    "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790973060.086375,
     "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790967833.466788,
     "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790969209.939105,
     "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790968259.198128,
@@ -88,7 +88,7 @@
     "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790971837.10359,
     "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790963902.28869,
     "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790970763.136403,
-    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790970322.153374,
+    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790973109.68806,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790969201.288206,
     "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790969012.589116,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790971579.081531,
@@ -2382,7 +2382,7 @@
       "title": "Example: coding-session thanks-vs-F-bombs meter",
       "description": "A consumer in examples/ (or an optional botspy[metrics] extra) computing the gratitude-vs-profanity meter over BotSpy sessions. Done when: the example runs on fixtures and imports nothing outside the extra.",
       "type": "task",
-      "status": "in_progress",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2394,10 +2394,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "43fd8f21-1e57-4b2b-995b-4db188690fb1",
+          "author": "home",
+          "text": "home: Meter example landed at examples/meter/ — scoring.rs holds the gratitude-vs-profanity logic (thanks = 'thanks'/'thank you', F-bombs = censored f***, f**k, or uncensored), main.rs walks the committed synthetic corpus through all five per-agent sources (cargo run --example meter, optional path arg) and prints per-session plus aggregate counts. It imports only botspy and std: examples/meter/scoring.rs is compiled into the BDD step crate via #[path], so scenarios exercise the real example logic and compilation proves public-API-only usage. consumers.feature: @wip moved to the sentiment scenario only; three meter scenarios now executable and green (117 scenarios / 444 steps): per-session counts (2 thanks, 1 F-bomb, ratio favors thanks), cross-session aggregation (1 thanks, 2 F-bombs across 2 sessions), and the public-API/no-added-dependency consumer constraint (import-path whitelist + core Cargo.toml forbidden-dep scan). Also: SQLite WAL sidecars that adapters leave when opening stores in place are now recognized as gitignored runtime artifacts and pruned by the fixture-corpus guards. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24 features/117 scenarios/444 steps, spec_docs_coverage, 37 lib tests, fixtures corpus guards, cargo run --example meter.",
+          "created_at": "2026-10-02T20:27:59.162869Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:51.022007Z",
-      "updated_at": "2026-10-02T20:23:33.547413Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:27:59.784322Z",
+      "closed_at": "2026-10-02T20:27:59.784289Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2412,7 +2420,7 @@
       "title": "Example: local sentiment analysis (VADER default, optional GoEmotions transformer)",
       "description": "Sentiment scoring as an example consumer; VADER as the default local backend, GoEmotions transformer optional behind the metrics extra. Done when: the example runs on fixtures with VADER and documents the optional transformer path.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2424,10 +2432,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "f3470445-61ac-49d0-81e3-4c1942e04bb1",
+          "author": "home",
+          "text": "home: Sentiment example landed at examples/sentiment/ — scoring.rs is a self-contained VADER-style backend (trimmed valence lexicon for coding-session vocabulary, caps emphasis, negation window, intensifiers, VADER compound normalization with 0.05 thresholds), fully in-process: classify(&str) -> Positive/Negative/Neutral. examples/sentiment/main.rs walks the committed corpus via examples/common (shared corpus walker extracted from the meter example) and prints per-session plus aggregate sentiment, documenting the planned GoEmotions transformer backend behind an optional botspy[metrics] extra (seam noted in scoring.rs, default stays local VADER). scoring.rs compiles into the BDD step crate via #[path] so the scenario exercises the real example logic; 'works fine' stays neutral per spec (weak valence words deliberately absent). consumers.feature @wip fully lifted: all four consumer scenarios executable and green (118 scenarios / 448 steps): 1 positive / 1 negative / 1 neutral on the spec session, and 'no message text leaves the machine' proven by a network-capability scan of every example source plus pure in-process scoring. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24/118/448, spec_docs_coverage, 37 lib tests, fixture corpus guards, both examples run.",
+          "created_at": "2026-10-02T20:30:59.061863Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:56.365459Z",
-      "updated_at": "2026-10-02T16:24:08.282936Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:31:00.086278Z",
+      "closed_at": "2026-10-02T20:31:00.086253Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -3146,7 +3162,7 @@
       "title": "Example: placeholder for similar metrics",
       "description": "A stub example showing where further session metrics would live, with the same consumer-only constraints. Done when: the stub exists and is referenced from docs.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3158,10 +3174,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "d29c5fa2-cd55-436f-85c6-f0eb0a22c99f",
+          "author": "home",
+          "text": "home: Stub landed at examples/metrics_stub/main.rs — a SessionMetric extension point (name + score(&Session) via the public API only) with a placeholder implementation, candidate metrics documented in the module docs (code-time share, interruption count, topic drift, turn latency), runnable over the committed corpus via cargo run --example metrics_stub. Same consumer-only constraints as the meter and sentiment examples; the existing 'Examples depend only on the public API' scenario automatically scans it since it walks all of examples/. Referenced from docs: README intro now points at examples/meter, examples/sentiment, and examples/metrics_stub; the system-flow diagram's store-backed scanning node was relabeled for accuracy (examples consume per-source sources today, not the store). Mermaid re-validated with Mermaid 11. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24 features/118 scenarios/448 steps, spec_docs_coverage, 37 lib tests, fixture corpus guards, all three examples run.",
+          "created_at": "2026-10-02T20:31:48.779041Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:21:01.444833Z",
-      "updated_at": "2026-10-02T16:24:13.485447Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:31:49.687973Z",
+      "closed_at": "2026-10-02T20:31:49.687953Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",

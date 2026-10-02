@@ -1,4 +1,3 @@
-@wip
 Feature: Unified history across all five agents
   Sessions from all five adapters pile into one unified agent-session
   history: consistent ordering, dedup, and provenance survive the merge.
