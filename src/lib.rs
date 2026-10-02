@@ -121,4 +121,4 @@ pub use schema::{
     Turn, TurnPosition, TurnStatus, Usage, SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
-pub use snapshot::{count_events, snapshot_sqlite, SnapshotError};
+pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};

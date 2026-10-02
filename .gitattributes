@@ -1,0 +1,6 @@
+# Normalized line endings: byte-compared fixture files must check out
+# with LF on every platform, or the corpus generator guard drifts on
+# Windows (autocrlf rewrites them to CRLF).
+tests/fixtures/** text eol=lf
+*.jsonl text eol=lf
+*.feature text eol=lf
