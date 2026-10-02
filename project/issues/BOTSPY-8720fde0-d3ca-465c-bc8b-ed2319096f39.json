@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
+  "title": "Write Gherkin spec: R11 optional session metadata",
+  "description": "Done when: features/02_schema/11_session_metadata.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "f5e953f6-7a2e-43a1-a4a8-26604fff9a27",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:43:38.304567Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:41:44.056729Z",
+  "updated_at": "2026-10-02T17:43:44.683118Z",
+  "closed_at": "2026-10-02T17:43:44.683053Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec is written and embedded in the chapter documentation.",
+  "right_now_updated_at": "2026-10-02T17:43:46.567227Z",
+  "custom": {}
+}
