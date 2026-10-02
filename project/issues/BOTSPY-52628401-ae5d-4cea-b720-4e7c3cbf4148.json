@@ -34,10 +34,17 @@
       "text": "Starting the README portion of this wrap-up task (directed by Ryan): replace README.md with a real user-facing README before the first crates.io release. Plan: fresh worktree `docs/readme` from origin/develop, verify every CLI example against a build from develop, rewrite README (agents + data locations, install, usage, local-only, license, docs/spec links), keep existing material (press-release content moves to docs/ if referenced), no export mention, then PR to develop and merge once green.",
       "created_at": "2026-10-02T22:38:27.309770Z",
       "comment_type": "default"
+    },
+    {
+      "id": "f4ed21b3-0fbf-437e-9a00-666d6ef42c69",
+      "author": "home",
+      "text": "README flip done (PR #6, merged to develop as 4e07a2e): README.md replaced with a real user-facing README — what BotSpy does, the five supported agents and where each one's data lives, cargo install botspy --locked with per-OS prerequisites, verified usage examples for botspy sources / doctor / sessions (--since, -o json) / show, local-only guarantees, MIT license, links to docs.rs and the features/ spec. Every example was run against the CLI built from develop over the committed synthetic fixture corpus (no real session content or paths; the sample outputs state that they come from the synthetic corpus). No export mention. The old press-release narrative and detailed FAQ moved verbatim to docs/DESIGN.md with an editorial note on which CLI verbs shipped. Gates green locally: fmt, clippy -D warnings, cargo test, cargo test --test bdd (169 passed / 2 skipped), spec_docs_coverage; cargo package --list still includes README.md and Cargo.toml readme field unchanged. CI green on the PR and on develop after merge. Remaining parts of this task (chapter status, wiki page, board close-out) still open.",
+      "created_at": "2026-10-02T22:52:39.386779Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T21:44:00.187091Z",
-  "updated_at": "2026-10-02T22:38:27.309800Z",
+  "updated_at": "2026-10-02T22:52:39.387039Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
