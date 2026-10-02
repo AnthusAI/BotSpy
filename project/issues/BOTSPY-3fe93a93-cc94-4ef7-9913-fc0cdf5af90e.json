@@ -1,25 +1,33 @@
 {
   "id": "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e",
   "title": "Write Gherkin spec: R10 role mapping conventions",
-  "description": "",
+  "description": "Done when: features/02_schema/10_role_mapping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "9815ffbc-ba97-4892-be60-a47f9979fe35",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:43:23.663697Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:41:18.010451Z",
-  "updated_at": "2026-10-02T17:41:18.010475Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T17:43:30.917304Z",
+  "closed_at": "2026-10-02T17:43:30.917224Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team needs a Gherkin spec for R10 role mapping conventions.",
-  "right_now_updated_at": "2026-10-02T17:41:19.555481Z",
+  "right_now_summary": "The role-mapping Gherkin spec is written and embedded in the chapter docs.",
+  "right_now_updated_at": "2026-10-02T17:43:32.201901Z",
   "custom": {}
 }

@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
+  "title": "Write Gherkin spec: R12 raw blob escape hatch",
+  "description": "Done when: features/02_schema/12_raw_blob_escape_hatch.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
+  "type": "sub-task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "aa6740e5-6887-4d3b-b550-ab185e4771da",
+      "author": "home",
+      "text": "Spec written and embedded in the docs (commit 4c81421).",
+      "created_at": "2026-10-02T17:43:52.847699Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T17:41:59.066733Z",
+  "updated_at": "2026-10-02T17:44:00.191683Z",
+  "closed_at": "2026-10-02T17:44:00.191631Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The Gherkin spec is written, tagged, and embedded in the chapter 2 Rust documentation.",
+  "right_now_updated_at": "2026-10-02T17:44:01.186251Z",
+  "custom": {}
+}

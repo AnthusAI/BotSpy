@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
   "title": "Schema R1: Usage and cost metrics on Message and Session",
-  "description": "",
+  "description": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when).",
   "type": "task",
   "status": "open",
   "priority": 2,
@@ -9,17 +9,22 @@
   "creator": null,
   "parent": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
   "labels": [],
-  "dependencies": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+      "type": "blocked-by"
+    }
+  ],
   "comments": [],
   "created_at": "2026-10-02T17:29:40.027455Z",
-  "updated_at": "2026-10-02T17:29:40.027488Z",
+  "updated_at": "2026-10-02T17:44:44.096269Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "R1 usage and cost metrics are being implemented and tested against the BDD specification.",
-  "right_now_updated_at": "2026-10-02T17:38:01.645758Z",
+  "right_now_summary": "The usage and cost schema is being implemented and tested against the embedded BDD specification.",
+  "right_now_updated_at": "2026-10-02T17:44:45.391035Z",
   "custom": {}
 }
