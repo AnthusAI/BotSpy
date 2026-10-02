@@ -31,5 +31,8 @@ jobs:
       - name: Format check (ruff format)
         run: uv run ruff format --check .
 
+      - name: Behavior specs (behave)
+        run: uv run behave --no-color
+
       - name: Test (pytest)
         run: uv run pytest -q

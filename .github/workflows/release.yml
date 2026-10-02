@@ -29,9 +29,7 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv run python-semantic-release -v --noop version || uv run python-semantic-release version
-        # Dry-run first; on failure the noop pass surfaces the reason without
-        # touching state, then the real run executes.
+        run: uv run python-semantic-release version
 
       # PyPI publish is intentionally left commented out until the package is
       # ready for release to PyPI. Requires a trusted publisher or
