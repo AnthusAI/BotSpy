@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "afba4fe5-2527-4db7-9012-7fb78de3125d",
+  "issue_id": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:54.760Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Implement sqlite-vec vector search + Embedder seam + hybrid ranking",
+    "description": "**Files:** `src/store/embed.rs` (new: `Embedder` trait — model id, dim 384, batch embed; `StubEmbedder` — deterministic token-hash 384-dim normalized vectors with signed token buckets so shared vocabulary scores high cosine, good enough for the fixture scenarios); `src/store/vector.rs` (new: vec0 k-NN + cosine scores); `src/store/query.rs` (hybrid merge via reciprocal-rank fusion, deterministic); `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `08_vector_search.feature` — remove its @wip.\n\n**Acceptance:** the embedder is a store-open concern (default None → semantic queries return a clean empty result, text queries unaffected); meta model id set on first embed, a mismatched model refused with a clean error; hybrid merge of FTS + k-NN results via reciprocal-rank fusion, composable with filters, one ranked result type for both paths; engine invisible.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

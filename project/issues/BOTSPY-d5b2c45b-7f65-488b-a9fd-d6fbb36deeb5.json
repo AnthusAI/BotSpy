@@ -1,0 +1,34 @@
+{
+  "id": "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5",
+  "title": "Implement incremental refresh: staleness, re-ingest, prune",
+  "description": "**Files:** `src/store/ingest.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `06_refresh.feature` — remove its @wip.\n\n**Acceptance:** `Store::refresh(&adapters) -> IngestReport`: staleness by (id, last_activity_at, message_count) from summaries — unchanged means no adapter open; new or changed means open + `content_hash` compare + re-ingest in one transaction when actually changed (delete + reinsert message/part/FTS/embedding rows); prune sessions an adapter no longer reports; report counts per outcome (new / updated / unchanged / pruned).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T21:43:50.403823Z",
+  "updated_at": "2026-10-02T21:44:09.716704Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

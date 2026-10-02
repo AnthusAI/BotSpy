@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "8c8711c7-9e13-45bc-b8a8-87ab287e971e",
+  "issue_id": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:43.549Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Ingestion and unified iteration (adapters → store)",
+    "description": "Milestone 2 of the Local Store Initiative (implements BOTSPY-047770): mine every registered adapter into the store, strictly read-only with respect to source data, then iterate the unified history out of the store. Ingestion drives the existing `Adapter` trait (discover() + open()) — zero adapter changes — writes normalized sessions, messages, and parts plus the FTS index in per-session transactions, dedups by first-report-wins (the chapter-1 rule), proves the sources untouched (digest before/after, the importer-contract precedent), and round-trips sessions losslessly. The first face of the one query interface lands here: lazy iteration over sessions, messages, and parts with the engine invisible. Turns `01_iteration.feature` and `05_ingest.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

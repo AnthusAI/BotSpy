@@ -1,0 +1,38 @@
+{
+  "id": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+  "title": "Implement sqlite-vec vector search + Embedder seam + hybrid ranking",
+  "description": "**Files:** `src/store/embed.rs` (new: `Embedder` trait — model id, dim 384, batch embed; `StubEmbedder` — deterministic token-hash 384-dim normalized vectors with signed token buckets so shared vocabulary scores high cosine, good enough for the fixture scenarios); `src/store/vector.rs` (new: vec0 k-NN + cosine scores); `src/store/query.rs` (hybrid merge via reciprocal-rank fusion, deterministic); `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `08_vector_search.feature` — remove its @wip.\n\n**Acceptance:** the embedder is a store-open concern (default None → semantic queries return a clean empty result, text queries unaffected); meta model id set on first embed, a mismatched model refused with a clean error; hybrid merge of FTS + k-NN results via reciprocal-rank fusion, composable with filters, one ranked result type for both paths; engine invisible.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T21:43:54.760688Z",
+  "updated_at": "2026-10-02T21:44:21.676736Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

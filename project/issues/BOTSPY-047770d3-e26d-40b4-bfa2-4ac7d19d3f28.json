@@ -10,9 +10,17 @@
   "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "c22982dc-a6c5-4bf1-ac72-5e1eb8729f3a",
+      "author": "home",
+      "text": "Implementation plan for this chapter is filed under the initiative of record, BOTSPY-c7795b: store foundation (SQLite + sqlite-vec + FTS5, cross-platform), ingestion + unified iteration, incremental refresh, filters + laziness, text + vector search, MiniLM embeddings (deferred on open asset questions), docs wrap-up. The existing @wip specs (01_iteration, 02_filters, 03_laziness) turn green as the query-interface epics land; new store / ingest / refresh / search specs join the same folder (features/02_querying/).",
+      "created_at": "2026-10-02T21:44:38.104046Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:15:16.948650Z",
-  "updated_at": "2026-10-02T17:58:05.520212Z",
+  "updated_at": "2026-10-02T21:44:38.104074Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",

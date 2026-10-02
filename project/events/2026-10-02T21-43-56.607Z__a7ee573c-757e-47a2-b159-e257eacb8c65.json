@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "a7ee573c-757e-47a2-b159-e257eacb8c65",
+  "issue_id": "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:56.607Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Implement MiniLMEmbedder: all-MiniLM-L6-v2 via tract ONNX + tokenizer",
+    "description": "**Files:** `Cargo.toml` (cargo feature per the decision task; tract-onnx, tokenizers); `src/store/embed_minilm.rs` (naming per final layout); `src/store/embed.rs` (trait unchanged); `src/spec/ch02_querying.rs`.\n\n**Acceptance:** tract ONNX runtime on CPU, all-MiniLM-L6-v2 (384-dim), wordpiece tokenization via the tokenizers crate, implementing `Embedder` (model id \"all-MiniLM-L6-v2\"); batch embedding at ingest (the scanner-batch milestone). One model, one set of weights, one engine — vectors consistent by construction; the store's model-id policy from the vector-search task applies (mismatch refused, clean re-ingest). The 50–200 ms CPU query-embedding target is a doc note, not a spec assertion. Stub-based engine specs stay green; real-model specs per the decision; gates green with and without the feature.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

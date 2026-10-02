@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "event_id": "5ed679b9-6c27-47fe-8517-7eb88cf78f78",
+  "issue_id": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+  "event_type": "dependency_added",
+  "occurred_at": "2026-10-02T21:44:16.298Z",
+  "actor_id": "home",
+  "payload": {
+    "dependency_type": "blocked-by",
+    "target_id": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a"
+  }
+}

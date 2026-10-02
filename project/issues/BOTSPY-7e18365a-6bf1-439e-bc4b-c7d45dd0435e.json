@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e",
+  "title": "Real-model semantic search end-to-end (gated specs)",
+  "description": "**Files:** `features/02_querying/09_semantic_model.feature` (new; gating per the decision task); `tests/steps/store_steps.rs`; `src/store/vector.rs`; `src/spec/ch02_querying.rs` (embed).\n\n**Acceptance:** end-to-end, red first then green: ingest with the MiniLM embedder → semantic search returns the semantically right fixtures → hybrid ranking composes. @wip removed only where CI can run the file ungated; stub-based specs unaffected.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T21:43:59.036622Z",
+  "updated_at": "2026-10-02T21:44:25.305038Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
