@@ -1,4 +1,3 @@
-@wip
 Feature: Example consumers of the unified history
   The example consumers — a coding-session thanks-vs-F-bombs meter and a
   local sentiment analysis — read BotSpy sessions and score the
@@ -18,6 +17,7 @@ Feature: Example consumers of the unified history
     When the meter scores the unified history
     Then it reports 1 thanks and 2 F-bombs across 2 sessions
 
+  @wip
   Scenario: Sentiment runs locally over message text
     Given a session with messages "I love this fix", "this is terrible", and "works fine"
     When the sentiment example scores the session

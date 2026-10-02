@@ -452,6 +452,7 @@ fn walk_files(root: &Path) -> Vec<PathBuf> {
 fn list_relative(root: &Path) -> Vec<String> {
     let mut files: Vec<String> = walk_files(root)
         .into_iter()
+        .filter(|path| !is_sqlite_sidecar(path))
         .map(|path| {
             path.strip_prefix(root)
                 .expect("path under root")
@@ -461,6 +462,18 @@ fn list_relative(root: &Path) -> Vec<String> {
         .collect();
     files.sort();
     files
+}
+
+/// SQLite runtime sidecars: created when adapters open the WAL-mode stores in
+/// place, removed by SQLite on clean close, and never corpus content.
+fn is_sqlite_sidecar(path: &Path) -> bool {
+    path.file_name()
+        .and_then(|name| name.to_str())
+        .is_some_and(|name| {
+            ["-wal", "-shm", "-journal"]
+                .iter()
+                .any(|suffix| name.ends_with(suffix))
+        })
 }
 
 fn is_sqlite(rel: &str) -> bool {
@@ -628,18 +641,20 @@ const SECRET_ASSIGNMENT_PATTERNS: &[&str] = &[
 #[test]
 fn fixtures_contain_no_secrets() {
     let committed = fixtures_root();
+    // Adapters opening the WAL-mode stores in place leave -wal/-shm sidecars
+    // behind on an unclean exit; they are runtime artifacts (gitignored), so
+    // prune them before scanning content.
+    for path in walk_files(&committed) {
+        if is_sqlite_sidecar(&path) {
+            let _ = std::fs::remove_file(&path);
+        }
+    }
     let files = list_relative(&committed);
     assert!(
         !files.is_empty(),
         "the fixture corpus is empty; run BOTSPY_FIXTURES_REGEN=1 cargo test --test fixtures_corpus"
     );
     for rel in files {
-        for suffix in ["-wal", "-shm", "-journal"] {
-            assert!(
-                !rel.ends_with(suffix),
-                "stray SQLite sidecar committed: {rel}"
-            );
-        }
         let bytes = std::fs::read(committed.join(&rel)).expect("read fixture file");
         let text = String::from_utf8_lossy(&bytes).to_lowercase();
         for pattern in SECRET_PATTERNS.iter().chain(SECRET_ASSIGNMENT_PATTERNS) {

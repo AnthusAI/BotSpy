@@ -8,3 +8,9 @@ Cargo.lock
 
 # Kanbus runtime artifacts
 project/.overlay/
+
+# SQLite runtime sidecars created when adapters open the WAL-mode fixture
+# stores in place (transient, never corpus content)
+tests/fixtures/**/*-wal
+tests/fixtures/**/*-shm
+tests/fixtures/**/*-journal

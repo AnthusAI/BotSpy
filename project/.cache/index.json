@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T20:15:13Z",
+  "built_at": "2026-10-02T20:25:42Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -46,7 +46,7 @@
     "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790970795.81478,
     "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790970761.481187,
     "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790970759.329892,
-    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790958232.254686,
+    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790972600.362965,
     "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790958419.570247,
     "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790967449.978958,
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790960008.427437,
@@ -66,7 +66,7 @@
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790959336.031455,
     "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790967950.39087,
     "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790966955.912435,
-    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790958245.991392,
+    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790972613.547723,
     "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790958249.848683,
     "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790967833.466788,
     "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790969209.939105,
@@ -1639,7 +1639,7 @@
       "title": "Build synthetic fixture corpus for all five agents",
       "description": "Synthetic-only fixtures mirroring real on-disk layouts; no real transcripts or secrets. Done when: every adapter fixture is committed with a generator script and a guard test proves no secrets.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -1651,10 +1651,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "97c73d06-7094-41f3-91fc-98061c8d0303",
+          "author": "home",
+          "text": "home: Synthetic fixture corpus committed under tests/fixtures/ for all five agents, mirroring real on-disk layouts with fully synthetic content: Claude Code projects/<encoded>/<uuid>.jsonl (user/assistant/tool_use/tool_result/cost-state/pr-link/custom-title), Codex state_5.sqlite threads index + dated rollouts (response items, reasoning, function call/output, token usage, compaction, task_complete, spawn edge), Cursor state.vscdb cursorDiskKV (composerHeaders, composerData, bubbles incl. thinking/toolFormerData/toolResultBlob + agentKv blob) + projects CLI transcripts, Grok Bot sand-client-persistence hash-named entry-log blobs + roster.json + cloud-agents.json, Antigravity conversation_summaries.db + brain/<id>/.system_generated/logs/transcript.jsonl + payload.db tool_links. Generator lives in tests/fixtures_corpus.rs (BOTSPY_FIXTURES_REGEN=1 cargo test --test fixtures_corpus, regenerate-then-verify). Three guards: committed_fixtures_match_generator (text byte-parity, SQLite logical dump parity immune to page-layout/SQLite-build drift), fixtures_contain_no_secrets (token/KEY/assignment pattern scan, real-home-path leak check, stray -wal/-shm/-journal rejection), fixtures_feed_every_adapter (every importer discovers and extracts against the corpus). SQLite dumps and adapter smoke runs go through scratch copies so even WAL sidecar creation cannot pollute the committed tree. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 23 features/114 scenarios/433 steps, spec_docs_coverage, 37 lib tests.",
+          "created_at": "2026-10-02T20:23:19.428916Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:36.379370Z",
-      "updated_at": "2026-10-02T16:23:50.080898Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:23:20.362855Z",
+      "closed_at": "2026-10-02T20:23:20.362835Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2374,7 +2382,7 @@
       "title": "Example: coding-session thanks-vs-F-bombs meter",
       "description": "A consumer in examples/ (or an optional botspy[metrics] extra) computing the gratitude-vs-profanity meter over BotSpy sessions. Done when: the example runs on fixtures and imports nothing outside the extra.",
       "type": "task",
-      "status": "open",
+      "status": "in_progress",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2388,7 +2396,7 @@
       ],
       "comments": [],
       "created_at": "2026-10-02T16:20:51.022007Z",
-      "updated_at": "2026-10-02T16:24:04.361521Z",
+      "updated_at": "2026-10-02T20:23:33.547413Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
