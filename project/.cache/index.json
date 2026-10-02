@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T20:31:53Z",
+  "built_at": "2026-10-02T20:34:14Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790969202.928695,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790970139.562248,
@@ -101,7 +101,7 @@
     "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790958219.039163,
     "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790970230.694657,
     "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790959336.032073,
-    "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790958241.688748,
+    "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790973250.425524,
     "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790959336.032232,
     "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790966966.338228,
     "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790962821.105181,
@@ -3610,7 +3610,7 @@
       "title": "Cross-adapter unified history test suite",
       "description": "Sessions from all adapters pile into one unified agent-session history; ordering, dedup, and provenance verified. Done when: the unified suite passes.",
       "type": "task",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -3626,10 +3626,18 @@
           "type": "blocked-by"
         }
       ],
-      "comments": [],
+      "comments": [
+        {
+          "id": "881ad7fb-982b-4b0a-9749-1c76c453a996",
+          "author": "home",
+          "text": "home: unified_history.feature fully executable — @wip lifted, all five scenarios green (123 scenarios / 465 steps): five agents listing together, last-activity ordering across sessions (u7, u8, u6), dedup of the same session reported by two discovery passes (listed once), provenance surviving the merge (rollout.jsonl line 42 intact after store open), and per-session agent/project identity. Implementation: SessionStore::list_sessions now deduplicates by session id (first report wins) before the last-activity sort; new tests/steps/unified_steps.rs drives the store through the in-memory fixture adapters (layer-1 semantics — the committed corpus keeps feeding the importers and example consumers). Two new unit tests cover dedup and sort order (39 lib tests). Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 25 features/123 scenarios/465 steps, spec_docs_coverage, 39 lib tests, fixture corpus guards.",
+          "created_at": "2026-10-02T20:34:09.760583Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:20:40.941649Z",
-      "updated_at": "2026-10-02T16:23:59.797931Z",
-      "closed_at": null,
+      "updated_at": "2026-10-02T20:34:10.425424Z",
+      "closed_at": "2026-10-02T20:34:10.425401Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
