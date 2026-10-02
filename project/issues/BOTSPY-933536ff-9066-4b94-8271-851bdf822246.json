@@ -3,7 +3,7 @@
   "title": "Example: local sentiment analysis (VADER default, optional GoEmotions transformer)",
   "description": "Sentiment scoring as an example consumer; VADER as the default local backend, GoEmotions transformer optional behind the metrics extra. Done when: the example runs on fixtures with VADER and documents the optional transformer path.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "f3470445-61ac-49d0-81e3-4c1942e04bb1",
+      "author": "home",
+      "text": "home: Sentiment example landed at examples/sentiment/ — scoring.rs is a self-contained VADER-style backend (trimmed valence lexicon for coding-session vocabulary, caps emphasis, negation window, intensifiers, VADER compound normalization with 0.05 thresholds), fully in-process: classify(&str) -> Positive/Negative/Neutral. examples/sentiment/main.rs walks the committed corpus via examples/common (shared corpus walker extracted from the meter example) and prints per-session plus aggregate sentiment, documenting the planned GoEmotions transformer backend behind an optional botspy[metrics] extra (seam noted in scoring.rs, default stays local VADER). scoring.rs compiles into the BDD step crate via #[path] so the scenario exercises the real example logic; 'works fine' stays neutral per spec (weak valence words deliberately absent). consumers.feature @wip fully lifted: all four consumer scenarios executable and green (118 scenarios / 448 steps): 1 positive / 1 negative / 1 neutral on the spec session, and 'no message text leaves the machine' proven by a network-capability scan of every example source plus pure in-process scoring. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24/118/448, spec_docs_coverage, 37 lib tests, fixture corpus guards, both examples run.",
+      "created_at": "2026-10-02T20:30:59.061863Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:20:56.365459Z",
-  "updated_at": "2026-10-02T16:24:08.282936Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T20:31:00.086278Z",
+  "closed_at": "2026-10-02T20:31:00.086253Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
