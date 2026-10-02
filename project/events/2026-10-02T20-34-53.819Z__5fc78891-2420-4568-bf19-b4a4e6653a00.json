@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "5fc78891-2420-4568-bf19-b4a4e6653a00",
+  "issue_id": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:53.819Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Wire the CLI shell the five phase-1 verbs sit on: a [[bin]] target (thin main.rs over a library cli module so specs can test behavior), clap arg parsing with the global flags from the cli design (773667dc) (-s/--source repeatable, --root, --home, -o/--output human|json|ndjson, exit codes 0/1/2/3), and the store-builder that builds a SessionStore of real adapters by source name (claude_code, cursor, codex) honoring SourceOptions. Updates the library-only doc claims (README, lib.rs) that the CLI now supersedes."
+      }
+    }
+  }
+}

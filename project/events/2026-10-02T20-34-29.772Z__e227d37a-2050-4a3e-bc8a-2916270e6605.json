@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "e227d37a-2050-4a3e-bc8a-2916270e6605",
+  "issue_id": "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T20:34:29.772Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Specify CLI phase 1 verbs in Gherkin (features/cli)",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}

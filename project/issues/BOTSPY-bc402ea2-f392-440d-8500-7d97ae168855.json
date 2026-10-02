@@ -1,0 +1,20 @@
+{
+  "id": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+  "title": "CLI foundation: bin target, arg parsing, store builder",
+  "description": "Wire the CLI shell the five phase-1 verbs sit on: a [[bin]] target (thin main.rs over a library cli module so specs can test behavior), clap arg parsing with the global flags from the cli design (773667dc) (-s/--source repeatable, --root, --home, -o/--output human|json|ndjson, exit codes 0/1/2/3), and the store-builder that builds a SessionStore of real adapters by source name (claude_code, cursor, codex) honoring SourceOptions. Updates the library-only doc claims (README, lib.rs) that the CLI now supersedes.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T20:34:29.172098Z",
+  "updated_at": "2026-10-02T20:34:53.819251Z",
+  "closed_at": null,
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

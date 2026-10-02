@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "efdffa52-7dc7-4ad1-b110-16675eca9dc9",
+  "issue_id": "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T20:34:33.297Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement botspy snapshot",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}

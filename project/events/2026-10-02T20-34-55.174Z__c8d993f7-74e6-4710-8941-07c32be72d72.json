@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "c8d993f7-74e6-4710-8941-07c32be72d72",
+  "issue_id": "BOTSPY-62676b58-d60a-484f-b3f2-98c77fd79b63",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T20:34:55.174Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "botspy sources: inspect the source registry — every known source name, its resolved root (after --root/--home), session count from discovery, status. -v adds discovery detail. Spec: features/cli/sources.feature."
+      }
+    }
+  }
+}
