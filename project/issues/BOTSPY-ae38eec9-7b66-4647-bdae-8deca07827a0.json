@@ -17,10 +17,17 @@
       "text": "Design: push to main = promotion. Workflow runs release-plz update (bump Cargo.toml/Cargo.lock + CHANGELOG.md from conventional commits), commits directly to main with GITHUB_TOKEN, then release-plz release creates the tag and GitHub release (publish=false, crates.io untouched for now). No PR is opened at any point; the 'Allow GitHub Actions to create and approve pull requests' repo setting becomes irrelevant; B's PR-permission check and RELEASE_PLZ_TOKEN fallback removed. workflow_dispatch with dry_run (default true) computes next version + tag without pushing/tagging/releasing. Loop safety: GITHUB_TOKEN pushes do not retrigger workflows, and release-plz release is idempotent against existing tags (v1.0.0 from semantic-release noted: 123 commits since that tag, no GH release attached — dry run will show computed next version; tag not touched by me). Existing v1.0.0 tag accounted for in dry run. Cargo publish dry-run to be reported (size/metadata/fixtures), but publishing stays off until Ryan sets up crates.io.",
       "created_at": "2026-10-02T21:56:06.732772Z",
       "comment_type": "default"
+    },
+    {
+      "id": "cacd214f-adc1-45d8-a4f8-c702fc6c09d9",
+      "author": "home",
+      "text": "Pre-release prep done (Ryan-approved): PR #5 closed as superseded (content on develop: b1272cb publishing, 05e3448 dry-run dirty-tree fix), branch deleted; task back to in_progress (commit 6c5729c); stray v1.0.0 tag deleted (remote+local, zero tags remain); stale CHANGELOG v1.0.0 section removed (f9b8431). Stale release-plz-* branch cleanup next, then dry-run dispatch.",
+      "created_at": "2026-10-02T22:39:12.701500Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T21:55:54.481422Z",
-  "updated_at": "2026-10-02T22:38:39.201025Z",
+  "updated_at": "2026-10-02T22:39:12.701526Z",
   "closed_at": null,
   "right_now_summary": null,
   "right_now_updated_at": null,
