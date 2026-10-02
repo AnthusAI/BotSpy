@@ -42,22 +42,18 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: specified, awaiting the local store
+//! ## Status: the store foundation is green
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
-//! below, tagged `@wip` until the Local Store implementation lands. They
-//! pin down the query surface the engine will be built to satisfy:
-//! iteration over sessions, messages, and parts
-//! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
-//! filters by source, project, part kind, and time window
-//! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
-//! laziness
-//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)),
-//! and the local store itself: opening at a caller-given path (parent
-//! directories created), persistence across reopens, a reader on a second
-//! connection querying while an ingest commits, clean typed errors for
-//! files that are not a store, and the BOTSPY_HOME-derived default path
-//! ([`04_store.feature`](../../features/02_querying/04_store.feature)).
+//! below, tagged `@wip` until the Local Store implementation lands. The
+//! local store itself is executable and green
+//! ([`04_store.feature`](../../features/02_querying/04_store.feature)):
+//! a store opens at a caller-given path (parent directories created),
+//! reopening persists ingested data, a reader on a second connection keeps
+//! querying while an ingest commits, a non-store file is a clean typed
+//! error, and the default path follows BOTSPY_HOME/$HOME. The iteration,
+//! filter, laziness, and search specs below remain `@wip` until their
+//! implementation tasks land.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",

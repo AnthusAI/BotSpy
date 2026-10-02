@@ -107,6 +107,7 @@ pub mod schema;
 pub mod session;
 pub mod snapshot;
 pub mod spec;
+pub mod store;
 
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
@@ -122,3 +123,4 @@ pub use schema::{
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
 pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};
+pub use store::{default_store_path, SessionIter, Store, StoreError};

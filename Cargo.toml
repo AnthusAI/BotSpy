@@ -18,6 +18,7 @@ exclude = [
 
 [dependencies]
 rusqlite = { version = "0.40.2", features = ["backup", "bundled"] }
+sqlite-vec = "=0.1.9"
 clap = { version = "4", features = ["derive"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
