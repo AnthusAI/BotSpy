@@ -10,6 +10,7 @@ pub mod role_steps;
 pub mod schema_steps;
 pub mod session_steps;
 pub mod status_steps;
+pub mod turn_steps;
 pub mod usage_steps;
 
 use botspy::{

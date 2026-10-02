@@ -109,6 +109,6 @@ pub use schema::{
     content_hash, Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, KnownPart,
     Message, ModelCost, Origin, Part, PartStatus, PartialHistory, PartialReason, Peer, Provenance,
     RateLimitState, Role, SessionCost, SessionMetadata, SubagentInfo, Timestamp, ToolArguments,
-    Turn, TurnStatus, Usage, SCHEMA_VERSION,
+    Turn, TurnPosition, TurnStatus, Usage, SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};

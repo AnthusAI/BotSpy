@@ -1,4 +1,3 @@
-@wip
 Feature: Turn grouping with turn-level timing and errors
   A turn is one user request plus everything the agent did to answer it.
   Messages carry turn_id and parent_turn_id; turns carry timing and

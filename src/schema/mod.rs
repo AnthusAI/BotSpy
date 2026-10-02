@@ -472,6 +472,21 @@ pub struct Turn {
     /// The error that failed the turn (Codex usageLimitExceeded and friends).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub error: Option<String>,
+    /// How long the whole turn took (Codex task_complete duration_ms,
+    /// Cursor turnDurationMs).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub duration_ms: Option<u64>,
+    /// Latency to the first response token (Codex time_to_first_token_ms).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub time_to_first_token_ms: Option<u64>,
+}
+
+/// Claude's turnPosition: which prompt the turn answers, and which turn of
+/// that prompt it is.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct TurnPosition {
+    pub prompt_index: u64,
+    pub turn_index: u64,
 }
 
 /// Where a record came from on disk.
@@ -509,6 +524,12 @@ pub struct Message {
     pub provenance: Option<Provenance>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub turn_id: Option<String>,
+    /// Claude's turnPosition {promptIndex, turnIndex}.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub turn_position: Option<TurnPosition>,
+    /// Cursor's stepDurationMs — one response bubble's own duration.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub step_duration_ms: Option<u64>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub usage: Option<Usage>,
     /// The message records an error event (Antigravity error steps and friends).
