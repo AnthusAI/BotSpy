@@ -226,6 +226,45 @@ pub struct RateLimitState {
     pub resets_at: Option<Timestamp>,
 }
 
+/// A session's place in the session graph: what spawned it and where.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct SubagentInfo {
+    /// The agent's own sub-agent kind or name (Claude "general"/"explore",
+    /// Cursor subagentTypeName, Antigravity "subagent").
+    pub kind: String,
+    /// Nesting depth for nested conversations (Antigravity nesting_depth).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub nesting_depth: Option<u64>,
+}
+
+/// Where a forked session split from its parent.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct ForkPoint {
+    /// The fork is the history strictly before this ordinal
+    /// (Codex forked_from_ordinal_exclusive).
+    pub ordinal: u64,
+}
+
+/// A best-of-N battle link between competing sessions.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct BattleLink {
+    pub battle_id: String,
+    /// The winning conversation, recorded on the winner.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub winning_conversation_id: Option<String>,
+}
+
+/// A peer cloud agent of this session (Grok Bot cloudAgentPeerIds): the
+/// peer has no local transcript here.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct Peer {
+    pub peer_id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub status: Option<String>,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub has_local_transcript: bool,
+}
+
 /// Life-cycle state of a turn.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]

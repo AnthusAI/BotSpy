@@ -1,7 +1,10 @@
 //! The unified agent-session history.
 
 use crate::adapter::Adapter;
-use crate::schema::{Agent, Message, RateLimitState, SessionCost, Timestamp, Turn, Usage};
+use crate::schema::{
+    Agent, BattleLink, ForkPoint, Message, Peer, RateLimitState, SessionCost, SubagentInfo,
+    Timestamp, Turn, Usage,
+};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::fmt;
@@ -26,6 +29,24 @@ pub struct Session {
     pub cost: Option<SessionCost>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub rate_limit: Option<RateLimitState>,
+    /// Parent session, when this session is a child in the session graph.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub parent_id: Option<String>,
+    /// The root of this session's graph subtree.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub root_id: Option<String>,
+    /// Sub-agent identity, when this session was spawned as a sub-agent.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subagent: Option<SubagentInfo>,
+    /// Fork point, when this session forked from its parent.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fork: Option<ForkPoint>,
+    /// Best-of-N battle this session competes in.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub battle: Option<BattleLink>,
+    /// Peer cloud agents with no local transcript.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub peers: Vec<Peer>,
 }
 
 /// A lightweight view of a session for listing across agents.

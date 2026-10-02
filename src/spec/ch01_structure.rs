@@ -357,7 +357,12 @@
 //!    [`TurnStatus`](crate::schema::TurnStatus) with abort reasons and
 //!    errors on turns, and the message error flag.
 //! 3. `03_session_graph.feature` — parent/root links, sub-agent kind and
-//!    name, fork points, best-of-N battles, and peer ids.
+//!    name, fork points, best-of-N battles, and peer ids. Implemented:
+//!    [`Session::parent_id`](crate::session::Session::parent_id) /
+//!    `root_id`, [`SubagentInfo`](crate::schema::SubagentInfo),
+//!    [`ForkPoint`](crate::schema::ForkPoint),
+//!    [`BattleLink`](crate::schema::BattleLink), and
+//!    [`Peer`](crate::schema::Peer).
 //! 4. `04_turn_grouping.feature` — `turn_id`/`parent_turn_id` with
 //!    turn-level timing and errors.
 //! 5. `05_compaction.feature` — compaction events with pre/post token
@@ -407,7 +412,7 @@
     "### 02_tool_result_status.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/02_tool_result_status.feature"),
     "\n```\n\n",
-    "### 03_session_graph.feature (pending)\n\n```gherkin\n",
+    "### 03_session_graph.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/03_session_graph.feature"),
     "\n```\n\n",
     "### 04_turn_grouping.feature (pending)\n\n```gherkin\n",
