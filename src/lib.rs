@@ -27,20 +27,28 @@
 //!
 //! ## How these docs are organized
 //!
-//! Each chapter is one spec layer, mirroring the `features/` tree:
+//! The chapters follow the record's journey — structure first, then
+//! querying, then how data arrives:
 //!
-//! 1. [Session history](crate::spec::ch01_session_history) —
-//!    what a session is; listing sessions across agents sorted by last
-//!    activity; opening a session by id; walking its messages in order; the
-//!    unknown-id error. Mirrors `features/01_session_history/`.
-//! 2. [Normalized schema](crate::spec::ch02_schema) —
-//!    messages and roles; typed parts (text, thinking, tool calls and
-//!    results, attachments, system); per-message provenance; the `extra`
-//!    escape hatch for agent-specific fields. Mirrors `features/02_schema/`.
-//! 3. Query and export — filter by agent, kind, time, and project; JSON and
-//!    JSONL export. Mirrors `features/03_query_export/` (specified next).
-//! 4. Adapters — one per agent, sharing the [`crate::adapter::Adapter`]
-//!    contract. Mirrors `features/04_adapters/` (specified next).
+//! 1. [Structure](crate::spec::ch01_structure) —
+//!    the basic structure of records: the session object, ordered
+//!    messages, walking through them, and the anatomy of a message
+//!    (text, thinking, tool calls and results, attachments, provenance,
+//!    the `extra` escape hatch, and the pending schema extensions).
+//!    Mirrors `features/01_structure/`.
+//! 2. [Querying](crate::spec::ch02_querying) —
+//!    one query interface backed by SQLite + sqlite-vec, completely
+//!    transparent to callers; implemented by the Local Store Initiative
+//!    (BOTSPY-c7795b). Mirrors `features/02_querying/` (specified next).
+//! 3. [Importers / CDC](crate::spec::ch03_importers) —
+//!    the change-data-capture pipeline (detect new or changed transcripts,
+//!    hand off to normalization, retry), with per-agent importer
+//!    sub-chapters: [Claude Code](crate::spec::ch03_importers::claude_code),
+//!    [Cursor](crate::spec::ch03_importers::cursor),
+//!    [Codex](crate::spec::ch03_importers::codex),
+//!    [Grok Bot](crate::spec::ch03_importers::grok_bot), and
+//!    [Antigravity](crate::spec::ch03_importers::antigravity).
+//!    Mirrors `features/03_importers/` (specified next).
 //!
 //! ## A 60-second drill-down
 //!
@@ -87,7 +95,7 @@
 //! # Ok::<(), botspy::UnknownSession>(())
 //! ```
 //!
-//! Continue with [chapter 1: session history](crate::spec::ch01_session_history).
+//! Continue with [chapter 1: structure](crate::spec::ch01_structure).
 
 pub mod adapter;
 pub mod adapters;

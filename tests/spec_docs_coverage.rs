@@ -21,6 +21,21 @@ fn collect_feature_files(dir: &Path, out: &mut Vec<PathBuf>) {
     }
 }
 
+fn collect_doc_sources(dir: &Path, out: &mut Vec<PathBuf>) {
+    let mut entries: Vec<PathBuf> = fs::read_dir(dir)
+        .unwrap_or_else(|err| panic!("read_dir {}: {err}", dir.display()))
+        .map(|entry| entry.expect("directory entry").path())
+        .collect();
+    entries.sort();
+    for path in entries {
+        if path.is_dir() {
+            collect_doc_sources(&path, out);
+        } else if path.extension().and_then(|ext| ext.to_str()) == Some("rs") {
+            out.push(path);
+        }
+    }
+}
+
 #[test]
 fn every_feature_file_is_embedded_in_a_doc_chapter() {
     let mut features = Vec::new();
@@ -32,14 +47,19 @@ fn every_feature_file_is_embedded_in_a_doc_chapter() {
     );
 
     let mut doc_sources = String::new();
-    for source in [
-        "src/lib.rs",
-        "src/spec/mod.rs",
-        "src/spec/ch01_session_history.rs",
-        "src/spec/ch02_schema.rs",
-    ] {
+    doc_sources.push_str(
+        &fs::read_to_string("src/lib.rs").unwrap_or_else(|err| panic!("read src/lib.rs: {err}")),
+    );
+    let mut spec_sources = Vec::new();
+    collect_doc_sources(Path::new("src/spec"), &mut spec_sources);
+    assert!(
+        !spec_sources.is_empty(),
+        "no chapter modules found under src/spec/"
+    );
+    for source in spec_sources {
         doc_sources.push_str(
-            &fs::read_to_string(source).unwrap_or_else(|err| panic!("read {source}: {err}")),
+            &fs::read_to_string(&source)
+                .unwrap_or_else(|err| panic!("read {}: {err}", source.display())),
         );
         doc_sources.push('\n');
     }
@@ -53,7 +73,7 @@ fn every_feature_file_is_embedded_in_a_doc_chapter() {
         assert!(
             doc_sources.contains(relative.as_str()),
             "spec file features{relative} is not embedded in any rustdoc \
-             chapter; add it to the chapter that mirrors its spec layer"
+             chapter; add it to the chapter that mirrors its folder"
         );
     }
 }
