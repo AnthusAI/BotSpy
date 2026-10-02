@@ -366,7 +366,12 @@
 //! 4. `04_turn_grouping.feature` — `turn_id`/`parent_turn_id` with
 //!    turn-level timing and errors.
 //! 5. `05_compaction.feature` — compaction events with pre/post token
-//!    counts, summary messages, and compaction window chains.
+//!    counts, summary messages, and compaction window chains. Implemented:
+//!    [`CompactionEvent`](crate::schema::CompactionEvent) (with
+//!    `logical_parent_message_id` via
+//!    [`Message::id`](crate::schema::Message::id)),
+//!    [`CompactionWindow`](crate::schema::CompactionWindow), the message
+//!    compaction-summary flag, and residual context tokens.
 //! 6. `provenance.feature` (later scenarios) — native record id, record
 //!    type, ordinal sort key, and native parent pointer.
 //! 7. `07_tool_call_arguments.feature` — raw-string tool-call arguments,
@@ -418,7 +423,7 @@
     "### 04_turn_grouping.feature (pending)\n\n```gherkin\n",
     include_str!("../../features/01_structure/04_turn_grouping.feature"),
     "\n```\n\n",
-    "### 05_compaction.feature (pending)\n\n```gherkin\n",
+    "### 05_compaction.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/05_compaction.feature"),
     "\n```\n\n",
     "### 07_tool_call_arguments.feature (pending)\n\n```gherkin\n",

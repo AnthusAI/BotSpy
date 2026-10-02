@@ -2,8 +2,8 @@
 
 use crate::adapter::Adapter;
 use crate::schema::{
-    Agent, BattleLink, ForkPoint, Message, Peer, RateLimitState, SessionCost, SubagentInfo,
-    Timestamp, Turn, Usage,
+    Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, Message, Peer, RateLimitState,
+    SessionCost, SubagentInfo, Timestamp, Turn, Usage,
 };
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
@@ -47,6 +47,16 @@ pub struct Session {
     /// Peer cloud agents with no local transcript.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub peers: Vec<Peer>,
+    /// Compaction boundaries recorded by the agent.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub compactions: Vec<CompactionEvent>,
+    /// Compaction window chain, keyed by window id (Codex).
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub compaction_windows: BTreeMap<String, CompactionWindow>,
+    /// Legacy compaction hint (Cursor contextResiduals): tokens the agent
+    /// reported still in context.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub residual_context_tokens: Option<u64>,
 }
 
 /// A lightweight view of a session for listing across agents.

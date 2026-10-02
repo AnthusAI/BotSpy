@@ -1,5 +1,6 @@
 //! Shared world and helpers for the behavior specifications.
 
+pub mod compaction_steps;
 pub mod graph_steps;
 pub mod schema_steps;
 pub mod session_steps;
