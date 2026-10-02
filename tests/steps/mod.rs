@@ -154,6 +154,20 @@ pub struct BotSpyWorld {
     pub cli_home: Option<std::path::PathBuf>,
     /// The outcome of the most recent CLI run.
     pub cli_run: Option<botspy::cli::RunOutcome>,
+    /// The local store under test (store steps).
+    pub local_store: Option<botspy::store::Store>,
+    /// A second reader connection open on the same store file.
+    pub local_reader: Option<botspy::store::Store>,
+    /// The reader's mid-iteration cursor.
+    pub local_reader_iter: Option<botspy::store::SessionIter>,
+    /// Whether the reader's iteration ran to completion.
+    pub local_reader_finished: bool,
+    /// Session summaries from the most recent local-store iteration.
+    pub local_sessions: Vec<botspy::SessionSummary>,
+    /// The error from the most recent store-open attempt, when it failed.
+    pub local_open_error: Option<botspy::store::StoreError>,
+    /// The BOTSPY_HOME value before the store steps overrode it.
+    pub saved_botspy_home: Option<std::ffi::OsString>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

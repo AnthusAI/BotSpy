@@ -1,4 +1,3 @@
-@wip
 Feature: The local store
   The unified history is backed by one local store: a single SQLite file
   the caller can place wherever they like. Opening it is explicit,
