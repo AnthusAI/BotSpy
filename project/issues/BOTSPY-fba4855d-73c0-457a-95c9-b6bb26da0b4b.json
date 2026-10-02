@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is implementing the schema, adding BDD steps, and refining metadata, roles, and validation.",
-  "right_now_updated_at": "2026-10-02T17:40:24.685464Z",
+  "right_now_summary": "The team is implementing the Rust schema, adding metadata and tests, and refining BDD specifications.",
+  "right_now_updated_at": "2026-10-02T17:41:31.681105Z",
   "custom": {}
 }

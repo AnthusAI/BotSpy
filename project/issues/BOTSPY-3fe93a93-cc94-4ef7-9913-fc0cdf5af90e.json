@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e",
+  "title": "Write Gherkin spec: R10 role mapping conventions",
+  "description": "",
+  "type": "sub-task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T17:41:18.010451Z",
+  "updated_at": "2026-10-02T17:41:18.010475Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "schema-specs"
+  },
+  "right_now_summary": "The team needs a Gherkin spec for R10 role mapping conventions.",
+  "right_now_updated_at": "2026-10-02T17:41:19.555481Z",
+  "custom": {}
+}
