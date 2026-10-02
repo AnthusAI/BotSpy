@@ -278,54 +278,102 @@ fn open_default_store(world: &mut BotSpyWorld) {
 // BOTSPY-a927fc): fixture adapters → store → ingest → iterate.
 
 #[given(regex = r#"^a store at "([^"]+)"$"#)]
-fn a_store_at(_world: &mut BotSpyWorld, _path: String) {
-    todo!("BOTSPY-2c0dc3: open a fresh store at the path")
+fn a_store_at(world: &mut BotSpyWorld, path: String) {
+    remove_store_files(&path);
+    let file = store_path(&path);
+    world.local_store = Some(Store::open(&file).expect("store opens"));
 }
 
 #[when(regex = r#"^I ingest the registered adapters into the store$"#)]
-fn ingest_registered_adapters(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: drive the registered adapters into the store")
+fn ingest_registered_adapters(world: &mut BotSpyWorld) {
+    let store = world.local_store.as_ref().expect("a store");
+    let adapters: Vec<std::sync::Arc<dyn Adapter>> = world
+        .adapters
+        .values()
+        .map(|adapter| {
+            let owned: std::sync::Arc<dyn Adapter> = adapter.clone();
+            owned
+        })
+        .collect();
+    world.ingest_report = Some(store.ingest(&adapters).expect("ingest succeeds"));
 }
 
 #[then(regex = r#"^the ingest reports ([0-9]+) new sessions?$"#)]
-fn ingest_reports_new_sessions(_world: &mut BotSpyWorld, _count: usize) {
-    todo!("BOTSPY-2c0dc3: the ingest report's new-session count")
+fn ingest_reports_new_sessions(world: &mut BotSpyWorld, count: usize) {
+    let report = world.ingest_report.expect("an ingest report");
+    assert_eq!(report.new, count, "ingest report new-session count");
 }
 
 #[given(regex = r#"^fixture session "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)"$"#)]
 fn fixture_session_two_adapters(
-    _world: &mut BotSpyWorld,
-    _id1: String,
-    _agent1: String,
-    _id2: String,
-    _agent2: String,
+    world: &mut BotSpyWorld,
+    id1: String,
+    agent1: String,
+    id2: String,
+    agent2: String,
 ) {
-    todo!("BOTSPY-2c0dc3: the same session id reported by two adapters")
+    adapter_for(world, &agent1).add_session(fixture_session(
+        &id1,
+        parse_agent(&agent1),
+        "demo",
+        "2026-10-01T09:00:00Z",
+    ));
+    adapter_for(world, &agent2).add_session(fixture_session(
+        &id2,
+        parse_agent(&agent2),
+        "demo",
+        "2026-10-01T09:00:00Z",
+    ));
 }
 
 #[when(regex = r#"^I open session "([^"]+)" from the store$"#)]
-fn open_session_from_store(_world: &mut BotSpyWorld, _id: String) {
-    todo!("BOTSPY-2c0dc3: materialize one session out of the store")
+fn open_session_from_store(world: &mut BotSpyWorld, id: String) {
+    let store = world.local_store.as_ref().expect("a store");
+    world.local_opened = Some(store.open_session(&id));
 }
 
 #[then(regex = r#"^it equals the session the adapter returns$"#)]
-fn opened_equals_adapter_session(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: lossless round-trip, PartialEq")
+fn opened_equals_adapter_session(world: &mut BotSpyWorld) {
+    let opened = world
+        .local_opened
+        .as_ref()
+        .expect("an opened session")
+        .as_ref()
+        .expect("opening succeeds");
+    let id = world.current_session.as_deref().expect("a current session");
+    let expected = crate::steps::find_session(world, id).expect("fixture session");
+    assert_eq!(opened, &expected, "lossless round-trip");
+}
+
+fn adapters_sessions_digest(world: &BotSpyWorld) -> String {
+    use sha2::{Digest, Sha256};
+    let mut hasher = Sha256::new();
+    for adapter in world.adapters.values() {
+        for summary in adapter.discover() {
+            if let Some(session) = adapter.open(&summary.id) {
+                let json = serde_json::to_string(&session).expect("session serializes");
+                hasher.update(json.as_bytes());
+            }
+        }
+    }
+    format!("{:x}", hasher.finalize())
 }
 
 #[when(regex = r#"^I snapshot the adapters' sessions digest$"#)]
-fn snapshot_sessions_digest(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: hash the adapters' sessions before/after")
+fn snapshot_sessions_digest(world: &mut BotSpyWorld) {
+    world.local_digest_before = Some(adapters_sessions_digest(world));
 }
 
 #[when(regex = r#"^I snapshot the adapters' sessions digest again$"#)]
-fn snapshot_sessions_digest_again(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: hash the adapters' sessions after the ingest")
+fn snapshot_sessions_digest_again(world: &mut BotSpyWorld) {
+    world.local_digest_after = Some(adapters_sessions_digest(world));
 }
 
 #[then(regex = r#"^the sources are unchanged by the ingest$"#)]
-fn sources_unchanged_by_ingest(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: the digests match")
+fn sources_unchanged_by_ingest(world: &mut BotSpyWorld) {
+    let before = world.local_digest_before.as_ref().expect("digest before");
+    let after = world.local_digest_after.as_ref().expect("digest after");
+    assert_eq!(before, after, "sources must stay read-only");
 }
 
 // 01_iteration.feature — cross-source iteration through the store.

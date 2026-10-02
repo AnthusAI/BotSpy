@@ -49,6 +49,12 @@ CREATE INDEX idx_sessions_last_activity ON sessions(last_activity_at);
 CREATE INDEX idx_sessions_agent ON sessions(agent);
 CREATE INDEX idx_sessions_project ON sessions(project_id);
 CREATE INDEX idx_parts_kind ON parts(kind);
+CREATE VIRTUAL TABLE message_fts USING fts5(
+    text,
+    session_id UNINDEXED,
+    message_ordinal UNINDEXED,
+    part_ordinal UNINDEXED
+);
 "#;
 
 /// Create the `meta` table (key/value settings) when it does not exist.

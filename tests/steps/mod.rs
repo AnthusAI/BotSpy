@@ -166,6 +166,14 @@ pub struct BotSpyWorld {
     pub local_sessions: Vec<botspy::SessionSummary>,
     /// The error from the most recent store-open attempt, when it failed.
     pub local_open_error: Option<botspy::store::StoreError>,
+    /// The session materialized out of the store by the most recent open.
+    pub local_opened: Option<Result<botspy::Session, botspy::store::StoreError>>,
+    /// The report of the most recent ingest or refresh pass.
+    pub ingest_report: Option<botspy::IngestReport>,
+    /// Digest of the fixture adapters' sessions before an ingest pass.
+    pub local_digest_before: Option<String>,
+    /// Digest of the fixture adapters' sessions after an ingest pass.
+    pub local_digest_after: Option<String>,
     /// The BOTSPY_HOME value before the store steps overrode it.
     pub saved_botspy_home: Option<std::ffi::OsString>,
 }

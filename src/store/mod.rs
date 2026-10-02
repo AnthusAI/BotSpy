@@ -7,6 +7,7 @@
 //! (registered as an auto extension before any connection opens) for
 //! similarity search, and the bundled SQLite's FTS5 for text search.
 
+pub mod ingest;
 pub mod migrations;
 
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
@@ -40,6 +41,8 @@ pub enum StoreError {
     SchemaVersion { found: i64, expected: i64 },
     /// No BOTSPY_HOME and no $HOME to derive the default store path from.
     NoHomeDir,
+    /// No session with the given id is stored.
+    UnknownSession { id: String },
 }
 
 impl fmt::Display for StoreError {
@@ -63,6 +66,7 @@ impl fmt::Display for StoreError {
             StoreError::NoHomeDir => {
                 write!(f, "no home directory to derive the default store path from")
             }
+            StoreError::UnknownSession { id } => write!(f, "unknown session id: {id}"),
         }
     }
 }
@@ -302,6 +306,11 @@ fn upsert_session(tx: &Connection, session: &Session) -> Result<(), StoreError> 
         source: rusqlite::Error::ToSqlConversionFailure(Box::new(err)),
     })?;
     let content_hash = session_content_hash(session)?;
+    tx.execute(
+        "DELETE FROM message_fts WHERE session_id = ?1",
+        params![session.id],
+    )
+    .map_err(sqlite_error("replace session"))?;
     tx.execute("DELETE FROM sessions WHERE id = ?1", params![session.id])
         .map_err(sqlite_error("replace session"))?;
     tx.execute(
@@ -350,6 +359,7 @@ fn insert_message(
     )
     .map_err(sqlite_error("insert message"))?;
     for (part_ordinal, part) in message.parts.iter().enumerate() {
+        let text = part_text(part);
         tx.execute(
             "INSERT INTO parts (session_id, message_ordinal, part_ordinal, kind, text) \
              VALUES (?1, ?2, ?3, ?4, ?5)",
@@ -358,10 +368,18 @@ fn insert_message(
                 ordinal,
                 part_ordinal as i64,
                 part.kind_name().unwrap_or("extra"),
-                part_text(part),
+                text,
             ],
         )
         .map_err(sqlite_error("insert part"))?;
+        if let Some(text) = text {
+            tx.execute(
+                "INSERT INTO message_fts (text, session_id, message_ordinal, part_ordinal) \
+                 VALUES (?1, ?2, ?3, ?4)",
+                params![text, session_id, ordinal, part_ordinal as i64],
+            )
+            .map_err(sqlite_error("insert fts row"))?;
+        }
     }
     Ok(())
 }

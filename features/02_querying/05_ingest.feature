@@ -1,4 +1,3 @@
-@wip
 Feature: Ingesting the adapters into the store
   Ingestion mines every registered adapter into the store: discovery
   first, then opening each session and writing its normalized rows in one
@@ -14,14 +13,16 @@ Feature: Ingesting the adapters into the store
     And a store at "ingest/store.db"
     When I ingest the registered adapters into the store
     Then the ingest reports 2 new sessions
-    And the store iteration yields 2 sessions
+    When I iterate the store's sessions
+    Then the store iteration yields 2 sessions
 
   Scenario: A session reported by two adapters is stored once
     Given fixture session "g3" from "claude_code" and "g3" from "cursor"
     And a store at "dedup/store.db"
     When I ingest the registered adapters into the store
     Then the ingest reports 1 new session
-    And the store iteration yields sessions "g3"
+    When I iterate the store's sessions
+    Then the store iteration yields sessions "g3"
 
   Scenario: An ingested session round-trips losslessly
     Given a fixture session "g4" from agent "claude_code" in project "demo"
@@ -43,4 +44,5 @@ Feature: Ingesting the adapters into the store
     Given a store at "empty/store.db"
     When I ingest the registered adapters into the store
     Then the ingest reports 0 new sessions
-    And the store iteration yields 0 sessions
+    When I iterate the store's sessions
+    Then the store iteration yields 0 sessions
