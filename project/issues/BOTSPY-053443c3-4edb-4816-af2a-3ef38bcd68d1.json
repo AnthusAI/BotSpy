@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: Antigravity adapter behaviors",
   "description": "Author features/adapters/antigravity/*.feature: discovery over both roots, protobuf payload decoding, summaries DB reads, extraction of all part kinds, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "b72db5bd-5ba2-49af-bd3d-af73bda4b141",
+      "author": "home",
+      "text": "Spec authored at features/03_importers/antigravity/adapter.feature (7 @wip scenarios): summaries-index discovery, transcript.jsonl as preferred source, record-type mapping (USER_INPUT/PLANNER_RESPONSE/CHECKPOINT/ERROR_MESSAGE), step_index ordering, SQLite payload DB supplying tool-call linkage, hot-WAL snapshot reading, malformed-step skip counting. Embedded in src/spec/ch03_importers/antigravity.rs. All gates green.",
+      "created_at": "2026-10-02T19:42:15.373352Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:47.206866Z",
-  "updated_at": "2026-10-02T16:19:47.206913Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:42:18.580298Z",
+  "closed_at": "2026-10-02T19:42:18.580232Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Gherkin spec for Antigravity adapter behaviors still needs to be written and reviewed.",
-  "right_now_updated_at": "2026-10-02T16:19:48.710258Z",
-  "custom": {}
+  "right_now_summary": "The Antigravity adapter specification is authored, embedded, and all checks pass.",
+  "right_now_updated_at": "2026-10-02T19:42:19.559883Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

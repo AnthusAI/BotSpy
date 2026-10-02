@@ -3,23 +3,34 @@
   "title": "Add cross-platform CI matrix running library tests per target",
   "description": "Native runners: ubuntu x86_64, ubuntu-24.04-arm, macos-14 (aarch64), macos-13 (x86_64), windows-latest (msvc); musl x86_64 and aarch64 via cross for AWS. Each target builds the library and runs unit tests + cargo test --test bdd; rustfmt and clippy -D warnings gate every push/PR. Done when: all targets are green.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "7803c160-0846-499b-b161-1a58b63060a7",
+      "author": "home",
+      "text": "Done: the CI workflow (.github/workflows/ci.yml) already runs the library tests on a five-target matrix (linux x86_64 + aarch64, macOS aarch64 + x86_64, windows-msvc) plus a musl cross matrix, per target, fail-fast disabled. CI green on main.",
+      "created_at": "2026-10-02T19:39:28.769955Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:40:41.669682Z",
-  "updated_at": "2026-10-02T16:40:41.669723Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:39:33.401986Z",
+  "closed_at": "2026-10-02T19:39:33.401925Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The cross-platform CI matrix still needs setup and green tests on every target.",
-  "right_now_updated_at": "2026-10-02T16:40:43.464962Z",
-  "custom": {}
+  "right_now_summary": "The CI workflow tests the library across all target platforms and is green on main.",
+  "right_now_updated_at": "2026-10-02T19:39:34.839745Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

@@ -32,7 +32,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building fixtures, writing scenarios, and normalizing Grok Bot transcript parts.",
-  "right_now_updated_at": "2026-10-02T17:59:14.812203Z",
+  "right_now_summary": "The team is building and testing the Grok Bot adapter, including discovery, extraction, normalization, and diagnostics.",
+  "right_now_updated_at": "2026-10-02T19:42:13.677585Z",
   "custom": {}
 }

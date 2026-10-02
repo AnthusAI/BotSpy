@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: Claude Code adapter behaviors",
   "description": "Author features/adapters/claude_code/*.feature: discovery over the projects layout, extraction of all part kinds with timestamps and provenance, skip counting, doctor reporting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "d7f5a7c5-2451-4ec4-ae40-a003fa4203bd",
+      "author": "home",
+      "text": "Spec authored at features/03_importers/claude_code/adapter.feature (7 @wip scenarios): per-project discovery, sub-agent sidechains linking to parents, append-follow by byte offset, uuid/parentUuid as provenance, auxiliary records parking in session metadata, and partial-trailing-line retry with malformed skip counting. Embedded in src/spec/ch03_importers/claude_code.rs. All gates green.",
+      "created_at": "2026-10-02T19:41:39.891750Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:30.461263Z",
-  "updated_at": "2026-10-02T16:19:30.461286Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:41:44.479513Z",
+  "closed_at": "2026-10-02T19:41:44.479484Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Claude Code adapter needs executable Gherkin scenarios for discovery, extraction, skip counting, and doctor reports.",
-  "right_now_updated_at": "2026-10-02T16:19:32.342593Z",
-  "custom": {}
+  "right_now_summary": "The Claude Code adapter spec is authored, embedded, and all checks pass.",
+  "right_now_updated_at": "2026-10-02T19:41:46.053008Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

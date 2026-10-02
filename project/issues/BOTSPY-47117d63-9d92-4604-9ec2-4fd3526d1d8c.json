@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Release automation is set up; cross-platform CI and tests still need to be added and pass on all targets.",
-  "right_now_updated_at": "2026-10-02T16:41:45.578993Z",
+  "right_now_summary": "Main now handles library releases, and CI passes tests across all target platforms.",
+  "right_now_updated_at": "2026-10-02T19:39:35.755913Z",
   "custom": {}
 }
