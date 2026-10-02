@@ -2,7 +2,7 @@
 
 BotSpy pops open the conversation history of any coding agent: one adapter per agent (Claude Code, Cursor, Codex, Grok Bot, Antigravity, more later), one standard normalized schema, and one unified agent-session history.
 
-The product is the `botspy` Rust **library crate** — library only for now: no binary, no executable, no server, no C API/FFI, no CLI. Metrics — like the coding-session thanks-vs-F-bombs meter and local sentiment analysis — are example consumers of the library (see the "Example use cases" epic on the Kanbus board), never part of the library itself.
+The product is the `botspy` Rust **library crate** — library only for now: no binary, no executable, no server, no C API/FFI, no CLI. Metrics live in `examples/` as consumers of the public API, never in the library: a coding-session thanks-vs-F-bombs meter (`examples/meter`), local sentiment analysis with a VADER-style lexicon (`examples/sentiment`), and a stub showing where further session metrics would go (`examples/metrics_stub`). They import only the public API and the standard library, and never add a dependency to the core.
 
 ## How it works
 
@@ -30,7 +30,7 @@ flowchart TB
     SCHEMA["Unified schema (session::Session)<br/>sessions, turns, messages, parts, raw blobs, provenance"]
     STORE["SessionStore: in-memory, FixtureAdapter-backed today"]
     QSTORE["SQLite-backed unified store (planned: Local Store Initiative)"]
-    SCAN["Scanning and example consumers (planned)"]
+    SCAN["Store-backed scanning tools (planned)"]
     QUERY["Query API, ch02_querying (planned)"]
     SEM["Semantic search: sqlite-vec + all-MiniLM-L6-v2 (planned)"]
 
