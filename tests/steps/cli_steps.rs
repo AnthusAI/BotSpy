@@ -452,6 +452,47 @@ fn json_sessions_ordered(world: &mut BotSpyWorld, expected: String) {
     }
 }
 
+#[then(expr = "the sessions table aligns the LAST ACTIVITY column")]
+fn sessions_table_aligned(world: &mut BotSpyWorld) {
+    let stdout = &run(world).stdout;
+    let mut lines: Vec<&str> = stdout
+        .lines()
+        .filter(|line| !line.trim().is_empty())
+        .collect();
+    assert!(
+        lines.len() >= 2,
+        "table lacks header and footer: {stdout:?}"
+    );
+    let footer = lines.pop().expect("footer line");
+    assert!(
+        footer.contains("session"),
+        "last line is not the count footer: {footer:?}"
+    );
+    let header = lines[0];
+    let start = header
+        .find("LAST ACTIVITY")
+        .unwrap_or_else(|| panic!("no LAST ACTIVITY header: {header:?}"));
+    for line in &lines[1..] {
+        let chars: Vec<char> = line.chars().collect();
+        assert!(
+            chars.len() > start,
+            "row ends before the activity column ({start}): {line:?}"
+        );
+        assert!(
+            chars[start - 1] == ' ' && chars[start - 2] == ' ',
+            "activity column gutter missing at {start}: {line:?}"
+        );
+        assert!(
+            chars[start] != ' ',
+            "activity column does not start at {start}: {line:?}"
+        );
+    }
+    assert!(
+        lines.len() > 1,
+        "no table rows under the header: {stdout:?}"
+    );
+}
+
 #[then(regex = r#"^every JSON entry has a non-empty "([^"]+)"$"#)]
 fn every_entry_non_empty(world: &mut BotSpyWorld, key: String) {
     for entry in json_entries(world) {
