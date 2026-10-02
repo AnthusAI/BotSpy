@@ -372,6 +372,45 @@ fn json_entry_number(world: &mut BotSpyWorld, name: String, key: String, expecte
     assert_eq!(actual, expected, "unexpected {key} of {name}");
 }
 
+fn session_entry<'a>(entries: &'a [Value], id_prefix: &str) -> &'a Value {
+    entries
+        .iter()
+        .find(|entry| {
+            entry
+                .get("id")
+                .and_then(Value::as_str)
+                .is_some_and(|id| id.starts_with(id_prefix))
+        })
+        .unwrap_or_else(|| panic!("no JSON session with id prefix {id_prefix}: {entries:?}"))
+}
+
+#[then(regex = r#"^the JSON session "([^"]+)" has "([^"]+)" "(.*)"$"#)]
+fn json_session_string(world: &mut BotSpyWorld, id: String, key: String, expected: String) {
+    let entries = json_entries(world);
+    let entry = session_entry(&entries, &id);
+    let actual = entry
+        .get(&key)
+        .and_then(Value::as_str)
+        .unwrap_or_else(|| panic!("missing or non-string {key} in session {id}: {entry:?}"));
+    assert_eq!(
+        actual,
+        expand_captured(&expected),
+        "unexpected {key} of session {id}"
+    );
+}
+
+#[then(regex = r#"^the JSON session "([^"]+)" has "([^"]+)" (-?[0-9]+)$"#)]
+fn json_session_number(world: &mut BotSpyWorld, id: String, key: String, expected: String) {
+    let entries = json_entries(world);
+    let entry = session_entry(&entries, &id);
+    let expected: i64 = expected.parse().expect("numeric expectation");
+    let actual = entry
+        .get(&key)
+        .and_then(Value::as_i64)
+        .unwrap_or_else(|| panic!("missing or non-numeric {key} in session {id}: {entry:?}"));
+    assert_eq!(actual, expected, "unexpected {key} of session {id}");
+}
+
 #[then(regex = r#"^every JSON entry has a non-empty "([^"]+)"$"#)]
 fn every_entry_non_empty(world: &mut BotSpyWorld, key: String) {
     for entry in json_entries(world) {

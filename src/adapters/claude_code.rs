@@ -76,9 +76,16 @@ impl ClaudeCodeSource {
         &self.root
     }
 
-    /// Discover sessions under the root. Sidechain files under a project
+    /// Discover sessions under the root. Each listed summary carries the
+    /// activity its transcript records: message count, first/last activity
+    /// timestamps, and recorded title, consistent with `extract`/`open`.
+    /// Sidechain files under a project
     /// dir's `subagents/` folder are skipped and counted, not listed.
     pub fn discover(&self) -> (Vec<SessionSummary>, ClaudeDiscovery) {
+        // A throwaway scanner keeps this discovery side-effect free:
+        // extract() records resume offsets, and discovery only summarizes
+        // the transcripts — it must not consume them.
+        let scanner = ClaudeCodeSource::new(self.root.clone());
         let mut summaries = Vec::new();
         let mut stats = ClaudeDiscovery::default();
         for project in sorted_dirs(&self.root) {
@@ -90,11 +97,16 @@ impl ClaudeCodeSource {
                         continue;
                     }
                     if path.extension().and_then(|ext| ext.to_str()) == Some("jsonl") {
+                        let session_id = file_stem(&path);
+                        let summary = scanner
+                            .extract(&session_id)
+                            .map(|extraction| SessionSummary::from(&extraction.session))
+                            .unwrap_or_default();
                         summaries.push(SessionSummary {
-                            id: file_stem(&path),
+                            id: session_id,
                             agent: Agent::ClaudeCode,
                             project_id: file_stem(&project),
-                            ..SessionSummary::default()
+                            ..summary
                         });
                         stats.transcripts += 1;
                         saw_session = true;
@@ -549,6 +561,35 @@ mod tests {
         assert_eq!(stats.transcripts, 1);
         assert_eq!(stats.skipped_subagents, 1);
         assert_eq!(stats.skipped_files, 1);
+    }
+
+    #[test]
+    fn discovery_summaries_carry_activity_from_the_transcripts() {
+        use crate::adapter::Adapter;
+        let root = std::env::temp_dir().join(format!("botspy-cc3-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&root);
+        write_transcript(
+            &root,
+            "proj-a",
+            "s1.jsonl",
+            &[
+                user_record("u1", "", "2026-10-01T09:00:00Z", "hello"),
+                assistant_record("u2", "u1", "2026-10-01T09:00:05Z"),
+                r#"{"type":"custom-title","title":"Synth session"}"#.to_string(),
+            ],
+        );
+        let source = ClaudeCodeSource::new(&root);
+        let (summaries, _) = source.discover();
+        assert_eq!(summaries.len(), 1);
+        let summary = &summaries[0];
+        assert_eq!(summary.message_count, 2);
+        assert_eq!(summary.started_at, "2026-10-01T09:00:00Z");
+        assert_eq!(summary.last_activity_at, "2026-10-01T09:00:05Z");
+        assert_eq!(summary.metadata.title.as_deref(), Some("Synth session"));
+        // Discovery must not consume the transcript: opening the session
+        // still yields its full history.
+        let session = source.open("s1").expect("session opens after discovery");
+        assert_eq!(session.messages.len(), 2);
     }
 
     #[test]

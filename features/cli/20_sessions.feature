@@ -55,6 +55,21 @@ Feature: botspy sessions
     And stdout does not contain "00000000-0000-4000-8000-000000000001"
     And stdout contains "00000000"
 
+  Scenario: Summaries carry real activity from the transcripts
+    When I run "botspy sessions --source claude_code -o json" against the fixture home
+    Then the exit code is 0
+    And the JSON session "00000000-0000-4000-8000-000000000001" has "message_count" 4
+    And the JSON session "00000000-0000-4000-8000-000000000001" has "started_at" "2026-10-01T09:00:00Z"
+    And the JSON session "00000000-0000-4000-8000-000000000001" has "last_activity_at" "2026-10-01T09:00:15Z"
+    And the JSON session "solo-abc123" has "message_count" 2
+    And the JSON session "solo-abc123" has "started_at" "2026-09-15T12:00:00Z"
+    And the JSON session "solo-abc123" has "last_activity_at" "2026-09-15T12:05:00Z"
+
+  Scenario: Human output shows the recorded session title
+    When I run "botspy sessions --source claude_code" against the fixture home
+    Then the exit code is 0
+    And stdout contains "Synthetic parser session"
+
   Scenario: An unknown source filter is rejected
     When I run "botspy sessions --source notepad"
     Then the exit code is 1
