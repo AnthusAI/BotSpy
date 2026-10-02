@@ -9,6 +9,7 @@
 
 pub mod ingest;
 pub mod migrations;
+pub mod query;
 
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
 use crate::session::{Session, SessionSummary};
@@ -197,7 +198,7 @@ impl Store {
 
     /// A reader connection of its own: iteration and concurrent queries
     /// run on a separate connection so a reader never blocks the writer.
-    fn reader_conn(&self) -> Result<Connection, StoreError> {
+    pub(crate) fn reader_conn(&self) -> Result<Connection, StoreError> {
         let conn = Connection::open(&self.path).map_err(|err| open_error(&self.path, err))?;
         conn.busy_timeout(BUSY_TIMEOUT)
             .map_err(sqlite_error("reader connection"))?;
@@ -210,6 +211,15 @@ impl Store {
     /// broken by id). The iterator is a cursor: it reads rows only as the
     /// caller consumes them.
     pub fn sessions(&self) -> SessionIter {
+        self.sessions_counting(None)
+    }
+
+    /// The session cursor with shared observability counters (the query
+    /// surface counts rows fetched for spec observability).
+    pub(crate) fn sessions_counting(
+        &self,
+        counters: Option<std::rc::Rc<std::cell::Cell<query::QueryCounters>>>,
+    ) -> SessionIter {
         let conn = self
             .reader_conn()
             .expect("reader connection for session iteration");
@@ -217,7 +227,16 @@ impl Store {
             conn,
             cursor: None,
             done: false,
+            counters,
         }
+    }
+
+    /// The query surface: one read interface for the engine, ingest,
+    /// refresh, and search to build on, with its own observability
+    /// counters. Iteration and queries run on reader connections, so a
+    /// reader never blocks the writer.
+    pub fn query(&self) -> query::Query<'_> {
+        query::Query::new(self)
     }
 
     /// Write sessions into the store, replacing any earlier rows for the
@@ -399,6 +418,7 @@ pub struct SessionIter {
     conn: Connection,
     cursor: Option<(String, String)>,
     done: bool,
+    counters: Option<std::rc::Rc<std::cell::Cell<query::QueryCounters>>>,
 }
 
 impl fmt::Debug for SessionIter {
@@ -443,6 +463,11 @@ impl Iterator for SessionIter {
         match row {
             Ok(Some(summary)) => {
                 self.cursor = Some((summary.last_activity_at.clone(), summary.id.clone()));
+                if let Some(counters) = &self.counters {
+                    let mut next = counters.get();
+                    next.rows_fetched += 1;
+                    counters.set(next);
+                }
                 Some(summary)
             }
             Ok(None) => {

@@ -1,4 +1,3 @@
-@wip
 Feature: Query iteration over the unified history
   One query interface fronts the whole history. Callers iterate sessions,
   their messages, and those messages' parts in order — without knowing or

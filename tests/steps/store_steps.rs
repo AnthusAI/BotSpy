@@ -376,70 +376,304 @@ fn sources_unchanged_by_ingest(world: &mut BotSpyWorld) {
     assert_eq!(before, after, "sources must stay read-only");
 }
 
-// 01_iteration.feature — cross-source iteration through the store.
+// 01_iteration.feature — cross-source iteration through the store, plus
+// 03_laziness.feature — streaming discipline, proven with the query
+// counters (the importer protocol's peak_buffered/SkipCounter precedent).
+
+/// A store holding every fixture session so far, opened on first use: the
+/// iteration specs describe behavior, the harness hides the plumbing. The
+/// path is derived from the registered adapters so parallel scenarios with
+/// different fixtures never collide.
+fn ensure_store_ingested(world: &mut BotSpyWorld) {
+    if world.local_store.is_some() {
+        return;
+    }
+    let key: String = world.adapters.keys().cloned().collect::<Vec<_>>().join("-");
+    let path = format!("iteration/{key}.db");
+    remove_store_files(&path);
+    let store = Store::open(store_path(&path)).expect("store opens");
+    store
+        .ingest_sessions(all_fixture_sessions(world))
+        .expect("fixture sessions ingest");
+    world.local_store = Some(store);
+}
 
 #[given(
     regex = r#"^fixture sessions "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)"$"#
 )]
 #[allow(clippy::too_many_arguments)]
 fn fixture_sessions_three_agents(
-    _world: &mut BotSpyWorld,
-    _id1: String,
-    _agent1: String,
-    _id2: String,
-    _agent2: String,
-    _id3: String,
-    _agent3: String,
+    world: &mut BotSpyWorld,
+    id1: String,
+    agent1: String,
+    id2: String,
+    agent2: String,
+    id3: String,
+    agent3: String,
 ) {
-    todo!("BOTSPY-2c0dc3: three fixture sessions from three agents")
+    for (id, agent) in [(&id1, &agent1), (&id2, &agent2), (&id3, &agent3)] {
+        let adapter = adapter_for(world, agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(agent),
+            "demo",
+            "2026-10-01T09:00:00Z",
+        ));
+    }
 }
 
 #[when(regex = r#"^I iterate the sessions$"#)]
-fn iterate_the_sessions(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-2c0dc3: iterate the store's sessions")
+fn iterate_the_sessions(world: &mut BotSpyWorld) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    world.local_sessions = query.sessions().collect();
+    world.local_query_counters = Some(query.counters());
 }
 
 #[then(regex = r#"^the iteration yields ([0-9]+) sessions?$"#)]
-fn iteration_yields_count(_world: &mut BotSpyWorld, _count: usize) {
-    todo!("BOTSPY-2c0dc3: the session iteration count")
+fn iteration_yields_count(world: &mut BotSpyWorld, count: usize) {
+    assert_eq!(
+        world.local_sessions.len(),
+        count,
+        "the session iteration yielded the wrong number of sessions"
+    );
 }
 
 #[then(regex = r#"^the iteration yields sessions (.+)$"#)]
-fn iteration_yields_ids(_world: &mut BotSpyWorld, _ids: String) {
-    todo!("BOTSPY-2c0dc3: the session iteration ids in order")
+fn iteration_yields_ids(world: &mut BotSpyWorld, ids: String) {
+    let expected = quoted_list(&ids);
+    let actual: Vec<String> = world
+        .local_sessions
+        .iter()
+        .map(|summary| summary.id.clone())
+        .collect();
+    assert_eq!(actual, expected, "the session iteration is out of order");
 }
 
 #[given(regex = r#"^the session has messages "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
-fn session_has_messages(_world: &mut BotSpyWorld, _text1: String, _text2: String, _text3: String) {
-    todo!("BOTSPY-2c0dc3: three text messages on the current fixture session")
+fn session_has_messages(world: &mut BotSpyWorld, text1: String, text2: String, text3: String) {
+    let mut session = crate::steps::current_session(world);
+    for text in [text1, text2, text3] {
+        session.messages.push(Message {
+            role: Role::User,
+            parts: vec![Part::Known(KnownPart::Text { text, extra: None })],
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
+            ..Message::default()
+        });
+    }
+    crate::steps::save_session(world, session);
 }
 
 #[when(regex = r#"^I iterate the messages of session "([^"]+)"$"#)]
-fn iterate_messages_of_session(_world: &mut BotSpyWorld, _id: String) {
-    todo!("BOTSPY-2c0dc3: stream the session's messages from the store")
+fn iterate_messages_of_session(world: &mut BotSpyWorld, id: String) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    world.local_messages = query.messages(&id).collect();
+    world.local_query_counters = Some(query.counters());
+}
+
+fn first_text(message: &Message) -> String {
+    message
+        .parts
+        .iter()
+        .find_map(|part| match part {
+            Part::Known(KnownPart::Text { text, .. }) => Some(text.clone()),
+            _ => None,
+        })
+        .expect("the message has a text part")
 }
 
 #[then(regex = r#"^the iteration yields the texts (.+) in that order$"#)]
-fn iteration_yields_texts(_world: &mut BotSpyWorld, _texts: String) {
-    todo!("BOTSPY-2c0dc3: message texts in order")
+fn iteration_yields_texts(world: &mut BotSpyWorld, texts: String) {
+    let expected = quoted_list(&texts);
+    let actual: Vec<String> = world.local_messages.iter().map(first_text).collect();
+    assert_eq!(actual, expected, "the message iteration is out of order");
 }
 
 #[given(regex = r#"^the session has a message with parts "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
 fn session_has_message_with_parts(
-    _world: &mut BotSpyWorld,
-    _kind1: String,
-    _kind2: String,
-    _kind3: String,
+    world: &mut BotSpyWorld,
+    kind1: String,
+    kind2: String,
+    kind3: String,
 ) {
-    todo!("BOTSPY-2c0dc3: one message with the given part kinds")
+    let part = |kind: &str| {
+        Part::Known(match kind {
+            "text" => KnownPart::Text {
+                text: "a text part".to_string(),
+                extra: None,
+            },
+            "thinking" => KnownPart::Thinking {
+                text: Some("a thinking part".to_string()),
+                signature: None,
+                encrypted: None,
+                extra: None,
+            },
+            "tool_call" => KnownPart::ToolCall {
+                id: "call_1".to_string(),
+                name: "read_file".to_string(),
+                arguments: None,
+                status: None,
+                extra: None,
+            },
+            other => panic!("unsupported part kind in feature: {other}"),
+        })
+    };
+    let mut session = crate::steps::current_session(world);
+    session.messages.push(Message {
+        role: Role::Assistant,
+        parts: vec![part(&kind1), part(&kind2), part(&kind3)],
+        timestamp: Some("2026-10-01T09:00:00Z".to_string()),
+        ..Message::default()
+    });
+    crate::steps::save_session(world, session);
 }
 
 #[when(regex = r#"^I iterate the parts of the last message of session "([^"]+)"$"#)]
-fn iterate_parts_of_last_message(_world: &mut BotSpyWorld, _id: String) {
-    todo!("BOTSPY-2c0dc3: stream the last message's parts from the store")
+fn iterate_parts_of_last_message(world: &mut BotSpyWorld, id: String) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    let message_count = query.messages(&id).count();
+    let last_ordinal = message_count - 1;
+    world.local_parts = query
+        .parts(&id, last_ordinal)
+        .expect("the last message exists")
+        .collect();
+    world.local_query_counters = Some(query.counters());
 }
 
 #[then(regex = r#"^the iteration yields the kinds (.+) in that order$"#)]
-fn iteration_yields_kinds(_world: &mut BotSpyWorld, _kinds: String) {
-    todo!("BOTSPY-2c0dc3: part kinds in order")
+fn iteration_yields_kinds(world: &mut BotSpyWorld, kinds: String) {
+    let expected = quoted_list(&kinds);
+    let actual: Vec<String> = world
+        .local_parts
+        .iter()
+        .map(|part| part.kind_name().unwrap_or("extra").to_string())
+        .collect();
+    assert_eq!(actual, expected, "the parts iteration is out of order");
+}
+
+// 03_laziness.feature — only what was consumed was touched.
+
+#[when(regex = r#"^I take the first ([0-9]+) sessions? from the iteration$"#)]
+fn take_first_sessions(world: &mut BotSpyWorld, count: usize) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let (summaries, opened_id, counters) = {
+        let query = store.query();
+        let mut summaries = Vec::new();
+        let mut opened_id = None;
+        for summary in query.sessions().take(count) {
+            let session = query.open(&summary.id).expect("the session opens");
+            opened_id = Some(session.id);
+            summaries.push(summary);
+        }
+        (summaries, opened_id, query.counters())
+    };
+    world.local_sessions = summaries;
+    world.local_opened_id = opened_id;
+    world.local_query_counters = Some(counters);
+}
+
+#[when(regex = r#"^I iterate ([0-9]+) sessions? and drop the iterator$"#)]
+fn iterate_and_drop(world: &mut BotSpyWorld, count: usize) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let (summaries, opened_id, counters) = {
+        let query = store.query();
+        let mut summaries = Vec::new();
+        let mut opened_id = None;
+        for summary in query.sessions().take(count) {
+            let session = query.open(&summary.id).expect("the session opens");
+            opened_id = Some(session.id);
+            summaries.push(summary);
+        }
+        (summaries, opened_id, query.counters())
+    };
+    world.local_sessions = summaries;
+    world.local_opened_id = opened_id;
+    world.local_query_counters = Some(counters);
+}
+
+#[then(regex = r#"^only session "([^"]+)" was opened$"#)]
+fn only_session_was_opened(world: &mut BotSpyWorld, id: String) {
+    let counters = world.local_query_counters.expect("query counters");
+    assert_eq!(counters.opens, 1, "exactly one session was opened");
+    assert_eq!(
+        world.local_opened_id.as_deref(),
+        Some(id.as_str()),
+        "the opened session"
+    );
+}
+
+#[then(regex = r#"^the store performed only ([0-9]+) session opens?$"#)]
+fn store_performed_session_opens(world: &mut BotSpyWorld, count: usize) {
+    let counters = world.local_query_counters.expect("query counters");
+    assert_eq!(counters.opens, count, "session materializations");
+}
+
+#[given(regex = r#"^a fixture session "([^"]+)" from "([^"]+)" with ([0-9]+) messages$"#)]
+fn fixture_session_with_n_messages(
+    world: &mut BotSpyWorld,
+    id: String,
+    agent: String,
+    count: usize,
+) {
+    let messages = (0..count)
+        .map(|ordinal| Message {
+            role: if ordinal % 2 == 0 {
+                Role::User
+            } else {
+                Role::Assistant
+            },
+            parts: vec![Part::Known(KnownPart::Text {
+                text: format!("message {ordinal}"),
+                extra: None,
+            })],
+            timestamp: Some("2026-10-01T09:00:00Z".to_string()),
+            ..Message::default()
+        })
+        .collect();
+    let session = Session {
+        id: id.clone(),
+        agent: parse_agent(&agent),
+        project_id: "demo".to_string(),
+        started_at: "2026-10-01T09:00:00Z".to_string(),
+        last_activity_at: "2026-10-01T09:00:00Z".to_string(),
+        messages,
+        ..Session::default()
+    };
+    adapter_for(world, &agent).add_session(session);
+    world.current_session = Some(id);
+}
+
+#[when(regex = r#"^I iterate the first ([0-9]+) messages of session "([^"]+)"$"#)]
+fn iterate_first_messages(world: &mut BotSpyWorld, count: usize, id: String) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query = store.query();
+    world.local_messages = query.messages(&id).take(count).collect();
+    world.local_query_counters = Some(query.counters());
+}
+
+#[then(regex = r#"^the iteration yields ([0-9]+) messages$"#)]
+fn iteration_yields_messages(world: &mut BotSpyWorld, count: usize) {
+    assert_eq!(
+        world.local_messages.len(),
+        count,
+        "the message iteration yielded the wrong number of messages"
+    );
+}
+
+#[then(regex = r#"^the session was not fully materialized$"#)]
+fn session_not_fully_materialized(world: &mut BotSpyWorld) {
+    let counters = world.local_query_counters.expect("query counters");
+    let expected = world.local_messages.len();
+    assert_eq!(
+        counters.rows_fetched, expected,
+        "only the consumed messages were read from the store"
+    );
 }

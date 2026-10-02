@@ -168,6 +168,14 @@ pub struct BotSpyWorld {
     pub local_open_error: Option<botspy::store::StoreError>,
     /// The session materialized out of the store by the most recent open.
     pub local_opened: Option<Result<botspy::Session, botspy::store::StoreError>>,
+    /// The id of the session the query surface last materialized.
+    pub local_opened_id: Option<String>,
+    /// Messages streamed out of the store by the most recent iteration.
+    pub local_messages: Vec<botspy::Message>,
+    /// Parts streamed out of the store by the most recent iteration.
+    pub local_parts: Vec<botspy::Part>,
+    /// The query counters of the most recent query surface use.
+    pub local_query_counters: Option<botspy::QueryCounters>,
     /// The report of the most recent ingest or refresh pass.
     pub ingest_report: Option<botspy::IngestReport>,
     /// Digest of the fixture adapters' sessions before an ingest pass.
