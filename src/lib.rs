@@ -102,6 +102,7 @@ pub mod adapters;
 pub mod importer;
 pub mod schema;
 pub mod session;
+pub mod snapshot;
 pub mod spec;
 
 pub use adapter::Adapter;
@@ -117,3 +118,4 @@ pub use schema::{
     Turn, TurnPosition, TurnStatus, Usage, SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
+pub use snapshot::{count_events, snapshot_sqlite, SnapshotError};

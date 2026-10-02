@@ -60,9 +60,12 @@
 //! [`importer`](crate::importer) ([`RecordStream`](crate::importer::RecordStream),
 //! [`SkipCounter`](crate::importer::SkipCounter), [`RawRecord`](crate::importer::RawRecord))
 //! with [`MemorySource`](crate::importer::MemorySource) as the reference
-//! in-memory source. The WAL-snapshot scenarios live in
+//! in-memory source. The WAL-snapshot scenarios in
 //! [`wal_snapshot.feature`](../../../features/03_importers/wal_snapshot.feature)
-//! (tagged `@wip` until implemented). The per-agent specs (below)
+//! are implemented too: SQLite sources are read through a snapshot copy
+//! taken over a read-only connection
+//! ([`snapshot_sqlite`](crate::snapshot::snapshot_sqlite)), never mutated,
+//! with a concurrent writer unaffected. The per-agent specs (below)
 //! translate the same pipeline to each source.
 //!
 #![doc = concat!(
