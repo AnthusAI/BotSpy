@@ -33,6 +33,32 @@ pub enum Agent {
     Antigravity,
 }
 
+/// Outcome carried by tool results, tool calls, and turns.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PartStatus {
+    Ok,
+    Error,
+    Interrupted,
+    Loading,
+    Failed,
+    Success,
+}
+
+impl PartStatus {
+    pub fn parse(name: &str) -> Option<Self> {
+        match name {
+            "ok" => Some(Self::Ok),
+            "error" => Some(Self::Error),
+            "interrupted" => Some(Self::Interrupted),
+            "loading" => Some(Self::Loading),
+            "failed" => Some(Self::Failed),
+            "success" => Some(Self::Success),
+            _ => None,
+        }
+    }
+}
+
 /// A part with one of the fixed kinds.
 ///
 /// `extra` carries agent-specific fields the schema does not model yet, so
@@ -56,12 +82,16 @@ pub enum KnownPart {
         #[serde(default, skip_serializing_if = "Option::is_none")]
         arguments: Option<Value>,
         #[serde(default, skip_serializing_if = "Option::is_none")]
+        status: Option<PartStatus>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
         extra: Option<Value>,
     },
     ToolResult {
         call_id: String,
         #[serde(default, skip_serializing_if = "Option::is_none")]
         text: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        status: Option<PartStatus>,
         #[serde(default, skip_serializing_if = "Option::is_none")]
         extra: Option<Value>,
     },
@@ -196,6 +226,15 @@ pub struct RateLimitState {
     pub resets_at: Option<Timestamp>,
 }
 
+/// Life-cycle state of a turn.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum TurnStatus {
+    Completed,
+    Failed,
+    Aborted,
+}
+
 /// One turn of a session: a user request plus everything the agent did to
 /// answer it. Turn-level facts live here, not on the messages.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -203,6 +242,14 @@ pub struct Turn {
     pub id: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub parent_turn_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub status: Option<TurnStatus>,
+    /// Why the turn was aborted (Codex turn_aborted.reason and friends).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub aborted_reason: Option<String>,
+    /// The error that failed the turn (Codex usageLimitExceeded and friends).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub error: Option<String>,
 }
 
 /// Where a record came from on disk.
@@ -227,6 +274,12 @@ pub struct Message {
     pub turn_id: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub usage: Option<Usage>,
+    /// The message records an error event (Antigravity error steps and friends).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub is_error: bool,
+    /// The message carries an agent-written compaction summary.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub is_compaction_summary: bool,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub extra: Option<Value>,
 }

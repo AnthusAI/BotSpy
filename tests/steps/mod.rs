@@ -2,6 +2,7 @@
 
 pub mod schema_steps;
 pub mod session_steps;
+pub mod status_steps;
 pub mod usage_steps;
 
 use botspy::{
@@ -97,4 +98,15 @@ pub fn last_message(world: &BotSpyWorld) -> Message {
         .last()
         .cloned()
         .expect("no messages recorded")
+}
+
+/// Record one more message on the current fixture session, refreshing
+/// `last_activity_at` from the message timestamp when it has one.
+pub fn record_message_on_current(world: &mut BotSpyWorld, message: Message) {
+    let mut session = current_session(world);
+    if !message.timestamp.is_empty() {
+        session.last_activity_at = message.timestamp.clone();
+    }
+    session.messages.push(message);
+    save_session(world, session);
 }

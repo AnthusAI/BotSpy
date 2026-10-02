@@ -176,8 +176,9 @@
 //! - [`KnownPart::ToolCall`](crate::schema::KnownPart::ToolCall) — the agent invoking a tool: a call `id`, a
 //!   tool `name`, and optional `arguments`;
 //! - [`KnownPart::ToolResult`](crate::schema::KnownPart::ToolResult) — what came back, tied to its call by
-//!   `call_id`. Its outcome — error, interrupted, other status — is
-//!   specified in `02_tool_result_status.feature` and pending;
+//!   `call_id`, with an optional outcome
+//!   ([`PartStatus`](crate::schema::PartStatus): ok, error, interrupted; tool
+//!   calls carry a status of their own too, e.g. Cursor's loading).
 //! - [`KnownPart::Attachment`](crate::schema::KnownPart::Attachment) — a file the conversation touched: `path`,
 //!   `mime` type, `size`. Inline bytes (Claude Code's base64 images) and
 //!   blob-backed data do not fit this yet — specified in
@@ -196,11 +197,13 @@
 //!     id: "call_9".into(),
 //!     name: "read_file".into(),
 //!     arguments: Some(serde_json::json!({"path": "src/main.rs"})),
+//!     status: None,
 //!     extra: None,
 //! });
 //! let result = Part::Known(KnownPart::ToolResult {
 //!     call_id: "call_9".into(),
 //!     text: Some("fn main() {}".into()),
+//!     status: None,
 //!     extra: None,
 //! });
 //!
@@ -349,7 +352,10 @@
 //!    [`Session::thread_usage`](crate::session::Session::thread_usage)
 //!    accumulators.
 //! 2. `02_tool_result_status.feature` — error and status flags on tool
-//!    results, tool calls, messages, and turns.
+//!    results, tool calls, messages, and turns. Implemented:
+//!    [`PartStatus`](crate::schema::PartStatus) on tool results and calls,
+//!    [`TurnStatus`](crate::schema::TurnStatus) with abort reasons and
+//!    errors on turns, and the message error flag.
 //! 3. `03_session_graph.feature` — parent/root links, sub-agent kind and
 //!    name, fork points, best-of-N battles, and peer ids.
 //! 4. `04_turn_grouping.feature` — `turn_id`/`parent_turn_id` with
@@ -398,7 +404,7 @@
     "### 01_usage_tokens.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/01_usage_tokens.feature"),
     "\n```\n\n",
-    "### 02_tool_result_status.feature (pending)\n\n```gherkin\n",
+    "### 02_tool_result_status.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/02_tool_result_status.feature"),
     "\n```\n\n",
     "### 03_session_graph.feature (pending)\n\n```gherkin\n",
