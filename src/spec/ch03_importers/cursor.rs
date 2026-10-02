@@ -25,7 +25,18 @@
 //!   a snapshot copy. Bubble keys are unordered — order comes from
 //!   `composerData.fullConversationHeadersOnly`.
 //!
-//! ## Status: specified next
+//! ## Status: specified
+//!
+//! The scenarios live in [`adapter.feature`](../../../features/03_importers/cursor/adapter.feature)
+//! and are embedded below, tagged `@wip` until this importer's
+//! implementation lands.
+//!
+#![doc = concat!(
+    "## Behavior specification\n\n",
+    "### cursor/adapter.feature\n\n```gherkin\n",
+    include_str!("../../../features/03_importers/cursor/adapter.feature"),
+    "\n```\n"
+)]
 //!
 //! No scenarios exist yet; `features/03_importers/cursor/` is a
 //! placeholder and this page is the outline its specs will be written
