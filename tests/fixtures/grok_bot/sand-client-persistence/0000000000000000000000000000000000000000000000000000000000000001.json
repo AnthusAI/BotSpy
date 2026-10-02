@@ -1,0 +1,1 @@
+{"entries":[{"role":"user","seq":1,"text":"hello from the synth blob","type":"message"},{"author":"rocket-synth","role":"assistant","seq":2,"text":"persona hello","type":"message"},{"callId":"vc-synth-1","payload":"opaque-bytes","seq":3,"type":"voice_call"}]}
