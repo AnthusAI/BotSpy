@@ -3,7 +3,7 @@
   "title": "Fix release-plz workflow (403 opening PR) for GitFlow releases from main",
   "description": "",
   "type": "chore",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -17,11 +17,25 @@
       "text": "Diagnosis (attempt A): every Release workflow run since repo creation fails with release-plz 'Failed to open PR' — HTTP 403 Forbidden on POST /repos/AnthusAI/BotSpy/pulls. Root cause: repo setting 'Allow GitHub Actions to create and approve pull requests' is disabled (can_approve_pull_request_reviews=false), so GITHUB_TOKEN cannot open PRs even though the workflow declares pull-requests: write. Side effect: 46 stale release-plz-* branches pushed to remote (one per failed run) with no PR attached. Fix: enable the repo setting; workflow also gets workflow_dispatch trigger and optional RELEASE_PLZ_TOKEN secret fallback. Board changes committed straight to develop per instructions.",
       "created_at": "2026-10-02T21:38:15.880305Z",
       "comment_type": "default"
+    },
+    {
+      "id": "03f9db36-ede4-4331-ae02-64de07ba70d6",
+      "author": "home",
+      "text": "Outcome (attempt A): fix landed. Commits: 3529298 (kanbus board, straight to develop) and c221611 ci(release): make release-plz work under GitFlow (PR #2, fast-forwarded into develop). Change: release.yml keeps main-only push trigger per GitFlow, adds workflow_dispatch for manual runs, and resolves GITHUB_TOKEN from optional RELEASE_PLZ_TOKEN secret so a PAT can bypass the PR-creation restriction (falls back to GITHUB_TOKEN when unset). Root cause remains a repo setting only Ryan can set: 'Allow GitHub Actions to create and approve pull requests' is disabled (can_approve_pull_request_reviews=false), causing GITHUB_TOKEN 403 on POST /pulls on every Release run; 46 stale release-plz-* branches piled up as a side effect (not deleted, listed in report). Gates: fmt, clippy -D warnings, full test suite, actionlint 1.7.12 all green locally; PR #2 CI 8/8 green; develop CI run 37068669523 all 8 jobs green. Closing.",
+      "created_at": "2026-10-02T21:48:21.498148Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "fc7a43d4-2f06-4a36-8e71-89f619eb2765",
+      "author": "home",
+      "text": "Fixed in c221611 on develop via PR #2; release activation pending repo setting toggle or RELEASE_PLZ_TOKEN secret (Ryan).",
+      "created_at": "2026-10-02T21:48:22.237344Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T21:38:10.750580Z",
-  "updated_at": "2026-10-02T21:38:15.880326Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T21:48:22.939032Z",
+  "closed_at": "2026-10-02T21:48:22.939Z",
   "agent": {
     "platform": "cursor",
     "model": "GLM 5.3 Flash",
