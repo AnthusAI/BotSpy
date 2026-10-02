@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R7 raw tool-call arguments",
   "description": "Done when: the wip tag is removed from 07_tool_call_arguments.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "526a7023-f4d6-418f-ab58-ff4d67a82f25",
+      "author": "home",
+      "text": "Implemented until the spec passes. @wip dropped from features/01_structure/07_tool_call_arguments.feature; all 3 scenarios pass (43 total). Schema: ToolCall.arguments now Option<ToolArguments> — value (structured JSON object), raw (kept verbatim), parsed (first parse only, never double-decoded). Gherkin-level \" escapes in feature text handled in the fixture steps, not the library. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T19:03:19.600452Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:34:55.671698Z",
-  "updated_at": "2026-10-02T17:39:35.635843Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:03:26.864511Z",
+  "closed_at": "2026-10-02T19:03:26.864462Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "Step definitions are being added so the raw tool-call argument scenarios pass.",
-  "right_now_updated_at": "2026-10-02T17:39:37.000964Z",
-  "custom": {}
+  "right_now_summary": "Tool-call argument support is implemented, and all three BDD scenarios pass.",
+  "right_now_updated_at": "2026-10-02T19:03:29.040070Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
