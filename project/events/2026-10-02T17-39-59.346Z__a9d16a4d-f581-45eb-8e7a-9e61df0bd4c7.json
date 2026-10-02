@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "a9d16a4d-f581-45eb-8e7a-9e61df0bd4c7",
+  "issue_id": "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:59.346Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R9 inline data and attachments",
+        "to": "Write Gherkin spec: R9 optional timestamps"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/09_optional_timestamp.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "7145955c-50ba-4ed6-9fc3-b8d3ea21718c",
+  "issue_id": "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:42.438Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R8 raw tool-call arguments",
+        "to": "Write Gherkin spec: R8 inline data and attachments"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/08_inline_data.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "9da094d0-94b8-4f14-9a44-435db379ae0b",
+  "issue_id": "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:35.635Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R7 provenance widening",
+        "to": "Implement until spec passes: R7 raw tool-call arguments"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 07_tool_call_arguments.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

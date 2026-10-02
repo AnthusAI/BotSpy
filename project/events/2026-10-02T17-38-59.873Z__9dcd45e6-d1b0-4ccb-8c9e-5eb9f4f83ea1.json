@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "9dcd45e6-d1b0-4ccb-8c9e-5eb9f4f83ea1",
+  "issue_id": "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:59.873Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R5 turn grouping",
+        "to": "Write Gherkin spec: R5 compaction and summaries"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/05_compaction.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}
