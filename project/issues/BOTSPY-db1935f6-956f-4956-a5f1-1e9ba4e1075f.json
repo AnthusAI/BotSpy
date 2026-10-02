@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R6 provenance widening",
   "description": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "183f75ee-7c78-4afb-9899-18ec8bbfa36a",
+      "author": "home",
+      "text": "Implemented until the spec passes. The three @wip scenarios in features/01_structure/provenance.feature are un-tagged and pass (40 scenarios total). Schema: Provenance widened with record_id, record_type, ordinal, parent_record (all Option, serde default); ordering step checks non-decreasing ordinals. fmt/clippy/doc/doctests/BDD green.",
+      "created_at": "2026-10-02T18:59:21.419771Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:34:20.758108Z",
-  "updated_at": "2026-10-02T17:39:20.287893Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:59:27.182100Z",
+  "closed_at": "2026-10-02T18:59:27.182048Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is removing wip tags, adding step definitions, and running the BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:39:22.749415Z",
-  "custom": {}
+  "right_now_summary": "Provenance now includes the new fields, and all 40 BDD scenarios pass.",
+  "right_now_updated_at": "2026-10-02T18:59:28.526696Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

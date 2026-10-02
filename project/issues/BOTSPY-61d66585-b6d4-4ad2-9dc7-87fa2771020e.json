@@ -3,23 +3,34 @@
   "title": "Schema R6: Provenance widened with record id, type, ordinal, parent",
   "description": "Report recommendation 6: provenance widened with native record_id, record_type, ordinal/sort key, and native parent pointer. Feature: features/02_schema/provenance.feature (later scenarios).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "8c23d13c-9781-4675-b3b1-953ebcbfaf8b",
+      "author": "home",
+      "text": "R6 done: provenance widening implemented and passing; see impl sub-task BOTSPY-db1935.",
+      "created_at": "2026-10-02T18:59:33.217434Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:30:22.289487Z",
-  "updated_at": "2026-10-02T17:55:44.661789Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T18:59:40.132309Z",
+  "closed_at": "2026-10-02T18:59:40.132236Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is adding step definitions, removing WIP tags, and running the BDD tests.",
-  "right_now_updated_at": "2026-10-02T17:55:46.512580Z",
-  "custom": {}
+  "right_now_summary": "Provenance now includes record ID, type, ordinal, and parent fields, with all 40 BDD scenarios passing.",
+  "right_now_updated_at": "2026-10-02T18:59:41.123655Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
