@@ -3,7 +3,7 @@
   "title": "Decision (Ryan): embedding asset acquisition, feature gating, CI determinism",
   "description": "A decision gate, not implementation — the rest of this epic stays blocked until this task closes with Ryan's answers in a comment.\n\n**The open questions** (also posted on BOTSPY-c7795b): (1) where the ~80 MB quantized all-MiniLM-L6-v2 weights + tokenizer.json come from — library-managed first-launch fetch, consumer/CLI-managed download, or an explicit install step — given the README FAQ's nothing-leaves-the-machine promise and offline-deterministic CI; (2) whether real-model support ships behind a cargo feature (e.g. `semantic`; tract + tokenizers is a heavy dependency tree) or in core; (3) which real-model specs run in CI (a tiny committed ONNX fixture vs feature-gated/ignored tests).\n\n**Do not start the implementation tasks until this closes.**\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "928e2be7-de4f-4f47-a90f-3b3f231fbb97",
+      "author": "home",
+      "text": "Decided (Ryan): asset source = downloaded on setup (not in repo, no runtime network); no cargo feature — core; CI runs the real model via cached/pre-downloaded copy with no gated or skipped tests. Recorded on BOTSPY-c7795b; E6 tasks and T13 updated to match. Closing as decided.",
+      "created_at": "2026-10-02T21:48:33.545440Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T21:43:55.618399Z",
-  "updated_at": "2026-10-02T21:44:22.628498Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T21:48:34.303902Z",
+  "closed_at": "2026-10-02T21:48:34.303876Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

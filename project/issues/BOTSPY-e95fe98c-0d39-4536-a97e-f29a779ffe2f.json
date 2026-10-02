@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f",
   "title": "Implement MiniLMEmbedder: all-MiniLM-L6-v2 via tract ONNX + tokenizer",
-  "description": "**Files:** `Cargo.toml` (cargo feature per the decision task; tract-onnx, tokenizers); `src/store/embed_minilm.rs` (naming per final layout); `src/store/embed.rs` (trait unchanged); `src/spec/ch02_querying.rs`.\n\n**Acceptance:** tract ONNX runtime on CPU, all-MiniLM-L6-v2 (384-dim), wordpiece tokenization via the tokenizers crate, implementing `Embedder` (model id \"all-MiniLM-L6-v2\"); batch embedding at ingest (the scanner-batch milestone). One model, one set of weights, one engine — vectors consistent by construction; the store's model-id policy from the vector-search task applies (mismatch refused, clean re-ingest). The 50–200 ms CPU query-embedding target is a doc note, not a spec assertion. Stub-based engine specs stay green; real-model specs per the decision; gates green with and without the feature.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "description": "**Files:** `Cargo.toml` (core dependencies, NO cargo feature per the decision: tract-onnx, tokenizers); `src/store/embed_minilm.rs` (naming per final layout); `src/store/embed.rs` (trait unchanged); `src/spec/ch02_querying.rs`.\n\n**Acceptance:** tract ONNX runtime on CPU, all-MiniLM-L6-v2 (384-dim), wordpiece tokenization via the tokenizers crate, implementing `Embedder` (model id \"all-MiniLM-L6-v2\"); batch embedding at ingest (the scanner-batch milestone). One model, one set of weights, one engine — vectors consistent by construction; the store's model-id policy from the vector-search task applies (mismatch refused, clean re-ingest). The 50–200 ms CPU query-embedding target is a doc note, not a spec assertion. Per Ryan's decision (BOTSPY-bb60bb closed): real MiniLM is the shipped embedder, in core (no cargo feature), loading weights + tokenizer from the local cache (see BOTSPY-c3cf41); clean typed error when setup has not run (files missing); the deterministic stub remains only as an internal unit-test seam; real-model specs exercise the embedder ungated.",
   "type": "task",
   "status": "open",
   "priority": 2,
@@ -17,7 +17,7 @@
   ],
   "comments": [],
   "created_at": "2026-10-02T21:43:56.607580Z",
-  "updated_at": "2026-10-02T21:44:23.616122Z",
+  "updated_at": "2026-10-02T21:49:11.429508Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
