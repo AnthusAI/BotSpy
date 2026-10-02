@@ -23,7 +23,18 @@
 //!   partial trailing lines are retried, malformed records skipped and
 //!   counted.
 //!
-//! ## Status: specified next
+//! ## Status: specified
+//!
+//! The scenarios live in [`adapter.feature`](../../../features/03_importers/codex/adapter.feature)
+//! and are embedded below, tagged `@wip` until this importer's
+//! implementation lands.
+//!
+#![doc = concat!(
+    "## Behavior specification\n\n",
+    "### codex/adapter.feature\n\n```gherkin\n",
+    include_str!("../../../features/03_importers/codex/adapter.feature"),
+    "\n```\n"
+)]
 //!
 //! No scenarios exist yet; `features/03_importers/codex/` is a placeholder
 //! and this page is the outline its specs will be written against.

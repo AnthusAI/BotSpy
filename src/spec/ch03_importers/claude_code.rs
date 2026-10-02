@@ -24,7 +24,18 @@
 //!   trailing lines are retried on the next read, malformed records are
 //!   skipped and counted.
 //!
-//! ## Status: specified next
+//! ## Status: specified
+//!
+//! The scenarios live in [`adapter.feature`](../../../features/03_importers/claude_code/adapter.feature)
+//! and are embedded below, tagged `@wip` until this importer's
+//! implementation lands.
+//!
+#![doc = concat!(
+    "## Behavior specification\n\n",
+    "### claude_code/adapter.feature\n\n```gherkin\n",
+    include_str!("../../../features/03_importers/claude_code/adapter.feature"),
+    "\n```\n"
+)]
 //!
 //! No scenarios exist yet; `features/03_importers/claude_code/` is a
 //! placeholder and this page is the outline its specs will be written
