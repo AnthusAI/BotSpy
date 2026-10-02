@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "7523a3cd-a674-497c-ba78-f73302a447b9",
+  "issue_id": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:42:35.699Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/11_session_metadata.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

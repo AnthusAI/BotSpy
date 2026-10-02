@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "0fd33d68-f3a1-48ed-821e-7ee6fd7120bd",
+  "issue_id": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:44:57.806Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 4: turn grouping (turn_id, parent_turn_id) with turn-level timing and errors. Feature: features/02_schema/04_turn_grouping.feature."
+      }
+    }
+  }
+}

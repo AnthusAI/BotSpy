@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "5bc4450f-c36e-4f6b-a367-c56770522308",
+  "issue_id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:42:48.920Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/12_raw_blob_escape_hatch.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "00cfac7d-e346-43ba-83ba-4f6ed672e543",
+  "issue_id": "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:23.620Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 9: optional timestamp with a no-fabrication policy; ordering never depends on time. Feature: features/02_schema/09_optional_timestamp.feature."
+      }
+    }
+  }
+}

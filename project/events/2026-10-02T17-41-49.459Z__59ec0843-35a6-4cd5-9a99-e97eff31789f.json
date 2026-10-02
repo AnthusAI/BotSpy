@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "59ec0843-35a6-4cd5-9a99-e97eff31789f",
+  "issue_id": "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:41:49.459Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Implement until spec passes: R11 optional session metadata",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "17ba0395-edc3-4340-95c2-c4ce2e112489",
+  "issue_id": "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:42:19.070Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/10_role_mapping.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

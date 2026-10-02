@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "da508e0f-32b9-4345-a954-8753c99b5644",
+  "issue_id": "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:19.510Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 8: image/inline-data part and content-addressed attachment data/data_ref. Feature: features/02_schema/08_inline_data.feature."
+      }
+    }
+  }
+}

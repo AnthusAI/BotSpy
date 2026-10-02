@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "1fb6d560-43d6-49c2-adf0-a3104fd167c6",
+  "issue_id": "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:41:44.056Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Write Gherkin spec: R11 optional session metadata",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

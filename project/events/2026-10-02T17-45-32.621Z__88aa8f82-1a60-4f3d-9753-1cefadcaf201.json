@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "88aa8f82-1a60-4f3d-9753-1cefadcaf201",
+  "issue_id": "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:32.621Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 11: optional session metadata (title, git_branch, git_commit, cwd, archived, pr_url, status, app_version, models). Feature: features/02_schema/11_session_metadata.feature."
+      }
+    }
+  }
+}

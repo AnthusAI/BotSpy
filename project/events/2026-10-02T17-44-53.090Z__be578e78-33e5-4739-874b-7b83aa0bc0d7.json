@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "be578e78-33e5-4739-874b-7b83aa0bc0d7",
+  "issue_id": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:44:53.090Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 3: session graph — parent_id, root_id, sub-agent kind/name, fork and battle links, partial peer ids. Feature: features/02_schema/03_session_graph.feature."
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "035c6c58-e0a8-4464-a691-774b43f64772",
+  "issue_id": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:44:44.096Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when)."
+      }
+    }
+  }
+}

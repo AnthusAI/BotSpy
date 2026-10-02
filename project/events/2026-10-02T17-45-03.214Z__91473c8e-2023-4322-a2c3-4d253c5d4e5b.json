@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "event_id": "91473c8e-2023-4322-a2c3-4d253c5d4e5b",
+  "issue_id": "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:45:03.214Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "description": {
+        "from": "",
+        "to": "Report recommendation 5: explicit compaction/summary modeling with pre/post token counts. Feature: features/02_schema/05_compaction.feature."
+      }
+    }
+  }
+}
