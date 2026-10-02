@@ -6,37 +6,23 @@ on:
 
 permissions:
   contents: write
-  id-token: write
+  pull-requests: write
 
 jobs:
-  release:
+  release-plz:
     runs-on: ubuntu-latest
     concurrency:
-      group: release
+      group: release-plz
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Install python-semantic-release
-        run: |
-          uv venv
-          uv pip install python-semantic-release
-
-      - name: Release
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Run release-plz
+        uses: MarcoIeni/release-plz-action@v0.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv run python-semantic-release version
-
-      # PyPI publish is intentionally left commented out until the package is
-      # ready for release to PyPI. Requires a trusted publisher or
-      # PYPI_TOKEN secret in addition to the id-token permission above.
-      # - name: Publish to PyPI
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: uv run python-semantic-release publish
+        # Library releases only: version bumps, changelog, tags, GitHub
+        # releases. crates.io publishing is disabled (release-plz.toml:
+        # publish = false) and no binary artifacts are produced.

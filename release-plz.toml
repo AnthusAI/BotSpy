@@ -1,0 +1,6 @@
+[workspace]
+changelog_update = true
+# Library only: no crates.io publishing by decision. Bump versions, update
+# the changelog, tag, and create GitHub releases; nothing is uploaded.
+publish = false
+git_release_enable = true
