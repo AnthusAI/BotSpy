@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-3f3ec558-7ae1-4fd0-a80c-c2f39841e1eb",
+  "title": "sessions --since always returns 0 sessions; invalid --since value is silently accepted",
+  "description": "**Observed on real data (origin/develop `9fc6584`):** `botspy sessions --since 2026-09-30T00:00:00Z` prints \"0 sessions\" although many sessions were active after that instant (e.g. `show 2da02ae2` last activity 2026-10-02T22:03:53Z). `botspy sessions --since bogus` also prints \"0 sessions\" with exit code 0 instead of an error.\n\n**Repro:**\n1. `./target/release/botspy sessions --since 2026-09-30T00:00:00Z` → \"0 sessions\" (should be dozens).\n2. `./target/release/botspy sessions --since bogus` → \"0 sessions\", exit 0, no warning.\n\n**Expected:** `--since` filters to sessions whose last activity is at or after the given timestamp; with populated `last_activity_at` values the filter matches real sessions. A value that is not a valid RFC 3339 timestamp must be rejected as a usage error (non-zero exit, message on stderr), not silently match nothing.\n\n**Suspected code:** `src/cli/mod.rs`, `fn sessions()` (~line 363-366): `summaries.retain(|s| !s.last_activity_at.is_empty() && s.last_activity_at.as_str() >= since)` — with bug 1 (empty timestamps everywhere) the retain drops everything; and `since` is never validated. The `--until` branch (~line 368-372) has the same missing validation.\n\n**Acceptance criteria:**\n- With the synthetic fixture corpus, `sessions --since <ts between fixture sessions>` returns exactly the sessions active at/after `ts`.\n- `sessions --since bogus` (and `--until bogus`) exit non-zero with a stderr message naming the bad flag and value.\n- Regression tests use the synthetic fixture home (`tests/fixtures` corpus + the `extra-demo` solo session), never real transcripts.\n- Note: `botspy sources`, `botspy doctor` and `botspy show` already work correctly on real data.\n- Depends on BOTSPY-4c8521a3 (populated timestamps) for the filter to have data to match; the validation part is independent.",
+  "type": "bug",
+  "status": "open",
+  "priority": 1,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T22:16:51.785552Z",
+  "updated_at": "2026-10-02T22:16:51.785585Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "Composer 2.5",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
