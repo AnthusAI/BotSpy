@@ -3,7 +3,7 @@
   "title": "Guarantee read-only access and safe SQLite/WAL snapshotting",
   "description": "Adapters never write to source directories; SQLite/WAL sources are read through a safe snapshot copy. Done when: tests prove no source mutation and a WAL database reads correctly through the snapshot path.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,24 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "dbd19437-f0ac-4017-a94f-4dd08bf34b9b",
+      "author": "home",
+      "text": "wal_snapshot.feature implemented and un-@wip: src/snapshot.rs snapshots a SQLite source through a read-only connection with the online backup API (snapshot_sqlite); BDD proves the db+WAL digests are unchanged by the read (digest_files), the snapshot reflects rows present at snapshot time, and the live writer keeps appending without interference. rusqlite 0.40 (bundled + backup) added. All gates green: 18 features / 80 scenarios BDD, fmt, clippy -D warnings, doc, doctests, spec coverage.",
+      "created_at": "2026-10-02T19:35:32.495026Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:16:33.471787Z",
-  "updated_at": "2026-10-02T16:21:35.009151Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:35:37.361170Z",
+  "closed_at": "2026-10-02T19:35:37.361141Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is ensuring read-only access and safe snapshotting for SQLite/WAL sources.",
-  "right_now_updated_at": "2026-10-02T16:21:36.514148Z",
+  "right_now_summary": "SQLite/WAL reads use safe snapshots, and tests confirm source files stay unchanged.",
+  "right_now_updated_at": "2026-10-02T19:35:38.530946Z",
   "custom": {}
 }
