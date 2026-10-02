@@ -123,4 +123,9 @@ pub use schema::{
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
 pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};
-pub use store::{default_store_path, ingest::IngestReport, SessionIter, Store, StoreError};
+pub use store::{
+    default_store_path,
+    ingest::IngestReport,
+    query::{Query, QueryCounters},
+    SessionIter, Store, StoreError,
+};

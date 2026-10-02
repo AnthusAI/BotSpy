@@ -42,18 +42,22 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: the store foundation is green
+//! ## Status: iteration, ingestion, and laziness are green
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
-//! below, tagged `@wip` until the Local Store implementation lands. The
-//! local store itself is executable and green
-//! ([`04_store.feature`](../../features/02_querying/04_store.feature)):
-//! a store opens at a caller-given path (parent directories created),
-//! reopening persists ingested data, a reader on a second connection keeps
-//! querying while an ingest commits, a non-store file is a clean typed
-//! error, and the default path follows BOTSPY_HOME/$HOME. The iteration,
-//! filter, laziness, and search specs below remain `@wip` until their
-//! implementation tasks land.
+//! below. Executable and green: the local store itself
+//! ([`04_store.feature`](../../features/02_querying/04_store.feature)), the
+//! query iteration surface
+//! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
+//! adapter-driven ingestion
+//! ([`05_ingest.feature`](../../features/02_querying/05_ingest.feature)),
+//! and query laziness
+//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
+//! The filter
+//! ([`02_filters.feature`](../../features/02_querying/02_filters.feature))
+//! and refresh
+//! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature))
+//! specs remain `@wip` until their implementation tasks land.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",

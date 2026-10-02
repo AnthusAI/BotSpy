@@ -1,4 +1,3 @@
-@wip
 Feature: Query laziness
   Iteration is lazy: the engine reads and normalizes only what the caller
   actually consumes. Taking the first session must not open, read, or
