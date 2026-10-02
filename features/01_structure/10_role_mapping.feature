@@ -1,4 +1,3 @@
-@wip
 Feature: Role mapping conventions for native message shades
   Native roles beyond user/assistant/system/tool map by convention:
   developer messages become System with a developer origin, inter-agent
