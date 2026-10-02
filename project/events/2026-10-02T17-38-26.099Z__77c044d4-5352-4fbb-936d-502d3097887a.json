@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "77c044d4-5352-4fbb-936d-502d3097887a",
+  "issue_id": "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:26.099Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R3 tool result status",
+        "to": "Implement until spec passes: R3 session graph"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 03_session_graph.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "bf6dc64a-5368-4114-b3a4-fa6678a29888",
+  "issue_id": "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:13.566Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R2 usage and cost metrics",
+        "to": "Implement until spec passes: R2 tool result status"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 02_tool_result_status.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

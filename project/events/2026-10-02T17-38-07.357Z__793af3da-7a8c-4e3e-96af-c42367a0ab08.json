@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "793af3da-7a8c-4e3e-96af-c42367a0ab08",
+  "issue_id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:38:07.357Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Local Store Initiative — SQLite + sqlite-vec + all-MiniLM-L6-v2",
+    "description": "",
+    "issue_type": "initiative",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": null,
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "local-store-initiative"
+    }
+  }
+}

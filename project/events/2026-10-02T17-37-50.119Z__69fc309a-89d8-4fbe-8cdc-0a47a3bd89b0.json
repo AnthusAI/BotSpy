@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "69fc309a-89d8-4fbe-8cdc-0a47a3bd89b0",
+  "issue_id": "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:37:50.119Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R1 ",
+        "to": "Write Gherkin spec: R1 usage and cost metrics"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/01_usage_tokens.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

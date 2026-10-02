@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "a15b96f1-2006-409b-8ab1-0bf1c7d4d3c5",
+  "issue_id": "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T17:32:41.011Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Write Gherkin spec: R3 tool result status",
+    "description": "",
+    "issue_type": "sub-task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "schema-specs"
+    }
+  }
+}

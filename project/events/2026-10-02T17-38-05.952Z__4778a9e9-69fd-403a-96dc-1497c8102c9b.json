@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "4778a9e9-69fd-403a-96dc-1497c8102c9b",
+  "issue_id": "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:05.952Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R2 usage and cost metrics",
+        "to": "Write Gherkin spec: R2 tool result status"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/02_tool_result_status.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

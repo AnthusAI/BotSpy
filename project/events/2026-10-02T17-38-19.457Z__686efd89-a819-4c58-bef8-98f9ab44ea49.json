@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "686efd89-a819-4c58-bef8-98f9ab44ea49",
+  "issue_id": "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:38:19.457Z",
+  "actor_id": "home",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R3 tool result status",
+        "to": "Write Gherkin spec: R3 session graph"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/03_session_graph.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}
