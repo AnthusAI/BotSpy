@@ -3,16 +3,9 @@ name: Release
 # Direct releases under GitFlow: a push to main is the release promotion.
 # The workflow computes the next version from conventional commits, bumps
 # Cargo.toml/Cargo.lock and CHANGELOG.md, commits that directly to main,
-# then tags and creates the GitHub release. No release pull request is
-# ever opened, so the repo's "Allow GitHub Actions to create and approve
-# pull requests" setting is irrelevant.
-#
-# crates.io publishing stays disabled (release-plz.toml: publish = false);
-# the tag + GitHub release is the release. To enable publishing later:
-# set publish = true in release-plz.toml and expose a CARGO_REGISTRY_TOKEN
-# secret to the "Tag and create GitHub release" step (release-plz reads
-# that variable), or switch to crates.io Trusted Publishing via
-# rust-lang/crates-io-auth-action with id-token: write.
+# then publishes to crates.io, tags, and creates the GitHub release. No
+# release pull request is ever opened, so the repo's "Allow GitHub
+# Actions to create and approve pull requests" setting is irrelevant.
 on:
   push:
     branches: [main]
@@ -36,11 +29,12 @@ jobs:
     env:
       # release-plz reads GIT_TOKEN (not GITHUB_TOKEN) for its git/forge
       # operations: committing the release bump, pushing the tag, and
-      # creating the GitHub release. No PR is ever opened, so the repo's
-      # "Allow GitHub Actions to create and approve pull requests" setting
-      # is irrelevant.
+      # creating the GitHub release. CARGO_REGISTRY_TOKEN (crates.io
+      # token scoped to publish-new/publish-update) authorizes the
+      # `cargo publish` upload release-plz performs on each release.
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
