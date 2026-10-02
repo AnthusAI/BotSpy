@@ -566,7 +566,7 @@ mod tests {
     #[test]
     fn discovery_summaries_carry_activity_from_the_transcripts() {
         use crate::adapter::Adapter;
-        let root = std::env::temp_dir().join(format!("botspy-cc3-{}", std::process::id()));
+        let root = std::env::temp_dir().join(format!("botspy-cc5-{}", std::process::id()));
         let _ = std::fs::remove_dir_all(&root);
         write_transcript(
             &root,
