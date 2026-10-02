@@ -3,7 +3,7 @@
   "title": "Implement until spec passes: R9 optional timestamps",
   "description": "Done when: the wip tag is removed from 09_optional_timestamp.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "8e3be47d-022d-4592-8d98-c5a0bc2bdac1",
+      "author": "home",
+      "text": "timestamp_steps registered; message order asserted by text, mtime recorded on Session.file_modified_at and checked to stay outside message timestamps. 16 features / 73 scenarios / 284 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests pass.",
+      "created_at": "2026-10-02T19:23:14.268975Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T17:35:58.550134Z",
-  "updated_at": "2026-10-02T17:40:07.112900Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:23:20.246227Z",
+  "closed_at": "2026-10-02T19:23:20.246184Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "schema-specs"
   },
-  "right_now_summary": "The team is implementing optional timestamps and adding steps until the BDD scenarios pass.",
-  "right_now_updated_at": "2026-10-02T17:40:08.700001Z",
-  "custom": {}
+  "right_now_summary": "Optional timestamp support is implemented, and all tests, formatting, lint, and documentation checks pass.",
+  "right_now_updated_at": "2026-10-02T19:23:21.924025Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
