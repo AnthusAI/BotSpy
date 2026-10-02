@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "event_id": "916e2d48-ea27-4e23-84c7-f4e0a2fbb63d",
+  "issue_id": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+  "event_type": "comment_added",
+  "occurred_at": "2026-10-02T22:57:37.419Z",
+  "actor_id": "home",
+  "payload": {
+    "comment_id": "393cd64b-5187-4c69-bb02-ff7be0b5ef64",
+    "comment_author": "home",
+    "agent": {
+      "platform": "cursor",
+      "model": "GLM 5.3 Flash",
+      "name": "Cursor Cloud Agent (local-store implementer)"
+    }
+  }
+}
