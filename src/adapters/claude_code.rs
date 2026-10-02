@@ -32,7 +32,7 @@ pub struct ClaudeDiscovery {
 }
 
 /// Diagnostics over a Claude Code projects root.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, serde::Serialize)]
 pub struct ClaudeReport {
     pub root: PathBuf,
     pub project_dirs: usize,

@@ -34,7 +34,7 @@ pub struct CursorDiscovery {
 }
 
 /// Diagnostics over a Cursor KV store.
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, serde::Serialize)]
 pub struct CursorReport {
     pub store: PathBuf,
     pub composers: usize,
