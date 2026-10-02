@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
+  "title": "Crate index page in rustdoc, organized around spec layers",
+  "description": "Done when: src/lib.rs crate docs introduce BotSpy (what it is, what it is not), explain docs-organized-around-specs, list chapters with intra-doc links, and include a running drill-down doctest.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T16:51:52.085097Z",
+  "updated_at": "2026-10-02T16:53:20.327944Z",
+  "closed_at": "2026-10-02T16:53:20.327911Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "docs-rustdoc"
+  },
+  "right_now_summary": "The crate docs are being organized around spec layers with linked chapters and a running drill-down doctest.",
+  "right_now_updated_at": "2026-10-02T16:53:22.269256Z",
+  "custom": {}
+}

@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
+  "title": "Spec-coverage test: every .feature file must be embedded in a chapter",
+  "description": "Done when: a test fails if any .feature file under features/ is not embedded in a doc chapter, keeping the docs organized around the specs.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:52:04.339723Z",
+  "updated_at": "2026-10-02T16:53:32.649438Z",
+  "closed_at": "2026-10-02T16:53:32.649384Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "docs-rustdoc"
+  },
+  "right_now_summary": "A test is being added to ensure every feature file appears in a documentation chapter.",
+  "right_now_updated_at": "2026-10-02T16:53:34.394607Z",
+  "custom": {}
+}
