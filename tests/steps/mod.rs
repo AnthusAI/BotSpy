@@ -7,6 +7,7 @@ pub mod codex_steps;
 pub mod compaction_steps;
 pub mod cursor_steps;
 pub mod graph_steps;
+pub mod grok_steps;
 pub mod importer_steps;
 pub mod inline_steps;
 pub mod metadata_steps;
@@ -110,6 +111,16 @@ pub struct BotSpyWorld {
     pub cur_digest_before: Option<String>,
     /// Digest of the store + WAL after the snapshot read.
     pub cur_digest_after: Option<String>,
+    /// Grok Bot persistence dir under construction (Grok Bot steps).
+    pub gb_root: Option<std::path::PathBuf>,
+    /// The Grok Bot source watching that dir.
+    pub gb_source: Option<botspy::adapters::grok_bot::GrokBotSource>,
+    /// Blob name the current Grok Bot fixture extracts.
+    pub gb_blob: Option<String>,
+    /// Result of the most recent Grok Bot discovery.
+    pub gb_discovery: Option<botspy::adapters::grok_bot::GrokDiscovery>,
+    /// Result of the most recent Grok Bot extraction pass.
+    pub gb_extraction: Option<botspy::adapters::grok_bot::GrokExtraction>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

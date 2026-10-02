@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "event_id": "64c59aec-521e-4632-b50d-452eb003098f",
+  "issue_id": "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882",
+  "event_type": "state_transition",
+  "occurred_at": "2026-10-02T20:06:44.386Z",
+  "actor_id": "home",
+  "payload": {
+    "from_status": "open",
+    "to_status": "in_progress"
+  }
+}
