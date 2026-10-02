@@ -1,0 +1,28 @@
+{
+  "id": "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855",
+  "title": "CLI foundation: bin target, arg parsing, store builder",
+  "description": "Wire the CLI shell the five phase-1 verbs sit on: a [[bin]] target (thin main.rs over a library cli module so specs can test behavior), clap arg parsing with the global flags from the cli design (773667dc) (-s/--source repeatable, --root, --home, -o/--output human|json|ndjson, exit codes 0/1/2/3), and the store-builder that builds a SessionStore of real adapters by source name (claude_code, cursor, codex) honoring SourceOptions. Updates the library-only doc claims (README, lib.rs) that the CLI now supersedes.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "db36326c-0cd1-4e5f-9999-6e50f0dc4601",
+      "author": "home",
+      "text": "Done: [[bin]] botspy + thin main.rs; library cli module with clap arg definitions (global flags: -s/--source repeatable, --root, --home, -o/--output human|json|ndjson, --no-truncate) and run_from/RunOutcome plumbing the specs exercise in-process; store builder wiring real adapters by name with per-agent root derivation (--home / BOTSPY_HOME / $HOME; codex root is ~/.codex not .codex/sessions, cursor root is the state.vscdb file); Adapter impls for the five real sources (their RefCell state became Mutex so they are Sync behind Arc<dyn Adapter>); executable steps for features/cli/. Spec run: 36 CLI scenarios fail on todo!() verbs (red), 3 plumbing scenarios pass. Library-only doc claims updated in lib.rs. README on develop already describes the CLI working-backwards, including the not-yet-built verbs; left as-is.",
+      "created_at": "2026-10-02T20:52:52.437981Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-02T20:34:29.172098Z",
+  "updated_at": "2026-10-02T20:52:53.047566Z",
+  "closed_at": "2026-10-02T20:52:53.047541Z",
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

@@ -21,8 +21,12 @@
 //!   Antigravity
 //! - [Chapter 4: Examples](crate::spec::ch04_examples) —
 //!   `features/04_examples/` (consumers of the public API, never core)
+//! - [Chapter 5: The CLI](crate::spec::ch05_cli) —
+//!   `features/cli/` (the `botspy` command: a thin shell over the
+//!   library; phase 1 is the read-only MVP)
 
 pub mod ch01_structure;
 pub mod ch02_querying;
 pub mod ch03_importers;
 pub mod ch04_examples;
+pub mod ch05_cli;

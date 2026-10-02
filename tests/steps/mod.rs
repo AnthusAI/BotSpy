@@ -4,6 +4,7 @@ pub mod antigravity_steps;
 pub mod arguments_steps;
 pub mod blob_steps;
 pub mod claude_code_steps;
+pub mod cli_steps;
 pub mod codex_steps;
 pub mod compaction_steps;
 pub mod cursor_steps;
@@ -148,6 +149,10 @@ pub struct BotSpyWorld {
     pub sentiment_report: Option<examples_steps::SentimentReport>,
     /// Sources of the example consumers, for the public-API checks.
     pub example_sources: Option<String>,
+    /// Fixture home the CLI steps laid out for the current scenario.
+    pub cli_home: Option<std::path::PathBuf>,
+    /// The outcome of the most recent CLI run.
+    pub cli_run: Option<botspy::cli::RunOutcome>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
