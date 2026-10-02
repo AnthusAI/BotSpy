@@ -3,7 +3,7 @@
   "title": "Extract all part types from Claude Code transcripts",
   "description": "Map user, assistant, thinking, tool_call, tool_result, attachment, and system entries to normalized parts with timestamps and provenance. Done when: fixture extraction yields the expected parts and malformed lines are skipped and counted.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,24 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "8b547213-5bba-4ef0-a5d3-ed9c7efc83f7",
+      "author": "home",
+      "text": "Extraction maps user/assistant/system/summary records into chapter-1 Messages (text, thinking, tool calls, tool results), native uuid/parentUuid become provenance record_id/parent_record, cost-state/pr-link/custom-title park in session state, malformed and unknown records skipped with counters, and partial trailing lines are held back until the append completes. Byte-offset resume verified by the appended-records and partial-line scenarios. Full gate green.",
+      "created_at": "2026-10-02T19:52:33.679152Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:00.247708Z",
-  "updated_at": "2026-10-02T16:21:49.859913Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:52:38.049988Z",
+  "closed_at": "2026-10-02T19:52:38.049949Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The work is defining transcript parsing for all entry types, while skipping and counting malformed lines.",
-  "right_now_updated_at": "2026-10-02T16:21:52.244621Z",
+  "right_now_summary": "Claude Code transcripts now extract normalized parts, preserve provenance, and skip malformed lines safely.",
+  "right_now_updated_at": "2026-10-02T19:52:39.329588Z",
   "custom": {}
 }
