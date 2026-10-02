@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: query API behaviors",
   "description": "Author features/query/*.feature: sessions(source=None) iteration, message and part iteration, filters by kind, time, and project; laziness. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "6392ee2f-62f0-4f19-8511-0a30bd55c159",
+      "author": "home",
+      "text": "Specs authored under features/02_querying/: 01_iteration.feature (sessions/messages/parts iteration in order), 02_filters.feature (source, project, part-kind, time-window filters), 03_laziness.feature (take-first, early drop, streaming message iteration). Engine-agnostic by design; tagged @wip until the Local Store implementation lands. Embedded in src/spec/ch02_querying.rs; spec-coverage test, fmt, clippy, doc all green.",
+      "created_at": "2026-10-02T19:26:36.023795Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:53.520622Z",
-  "updated_at": "2026-10-02T16:19:53.520656Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:26:39.944358Z",
+  "closed_at": "2026-10-02T19:26:39.944321Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Gherkin scenarios for query API behavior still need to be written and reviewed.",
-  "right_now_updated_at": "2026-10-02T16:19:54.974904Z",
-  "custom": {}
+  "right_now_summary": "Query API Gherkin specs cover iteration, filters, and laziness, with tests ready for the Local Store.",
+  "right_now_updated_at": "2026-10-02T19:26:41.287170Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

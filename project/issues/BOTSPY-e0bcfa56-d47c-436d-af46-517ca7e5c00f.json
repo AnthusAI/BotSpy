@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is defining importer adapters for safe discovery, streaming extraction, retries, and read-only source access.",
-  "right_now_updated_at": "2026-10-02T17:58:12.978258Z",
+  "right_now_summary": "The team is defining importer protocols, protecting source data, and testing adapter contracts.",
+  "right_now_updated_at": "2026-10-02T19:26:50.911087Z",
   "custom": {}
 }
