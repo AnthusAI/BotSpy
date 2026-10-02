@@ -3,7 +3,7 @@
   "title": "Define typed content-part model with fixed kinds and extra passthrough",
   "description": "Fixed kind set: text, thinking, tool_call, tool_result, attachment, system; agent-specific data outside the kinds flows through an extensible extra/raw passthrough without loss. Done when: every part kind round-trips through JSON and unknown kinds degrade to extra.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,16 +15,27 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "a32c098c-1b23-4ab9-8013-297fbb1bfe97",
+      "author": "home",
+      "text": "Done: KnownPart has the fixed kinds (text, thinking, tool_call, tool_result, attachment, inline_data, blob, system) plus Part::Extra raw passthrough. Golden round-trip unit tests in src/schema/mod.rs prove every kind survives JSON (kind tag intact) and unknown kinds degrade to Extra verbatim (kind_name + as_extra); message_parts.feature drives the same behavior. All gates green.",
+      "created_at": "2026-10-02T19:37:51.601148Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:16:17.385937Z",
-  "updated_at": "2026-10-02T17:55:54.900826Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:37:57.067150Z",
+  "closed_at": "2026-10-02T19:37:57.067081Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The typed content-part model is being defined with fixed kinds and lossless passthrough for unknown data.",
-  "right_now_updated_at": "2026-10-02T17:55:56.679943Z",
-  "custom": {}
+  "right_now_summary": "The typed content-part model preserves known and unknown kinds through JSON round-trips.",
+  "right_now_updated_at": "2026-10-02T19:37:58.415239Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

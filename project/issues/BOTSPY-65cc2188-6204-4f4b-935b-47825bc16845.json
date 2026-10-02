@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is building the unified session-history module, adapters, schema, queries, exports, and tests.",
-  "right_now_updated_at": "2026-10-02T19:35:42.230134Z",
+  "right_now_summary": "The team is building the unified session-history library, adapters, schemas, exports, tests, and documentation.",
+  "right_now_updated_at": "2026-10-02T19:38:21.691267Z",
   "custom": {}
 }

@@ -34,7 +34,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Schema specs are in place; raw arguments and blob provenance work, while the core session model still needs",
-  "right_now_updated_at": "2026-10-02T19:17:54.367222Z",
+  "right_now_summary": "The schema specs moved to Chapter 1, and core models, raw arguments, and blob provenance support pass tests.",
+  "right_now_updated_at": "2026-10-02T19:38:10.441813Z",
   "custom": {}
 }

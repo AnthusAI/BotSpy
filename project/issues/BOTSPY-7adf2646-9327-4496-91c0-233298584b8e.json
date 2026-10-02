@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "Most schema pieces pass; the typed content-part model and versioning work are still being defined.",
-  "right_now_updated_at": "2026-10-02T19:23:34.150016Z",
+  "right_now_summary": "Chapter 1’s session and message schema is documented, implemented, and passing its tests.",
+  "right_now_updated_at": "2026-10-02T19:38:20.010472Z",
   "custom": {}
 }
