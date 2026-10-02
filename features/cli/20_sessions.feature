@@ -1,4 +1,3 @@
-@wip
 Feature: botspy sessions
   One unified listing across every registered source. Filters select by
   source, project, and activity window; --limit caps the listing. The
@@ -35,7 +34,7 @@ Feature: botspy sessions
     And stdout reports "6 sessions"
 
   Scenario: --project filters by project id
-    When I run "botspy sessions --project extra-demo" against the fixture home
+    When I run "botspy sessions --project extra-demo --no-truncate" against the fixture home
     Then the exit code is 0
     And stdout reports "1 session"
     And stdout contains "solo-abc123"
