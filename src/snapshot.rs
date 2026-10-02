@@ -83,3 +83,34 @@ pub fn count_events(db: &Path) -> Result<u64, SnapshotError> {
         .map_err(SnapshotError::Sqlite)?;
     Ok(count.max(0) as u64)
 }
+
+/// Count the rows of a snapshot across the table names the sources use:
+/// `events` for the fixture sources, `cursorDiskKV` for Cursor's KV
+/// store. The first table that exists wins.
+pub fn count_rows(db: &Path) -> Result<u64, SnapshotError> {
+    let conn = Connection::open_with_flags(db, READ_ONLY).map_err(SnapshotError::Sqlite)?;
+    for table in ["events", "cursorDiskKV"] {
+        let exists = conn
+            .query_row(
+                "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?1",
+                [table],
+                |row| row.get::<_, i64>(0),
+            )
+            .map(Some)
+            .or_else(|err| match err {
+                rusqlite::Error::QueryReturnedNoRows => Ok(None),
+                err => Err(err),
+            })
+            .map_err(SnapshotError::Sqlite)?;
+        if exists.is_none() {
+            continue;
+        }
+        let count: i64 = conn
+            .query_row(&format!("SELECT COUNT(*) FROM {table}"), [], |row| {
+                row.get(0)
+            })
+            .map_err(SnapshotError::Sqlite)?;
+        return Ok(count.max(0) as u64);
+    }
+    Err(SnapshotError::Sqlite(rusqlite::Error::InvalidQuery))
+}

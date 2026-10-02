@@ -18,7 +18,7 @@
 pub mod render;
 
 use std::ffi::OsString;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 use clap::{Parser, Subcommand, ValueEnum};
@@ -34,6 +34,7 @@ use crate::importer::SourceOptions;
 use crate::importer::UnknownSource;
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
 use crate::session::{Session, SessionStore, SessionSummary, UnknownSession};
+use crate::snapshot::{count_rows, digest_files, snapshot_sqlite};
 
 /// Every source the registry knows, in registry order.
 pub const ALL_SOURCES: [&str; 5] = ["claude_code", "cursor", "codex", "grok_bot", "antigravity"];
@@ -758,8 +759,129 @@ fn doctor_human(facts: &[DoctorFacts]) -> String {
     out
 }
 
-fn snapshot(_args: SnapshotArgs) -> RunOutcome {
-    todo!("snapshot verb (BOTSPY-713087)")
+fn snapshot(args: SnapshotArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let options = args.global.options();
+    let (name, db) = match snapshot_target(&args.target, &options) {
+        Ok(resolved) => resolved,
+        Err(outcome) => return outcome,
+    };
+    let out_dir = match &args.out {
+        Some(dir) => dir.clone(),
+        None => home_of(&options).join(".botspy/snapshots").join(&name),
+    };
+    let wal = sidecar(&db, "-wal");
+    let shm = sidecar(&db, "-shm");
+    // Digest the source files as they existed before the read. A
+    // read-only open of a WAL-mode database creates empty -wal/-shm
+    // sidecars; that is SQLite's read machinery, not a mutation, so
+    // sidecars created by the read are not held against it.
+    let watched: Vec<PathBuf> = [Some(db.clone()), Some(wal), Some(shm)]
+        .into_iter()
+        .flatten()
+        .filter(|path| path.is_file())
+        .collect();
+    let refs: Vec<&Path> = watched.iter().map(|path| path.as_path()).collect();
+    let before = digest_files(&refs);
+    let snapshot_path = match snapshot_sqlite(&db, &out_dir) {
+        Ok(path) => path,
+        Err(err) => {
+            return RunOutcome::fail(
+                3,
+                format!("error: snapshot of {} failed: {err}\n", db.display()),
+            )
+        }
+    };
+    let after = digest_files(&refs);
+    let unmutated = before == after;
+    let rows = match count_rows(&snapshot_path) {
+        Ok(rows) => rows,
+        Err(err) => {
+            return RunOutcome::fail(
+                3,
+                format!(
+                    "error: counting rows in {} failed: {err}\n",
+                    snapshot_path.display()
+                ),
+            )
+        }
+    };
+    let snapshot = snapshot_path.display().to_string();
+    match args.global.output {
+        OutputMode::Json => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::json!({
+                "snapshot": snapshot,
+                "rows": rows,
+                "unmutated": unmutated,
+            })
+        )),
+        OutputMode::Ndjson => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::json!({
+                "snapshot": snapshot,
+                "rows": rows,
+                "unmutated": unmutated,
+            })
+        )),
+        OutputMode::Human => {
+            let mut out = format!("snapshot: {snapshot}\nrows: {rows}\n");
+            if unmutated {
+                out.push_str("source unmutated (digest verified before/after)\n");
+            } else {
+                out.push_str("source mutated during the read (digest changed)\n");
+            }
+            RunOutcome::ok(out)
+        }
+    }
+}
+
+/// Resolve the snapshot target: a source name resolved through the
+/// per-agent roots, or a path to a SQLite file. A known source whose
+/// location is not a SQLite file is a clean failure (3), not a guess.
+fn snapshot_target(target: &str, options: &SourceOptions) -> Result<(String, PathBuf), RunOutcome> {
+    if ALL_SOURCES.contains(&target) {
+        let root = resolved_root(target, options);
+        if root.is_file() {
+            return Ok((target.to_string(), root));
+        }
+        return Err(RunOutcome::fail(
+            3,
+            format!(
+                "error: no SQLite store for {target} at {} ({target} keeps its history outside SQLite)\n",
+                root.display()
+            ),
+        ));
+    }
+    let path = PathBuf::from(target);
+    if path.is_file() {
+        let stem = path
+            .file_stem()
+            .and_then(|stem| stem.to_str())
+            .unwrap_or("snapshot")
+            .to_string();
+        return Ok((stem, path));
+    }
+    let path_like = target.contains('/') || target.contains('\\');
+    if path_like {
+        return Err(RunOutcome::fail(
+            3,
+            format!("error: snapshot source {target} is not a readable file\n"),
+        ));
+    }
+    Err(UnknownSource {
+        name: target.to_string(),
+    }
+    .into_outcome())
+}
+
+/// The WAL/SHM sidecar path next to a database file, as SQLite names it.
+fn sidecar(db: &Path, suffix: &str) -> PathBuf {
+    let mut name = db.as_os_str().to_os_string();
+    name.push(suffix);
+    PathBuf::from(name)
 }
 
 /// Build a store of the real adapters for `sources` (every source when
