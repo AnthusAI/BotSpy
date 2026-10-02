@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "c1853a98-fa9a-4673-9c51-0b90925b0c43",
+  "issue_id": "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:48.906Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R8 raw tool-call arguments",
+        "to": "Implement until spec passes: R8 inline data and attachments"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

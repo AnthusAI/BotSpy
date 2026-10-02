@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "454e0b44-e732-457d-a0fb-05fe713abe0b",
+  "issue_id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:20.287Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R6 compaction and summaries",
+        "to": "Implement until spec passes: R6 provenance widening"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

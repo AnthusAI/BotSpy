@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "68530dcf-40af-4b9e-bc30-8d02aa6de3d0",
+  "issue_id": "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:13.568Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R6 compaction and summaries",
+        "to": "Write Gherkin spec: R6 provenance widening"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/provenance.feature gains the wip-tagged record id, record type, ordinal, and parent pointer scenarios, and they are embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}

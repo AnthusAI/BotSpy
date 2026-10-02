@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "dbb69ab0-baf3-43c3-95ab-cb1eb6eee02a",
+  "issue_id": "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:06.451Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Implement until spec passes: R5 turn grouping",
+        "to": "Implement until spec passes: R5 compaction and summaries"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: the wip tag is removed from 05_compaction.feature, step definitions are written, and cargo test --test bdd passes for its scenarios."
+      }
+    }
+  }
+}

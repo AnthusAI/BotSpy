@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "event_id": "a8497b93-87a5-4a0c-a9f7-2e7a7889e99d",
+  "issue_id": "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601",
+  "event_type": "field_updated",
+  "occurred_at": "2026-10-02T17:39:29.078Z",
+  "actor_id": "example-user",
+  "payload": {
+    "changes": {
+      "title": {
+        "from": "Write Gherkin spec: R7 provenance widening",
+        "to": "Write Gherkin spec: R7 raw tool-call arguments"
+      },
+      "description": {
+        "from": "",
+        "to": "Done when: features/02_schema/07_tool_call_arguments.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter."
+      }
+    }
+  }
+}
