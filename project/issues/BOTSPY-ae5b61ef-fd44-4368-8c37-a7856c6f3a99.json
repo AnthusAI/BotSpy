@@ -3,7 +3,7 @@
   "title": "Extract all part types from Cursor stores with WAL-safe snapshots",
   "description": "Read SQLite through a safe snapshot; map composer messages and agent transcript entries to normalized parts with row provenance for SQLite. Done when: fixture extraction yields the expected parts and the source db is byte-identical afterwards.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "0a34167c-0f05-41ce-81d4-26a5704b3152",
+      "author": "home",
+      "text": "Extraction maps bubbles into chapter-1 Messages in fullConversationHeadersOnly order (bubble keys b3,b1,b2 normalized to b1,b2,b3): type 1 -> User text, type 2 -> Assistant with thinking and toolFormerData -> ToolCall, toolResultBlob -> Blob part with blob_hash + container agentKv:blob. Changed composers re-detected by lastUpdatedAt (only composer-2 after the app bumps it). The hot WAL store is read exclusively through snapshot_sqlite snapshot copies - digest-verified never mutated, live app keeps writing. Full gate green.",
+      "created_at": "2026-10-02T20:06:19.962040Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:17:15.473642Z",
-  "updated_at": "2026-10-02T16:22:10.973048Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T20:06:20.737532Z",
+  "closed_at": "2026-10-02T20:06:20.737488Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
