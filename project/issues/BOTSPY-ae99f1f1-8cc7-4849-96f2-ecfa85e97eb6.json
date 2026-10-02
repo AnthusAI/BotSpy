@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6",
+  "title": "Rustdoc and doctests in CI (-D warnings, cargo test --doc)",
+  "description": "Done when: CI runs RUSTDOCFLAGS=-D warnings cargo doc --no-deps (broken intra-doc links fail) and cargo test --doc on every target.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:52:08.923583Z",
+  "updated_at": "2026-10-02T16:53:38.395579Z",
+  "closed_at": "2026-10-02T16:53:38.395543Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "docs-rustdoc"
+  },
+  "right_now_summary": "CI still needs to run strict rustdoc checks and doctests on every target.",
+  "right_now_updated_at": "2026-10-02T16:53:40.137549Z",
+  "custom": {}
+}

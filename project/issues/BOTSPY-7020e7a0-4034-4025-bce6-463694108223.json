@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
+  "title": "Chapter per spec layer with narrative prose, doctests, embedded Gherkin",
+  "description": "Done when: src/spec/ holds one doc-only chapter module per spec layer mirroring features/0N_*, with narrative prose, runnable doctests, intra-doc links to real types, and each chapter's .feature files embedded verbatim via include_str!.",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T16:51:57.909875Z",
+  "updated_at": "2026-10-02T16:53:26.077003Z",
+  "closed_at": "2026-10-02T16:53:26.076886Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "docs-rustdoc"
+  },
+  "right_now_summary": "The project is adding one narrative, doctested chapter per spec layer with embedded Gherkin files.",
+  "right_now_updated_at": "2026-10-02T16:53:28.426802Z",
+  "custom": {}
+}

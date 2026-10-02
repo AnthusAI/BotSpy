@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
   "title": "Docs",
-  "description": "Documentation: quickstart, schema reference with the part-kind model, per-adapter on-disk format matrix, and adapter authoring guide.",
+  "description": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded feature files, spec-coverage guard test, rustdoc and doctests in CI).",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -12,14 +12,14 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T16:15:24.317480Z",
-  "updated_at": "2026-10-02T16:15:24.317513Z",
+  "updated_at": "2026-10-02T16:53:52.037876Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The docs cover the quickstart, schema, on-disk formats, and adapter guide.",
-  "right_now_updated_at": "2026-10-02T16:15:25.871770Z",
+  "right_now_summary": "Docs are being organized into spec-layer chapters, with feature coverage checks and CI rustdoc tests added.",
+  "right_now_updated_at": "2026-10-02T16:53:53.967636Z",
   "custom": {}
 }
