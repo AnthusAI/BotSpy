@@ -3,7 +3,7 @@
   "title": "Write Gherkin spec: export behaviors",
   "description": "Author features/export/*.feature: JSON and JSONL export round-trips into the schema with stable field order and schema version. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "backlog",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -12,7 +12,7 @@
   "dependencies": [],
   "comments": [],
   "created_at": "2026-10-02T16:19:57.948695Z",
-  "updated_at": "2026-10-02T16:19:57.948752Z",
+  "updated_at": "2026-10-02T22:34:36.211247Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
