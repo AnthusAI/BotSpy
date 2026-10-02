@@ -17,10 +17,17 @@
       "text": "Fixed on develop (commit bc4caa7, branch fix/sessions-listing-bugs-a). ClaudeCodeSource::discover() now scans each transcript through a throwaway extractor — side-effect free, does not consume resume offsets — and summaries carry message_count, started_at/last_activity_at and the recorded title, consistent with show. Spec-first: two scenarios added to features/cli/20_sessions.feature (Summaries carry real activity; Human output shows the recorded session title), watched fail (0 msgs / — title), then made green; regression unit test discovery_summaries_carry_activity_from_the_transcripts uses a synthetic temp-dir transcript. Full suite green: cargo test, cargo test --test bdd (162 passed), clippy -D warnings, doc -D warnings, fmt. Verified read-only: no writes to the source tree. Note for follow-up: cursor/codex/grok_bot/antigravity discover() share the same default-summary defect; left to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
       "created_at": "2026-10-02T22:20:10.727579Z",
       "comment_type": "default"
+    },
+    {
+      "id": "8da4ad82-64f5-414c-a2e2-09995229966e",
+      "author": "home",
+      "text": "Follow-up (commit e221521 on develop): the regression test added here reused the botspy-cc3-{pid} temp root that malformed_and_unknown_are_skipped_and_counted also uses; the two run as parallel threads and one test's remove_dir_all could wipe the other's transcript — the flaky musl x86_64 CI failures seen on runs 37072051132 and 37072294147 (summaries.len() 0 vs 1). The test now has a unique root tag (botspy-cc5). No behavior change; status stays closed.",
+      "created_at": "2026-10-02T22:28:51.055156Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T22:16:45.386768Z",
-  "updated_at": "2026-10-02T22:20:12.219224Z",
+  "updated_at": "2026-10-02T22:28:51.055181Z",
   "closed_at": "2026-10-02T22:20:12.219192Z",
   "agent": {
     "platform": "cursor",
