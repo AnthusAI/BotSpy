@@ -106,8 +106,8 @@ pub mod spec;
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
 pub use schema::{
-    Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, KnownPart, Message, ModelCost,
-    Part, PartStatus, Peer, Provenance, RateLimitState, Role, SessionCost, SubagentInfo, Timestamp,
-    ToolArguments, Turn, TurnStatus, Usage, SCHEMA_VERSION,
+    content_hash, Agent, BattleLink, CompactionEvent, CompactionWindow, ForkPoint, KnownPart,
+    Message, ModelCost, Part, PartStatus, Peer, Provenance, RateLimitState, Role, SessionCost,
+    SubagentInfo, Timestamp, ToolArguments, Turn, TurnStatus, Usage, SCHEMA_VERSION,
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};

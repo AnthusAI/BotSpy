@@ -385,7 +385,10 @@
 //!    structured objects, `raw` kept verbatim, `parsed` from the first
 //!    parse — never double-decoded).
 //! 8. `08_inline_data.feature` — inline-data part with media type, content
-//!    hash, and `data_ref` for blob-backed bytes.
+//!    hash, and `data_ref` for blob-backed bytes. Implemented:
+//!    [`KnownPart::InlineData`](crate::schema::KnownPart::InlineData) with
+//!    [`content_hash`](crate::schema::content_hash) (SHA-256) and
+//!    `data_ref` for blob-backed bytes.
 //! 9. `09_optional_timestamp.feature` — optional timestamps; never
 //!    fabricated from file metadata.
 //! 10. `10_role_mapping.feature` — developer, inter-agent, injected, and
@@ -437,7 +440,7 @@
     "### 07_tool_call_arguments.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/07_tool_call_arguments.feature"),
     "\n```\n\n",
-    "### 08_inline_data.feature (pending)\n\n```gherkin\n",
+    "### 08_inline_data.feature\n\n```gherkin\n",
     include_str!("../../features/01_structure/08_inline_data.feature"),
     "\n```\n\n",
     "### 09_optional_timestamp.feature (pending)\n\n```gherkin\n",

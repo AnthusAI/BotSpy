@@ -96,6 +96,19 @@ impl ToolArguments {
     }
 }
 
+/// The content hash of inline bytes: SHA-256 over the base64 payload as
+/// recorded, hex-encoded. Cursor content-addresses blobs this way; Claude
+/// Code duplicates the same bytes across two fields of one record.
+pub fn content_hash(base64_data: &str) -> String {
+    use sha2::{Digest, Sha256};
+    let digest = Sha256::digest(base64_data.as_bytes());
+    let mut hex = String::with_capacity(digest.len() * 2);
+    for byte in digest {
+        hex.push_str(&format!("{byte:02x}"));
+    }
+    hex
+}
+
 /// A part with one of the fixed kinds.
 ///
 /// `extra` carries agent-specific fields the schema does not model yet, so
@@ -139,6 +152,18 @@ pub enum KnownPart {
         #[serde(default, skip_serializing_if = "Option::is_none")]
         extra: Option<Value>,
     },
+    InlineData {
+        mime: String,
+        /// The inline bytes, base64-encoded, when they travel in the record.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        data: Option<String>,
+        /// Content-addressed reference: a content hash for inline bytes or
+        /// a blob reference (e.g. Cursor `agentKv:blob:<sha256>`).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        data_ref: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        extra: Option<Value>,
+    },
     System {
         text: String,
         #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -168,6 +193,7 @@ impl Part {
                 KnownPart::ToolCall { .. } => "tool_call",
                 KnownPart::ToolResult { .. } => "tool_result",
                 KnownPart::Attachment { .. } => "attachment",
+                KnownPart::InlineData { .. } => "inline_data",
                 KnownPart::System { .. } => "system",
             }),
             Part::Extra(raw) => raw.get("kind").and_then(Value::as_str),
