@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e",
+  "title": "Specify the local store in Gherkin (features/02_querying/04_store.feature)",
+  "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/04_store.feature` (new, tagged @wip); `tests/steps/store_steps.rs` (new, todo!() red steps); `src/spec/ch02_querying.rs` (embed the new file — the docs-coverage guardrail); `features/02_querying/README.md` (stale: it still says no scenarios exist).\n\n**Specs:** observable store behavior only: a store opens (creating parent dirs) at a caller-given path; reopening persists previously ingested data; a reader on a second connection keeps querying while an ingest transaction commits (WAL observable); a corrupt or non-store file at the path is a clean typed error, never a panic; the default path derives from BOTSPY_HOME/$HOME as ~/.botspy/store.db (consistent with the CLI's ~/.botspy/snapshots).\n\n**Acceptance:** scenarios reviewed and executable red (todo!() steps); @wip kept so CI still skips the file.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-02T21:43:46.272811Z",
+  "updated_at": "2026-10-02T21:43:46.272845Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

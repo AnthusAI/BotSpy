@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "fbfe99bc-251a-4ab3-a9e9-de81ac469c07",
+  "issue_id": "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:51.182Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Specify filter + laziness steps (02_filters, 03_laziness red)",
+    "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `tests/steps/store_steps.rs` (red steps for the two existing feature files).\n\n**Specs:** step definitions for the existing @wip `02_filters.feature` (source, project, part kind at session and message level, time window) and `03_laziness.feature` (take-1 opens only it; drop stops the work; message streaming never materializes the session). The \"opened\" / \"not fully materialized\" assertions go through the Query counters (the `peak_buffered` precedent). The feature files are the source of truth and stay as written; if a scenario proves unobservable, refine wording only after recording the refinement in a comment on this task.\n\n**Acceptance:** executable red; @wip kept.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

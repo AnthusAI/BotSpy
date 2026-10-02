@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "c0bbd981-9579-44de-885d-9c265a73a294",
+  "issue_id": "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:04.071Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Store foundation: SQLite + sqlite-vec + FTS5 (cross-platform)",
+    "description": "The unified store's chassis, milestone 1 of the Local Store Initiative (implements the Chapter 2 record, BOTSPY-047770). A new isolated src/store/ module: one SQLite file in WAL mode (an out-of-process writer can write while readers query; a Swift app can share the same file), versioned embedded DDL, and both query engines compiled in — the sqlite-vec crate builds sqlite-vec.c from source via cc (no prebuilt binaries, the same build path as rusqlite's bundled SQLite) and bundled SQLite ships FTS5. The walking-skeleton task proves both on every CI target (Linux x86/arm gnu, musl x86/arm via cross, macOS 14 arm, macOS 15 intel, Windows MSVC — green today, required to stay green) before anything is built on them. Spec first (04_store.feature, red), then the skeleton. No src/cli or src/adapters changes.",
+    "issue_type": "epic",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

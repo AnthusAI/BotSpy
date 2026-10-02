@@ -1,0 +1,42 @@
+{
+  "id": "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148",
+  "title": "Docs wrap-up: chapter status, README flip, wiki page, board close-out",
+  "description": "**Files:** `src/spec/ch02_querying.rs` (status sections); `src/lib.rs` (chapter index line for querying — drop the stale \"(specified next)\"); `README.md` (status FAQ + mermaid \"planned\" labels flipped for what landed; the future CLI verbs stay described as planned under the CLI epic BOTSPY-7c2705); `project/wiki/store.md` (new: store path, WAL, DDL v1, refresh model, embedder seam, model-id policy).\n\n**Acceptance:** docs-coverage guardrail green; no stale \"planned\" claims about landed behavior; `kbs wiki render` on the new page is clean; the landed epics are closed with DoD comments (the MiniLM epic stays open and blocked on its gate).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d",
+      "type": "blocked-by"
+    },
+    {
+      "target": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T21:44:00.187091Z",
+  "updated_at": "2026-10-02T21:44:28.161379Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

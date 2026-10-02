@@ -1,0 +1,30 @@
+{
+  "id": "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e",
+  "title": "Specify incremental refresh (06_refresh.feature red; fixture open counter)",
+  "description": "Specs first, red before green.\n\n**Files:** `features/02_querying/06_refresh.feature` (new, @wip); `tests/steps/store_steps.rs`; `src/adapters/fixture.rs` (add `open_count()` — the one deliberate src/adapters touch in this initiative: test-infra observability in the SkipCounter spirit, documented as such); `src/spec/ch02_querying.rs` (embed).\n\n**Specs:** a second pass after a new fixture session appears ingests only the new one (report: 1 new, rest unchanged); a changed summary (message appended → message_count/last_activity moved) is re-ingested and queries return the new content; a session gone from the source is pruned; refresh is idempotent; unchanged sessions are not re-opened from their adapters (open_count proves it).\n\n**Acceptance:** executable red; @wip kept.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e",
+  "labels": [],
+  "dependencies": [
+    {
+      "target": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+      "type": "blocked-by"
+    }
+  ],
+  "comments": [],
+  "created_at": "2026-10-02T21:43:49.710996Z",
+  "updated_at": "2026-10-02T21:44:07.447385Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "glm-5.3-flash",
+    "name": "botspy-local-store-plan"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

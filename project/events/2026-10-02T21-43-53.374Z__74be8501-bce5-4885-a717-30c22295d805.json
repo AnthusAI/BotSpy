@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "74be8501-bce5-4885-a717-30c22295d805",
+  "issue_id": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-02T21:43:53.374Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Specify search (07_text_search.feature, 08_vector_search.feature red)",
+    "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/07_text_search.feature` (new, @wip); `features/02_querying/08_vector_search.feature` (new, @wip); `tests/steps/store_steps.rs` (red); `src/spec/ch02_querying.rs` (embed both).\n\n**Specs:** text — find sessions and messages by words across every source, ranked, case-insensitive; no match is an empty result, never an error; search composes with filters. Vector — with the deterministic stub embedder configured, semantic search returns the nearest sessions for a query text with scores; k is caller-chosen; text + vector results merge into one hybrid ranking (reciprocal-rank fusion); a store opened without an embedder answers text search normally and semantic search with a clean empty result; stores never mix embedding models (meta model id).\n\n**Acceptance:** executable red; @wip kept on both files.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "glm-5.3-flash",
+      "name": "botspy-local-store-plan"
+    }
+  }
+}

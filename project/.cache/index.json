@@ -1,129 +1,154 @@
 {
   "version": 1,
-  "built_at": "2026-10-02T21:40:36Z",
+  "built_at": "2026-10-02T21:45:21Z",
   "file_mtimes": {
-    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790977073.556418,
-    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790977073.556697,
-    "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790977073.55699,
-    "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790977073.557266,
-    "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097.json": 1790977073.557547,
-    "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790977073.557813,
-    "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790977073.557985,
-    "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790977073.558243,
-    "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b.json": 1790977073.558474,
-    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790977073.55872,
-    "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee.json": 1790977073.558958,
-    "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790977073.559169,
-    "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790977073.559399,
-    "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790977073.559663,
-    "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790977073.5599,
-    "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790977073.560157,
-    "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790977073.560424,
-    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790977073.560683,
-    "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790977073.560871,
-    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790977073.561129,
-    "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790977073.561372,
-    "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790977073.561622,
-    "BOTSPY-3d9af881-2a80-46cb-968a-e7a4ea83d83c.json": 1790977232.614946,
-    "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790977073.561838,
-    "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e.json": 1790977073.562108,
-    "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1790977073.562386,
-    "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790977073.562657,
-    "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790977073.563048,
-    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790977073.563264,
-    "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790977073.563526,
-    "BOTSPY-493cee0b-bb83-4f55-9ad7-1958aaf81704.json": 1790977232.594154,
-    "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790977073.56378,
-    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790977073.564035,
-    "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790977073.564293,
-    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790977073.564539,
-    "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790977073.564777,
-    "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992.json": 1790977073.565014,
-    "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790977073.565208,
-    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790977073.565357,
-    "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790977073.5655,
-    "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790977073.565725,
-    "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790977073.565984,
-    "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790977073.566298,
-    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790977073.566551,
-    "BOTSPY-62676b58-d60a-484f-b3f2-98c77fd79b63.json": 1790977073.566803,
-    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790977073.567049,
-    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790977073.56732,
-    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790977073.567535,
-    "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790977073.567828,
-    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790977073.568138,
-    "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790977073.568363,
-    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790977073.568594,
-    "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790977073.568905,
-    "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb.json": 1790977073.569384,
-    "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63.json": 1790977073.569619,
-    "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790977073.569873,
-    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790977073.570107,
-    "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790977073.570425,
-    "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790977073.570693,
-    "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f.json": 1790977073.570971,
-    "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790977073.571213,
-    "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790977073.571516,
-    "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790977073.571779,
-    "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39.json": 1790977073.57203,
-    "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790977073.572281,
-    "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790977073.572652,
-    "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790977073.57291,
-    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790977073.573176,
-    "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790977073.573351,
-    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790977073.573595,
-    "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790977073.573846,
-    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790977073.574105,
-    "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790977073.57438,
-    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790977073.574638,
-    "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790977073.57488,
-    "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790977073.575132,
-    "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1790977073.575389,
-    "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790977073.575626,
-    "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790977073.575852,
-    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790977073.576095,
-    "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790977073.576337,
-    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790977073.576595,
-    "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790977073.57691,
-    "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790977073.577191,
-    "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790977073.577464,
-    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790977073.577725,
-    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790977073.578315,
-    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790977073.578614,
-    "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790977073.578865,
-    "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855.json": 1790977073.579124,
-    "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790977073.579387,
-    "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790977073.579657,
-    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790977073.579923,
-    "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790977073.580124,
-    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790977073.580423,
-    "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790977073.580632,
-    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790977073.580909,
-    "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790977073.581175,
-    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790977073.581436,
-    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790977073.58163,
-    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790977073.581899,
-    "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790977073.582155,
-    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790977073.582422,
-    "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790977073.582679,
-    "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790977073.582924,
-    "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790977073.583183,
-    "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790977073.583368,
-    "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790977073.583647,
-    "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790977073.583828,
-    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790977073.584107,
-    "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790977073.584363,
-    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790977073.584626,
-    "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1790977073.58489,
-    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790977073.585125,
-    "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1790977073.58537,
-    "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790977073.585603,
-    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790977073.58584,
-    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790977073.585983,
-    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790977073.586153,
-    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790977073.586386,
-    "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591.json": 1790977073.586615,
-    "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1790977073.586846
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1790977509.020866,
+    "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1790977052.685278,
+    "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1790977052.685552,
+    "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725.json": 1790977509.021025,
+    "BOTSPY-07921377-64e4-47e4-8e5f-9edd6808ec25.json": 1790977052.685804,
+    "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097.json": 1790977052.686059,
+    "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987.json": 1790977052.686308,
+    "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917.json": 1790977052.686467,
+    "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351.json": 1790977052.686708,
+    "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b.json": 1790977052.686951,
+    "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1790977052.687217,
+    "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124.json": 1790977509.021173,
+    "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee.json": 1790977052.687467,
+    "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1790977052.687696,
+    "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1790977052.687955,
+    "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1790977052.688227,
+    "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a.json": 1790977509.021322,
+    "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7.json": 1790977509.021474,
+    "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1790977052.688484,
+    "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1790977052.688764,
+    "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1790977052.689068,
+    "BOTSPY-3237b51d-442c-4aea-97a5-3792ad531b64.json": 1790977052.689336,
+    "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6.json": 1790977052.689518,
+    "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e.json": 1790977052.689792,
+    "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b.json": 1790977052.690068,
+    "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3.json": 1790977052.69036,
+    "BOTSPY-3d9af881-2a80-46cb-968a-e7a4ea83d83c.json": 1790977508.986295,
+    "BOTSPY-3fa1b4b3-5bf4-4902-8764-a5d73ab9b72a.json": 1790977052.69062,
+    "BOTSPY-3fe93a93-cc94-4ef7-9913-fc0cdf5af90e.json": 1790977052.690895,
+    "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1790977052.691354,
+    "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1790977052.691654,
+    "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1790977052.691886,
+    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1790977052.69212,
+    "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1790977052.692387,
+    "BOTSPY-493cee0b-bb83-4f55-9ad7-1958aaf81704.json": 1790977508.986579,
+    "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601.json": 1790977052.692671,
+    "BOTSPY-4df0ac67-b953-4c04-b425-992adbd338a3.json": 1790977052.692949,
+    "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e.json": 1790977509.021613,
+    "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1790977052.693218,
+    "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1790977052.693482,
+    "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148.json": 1790977509.021747,
+    "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1790977052.694167,
+    "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992.json": 1790977052.694448,
+    "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1790977052.694663,
+    "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48.json": 1790977052.694838,
+    "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad.json": 1790977052.695027,
+    "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e.json": 1790977509.021882,
+    "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1790977052.69528,
+    "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1790977052.695573,
+    "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1790977052.695882,
+    "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab.json": 1790977509.022024,
+    "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1790977052.696158,
+    "BOTSPY-62676b58-d60a-484f-b3f2-98c77fd79b63.json": 1790977052.696454,
+    "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1790977052.696733,
+    "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845.json": 1790977052.697011,
+    "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c.json": 1790977052.697241,
+    "BOTSPY-6a0e9dd5-5278-47ba-897c-af540731537f.json": 1790977052.697542,
+    "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f.json": 1790977052.697784,
+    "BOTSPY-6cf0ea42-3df3-4569-90c5-e09398056c4c.json": 1790977052.698036,
+    "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1790977052.698713,
+    "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466.json": 1790977509.022161,
+    "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1790977052.699087,
+    "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5.json": 1790977509.022299,
+    "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb.json": 1790977052.699441,
+    "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63.json": 1790977052.699699,
+    "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc.json": 1790977509.022434,
+    "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1790977052.699962,
+    "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772.json": 1790977509.022588,
+    "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1790977052.700204,
+    "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1790977052.700579,
+    "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1790977052.70085,
+    "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f.json": 1790977052.701145,
+    "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e.json": 1790977509.022738,
+    "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4.json": 1790977052.701399,
+    "BOTSPY-800531ed-fb8c-4265-a726-adc4b1171611.json": 1790977052.701687,
+    "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf.json": 1790977052.701941,
+    "BOTSPY-8720fde0-d3ca-465c-bc8b-ed2319096f39.json": 1790977052.702182,
+    "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a.json": 1790977052.702415,
+    "BOTSPY-896af492-b3e3-4a6b-ab41-ccc0b791319a.json": 1790977052.70268,
+    "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1790977052.70294,
+    "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1790977052.703209,
+    "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1790977052.703379,
+    "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1790977052.703625,
+    "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1790977052.703875,
+    "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1790977052.704137,
+    "BOTSPY-933536ff-9066-4b94-8271-851bdf822246.json": 1790977052.704427,
+    "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0.json": 1790977052.704684,
+    "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3.json": 1790977052.704913,
+    "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1790977052.705158,
+    "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1790977052.70541,
+    "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1790977052.70566,
+    "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1790977052.705915,
+    "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1790977052.706159,
+    "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077.json": 1790977052.706404,
+    "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b.json": 1790977509.022889,
+    "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9.json": 1790977509.023035,
+    "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea.json": 1790977509.023185,
+    "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c.json": 1790977052.70668,
+    "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810.json": 1790977052.706888,
+    "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99.json": 1790977052.70712,
+    "BOTSPY-ae99f1f1-8cc7-4849-96f2-ecfa85e97eb6.json": 1790977052.707353,
+    "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171.json": 1790977052.707551,
+    "BOTSPY-b6a297d0-e2ea-495c-bd81-c5c8f3f33668.json": 1790977052.708345,
+    "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7.json": 1790977052.708656,
+    "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4.json": 1790977509.02333,
+    "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef.json": 1790977052.708922,
+    "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855.json": 1790977052.70919,
+    "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88.json": 1790977052.709447,
+    "BOTSPY-bd531f52-2151-4e63-b9ce-3a95c3ebe705.json": 1790977052.709697,
+    "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16.json": 1790977509.023473,
+    "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1.json": 1790977509.023681,
+    "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5.json": 1790977052.710112,
+    "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f.json": 1790977509.023816,
+    "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1790977052.710368,
+    "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1790977052.710583,
+    "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1790977052.710831,
+    "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1790977052.711079,
+    "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1790977052.711354,
+    "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1790977052.711552,
+    "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5.json": 1790977509.023959,
+    "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f.json": 1790977052.711801,
+    "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1.json": 1790977052.712036,
+    "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f.json": 1790977052.712276,
+    "BOTSPY-e1715a8d-9765-4277-bd27-dfa493a20242.json": 1790977052.712499,
+    "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db.json": 1790977509.024094,
+    "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89.json": 1790977052.712712,
+    "BOTSPY-e4765df6-c548-4a68-89cd-dd2d55ff45b3.json": 1790977052.712961,
+    "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d.json": 1790977509.024222,
+    "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6.json": 1790977052.713141,
+    "BOTSPY-e62c4bc2-bbae-4697-b0ea-0d67d005b42c.json": 1790977052.713448,
+    "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a.json": 1790977052.713645,
+    "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f.json": 1790977509.024358,
+    "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1790977052.713951,
+    "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1790977052.714218,
+    "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e.json": 1790977509.02449,
+    "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1790977052.71448,
+    "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1790977052.714737,
+    "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1790977052.715007,
+    "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a.json": 1790977509.024799,
+    "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1790977052.715302,
+    "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1790977052.715572,
+    "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1790977052.715922,
+    "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1790977052.716392,
+    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1790977052.716612,
+    "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1790977052.716893,
+    "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591.json": 1790977052.717153,
+    "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1790977052.717403
   },
   "issues": [
     {
@@ -138,9 +163,17 @@
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "c22982dc-a6c5-4bf1-ac72-5e1eb8729f3a",
+          "author": "home",
+          "text": "Implementation plan for this chapter is filed under the initiative of record, BOTSPY-c7795b: store foundation (SQLite + sqlite-vec + FTS5, cross-platform), ingestion + unified iteration, incremental refresh, filters + laziness, text + vector search, MiniLM embeddings (deferred on open asset questions), docs wrap-up. The existing @wip specs (01_iteration, 02_filters, 03_laziness) turn green as the query-interface epics land; new store / ingest / refresh / search specs join the same folder (features/02_querying/).",
+          "created_at": "2026-10-02T21:44:38.104046Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:15:16.948650Z",
-      "updated_at": "2026-10-02T17:58:05.520212Z",
+      "updated_at": "2026-10-02T21:44:38.104074Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
@@ -210,6 +243,40 @@
       },
       "right_now_summary": "Project setup is nearly complete, with tooling and checks passing except for a release-plz 403.",
       "right_now_updated_at": "2026-10-02T19:39:01.966196Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
+      "title": "Prove query laziness (counters + streaming)",
+      "description": "**Files:** `src/store/query.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `03_laziness.feature` — remove its @wip.\n\n**Acceptance:** taking the first session from an iteration performs exactly one session open; dropping an iterator performs no further opens; message iteration fetches only consumed rows. Fix any eager path the counters expose (no re-architecture — the iterators are cursors by construction).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:52.647393Z",
+      "updated_at": "2026-10-02T21:44:15.518544Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -453,6 +520,31 @@
       }
     },
     {
+      "id": "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124",
+      "title": "Spec-chapter, README, and wiki wrap-up",
+      "description": "Milestone 7 of the Local Store Initiative: the record matches the product. Chapter doc status sections current (src/spec/ch02_querying.rs), the stale \"(specified next)\" claim in src/lib.rs fixed, README status FAQ and mermaid \"planned\" labels flipped for what landed, a project wiki page documenting the store, and the board closed out for the landed epics. Per-task doc updates happen along the way (the docs-coverage guardrail: every .feature file embedded in a chapter); this epic is the final consolidation.\n\nWork in your own worktree off origin/develop, PR to develop only — never main. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:45.866213Z",
+      "updated_at": "2026-10-02T21:43:45.866251Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee",
       "title": "Write Gherkin spec: R12 raw blob escape hatch",
       "description": "Done when: features/02_schema/12_raw_blob_escape_hatch.feature exists with concrete scenarios drawn from the storage survey, tagged wip, and embedded in the ch02 rustdoc chapter.",
@@ -587,6 +679,61 @@
       },
       "right_now_summary": "SQLite/WAL reads use safe snapshots, and tests confirm source files stay unchanged.",
       "right_now_updated_at": "2026-10-02T19:35:38.530946Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+      "title": "Specify ingestion + iteration steps (05_ingest.feature new; 01_iteration steps red)",
+      "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/05_ingest.feature` (new, @wip); `tests/steps/store_steps.rs` (red steps for both files); `src/spec/ch02_querying.rs` (embed).\n\n**Specs:** 05_ingest — ingesting registered adapters fills the store (the ingest report counts); a session reported by two adapters lists once (first report wins, the chapter-1 rule); an ingested session round-trips losslessly (opening it from the store equals what the adapter returns, PartialEq); ingestion never writes the source (digest before/after, the importer-contract precedent); an empty registry is a clean no-op. Plus red step definitions for the existing `01_iteration.feature` scenarios (fixture adapters → store → ingest → iterate).\n\n**Acceptance:** executable red (todo!()); @wip kept on both files.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:47.717649Z",
+      "updated_at": "2026-10-02T21:44:02.434621Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+      "title": "MiniLM embeddings via tract ONNX on CPU (deferred on asset decision)",
+      "description": "Milestone 6 of the Local Store Initiative (deferred, gated on Ryan): the real embedder — all-MiniLM-L6-v2 through tract (ONNX) on CPU, one model, one set of weights, one engine so vectors are consistent by construction, batch embedding at ingest (the scanner-batch milestone). Justified deferral: the store, schema, DDL, k-NN engine, and hybrid ranking are model-independent and ship fully with the stub; only the model runtime depends on open asset questions (weights/tokenizer acquisition vs the README's nothing-leaves-the-machine promise, cargo feature gating, offline-deterministic CI) posted as a comment on BOTSPY-c7795b. The store records the embedding model id in meta and refuses mixed-model vectors, so this lands later as a clean re-ingest. Do not start before the decision task closes.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:45.401725Z",
+      "updated_at": "2026-10-02T21:43:45.401760Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -1246,6 +1393,31 @@
       }
     },
     {
+      "id": "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e",
+      "title": "Specify the local store in Gherkin (features/02_querying/04_store.feature)",
+      "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/04_store.feature` (new, tagged @wip); `tests/steps/store_steps.rs` (new, todo!() red steps); `src/spec/ch02_querying.rs` (embed the new file — the docs-coverage guardrail); `features/02_querying/README.md` (stale: it still says no scenarios exist).\n\n**Specs:** observable store behavior only: a store opens (creating parent dirs) at a caller-given path; reopening persists previously ingested data; a reader on a second connection keeps querying while an ingest transaction commits (WAL observable); a corrupt or non-store file at the path is a clean typed error, never a panic; the default path derives from BOTSPY_HOME/$HOME as ~/.botspy/store.db (consistent with the CLI's ~/.botspy/snapshots).\n\n**Acceptance:** scenarios reviewed and executable red (todo!() steps); @wip kept so CI still skips the file.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:46.272811Z",
+      "updated_at": "2026-10-02T21:43:46.272845Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53",
       "title": "Synthetic fixture and discovery for Grok Bot transcript replicas",
       "description": "Fixture mirrors base32 blob filenames ending in .transcript.replicas.<conversation-uuid>. Done when: discovery decodes blob names and finds conversations.",
@@ -1318,6 +1490,48 @@
         "project_label": "BOTSPY",
         "source": "shared"
       }
+    },
+    {
+      "id": "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148",
+      "title": "Docs wrap-up: chapter status, README flip, wiki page, board close-out",
+      "description": "**Files:** `src/spec/ch02_querying.rs` (status sections); `src/lib.rs` (chapter index line for querying — drop the stale \"(specified next)\"); `README.md` (status FAQ + mermaid \"planned\" labels flipped for what landed; the future CLI verbs stay described as planned under the CLI epic BOTSPY-7c2705); `project/wiki/store.md` (new: store path, WAL, DDL v1, refresh model, embedder seam, model-id policy).\n\n**Acceptance:** docs-coverage guardrail green; no stale \"planned\" claims about landed behavior; `kbs wiki render` on the new page is clean; the landed epics are closed with DoD comments (the MiniLM epic stays open and blocked on its gate).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:44:00.187091Z",
+      "updated_at": "2026-10-02T21:44:28.161379Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
     },
     {
       "id": "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd",
@@ -1497,6 +1711,36 @@
       }
     },
     {
+      "id": "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e",
+      "title": "Specify incremental refresh (06_refresh.feature red; fixture open counter)",
+      "description": "Specs first, red before green.\n\n**Files:** `features/02_querying/06_refresh.feature` (new, @wip); `tests/steps/store_steps.rs`; `src/adapters/fixture.rs` (add `open_count()` — the one deliberate src/adapters touch in this initiative: test-infra observability in the SkipCounter spirit, documented as such); `src/spec/ch02_querying.rs` (embed).\n\n**Specs:** a second pass after a new fixture session appears ingests only the new one (report: 1 new, rest unchanged); a changed summary (message appended → message_count/last_activity moved) is re-ingested and queries return the new content; a session gone from the source is pruned; refresh is idempotent; unchanged sessions are not re-opened from their adapters (open_count proves it).\n\n**Acceptance:** executable red; @wip kept.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:49.710996Z",
+      "updated_at": "2026-10-02T21:44:07.447385Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
       "title": "Grok Bot adapter",
       "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
@@ -1603,6 +1847,36 @@
       },
       "right_now_summary": "The team is building a fixture to discover Antigravity conversations from both roots.",
       "right_now_updated_at": "2026-10-02T16:22:52.118547Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab",
+      "title": "Store skeleton: open/create, WAL, migrations; sqlite-vec + FTS5 walking skeleton green on every CI target",
+      "description": "**Files:** `Cargo.toml` (add `sqlite-vec = \"=0.1.10-alpha.4\"`, exact pin: alpha crate); `src/store/mod.rs`, `src/store/migrations.rs` (new module, isolated from src/cli and src/adapters); `src/lib.rs` (pub mod store); `src/spec/ch02_querying.rs` (status); `tests/steps/store_steps.rs` (make the scenarios green).\n\n**Specs turned green:** `04_store.feature` — remove its @wip when every scenario passes.\n\n**Acceptance:** `Store::open(path)` plus default-path resolution (BOTSPY_HOME/$HOME → ~/.botspy/store.db); WAL + busy_timeout pragmas; `meta` table with versioned embedded DDL v1 — sessions, messages, parts with projected filter columns (agent, project_id, started_at, last_activity_at, message_count, role, timestamp, turn_id, part kind, text projection) plus lossless `session_json`/`message_json` serde columns; indexes on activity, agent, project, kind. sqlite-vec registered via `sqlite3_auto_extension` before connections open. Walking-skeleton unit tests: `vec_version()` smoke, vec0 create+insert+k-NN, FTS5 create+match (bundled SQLite ships FTS5 — the test asserts it so a target without it fails loudly; no silent LIKE fallback).\n\n**Cross-platform gate:** this task is the sqlite-vec proof point — the crate compiles sqlite-vec.c from source via cc, the same build path as rusqlite's bundled SQLite, so the matrix should hold; the PR's CI must be fully green on Linux x86/arm gnu, musl x86/arm (cross), macOS 14 + 15-intel, and Windows MSVC before this task closes. If a target fails, stop and report on this task.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:46.999215Z",
+      "updated_at": "2026-10-02T21:44:01.306440Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -1928,6 +2202,31 @@
       }
     },
     {
+      "id": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
+      "title": "Ingestion and unified iteration (adapters → store)",
+      "description": "Milestone 2 of the Local Store Initiative (implements BOTSPY-047770): mine every registered adapter into the store, strictly read-only with respect to source data, then iterate the unified history out of the store. Ingestion drives the existing `Adapter` trait (discover() + open()) — zero adapter changes — writes normalized sessions, messages, and parts plus the FTS index in per-session transactions, dedups by first-report-wins (the chapter-1 rule), proves the sources untouched (digest before/after, the importer-contract precedent), and round-trips sessions losslessly. The first face of the one query interface lands here: lazy iteration over sessions, messages, and parts with the engine invisible. Turns `01_iteration.feature` and `05_ingest.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:43.549855Z",
+      "updated_at": "2026-10-02T21:43:43.549891Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
       "title": "Chapter per spec layer with narrative prose, doctests, embedded Gherkin",
       "description": "Done when: src/spec/ holds one doc-only chapter module per spec layer mirroring features/0N_*, with narrative prose, runnable doctests, intra-doc links to real types, and each chapter's .feature files embedded verbatim via include_str!.",
@@ -1955,6 +2254,31 @@
       },
       "right_now_summary": "The project is adding one narrative, doctested chapter per spec layer with embedded Gherkin files.",
       "right_now_updated_at": "2026-10-02T16:53:28.426802Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+      "title": "One query surface: text search + vector search",
+      "description": "Milestone 5 of the Local Store Initiative: the press release's \"searchable\" — one query interface, two engines beneath it, neither visible. Lexical: FTS5 over message texts. Semantic: sqlite-vec vec0 k-NN over 384-dim session embeddings produced at ingest through an `Embedder` seam — a deterministic stub embedder for the specs now; the real all-MiniLM-L6-v2/tract model is the deferred MiniLM epic after this one. Hybrid ranking merges both paths into one ranked result. A store opened without an embedder answers text search normally and semantic search with a clean empty result; stores never mix embedding models. Turns `07_text_search.feature` and `08_vector_search.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:44.957289Z",
+      "updated_at": "2026-10-02T21:43:44.957366Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -2016,6 +2340,40 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc",
+      "title": "Implement query filters pushed down to SQLite",
+      "description": "**Files:** `src/store/query.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `02_filters.feature` — remove its @wip.\n\n**Acceptance:** composable filter methods on `Query` (source/agent, project, part kind via EXISTS over parts, activity since/until, limit) compiled into the WHERE clauses of the existing prepared statements — the engine filters; callers never materialize everything to compare properties. The filter surface deliberately mirrors the existing `botspy sessions` flags (--source/--project/--since/--until/--limit) so a future CLI verb over the store is a thin shell — but no CLI changes in this initiative.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:51.913477Z",
+      "updated_at": "2026-10-02T21:44:13.622768Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
       "title": "Antigravity parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
@@ -2051,6 +2409,31 @@
       },
       "right_now_summary": "Parity tests run on fixtures, and doctor checks both roots.",
       "right_now_updated_at": "2026-10-02T16:23:29.179203Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772",
+      "title": "Query filters and laziness",
+      "description": "Milestone 4 of the Local Store Initiative (implements the @wip specs in features/02_querying/): filters by source, project, part kind, and time window are pushed down to SQLite — the engine does the filtering; callers never pull every record into memory to compare properties (the 1.4 GB Claude trees and 6 GB Cursor stores make that unscalable). Laziness is proven, not assumed: taking one session opens only it, dropping an iterator stops the work, message iteration streams without materializing the session. Turns `02_filters.feature` and `03_laziness.feature` green and removes their @wip tags.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:44.497482Z",
+      "updated_at": "2026-10-02T21:43:44.497509Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -2212,6 +2595,36 @@
       },
       "right_now_summary": "The Gherkin spec is written and embedded in the Chapter 2 Rust documentation.",
       "right_now_updated_at": "2026-10-02T17:37:52.702985Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e",
+      "title": "Real-model semantic search end-to-end (gated specs)",
+      "description": "**Files:** `features/02_querying/09_semantic_model.feature` (new; gating per the decision task); `tests/steps/store_steps.rs`; `src/store/vector.rs`; `src/spec/ch02_querying.rs` (embed).\n\n**Acceptance:** end-to-end, red first then green: ingest with the MiniLM embedder → semantic search returns the semantically right fixtures → hybrid ranking composes. @wip removed only where CI can run the file ungated; stub-based specs unaffected.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:59.036622Z",
+      "updated_at": "2026-10-02T21:44:25.305038Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -3006,6 +3419,100 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b",
+      "title": "Specify filter + laziness steps (02_filters, 03_laziness red)",
+      "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `tests/steps/store_steps.rs` (red steps for the two existing feature files).\n\n**Specs:** step definitions for the existing @wip `02_filters.feature` (source, project, part kind at session and message level, time window) and `03_laziness.feature` (take-1 opens only it; drop stops the work; message streaming never materializes the session). The \"opened\" / \"not fully materialized\" assertions go through the Query counters (the `peak_buffered` precedent). The feature files are the source of truth and stay as written; if a scenario proves unobservable, refine wording only after recording the refinement in a comment on this task.\n\n**Acceptance:** executable red; @wip kept.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:51.182846Z",
+      "updated_at": "2026-10-02T21:44:11.178261Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+      "title": "Implement ingestion: adapters → store, read-only, dedup, lossless round-trip",
+      "description": "**Files:** `src/store/ingest.rs` (new), `src/store/mod.rs`, `tests/steps/store_steps.rs`. No src/adapters or src/cli changes.\n\n**Specs turned green:** `05_ingest.feature` — remove its @wip.\n\n**Acceptance:** `Store::ingest(&adapters) -> IngestReport`: per adapter discover(), then per session open() and one transaction — sessions row (projected columns + `session_json` minus messages + sha256 `content_hash` over the canonical session JSON), messages rows (`message_json` + projected columns), parts rows (kind + text projection), FTS rows for text-bearing parts. First-report-wins dedup within a pass. Optional-embedder hook: an `Option<Arc<dyn Embedder>>` configured on the store is called at ingest to produce session embeddings into the vec0 table (no default embedder yet — the seam lands with the search epic; store the model id in `meta` and refuse a mismatched one). Sources stay read-only by construction — the adapters have no write surface; the digest steps prove it. Round-trip equality holds for every fixtures-corpus session.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:48.369842Z",
+      "updated_at": "2026-10-02T21:44:04.650978Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea",
+      "title": "Implement the query iteration surface (sessions, messages, parts)",
+      "description": "**Files:** `src/store/query.rs` (new), `src/store/mod.rs`, `src/lib.rs` (re-exports), `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `01_iteration.feature` — remove its @wip (cross-source session iteration; in-order messages; in-order parts).\n\n**Acceptance:** `Store::query() -> Query`: `sessions()` lazy iterator (last activity desc, id tiebreak — the chapter-1 order); `open(id)` materializes one session (serde round-trip from rows; `UnknownSession` for unknown ids, never a silent empty); `messages(id)` and per-message parts iterators streaming in ordinal order. Iteration counters (opens / rows fetched) exposed for spec observability exactly like the importer protocol's `peak_buffered`/`SkipCounter` precedent. Iterators are prepared-statement cursors from day one — laziness is inherent; its epic only proves it. Engine invisible: no rusqlite types, SQL strings, or vec0 names in public signatures.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:49.028728Z",
+      "updated_at": "2026-10-02T21:44:05.764638Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-ab18a21b-2567-46e7-9a14-1af83a133b2c",
       "title": "Example use cases (consumers of the BotSpy library)",
       "description": "Optional examples that consume the botspy Rust library directly as Rust code (examples/ in the crate or integration tests): the thanks-vs-F-bombs meter, local sentiment analysis (VADER default, optional GoEmotions transformer), and a placeholder for similar metrics. No binary, no CLI, no extra crate; blocked-by the Layer 3: Query and export epic.",
@@ -3255,6 +3762,36 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4",
+      "title": "Decision (Ryan): embedding asset acquisition, feature gating, CI determinism",
+      "description": "A decision gate, not implementation — the rest of this epic stays blocked until this task closes with Ryan's answers in a comment.\n\n**The open questions** (also posted on BOTSPY-c7795b): (1) where the ~80 MB quantized all-MiniLM-L6-v2 weights + tokenizer.json come from — library-managed first-launch fetch, consumer/CLI-managed download, or an explicit install step — given the README FAQ's nothing-leaves-the-machine promise and offline-deterministic CI; (2) whether real-model support ships behind a cargo feature (e.g. `semantic`; tract + tokenizers is a heavy dependency tree) or in core; (3) which real-model specs run in CI (a tiny committed ONNX fixture vs feature-gated/ignored tests).\n\n**Do not start the implementation tasks until this closes.**\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:55.618399Z",
+      "updated_at": "2026-10-02T21:44:22.628498Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef",
       "title": "Synthetic fixture and discovery for Codex JSONL sessions",
       "description": "Fixture mirrors the CODEX_HOME sessions layout. Done when: discovery finds session files and reports counts.",
@@ -3384,9 +3921,39 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16",
+      "title": "Weights + tokenizer acquisition, caching, offline operation",
+      "description": "**Files:** per the decision task's answer (e.g. `src/store/assets.rs`; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** fetch-on-first-use with content digest and cache under ~/.botspy/models/ (or the decided location), download-once semantics, clean typed errors when offline, no telemetry. The README privacy claim is updated to state the one-time fetch honestly.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:57.965770Z",
+      "updated_at": "2026-10-02T21:44:24.547515Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "title": "Local Store Initiative — SQLite + sqlite-vec + all-MiniLM-L6-v2",
-      "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## Role in the documentation\n\nThis initiative implements Chapter 2: Querying (epic BOTSPY-047770): SQLite and the sqlite-vec extension underneath one query interface, with the engine completely invisible to callers.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics\n\nEach milestone of this initiative is represented as an epic in Kanbus, created under this initiative on the BotSpy board. Proposed milestones (future epics), NOT yet created:\n\n- SQLite store with WAL mode\n- sqlite-vec vector search\n- MiniLM embedding via ONNX/tract\n- Scanner batch embedding (CPU)",
+      "description": "Record of intent for a local embedding/semantic-search store for BotSpy session data. Record only; nothing here is committed to Cargo or code yet.\n\n## Role in the documentation\n\nThis initiative implements Chapter 2: Querying (epic BOTSPY-047770): SQLite and the sqlite-vec extension underneath one query interface, with the engine completely invisible to callers.\n\n## 1. Relational store: SQLite\n\nIn-process, single-file, no server. Rust bindings via rusqlite or sqlx. macOS has shipped SQLite in the system frameworks since 10.4, so a Swift Mac app can share the same database file. WAL mode for concurrent readers and writers, so an out-of-process scanner CLI can write while the app reads.\n\n## 2. Vector search: sqlite-vec\n\nAn extension living in the same SQLite file. Brute-force cosine similarity, which is fine for thousands of session embeddings.\n\n## 3. Embedding model: all-MiniLM-L6-v2\n\nDistilled BERT, 6 layers, 384-dim vectors (~1.5 KB each), ~80 MB quantized, open weights.\n\n## 4. Runners: tract (ONNX) on CPU\n\ntract (ONNX) on CPU, one engine for every consumer. A Swift Mac app still shares the same SQLite file and reads the vectors the Rust engine produces.\n\n## 5. Core design rule: one model, one set of weights, one engine\n\nOne model, one set of weights, one engine (ONNX/tract), so vectors are consistent by construction.\n\n## 6. Performance targets\n\nQuery embedding 50–200 ms on CPU via tract. Scanner batch embedding runs on CPU (no GPU path).\n\n## Decisions\n\n- Deployment: fetch the model weights on first launch. The app does not bundle the ~80 MB quantized all-MiniLM-L6-v2 weights and downloads them on first run. Tradeoff: a smaller app binary, at the cost of a delay and a network dependency on first launch.\n\n## Milestones as Kanbus epics (created)\n\nThe implementation plan is filed as epics under this initiative (planning only; no code yet). Implementation record for Chapter 2: Querying (BOTSPY-047770). Order: foundation → ingestion + iteration → refresh → filters + laziness → text + vector search → real embeddings (deferred on the open asset questions in the comments) → docs wrap-up. Tasks inside each epic carry the step-by-step order, files, specs, acceptance criteria, gates, and dependencies; spec tasks come first and stay red until their implementation task lands.\n\n- BOTSPY-f12bdb — Store foundation: SQLite + sqlite-vec + FTS5 (cross-platform)\n- BOTSPY-6f173d — Ingestion and unified iteration (adapters → store)\n- BOTSPY-ed56f3 — Incremental refresh (CDC into the store)\n- BOTSPY-798ba4 — Query filters and laziness\n- BOTSPY-71196e — One query surface: text search + vector search\n- BOTSPY-2cddcf — MiniLM embeddings via tract ONNX on CPU (deferred on asset decision)\n- BOTSPY-1d7b85 — Spec-chapter, README, and wiki wrap-up",
       "type": "initiative",
       "status": "open",
       "priority": 2,
@@ -3395,9 +3962,17 @@
       "parent": null,
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "b6275228-276c-42f6-8742-59e5bd025dac",
+          "author": "home",
+          "text": "## Implementation plan filed (planning only — no code)\n\nEpics and tasks are filed under this initiative for Chapter 2 (BOTSPY-047770). Order: E1 foundation → E2 ingestion + iteration → E3 refresh → E4 filters + laziness → E5 text + vector search → E6 real MiniLM embeddings (deferred, gated on the questions below) → E7 docs wrap-up. Technical findings recorded for the implementers:\n\n- The `sqlite-vec` crate (=0.1.10-alpha.4) compiles sqlite-vec.c from source via cc and registers via `sqlite3_auto_extension` — no prebuilt binaries, the same build path as rusqlite's bundled SQLite, so the full CI matrix (Linux x86/arm, musl via cross, macOS 14 + 15-intel, Windows MSVC) is expected to hold; the walking-skeleton task proves it on every target before anything builds on it.\n- Bundled SQLite ships FTS5; a smoke test asserts it so a target without it fails loudly.\n- Session storage is lossless: projected filter columns plus serde JSON round-trip columns (Session == re-materialized Session, PartialEq).\n- Laziness and refresh observability follow the importer protocol's precedent (`peak_buffered` / `SkipCounter`): Query counters and a fixture-adapter open counter.\n- Store path: ~/.botspy/store.db (BOTSPY_HOME honored), consistent with the CLI's ~/.botspy/snapshots.\n- The query filter surface deliberately mirrors the existing `botspy sessions` flags so a future CLI verb over the store is a thin shell; CLI verbs themselves stay with the CLI epic (BOTSPY-7c2705), not here.\n\n## Open design questions for Ryan (block only the MiniLM epic; everything else proceeds)\n\n1. **Embedding assets vs the privacy promise.** The recorded decision is fetch-weights-on-first-launch, but the README FAQ promises nothing leaves the machine and CI must stay offline-deterministic. Where do the ~80 MB quantized all-MiniLM-L6-v2 weights + tokenizer.json come from — library-managed first-launch fetch, consumer/CLI-managed download, or an explicit install step? Recommendation: consumer-managed, cached under ~/.botspy/models/, the core library stays network-free.\n2. **Cargo feature or core.** tract + tokenizers is a heavy dependency tree. Recommendation: real-model support behind a `semantic` cargo feature (default off); the Embedder seam + stub in core keeps the default build light.\n3. **Real-model specs in CI.** Tiny committed ONNX fixture vs feature-gated/ignored tests. Recommendation: gated; the stub covers engine behavior in normal CI.\n\nMinor calls made by the planner (override here if needed): session-level embeddings (per the initiative: thousands of session embeddings) with message-level reach via FTS; refresh syncs to discovery, pruning sessions that vanish from a source.",
+          "created_at": "2026-10-02T21:44:37.901068Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T17:38:07.357226Z",
-      "updated_at": "2026-10-02T17:58:21.000961Z",
+      "updated_at": "2026-10-02T21:44:37.901092Z",
       "closed_at": null,
       "agent": {
         "platform": "cursor",
@@ -3444,6 +4019,44 @@
       },
       "right_now_summary": "Parity tests and doctor diagnostics are being checked against the expected fixture report.",
       "right_now_updated_at": "2026-10-02T19:45:30.450863Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+      "title": "Implement sqlite-vec vector search + Embedder seam + hybrid ranking",
+      "description": "**Files:** `src/store/embed.rs` (new: `Embedder` trait — model id, dim 384, batch embed; `StubEmbedder` — deterministic token-hash 384-dim normalized vectors with signed token buckets so shared vocabulary scores high cosine, good enough for the fixture scenarios); `src/store/vector.rs` (new: vec0 k-NN + cosine scores); `src/store/query.rs` (hybrid merge via reciprocal-rank fusion, deterministic); `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `08_vector_search.feature` — remove its @wip.\n\n**Acceptance:** the embedder is a store-open concern (default None → semantic queries return a clean empty result, text queries unaffected); meta model id set on first embed, a mismatched model refused with a clean error; hybrid merge of FTS + k-NN results via reciprocal-rank fusion, composable with filters, one ranked result type for both paths; engine invisible.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:54.760688Z",
+      "updated_at": "2026-10-02T21:44:21.676736Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -3672,6 +4285,40 @@
       }
     },
     {
+      "id": "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5",
+      "title": "Implement incremental refresh: staleness, re-ingest, prune",
+      "description": "**Files:** `src/store/ingest.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `06_refresh.feature` — remove its @wip.\n\n**Acceptance:** `Store::refresh(&adapters) -> IngestReport`: staleness by (id, last_activity_at, message_count) from summaries — unchanged means no adapter open; new or changed means open + `content_hash` compare + re-ingest in one transaction when actually changed (delete + reinsert message/part/FTS/embedding rows); prune sessions an adapter no longer reports; report counts per outcome (new / updated / unchanged / pruned).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:50.403823Z",
+      "updated_at": "2026-10-02T21:44:09.716704Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f",
       "title": "Implement until spec passes: R6 provenance widening",
       "description": "Done when: the wip tags are removed from provenance.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
@@ -3807,6 +4454,36 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+      "title": "Specify search (07_text_search.feature, 08_vector_search.feature red)",
+      "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/07_text_search.feature` (new, @wip); `features/02_querying/08_vector_search.feature` (new, @wip); `tests/steps/store_steps.rs` (red); `src/spec/ch02_querying.rs` (embed both).\n\n**Specs:** text — find sessions and messages by words across every source, ranked, case-insensitive; no match is an empty result, never an error; search composes with filters. Vector — with the deterministic stub embedder configured, semantic search returns the nearest sessions for a query text with scores; k is caller-chosen; text + vector results merge into one hybrid ranking (reciprocal-rank fusion); a store opened without an embedder answers text search normally and semantic search with a clean empty result; stores never mix embedding models (meta model id).\n\n**Acceptance:** executable red; @wip kept on both files.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:53.374328Z",
+      "updated_at": "2026-10-02T21:44:16.298469Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89",
       "title": "Implement JSON and JSONL export",
       "description": "Export sessions, messages, and parts to JSON and JSONL with stable field order and schema version. Done when: the feature scenarios in features/export pass.",
@@ -3859,6 +4536,40 @@
       },
       "right_now_summary": "Synthetic fixtures and unified-history tests are complete, with secret-safety checks passing across all adapters.",
       "right_now_updated_at": "2026-10-02T19:43:50.694015Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d",
+      "title": "Implement FTS5 text search",
+      "description": "**Files:** `src/store/text.rs` (new), `src/store/query.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `07_text_search.feature` — remove its @wip.\n\n**Acceptance:** FTS5 match over the message text projections written at ingest, ranked, returning matched sessions and their matching messages, composable with the filters task. (If any bundled-SQLite target lacked FTS5, the walking skeleton's smoke test would already have failed — do not build a silent LIKE fallback; report on this task instead.)\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+          "type": "blocked-by"
+        },
+        {
+          "target": "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:53.941036Z",
+      "updated_at": "2026-10-02T21:44:17.899089Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -3975,6 +4686,36 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f",
+      "title": "Implement MiniLMEmbedder: all-MiniLM-L6-v2 via tract ONNX + tokenizer",
+      "description": "**Files:** `Cargo.toml` (cargo feature per the decision task; tract-onnx, tokenizers); `src/store/embed_minilm.rs` (naming per final layout); `src/store/embed.rs` (trait unchanged); `src/spec/ch02_querying.rs`.\n\n**Acceptance:** tract ONNX runtime on CPU, all-MiniLM-L6-v2 (384-dim), wordpiece tokenization via the tokenizers crate, implementing `Embedder` (model id \"all-MiniLM-L6-v2\"); batch embedding at ingest (the scanner-batch milestone). One model, one set of weights, one engine — vectors consistent by construction; the store's model-id policy from the vector-search task applies (mismatch refused, clean re-ingest). The 50–200 ms CPU query-embedding target is a doc note, not a spec assertion. Stub-based engine specs stay green; real-model specs per the decision; gates green with and without the feature.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:56.607580Z",
+      "updated_at": "2026-10-02T21:44:23.616122Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797",
       "title": "Schema R1: Usage and cost metrics on Message and Session",
       "description": "Report recommendation 1: a Usage struct on Message (and Session) for input/output/cache read/cache write/reasoning tokens, cost_usd, and model; rate-limit/plan info at session level. Usage an agent does not persist is absent, never zero. Feature: features/02_schema/01_usage_tokens.feature (spec sub-task holds done-when).",
@@ -4046,6 +4787,31 @@
       },
       "right_now_summary": "The Gherkin spec is written and embedded in the chapter docs.",
       "right_now_updated_at": "2026-10-02T17:40:21.104549Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e",
+      "title": "Incremental refresh (CDC into the store)",
+      "description": "Milestone 3 of the Local Store Initiative: keep the store current without re-mining the world — the store-side twin of the importers' incremental-by-identity discovery. A refresh pass compares each adapter's discover() summaries against stored rows, opens and re-ingests only new or changed sessions, prunes what vanished from the source, and reports per outcome (`IngestReport` — the SkipCounter precedent). Unchanged sessions are never re-opened from their adapters. Turns `06_refresh.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:44.039232Z",
+      "updated_at": "2026-10-02T21:43:44.039268Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -4154,6 +4920,31 @@
         "project_label": "BOTSPY",
         "source": "shared"
       }
+    },
+    {
+      "id": "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a",
+      "title": "Store foundation: SQLite + sqlite-vec + FTS5 (cross-platform)",
+      "description": "The unified store's chassis, milestone 1 of the Local Store Initiative (implements the Chapter 2 record, BOTSPY-047770). A new isolated src/store/ module: one SQLite file in WAL mode (an out-of-process writer can write while readers query; a Swift app can share the same file), versioned embedded DDL, and both query engines compiled in — the sqlite-vec crate builds sqlite-vec.c from source via cc (no prebuilt binaries, the same build path as rusqlite's bundled SQLite) and bundled SQLite ships FTS5. The walking-skeleton task proves both on every CI target (Linux x86/arm gnu, musl x86/arm via cross, macOS 14 arm, macOS 15 intel, Windows MSVC — green today, required to stay green) before anything is built on them. Spec first (04_store.feature, red), then the skeleton. No src/cli or src/adapters changes.",
+      "type": "epic",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
+      "labels": [],
+      "dependencies": [],
+      "comments": [],
+      "created_at": "2026-10-02T21:43:04.071884Z",
+      "updated_at": "2026-10-02T21:43:04.071922Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "glm-5.3-flash",
+        "name": "botspy-local-store-plan"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
     },
     {
       "id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
@@ -4431,6 +5222,9 @@
       "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e",
       "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7"
     ],
+    "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725": [
+      "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148"
+    ],
     "BOTSPY-0c0a2598-887a-465c-b75f-b52dec07d987": [
       "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3"
     ],
@@ -4444,6 +5238,12 @@
     ],
     "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63": [
       "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a"
+    ],
+    "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a": [
+      "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e",
+      "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b",
+      "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
+      "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db"
     ],
     "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6": [
       "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37",
@@ -4462,10 +5262,20 @@
     "BOTSPY-4c9d644d-5bfa-43a4-b937-e781b7c28601": [
       "BOTSPY-b3b9f19b-495b-4bea-9486-6a307f41a171"
     ],
+    "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e": [
+      "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a",
+      "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab"
+    ],
     "BOTSPY-57e279f4-1602-4b22-bc03-bae15db272ad": [
       "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549",
       "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
       "BOTSPY-bc2e16aa-5b41-41c6-8aed-3480f1670cef"
+    ],
+    "BOTSPY-5893ab17-8af2-4327-a13e-238f3f727d6e": [
+      "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5"
+    ],
+    "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab": [
+      "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9"
     ],
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e": [
       "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6"
@@ -4475,6 +5285,9 @@
     ],
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223": [
       "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf"
+    ],
+    "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc": [
+      "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f"
     ],
     "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f": [
       "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6"
@@ -4502,10 +5315,27 @@
     "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084": [
       "BOTSPY-db1935f6-956f-4956-a5f1-1e9ba4e1075f"
     ],
+    "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b": [
+      "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
+      "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc"
+    ],
+    "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9": [
+      "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea",
+      "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+      "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5",
+      "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d"
+    ],
+    "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea": [
+      "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
+      "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc"
+    ],
     "BOTSPY-b90ebda2-caca-403c-a270-f0cbd8b87ec7": [
       "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad",
       "BOTSPY-7ef936dd-4b03-4d6a-8f10-0f71f0495ec4",
       "BOTSPY-ac7553ad-6b5f-4cfb-8c72-7def215f5810"
+    ],
+    "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4": [
+      "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f"
     ],
     "BOTSPY-bc402ea2-f392-440d-8500-7d97ae168855": [
       "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b",
@@ -4517,16 +5347,36 @@
     "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88": [
       "BOTSPY-e3c4b91f-0fb2-470d-bb4a-079040adcb89"
     ],
+    "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16": [
+      "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e"
+    ],
+    "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f": [
+      "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148",
+      "BOTSPY-bb60bb3b-907a-4dce-a726-8471ac5ecbf4"
+    ],
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117": [
       "BOTSPY-e6feac69-aa71-4ff0-84cd-e09f036cc00a"
+    ],
+    "BOTSPY-d5b2c45b-7f65-488b-a9fd-d6fbb36deeb5": [
+      "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148"
     ],
     "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1": [
       "BOTSPY-87819cf7-c0fb-425b-a359-0cb953e2121a",
       "BOTSPY-ae5b61ef-fd44-4368-8c37-a7856c6f3a99",
       "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9"
     ],
+    "BOTSPY-e2f3fb96-da5e-4a94-89b6-c636cdea88db": [
+      "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f",
+      "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d"
+    ],
+    "BOTSPY-e5be2fc9-2a32-4626-b6e2-7dc74018af8d": [
+      "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148"
+    ],
     "BOTSPY-e5e18c06-58a8-4a51-bbea-90688e2725c6": [
       "BOTSPY-09efab40-1b3d-4839-83d1-c974f57bd097"
+    ],
+    "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f": [
+      "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16"
     ],
     "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176": [
       "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a"
