@@ -32,7 +32,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is locating Cursor data, building safe snapshots, extracting records, and checking tests and specifications.",
-  "right_now_updated_at": "2026-10-02T17:59:01.517878Z",
+  "right_now_summary": "The team is validating Cursor store discovery, WAL-safe snapshots, and complete part extraction.",
+  "right_now_updated_at": "2026-10-02T19:41:56.536724Z",
   "custom": {}
 }

@@ -3,23 +3,34 @@
   "title": "Write Gherkin spec: Cursor adapter behaviors",
   "description": "Author features/adapters/cursor/*.feature: discovery across composer indexes and agent transcripts, WAL-safe snapshot reads, extraction of all part kinds with row provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "154398e7-4381-43af-bc4f-e5c071eb5507",
+      "author": "home",
+      "text": "Spec authored at features/03_importers/cursor/adapter.feature (7 @wip scenarios): composer discovery from composerHeaders, re-detection by lastUpdatedAt, bubble order from fullConversationHeadersOnly (not keys), bubble-to-message mapping with thinking/toolFormerData, blob-only tool results as blob references, CLI transcript discovery, and hot-WAL snapshot-copy reading. Embedded in src/spec/ch03_importers/cursor.rs. All gates green.",
+      "created_at": "2026-10-02T19:41:48.663757Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:19:34.633166Z",
-  "updated_at": "2026-10-02T16:19:34.633208Z",
-  "closed_at": null,
+  "updated_at": "2026-10-02T19:41:54.004072Z",
+  "closed_at": "2026-10-02T19:41:54.003985Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The Gherkin spec for Cursor adapter behaviors still needs to be written and reviewed.",
-  "right_now_updated_at": "2026-10-02T16:19:35.924368Z",
-  "custom": {}
+  "right_now_summary": "The Cursor adapter spec is authored with seven reviewed scenarios, and all checks pass.",
+  "right_now_updated_at": "2026-10-02T19:41:55.021372Z",
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }
