@@ -16,10 +16,10 @@ use crate::session::SessionSummary;
 use crate::snapshot::snapshot_sqlite;
 use rusqlite::OpenFlags;
 use serde_json::Value;
-use std::sync::Mutex;
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::Mutex;
 
 static SNAPSHOT_SEQ: AtomicUsize = AtomicUsize::new(0);
 

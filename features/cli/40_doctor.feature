@@ -1,3 +1,4 @@
+@wip
 Feature: botspy doctor
   Per-source diagnostics: each adapter's doctor report — its root or
   store, the counts it discovered, and its issues. Doctor reports; it

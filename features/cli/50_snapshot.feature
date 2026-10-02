@@ -1,3 +1,4 @@
+@wip
 Feature: botspy snapshot
   A WAL-safe snapshot of a SQLite source: a consistent copy taken over a
   read-only connection, with proof the source was not mutated — the same

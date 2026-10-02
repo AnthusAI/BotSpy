@@ -15,6 +15,8 @@
 //! its `state_5.sqlite` threads index at `~/.codex`, not in `sessions/`;
 //! Cursor's adapter wants the KV store file, not the directory).
 
+pub mod render;
+
 use std::ffi::OsString;
 use std::path::PathBuf;
 use std::sync::Arc;
@@ -28,18 +30,12 @@ use crate::adapters::codex::CodexSource;
 use crate::adapters::cursor::CursorSource;
 use crate::adapters::grok_bot::GrokBotSource;
 use crate::importer::SourceOptions;
+use crate::importer::UnknownSource;
 use crate::schema::Agent;
 use crate::session::{SessionStore, UnknownSession};
-use crate::importer::UnknownSource;
 
 /// Every source the registry knows, in registry order.
-pub const ALL_SOURCES: [&str; 5] = [
-    "claude_code",
-    "cursor",
-    "codex",
-    "grok_bot",
-    "antigravity",
-];
+pub const ALL_SOURCES: [&str; 5] = ["claude_code", "cursor", "codex", "grok_bot", "antigravity"];
 
 /// Parse and run one `botspy` invocation. The first argument is the
 /// program name, as in `std::env::args_os`.
@@ -58,7 +54,7 @@ where
                 (rendered, String::new())
             };
             RunOutcome {
-                code: i32::from(err.exit_code()),
+                code: err.exit_code(),
                 stdout,
                 stderr,
             }
@@ -232,22 +228,127 @@ fn execute(cli: Cli) -> RunOutcome {
 }
 
 fn sources(args: SourcesArgs) -> RunOutcome {
-    todo!("sources verb (BOTSPY-62676b)")
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let names = match selected_sources(&args.global.source) {
+        Ok(names) => names,
+        Err(err) => return err.into_outcome(),
+    };
+    let options = args.global.options();
+    let facts = match source_facts(&names, &options) {
+        Ok(facts) => facts,
+        Err(err) => return err.into_outcome(),
+    };
+    match args.global.output {
+        OutputMode::Json => {
+            let entries: Vec<serde_json::Value> = facts.iter().map(source_json).collect();
+            RunOutcome::ok(format!(
+                "{}\n",
+                serde_json::to_string_pretty(&entries).expect("sources serialize")
+            ))
+        }
+        OutputMode::Ndjson => {
+            let lines: Vec<String> = facts
+                .iter()
+                .map(|fact| serde_json::to_string(&source_json(fact)).expect("sources serialize"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => RunOutcome::ok(sources_human(&facts, args.global.no_truncate)),
+    }
 }
 
-fn sessions(args: SessionsArgs) -> RunOutcome {
+/// The registry entry behind one source name: resolved root, session
+/// count from discovery, and whether the location exists at all.
+struct SourceFacts {
+    name: String,
+    agent: Agent,
+    root: PathBuf,
+    sessions: usize,
+    status: &'static str,
+}
+
+/// The selected source names, or every known source when none given.
+/// All names are validated before anything is resolved.
+fn selected_sources(names: &[String]) -> Result<Vec<String>, UnknownSource> {
+    if names.is_empty() {
+        return Ok(ALL_SOURCES.iter().map(|name| name.to_string()).collect());
+    }
+    for name in names {
+        if !ALL_SOURCES.contains(&name.as_str()) {
+            return Err(UnknownSource { name: name.clone() });
+        }
+    }
+    Ok(names.to_vec())
+}
+
+fn source_facts(
+    names: &[String],
+    options: &SourceOptions,
+) -> Result<Vec<SourceFacts>, UnknownSource> {
+    let mut facts = Vec::new();
+    for name in names {
+        let root = resolved_root(name, options);
+        let sessions = real_source(name, options)?.discover().len();
+        facts.push(SourceFacts {
+            name: name.clone(),
+            agent: agent_of(name).expect("validated source"),
+            sessions,
+            status: if root.exists() { "ok" } else { "missing" },
+            root,
+        });
+    }
+    Ok(facts)
+}
+
+fn source_json(fact: &SourceFacts) -> serde_json::Value {
+    serde_json::json!({
+        "name": fact.name,
+        "agent": agent_name(fact.agent),
+        "root": fact.root.display().to_string(),
+        "sessions": fact.sessions,
+        "status": fact.status,
+    })
+}
+
+fn sources_human(facts: &[SourceFacts], no_truncate: bool) -> String {
+    let mut out = String::new();
+    out.push_str(&format!(
+        "{}  {}  {}  {}\n",
+        render::column("SOURCE", 12),
+        render::column("ROOT", render::TRUNCATE_WIDTH),
+        render::number_str("SESSIONS", 8),
+        "STATUS"
+    ));
+    for fact in facts {
+        out.push_str(&format!(
+            "{}  {}  {}  {}\n",
+            render::column(&fact.name, 12),
+            render::column(
+                &render::truncate(&fact.root.display().to_string(), no_truncate),
+                render::TRUNCATE_WIDTH
+            ),
+            render::number(fact.sessions, 8),
+            fact.status
+        ));
+    }
+    out
+}
+
+fn sessions(_args: SessionsArgs) -> RunOutcome {
     todo!("sessions verb (BOTSPY-541f5a)")
 }
 
-fn show(args: ShowArgs) -> RunOutcome {
+fn show(_args: ShowArgs) -> RunOutcome {
     todo!("show verb (BOTSPY-185f83)")
 }
 
-fn doctor(args: DoctorArgs) -> RunOutcome {
+fn doctor(_args: DoctorArgs) -> RunOutcome {
     todo!("doctor verb (BOTSPY-727bb6)")
 }
 
-fn snapshot(args: SnapshotArgs) -> RunOutcome {
+fn snapshot(_args: SnapshotArgs) -> RunOutcome {
     todo!("snapshot verb (BOTSPY-713087)")
 }
 
