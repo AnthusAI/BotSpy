@@ -3,6 +3,7 @@
 pub mod arguments_steps;
 pub mod blob_steps;
 pub mod claude_code_steps;
+pub mod codex_steps;
 pub mod compaction_steps;
 pub mod graph_steps;
 pub mod importer_steps;
@@ -76,6 +77,16 @@ pub struct BotSpyWorld {
     pub cc_transcript: Option<String>,
     /// Result of the most recent Claude Code extraction pass.
     pub cc_extraction: Option<botspy::adapters::claude_code::ClaudeExtraction>,
+    /// Codex home root under construction (Codex steps).
+    pub cx_root: Option<std::path::PathBuf>,
+    /// The Codex source watching that root.
+    pub cx_source: Option<botspy::adapters::codex::CodexSource>,
+    /// Thread id the current Codex fixture extracts.
+    pub cx_thread: Option<String>,
+    /// Result of the most recent Codex discovery.
+    pub cx_discovery: Option<botspy::adapters::codex::CodexDiscovery>,
+    /// Result of the most recent Codex extraction pass.
+    pub cx_extraction: Option<botspy::adapters::codex::CodexExtraction>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {
