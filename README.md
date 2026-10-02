@@ -1,8 +1,5 @@
 # BotSpy
 
-A working-backwards PR FAQ: the press release first, then the questions a
-reader would ask. Everything not built yet is marked **planned**.
-
 ## Press release
 
 ### BotSpy opens every coding agent's conversation history with one library
