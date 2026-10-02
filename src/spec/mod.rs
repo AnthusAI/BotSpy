@@ -15,10 +15,14 @@
 //!   `features/02_querying/` (specified next; implemented by the Local
 //!   Store Initiative, BOTSPY-c7795b)
 //! - [Chapter 3: Importers / CDC](crate::spec::ch03_importers) —
-//!   `features/03_importers/` (specified next), with per-agent
+//!   `features/03_importers/` (contract and per-agent specs written),
+//!   with per-agent
 //!   sub-chapters for Claude Code, Cursor, Codex, Grok Bot, and
 //!   Antigravity
+//! - [Chapter 4: Examples](crate::spec::ch04_examples) —
+//!   `features/04_examples/` (consumers of the public API, never core)
 
 pub mod ch01_structure;
 pub mod ch02_querying;
 pub mod ch03_importers;
+pub mod ch04_examples;
