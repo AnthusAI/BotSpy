@@ -73,13 +73,6 @@ flowchart LR
     UNIFIED -.->|"planned"| SEM["Semantic search<br/>all-MiniLM-L6-v2 embeddings"]
 ```
 
-**A narrow mission, and that's all.** BotSpy is a small, self-contained
-project with a defined job: mine every coding agent's session history into
-one central store you can query. Five agents, one schema, one store —
-worked out right here, and that's the whole core. What expands is what
-gets built on top of it — apps, dashboards, analyses — never the core
-itself.
-
 > "We run Claude Code, Cursor, and Codex on the same repos every day. I
 > want to ask 'what did the agents do last week' once, across all of them —
 > without opening five different history views, and without anything
@@ -87,6 +80,11 @@ itself.
 > byte."
 >
 > — a hypothetical platform engineer on a multi-agent team
+
+BotSpy is deliberately small and self-contained. It does one job — bring
+every coding agent's session history into one central store — and does it
+well. What grows is what gets built on top: your apps, dashboards, and
+analyses, not the library.
 
 ## FAQ
 
