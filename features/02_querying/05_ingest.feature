@@ -29,7 +29,7 @@ Feature: Ingesting the adapters into the store
     And the session has messages "hello", "hi there", "now fix it"
     And a store at "roundtrip/store.db"
     When I ingest the registered adapters into the store
-    And I open session "g4" from the store
+    And I open the stored session "g4"
     Then it equals the session the adapter returns
 
   Scenario: Ingestion never writes the sources

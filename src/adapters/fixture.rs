@@ -5,11 +5,17 @@ use crate::adapter::Adapter;
 use crate::schema::Agent;
 use crate::session::{Session, SessionMap, SessionSummary};
 use std::fmt;
+use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Mutex;
 
 pub struct FixtureAdapter {
     agent: Agent,
     sessions: Mutex<SessionMap>,
+    /// Test-infra observability only, in the SkipCounter spirit: how many
+    /// times `open` was called. The specs use it to prove that a refresh
+    /// pass does not re-open unchanged sessions. Deliberate src/adapters
+    /// touch for this initiative (BOTSPY-c7795b).
+    opens: AtomicUsize,
 }
 
 impl fmt::Debug for FixtureAdapter {
@@ -31,6 +37,7 @@ impl FixtureAdapter {
         Self {
             agent,
             sessions: Mutex::new(SessionMap::new()),
+            opens: AtomicUsize::new(0),
         }
     }
 
@@ -39,6 +46,21 @@ impl FixtureAdapter {
             .lock()
             .expect("fixture adapter lock poisoned")
             .insert(session.id.clone(), session);
+    }
+
+    /// Drop a session from the fixture (specs use it to prove a session
+    /// gone from its source is pruned from the store).
+    pub fn remove_session(&self, id: &str) -> bool {
+        self.sessions
+            .lock()
+            .expect("fixture adapter lock poisoned")
+            .remove(id)
+            .is_some()
+    }
+
+    /// How many times `open` has been called on this adapter.
+    pub fn open_count(&self) -> usize {
+        self.opens.load(Ordering::SeqCst)
     }
 }
 
@@ -57,6 +79,7 @@ impl Adapter for FixtureAdapter {
     }
 
     fn open(&self, id: &str) -> Option<Session> {
+        self.opens.fetch_add(1, Ordering::SeqCst);
         self.sessions
             .lock()
             .expect("fixture adapter lock poisoned")

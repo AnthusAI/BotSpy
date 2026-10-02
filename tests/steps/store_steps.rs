@@ -326,7 +326,7 @@ fn fixture_session_two_adapters(
     ));
 }
 
-#[when(regex = r#"^I open session "([^"]+)" from the store$"#)]
+#[when(regex = r#"^I open the stored session "([^"]+)"$"#)]
 fn open_session_from_store(world: &mut BotSpyWorld, id: String) {
     let store = world.local_store.as_ref().expect("a store");
     world.local_opened = Some(store.open_session(&id));
@@ -451,7 +451,7 @@ fn iteration_yields_ids(world: &mut BotSpyWorld, ids: String) {
     assert_eq!(actual, expected, "the session iteration is out of order");
 }
 
-#[given(regex = r#"^the session has messages "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
+#[given(regex = r#"^the session has messages "([^"]+)", "([^"]+)", (?:and )?"([^"]+)"$"#)]
 fn session_has_messages(world: &mut BotSpyWorld, text1: String, text2: String, text3: String) {
     let mut session = crate::steps::current_session(world);
     for text in [text1, text2, text3] {
@@ -492,7 +492,9 @@ fn iteration_yields_texts(world: &mut BotSpyWorld, texts: String) {
     assert_eq!(actual, expected, "the message iteration is out of order");
 }
 
-#[given(regex = r#"^the session has a message with parts "([^"]+)", "([^"]+)", and "([^"]+)"$"#)]
+#[given(
+    regex = r#"^the session has a message with parts "([^"]+)", "([^"]+)", (?:and )?"([^"]+)"$"#
+)]
 fn session_has_message_with_parts(
     world: &mut BotSpyWorld,
     kind1: String,
@@ -676,4 +678,82 @@ fn session_not_fully_materialized(world: &mut BotSpyWorld) {
         counters.rows_fetched, expected,
         "only the consumed messages were read from the store"
     );
+}
+
+// 06_refresh.feature — incremental refresh (red until BOTSPY-d5b2c4).
+
+#[given(regex = r#"^a fixture session "([^"]+)" from "([^"]+)" is registered$"#)]
+fn fixture_session_registered(world: &mut BotSpyWorld, id: String, agent: String) {
+    adapter_for(world, &agent).add_session(fixture_session(
+        &id,
+        parse_agent(&agent),
+        "demo",
+        "2026-10-01T11:00:00Z",
+    ));
+}
+
+#[when(regex = r#"^I refresh the store$"#)]
+fn refresh_the_store(_world: &mut BotSpyWorld) {
+    todo!("BOTSPY-5893ab: run a refresh pass")
+}
+
+#[then(
+    regex = r#"^the refresh reports ([0-9]+) new sessions?, ([0-9]+) updated, and ([0-9]+) pruned$"#
+)]
+fn refresh_reports(world: &mut BotSpyWorld, new: usize, updated: usize, pruned: usize) {
+    let report = world.ingest_report.expect("a refresh report");
+    assert_eq!(report.new, new, "refresh report new sessions");
+    assert_eq!(report.updated, updated, "refresh report updated sessions");
+    assert_eq!(report.pruned, pruned, "refresh report pruned sessions");
+}
+
+#[given(regex = r#"^session "([^"]+)" gets another message at "([^"]+)"$"#)]
+fn session_gets_another_message(world: &mut BotSpyWorld, id: String, at: String) {
+    let mut session = crate::steps::find_session(world, &id).expect("fixture session");
+    session.messages.push(Message {
+        role: Role::User,
+        parts: vec![Part::Known(KnownPart::Text {
+            text: "and one more".to_string(),
+            extra: None,
+        })],
+        timestamp: Some(at.clone()),
+        ..Message::default()
+    });
+    session.last_activity_at = at;
+    crate::steps::save_session_by_id(world, session);
+}
+
+#[given(regex = r#"^session "([^"]+)" is removed from its adapter$"#)]
+fn session_removed_from_adapter(world: &mut BotSpyWorld, id: String) {
+    let adapter = crate::steps::adapter_owning(world, &id).expect("the session's adapter");
+    assert!(adapter.remove_session(&id), "the session was removed");
+}
+
+#[when(regex = r#"^I snapshot the adapters' open count$"#)]
+fn snapshot_open_count(world: &mut BotSpyWorld) {
+    world.local_open_count_before = Some(
+        world
+            .adapters
+            .values()
+            .map(|adapter| adapter.open_count())
+            .sum(),
+    );
+}
+
+#[when(regex = r#"^I snapshot the adapters' open count again$"#)]
+fn snapshot_open_count_again(world: &mut BotSpyWorld) {
+    world.local_open_count_after = Some(
+        world
+            .adapters
+            .values()
+            .map(|adapter| adapter.open_count())
+            .sum(),
+    );
+}
+
+#[then(regex = r#"^the adapters served no session opens during the refresh$"#)]
+fn adapters_served_no_opens(world: &mut BotSpyWorld) {
+    let before = world.local_open_count_before.expect("open count before");
+    let after = world.local_open_count_after.expect("open count after");
+    assert_eq!(before, after, "unchanged sessions must not be re-opened");
 }

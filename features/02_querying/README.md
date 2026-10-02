@@ -20,3 +20,6 @@ Spec files (all `@wip` until the Local Store implementation lands):
 - `05_ingest.feature` — ingesting the registered adapters into the store:
   report counts, first-report-wins dedup, lossless round-trip, sources
   stay read-only, empty registry is a no-op.
+- `06_refresh.feature` — incremental refresh: only new/changed sessions
+  re-opened, gone sessions pruned, idempotent, unchanged sessions never
+  re-opened from their adapters (open-count proof).
