@@ -35,6 +35,12 @@ use crate::importer::UnknownSource;
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
 use crate::session::{Session, SessionStore, SessionSummary, UnknownSession};
 use crate::snapshot::{count_rows, digest_files, snapshot_sqlite};
+use crate::store::embed::EmbedError;
+use crate::store::embed_minilm::MiniLMEmbedder;
+use crate::store::ingest::IngestReport;
+use crate::store::query::SessionFilter;
+use crate::store::text::SearchHit;
+use crate::store::{Store, StoreError};
 
 /// Every source the registry knows, in registry order.
 pub const ALL_SOURCES: [&str; 5] = ["claude_code", "cursor", "codex", "grok_bot", "antigravity"];
@@ -114,6 +120,12 @@ pub enum Command {
     Doctor(DoctorArgs),
     /// Take a WAL-safe snapshot of a SQLite source and inspect it.
     Snapshot(SnapshotArgs),
+    /// Mine every registered adapter into the local store (CDC).
+    Import(ImportArgs),
+    /// Search the store's messages: text, semantic, or hybrid.
+    Search(SearchArgs),
+    /// Bucket the store's sessions by source, project, or day.
+    Stats(StatsArgs),
 }
 
 /// Flags shared by every verb.
@@ -183,6 +195,11 @@ pub struct SessionsArgs {
     /// Cap the number of listed sessions.
     #[arg(long, value_name = "N")]
     pub limit: Option<usize>,
+
+    /// List from the local store at this path instead of the live
+    /// sources.
+    #[arg(long, value_name = "PATH")]
+    pub db: Option<PathBuf>,
 }
 
 #[derive(Debug, clap::Args)]
@@ -219,6 +236,85 @@ pub struct SnapshotArgs {
     pub out: Option<PathBuf>,
 }
 
+#[derive(Debug, clap::Args)]
+pub struct ImportArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// Store path (default: the `.botspy/store.db` under the home).
+    #[arg(long, value_name = "PATH")]
+    pub db: Option<PathBuf>,
+
+    /// Re-extract every reported session from byte zero, ignoring the
+    /// staleness shortcut.
+    #[arg(long)]
+    pub full: bool,
+
+    /// Report what would land and write nothing.
+    #[arg(long)]
+    pub dry_run: bool,
+
+    /// Skip embeddings: the store stays text-only (text search is
+    /// unaffected).
+    #[arg(long)]
+    pub no_embed: bool,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct SearchArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// The words to search for.
+    #[arg(value_name = "QUERY")]
+    pub query: String,
+
+    /// Ranking mode: text (FTS5), semantic (embeddings), or hybrid
+    /// (both fused).
+    #[arg(long, value_enum, default_value = "text")]
+    pub mode: SearchMode,
+
+    /// Store path (default: the `.botspy/store.db` under the home).
+    #[arg(long, value_name = "PATH")]
+    pub db: Option<PathBuf>,
+
+    /// Only sessions in this project.
+    #[arg(long, value_name = "ID")]
+    pub project: Option<String>,
+
+    /// Cap the number of hits.
+    #[arg(long, value_name = "N")]
+    pub limit: Option<usize>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+pub enum SearchMode {
+    Text,
+    Semantic,
+    Hybrid,
+}
+
+#[derive(Debug, clap::Args)]
+pub struct StatsArgs {
+    #[command(flatten)]
+    pub global: GlobalArgs,
+
+    /// Bucket sessions by source, project, or day of last activity.
+    #[arg(long, value_enum, default_value = "source")]
+    pub by: StatsBy,
+
+    /// Store path (default: the `.botspy/store.db` under the home).
+    #[arg(long, value_name = "PATH")]
+    pub db: Option<PathBuf>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum)]
+pub enum StatsBy {
+    Source,
+    Project,
+    Day,
+}
+
 fn execute(cli: Cli) -> RunOutcome {
     match cli.command {
         Command::Sources(args) => sources(args),
@@ -226,6 +322,9 @@ fn execute(cli: Cli) -> RunOutcome {
         Command::Show(args) => show(args),
         Command::Doctor(args) => doctor(args),
         Command::Snapshot(args) => snapshot(args),
+        Command::Import(args) => import(args),
+        Command::Search(args) => search(args),
+        Command::Stats(args) => stats(args),
     }
 }
 
@@ -363,11 +462,20 @@ fn sessions(args: SessionsArgs) -> RunOutcome {
         }
     }
     let options = args.global.options();
-    let store = match build_store(&args.global.source, &options) {
-        Ok(store) => store,
-        Err(err) => return err.into_outcome(),
+    let summaries = match &args.db {
+        Some(db) => match open_store(db, false) {
+            Ok((store, _)) => store.query().sessions().collect(),
+            Err(err) => return RunOutcome::fail(3, format!("error: {err}\n")),
+        },
+        None => {
+            let store = match build_store(&args.global.source, &options) {
+                Ok(store) => store,
+                Err(err) => return err.into_outcome(),
+            };
+            store.list_sessions()
+        }
     };
-    let mut summaries = store.list_sessions();
+    let mut summaries = summaries;
     if !args.global.source.is_empty() {
         let agents: Vec<Agent> = args
             .global
@@ -944,6 +1052,344 @@ fn snapshot(args: SnapshotArgs) -> RunOutcome {
     }
 }
 
+/// One count with correct pluralization, for report lines ("1 hit",
+/// "2 hits").
+fn plural(count: usize, noun: &str) -> String {
+    match count {
+        1 => format!("1 {noun}"),
+        n => format!("{n} {noun}s"),
+    }
+}
+
+/// Open the store at `path`, attaching the shipped MiniLM embedder when
+/// `embed` is wanted and the model cache is populated. A missing cache
+/// degrades to a text-only store — reported by the caller, never a
+/// failed verb and never a silent download (the runtime never touches
+/// the network).
+fn open_store(path: &Path, embed: bool) -> Result<(Store, bool), StoreError> {
+    if !embed {
+        return Ok((Store::open(path)?, false));
+    }
+    match MiniLMEmbedder::open() {
+        Ok(embedder) => Ok((Store::open_with_embedder(path, Arc::new(embedder))?, true)),
+        Err(EmbedError::ModelMissing { .. }) => Ok((Store::open(path)?, false)),
+        Err(source) => Err(StoreError::Embed { source }),
+    }
+}
+
+/// The default store path under the resolved home.
+fn store_path(options: &SourceOptions) -> PathBuf {
+    home_of(options).join(".botspy").join("store.db")
+}
+
+fn import(args: ImportArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let options = args.global.options();
+    let adapters = match real_adapters(&args.global.source, &options) {
+        Ok(adapters) => adapters,
+        Err(err) => return err.into_outcome(),
+    };
+    let db = args.db.clone().unwrap_or_else(|| store_path(&options));
+    if args.dry_run {
+        return import_dry_run(&db, &adapters);
+    }
+    let (store, embedded) = match open_store(&db, !args.no_embed) {
+        Ok(opened) => opened,
+        Err(err) => return RunOutcome::fail(3, format!("error: {err}\n")),
+    };
+    let report = if args.full {
+        store.refresh_full(&adapters)
+    } else {
+        store.refresh(&adapters)
+    };
+    match report {
+        Ok(report) => {
+            let mut out = format!(
+                "{}, {}, {}, {}\nstore: {}\n",
+                plural(report.new, "new session"),
+                plural(report.updated, "updated session"),
+                plural(report.unchanged, "unchanged session"),
+                plural(report.pruned, "pruned session"),
+                db.display(),
+            );
+            if !args.no_embed && !embedded {
+                out.push_str(
+                    "embeddings: skipped (model assets missing — run `cargo run --example setup_models`)\n",
+                );
+            }
+            RunOutcome::ok(out)
+        }
+        Err(err) => RunOutcome::fail(3, format!("error: {err}\n")),
+    }
+}
+
+/// What one import pass would land, computed the way the real pass
+/// judges sessions — from the adapters' own discovery, opening the
+/// sessions that would be re-extracted — with no writes, and a missing
+/// store file treated as an empty store rather than created.
+fn import_dry_run(db: &Path, adapters: &[Arc<dyn Adapter>]) -> RunOutcome {
+    let stored: Vec<SessionSummary> = if db.exists() {
+        match Store::open(db) {
+            Ok(store) => store.query().sessions().collect(),
+            Err(err) => return RunOutcome::fail(3, format!("error: {err}\n")),
+        }
+    } else {
+        Vec::new()
+    };
+    let mut report = IngestReport::default();
+    let mut reported: std::collections::BTreeSet<String> = Default::default();
+    for adapter in adapters {
+        for summary in adapter.discover() {
+            if !reported.insert(summary.id.clone()) {
+                continue;
+            }
+            let existing = stored.iter().find(|stored| stored.id == summary.id);
+            let stale = match existing {
+                None => true,
+                Some(existing) => {
+                    existing.last_activity_at != summary.last_activity_at
+                        || existing.message_count != summary.message_count
+                }
+            };
+            if !stale {
+                report.unchanged += 1;
+                continue;
+            }
+            // The real pass opens every stale session; a session that
+            // cannot be opened lands nowhere, so the preview counts it
+            // the same way.
+            let Some(session) = adapter.open(&summary.id) else {
+                continue;
+            };
+            let _ = session;
+            match existing {
+                None => report.new += 1,
+                Some(_) => report.updated += 1,
+            }
+        }
+    }
+    report.pruned = stored
+        .iter()
+        .filter(|stored| !reported.contains(&stored.id))
+        .count();
+    RunOutcome::ok(format!(
+        "{}, {}, {}, {} (dry run — nothing written)\n",
+        plural(report.new, "new session"),
+        plural(report.updated, "updated session"),
+        plural(report.unchanged, "unchanged session"),
+        plural(report.pruned, "pruned session"),
+    ))
+}
+
+fn search(args: SearchArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    if args.global.source.len() > 1 {
+        return RunOutcome::fail(
+            2,
+            "error: search filters by at most one --source\n".to_string(),
+        );
+    }
+    for name in &args.global.source {
+        if agent_of(name).is_none() {
+            return UnknownSource { name: name.clone() }.into_outcome();
+        }
+    }
+    let options = args.global.options();
+    let db = args.db.clone().unwrap_or_else(|| store_path(&options));
+    let store = match open_store(
+        &db,
+        matches!(args.mode, SearchMode::Semantic | SearchMode::Hybrid),
+    ) {
+        Ok((store, _)) => store,
+        Err(err) => return RunOutcome::fail(3, format!("error: {err}\n")),
+    };
+    let filter = SessionFilter {
+        agent: args.global.source.first().and_then(|name| agent_of(name)),
+        project: args.project.clone(),
+        ..Default::default()
+    };
+    let query = store.query();
+    let mut hits = match args.mode {
+        SearchMode::Text => query.search_with(&args.query, &filter),
+        SearchMode::Semantic => {
+            query.search_semantic_with(&args.query, args.limit.unwrap_or(10), &filter)
+        }
+        SearchMode::Hybrid => query.search_hybrid_with(&args.query, &filter),
+    };
+    if let Some(limit) = args.limit {
+        hits.truncate(limit);
+    }
+    match args.global.output {
+        OutputMode::Json => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::to_string_pretty(&search_json(&hits)).expect("hits serialize")
+        )),
+        OutputMode::Ndjson => {
+            let lines: Vec<String> = search_json(&hits)
+                .iter()
+                .map(|hit| serde_json::to_string(hit).expect("hit serializes"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => RunOutcome::ok(search_human(&hits, args.global.no_truncate)),
+    }
+}
+
+fn search_json(hits: &[SearchHit]) -> Vec<serde_json::Value> {
+    hits.iter()
+        .map(|hit| {
+            serde_json::json!({
+                "session_id": hit.session_id,
+                "message_ordinal": hit.message_ordinal,
+                "part_ordinal": hit.part_ordinal,
+                "text": hit.text,
+                "score": hit.score,
+            })
+        })
+        .collect()
+}
+
+fn search_human(hits: &[SearchHit], no_truncate: bool) -> String {
+    let mut cells: Vec<[String; 4]> = vec![[
+        "SESSION".to_string(),
+        "MSG".to_string(),
+        "SCORE".to_string(),
+        "TEXT".to_string(),
+    ]];
+    for hit in hits {
+        let id = if no_truncate || hit.session_id.chars().count() <= 8 {
+            hit.session_id.clone()
+        } else {
+            hit.session_id.chars().take(8).collect()
+        };
+        let text = hit.text.lines().next().unwrap_or_default();
+        cells.push([
+            id,
+            hit.message_ordinal.to_string(),
+            format!("{:.3}", hit.score),
+            render::truncate(text, no_truncate),
+        ]);
+    }
+    let width = |column: usize| {
+        render::column_width(
+            &cells
+                .iter()
+                .map(|row| row[column].as_str())
+                .collect::<Vec<_>>(),
+        )
+    };
+    let (id_w, msg_w, score_w) = (width(0), width(1), width(2));
+    let mut out = String::new();
+    for cell in &cells {
+        out.push_str(&format!(
+            "{}  {}  {}  {}\n",
+            render::column(&cell[0], id_w),
+            render::number_str(&cell[1], msg_w),
+            render::number_str(&cell[2], score_w),
+            cell[3]
+        ));
+    }
+    let sessions: std::collections::BTreeSet<&str> =
+        hits.iter().map(|hit| hit.session_id.as_str()).collect();
+    out.push_str(&format!(
+        "{} in {}\n",
+        plural(hits.len(), "hit"),
+        plural(sessions.len(), "session")
+    ));
+    out
+}
+
+fn stats(args: StatsArgs) -> RunOutcome {
+    if let Some(out) = check_root(&args.global) {
+        return out;
+    }
+    let options = args.global.options();
+    let db = args.db.clone().unwrap_or_else(|| store_path(&options));
+    let store = match open_store(&db, false) {
+        Ok((store, _)) => store,
+        Err(err) => return RunOutcome::fail(3, format!("error: {err}\n")),
+    };
+    let mut buckets: std::collections::BTreeMap<String, usize> = Default::default();
+    for summary in store.query().sessions() {
+        let key = match args.by {
+            StatsBy::Source => agent_name(summary.agent).to_string(),
+            StatsBy::Project => {
+                if summary.project_id.is_empty() {
+                    "no project".to_string()
+                } else {
+                    summary.project_id.clone()
+                }
+            }
+            StatsBy::Day => {
+                if summary.last_activity_at.is_empty() {
+                    "no activity".to_string()
+                } else {
+                    summary.last_activity_at.chars().take(10).collect()
+                }
+            }
+        };
+        *buckets.entry(key).or_default() += 1;
+    }
+    // Biggest bucket first; ties in key order so the output is stable.
+    let mut rows: Vec<(String, usize)> = buckets.into_iter().collect();
+    rows.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));
+    let total: usize = rows.iter().map(|(_, count)| count).sum();
+    match args.global.output {
+        OutputMode::Json => RunOutcome::ok(format!(
+            "{}\n",
+            serde_json::to_string_pretty(&stats_json(&rows)).expect("stats serialize")
+        )),
+        OutputMode::Ndjson => {
+            let lines: Vec<String> = stats_json(&rows)
+                .iter()
+                .map(|row| serde_json::to_string(row).expect("stat row serializes"))
+                .collect();
+            RunOutcome::ok(format!("{}\n", lines.join("\n")))
+        }
+        OutputMode::Human => RunOutcome::ok(stats_human(&rows, total, args.by)),
+    }
+}
+
+fn stats_json(rows: &[(String, usize)]) -> Vec<serde_json::Value> {
+    rows.iter()
+        .map(|(key, count)| {
+            serde_json::json!({
+                "key": key,
+                "sessions": count,
+            })
+        })
+        .collect()
+}
+
+fn stats_human(rows: &[(String, usize)], total: usize, by: StatsBy) -> String {
+    let label = match by {
+        StatsBy::Source => "SOURCE",
+        StatsBy::Project => "PROJECT",
+        StatsBy::Day => "DAY",
+    };
+    let mut cells: Vec<[String; 2]> = vec![[label.to_string(), "SESSIONS".to_string()]];
+    for (key, count) in rows {
+        cells.push([key.clone(), count.to_string()]);
+    }
+    let key_w = render::column_width(&cells.iter().map(|row| row[0].as_str()).collect::<Vec<_>>());
+    let count_w =
+        render::column_width(&cells.iter().map(|row| row[1].as_str()).collect::<Vec<_>>());
+    let mut out = String::new();
+    for cell in &cells {
+        out.push_str(&format!(
+            "{}  {}\n",
+            render::column(&cell[0], key_w),
+            render::number_str(&cell[1], count_w)
+        ));
+    }
+    out.push_str(&format!("total: {}\n", plural(total, "session")));
+    out
+}
+
 /// Resolve the snapshot target: a source name resolved through the
 /// per-agent roots, or a path to a SQLite file. A known source whose
 /// location is not a SQLite file is a clean failure (3), not a guess.
@@ -1015,6 +1461,33 @@ pub fn build_store(
         store.register(Arc::from(real_source(name, options)?));
     }
     Ok(store)
+}
+
+/// The real adapters behind `sources` (every source when empty), as
+/// the store's ingest expects them. All names are validated before
+/// anything is resolved, so an unknown name fails without touching the
+/// filesystem.
+fn real_adapters(
+    sources: &[String],
+    options: &SourceOptions,
+) -> Result<Vec<Arc<dyn Adapter>>, UnknownSource> {
+    let names: Vec<String> = if sources.is_empty() {
+        ALL_SOURCES.iter().map(|name| name.to_string()).collect()
+    } else {
+        for name in sources {
+            if !ALL_SOURCES.contains(&name.as_str()) {
+                return Err(UnknownSource { name: name.clone() });
+            }
+        }
+        sources.to_vec()
+    };
+    Ok(names
+        .iter()
+        .map(|name| {
+            let boxed = real_source(name, options).expect("validated source");
+            Arc::from(boxed)
+        })
+        .collect())
 }
 
 /// The adapter behind a source name, rooted at its resolved location.

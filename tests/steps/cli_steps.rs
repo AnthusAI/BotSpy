@@ -155,7 +155,7 @@ fn fixture_home_duplicate_id(world: &mut BotSpyWorld) {
 
 fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
     let mut argv: Vec<String> = vec!["botspy".to_string()];
-    argv.extend(expand(args).split_whitespace().map(str::to_string));
+    argv.extend(expand(world, args).split_whitespace().map(str::to_string));
     if with_home {
         argv.push("--home".to_string());
         argv.push(
@@ -170,19 +170,30 @@ fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
     world.cli_run = Some(cli::run_from(argv));
 }
 
-/// Replace the spec placeholders with concrete fixture paths. A fresh
-/// `{out_dir}` per step is fine: the snapshot path is asserted from the
-/// output itself, not from this placeholder.
-fn expand(text: &str) -> String {
-    text.replace("{out_dir}", &scratch("out").to_string_lossy())
-        .replace(
-            "{claude_projects_root}",
-            &claude_projects_root().to_string_lossy(),
-        )
-        .replace(
-            "{cursor_store_path}",
-            &cursor_store_path().to_string_lossy(),
-        )
+/// The scenario's scratch output directory: created lazily, then stable
+/// for the whole scenario (the world is fresh per scenario), so `{out_dir}`
+/// refers to the same place in every step.
+fn out_dir(world: &mut BotSpyWorld) -> PathBuf {
+    world
+        .cli_out_dir
+        .get_or_insert_with(|| scratch("out"))
+        .clone()
+}
+
+/// Replace the spec placeholders with concrete fixture paths.
+fn expand(world: &mut BotSpyWorld, text: &str) -> String {
+    let mut text = text.replace("{out_dir}", &out_dir(world).to_string_lossy());
+    if let Some(home) = world.cli_home.clone() {
+        text = text.replace("{home}", &home.display().to_string());
+    }
+    text.replace(
+        "{claude_projects_root}",
+        &claude_projects_root().to_string_lossy(),
+    )
+    .replace(
+        "{cursor_store_path}",
+        &cursor_store_path().to_string_lossy(),
+    )
 }
 
 #[when(regex = r#"^I run "botspy (.*?)" against the fixture home$"#)]
@@ -216,12 +227,13 @@ fn json(world: &BotSpyWorld) -> Value {
     serde_json::from_str(&run(world).stdout).expect("stdout is valid JSON")
 }
 
-fn expand_captured(text: &str) -> String {
-    expand(text)
+fn expand_captured(world: &mut BotSpyWorld, text: &str) -> String {
+    expand(world, text)
 }
 
-fn assert_all_in(label: &str, haystack: &str, text: &str) {
-    let needle = expand_captured(text);
+/// Every quoted expectation in the (already expanded) needle must appear
+/// in the haystack.
+fn assert_all_in(label: &str, haystack: &str, needle: &str) {
     let parts: Vec<String> = needle
         .split('"')
         .skip(1)
@@ -273,7 +285,8 @@ fn exit_code(world: &mut BotSpyWorld, code: String) {
 
 #[then(regex = r#"^stdout contains (".*")$"#)]
 fn stdout_contains(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stdout", &run(world).stdout, &text);
+    let needle = expand_captured(world, &text);
+    assert_all_in("stdout", &run(world).stdout, &needle);
 }
 
 #[then(regex = r#"^stdout does not contain (".*")$"#)]
@@ -283,12 +296,14 @@ fn stdout_not_contains(world: &mut BotSpyWorld, text: String) {
 
 #[then(regex = r#"^stderr contains (".*")$"#)]
 fn stderr_contains(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stderr", &run(world).stderr, &text);
+    let needle = expand_captured(world, &text);
+    assert_all_in("stderr", &run(world).stderr, &needle);
 }
 
 #[then(regex = r#"^stderr mentions (".*")$"#)]
 fn stderr_mentions(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stderr", &run(world).stderr, &text);
+    let needle = expand_captured(world, &text);
+    assert_all_in("stderr", &run(world).stderr, &needle);
 }
 
 #[then(regex = r#"^stdout reports "([^"]+)"$"#)]
@@ -327,7 +342,11 @@ fn stdout_json_object_with(world: &mut BotSpyWorld, key: String, expected: Strin
         .get(&key)
         .and_then(Value::as_str)
         .unwrap_or_else(|| panic!("missing or non-string {key}: {value:?}"));
-    assert_eq!(actual, expand_captured(&expected), "unexpected {key}");
+    assert_eq!(
+        actual,
+        expand_captured(world, &expected),
+        "unexpected {key}"
+    );
 }
 
 #[then(regex = r#"^stdout parses as NDJSON with ([0-9]+) lines$"#)]
@@ -375,7 +394,7 @@ fn json_entry_string(world: &mut BotSpyWorld, name: String, key: String, expecte
         .unwrap_or_else(|| panic!("missing or non-string {key} in {name}: {entry:?}"));
     assert_eq!(
         actual,
-        expand_captured(&expected),
+        expand_captured(world, &expected),
         "unexpected {key} of {name}"
     );
 }
@@ -414,7 +433,7 @@ fn json_session_string(world: &mut BotSpyWorld, id: String, key: String, expecte
         .unwrap_or_else(|| panic!("missing or non-string {key} in session {id}: {entry:?}"));
     assert_eq!(
         actual,
-        expand_captured(&expected),
+        expand_captured(world, &expected),
         "unexpected {key} of session {id}"
     );
 }
@@ -631,5 +650,143 @@ fn stdout_lacks_full_claude_path(world: &mut BotSpyWorld) {
     assert!(
         !run(world).stdout.contains(&full),
         "stdout unexpectedly contains {full:?}"
+    );
+}
+
+#[when(regex = r#"^I run "botspy (.*?)" against an empty home$"#)]
+fn run_against_empty_home(world: &mut BotSpyWorld, args: String) {
+    world.cli_home = Some(scratch("empty-home"));
+    run_cli(world, &args, true);
+}
+
+/// Import the fixture home into a store the scenario's steps share: the
+/// store lives under the scenario's `{out_dir}`, and the search/stats
+/// steps address it through `{out_dir}` too. `--no-embed` keeps the
+/// default background fast and model-independent; the embedded variant
+/// exercises the shipped MiniLM embedder.
+#[given(regex = r#"^the fixture home is imported into the text-only store$"#)]
+fn background_import_text_only(world: &mut BotSpyWorld) {
+    background_import(world, false, "store.db");
+}
+
+#[given(regex = r#"^the fixture home is imported into the store with embeddings$"#)]
+fn background_import_embedded(world: &mut BotSpyWorld) {
+    background_import(world, true, "embedded.db");
+}
+
+fn background_import(world: &mut BotSpyWorld, embed: bool, name: &str) {
+    let home = world.cli_home.clone().expect("fixture home");
+    let db = out_dir(world).join(name);
+    let mut argv: Vec<String> = vec![
+        "botspy".to_string(),
+        "import".to_string(),
+        "--db".to_string(),
+        db.display().to_string(),
+    ];
+    if !embed {
+        argv.push("--no-embed".to_string());
+    }
+    argv.push("--home".to_string());
+    argv.push(home.display().to_string());
+    let outcome = cli::run_from(argv);
+    assert_eq!(
+        outcome.code, 0,
+        "background import failed: {:?}",
+        outcome.stderr
+    );
+    world.cli_store = Some(db);
+}
+
+#[when(regex = r#"^I search the imported store for "(.*)"$"#)]
+fn run_search_text(world: &mut BotSpyWorld, query: String) {
+    run_search(world, &query, &[]);
+}
+
+#[when(regex = r#"^I search the imported store for "(.*)" with JSON output$"#)]
+fn run_search_text_json(world: &mut BotSpyWorld, query: String) {
+    run_search(world, &query, &["-o", "json"]);
+}
+
+#[when(regex = r#"^I search the imported store semantically for "(.*)"$"#)]
+fn run_search_semantic(world: &mut BotSpyWorld, query: String) {
+    run_search(world, &query, &["--mode", "semantic"]);
+}
+
+#[when(regex = r#"^I search the imported store in hybrid mode for "(.*)"$"#)]
+fn run_search_hybrid(world: &mut BotSpyWorld, query: String) {
+    run_search(world, &query, &["--mode", "hybrid"]);
+}
+
+/// The background-imported store backs every search step; `--no-truncate`
+/// keeps session ids assertable in human output.
+fn run_search(world: &mut BotSpyWorld, query: &str, flags: &[&str]) {
+    let db = world.cli_store.clone().expect("imported store");
+    let mut argv: Vec<String> = vec![
+        "botspy".to_string(),
+        "search".to_string(),
+        query.to_string(),
+        "--db".to_string(),
+        db.display().to_string(),
+        "--no-truncate".to_string(),
+    ];
+    argv.extend(flags.iter().map(|flag| flag.to_string()));
+    if let Some(home) = world.cli_home.clone() {
+        argv.push("--home".to_string());
+        argv.push(home.display().to_string());
+    }
+    world.cli_run = Some(cli::run_from(argv));
+}
+
+#[when(expr = "the fixture home's solo transcript gains a message")]
+fn solo_transcript_gains_message(world: &mut BotSpyWorld) {
+    let path = solo_transcript_path(world);
+    use std::io::Write;
+    let mut file = std::fs::OpenOptions::new()
+        .append(true)
+        .open(&path)
+        .expect("open solo transcript for append");
+    writeln!(
+        file,
+        r#"{{"type":"user","uuid":"u3","timestamp":"2026-09-15T12:10:00Z","message":{{"role":"user","content":"one more thing"}}}}"#
+    )
+    .expect("append to solo transcript");
+}
+
+#[when(expr = "the fixture home's solo transcript is deleted")]
+fn solo_transcript_deleted(world: &mut BotSpyWorld) {
+    std::fs::remove_file(solo_transcript_path(world)).expect("delete solo transcript");
+}
+
+fn solo_transcript_path(world: &BotSpyWorld) -> PathBuf {
+    world
+        .cli_home
+        .as_ref()
+        .expect("fixture home")
+        .join(".claude/projects/extra-demo/solo-abc123.jsonl")
+}
+
+#[then(regex = r#"^the file at "(.+)" exists$"#)]
+fn file_at_exists(world: &mut BotSpyWorld, path: String) {
+    let path = expand_captured(world, &path);
+    assert!(Path::new(&path).is_file(), "no file at {path}");
+}
+
+#[then(regex = r#"^the file at "(.+)" does not exist$"#)]
+fn file_at_missing(world: &mut BotSpyWorld, path: String) {
+    let path = expand_captured(world, &path);
+    assert!(!Path::new(&path).exists(), "unexpected file at {path}");
+}
+
+#[then(regex = r#"^the first JSON hit is for session "([^"]+)"$"#)]
+fn first_json_hit_session(world: &mut BotSpyWorld, prefix: String) {
+    let entries = json_entries(world);
+    let first = entries.first().expect("at least one hit");
+    let id = first
+        .get("session_id")
+        .and_then(Value::as_str)
+        .expect("hit carries session_id");
+    assert!(
+        id.starts_with(&prefix),
+        "first hit {id} does not start with {prefix}"
     );
 }

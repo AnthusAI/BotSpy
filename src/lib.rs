@@ -12,7 +12,8 @@
 //!
 //! BotSpy is a **library crate plus its `botspy` CLI** — a thin,
 //! read-only shell over the library (phase 1: `sources`, `sessions`,
-//! `show`, `doctor`, `snapshot`). There is no server and no C
+//! `show`, `doctor`, `snapshot`; store-backed verbs: `import`, `search`,
+//! `stats`, and `sessions --db`). There is no server and no C
 //! interface/FFI. Metrics such as the coding-session thanks-vs-F-bombs
 //! meter or local sentiment analysis are **example consumers** of the
 //! library, not part of it.
