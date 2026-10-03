@@ -27,12 +27,14 @@
 //! [`sessions`](../../features/cli/20_sessions.feature),
 //! [`show`](../../features/cli/30_show.feature),
 //! [`doctor`](../../features/cli/40_doctor.feature), and
-//! [`snapshot`](../../features/cli/50_snapshot.feature) — plus the
+//! [`snapshot`](../../features/cli/50_snapshot.feature) — the store-backed
+//! verbs [`import`](../../features/cli/60_import.feature),
+//! [`search`](../../features/cli/70_search.feature), and
+//! [`stats`](../../features/cli/80_stats.feature) — plus the
 //! global command contract
 //! ([`00_global.feature`](../../features/cli/00_global.feature)):
-//! version, usage errors, and the `BOTSPY_HOME` override. Later phases
-//! (import, stats, search, watch) extend this chapter; `export` stays
-//! out entirely (YAGNI).
+//! version, usage errors, and the `BOTSPY_HOME` override. Watch and
+//! `export` stay out entirely (YAGNI).
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -53,5 +55,14 @@
     "\n```\n\n",
     "### 50_snapshot.feature\n\n```gherkin\n",
     include_str!("../../features/cli/50_snapshot.feature"),
+    "\n```\n\n",
+    "### 60_import.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/60_import.feature"),
+    "\n```\n\n",
+    "### 70_search.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/70_search.feature"),
+    "\n```\n\n",
+    "### 80_stats.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/80_stats.feature"),
     "\n```\n"
 )]
