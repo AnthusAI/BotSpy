@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "d843fe89-d121-4d35-a4f4-21bb6f97575d",
-      "author": "home",
+      "author": "example-user",
       "text": "R2 done: error/status flags implemented and passing (02_tool_result_status.feature un-tagged @wip); see impl sub-task BOTSPY-8b0acc.",
       "created_at": "2026-10-02T18:51:42.013093Z",
       "comment_type": "default"

@@ -1,0 +1,61 @@
+{
+  "id": "BOTSPY-99afd609-ebd3-455e-a71f-cd77da167aca",
+  "title": "Rewrite README as high-level project overview with key diagrams",
+  "description": "",
+  "type": "task",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "60b3cc5e-6061-4428-b7e4-cc9b2b415bec",
+      "author": "home",
+      "text": "Intent: rewrite the main README.md from a CLI-usage/programmer page into a high-level project overview (what BotSpy is, read-only local reading of Claude Code/Cursor/Codex/Grok Bot/Antigravity histories, one normalized schema, local SQLite store with FTS + vector search, everything local/privacy). Move a small selection of docs diagrams up into the README with the docs picture light/dark pattern, using absolute raw-dot-githubusercontent URLs at the repo org so the image links also work on crates.io. Detailed CLI and library usage moves to a short Learn-more section linking docs pages; any CLI detail not already covered goes into docs/cli.md (not deleted). docs/ pages stay unchanged otherwise. Diagram picks: C4 context, top-level dataflow, C4 containers. Worktree /private/tmp/botspy-readme, branch cursor/readme-overview-fb2c, PR into develop.",
+      "created_at": "2026-10-03T15:43:17.554254Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "96755128-fb27-4f5c-9802-053a0bea4cdc",
+      "author": "home",
+      "text": "Progress: README rewritten as high-level overview (intro, C4 context, what BotSpy does, dataflow, containers, everything-stays-local, compact agent table, install, Learn-more links to docs pages, license). Three diagrams embedded with absolute raw URLs (context, dataflow, containers) — all six PNGs verified reachable on origin/develop; no new PNGs added to the crate. tests/no_real_personal_data.rs: added a README.md exemption for the org-name needle because the crates.io readme must embed raw URLs at the repository (same rationale as the existing Cargo.toml exemption). docs/cli.md gained the detail that was README-only: sources and doctor example transcripts, the missing-source note, and the synthetic-corpus disclaimer. fmt and clippy -D warnings pass locally. Full cargo test running.",
+      "created_at": "2026-10-03T15:53:51.628707Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "0f699fb8-debd-4efc-9bfc-a821ace3e11b",
+      "author": "example-user",
+      "text": "PR 16 opened into develop (branch cursor/readme-overview-fb2c, commits b68ccf1 docs rewrite plus 17cefc0 board state). Pre-push checks clean: no agent-email or home-path strings in history, README free of personal data. Local gates green: fmt, clippy -D warnings, full cargo test (64 lib tests; BDD 40 features, 213 scenarios, 211 passed and 2 skipped; fixture guards, personal-data guard, spec_docs_coverage, 8 doc tests). Waiting for CI, then merge.",
+      "created_at": "2026-10-03T16:39:28.768566Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "211e0487-59db-436f-b768-42ab33c60217",
+      "author": "example-user",
+      "text": "CI on PR 16 flagged the personal-data guard: six event files from this session carry actor_id stamped from the machine username, which collides with the anonymized actor id the guard forbids. The shared kbs daemon was started without KANBUS_USER and stamped the events; stopping the daemon and running kbs with KANBUS_USER=example-user fixes the stamping. Sanitizing those six actor_id values now, same class of operation as the earlier anonymize-board-data chore.",
+      "created_at": "2026-10-03T17:05:23.700769Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "6b54ca6c-7098-44b2-a76a-059f23869b0b",
+      "author": "example-user",
+      "text": "Merged: PR 16 landed on develop as merge commit 7e727f3. The README is now a high-level project overview: intro, C4 context, what-it-does bullets, top-level data flow, containers view, local-only guarantees, compact agent table, install, and a Learn-more section linking the docs pages. Three diagrams moved up with absolute raw URLs so they render on crates.io too (context, dataflow, containers); no new PNGs in the crate. README-only CLI detail (sources and doctor transcripts, missing-source note, synthetic-corpus disclaimer) moved into docs/cli.md. tests/no_real_personal_data.rs gained a README.md exemption for the org-name needle (crates.io readme must embed raw URLs at the repository, like Cargo.toml). Gates: fmt and clippy clean; full cargo test green locally (64 lib tests, BDD 40 features / 213 scenarios with 2 skipped, guards incl. spec_docs_coverage and no_real_personal_data, 8 doc tests); CI green on all 8 jobs before merge. One wrinkle fixed on the way: six session event files carried actor_id stamped from the machine username by a daemon started without KANBUS_USER; sanitized to the anonymized actor id and future kbs calls run with KANBUS_USER set.",
+      "created_at": "2026-10-03T17:23:32.632047Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T15:43:12.737656Z",
+  "updated_at": "2026-10-03T17:23:33.816998Z",
+  "closed_at": "2026-10-03T17:23:33.815810Z",
+  "agent": {
+    "platform": "cursor",
+    "model": "Composer 2.5",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

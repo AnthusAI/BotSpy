@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "a6de70cb-3051-4b8f-be50-9915b3b3221f",
-      "author": "home",
+      "author": "example-user",
       "text": "Parity covered by 7 lib unit tests (discovery, doctor flags missing transcripts, type mapping incl. checkpoint/error flags, step_index ordering, payload-DB tool linkage, hot-DB snapshot read with live WAL, malformed/unknown skip counting) plus 7 executable BDD scenarios (wip tag dropped; wording adjusted to keep step regexes distinct: 'the Antigravity importer ...', 'extraction maps N good records', 'the live app kept writing rows without interference'). Full gate green.",
       "created_at": "2026-10-02T20:14:31.237884Z",
       "comment_type": "default"

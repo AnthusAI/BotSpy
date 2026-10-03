@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "7f019b6f-a972-42bd-95eb-9caf95ea34b2",
-      "author": "home",
+      "author": "example-user",
       "text": "create_source(name, SourceOptions) in src/importer.rs registers all five sources (claude_code, cursor, codex, grok_bot, antigravity) with root override, home override, and /Users/example-derived default roots per source; unknown names return UnknownSource with a clear message listing the known sources. Unit tests cover all five sources, root/home overrides, and the unknown error; full gate green.",
       "created_at": "2026-10-02T19:31:56.217994Z",
       "comment_type": "default"

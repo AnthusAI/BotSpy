@@ -7,6 +7,7 @@ Cargo.lock
 .env
 
 # Kanbus runtime artifacts
+project/events/llm_usage.jsonl
 project/.overlay/
 
 # SQLite runtime sidecars created when adapters open the WAL-mode fixture

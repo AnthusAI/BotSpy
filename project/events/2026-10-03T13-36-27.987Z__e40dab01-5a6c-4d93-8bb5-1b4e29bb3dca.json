@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "comment_id": "b0ebb60b-aa5d-43bb-ab03-ea90a6b47716",
-    "comment_author": "home",
+    "comment_author": "example-user",
     "agent": {
       "platform": "cursor",
       "model": "GLM 5.3 Flash",

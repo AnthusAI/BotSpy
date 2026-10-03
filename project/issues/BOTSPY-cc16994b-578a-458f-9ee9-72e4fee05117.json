@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "6392ee2f-62f0-4f19-8511-0a30bd55c159",
-      "author": "home",
+      "author": "example-user",
       "text": "Specs authored under features/02_querying/: 01_iteration.feature (sessions/messages/parts iteration in order), 02_filters.feature (source, project, part-kind, time-window filters), 03_laziness.feature (take-first, early drop, streaming message iteration). Engine-agnostic by design; tagged @wip until the Local Store implementation lands. Embedded in src/spec/ch02_querying.rs; spec-coverage test, fmt, clippy, doc all green.",
       "created_at": "2026-10-02T19:26:36.023795Z",
       "comment_type": "default"

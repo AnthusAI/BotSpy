@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "3da0f295-d6d1-417a-8d52-fd4bc2409344",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. @wip dropped from features/01_structure/11_session_metadata.feature; all 7 scenarios pass (59 total). Schema: SessionMetadata { title, git_branch, git_commit, git_origin_url, cwd, archived, pinned, status, app_version, models (ordered, mid-session changes visible), pr_url } carried on Session and SessionSummary; absent metadata stays absent. fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T19:10:50.972208Z",
       "comment_type": "default"

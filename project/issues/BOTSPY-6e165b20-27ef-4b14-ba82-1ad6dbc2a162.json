@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "b7cabf97-a5fc-4090-b660-0c9f571e2961",
-      "author": "home",
+      "author": "example-user",
       "text": "R5 done: compaction and summaries implemented and passing (05_compaction.feature un-tagged @wip); see impl sub-task BOTSPY-637da2.",
       "created_at": "2026-10-02T18:57:19.695630Z",
       "comment_type": "default"

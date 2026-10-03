@@ -10,7 +10,8 @@ files BotSpy writes are its own store, its snapshot copies, and its
 model cache.
 
 Sensitive-data note: every diagram below marks places that read, copy,
-or store session content with the amber 🔒 border. The full inventory
+or store session content with the amber border and an explicit
+"Sensitive data" label. The full inventory
 of those places, with exact paths, is in
 [`sensitive-data.md`](sensitive-data.md).
 
@@ -83,8 +84,7 @@ Each adapter reads its agent's own files. The paths:
 - Claude Code: `~/.claude/projects/<encoded-cwd>/<session>.jsonl`
 - Cursor: `~/.cursor/state.vscdb` and
   `~/.cursor/projects/<encoded-cwd>/agent-transcripts/*.jsonl`
-- Codex: `~/.codex/state_5.sqlite`,
-  `~/.codex/thread_history_1.sqlite`, and
+- Codex: `~/.codex/state_5.sqlite` and
   `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl`
 - Grok Bot: `~/.grok/sand-client-persistence/*.json`
 - Antigravity: `~/.gemini/antigravity/conversation_summaries.db`,

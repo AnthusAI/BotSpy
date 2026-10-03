@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "title": "Codex adapter",
-    "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
+    "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: example-scanner codex adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

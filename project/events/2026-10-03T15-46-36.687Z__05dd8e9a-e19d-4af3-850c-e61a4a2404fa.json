@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "05dd8e9a-e19d-4af3-850c-e61a4a2404fa",
+  "issue_id": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T15:46:36.687Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "botspy scan: mine the adapters into the local store from the CLI",
+    "description": "**Intent:** As a BotSpy user, I want `botspy scan` to mine my coding-agent history into the local store from the command line, so that the store at ~/.botspy/store.db stays fresh without writing library code of my own.\n\nExposes the store's ingest/CDC pass (src/store/ingest.rs) as a CLI verb, per the maintainer's request. Default: all five adapters (claude_code, cursor, codex, grok_bot, antigravity) into the one store at `default_store_path()` ($BOTSPY_HOME/.botspy/store.db). Flags: repeatable `--source` (single adapter or list), `--since` cutoff (ISO date or relative duration like `7d`), `--store` path override, `--dry-run` (report what would change, write nothing), `-o human|json|ndjson` consistent with the other verbs.\n\n**Output:** per-adapter summary — sessions and messages added, updated, unchanged, skipped, plus discovered counts (so an adapter yielding 0 sessions is visible, see bug BOTSPY-81143b — scan must never hide that) — and totals, elapsed time. Exit codes per the CLI convention: 0 ok, 1 unknown source, 2 usage error, 3 store failure.\n\n**Decisions (recorded):**\n\n- The CDC pass behind scan is a refresh-style pass with pruning disabled: pruning would delete stored sessions for any adapter that currently reports 0 (the Codex bug BOTSPY-81143b, or a missing root), so scan adds new and updates changed sessions but never prunes. On an empty store the pass IS the cold ingest the maintainer measured (~44 min); a warm pass is the ~1.7 s incremental refresh.\n- `--since` cutoff lands inside the store's ingest/refresh passes as an `IngestOptions` (specs first in features/02_querying), not as CLI filtering.\n- Uses the real `crate::store::Store`, not the in-memory `SessionStore` that `build_store` wires.\n- Keep src/cli/mod.rs changes minimal and separated: BOTSPY-98386a (store-backed verbs) is also planned against that file.\n\n**Definition of Done:** specs reviewed and red first, then green via `cargo test --test bdd`; cargo fmt/clippy/doc/test gates pass; real run of `botspy scan` and `botspy scan --since 7d --source claude_code` on the maintainer's machine; PR to develop (GitFlow, never main); merged once CI is green; task closed with a comment.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "GLM 5.3 Flash",
+      "name": "Cursor Cloud Agent (local-store implementer)"
+    }
+  }
+}

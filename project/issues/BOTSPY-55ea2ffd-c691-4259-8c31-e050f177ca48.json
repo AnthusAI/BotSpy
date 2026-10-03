@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-55ea2ffd-c691-4259-8c31-e050f177ca48",
   "title": "Antigravity adapter",
-  "description": "Tap Antigravity history: ~/.gemini/antigravity and antigravity-cli roots (conversations with protobuf user-turn payloads, conversation_summaries.db SQLite). Extract ALL part types. Reference: scanner-sentiment antigravity adapter, read-only.",
+  "description": "Tap Antigravity history: ~/.gemini/antigravity and antigravity-cli roots (conversations with protobuf user-turn payloads, conversation_summaries.db SQLite). Extract ALL part types. Reference: example-scanner antigravity adapter, read-only.",
   "type": "epic",
   "status": "closed",
   "priority": 2,
@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "4ae7aa97-8368-4c8d-9888-1efebc4ee0e7",
-      "author": "home",
+      "author": "example-user",
       "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
       "created_at": "2026-10-02T17:58:40.727501Z",
       "comment_type": "default",
@@ -25,7 +25,7 @@
     },
     {
       "id": "97b7e514-d337-4a60-898a-ef2fa90868bd",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:21.867879Z",
       "comment_type": "default"

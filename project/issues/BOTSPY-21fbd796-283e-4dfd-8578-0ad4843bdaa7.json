@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "867c28e5-12c8-4075-b98c-1a081ec2515b",
-      "author": "home",
+      "author": "example-user",
       "text": "behave added as dev dependency; features/ tree with environment.py, steps/, and features/schema/normalized_session.feature with implemented steps; behave passes (8 steps) and runs in CI.",
       "created_at": "2026-10-02T16:27:03.466359Z",
       "comment_type": "default"

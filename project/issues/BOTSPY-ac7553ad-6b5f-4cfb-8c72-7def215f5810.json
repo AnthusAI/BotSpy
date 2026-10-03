@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "8289ad36-c93e-4310-b331-4845a56dd009",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: Session/Message carry ids, agent, timestamps (optional), session/project ids, and Provenance (file + line or row, plus record id/type/ordinal/parent). Validated by the executable provenance.feature scenarios and the golden round-trip unit test (fully-populated session through JSON). All gates green.",
       "created_at": "2026-10-02T19:38:02.947027Z",
       "comment_type": "default"

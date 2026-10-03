@@ -3,7 +3,7 @@
   "title": "Fix documentation inaccuracies found in review (cli.md, Codex docs, diagrams)",
   "description": "**Found by:** post-PR-#7 review of the docs against `src/cli/mod.rs` and `src/adapters/codex.rs`.\n\n**Intent:** docs-only correction set (no code changes). Bring the docs in line with what the code does today and mark planned-but-unimplemented behavior clearly as planned under BOTSPY-98386a.\n\n**Scope:**\n1. `docs/cli.md`: document only the five implemented verbs (sources, sessions, show, doctor, snapshot); mark search/import/stats/watch plus the unimplemented flags as planned under BOTSPY-98386a; note `botspy scan` is added separately; fix the store.db claim (CLI reads live adapters through an in-memory SessionStore); fix the kebab-case-aliases claim (exact names only); fix the sources discovery/skip-stats claim.\n2. Codex docs (`docs/sources/codex.md`, `docs/sensitive-data.md`, `docs/architecture.md`, `docs/diagrams/codex.d2`): document what the code actually does — no `thread_history_1.sqlite` open, in-memory byte offsets, swallowed `parent_id` schema-drift error (0 sessions on real installs, open bug BOTSPY-81143b), live `state_5.sqlite` open without snapshot protection; fix the blanket snapshot-protection claim.\n3. `docs/sources/README.md`: Codex registry root is `~/.codex/sessions`, not `~/.codex`.\n4. Re-render changed diagrams with `scripts/render-diagrams.sh`; commit .d2/.svg/.light.png/.dark.png together.\n\n**Out of scope:** `docs/DESIGN.md`, any code changes, main branch.\n\n**Acceptance:** docs match code references cited in the review; rendered diagram artifacts committed with sources; PR to develop, CI green, merged. GitFlow: never main.",
   "type": "chore",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": "agent@example.com",
   "creator": null,
@@ -13,15 +13,22 @@
   "comments": [
     {
       "id": "f1d7ad86-22ff-4d36-9646-1cfdc7e481e5",
-      "author": "home",
+      "author": "example-user",
       "text": "Milestone: implemented in worktree /tmp/botspy-docs-fix on branch cursor/docs-fix-inaccuracies-d281 (off origin/develop at 88f86e0). Commit 56bf8e4: cli.md five-verb rewrite with planned flags under BOTSPY-98386a, Codex docs corrected (no thread_history_1.sqlite, in-memory offsets, swallowed parent_id error / 0-sessions bug 81143b, live state_5.sqlite open), registry root ~/.codex/sessions, snapshot-protection claim scoped, codex.d2 re-rendered with svg + light/dark png. PR opening into develop.",
       "created_at": "2026-10-03T14:15:21.692175Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "eb0da701-1c51-48b1-8b47-ea621bfe9ec5",
+      "author": "example-user",
+      "text": "Closed: PR #9 merged into develop as d7c80212d912891ff5a430700ffa8acaee22c101 (2026-10-03 14:34Z). All 8 CI checks green (lint, musl aarch64/x86_64, test macos-14/macos-15-intel/ubuntu-arm/ubuntu/windows). Files changed: docs/cli.md, docs/architecture.md, docs/sensitive-data.md, docs/sources/README.md, docs/sources/codex.md, docs/diagrams/codex.d2 + codex.svg + codex.light.png + codex.dark.png. docs/DESIGN.md untouched. No code changes.",
+      "created_at": "2026-10-03T14:35:05.466493Z",
       "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T14:09:49.148122Z",
-  "updated_at": "2026-10-03T14:15:21.692197Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T14:35:06.940906Z",
+  "closed_at": "2026-10-03T14:35:06.940872Z",
   "agent": {
     "platform": "cursor",
     "model": "GLM 5.3 Flash",

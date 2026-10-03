@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "8d09b3be-094a-458a-91e4-951d87089501",
-      "author": "home",
+      "author": "example-user",
       "text": "src/ layout with botspy package, one passing pytest test; venv + pip (uv not installed on this Mac); pytest 9.1.1 green.",
       "created_at": "2026-10-02T16:26:13.090336Z",
       "comment_type": "default"

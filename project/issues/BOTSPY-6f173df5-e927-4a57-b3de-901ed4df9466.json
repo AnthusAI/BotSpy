@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "139a10b3-e3fe-4986-9b90-d807476eb17f",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed — ingestion, iteration, and the real-history validation all done; the codex adapter finding lives on BOTSPY-81143b under the Codex adapter epic.",
       "created_at": "2026-10-03T13:36:29.821972Z",
       "comment_type": "default"

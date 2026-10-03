@@ -55,3 +55,43 @@ Feature: Incremental refresh
     And I snapshot the adapters' open count again
     Then the refresh reports 0 new sessions, 0 updated, and 0 pruned
     And the adapters served no session opens during the refresh
+
+  Scenario: A cutoff refresh picks up only what is new and counts the rest skipped
+    Given fixture sessions "r1" last active at "2026-10-01T09:00:00Z" and "r2" last active at "2026-09-01T09:00:00Z" and "r3" last active at "2026-10-01T09:30:00Z"
+    And a store at "refresh-cutoff/store.db"
+    When I ingest the registered adapters into the store
+    And a fixture session "r4" last active at "2026-10-02T09:00:00Z" is registered
+    And a fixture session "r5" last active at "2026-08-01T09:00:00Z" is registered
+    When I refresh the store with a cutoff "2026-10-01T00:00:00Z"
+    Then the refresh reports 1 new session, 0 updated, 0 pruned, and 2 skipped sessions
+    When I iterate the sessions
+    Then the iteration yields sessions "r4", "r3", "r1", and "r2"
+
+  Scenario: A cutoff refresh never prunes the sessions it skipped
+    Given fixture sessions "r7" last active at "2026-10-01T09:00:00Z" and "r8" last active at "2026-09-01T09:00:00Z" and "r9" last active at "2026-09-02T09:00:00Z"
+    And a store at "refresh-cutoff-noprune/store.db"
+    When I ingest the registered adapters into the store
+    And I refresh the store with a cutoff "2026-10-01T00:00:00Z"
+    Then the refresh reports 0 new sessions, 0 updated, 0 pruned, and 2 skipped sessions
+    When I iterate the sessions
+    Then the iteration yields sessions "r7", "r9", and "r8"
+
+  Scenario: A refresh pass can be told not to prune
+    Given fixture sessions "f13" from "claude_code" and "f14" from "cursor"
+    And a store at "refresh-noprune/store.db"
+    When I ingest the registered adapters into the store
+    And session "f14" is removed from its adapter
+    And I refresh the store without pruning
+    Then the refresh reports 0 new sessions, 0 updated, and 0 pruned
+    When I iterate the sessions
+    Then the iteration yields sessions "f13" and "f14"
+
+  Scenario: A dry-run refresh reports what would change and writes nothing
+    Given fixture sessions "f15" from "claude_code" and "f16" from "cursor"
+    And a store at "refresh-dryrun/store.db"
+    When I ingest the registered adapters into the store
+    And session "f15" gets another message at "2026-10-01T10:00:00Z"
+    And I refresh the store without writing
+    Then the refresh reports 0 new sessions, 1 updated, and 0 pruned
+    When I iterate the messages of session "f15"
+    Then the iteration yields the texts "hello from f15" in that order

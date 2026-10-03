@@ -13,14 +13,14 @@
   "comments": [
     {
       "id": "c22982dc-a6c5-4bf1-ac72-5e1eb8729f3a",
-      "author": "home",
+      "author": "example-user",
       "text": "Implementation plan for this chapter is filed under the initiative of record, BOTSPY-c7795b: store foundation (SQLite + sqlite-vec + FTS5, cross-platform), ingestion + unified iteration, incremental refresh, filters + laziness, text + vector search, MiniLM embeddings (deferred on open asset questions), docs wrap-up. The existing @wip specs (01_iteration, 02_filters, 03_laziness) turn green as the query-interface epics land; new store / ingest / refresh / search specs join the same folder (features/02_querying/).",
       "created_at": "2026-10-02T21:44:38.104046Z",
       "comment_type": "default"
     },
     {
       "id": "21ac0b3c-f8c4-4ccc-8de2-81dd67f478a0",
-      "author": "home",
+      "author": "example-user",
       "text": "Chapter complete: every child task is closed; the querying behaviors live in features/02_querying and are green on feat/local-store (PR #4).",
       "created_at": "2026-10-03T11:36:57.668400Z",
       "comment_type": "default"

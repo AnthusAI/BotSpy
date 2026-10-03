@@ -3,11 +3,11 @@
 
 use crate::steps::{adapter_for, parse_agent, BotSpyWorld};
 use botspy::store::embed::Embedder;
-use botspy::store::Store;
 use botspy::{
     Adapter, Agent, KnownPart, Message, MessageFilter, Part, Role, SearchHit, Session,
     SessionFilter,
 };
+use botspy::{IngestOptions, Store};
 use cucumber::{given, then, when};
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
@@ -119,6 +119,11 @@ fn store_file_exists_at(world: &mut BotSpyWorld, path: String) {
         store_path(&path).exists(),
         "the store file does not exist at {path}"
     );
+}
+
+#[given(regex = r#"^an empty fixture adapter for "([^"]+)"$"#)]
+fn empty_fixture_adapter(world: &mut BotSpyWorld, agent: String) {
+    adapter_for(world, &agent);
 }
 
 #[given(regex = r#"^fixture sessions "([^"]+)" from "([^"]+)" and "([^"]+)" from "([^"]+)"$"#)]
@@ -310,9 +315,7 @@ fn a_store_at(world: &mut BotSpyWorld, path: String) {
 #[when(regex = r#"^I ingest the registered adapters into the store$"#)]
 fn ingest_registered_adapters(world: &mut BotSpyWorld) {
     ensure_store_ingested(world);
-    let store = world.local_store.as_ref().expect("a store");
-    let adapters = registered_adapters(world);
-    world.ingest_report = Some(store.ingest(&adapters).expect("ingest succeeds"));
+    run_ingest_with(world, IngestOptions::default());
 }
 
 /// Every registered fixture adapter, as the store's ingestion surface
@@ -731,9 +734,13 @@ fn fixture_session_registered(world: &mut BotSpyWorld, id: String, agent: String
 
 #[when(regex = r#"^I refresh the store$"#)]
 fn refresh_the_store(world: &mut BotSpyWorld) {
-    let store = world.local_store.as_ref().expect("a store");
-    let adapters = registered_adapters(world);
-    world.ingest_report = Some(store.refresh(&adapters).expect("refresh succeeds"));
+    run_refresh_with(
+        world,
+        IngestOptions {
+            prune: true,
+            ..IngestOptions::default()
+        },
+    );
 }
 
 #[then(
@@ -795,6 +802,187 @@ fn adapters_served_no_opens(world: &mut BotSpyWorld) {
     let before = world.local_open_count_before.expect("open count before");
     let after = world.local_open_count_after.expect("open count after");
     assert_eq!(before, after, "unchanged sessions must not be re-opened");
+}
+
+// 05_ingest.feature and 06_refresh.feature option-carrying passes — a
+// `since` cutoff, dry-run passes, prune-less refreshes — and the
+// per-adapter report (BOTSPY-8ef5a5).
+
+/// Run an ingest pass with options, recording both report forms.
+fn run_ingest_with(world: &mut BotSpyWorld, options: IngestOptions) {
+    let store = world.local_store.as_ref().expect("a store");
+    let adapters = registered_adapters(world);
+    let report = store
+        .ingest_with(&adapters, &options)
+        .expect("the ingest succeeds");
+    world.detailed_ingest_report = Some(report.clone());
+    world.ingest_report = Some(report.totals);
+}
+
+/// Run a refresh pass with options, recording both report forms.
+fn run_refresh_with(world: &mut BotSpyWorld, options: IngestOptions) {
+    let store = world.local_store.as_ref().expect("a store");
+    let adapters = registered_adapters(world);
+    let report = store
+        .refresh_with(&adapters, &options)
+        .expect("the refresh succeeds");
+    world.detailed_ingest_report = Some(report.clone());
+    world.ingest_report = Some(report.totals);
+}
+
+#[given(regex = r#"^I ingest the registered adapters into the store with a cutoff "([^"]+)"$"#)]
+#[when(regex = r#"^I ingest the registered adapters into the store with a cutoff "([^"]+)"$"#)]
+fn ingest_with_cutoff(world: &mut BotSpyWorld, cutoff: String) {
+    run_ingest_with(
+        world,
+        IngestOptions {
+            since: Some(cutoff),
+            ..IngestOptions::default()
+        },
+    );
+}
+
+#[given(regex = r#"^I ingest the registered adapters into the store without writing$"#)]
+#[when(regex = r#"^I ingest the registered adapters into the store without writing$"#)]
+fn ingest_without_writing(world: &mut BotSpyWorld) {
+    run_ingest_with(
+        world,
+        IngestOptions {
+            dry_run: true,
+            ..IngestOptions::default()
+        },
+    );
+}
+
+#[when(regex = r#"^I refresh the store with a cutoff "([^"]+)"$"#)]
+fn refresh_with_cutoff(world: &mut BotSpyWorld, cutoff: String) {
+    run_refresh_with(
+        world,
+        IngestOptions {
+            since: Some(cutoff),
+            ..IngestOptions::default()
+        },
+    );
+}
+
+#[when(regex = r#"^I refresh the store without pruning$"#)]
+fn refresh_without_pruning(world: &mut BotSpyWorld) {
+    run_refresh_with(world, IngestOptions::default());
+}
+
+#[when(regex = r#"^I refresh the store without writing$"#)]
+fn refresh_without_writing(world: &mut BotSpyWorld) {
+    run_refresh_with(
+        world,
+        IngestOptions {
+            dry_run: true,
+            ..IngestOptions::default()
+        },
+    );
+}
+
+#[when(regex = r#"^a fixture session "([^"]+)" last active at "([^"]+)" is registered$"#)]
+fn fixture_session_registered_at(world: &mut BotSpyWorld, id: String, at: String) {
+    adapter_for(world, "claude_code").add_session(fixture_session(
+        &id,
+        parse_agent("claude_code"),
+        "demo",
+        &at,
+    ));
+}
+
+#[given(regex = r#"^session "([^"]+)" cannot be opened from its adapter$"#)]
+fn block_session_open(world: &mut BotSpyWorld, id: String) {
+    let adapter = crate::steps::adapter_owning(world, &id).expect("the session's adapter");
+    adapter.block_open(&id);
+}
+
+fn detailed_report(world: &BotSpyWorld) -> &botspy::DetailedIngestReport {
+    world
+        .detailed_ingest_report
+        .as_ref()
+        .expect("a detailed ingest or refresh report")
+}
+
+fn adapter_row(world: &BotSpyWorld, agent: &str) -> botspy::AdapterIngestReport {
+    let agent = parse_agent(agent);
+    *detailed_report(world)
+        .adapters
+        .iter()
+        .find(|row| row.agent == agent)
+        .unwrap_or_else(|| panic!("no adapter row for {agent:?}"))
+}
+
+#[then(regex = r#"^the (ingest|refresh) reports ([0-9]+) skipped sessions?$"#)]
+fn pass_reports_skipped(world: &mut BotSpyWorld, _pass: String, count: String) {
+    let expected = count.parse::<usize>().expect("numeric count");
+    assert_eq!(
+        detailed_report(world).totals.skipped,
+        expected,
+        "the pass's skipped-session count"
+    );
+}
+
+#[then(
+    regex = r#"^the refresh reports ([0-9]+) new sessions?, ([0-9]+) updated, ([0-9]+) pruned, and ([0-9]+) skipped sessions?$"#
+)]
+fn refresh_reports_with_skipped(
+    world: &mut BotSpyWorld,
+    new: String,
+    updated: String,
+    pruned: String,
+    skipped: String,
+) {
+    let totals = detailed_report(world).totals;
+    assert_eq!(
+        totals.new,
+        new.parse::<usize>().expect("numeric count"),
+        "new sessions"
+    );
+    assert_eq!(
+        totals.updated,
+        updated.parse::<usize>().expect("numeric count"),
+        "updated sessions"
+    );
+    assert_eq!(
+        totals.pruned,
+        pruned.parse::<usize>().expect("numeric count"),
+        "pruned sessions"
+    );
+    assert_eq!(
+        totals.skipped,
+        skipped.parse::<usize>().expect("numeric count"),
+        "skipped sessions"
+    );
+}
+
+#[then(regex = r#"^the (ingest|refresh) reports ([0-9]+) added sessions? for "([^"]+)"$"#)]
+fn pass_reports_added_for(world: &mut BotSpyWorld, _pass: String, count: String, agent: String) {
+    assert_eq!(
+        adapter_row(world, &agent).added_sessions,
+        count.parse::<usize>().expect("numeric count"),
+        "added sessions for {agent}"
+    );
+}
+
+#[then(regex = r#"^the (ingest|refresh) reports ([0-9]+) messages? added by "([^"]+)"$"#)]
+fn pass_reports_messages_for(world: &mut BotSpyWorld, _pass: String, count: String, agent: String) {
+    assert_eq!(
+        adapter_row(world, &agent).added_messages,
+        count.parse::<usize>().expect("numeric count"),
+        "messages added by {agent}"
+    );
+}
+
+#[then(regex = r#"^the (ingest|refresh) reports ([0-9]+) sessions? that failed to open$"#)]
+fn pass_reports_open_errors(world: &mut BotSpyWorld, _pass: String, count: String) {
+    let expected = count.parse::<usize>().expect("numeric count");
+    let errors: usize = detailed_report(world)
+        .adapters
+        .iter()
+        .map(|row| row.errors)
+        .sum();
+    assert_eq!(errors, expected, "sessions that failed to open");
 }
 
 // 02_filters.feature — engine-pushed-down filters (BOTSPY-72dc40).

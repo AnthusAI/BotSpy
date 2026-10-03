@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "43d2b880-4d64-413d-8499-d3b2b2034c26",
+  "issue_id": "BOTSPY-99afd609-ebd3-455e-a71f-cd77da167aca",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T15:43:12.737Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Rewrite README as high-level project overview with key diagrams",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": []
+  }
+}

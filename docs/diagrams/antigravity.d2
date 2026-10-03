@@ -1,27 +1,27 @@
 title: Antigravity source adapter
 
 root: {
-  label: "🔒 Root\n~/.gemini/antigravity"
+  label: "Sensitive data: Root\n~/.gemini/antigravity"
   class: sensitive
 }
 
 summaries: {
-  label: "🔒 Summaries index\nconversation_summaries.db\ntable conversations:\nid, name, updated_at"
+  label: "Sensitive data: Summaries index\nconversation_summaries.db\ntable conversations:\nid, name, updated_at"
   class: sensitive
 }
 
 transcript: {
-  label: "🔒 Transcript\nbrain/<conversation-id>/.system_generated/logs/transcript.jsonl"
+  label: "Sensitive data: Transcript\nbrain/<conversation-id>/.system_generated/logs/transcript.jsonl"
   class: sensitive
 }
 
 payload: {
-  label: "🔒 Payload database\nbrain/<conversation-id>/payload.db\ntable tool_links:\nstep_index, call_id, result"
+  label: "Sensitive data: Payload database\nbrain/<conversation-id>/payload.db\ntable tool_links:\nstep_index, call_id, result"
   class: sensitive
 }
 
 snap: {
-  label: "🔒 Snapshot copies\n\$TMPDIR/botspy-ag-snaps/\n<pid>-<seq>/snapshot.db\none copy per database,\nopened read-only"
+  label: "Sensitive data: Snapshot copies\n\$TMPDIR/botspy-ag-snaps/\n<pid>-<seq>/snapshot.db\none copy per database,\nopened read-only"
   class: sensitive
 }
 

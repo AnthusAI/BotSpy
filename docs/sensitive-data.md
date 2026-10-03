@@ -12,10 +12,12 @@ the copies live. This page is that map.
 ## The marker
 
 Every diagram in this documentation marks a sensitive place with the
-same marker: an amber border, 3 px wide, with a lock icon 🔒. The
+same marker: an amber border, 3 px wide, plus the explicit text label
+"Sensitive data". The
 marker means: **this place reads, copies, or stores session content.**
-The legend on every diagram states the same rule, and the shared theme
-file `diagrams/_shared.d2` defines the marker once for all diagrams.
+It is not a claim that the data is protected, which is why no lock or
+shield icon appears anywhere; the shared theme file
+`diagrams/_shared.d2` defines the marker once for all diagrams.
 
 Places that only move or transform data — adapters, the CLI process,
 the model cache — keep the theme's default look.
@@ -31,7 +33,7 @@ Every path BotSpy reads, copies, or writes. `<home>` is the
 | --- | --- | --- |
 | Claude Code | `~/.claude/projects/<encoded-cwd>/<session>.jsonl`; `~/.claude/projects/<encoded-cwd>/subagents/agent-*.jsonl` (skipped, counted) | Prompts, replies, thinking, tool calls and results, costs, titles |
 | Cursor | `~/.cursor/state.vscdb` (plus `-wal`, `-shm`); `~/.cursor/projects/<encoded-cwd>/agent-transcripts/*.jsonl` | Composer conversations, bubbles, tool blobs |
-| Codex | `~/.codex/state_5.sqlite`; `~/.codex/thread_history_1.sqlite`; `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl` | Threads, rollouts, messages, reasoning, tool calls, token usage |
+| Codex | `~/.codex/state_5.sqlite`; `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl` | Threads, rollouts, messages, reasoning, tool calls, token usage |
 | Grok Bot | `~/.grok/sand-client-persistence/*.json` — entry logs, plus the reserved `roster.json` and `cloud-agents.json` | Messages, voice calls (raw passthrough), agent names, agent status |
 | Antigravity | `~/.gemini/antigravity/conversation_summaries.db`; `~/.gemini/antigravity/brain/<id>/payload.db`; `~/.gemini/antigravity/brain/<id>/.system_generated/logs/transcript.jsonl` | Conversations, planner responses, checkpoints, tool calls and results |
 
@@ -77,9 +79,15 @@ nothing over the network.
 
 ## Properties that hold everywhere
 
-- BotSpy never writes to a source file. Adapters open databases
-  read-only; the snapshot module uses the SQLite online backup API over
-  a read-only connection.
+- BotSpy never writes to a source file. Every database connection is
+  read-only; the snapshot module uses the SQLite online backup API
+  over a read-only connection.
+- Today only Cursor and Antigravity read their live databases through
+  snapshot copies. Codex opens `~/.codex/state_5.sqlite` read-only,
+  directly: no snapshot copy. A read-only connection still touches the
+  `-shm` sidecar of a database that another process keeps open. The
+  text sources (Claude Code, Grok Bot, the Codex rollouts) read plain
+  files.
 - The only writes are BotSpy's own: the store, the snapshot copies,
   and the model cache.
 - No network at runtime. The one-time model download is the only

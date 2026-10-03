@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "13448286-4513-463d-8c7f-9436c2e132bf",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. @wip dropped from features/01_structure/08_inline_data.feature; all 4 scenarios pass (47 total). Schema: KnownPart::InlineData { mime, data (base64 or None), data_ref } with content_hash (sha2 SHA-256 hex over the base64 payload); blob-backed parts carry data_ref without data. New dependency: sha2 0.10. fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T19:05:41.024911Z",
       "comment_type": "default"

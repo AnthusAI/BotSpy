@@ -4,16 +4,22 @@ version = "0.2.0"
 edition = "2021"
 description = "Pop open the conversation history of any coding agent: one adapter per agent, one normalized schema, one unified agent-session history."
 license = "MIT"
-repository = "https://github.com/AnthusAI/BotSpy"
+repository = "https://github.com/DataParade-io/BotSpy"
 readme = "README.md"
 keywords = ["coding-agents", "chat-history", "sessions", "ai", "cli"]
 categories = ["development-tools", "text-processing"]
-# Keep the packaged crate lean for crates.io (10 MB limit): no Kanbus
-# board data, no fixtures, no local tooling.
-exclude = [
-    "/project",
-    "/.kanbus.yml",
-    "/tests/fixtures",
+# Allowlist for the packaged crate: crates.io caps the .crate at 10 MiB,
+# and the git tree carries ~15 MiB of docs diagrams that the crate never
+# reads. features/ stays because src/spec/ embeds the .feature files with
+# include_str! at compile time.
+include = [
+    "/src",
+    "/features",
+    "/Cargo.toml",
+    "/Cargo.lock",
+    "/README.md",
+    "/LICENSE",
+    "/CHANGELOG.md",
 ]
 
 [dependencies]
@@ -26,6 +32,7 @@ sha2 = "0.10"
 tract-onnx = "0.23.8"
 tokenizers = "0.23.2"
 ureq = { version = "3.4.2", default-features = false, features = ["rustls"] }
+libc = "0.2"
 
 [dev-dependencies]
 cucumber = "0.21"

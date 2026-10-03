@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "0a34167c-0f05-41ce-81d4-26a5704b3152",
-      "author": "home",
+      "author": "example-user",
       "text": "Extraction maps bubbles into chapter-1 Messages in fullConversationHeadersOnly order (bubble keys b3,b1,b2 normalized to b1,b2,b3): type 1 -> User text, type 2 -> Assistant with thinking and toolFormerData -> ToolCall, toolResultBlob -> Blob part with blob_hash + container agentKv:blob. Changed composers re-detected by lastUpdatedAt (only composer-2 after the app bumps it). The hot WAL store is read exclusively through snapshot_sqlite snapshot copies - digest-verified never mutated, live app keeps writing. Full gate green.",
       "created_at": "2026-10-02T20:06:19.962040Z",
       "comment_type": "default"

@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "d1cfcac6-56ea-46d3-a0b4-a2cc10455f49",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: SCHEMA_VERSION (1) is defined, importable and re-exported at the crate root, unit-tested stable. Malformed parts fail deserialization with serde's clear type errors, and unknown kinds degrade to Extra verbatim per the adopted spec (supersedes the older rejection idea) — both unit-tested. All gates green.",
       "created_at": "2026-10-02T19:38:11.950296Z",
       "comment_type": "default"

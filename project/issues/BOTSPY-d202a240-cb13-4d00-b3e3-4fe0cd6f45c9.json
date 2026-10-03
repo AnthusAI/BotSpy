@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "085d069c-907a-4d4b-8c9d-cad7b307b6fa",
-      "author": "home",
+      "author": "example-user",
       "text": "Synthetic Cursor fixtures + BDD: state.vscdb cursorDiskKV KV store drives composer discovery from composerHeaders (3 composers -> 3 sessions); CLI agent transcripts discovered per project dir under agent-transcripts/. CursorSource (KV) and CursorCliSource (transcripts) in src/adapters/cursor.rs; fixture steps in tests/steps/cursor_steps.rs. Full gate green (bdd 101/101).",
       "created_at": "2026-10-02T20:06:17.426271Z",
       "comment_type": "default"

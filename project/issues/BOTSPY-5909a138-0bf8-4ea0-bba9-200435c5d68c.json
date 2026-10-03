@@ -1,0 +1,45 @@
+{
+  "id": "BOTSPY-5909a138-0bf8-4ea0-bba9-200435c5d68c",
+  "title": "Anonymize real personal data before org move",
+  "description": "",
+  "type": "task",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "6fbbcd75-b92b-4a79-81ee-f22deb897b3f",
+      "author": "example-user",
+      "text": "Plan: worktree /Users/example/Projects/BotSpy-anonymize on branch cursor/anonymize-personal-data-9bed off origin/develop. Phase 1: replace all real personal data in tracked files (board, docs, README, features, tests, fixtures, src comments, diagrams re-rendered via scripts/render-diagrams.sh, repo URLs generic except Cargo.toml repository field listed for move-time). Phase 2 (approved by the maintainer): git-filter-repo history rewrite with --replace-text, full mirror backup first, force-push all branches/tags excluding refs/pull/*. Guard test added in phase 1.",
+      "created_at": "2026-10-03T14:12:07.520478Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "07c39185-395b-40b5-90e7-2b8ba3987293",
+      "author": "example-user",
+      "text": "Milestone: board data anonymized and pushed to develop as 523fb00 (884 project files: author/comment_author/actor_id, emails, paths, session ids, org/repo names). Non-board anonymization (docs, README, features, src/spec, guard test tests/no_real_personal_data.rs, untracked llm_usage.jsonl + .gitignore) is up as PR #12 into develop; all local checks green (fmt, clippy, 64 lib + 8 BDD + fixtures + guard + spec-coverage tests), CI running. Phase 2 (history rewrite + force-push) starts after PR #12 merges and the develop→main promotion finishes.",
+      "created_at": "2026-10-03T14:46:03.450918Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cloud Agent"
+      }
+    }
+  ],
+  "created_at": "2026-10-03T14:11:51.940339Z",
+  "updated_at": "2026-10-03T14:46:03.450950Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "GLM 5.3 Flash",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

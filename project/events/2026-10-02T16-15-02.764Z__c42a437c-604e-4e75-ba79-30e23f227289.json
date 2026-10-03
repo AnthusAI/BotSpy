@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "title": "Cursor adapter",
-    "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: scanner-sentiment cursor adapter, read-only.",
+    "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: example-scanner cursor adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

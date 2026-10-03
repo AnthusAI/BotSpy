@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "f0370ff4-b50f-44a0-aeab-dac56e62156b",
-      "author": "home",
+      "author": "example-user",
       "text": "Extraction maps transcript steps into chapter-1 Messages ordered by explicit step_index (shuffled file order normalized): USER_INPUT -> User, PLANNER_RESPONSE -> Assistant, CHECKPOINT -> compaction summary, ERROR_MESSAGE -> error System message, created_at -> timestamps. The payload DB (read through a snapshot copy) supplies tool-call linkage the transcript lacks via its tool_links table keyed by step_index: TOOL_CALL records get the DB call id and a linked ToolResult message. Hot WAL DBs digest-verified never mutated; live app keeps writing. Malformed steps and unknown types skipped with counters. Full gate green.",
       "created_at": "2026-10-02T20:14:29.657280Z",
       "comment_type": "default"

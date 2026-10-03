@@ -1,0 +1,17 @@
+{
+ "schema_version": 1,
+ "event_id": "caddfdf9-060c-4f7a-b7b8-3b9cd11a9a01",
+ "issue_id": "BOTSPY-5909a138-0bf8-4ea0-bba9-200435c5d68c",
+ "event_type": "comment_added",
+ "occurred_at": "2026-10-03T14:46:03.450Z",
+ "actor_id": "example-user",
+ "payload": {
+  "comment_id": "07c39185-395b-40b5-90e7-2b8ba3987293",
+  "comment_author": "example-user",
+  "agent": {
+   "platform": "cursor",
+   "model": "GLM 5.3 Flash",
+   "name": "Cloud Agent"
+  }
+ }
+}

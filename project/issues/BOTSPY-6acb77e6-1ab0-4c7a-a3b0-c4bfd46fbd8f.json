@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "97c73d06-7094-41f3-91fc-98061c8d0303",
-      "author": "home",
+      "author": "example-user",
       "text": "home: Synthetic fixture corpus committed under tests/fixtures/ for all five agents, mirroring real on-disk layouts with fully synthetic content: Claude Code projects/<encoded>/<uuid>.jsonl (user/assistant/tool_use/tool_result/cost-state/pr-link/custom-title), Codex state_5.sqlite threads index + dated rollouts (response items, reasoning, function call/output, token usage, compaction, task_complete, spawn edge), Cursor state.vscdb cursorDiskKV (composerHeaders, composerData, bubbles incl. thinking/toolFormerData/toolResultBlob + agentKv blob) + projects CLI transcripts, Grok Bot sand-client-persistence hash-named entry-log blobs + roster.json + cloud-agents.json, Antigravity conversation_summaries.db + brain/<id>/.system_generated/logs/transcript.jsonl + payload.db tool_links. Generator lives in tests/fixtures_corpus.rs (BOTSPY_FIXTURES_REGEN=1 cargo test --test fixtures_corpus, regenerate-then-verify). Three guards: committed_fixtures_match_generator (text byte-parity, SQLite logical dump parity immune to page-layout/SQLite-build drift), fixtures_contain_no_secrets (token/KEY/assignment pattern scan, real-home-path leak check, stray -wal/-shm/-journal rejection), fixtures_feed_every_adapter (every importer discovers and extracts against the corpus). SQLite dumps and adapter smoke runs go through scratch copies so even WAL sidecar creation cannot pollute the committed tree. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 23 features/114 scenarios/433 steps, spec_docs_coverage, 37 lib tests.",
       "created_at": "2026-10-02T20:23:19.428916Z",
       "comment_type": "default"

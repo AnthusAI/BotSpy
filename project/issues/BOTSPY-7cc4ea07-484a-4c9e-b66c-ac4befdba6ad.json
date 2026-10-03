@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "a32c098c-1b23-4ab9-8013-297fbb1bfe97",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: KnownPart has the fixed kinds (text, thinking, tool_call, tool_result, attachment, inline_data, blob, system) plus Part::Extra raw passthrough. Golden round-trip unit tests in src/schema/mod.rs prove every kind survives JSON (kind tag intact) and unknown kinds degrade to Extra verbatim (kind_name + as_extra); message_parts.feature drives the same behavior. All gates green.",
       "created_at": "2026-10-02T19:37:51.601148Z",
       "comment_type": "default"

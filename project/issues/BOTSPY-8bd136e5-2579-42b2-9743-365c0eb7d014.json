@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "3b237d12-5337-4da6-a6f4-281d85a47e39",
-      "author": "home",
+      "author": "example-user",
       "text": "Spec authored at features/01_structure/unified_history.feature (5 @wip scenarios): all five adapters listing together, last-activity ordering across agents, dedup of the same session seen twice, provenance surviving the merge, per-session agent/project identity. Placed under 01_structure (the unified-history layer per the chapter layout) and embedded in src/spec/ch01_structure.rs as item 13. All gates green.",
       "created_at": "2026-10-02T19:43:43.833230Z",
       "comment_type": "default"

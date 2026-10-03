@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "f52c6715-7ede-4c97-ad0d-2c761f8d2cfd",
-      "author": "home",
+      "author": "example-user",
       "text": "Typed protocol landed in src/importer.rs: RecordStream (pull-based streaming with skipped() counters and peak_buffered bound), SkipCounter (malformed/unknown), RawRecord, and MemorySource as the reference in-memory source (JSONL line-by-line, incremental discovery with last_discovery_new_ids, opens counter). All 6 contract.feature scenarios executable and green via tests/steps/importer_steps.rs; 17 features / 79 scenarios pass; fmt, clippy -D warnings, doc, doctests, spec coverage all green.",
       "created_at": "2026-10-02T19:30:50.925255Z",
       "comment_type": "default"

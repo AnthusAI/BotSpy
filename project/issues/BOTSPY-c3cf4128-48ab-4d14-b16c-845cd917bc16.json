@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16",
   "title": "Weights + tokenizer acquisition, caching, offline operation",
-  "description": "**Files:** `src/store/assets.rs` (setup acquisition per Ryan's decision — a setup function/command fetches the weights + tokenizer; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** per Ryan's decision (BOTSPY-bb60bb closed): a setup step/command downloads the quantized all-MiniLM-L6-v2 ONNX weights + tokenizer.json once (content digest verified, download-once/idempotent semantics) and caches them under `~/.botspy/models/` (BOTSPY_MODELS honored); the runtime library makes no network calls and nothing leaves the machine at runtime; clean typed errors when offline and the files are missing; no telemetry. The README privacy claim is updated to state the one-time setup fetch honestly.",
+  "description": "**Files:** `src/store/assets.rs` (setup acquisition per the maintainer's decision — a setup function/command fetches the weights + tokenizer; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** per the maintainer's decision (BOTSPY-bb60bb closed): a setup step/command downloads the quantized all-MiniLM-L6-v2 ONNX weights + tokenizer.json once (content digest verified, download-once/idempotent semantics) and caches them under `~/.botspy/models/` (BOTSPY_MODELS honored); the runtime library makes no network calls and nothing leaves the machine at runtime; clean typed errors when offline and the files are missing; no telemetry. The README privacy claim is updated to state the one-time setup fetch honestly.",
   "type": "task",
   "status": "closed",
   "priority": 2,
@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "cd0515d4-b9c5-4d62-abad-41e77564ce18",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: model asset setup — `cargo run --example setup_models` downloads all-MiniLM-L6-v2 ONNX + tokenizer once, digest-verified, into the BOTSPY_MODELS cache; at runtime nothing leaves the machine; CI downloads once per model hash and caches it across all 8 jobs. Committed to feat/local-store (07272ec, PR #4).",
       "created_at": "2026-10-03T11:34:59.947974Z",
       "comment_type": "default",

@@ -9,7 +9,8 @@ A central part of that purpose is **sensitive-data visibility**: your
 agent sessions contain prompts, code, tool output, and sometimes
 secrets. BotSpy never hides where that data lives. Every diagram in
 this documentation marks sensitive places with the same amber border
-and lock icon, and [`sensitive-data.md`](sensitive-data.md) lists every
+and an explicit "Sensitive data" label, and
+[`sensitive-data.md`](sensitive-data.md) lists every
 path BotSpy reads, copies, or writes.
 
 ## Reading order
