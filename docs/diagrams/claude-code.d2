@@ -1,22 +1,22 @@
 title: Claude Code source adapter
 
 root: {
-  label: "🔒 Root\n~/.claude/projects"
+  label: "Sensitive data: Root\n~/.claude/projects"
   class: sensitive
 }
 
 project_dir: {
-  label: "🔒 Project directory\nname = encoded working directory\nexample: -Users-synth-workspace-alpha"
+  label: "Sensitive data: Project directory\nname = encoded working directory\nexample: -Users-synth-workspace-alpha"
   class: sensitive
 }
 
 transcript: {
-  label: "🔒 Session transcript\n<uuid>.jsonl\none file per session"
+  label: "Sensitive data: Session transcript\n<uuid>.jsonl\none file per session"
   class: sensitive
 }
 
 subagents: {
-  label: "🔒 subagents/agent-*.jsonl\nsidechains: not read,\nskipped and counted"
+  label: "Sensitive data: subagents/agent-*.jsonl\nsidechains: not read,\nskipped and counted"
   class: sensitive
 }
 

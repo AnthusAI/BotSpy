@@ -1,12 +1,12 @@
 title: Codex source adapter
 
 root: {
-  label: "🔒 Root\n~/.codex"
+  label: "Sensitive data: Root\n~/.codex"
   class: sensitive
 }
 
 index: {
-  label: "🔒 Threads index\n~/.codex/state_5.sqlite\nopened read-only, directly\n(no snapshot copy)\nquery: id, rollout_path, parent_id, cwd\nfrom table threads"
+  label: "Sensitive data: Threads index\n~/.codex/state_5.sqlite\nopened read-only, directly\n(no snapshot copy)\nquery: id, rollout_path, parent_id, cwd\nfrom table threads"
   class: sensitive
 }
 
@@ -16,7 +16,7 @@ bug: {
 }
 
 rollouts: {
-  label: "🔒 Rollout files\n~/.codex/sessions/YYYY/MM/DD/\nrollout-*.jsonl\none file per session"
+  label: "Sensitive data: Rollout files\n~/.codex/sessions/YYYY/MM/DD/\nrollout-*.jsonl\none file per session"
   class: sensitive
 }
 

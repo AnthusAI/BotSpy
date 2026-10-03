@@ -3,7 +3,7 @@
   "title": "Docs",
   "description": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded feature files, spec-coverage guard test, rustdoc and doctests in CI).",
   "type": "epic",
-  "status": "closed",
+  "status": "open",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -27,8 +27,8 @@
     }
   ],
   "created_at": "2026-10-02T16:15:24.317480Z",
-  "updated_at": "2026-10-03T17:23:38.286998Z",
-  "closed_at": "2026-10-03T17:23:38.286964Z",
+  "updated_at": "2026-10-03T17:53:07.410626Z",
+  "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

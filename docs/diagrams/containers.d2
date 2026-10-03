@@ -14,17 +14,17 @@ machine: {
   }
 
   agent_data: {
-    label: "🔒 Agent session files\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent's own files and\ndatabases under \$HOME"
+    label: "Sensitive data: agent session files\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent's own files and\ndatabases under \$HOME"
     class: sensitive
   }
 
   snapshots: {
-    label: "🔒 Snapshot copies\n\n\$TMPDIR/botspy-cursor-snaps/<pid>-<seq>/snapshot.db\n\$TMPDIR/botspy-ag-snaps/<pid>-<seq>/snapshot.db\n<home>/.botspy/snapshots/<source>/snapshot.db"
+    label: "Sensitive data: snapshot copies\n\n\$TMPDIR/botspy-cursor-snaps/<pid>-<seq>/snapshot.db\n\$TMPDIR/botspy-ag-snaps/<pid>-<seq>/snapshot.db\n<home>/.botspy/snapshots/<source>/snapshot.db"
     class: sensitive
   }
 
   store: {
-    label: "🔒 Local store\n\n<home>/.botspy/store.db\n(+ store.db-wal, store.db-shm)\n\nSQLite in WAL mode:\nsessions, messages, parts,\nFTS5 index, vector index"
+    label: "Sensitive data: local store\n\n<home>/.botspy/store.db\n(+ store.db-wal, store.db-shm)\n\nSQLite in WAL mode:\nsessions, messages, parts,\nFTS5 index, vector index"
     shape: cylinder
     class: sensitive
   }
@@ -36,9 +36,9 @@ machine: {
 }
 
 user -> machine.cli: "Runs commands"
-machine.cli -> machine.agent_data: "Adapters read sources\n(read-only)"
-machine.cli -> machine.snapshots: "Snapshot module copies\nlive SQLite files"
-machine.snapshots -> machine.cli: "Adapters read the copy\nwhen the live store is busy"
-machine.cli -> machine.store: "Ingest writes;\nqueries read"
+machine.cli -> machine.agent_data: "Adapters read sources (read-only).\nSensitive data: session history"
+machine.cli -> machine.snapshots: "Snapshot module copies\nlive SQLite files.\nSensitive data: live store pages"
+machine.snapshots -> machine.cli: "Adapters read the copy\nwhen the live store is busy.\nSensitive data: session history"
+machine.cli -> machine.store: "Ingest writes; queries read.\nSensitive data: session history"
 machine.cli -> machine.models: "Embedder loads model\nfiles (read-only)"
-machine.cli -> machine.user: "Sessions, messages,\nsearch hits\n(human, JSON, NDJSON)"
+machine.cli -> machine.user: "Sessions, messages,\nsearch hits\n(human, JSON, NDJSON).\nSensitive data: session history"

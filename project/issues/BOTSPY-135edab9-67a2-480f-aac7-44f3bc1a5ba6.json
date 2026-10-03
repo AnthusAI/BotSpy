@@ -1,0 +1,47 @@
+{
+  "id": "BOTSPY-135edab9-67a2-480f-aac7-44f3bc1a5ba6",
+  "title": "Fix README diagrams: drop legend, explicit sensitive-data labels, store in context view",
+  "description": "",
+  "type": "task",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "ef4d6673-10e6-42d2-a693-05870165905c",
+      "author": "example-user",
+      "text": "Scope: (1) C4 context diagram: remove the legend, show the BotSpy local SQLite store as its own element marked sensitive, label the flows that carry session content as sensitive. (2) Same treatment for the dataflow and containers diagrams: no legend, no lock icons, explicit 'Sensitive data' text labels on every element and edge that holds or carries sensitive data; store marked sensitive. (3) Rule for every diagram in README and docs: no legends at all — so the legend block goes away from the shared theme file and every diagram is re-rendered. (4) No lock or padlock icons anywhere: search D2 sources, rendered assets, and README for lock emoji and remove them all; a lock implies protection, we only identify sensitive data. (5) README image URLs move to the current repository org (the packaging PR may touch README; rebase if conflict). (6) docs prose that describes the legend/lock marker gets updated to match. Worktree /private/tmp/botspy-diagram-fix, branch cursor/context-diagram-fix-fb2c, PR into develop, do not merge.",
+      "created_at": "2026-10-03T17:53:29.126219Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "b0a01ec8-b9ab-428d-a137-6852ec3975a4",
+      "author": "example-user",
+      "text": "Implementation done: legend removed from the shared theme (no diagram carries a legend now); every lock/padlock emoji removed from all 12 D2 sources; every sensitive element and every flow that carries session content carries an explicit 'Sensitive data: ...' text label; the C4 context diagram now shows the BotSpy local store as its own sensitive element with ingest flow from BotSpy and read flows labeled; README image URLs point at the DataParade-io org; docs prose that described the legend/lock marker (docs/README.md, architecture.md, diagrams.md, sensitive-data.md) updated to describe the explicit label rule. All 12 diagrams re-rendered with d2 v0.9.0 (tala, themes 0/200) and visually checked in light and dark. Gates: fmt clean, clippy -D warnings clean, full cargo test green (79 lib tests; BDD 41 features / 250 scenarios, 246 passed and 4 skipped; guards incl. no_real_personal_data and spec_docs_coverage; 8 doc tests). One local-toolchain detour: a disk-full event had corrupted the 1.78.0 rustup toolchain, which broke builds until repaired; CI unaffected.",
+      "created_at": "2026-10-03T18:38:05.098258Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "1b5d11ad-fc53-4eb3-aa89-d1bfcb945710",
+      "author": "example-user",
+      "text": "Blocked on PR creation: the branch cursor/context-diagram-fix-fb2c is pushed to the repository remote (commits 3fde1ff diagram fix, 8fb4a54 board state, authored as Example Dev <agent@example.com>), all local gates are green, but the Cursor PR tool returns '[unauthenticated] Error' for the moved org on every attempt, so the pull request into develop could not be opened from this session. The machine's own forge login has admin access to the repository, so the PR can be opened from the branch in one click, or re-authenticating the Cursor GitHub integration should let a follow-up session create it. CI runs on the pull_request event, so no check run exists until the PR is open. Do not close this task yet.",
+      "created_at": "2026-10-03T18:41:56.255736Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T17:53:08.346633Z",
+  "updated_at": "2026-10-03T19:04:27.274408Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "Composer 2.5",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}

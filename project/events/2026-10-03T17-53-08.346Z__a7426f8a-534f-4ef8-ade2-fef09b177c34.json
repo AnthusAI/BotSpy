@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "a7426f8a-534f-4ef8-ade2-fef09b177c34",
+  "issue_id": "BOTSPY-135edab9-67a2-480f-aac7-44f3bc1a5ba6",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T17:53:08.346Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Fix README diagrams: drop legend, explicit sensitive-data labels, store in context view",
+    "description": "",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "Composer 2.5",
+      "name": "Cloud Agent"
+    }
+  }
+}
