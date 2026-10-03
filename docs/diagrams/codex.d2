@@ -1,0 +1,62 @@
+title: Codex source adapter
+
+root: {
+  label: "🔒 Root\n~/.codex"
+  class: sensitive
+}
+
+index: {
+  label: "🔒 Threads index\n~/.codex/state_5.sqlite\ntable threads:\nid, rollout_path, parent_id, cwd\nopened read-only"
+  class: sensitive
+}
+
+history: {
+  label: "🔒 History index\n~/.codex/thread_history_1.sqlite\nturn and item projections,\nrollout byte offsets"
+  class: sensitive
+}
+
+rollouts: {
+  label: "🔒 Rollout files\n~/.codex/sessions/YYYY/MM/DD/\nrollout-*.jsonl\none file per session"
+  class: sensitive
+}
+
+missing: {
+  label: "Missing rollout file\nskipped and counted"
+  class: tool
+}
+
+parents: {
+  label: "Spawn edges\nparent_id links become\nparent_links in the session graph"
+  class: tool
+}
+
+adapter: {
+  label: "CodexSource\nbyte-offset resume per session,\npartial trailing line held back"
+  class: tool
+}
+
+ordering: {
+  label: "Ordering\nEvery record has an explicit\nordinal field. Records are sorted\nby ordinal, not by file order."
+  class: tool
+}
+
+mapping: {
+  label: "Record mapping\n\nresponse_item, message user / assistant → Text\nresponse_item, message developer       → System part (origin: developer)\nresponse_item, reasoning summary       → Thinking\nfunction_call                          → ToolCall (arguments parsed)\nfunction_call_output                   → ToolResult (role: tool)\ntoken_usage_record                     → Usage (model, token counts)\ncompacted                              → CompactionWindow\ntask_complete                         → Turn (duration, time to first token)"
+  class: tool
+}
+
+session: {
+  label: "Unified Session\nmessages, parts, usage,\nparent links, provenance"
+  class: tool
+}
+
+root -> index: "reads thread list"
+index -> rollouts: "rollout_path per thread"
+rollouts -> adapter: "read record by record"
+index -> missing: "thread without a rollout file"
+root -> history: "referenced for projections\nand offsets"
+adapter -> ordering: "sorts by ordinal"
+ordering -> mapping: "each record type"
+mapping -> session: "extracted"
+index -> parents: "parent_id column"
+parents -> session: "session graph"

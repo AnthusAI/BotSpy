@@ -1,0 +1,56 @@
+title: Antigravity source adapter
+
+root: {
+  label: "🔒 Root\n~/.gemini/antigravity"
+  class: sensitive
+}
+
+summaries: {
+  label: "🔒 Summaries index\nconversation_summaries.db\ntable conversations:\nid, name, updated_at"
+  class: sensitive
+}
+
+transcript: {
+  label: "🔒 Transcript\nbrain/<conversation-id>/.system_generated/logs/transcript.jsonl"
+  class: sensitive
+}
+
+payload: {
+  label: "🔒 Payload database\nbrain/<conversation-id>/payload.db\ntable tool_links:\nstep_index, call_id, result"
+  class: sensitive
+}
+
+snap: {
+  label: "🔒 Snapshot copies\n\$TMPDIR/botspy-ag-snaps/\n<pid>-<seq>/snapshot.db\none copy per database,\nopened read-only"
+  class: sensitive
+}
+
+ordering: {
+  label: "Ordering\nThe step_index field is\nthe authoritative order.\ncreated_at gives timestamps."
+  class: tool
+}
+
+mapping: {
+  label: "Record mapping\n\nUSER_INPUT      → User message\nPLANNER_RESPONSE → Assistant message\nCHECKPOINT       → Assistant + is_compaction_summary\nERROR_MESSAGE   → System + is_error\nTOOL_CALL with tool_links row   → ToolCall + ToolResult pair\nTOOL_CALL without a link row   → malformed, skipped"
+  class: tool
+}
+
+adapter: {
+  label: "AntigravitySource\nSQLite online backup for\nthe two databases,\nthen read-only queries"
+  class: tool
+}
+
+session: {
+  label: "Unified Session\nmessages, parts,\ntool results, provenance"
+  class: tool
+}
+
+root -> summaries: "lists conversations"
+summaries -> snap: "online backup"
+payload -> snap: "online backup"
+snap -> adapter: "read-only queries"
+transcript -> adapter: "read record by record"
+adapter -> ordering: "sorts by step_index"
+ordering -> mapping: "each record type"
+mapping -> session: "extracted"
+snap -> mapping: "tool result rows\njoined by call_id"

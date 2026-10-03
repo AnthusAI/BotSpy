@@ -1,0 +1,44 @@
+title: BotSpy - C4 container (level 2)
+
+machine: {
+  label: Local machine
+
+  user: {
+    label: User
+    shape: person
+  }
+
+  cli: {
+    label: "BotSpy CLI\n\nsources, sessions, show, search,\nimport, doctor, snapshot, stats, watch\n\nAlways read-only against agent data.\nThe only writes are BotSpy's own\nstore and snapshot files."
+    class: tool
+  }
+
+  agent_data: {
+    label: "🔒 Agent session files\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent's own files and\ndatabases under \$HOME"
+    class: sensitive
+  }
+
+  snapshots: {
+    label: "🔒 Snapshot copies\n\n\$TMPDIR/botspy-cursor-snaps/<pid>-<seq>/snapshot.db\n\$TMPDIR/botspy-ag-snaps/<pid>-<seq>/snapshot.db\n<home>/.botspy/snapshots/<source>/snapshot.db"
+    class: sensitive
+  }
+
+  store: {
+    label: "🔒 Local store\n\n<home>/.botspy/store.db\n(+ store.db-wal, store.db-shm)\n\nSQLite in WAL mode:\nsessions, messages, parts,\nFTS5 index, vector index"
+    shape: cylinder
+    class: sensitive
+  }
+
+  models: {
+    label: "Model cache\n\n<home>/.botspy/models/\nall-MiniLM-L6-v2/\n\nNo session data: model files only"
+    class: tool
+  }
+}
+
+user -> machine.cli: "Runs commands"
+machine.cli -> machine.agent_data: "Adapters read sources\n(read-only)"
+machine.cli -> machine.snapshots: "Snapshot module copies\nlive SQLite files"
+machine.snapshots -> machine.cli: "Adapters read the copy\nwhen the live store is busy"
+machine.cli -> machine.store: "Ingest writes;\nqueries read"
+machine.cli -> machine.models: "Embedder loads model\nfiles (read-only)"
+machine.cli -> machine.user: "Sessions, messages,\nsearch hits\n(human, JSON, NDJSON)"

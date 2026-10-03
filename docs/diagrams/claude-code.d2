@@ -1,0 +1,56 @@
+title: Claude Code source adapter
+
+root: {
+  label: "🔒 Root\n~/.claude/projects"
+  class: sensitive
+}
+
+project_dir: {
+  label: "🔒 Project directory\nname = encoded working directory\nexample: -Users-synth-workspace-alpha"
+  class: sensitive
+}
+
+transcript: {
+  label: "🔒 Session transcript\n<uuid>.jsonl\none file per session"
+  class: sensitive
+}
+
+subagents: {
+  label: "🔒 subagents/agent-*.jsonl\nsidechains: not read,\nskipped and counted"
+  class: sensitive
+}
+
+discovery: {
+  label: "Discovery\nthrowaway scanner finds transcripts.\nSummaries carry message count,\nstarted, last activity, title.\nSkipped subagents and files\nare counted."
+  class: tool
+}
+
+adapter: {
+  label: "ClaudeCodeSource\nextract, byte-offset resume per session id,\npartial trailing line held back"
+  class: tool
+}
+
+mapping: {
+  label: "Record mapping\n\nuser record      → Text; ToolResult (by tool_use_id)\nassistant record → Text; Thinking; ToolCall\nsummary record   → compaction Text (role: user)\ncost-state      → SessionCost\npr-link         → metadata.pr_url\ncustom-title    → metadata.title\nother records   → skipped and counted"
+  class: tool
+}
+
+provenance: {
+  label: "Provenance on every part\nuuid, parentUuid, type, line number"
+  class: tool
+}
+
+session: {
+  label: "Unified Session\nmessages, parts, cost, metadata"
+  class: tool
+}
+
+root -> project_dir: "one dir per project"
+project_dir -> transcript: "one file per session"
+transcript -> discovery: "scan"
+transcript -> adapter: "read line by line"
+subagents -> discovery: "skipped, counted"
+discovery -> adapter: "summaries; only new\nsessions are opened"
+adapter -> mapping: "each record type"
+mapping -> provenance: "line numbers kept"
+provenance -> session: "extracted session"
