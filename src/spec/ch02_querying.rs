@@ -37,7 +37,7 @@
 //!
 //! The implementation of this chapter is the **Local Store Initiative**
 //! on the BotSpy Kanbus board
-//! ([`BOTSPY-c7795b`](https://github.com/AnthusAI/BotSpy)): SQLite +
+//! (`BOTSPY-c7795b` on the BotSpy Kanbus board): SQLite +
 //! sqlite-vec + all-MiniLM-L6-v2 embeddings, embedded via tract (ONNX) on
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.

@@ -48,7 +48,7 @@ Merge accepted, green work into `develop` as soon as it is ready, and continuous
 
 **Do not open a pull request for project management.** Kanbus issues, comments, status changes, and `project/wiki` pages commit on `develop` and push. No feature branch, no PR, no review loop. Mixing board files into a product PR is also wrong: land the board on `develop` first.
 
-Multiple agents work in this repo in parallel at any given time and must avoid colliding: each agent uses its own git worktree and feature branch, never checks out branches or edits files in the shared checkout (`~/Projects/BotSpy`), keeps branches short, and merges or rebases from `develop` often.
+Multiple agents work in this repo in parallel at any given time and must avoid colliding: each agent uses its own git worktree and feature branch, never checks out branches or edits files in the shared checkout, keeps branches short, and merges or rebases from `develop` often.
 
 ## Specs come first
 
