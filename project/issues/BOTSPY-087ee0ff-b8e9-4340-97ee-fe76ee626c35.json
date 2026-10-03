@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-087ee0ff-b8e9-4340-97ee-fe76ee626c35",
+  "title": "Fix documentation inaccuracies found in review (cli.md, Codex docs, diagrams)",
+  "description": "**Found by:** post-PR-#7 review of the docs against `src/cli/mod.rs` and `src/adapters/codex.rs`.\n\n**Intent:** docs-only correction set (no code changes). Bring the docs in line with what the code does today and mark planned-but-unimplemented behavior clearly as planned under BOTSPY-98386a.\n\n**Scope:**\n1. `docs/cli.md`: document only the five implemented verbs (sources, sessions, show, doctor, snapshot); mark search/import/stats/watch plus the unimplemented flags as planned under BOTSPY-98386a; note `botspy scan` is added separately; fix the store.db claim (CLI reads live adapters through an in-memory SessionStore); fix the kebab-case-aliases claim (exact names only); fix the sources discovery/skip-stats claim.\n2. Codex docs (`docs/sources/codex.md`, `docs/sensitive-data.md`, `docs/architecture.md`, `docs/diagrams/codex.d2`): document what the code actually does — no `thread_history_1.sqlite` open, in-memory byte offsets, swallowed `parent_id` schema-drift error (0 sessions on real installs, open bug BOTSPY-81143b), live `state_5.sqlite` open without snapshot protection; fix the blanket snapshot-protection claim.\n3. `docs/sources/README.md`: Codex registry root is `~/.codex/sessions`, not `~/.codex`.\n4. Re-render changed diagrams with `scripts/render-diagrams.sh`; commit .d2/.svg/.light.png/.dark.png together.\n\n**Out of scope:** `docs/DESIGN.md`, any code changes, main branch.\n\n**Acceptance:** docs match code references cited in the review; rendered diagram artifacts committed with sources; PR to develop, CI green, merged. GitFlow: never main.",
+  "type": "chore",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": "agent@example.com",
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-03T14:09:49.148122Z",
+  "updated_at": "2026-10-03T14:09:56.623975Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "GLM 5.3 Flash",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
