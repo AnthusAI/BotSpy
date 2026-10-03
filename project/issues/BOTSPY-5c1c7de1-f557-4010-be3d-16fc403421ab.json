@@ -3,7 +3,7 @@
   "title": "Store skeleton: open/create, WAL, migrations; sqlite-vec + FTS5 walking skeleton green on every CI target",
   "description": "**Files:** `Cargo.toml` (add `sqlite-vec = \"=0.1.10-alpha.4\"`, exact pin: alpha crate); `src/store/mod.rs`, `src/store/migrations.rs` (new module, isolated from src/cli and src/adapters); `src/lib.rs` (pub mod store); `src/spec/ch02_querying.rs` (status); `tests/steps/store_steps.rs` (make the scenarios green).\n\n**Specs turned green:** `04_store.feature` — remove its @wip when every scenario passes.\n\n**Acceptance:** `Store::open(path)` plus default-path resolution (BOTSPY_HOME/$HOME → ~/.botspy/store.db); WAL + busy_timeout pragmas; `meta` table with versioned embedded DDL v1 — sessions, messages, parts with projected filter columns (agent, project_id, started_at, last_activity_at, message_count, role, timestamp, turn_id, part kind, text projection) plus lossless `session_json`/`message_json` serde columns; indexes on activity, agent, project, kind. sqlite-vec registered via `sqlite3_auto_extension` before connections open. Walking-skeleton unit tests: `vec_version()` smoke, vec0 create+insert+k-NN, FTS5 create+match (bundled SQLite ships FTS5 — the test asserts it so a target without it fails loudly; no silent LIKE fallback).\n\n**Cross-platform gate:** this task is the sqlite-vec proof point — the crate compiles sqlite-vec.c from source via cc, the same build path as rusqlite's bundled SQLite, so the matrix should hold; the PR's CI must be fully green on Linux x86/arm gnu, musl x86/arm (cross), macOS 14 + 15-intel, and Windows MSVC before this task closes. If a target fails, stop and report on this task.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -39,11 +39,23 @@
         "model": "GLM 5.3 Flash",
         "name": "Cursor Cloud Agent (local-store implementer)"
       }
+    },
+    {
+      "id": "5acf0723-d027-4bfe-9fb5-73fc84705e46",
+      "author": "home",
+      "text": "CI fully green: all 8 jobs (lint, 5 glibc/macOS/Windows test targets, both musl cross jobs) pass after 7a4444f — the fix was carrying the CFLAGS alias and BOTSPY_MODELS into the cross containers via Cross.toml [build.env] passthrough. PR #4 merged to develop (fa32eb3). Store skeleton open/create, WAL, migrations, sqlite-vec + FTS5 all in. Closing.",
+      "created_at": "2026-10-03T12:15:12.799361Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:43:46.999215Z",
-  "updated_at": "2026-10-03T11:35:25.747576Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T12:15:14.526190Z",
+  "closed_at": "2026-10-03T12:15:14.526134Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

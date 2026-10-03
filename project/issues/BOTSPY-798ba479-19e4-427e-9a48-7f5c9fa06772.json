@@ -3,17 +3,25 @@
   "title": "Query filters and laziness",
   "description": "Milestone 4 of the Local Store Initiative (implements the @wip specs in features/02_querying/): filters by source, project, part kind, and time window are pushed down to SQLite — the engine does the filtering; callers never pull every record into memory to compare properties (the 1.4 GB Claude trees and 6 GB Cursor stores make that unscalable). Laziness is proven, not assumed: taking one session opens only it, dropping an iterator stops the work, message iteration streams without materializing the session. Turns `02_filters.feature` and `03_laziness.feature` green and removes their @wip tags.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "d731d917-7545-489b-a1d3-5568f0da6ea5",
+      "author": "home",
+      "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+      "created_at": "2026-10-03T12:15:32.463480Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T21:43:44.497482Z",
-  "updated_at": "2026-10-02T21:43:44.497509Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T12:15:33.201159Z",
+  "closed_at": "2026-10-03T12:15:33.201101Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
