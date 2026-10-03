@@ -73,10 +73,10 @@ timestamps), `--limit N`. Planned flags (BOTSPY-98386a): `--tree`
 `--kind <part-kind>` (sessions containing that part kind).
 
 ```console
-$ botspy sessions --project myapp --since 2026-09-28
+$ botspy sessions --project example-app --since 2026-08-28
 SESSION   AGENT        PROJECT  MESSAGES  LAST ACTIVITY      TITLE
-a3f9c1e2  claude_code  myapp         128  2026-10-02 15:41  fix WAL deadlock
-b77d31aa  cursor       myapp          62  2026-10-01 18:04  composer: importers
+synth-1a2b0008  claude_code  example-app    117  2026-08-02 15:41  fix importer flake
+synth-1a2b0009  cursor       example-app     40  2026-08-01 18:04  review: adapters
 3 sessions (use --no-truncate for full ids)
 ```
 
@@ -94,10 +94,10 @@ usage), `--raw` (the `extra` passthrough untouched), `--graph`
 (parent/subagent/fork/battle/peer links and compaction windows).
 
 ```console
-$ botspy show a3f9 --message 14
-Session a3f9c1e2 (claude_code, myapp) — 128 messages, started 2026-09-30T09:12Z
-#14 assistant 2026-09-30T09:31Z turn t-7
-  · text       Let me check the WAL handling…
+$ botspy show synth-1a2b --message 14
+Session synth-1a2b0008 (claude_code, example-app) — 117 messages, started 2026-08-30T09:12Z
+#14 assistant 2026-08-30T09:31Z turn t-7
+  · text       Let me trace the snapshot path…
   · thinking   (190 lines)
   · tool_call  Read path="src/snapshot.rs" [ok]
   · tool_result  412 B
@@ -136,7 +136,7 @@ land under `<home>/.botspy/snapshots/<source>/snapshot.db` by default;
 ```console
 $ botspy snapshot cursor
 snapshot: ~/.botspy/snapshots/cursor/snapshot.db
-events: 121,004   source unmutated (digest verified before/after)
+events: 115,200   source unmutated (digest verified before/after)
 ```
 
 Flags: `--source`, `--out <dir>`. Planned flag (BOTSPY-98386a):
