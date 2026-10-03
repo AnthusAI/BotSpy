@@ -4,6 +4,7 @@
 use crate::adapter::Adapter;
 use crate::schema::Agent;
 use crate::session::{Session, SessionMap, SessionSummary};
+use std::collections::BTreeSet;
 use std::fmt;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Mutex;
@@ -16,6 +17,8 @@ pub struct FixtureAdapter {
     /// pass does not re-open unchanged sessions. Deliberate src/adapters
     /// touch for this initiative (BOTSPY-c7795b).
     opens: AtomicUsize,
+    /// Session ids discoverable but unopenable (test-infra only).
+    blocked: Mutex<BTreeSet<String>>,
 }
 
 impl fmt::Debug for FixtureAdapter {
@@ -38,6 +41,7 @@ impl FixtureAdapter {
             agent,
             sessions: Mutex::new(SessionMap::new()),
             opens: AtomicUsize::new(0),
+            blocked: Mutex::new(BTreeSet::new()),
         }
     }
 
@@ -56,6 +60,17 @@ impl FixtureAdapter {
             .expect("fixture adapter lock poisoned")
             .remove(id)
             .is_some()
+    }
+
+    /// Make a session discoverable but unopenable (specs use it to prove
+    /// a session the adapter reports but cannot open is counted as an
+    /// error, never silently dropped). Test-infra observability only, in
+    /// the SkipCounter spirit.
+    pub fn block_open(&self, id: &str) {
+        self.blocked
+            .lock()
+            .expect("fixture adapter lock poisoned")
+            .insert(id.to_string());
     }
 
     /// How many times `open` has been called on this adapter.
@@ -80,6 +95,14 @@ impl Adapter for FixtureAdapter {
 
     fn open(&self, id: &str) -> Option<Session> {
         self.opens.fetch_add(1, Ordering::SeqCst);
+        if self
+            .blocked
+            .lock()
+            .expect("fixture adapter lock poisoned")
+            .contains(id)
+        {
+            return None;
+        }
         self.sessions
             .lock()
             .expect("fixture adapter lock poisoned")

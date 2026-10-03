@@ -16,6 +16,7 @@
 //! Cursor's adapter wants the KV store file, not the directory).
 
 pub mod render;
+pub mod scan;
 
 use std::ffi::OsString;
 use std::path::{Path, PathBuf};
@@ -114,6 +115,8 @@ pub enum Command {
     Doctor(DoctorArgs),
     /// Take a WAL-safe snapshot of a SQLite source and inspect it.
     Snapshot(SnapshotArgs),
+    /// Mine the adapters into the local store.
+    Scan(scan::ScanArgs),
 }
 
 /// Flags shared by every verb.
@@ -226,6 +229,7 @@ fn execute(cli: Cli) -> RunOutcome {
         Command::Show(args) => show(args),
         Command::Doctor(args) => doctor(args),
         Command::Snapshot(args) => snapshot(args),
+        Command::Scan(args) => scan::scan(args),
     }
 }
 
@@ -273,7 +277,7 @@ struct SourceFacts {
 
 /// The selected source names, or every known source when none given.
 /// All names are validated before anything is resolved.
-fn selected_sources(names: &[String]) -> Result<Vec<String>, UnknownSource> {
+pub(crate) fn selected_sources(names: &[String]) -> Result<Vec<String>, UnknownSource> {
     if names.is_empty() {
         return Ok(ALL_SOURCES.iter().map(|name| name.to_string()).collect());
     }
@@ -485,7 +489,7 @@ fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
 /// activity-window filters compare the library's recorded timestamps
 /// lexicographically, so the argument must share that shape — an
 /// off-shape value would silently match nothing.
-fn valid_rfc3339(value: &str) -> bool {
+pub(crate) fn valid_rfc3339(value: &str) -> bool {
     if !value.is_ascii() {
         return false;
     }
@@ -1018,7 +1022,10 @@ pub fn build_store(
 }
 
 /// The adapter behind a source name, rooted at its resolved location.
-fn real_source(name: &str, options: &SourceOptions) -> Result<Box<dyn Adapter>, UnknownSource> {
+pub(crate) fn real_source(
+    name: &str,
+    options: &SourceOptions,
+) -> Result<Box<dyn Adapter>, UnknownSource> {
     if !ALL_SOURCES.contains(&name) {
         return Err(UnknownSource {
             name: name.to_string(),
@@ -1052,7 +1059,7 @@ pub fn resolved_root(name: &str, options: &SourceOptions) -> PathBuf {
 
 /// The home the default roots derive from: `--home`, then `BOTSPY_HOME`,
 /// then `$HOME`.
-fn home_of(options: &SourceOptions) -> PathBuf {
+pub(crate) fn home_of(options: &SourceOptions) -> PathBuf {
     options
         .home
         .clone()
@@ -1078,7 +1085,7 @@ pub fn agent_name(agent: Agent) -> &'static str {
 }
 
 /// The agent behind a registry name.
-fn agent_of(name: &str) -> Option<Agent> {
+pub(crate) fn agent_of(name: &str) -> Option<Agent> {
     match name {
         "claude_code" => Some(Agent::ClaudeCode),
         "cursor" => Some(Agent::Cursor),
@@ -1091,7 +1098,7 @@ fn agent_of(name: &str) -> Option<Agent> {
 
 /// `--root` pairs with exactly one source; anything else is a usage
 /// error.
-fn check_root(args: &GlobalArgs) -> Option<RunOutcome> {
+pub(crate) fn check_root(args: &GlobalArgs) -> Option<RunOutcome> {
     if args.root.is_some() && args.source.len() != 1 {
         return Some(RunOutcome::fail(
             2,

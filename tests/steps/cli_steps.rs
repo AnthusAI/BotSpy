@@ -155,7 +155,11 @@ fn fixture_home_duplicate_id(world: &mut BotSpyWorld) {
 
 fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
     let mut argv: Vec<String> = vec!["botspy".to_string()];
-    argv.extend(expand(args).split_whitespace().map(str::to_string));
+    argv.extend(
+        expand_with(world, args)
+            .split_whitespace()
+            .map(str::to_string),
+    );
     if with_home {
         argv.push("--home".to_string());
         argv.push(
@@ -170,11 +174,22 @@ fn run_cli(world: &mut BotSpyWorld, args: &str, with_home: bool) {
     world.cli_run = Some(cli::run_from(argv));
 }
 
-/// Replace the spec placeholders with concrete fixture paths. A fresh
-/// `{out_dir}` per step is fine: the snapshot path is asserted from the
-/// output itself, not from this placeholder.
-fn expand(text: &str) -> String {
-    text.replace("{out_dir}", &scratch("out").to_string_lossy())
+/// The scenario's scratch output directory. Stable across the steps of
+/// one scenario — a scan writes its store in one step and later steps
+/// assert on that store — and fresh for every scenario.
+fn out_dir(world: &mut BotSpyWorld) -> PathBuf {
+    if let Some(dir) = &world.cli_out_dir {
+        return dir.clone();
+    }
+    let dir = scratch("out");
+    world.cli_out_dir = Some(dir.clone());
+    dir
+}
+
+/// Replace the spec placeholders with concrete fixture paths, using the
+/// scenario's stable output directory.
+fn expand_with(world: &mut BotSpyWorld, text: &str) -> String {
+    text.replace("{out_dir}", &out_dir(world).to_string_lossy())
         .replace(
             "{claude_projects_root}",
             &claude_projects_root().to_string_lossy(),
@@ -216,12 +231,8 @@ fn json(world: &BotSpyWorld) -> Value {
     serde_json::from_str(&run(world).stdout).expect("stdout is valid JSON")
 }
 
-fn expand_captured(text: &str) -> String {
-    expand(text)
-}
-
-fn assert_all_in(label: &str, haystack: &str, text: &str) {
-    let needle = expand_captured(text);
+fn assert_all_in(world: &mut BotSpyWorld, label: &str, haystack: &str, text: &str) {
+    let needle = expand_with(world, text);
     let parts: Vec<String> = needle
         .split('"')
         .skip(1)
@@ -273,7 +284,8 @@ fn exit_code(world: &mut BotSpyWorld, code: String) {
 
 #[then(regex = r#"^stdout contains (".*")$"#)]
 fn stdout_contains(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stdout", &run(world).stdout, &text);
+    let stdout = run(world).stdout.clone();
+    assert_all_in(world, "stdout", &stdout, &text);
 }
 
 #[then(regex = r#"^stdout does not contain (".*")$"#)]
@@ -283,12 +295,14 @@ fn stdout_not_contains(world: &mut BotSpyWorld, text: String) {
 
 #[then(regex = r#"^stderr contains (".*")$"#)]
 fn stderr_contains(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stderr", &run(world).stderr, &text);
+    let stderr = run(world).stderr.clone();
+    assert_all_in(world, "stderr", &stderr, &text);
 }
 
 #[then(regex = r#"^stderr mentions (".*")$"#)]
 fn stderr_mentions(world: &mut BotSpyWorld, text: String) {
-    assert_all_in("stderr", &run(world).stderr, &text);
+    let stderr = run(world).stderr.clone();
+    assert_all_in(world, "stderr", &stderr, &text);
 }
 
 #[then(regex = r#"^stdout reports "([^"]+)"$"#)]
@@ -327,7 +341,7 @@ fn stdout_json_object_with(world: &mut BotSpyWorld, key: String, expected: Strin
         .get(&key)
         .and_then(Value::as_str)
         .unwrap_or_else(|| panic!("missing or non-string {key}: {value:?}"));
-    assert_eq!(actual, expand_captured(&expected), "unexpected {key}");
+    assert_eq!(actual, expand_with(world, &expected), "unexpected {key}");
 }
 
 #[then(regex = r#"^stdout parses as NDJSON with ([0-9]+) lines$"#)]
@@ -375,7 +389,7 @@ fn json_entry_string(world: &mut BotSpyWorld, name: String, key: String, expecte
         .unwrap_or_else(|| panic!("missing or non-string {key} in {name}: {entry:?}"));
     assert_eq!(
         actual,
-        expand_captured(&expected),
+        expand_with(world, &expected),
         "unexpected {key} of {name}"
     );
 }
@@ -414,7 +428,7 @@ fn json_session_string(world: &mut BotSpyWorld, id: String, key: String, expecte
         .unwrap_or_else(|| panic!("missing or non-string {key} in session {id}: {entry:?}"));
     assert_eq!(
         actual,
-        expand_captured(&expected),
+        expand_with(world, &expected),
         "unexpected {key} of session {id}"
     );
 }
@@ -631,5 +645,100 @@ fn stdout_lacks_full_claude_path(world: &mut BotSpyWorld) {
     assert!(
         !run(world).stdout.contains(&full),
         "stdout unexpectedly contains {full:?}"
+    );
+}
+
+// 60_scan.feature — the scan verb (BOTSPY-8ef5a5): the store it wrote
+// and the per-source report it rendered.
+
+#[given(regex = r#"^a non-store file at "([^"]+)"$"#)]
+fn non_store_file(world: &mut BotSpyWorld, path: String) {
+    let path = expand_with(world, &path);
+    if let Some(parent) = std::path::Path::new(&path).parent() {
+        std::fs::create_dir_all(parent).expect("create parent directory");
+    }
+    std::fs::write(path, "this is not a sqlite database").expect("write the non-store file");
+}
+
+fn scan_entry<'a>(value: &'a Value, source: &str) -> &'a Value {
+    value
+        .get("adapters")
+        .and_then(Value::as_array)
+        .unwrap_or_else(|| panic!("no adapters list: {value:?}"))
+        .iter()
+        .find(|entry| entry.get("source").and_then(Value::as_str) == Some(source))
+        .unwrap_or_else(|| panic!("no scan source {source}: {value:?}"))
+}
+
+#[then(regex = r#"^the JSON scan source "([^"]+)" has "([^"]+)" (-?[0-9]+)$"#)]
+fn scan_source_number(world: &mut BotSpyWorld, source: String, key: String, expected: String) {
+    let value = json(world);
+    let entry = scan_entry(&value, &source);
+    let actual = entry
+        .get(&key)
+        .and_then(Value::as_i64)
+        .unwrap_or_else(|| panic!("missing or non-numeric {key} of {source}: {entry:?}"));
+    assert_eq!(
+        actual,
+        expected.parse::<i64>().expect("numeric expectation")
+    );
+}
+
+#[then(regex = r#"^the JSON scan source "([^"]+)" has "([^"]+)" ([0-9]+) and "([^"]+)" ([0-9]+)$"#)]
+fn scan_source_two_numbers(
+    world: &mut BotSpyWorld,
+    source: String,
+    first_key: String,
+    first_expected: String,
+    second_key: String,
+    second_expected: String,
+) {
+    scan_source_number(world, source.clone(), first_key, first_expected);
+    scan_source_number(world, source, second_key, second_expected);
+}
+
+#[then(regex = r#"^the JSON totals report "([^"]+)" (-?[0-9]+)$"#)]
+fn scan_totals_number(world: &mut BotSpyWorld, key: String, expected: String) {
+    let value = json(world);
+    let totals = value
+        .get("totals")
+        .unwrap_or_else(|| panic!("no totals in the scan report: {value:?}"));
+    let actual = totals
+        .get(&key)
+        .and_then(Value::as_i64)
+        .unwrap_or_else(|| panic!("missing or non-numeric totals {key}: {totals:?}"));
+    assert_eq!(
+        actual,
+        expected.parse::<i64>().expect("numeric expectation")
+    );
+}
+
+fn sessions_in_store(path: &str) -> usize {
+    let store = botspy::store::Store::open(path)
+        .unwrap_or_else(|err| panic!("the store at {path} opens: {err}"));
+    store.sessions().count()
+}
+
+#[then(regex = r#"^the store at "([^"]+)" holds ([0-9]+) sessions$"#)]
+fn store_at_holds(world: &mut BotSpyWorld, path: String, count: String) {
+    let path = expand_with(world, &path);
+    assert_eq!(
+        sessions_in_store(&path),
+        count.parse::<usize>().expect("numeric count"),
+        "the store at {path} holds a different number of sessions"
+    );
+}
+
+#[then(regex = r#"^the fixture store holds ([0-9]+) sessions$"#)]
+fn fixture_store_holds(world: &mut BotSpyWorld, count: String) {
+    let home = world
+        .cli_home
+        .as_ref()
+        .expect("fixture home")
+        .join(".botspy/store.db");
+    assert_eq!(
+        sessions_in_store(&home.display().to_string()),
+        count.parse::<usize>().expect("numeric count"),
+        "the fixture store holds a different number of sessions"
     );
 }
