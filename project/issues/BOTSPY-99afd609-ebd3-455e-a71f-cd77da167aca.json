@@ -24,10 +24,17 @@
       "text": "Progress: README rewritten as high-level overview (intro, C4 context, what BotSpy does, dataflow, containers, everything-stays-local, compact agent table, install, Learn-more links to docs pages, license). Three diagrams embedded with absolute raw URLs (context, dataflow, containers) — all six PNGs verified reachable on origin/develop; no new PNGs added to the crate. tests/no_real_personal_data.rs: added a README.md exemption for the org-name needle because the crates.io readme must embed raw URLs at the repository (same rationale as the existing Cargo.toml exemption). docs/cli.md gained the detail that was README-only: sources and doctor example transcripts, the missing-source note, and the synthetic-corpus disclaimer. fmt and clippy -D warnings pass locally. Full cargo test running.",
       "created_at": "2026-10-03T15:53:51.628707Z",
       "comment_type": "default"
+    },
+    {
+      "id": "0f699fb8-debd-4efc-9bfc-a821ace3e11b",
+      "author": "example-user",
+      "text": "PR 16 opened into develop (branch cursor/readme-overview-fb2c, commits b68ccf1 docs rewrite plus 17cefc0 board state). Pre-push checks clean: no agent-email or home-path strings in history, README free of personal data. Local gates green: fmt, clippy -D warnings, full cargo test (64 lib tests; BDD 40 features, 213 scenarios, 211 passed and 2 skipped; fixture guards, personal-data guard, spec_docs_coverage, 8 doc tests). Waiting for CI, then merge.",
+      "created_at": "2026-10-03T16:39:28.768566Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T15:43:12.737656Z",
-  "updated_at": "2026-10-03T15:53:51.628731Z",
+  "updated_at": "2026-10-03T16:39:28.768592Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
