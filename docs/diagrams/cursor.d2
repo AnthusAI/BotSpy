@@ -1,0 +1,61 @@
+title: Cursor source adapter
+
+store: {
+  label: "🔒 Cursor store\n~/.cursor/state.vscdb\n(+ -wal, -shm)\nkey-value table: cursorDiskKV"
+  class: sensitive
+}
+
+snap: {
+  label: "🔒 Snapshot copy\n\$TMPDIR/botspy-cursor-snaps/\n<pid>-<seq>/snapshot.db\nopened read-only\n(live store stays untouched)"
+  class: sensitive
+}
+
+cli_dir: {
+  label: "🔒 CLI transcripts\n~/.cursor/projects/\n<encoded-cwd>/agent-transcripts/*.jsonl"
+  class: sensitive
+}
+
+keys: {
+  label: "Keys in cursorDiskKV\n\ncomposerHeaders        → composer list (id, last updated, name)\ncomposerData:<id>      → authoritative bubble order\nbubbleId:<cid>:<bid>   → one bubble\ntype 1 → user, type 2 → assistant, else unknown\nagentKv:blob:<sha256>  → content-addressed opaque blob"
+  class: tool
+}
+
+bubbles: {
+  label: "Bubble mapping\n\ntext            → Text\nthinking        → Thinking\ntoolFormerData  → ToolCall (name, parsed params)\ntoolResultBlob  → ToolResult (blob hash, container agentKv:blob)\nempty bubbles   → malformed, skipped"
+  class: tool
+}
+
+cli_map: {
+  label: "CLI transcript mapping\n\nrole assistant → Assistant; other roles → User\nfields: text, thinking, timestamp\none session per .jsonl file"
+  class: tool
+}
+
+discovery: {
+  label: "Discovery\ncomposers with lastUpdatedAt.\nA composer changed when\nlastUpdatedAt moved."
+  class: tool
+}
+
+kv_source: {
+  label: "CursorSource\nreads the snapshot copy"
+  class: tool
+}
+
+cli_source: {
+  label: "CursorCliSource\nreads transcript files"
+  class: tool
+}
+
+session: {
+  label: "Unified Session\nmessages, parts, provenance"
+  class: tool
+}
+
+store -> snap: "SQLite online backup\n(digest-verified)"
+snap -> kv_source: "read-only queries"
+cli_dir -> cli_source: "reads files"
+kv_source -> keys: "key lookups"
+keys -> bubbles: "bubble types"
+bubbles -> session: "extracted"
+cli_source -> cli_map: "record fields"
+cli_map -> session: "extracted"
+discovery -> store: "scans composer headers"

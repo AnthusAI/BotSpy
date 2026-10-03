@@ -1,0 +1,64 @@
+# BotSpy shared diagram theme and styling.
+#
+# This file is the single source of truth for the visual language of every
+# BotSpy diagram: the sensitive-data marker, the legend that explains it,
+# and the common shape classes. scripts/render-diagrams.sh concatenates
+# this file with each diagram source before rendering, so every diagram
+# gets exactly these definitions — do not copy them into individual
+# diagrams.
+#
+# Colors come from the two pinned d2 themes (light theme 0 "Neutral
+# Default", dark theme 200 "Dark Mauve"; see scripts/render-diagrams.sh),
+# so shapes adapt to both modes. Only the sensitive-data marker carries
+# its own fixed color: a 3px amber border, legible on both the light and
+# the dark background.
+
+vars: {
+  # The sensitive-data marker color (amber 600): visible on the light
+  # theme's white and the dark theme's near-black background alike.
+  sensitive-color: "#d97706"
+}
+
+classes: {
+  # The project-wide sensitive-data marker. Apply with `class: sensitive`
+  # to every shape that reads, copies, or stores sensitive data, and put
+  # a lock emoji in its label. The legend below explains the marker.
+  sensitive: {
+    style: {
+      stroke: "${sensitive-color}"
+      stroke-width: 3
+    }
+  }
+  # Containers and tools that only move or transform data (the CLI, the
+  # adapters, the query surface) keep the theme's default look.
+  tool: {
+    style: {
+      border-radius: 7
+    }
+  }
+  # BotSpy's own storage shapes.
+  store: {
+    shape: cylinder
+  }
+  # Dashed group boundary (a machine, a file system area, a trust zone).
+  boundary: {
+    style: {
+      stroke-dash: 4
+    }
+  }
+}
+
+# The sensitive-data legend. It renders on every diagram (it lives in
+# this shared file), so every figure carries the same marker and the
+# same explanation.
+legend: {
+  label: "Legend"
+  sensitive.example: {
+    label: "🔒 Sensitive data\nA place that reads, copies,\nor stores session content"
+    class: sensitive
+  }
+  normal.example: {
+    label: "Tool or container\nMoves data, holds none"
+    class: tool
+  }
+}

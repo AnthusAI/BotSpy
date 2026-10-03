@@ -1,0 +1,57 @@
+title: Grok Bot source adapter
+
+root: {
+  label: "🔒 Root\n~/.grok/sand-client-persistence"
+  class: sensitive
+}
+
+entry_logs: {
+  label: "🔒 Entry logs\n*.json\n{capped, entries: [{seq, type, ...}]}"
+  class: sensitive
+}
+
+roster: {
+  label: "🔒 roster.json\nreserved file:\nblob → agent name"
+  class: sensitive
+}
+
+cloud_agents: {
+  label: "🔒 cloud-agents.json\nreserved file:\nagentId, status, prUrl\n→ session stubs"
+  class: sensitive
+}
+
+cap: {
+  label: "Local cap\ncapped: true → PartialHistory\n(reason: LocalCap)\nEntry logs hold at most 200 entries.\nThe full history stays server-side."
+  class: tool
+}
+
+ordering: {
+  label: "Ordering\nThe seq field of each entry\nis the authoritative order."
+  class: tool
+}
+
+mapping: {
+  label: "Entry mapping\n\nmessage entry    → Text part + author (user / assistant / system)\nvoice_call entry → Part::Extra, raw passthrough\nother types      → skipped and counted"
+  class: tool
+}
+
+adapter: {
+  label: "GrokBotSource\nreads plain JSON blobs,\nno databases, no resume state"
+  class: tool
+}
+
+session: {
+  label: "Unified Session\nmessages, parts,\npartial-history note, provenance"
+  class: tool
+}
+
+root -> entry_logs: "every *.json except\nthe two reserved files"
+root -> roster: "names"
+root -> cloud_agents: "session stubs"
+entry_logs -> ordering: "sort entries by seq"
+ordering -> cap: "check capped flag"
+cap -> mapping: "each entry type"
+mapping -> session: "extracted"
+roster -> session: "agent names"
+cloud_agents -> session: "stub sessions"
+adapter -> session: "assembles"

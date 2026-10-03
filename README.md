@@ -220,6 +220,18 @@ and [`features/03_importers/wal_snapshot.feature`](features/03_importers/wal_sna
 
 ## Docs and spec
 
+- Documentation index: [`docs/README.md`](docs/README.md) — the
+  architecture (C4 diagrams and the top-level data flow), the CLI, the
+  local store, search, the source adapters, and the sensitive-data
+  inventory:
+  - [`docs/architecture.md`](docs/architecture.md)
+  - [`docs/cli.md`](docs/cli.md)
+  - [`docs/store.md`](docs/store.md)
+  - [`docs/search.md`](docs/search.md)
+  - [`docs/sensitive-data.md`](docs/sensitive-data.md)
+  - [`docs/sources/`](docs/sources/) — one document per source adapter
+  - [`docs/diagrams.md`](docs/diagrams.md) — how to update and
+    re-render the diagrams
 - API documentation: [docs.rs/botspy](https://docs.rs/botspy)
 - The Gherkin specification lives under
   [`features/`](features/) and runs with `cargo test --test bdd`; the

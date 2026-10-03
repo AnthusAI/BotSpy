@@ -1,0 +1,97 @@
+title: BotSpy - C4 component (level 3)
+
+files: {
+  label: "🔒 Agent session files\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity"
+  class: sensitive
+}
+
+botspy: {
+  label: BotSpy
+
+  cli: {
+    label: "CLI commands\nhuman | json | ndjson"
+    class: tool
+  }
+
+  snapshot: {
+    label: "Snapshot module\nSQLite online backup,\ndigest_files non-mutation proof"
+    class: tool
+  }
+
+  adapters: {
+    label: "Source adapters"
+    class: tool
+
+    claude_code: "claude_code"
+    cursor: "cursor"
+    codex: "codex"
+    grok_bot: "grok_bot"
+    antigravity: "antigravity"
+  }
+
+  importer: {
+    label: "Importer\nbyte-offset resume,\nskip counters,\nfirst-report-wins"
+    class: tool
+  }
+
+  schema: {
+    label: "Unified schema\nSession / Message / Part\nprovenance, usage, costs"
+    class: tool
+  }
+
+  store: {
+    label: "Store (SQLite, WAL)"
+
+    ingest: {
+      label: "Ingest / refresh\none transaction per import"
+      class: tool
+    }
+    query: {
+      label: "Query surface\nfilters, lazy cursors"
+      class: tool
+    }
+    search: {
+      label: "Text search (FTS5)\n+ vector search (sqlite-vec)\n+ hybrid"
+      class: tool
+    }
+    embedder: {
+      label: "Embedder\nall-MiniLM-L6-v2,\n384 dimensions"
+      class: tool
+    }
+  }
+}
+
+store_db: {
+  label: "🔒 store.db\n<home>/.botspy/store.db"
+  shape: cylinder
+  class: sensitive
+}
+
+models: {
+  label: "Model cache\n<home>/.botspy/models"
+  class: tool
+}
+
+user: {
+  label: User
+  shape: person
+}
+
+user -> botspy.cli: "runs"
+botspy.cli -> botspy.snapshot: "snapshot verb;\nWAL-safe reads"
+botspy.snapshot -> files: "copies live SQLite files\n(read-only backup)"
+botspy.cli -> botspy.importer: "import, watch"
+botspy.importer -> botspy.adapters: "drives discovery and extraction"
+botspy.adapters -> files: "reads session files"
+botspy.adapters -> botspy.schema: "unified objects"
+botspy.schema -> botspy.store.ingest: "sessions to store"
+botspy.store.ingest -> store_db: "writes rows\nin one transaction"
+botspy.store.ingest -> botspy.store.embedder: "text parts to embed"
+botspy.store.embedder -> models: "loads model once\n(read-only)"
+botspy.store.embedder -> store_db: "writes embeddings"
+botspy.cli -> botspy.store.query: "sessions, show, stats"
+botspy.store.query -> store_db: "reads (WAL readers)"
+botspy.cli -> botspy.store.search: "search"
+botspy.store.search -> store_db: "reads FTS5 and vector indexes"
+botspy.store.search -> botspy.store.embedder: "embeds the query text"
+botspy.cli -> user: "output (human, JSON, NDJSON)"
