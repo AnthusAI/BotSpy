@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-a50724f3-0126-4b61-9773-393522d80388",
+  "title": "Shrink packaged crate under the crates.io 10 MiB limit",
+  "description": "",
+  "type": "task",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": "agent@example.com",
+  "creator": null,
+  "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "340a3fc6-fa52-4808-b158-9e56ac47a859",
+      "author": "home",
+      "text": "Intent: the release-plz publish of botspy v0.2.0 failed with HTTP 413 — the packaged crate is ~11.8 MiB, over the crates.io 10 MiB limit (docs/diagrams PNGs dominate). Fix: replace the `exclude` list in Cargo.toml with an explicit `include` allowlist (src/, features/ — which src/spec embeds via include_str! — Cargo.toml, Cargo.lock, README.md, LICENSE, CHANGELOG.md). Verify with cargo package --list, cargo package (real .crate size), cargo publish --dry-run, and cargo test. Add a CI guard that fails if the .crate exceeds ~9 MiB. No publish/tag/main changes from this task.",
+      "created_at": "2026-10-03T16:18:28.269076Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T16:18:00.936873Z",
+  "updated_at": "2026-10-03T16:18:28.269095Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "GLM 5.3 Flash",
+    "name": "Cloud Agent"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
