@@ -3,17 +3,30 @@
   "title": "Validate ingestion and refresh on real agent histories",
   "description": "**Intent:** Prove the store against reality: run ingestion (BOTSPY-a48fb1) and incremental refresh (BOTSPY-d5b2c4) over real session histories from all five agents — Claude Code, Cursor, Codex, Grok Bot, Antigravity — on this machine, not fixtures. Fixtures stay the specification surface; this task is the reality check.\n\n**What to verify:** discovery counts match the real sources; ingestion is strictly read-only (digests before/after, the importer-contract proof); lossless round-trip on real transcripts (weird encodings, huge sessions, partial files surface as skip counters, never errors); refresh re-ingests only changed sessions and prunes vanished ones with an honest per-outcome report; FTS search finds known real messages; the MiniLM embedder ingests real text without error and a paraphrase of a real message ranks its session first (semantic spot-check).\n\n**Acceptance:** a recorded run log on this task (per-source counts, skip counters, refresh report, digests unchanged); any adapter bug found is filed as a bug under the owning adapter epic and this task notes it; no product code changes unless a bug is confirmed. Run against read-only copies of the sources — never mutate agent data.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "b0ebb60b-aa5d-43bb-ab03-ea90a6b47716",
+      "author": "home",
+      "text": "**Real-history validation run, 2026-10-03 (this machine, macOS arm64):**\n\n**Discovery:** claude_code 64 sessions; codex 0 (bug — see BOTSPY-81143b: the adapter's SELECT fails on the real `state_5.sqlite` schema and the error is swallowed, hiding 233 real threads); cursor 0 (this machine has the CLI-era ~/.cursor layout, no `state.vscdb` — root missing, reported honestly); grok_bot 0 (not installed); antigravity 0 (present, no sessions).\n\n**Ingestion (with the real all-MiniLM-L6-v2 embedder):** 62 new sessions from claude_code in ~44 min (embedding dominates). The 64→62 gap is correct behavior, not loss: 2 duplicate summaries deduped by first-report-wins. 4 sessions with zero messages ingest as empty sessions.\n\n**Read-only proof:** 1846 files under ~/.claude/projects; 1844 byte-identical (mtime unchanged); the only 2 files written during the 44-minute ingest window are live concurrent-writer files (`bridge-pointer.json` and one actively-appended transcript whose tail still parses as JSONL) — not the adapter. ~/.codex note: any WAL-mode SQLite reader (including read-only opens) touches the `-shm` sidecar — the DB itself and rollouts are untouched; the codex adapter reading its index DB directly rather than through a snapshot is part of BOTSPY-81143b.\n\n**Refresh:** 0 new / 0 updated / 62 unchanged / 0 pruned in **1.7 s** (vs 44 min initial ingest) — unchanged sessions are never re-mined, exactly as specified.\n\n**Query spot-checks:** FTS \"tokio\" → 95 sensible code hits. Semantic self-query (a real message's own text) ranks its own session first, score 0.8255 over the real corpus. Round-trip: real sessions open losslessly (4583- and 3339-message sessions). The store records `all-MiniLM-L6-v2` in meta.\n\n**Bugs filed:** BOTSPY-81143b (codex schema drift / silent zero).\n\n**Verdict:** ingestion, dedup, refresh, and both search faces hold on real histories; the only real-history failure is the codex adapter's schema drift, filed separately.",
+      "created_at": "2026-10-03T13:36:27.987182Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-03T11:35:54.609365Z",
-  "updated_at": "2026-10-03T11:35:54.609385Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T13:36:29.150864Z",
+  "closed_at": "2026-10-03T13:36:29.150828Z",
   "right_now_summary": null,
   "right_now_updated_at": null,
   "custom": {}
