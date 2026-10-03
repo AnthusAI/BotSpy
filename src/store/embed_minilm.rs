@@ -11,6 +11,7 @@ use std::path::{Path, PathBuf};
 
 use tract_onnx::prelude::*;
 use tract_onnx::tract_core::runtime::DefaultRuntime;
+use tract_onnx::tract_hir::infer::Factoid;
 
 /// The model's directory and file names under the models cache.
 const MODEL_DIR: &str = "all-MiniLM-L6-v2";
@@ -59,6 +60,29 @@ fn runtime_error(
     }
 }
 
+/// Rewrite symbolic dims that the pinned plan binds, everywhere in the
+/// graph: load-time symbolic facts (`batch_size`, `sequence_length`) would
+/// otherwise refuse to unify with the concrete facts the plan's inputs
+/// propagate. Any symbol not listed stays symbolic.
+fn concretize_model_dims(model: &mut InferenceModel, bindings: &[(&str, i64)]) {
+    for node in model.nodes_mut() {
+        for outlet in node.outputs.iter_mut() {
+            let fact = &mut outlet.fact;
+            for i in 0..fact.shape.dims().count() {
+                if let Some(dim) = fact.shape.dim(i) {
+                    if let Some(td) = dim.concretize() {
+                        let name = format!("{td}");
+                        if let Some((_, value)) = bindings.iter().find(|(bound, _)| *bound == name)
+                        {
+                            fact.shape.set_dim(i, (*value).to_dim());
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 impl MiniLMEmbedder {
     /// Open the embedder from the default models cache. Missing files
     /// mean setup has not run yet: a clean [`EmbedError::ModelMissing`].
@@ -89,15 +113,27 @@ impl MiniLMEmbedder {
                 ..Default::default()
             }))
             .map_err(|err| runtime_error("configure truncation")(err))?;
-        let typed_model = tract_onnx::onnx()
+        let mut model = tract_onnx::onnx()
             .model_for_path(&onnx_path)
-            .map_err(|err| runtime_error("load ONNX model")(err.into()))?
-            .with_input_fact(0, InferenceFact::shape(vec![1usize, SEQ]))
-            .map_err(|err| runtime_error("input fact input_ids")(err.into()))?
-            .with_input_fact(1, InferenceFact::shape(vec![1usize, SEQ]))
-            .map_err(|err| runtime_error("input fact attention_mask")(err.into()))?
-            .with_input_fact(2, InferenceFact::shape(vec![1usize, SEQ]))
-            .map_err(|err| runtime_error("input fact token_type_ids")(err.into()))?
+            .map_err(|err| runtime_error("load ONNX model")(err.into()))?;
+        // The graph carries load-time symbolic facts (`batch_size`,
+        // `sequence_length`) that disagree with the concrete batch-1,
+        // SEQ-length facts the plan pins; rewriting the symbols everywhere
+        // before typing keeps the two consistent. The store only ever runs
+        // this model one text at a time.
+        concretize_model_dims(
+            &mut model,
+            &[("batch_size", 1), ("sequence_length", SEQ as i64)],
+        );
+        for input in 0..model.inputs.len() {
+            model
+                .set_input_fact(
+                    input,
+                    InferenceFact::dt_shape(DatumType::I64, vec![1usize, SEQ]),
+                )
+                .map_err(|err| runtime_error("set input facts")(err.into()))?;
+        }
+        let typed_model = model
             .into_typed()
             .map_err(|err| runtime_error("type the model")(err.into()))?;
         let input_dt = typed_model
@@ -134,10 +170,16 @@ impl MiniLMEmbedder {
             .tokenizer
             .encode(text, true)
             .map_err(|err| runtime_error("tokenize text")(err))?;
-        let attended = encoding.get_ids().len().min(SEQ);
+        // The pinned tokenizer pads every encoding to a fixed length, so
+        // the id count is NOT the token count: the attention mask is. The
+        // model gets the encoding's own mask, and pooling covers only the
+        // attended positions — pooling over pad positions would swamp the
+        // text signal with a near-constant pad component.
+        let mask_ref = encoding.get_attention_mask();
+        let attended = mask_ref.iter().filter(|&&m| m == 1).count();
         let mut ids: Vec<i64> = encoding.get_ids().iter().map(|&id| id as i64).collect();
         ids.resize(SEQ, 0);
-        let mut mask: Vec<i64> = vec![1; attended];
+        let mut mask: Vec<i64> = mask_ref.iter().map(|&m| m as i64).collect();
         mask.resize(SEQ, 0);
         let mut type_ids: Vec<i64> = encoding
             .get_type_ids()
@@ -210,5 +252,42 @@ mod tests {
         let err =
             MiniLMEmbedder::open_at(Path::new("/nonexistent-botspy-models-cache")).unwrap_err();
         assert!(matches!(err, EmbedError::ModelMissing { .. }), "{err:?}");
+    }
+
+    /// Real-model sanity: the shipped embedder puts a paraphrase nearer
+    /// the original than an unrelated text is. Ungated per the
+    /// BOTSPY-bb60bb decision — CI fetches the model assets first
+    /// (`cargo run --example setup_models`); a missing cache fails loudly
+    /// rather than silently skipping.
+    #[test]
+    fn minilm_embeds_related_texts_closer() {
+        let embedder = MiniLMEmbedder::open()
+            .expect("model assets missing: run `cargo run --example setup_models` once");
+        let vectors = embedder
+            .embed(&[
+                "the cat sat on the mat",
+                "a feline rested on the rug",
+                "quarterly tax filing deadlines",
+            ])
+            .expect("the real embedder runs");
+        assert_eq!(vectors.len(), 3);
+        for vector in &vectors {
+            assert_eq!(vector.len(), DIM);
+            let norm: f32 = vector.iter().map(|v| v * v).sum::<f32>().sqrt();
+            assert!((norm - 1.0).abs() < 1e-3, "L2-normalized, norm {norm}");
+        }
+        let dot = |a: &[f32], b: &[f32]| -> f64 {
+            a.iter()
+                .zip(b)
+                .map(|(x, y)| (*x as f64) * (*y as f64))
+                .sum()
+        };
+        let related = dot(&vectors[0], &vectors[1]);
+        let unrelated = dot(&vectors[0], &vectors[2]);
+        assert!(
+            related > unrelated + 0.3,
+            "the paraphrase ({related}) must clearly beat the unrelated text ({unrelated}); \
+             a compressed spread means pooling or masking went wrong"
+        );
     }
 }

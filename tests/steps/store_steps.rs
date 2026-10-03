@@ -2,6 +2,7 @@
 //! store specs that follow it in features/02_querying/).
 
 use crate::steps::{adapter_for, parse_agent, BotSpyWorld};
+use botspy::store::embed::Embedder;
 use botspy::store::Store;
 use botspy::{
     Adapter, Agent, KnownPart, Message, MessageFilter, Part, Role, SearchHit, Session,
@@ -9,6 +10,7 @@ use botspy::{
 };
 use cucumber::{given, then, when};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 /// Store fixture paths live under the test target dir, so scenarios never
 /// litter the crate and never collide across reruns.
@@ -17,6 +19,17 @@ fn store_path(path: &str) -> PathBuf {
         .map(PathBuf::from)
         .unwrap_or_else(std::env::temp_dir)
         .join(path)
+}
+
+/// Monotonic scope for derived store paths: the runner executes scenarios
+/// concurrently, so two scenarios that registered the same adapters would
+/// otherwise derive the same file name and delete each other's store
+/// mid-scenario. One increment per store creation keeps every scenario's
+/// store in its own file (the `scratch(tag)` pattern from the CLI steps).
+fn scenario_scope() -> usize {
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    static STORE_SEQ: AtomicUsize = AtomicUsize::new(0);
+    STORE_SEQ.fetch_add(1, Ordering::SeqCst)
 }
 
 /// A plain fixture session with one text message.
@@ -283,12 +296,14 @@ fn open_default_store(world: &mut BotSpyWorld) {
 #[given(regex = r#"^a store at "([^"]+)"$"#)]
 fn a_store_at(world: &mut BotSpyWorld, path: String) {
     remove_store_files(&path);
-    let file = store_path(&path);
+    let file = store_path(&format!("stores/{}-{path}", scenario_scope()));
     world.local_store = Some(Store::open(&file).expect("store opens"));
 }
 
+#[given(regex = r#"^I ingest the registered adapters into the store$"#)]
 #[when(regex = r#"^I ingest the registered adapters into the store$"#)]
 fn ingest_registered_adapters(world: &mut BotSpyWorld) {
+    ensure_store_ingested(world);
     let store = world.local_store.as_ref().expect("a store");
     let adapters = registered_adapters(world);
     world.ingest_report = Some(store.ingest(&adapters).expect("ingest succeeds"));
@@ -398,13 +413,34 @@ fn ensure_store_ingested(world: &mut BotSpyWorld) {
         return;
     }
     let key: String = world.adapters.keys().cloned().collect::<Vec<_>>().join("-");
-    let path = format!("iteration/{key}.db");
+    let path = format!("iteration/{}-{key}.db", scenario_scope());
     remove_store_files(&path);
-    let store = Store::open(store_path(&path)).expect("store opens");
+    let store = open_scenario_store(world, &path);
     store
         .ingest_sessions(all_fixture_sessions(world))
         .expect("fixture sessions ingest");
     world.local_store = Some(store);
+}
+
+/// Open the scenario's store, honoring an embedder a prior step asked
+/// for (the shipped MiniLM, loaded from the models cache setup fetched).
+fn open_scenario_store(world: &mut BotSpyWorld, path: &str) -> Store {
+    match world.local_embedder_model.take() {
+        Some(model) => {
+            assert_eq!(
+                model,
+                botspy::store::assets::MODEL_ID,
+                "the specs exercise the shipped embedder"
+            );
+            let embedder = botspy::store::embed_minilm::MiniLMEmbedder::open().expect(
+                "the MiniLM embedder loads from the models cache \
+                 (run `cargo run --example setup_models` once)",
+            );
+            Store::open_with_embedder(store_path(path), Arc::new(embedder))
+                .expect("the store opens with its embedder")
+        }
+        None => Store::open(store_path(path)).expect("store opens"),
+    }
 }
 
 #[given(
@@ -942,9 +978,66 @@ fn session_by_id_has_messages(world: &mut BotSpyWorld, id: String, texts: String
     crate::steps::save_session_by_id(world, session);
 }
 
+#[given(
+    regex = r#"^fixture sessions "([^"]+)", "([^"]+)", and "([^"]+)" from "([^"]+)" in project "([^"]+)"$"#
+)]
+fn fixture_sessions_three_one_project(
+    world: &mut BotSpyWorld,
+    id1: String,
+    id2: String,
+    id3: String,
+    agent: String,
+    project: String,
+) {
+    for id in [&id1, &id2, &id3] {
+        let adapter = adapter_for(world, &agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(&agent),
+            &project,
+            "2026-10-01T09:00:00Z",
+        ));
+    }
+}
+
+#[given(regex = r#"^fixture sessions "([^"]+)" and "([^"]+)" from "([^"]+)"$"#)]
+fn fixture_sessions_two_plain(world: &mut BotSpyWorld, id1: String, id2: String, agent: String) {
+    for id in [&id1, &id2] {
+        let adapter = adapter_for(world, &agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(&agent),
+            "",
+            "2026-10-01T09:00:00Z",
+        ));
+    }
+}
+
+#[given(
+    regex = r#"^a fixture session "([^"]+)" from agent "([^"]+)" in project "([^"]+)" is registered$"#
+)]
+#[when(
+    regex = r#"^a fixture session "([^"]+)" from agent "([^"]+)" in project "([^"]+)" is registered$"#
+)]
+fn fixture_session_registered_in_project(
+    world: &mut BotSpyWorld,
+    id: String,
+    agent: String,
+    project: String,
+) {
+    adapter_for(world, &agent).add_session(fixture_session(
+        &id,
+        parse_agent(&agent),
+        &project,
+        "2026-10-01T09:00:00Z",
+    ));
+}
+
 #[given(regex = r#"^the store was opened with the "([^"]+)" embedder$"#)]
-fn store_opened_with_embedder(_world: &mut BotSpyWorld, _model: String) {
-    todo!("BOTSPY-c8c597: open a store configured with an embedder")
+fn store_opened_with_embedder(world: &mut BotSpyWorld, model: String) {
+    // The store itself opens (with the embedder) when the scenario first
+    // needs it — the fixtures are registered after this step.
+    world.local_embedder_model = Some(model);
 }
 
 #[when(regex = r#"^I search the store for "([^"]+)"$"#)]
@@ -967,24 +1060,74 @@ fn search_store_filtered(world: &mut BotSpyWorld, query: String, agent: String) 
     world.local_search_hits = query_surface.search_with(&query, &filter);
 }
 
+/// Semantic search through the scenario's store (opened with the shipped
+/// embedder when a prior step asked for it), `k` sessions at most.
+fn search_semantically(world: &mut BotSpyWorld, query: &str, k: usize) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query_surface = store.query();
+    world.local_search_hits = query_surface.search_semantic(query, k);
+}
+
+/// Sessions per hybrid/semantic search without an explicit k.
+const DEFAULT_SEARCH_K: usize = 10;
+
 #[when(regex = r#"^I search the store semantically for "([^"]+)"$"#)]
-fn search_store_semantically(_world: &mut BotSpyWorld, _query: String) {
-    todo!("BOTSPY-c8c597: semantic (vector) search the store")
+fn search_store_semantically(world: &mut BotSpyWorld, query: String) {
+    search_semantically(world, &query, DEFAULT_SEARCH_K);
 }
 
 #[when(regex = r#"^I search the store semantically for "([^"]+)" with k ([0-9]+)$"#)]
-fn search_store_semantically_with_k(_world: &mut BotSpyWorld, _query: String, _k: usize) {
-    todo!("BOTSPY-c8c597: semantic search with a caller-chosen k")
+fn search_store_semantically_with_k(world: &mut BotSpyWorld, query: String, k: usize) {
+    search_semantically(world, &query, k);
 }
 
 #[when(regex = r#"^I run the hybrid search for "([^"]+)"$"#)]
-fn run_hybrid_search(_world: &mut BotSpyWorld, _query: String) {
-    todo!("BOTSPY-c8c597: hybrid (FTS + vector, RRF) search")
+fn run_hybrid_search(world: &mut BotSpyWorld, query: String) {
+    ensure_store_ingested(world);
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query_surface = store.query();
+    world.local_search_hits = query_surface.search_hybrid(&query);
+}
+
+/// An embedder claiming a different model than the store's: the specs
+/// use it to pin that stores never mix embedding models. Its vectors are
+/// never written — the model mismatch is refused before embedding.
+#[derive(Debug)]
+struct OtherModelEmbedder {
+    model: &'static str,
+}
+
+impl Embedder for OtherModelEmbedder {
+    fn model_id(&self) -> &'static str {
+        self.model
+    }
+
+    fn dim(&self) -> usize {
+        384
+    }
+
+    fn embed(&self, texts: &[&str]) -> Result<Vec<Vec<f32>>, botspy::store::embed::EmbedError> {
+        Ok(texts.iter().map(|_| vec![0.0; 384]).collect())
+    }
 }
 
 #[when(regex = r#"^I ingest into the store with an embedder claiming model "([^"]+)"$"#)]
-fn ingest_with_other_model(_world: &mut BotSpyWorld, _model: String) {
-    todo!("BOTSPY-c8c597: ingest with a mismatched embedder model id")
+fn ingest_with_other_model(world: &mut BotSpyWorld, model: String) {
+    ensure_store_ingested(world);
+    let path = world
+        .local_store
+        .as_ref()
+        .expect("no store is open")
+        .path()
+        .to_path_buf();
+    // Box::leak pins the scenario-local model name for the trait's
+    // &'static str; the leak is bounded by the test process.
+    let model: &'static str = Box::leak(model.into_boxed_str());
+    let store = Store::open_with_embedder(&path, Arc::new(OtherModelEmbedder { model }))
+        .expect("a store with another embedder opens");
+    let adapters = registered_adapters(world);
+    world.local_ingest_error = store.ingest(&adapters).err();
 }
 
 /// The search's result sessions, best first (one entry per session).
@@ -1048,16 +1191,38 @@ fn search_yields_matched_texts(world: &mut BotSpyWorld, texts: String) {
 }
 
 #[then(regex = r#"^every search result carries a score$"#)]
-fn search_results_carry_scores(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-c8c597: assert every search result has a score")
+fn search_results_carry_scores(world: &mut BotSpyWorld) {
+    assert!(
+        !world.local_search_hits.is_empty(),
+        "no search results to check for scores"
+    );
+    for hit in &world.local_search_hits {
+        assert!(
+            hit.score.is_finite(),
+            "search result score is not finite: {hit:?}"
+        );
+    }
 }
 
 #[then(regex = r#"^searching the store for "([^"]+)" still yields sessions (.+)$"#)]
-fn search_still_yields(_world: &mut BotSpyWorld, _query: String, _ids: String) {
-    todo!("BOTSPY-c8c597: text search is unaffected by the missing embedder")
+fn search_still_yields(world: &mut BotSpyWorld, query: String, ids: String) {
+    let store = world.local_store.as_ref().expect("no store is open");
+    let query_surface = store.query();
+    world.local_search_hits = query_surface.search(&query);
+    search_yields_sessions(world, ids);
 }
 
 #[then(regex = r#"^the ingest fails with a model mismatch error$"#)]
-fn ingest_fails_model_mismatch(_world: &mut BotSpyWorld) {
-    todo!("BOTSPY-c8c597: assert the clean model-mismatch error")
+fn ingest_fails_model_mismatch(world: &mut BotSpyWorld) {
+    let err = world
+        .local_ingest_error
+        .as_ref()
+        .expect("the mismatched-model ingest should have failed");
+    assert!(
+        matches!(
+            err,
+            botspy::store::StoreError::EmbeddingModelMismatch { .. }
+        ),
+        "expected a model mismatch error, got {err:?}"
+    );
 }

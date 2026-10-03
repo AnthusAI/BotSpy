@@ -71,12 +71,20 @@ pub(crate) mod stub {
     pub(crate) struct StubEmbedder {
         /// Counts embed calls, for tests that assert batch behavior.
         pub calls: Mutex<usize>,
+        /// The model id this stub claims (tests exercise model-mismatch
+        /// handling with two differently-named stubs).
+        model: &'static str,
     }
 
     impl StubEmbedder {
         pub(crate) fn new() -> Self {
+            StubEmbedder::with_model("stub")
+        }
+
+        pub(crate) fn with_model(model: &'static str) -> Self {
             StubEmbedder {
                 calls: Mutex::new(0),
+                model,
             }
         }
     }
@@ -92,7 +100,7 @@ pub(crate) mod stub {
 
     impl Embedder for StubEmbedder {
         fn model_id(&self) -> &'static str {
-            "stub"
+            self.model
         }
 
         fn dim(&self) -> usize {

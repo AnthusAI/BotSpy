@@ -28,5 +28,6 @@ Spec files (`@wip` until each scenario's implementation task lands):
   empty, never an error.
 - `08_vector_search.feature` — semantic and hybrid search: nearest
   sessions with scores over the embedder's session embeddings, caller-
-  chosen k, reciprocal-rank-fusion hybrid ranking, clean empty semantic
-  result without an embedder, and the meta model-id mismatch policy.
+  chosen k, a 0.3 cosine relevance floor, reciprocal-rank-fusion hybrid
+  ranking, clean empty semantic result without an embedder, and the
+  meta model-id mismatch policy.

@@ -186,6 +186,11 @@ pub struct BotSpyWorld {
     pub local_message_filter: Option<String>,
     /// The hits of the most recent store search (text or semantic).
     pub local_search_hits: Vec<botspy::SearchHit>,
+    /// The embedder a store-open step requested, applied when the store
+    /// is next opened for ingest.
+    pub local_embedder_model: Option<String>,
+    /// The error from the most recent ingest attempt, when it failed.
+    pub local_ingest_error: Option<botspy::store::StoreError>,
     /// The fixture adapters' open() call count before a refresh pass.
     pub local_open_count_before: Option<usize>,
     /// The fixture adapters' open() call count after a refresh pass.

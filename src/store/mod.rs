@@ -14,6 +14,7 @@ pub mod ingest;
 pub mod migrations;
 pub mod query;
 pub mod text;
+pub mod vector;
 
 use crate::schema::{Agent, KnownPart, Message, Part, Role};
 use crate::session::{Session, SessionSummary};
@@ -48,6 +49,13 @@ pub enum StoreError {
     NoHomeDir,
     /// No session with the given id is stored.
     UnknownSession { id: String },
+    /// The store already holds embeddings from another model; mixing
+    /// models would make vectors incomparable, so the ingest is refused.
+    EmbeddingModelMismatch { stored: String, attempted: String },
+    /// The embedder failed while the store was embedding texts.
+    Embed {
+        source: crate::store::embed::EmbedError,
+    },
 }
 
 impl fmt::Display for StoreError {
@@ -72,6 +80,12 @@ impl fmt::Display for StoreError {
                 write!(f, "no home directory to derive the default store path from")
             }
             StoreError::UnknownSession { id } => write!(f, "unknown session id: {id}"),
+            StoreError::EmbeddingModelMismatch { stored, attempted } => write!(
+                f,
+                "the store's embeddings came from model {stored:?}; ingesting with model \
+                 {attempted:?} would mix models, which is refused"
+            ),
+            StoreError::Embed { source } => write!(f, "embedding failed: {source}"),
         }
     }
 }
@@ -140,6 +154,7 @@ pub fn default_store_path() -> Result<PathBuf, StoreError> {
 pub struct Store {
     path: PathBuf,
     conn: Connection,
+    embedder: Option<std::sync::Arc<dyn crate::store::embed::Embedder>>,
 }
 
 impl fmt::Debug for Store {
@@ -171,6 +186,25 @@ impl Store {
         Self::open(default_store_path()?)
     }
 
+    /// Open the store with an embedder configured: ingest embeds every
+    /// text part into the vector index, and semantic search embeds the
+    /// query with the same model. The store records the embedder's model
+    /// id on first embed and refuses a different one — a store never
+    /// mixes models.
+    pub fn open_with_embedder(
+        path: impl AsRef<Path>,
+        embedder: std::sync::Arc<dyn crate::store::embed::Embedder>,
+    ) -> Result<Self, StoreError> {
+        let mut store = Self::open(path)?;
+        store.embedder = Some(embedder);
+        Ok(store)
+    }
+
+    /// The store's configured embedder, when one was set at open.
+    pub(crate) fn embedder(&self) -> Option<&std::sync::Arc<dyn crate::store::embed::Embedder>> {
+        self.embedder.as_ref()
+    }
+
     /// The path this store was opened at.
     pub fn path(&self) -> &Path {
         &self.path
@@ -197,7 +231,11 @@ impl Store {
             }
             other => other,
         })?;
-        Ok(Store { path, conn })
+        Ok(Store {
+            path,
+            conn,
+            embedder: None,
+        })
     }
 
     /// A reader connection of its own: iteration and concurrent queries
@@ -253,7 +291,7 @@ impl Store {
             .unchecked_transaction()
             .map_err(sqlite_error("begin ingest transaction"))?;
         for session in sessions {
-            upsert_session(&tx, &session)?;
+            upsert_session(&tx, &session, self.embedder.as_deref())?;
         }
         tx.commit().map_err(sqlite_error("commit ingest"))?;
         Ok(())
@@ -320,7 +358,14 @@ fn session_content_hash(session: &Session) -> Result<String, StoreError> {
 
 /// Write one session and its messages and parts (the caller is inside a
 /// transaction): projected filter columns plus the lossless JSON columns.
-fn upsert_session(tx: &Connection, session: &Session) -> Result<(), StoreError> {
+/// With an embedder configured, the session's text parts are also
+/// embedded into the vector index (the old index rows for the session are
+/// removed either way, so re-ingest never leaves stale vectors).
+fn upsert_session(
+    tx: &Connection,
+    session: &Session,
+    embedder: Option<&dyn crate::store::embed::Embedder>,
+) -> Result<(), StoreError> {
     let mut stripped = session.clone();
     stripped.messages.clear();
     let session_json = serde_json::to_string(&stripped).map_err(|err| StoreError::Sqlite {
@@ -354,7 +399,157 @@ fn upsert_session(tx: &Connection, session: &Session) -> Result<(), StoreError> 
     for (ordinal, message) in session.messages.iter().enumerate() {
         insert_message(tx, &session.id, ordinal as i64, message)?;
     }
+    delete_session_vectors(tx, &session.id)?;
+    if let Some(embedder) = embedder {
+        embed_session_vectors(tx, session, embedder)?;
+    }
     Ok(())
+}
+
+/// Remove the session's vector-index rows (mapping rows first — their
+/// presence proves the vec0 table exists).
+fn delete_session_vectors(tx: &Connection, session_id: &str) -> Result<(), StoreError> {
+    let rowids: Vec<i64> = tx
+        .prepare("SELECT vec_rowid FROM message_vec_rows WHERE session_id = ?1")
+        .map_err(sqlite_error("list vector rows"))?
+        .query_map(params![session_id], |row| row.get(0))
+        .map_err(sqlite_error("list vector rows"))?
+        .collect::<Result<Vec<_>, _>>()
+        .map_err(sqlite_error("list vector rows"))?;
+    for rowid in rowids {
+        tx.execute("DELETE FROM message_vec WHERE rowid = ?1", params![rowid])
+            .map_err(sqlite_error("delete vector row"))?;
+    }
+    tx.execute(
+        "DELETE FROM message_vec_rows WHERE session_id = ?1",
+        params![session_id],
+    )
+    .map_err(sqlite_error("delete vector mapping rows"))?;
+    Ok(())
+}
+
+/// Embed the session's text parts into the vector index (the caller is
+/// inside a transaction, the embedder is the store's). The first embed
+/// records the model id in `meta`; a different one is refused — mixing
+/// models would make stored vectors incomparable.
+fn embed_session_vectors(
+    tx: &Connection,
+    session: &Session,
+    embedder: &dyn crate::store::embed::Embedder,
+) -> Result<(), StoreError> {
+    check_embedding_model(tx, embedder)?;
+    ensure_vector_table(tx, embedder.dim())?;
+    let texts: Vec<(i64, i64, String)> = session
+        .messages
+        .iter()
+        .enumerate()
+        .flat_map(|(ordinal, message)| {
+            message
+                .parts
+                .iter()
+                .enumerate()
+                .filter_map(move |(part_ordinal, part)| {
+                    let text = part_text(part)?;
+                    Some((ordinal as i64, part_ordinal as i64, text.to_string()))
+                })
+        })
+        .collect();
+    if texts.is_empty() {
+        return Ok(());
+    }
+    let borrowed: Vec<&str> = texts.iter().map(|(_, _, text)| text.as_str()).collect();
+    let vectors = embedder
+        .embed(&borrowed)
+        .map_err(|source| StoreError::Embed { source })?;
+    if vectors.len() != texts.len() {
+        return Err(StoreError::Embed {
+            source: crate::store::embed::EmbedError::Runtime {
+                context: "embed session texts".to_string(),
+                source: format!(
+                    "the embedder returned {} vectors for {} texts",
+                    vectors.len(),
+                    texts.len()
+                )
+                .into(),
+            },
+        });
+    }
+    for ((message_ordinal, part_ordinal, _), vector) in texts.iter().zip(&vectors) {
+        let bytes: Vec<u8> = vector.iter().flat_map(|f| f.to_le_bytes()).collect();
+        tx.execute(
+            "INSERT INTO message_vec (embedding) VALUES (?1)",
+            params![bytes],
+        )
+        .map_err(sqlite_error("insert embedding"))?;
+        let vec_rowid = tx.last_insert_rowid();
+        tx.execute(
+            "INSERT INTO message_vec_rows (vec_rowid, session_id, message_ordinal, part_ordinal) \
+             VALUES (?1, ?2, ?3, ?4)",
+            params![vec_rowid, session.id, message_ordinal, part_ordinal],
+        )
+        .map_err(sqlite_error("insert vector mapping row"))?;
+    }
+    Ok(())
+}
+
+/// Verify the store's recorded embedding model against the ingest's
+/// embedder (recording it on first use), before any session work: a
+/// store never mixes models, even when the ingest changes nothing.
+pub(crate) fn check_embedding_model(
+    conn: &Connection,
+    embedder: &dyn crate::store::embed::Embedder,
+) -> Result<(), StoreError> {
+    match stored_embedding_model(conn)? {
+        Some(stored) if stored != embedder.model_id() => Err(StoreError::EmbeddingModelMismatch {
+            stored,
+            attempted: embedder.model_id().to_string(),
+        }),
+        Some(_) => Ok(()),
+        None => record_embedding_model(conn, embedder.model_id()),
+    }
+}
+
+/// The embedding model recorded in `meta`, when any vectors were written.
+fn stored_embedding_model(conn: &Connection) -> Result<Option<String>, StoreError> {
+    use rusqlite::OptionalExtension;
+    conn.query_row(
+        "SELECT value FROM meta WHERE key = 'embedding_model'",
+        [],
+        |row| row.get(0),
+    )
+    .optional()
+    .map_err(|err| StoreError::Sqlite {
+        context: "read embedding model".into(),
+        source: err,
+    })
+}
+
+fn record_embedding_model(conn: &Connection, model_id: &str) -> Result<(), StoreError> {
+    conn.execute(
+        "INSERT INTO meta (key, value) VALUES ('embedding_model', ?1)
+         ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        params![model_id],
+    )
+    .map_err(|err| StoreError::Sqlite {
+        context: "record embedding model".into(),
+        source: err,
+    })?;
+    Ok(())
+}
+
+/// Create the vec0 table for the embedder's dimension if it does not
+/// exist yet (lazy: a store that never embeds never needs it). Cosine
+/// distance — MiniLM vectors are L2-normalized, so cosine similarity is
+/// `1 - distance`.
+pub(crate) fn ensure_vector_table(conn: &Connection, dim: usize) -> Result<(), StoreError> {
+    conn.execute_batch(&format!(
+        "CREATE VIRTUAL TABLE IF NOT EXISTS message_vec USING vec0(\
+         embedding float[{dim}] distance_metric=cosine);"
+    ))
+    .map_err(|err| StoreError::Sqlite {
+        context: "create vector index".into(),
+        source: err,
+    })
 }
 
 fn insert_message(
@@ -651,6 +846,158 @@ mod tests {
         if let Some(home) = std::env::var_os("BOTSPY_HOME") {
             let expected = PathBuf::from(&home).join(".botspy").join("store.db");
             assert_eq!(default_store_path().unwrap(), expected);
+        }
+    }
+
+    /// A text-only session with one message.
+    fn text_session(id: &str, text: &str) -> crate::session::Session {
+        crate::session::Session {
+            id: id.to_string(),
+            agent: Agent::ClaudeCode,
+            project_id: "demo".to_string(),
+            started_at: "2026-10-01T09:00:00Z".to_string(),
+            last_activity_at: "2026-10-01T09:00:00Z".to_string(),
+            messages: vec![crate::schema::Message {
+                role: crate::schema::Role::User,
+                parts: vec![crate::schema::Part::Known(crate::schema::KnownPart::Text {
+                    text: text.to_string(),
+                    extra: None,
+                })],
+                timestamp: Some("2026-10-01T09:00:00Z".to_string()),
+                ..crate::schema::Message::default()
+            }],
+            ..crate::session::Session::default()
+        }
+    }
+
+    #[test]
+    fn embedded_ingest_answers_semantic_search() {
+        let dir =
+            std::env::temp_dir().join(format!("botspy-vec-{}-{}", "semantic", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let store = Store::open_with_embedder(
+            dir.join("store.db"),
+            std::sync::Arc::new(embed::stub::StubEmbedder::new()),
+        )
+        .expect("store opens with embedder");
+        store
+            .ingest_sessions(vec![
+                text_session("alpha", "alpha beta gamma"),
+                text_session("beta", "delta epsilon zeta"),
+            ])
+            .expect("ingest with embeddings");
+        let hits = store.query().search_semantic("alpha beta gamma", 2);
+        assert_eq!(hits.len(), 2, "k = 2 nearest sessions");
+        assert_eq!(hits[0].session_id, "alpha", "the identical text is nearest");
+        assert!(
+            (hits[0].score - 1.0).abs() < 1e-6,
+            "cosine similarity of the identical vector is 1, got {}",
+            hits[0].score
+        );
+        let hits = store.query().search_semantic("alpha beta gamma", 1);
+        assert_eq!(hits.len(), 1, "k limits the sessions returned");
+        assert_eq!(hits[0].session_id, "alpha");
+    }
+
+    #[test]
+    fn a_store_refuses_a_different_embedding_model() {
+        let dir =
+            std::env::temp_dir().join(format!("botspy-vec-{}-{}", "mismatch", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let path = dir.join("store.db");
+        let store =
+            Store::open_with_embedder(&path, std::sync::Arc::new(embed::stub::StubEmbedder::new()))
+                .expect("store opens with embedder");
+        store
+            .ingest_sessions(vec![text_session("a", "alpha beta gamma")])
+            .expect("first ingest embeds");
+        let other = Store::open_with_embedder(
+            &path,
+            std::sync::Arc::new(embed::stub::StubEmbedder::with_model("other-model")),
+        )
+        .expect("a store with another embedder opens");
+        let err = other
+            .ingest_sessions(vec![text_session("b", "delta epsilon zeta")])
+            .expect_err("mixing models is refused");
+        assert!(
+            matches!(
+                err,
+                StoreError::EmbeddingModelMismatch {
+                    ref stored,
+                    ref attempted,
+                } if stored == "stub" && attempted == "other-model"
+            ),
+            "{err:?}"
+        );
+        // The refused ingest rolled back: re-opening with the original
+        // embedder sees session "a" only.
+        let reopened =
+            Store::open_with_embedder(&path, std::sync::Arc::new(embed::stub::StubEmbedder::new()))
+                .expect("reopen");
+        let ids: Vec<String> = reopened.sessions().map(|summary| summary.id).collect();
+        assert_eq!(ids, vec!["a"]);
+    }
+
+    #[test]
+    fn without_an_embedder_text_search_works_and_semantic_is_empty() {
+        let dir =
+            std::env::temp_dir().join(format!("botspy-vec-{}-{}", "plain", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let store = Store::open(dir.join("store.db")).expect("store opens");
+        store
+            .ingest_sessions(vec![text_session("a", "fix the login bug")])
+            .expect("ingest");
+        assert!(
+            store.query().search_semantic("login", 5).is_empty(),
+            "semantic search without an embedder is a clean empty result"
+        );
+        let hits = store.query().search("login");
+        assert_eq!(hits.len(), 1, "text search is unaffected");
+        assert!((hits[0].score - 1.0 / 61.0).abs() < 1e-12, "rank score");
+        let hybrid = store.query().search_hybrid("login");
+        assert_eq!(hybrid.len(), 1, "hybrid falls back to the text ranking");
+    }
+
+    #[test]
+    fn hybrid_search_fuses_text_and_semantic_matches() {
+        let dir =
+            std::env::temp_dir().join(format!("botspy-vec-{}-{}", "hybrid", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let store = Store::open_with_embedder(
+            dir.join("store.db"),
+            std::sync::Arc::new(embed::stub::StubEmbedder::new()),
+        )
+        .expect("store opens with embedder");
+        // Session "both" text-matches "alpha" and embeds identically to
+        // the query text; session "lex" only text-matches; session
+        // "sem" only embeds near the query.
+        store
+            .ingest_sessions(vec![
+                text_session("lex", "alpha nnn ooo"),
+                text_session("sem", "alpha beta qqq"),
+                text_session("both", "alpha beta gamma"),
+            ])
+            .expect("ingest");
+        let hits = store.query().search_hybrid("alpha beta gamma");
+        let sessions: Vec<String> = {
+            let mut seen = Vec::new();
+            for hit in &hits {
+                if !seen.contains(&hit.session_id) {
+                    seen.push(hit.session_id.clone());
+                }
+            }
+            seen
+        };
+        assert_eq!(
+            sessions,
+            vec!["both", "sem", "lex"]
+                .into_iter()
+                .map(str::to_string)
+                .collect::<Vec<_>>(),
+            "the identical-embed session ranks first; similarity separates the rest"
+        );
+        for hit in &hits {
+            assert!(hit.score.is_finite(), "every hybrid hit carries a score");
         }
     }
 }
