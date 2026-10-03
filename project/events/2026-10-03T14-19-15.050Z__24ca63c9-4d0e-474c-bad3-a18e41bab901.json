@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "24ca63c9-4d0e-474c-bad3-a18e41bab901",
+  "issue_id": "BOTSPY-910ad593-5fe9-4d9c-959d-b25e9cfcd0e4",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T14:19:15.050Z",
+  "actor_id": "home",
+  "payload": {
+    "title": "Install Pudicus inspection gate: hook, receipts, PR gate",
+    "description": "",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": []
+  }
+}

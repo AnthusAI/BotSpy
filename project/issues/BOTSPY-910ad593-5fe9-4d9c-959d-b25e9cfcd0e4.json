@@ -1,0 +1,35 @@
+{
+  "id": "BOTSPY-910ad593-5fe9-4d9c-959d-b25e9cfcd0e4",
+  "title": "Install Pudicus inspection gate: hook, receipts, PR gate",
+  "description": "",
+  "type": "chore",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "7df73f78-fb74-4326-998d-1fb5dfe296ea",
+      "author": "home",
+      "text": "Chore opened to install Pudicus (AnthusAI/Pudicus v0.1.2, commit 3acc2a7) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate will verify only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "created_at": "2026-10-03T14:19:18.590301Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "f2c0f52a-60d1-462a-8b34-23a39ce52ce9",
+      "author": "home",
+      "text": "Chore opened to install Pudicus (AnthusAI/Pudicus v0.1.2, commit 3acc2a7) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate verifies only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "created_at": "2026-10-03T14:19:21.554429Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T14:19:15.050604Z",
+  "updated_at": "2026-10-03T14:19:21.554452Z",
+  "closed_at": null,
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
