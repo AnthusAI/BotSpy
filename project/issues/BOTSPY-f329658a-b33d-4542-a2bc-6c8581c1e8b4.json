@@ -1,0 +1,28 @@
+{
+  "id": "BOTSPY-f329658a-b33d-4542-a2bc-6c8581c1e8b4",
+  "title": "Shrink packaged crate under the crates.io 10 MiB limit",
+  "description": "",
+  "type": "task",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": "agent@example.com",
+  "creator": null,
+  "parent": "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "e5390de1-fc26-46cc-8648-43e465237bd7",
+      "author": "example-user",
+      "text": "Intent: the release-plz publish of botspy v0.2.0 failed with HTTP 413 — the packaged crate is ~11.9 MiB, over the crates.io 10 MiB limit (docs/diagrams PNG/SVG assets dominate). Fix: replace the `exclude` list in Cargo.toml with an explicit `include` allowlist (src/, features/ — which src/spec embeds via include_str! — Cargo.toml, Cargo.lock, README.md, LICENSE, CHANGELOG.md). Verified with real tool output: cargo package --list (201 -> 90 files), cargo package (12,504,802 -> 141,764 bytes), cargo publish --dry-run (90 files, 571.5 KiB unpacked, 138.4 KiB compressed), and full cargo test green. Added a CI package-size job that fails above 9 MiB. No publish/tag/main changes from this task; the maintainer reruns the release.",
+      "created_at": "2026-10-03T16:26:07.187474Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T16:26:02.324370Z",
+  "updated_at": "2026-10-03T16:26:07.187495Z",
+  "closed_at": null,
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
