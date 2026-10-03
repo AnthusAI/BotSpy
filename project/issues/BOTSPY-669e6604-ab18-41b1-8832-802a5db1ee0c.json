@@ -3,7 +3,7 @@
   "title": "Claude Code adapter",
   "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: scanner-sentiment adapter, read-only.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -22,11 +22,18 @@
         "model": "glm-5.3-flash",
         "name": "chapter-restructure"
       }
+    },
+    {
+      "id": "d127fea6-59e7-45c4-aa1b-7ecda9cf1116",
+      "author": "home",
+      "text": "Epic complete: every child task is closed.",
+      "created_at": "2026-10-03T11:36:17.784284Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:14:57.945584Z",
-  "updated_at": "2026-10-02T17:58:56.805297Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:36:18.193262Z",
+  "closed_at": "2026-10-03T11:36:18.193201Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

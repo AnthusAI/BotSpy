@@ -3,7 +3,7 @@
   "title": "Grok Bot adapter",
   "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -22,11 +22,18 @@
         "model": "glm-5.3-flash",
         "name": "chapter-restructure"
       }
+    },
+    {
+      "id": "2f5ef2da-4051-4f81-8778-a08a9e9347f8",
+      "author": "home",
+      "text": "Epic complete: every child task is closed.",
+      "created_at": "2026-10-03T11:36:20.847119Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:15:09.677865Z",
-  "updated_at": "2026-10-02T17:59:12.937483Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:36:21.280787Z",
+  "closed_at": "2026-10-03T11:36:21.280740Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

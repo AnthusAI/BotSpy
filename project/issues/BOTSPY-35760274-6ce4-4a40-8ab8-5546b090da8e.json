@@ -3,7 +3,7 @@
   "title": "Codex adapter",
   "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -22,11 +22,18 @@
         "model": "glm-5.3-flash",
         "name": "chapter-restructure"
       }
+    },
+    {
+      "id": "20d78a39-e6ea-42ad-a137-11a66e6da5de",
+      "author": "home",
+      "text": "Epic complete: every child task is closed.",
+      "created_at": "2026-10-03T11:36:19.913354Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:15:05.963109Z",
-  "updated_at": "2026-10-02T17:59:09.347769Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:36:20.374257Z",
+  "closed_at": "2026-10-03T11:36:20.374182Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

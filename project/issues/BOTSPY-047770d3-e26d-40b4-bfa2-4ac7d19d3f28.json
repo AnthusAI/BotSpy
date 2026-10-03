@@ -3,7 +3,7 @@
   "title": "Chapter 2: Querying (features/02_querying)",
   "description": "Querying implemented with SQLite and the sqlite-vec extension underneath. The engine is completely invisible to callers: one query interface, with different query functions on one class and SQLite underneath, so callers never see which engine is running. Supersedes the old property-based filtering over in-memory objects from the former features/03_query_export chapter. Implementation of record: BOTSPY-c7795b (Local Store Initiative). Specs first: features/02_querying/*.feature.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -17,11 +17,18 @@
       "text": "Implementation plan for this chapter is filed under the initiative of record, BOTSPY-c7795b: store foundation (SQLite + sqlite-vec + FTS5, cross-platform), ingestion + unified iteration, incremental refresh, filters + laziness, text + vector search, MiniLM embeddings (deferred on open asset questions), docs wrap-up. The existing @wip specs (01_iteration, 02_filters, 03_laziness) turn green as the query-interface epics land; new store / ingest / refresh / search specs join the same folder (features/02_querying/).",
       "created_at": "2026-10-02T21:44:38.104046Z",
       "comment_type": "default"
+    },
+    {
+      "id": "21ac0b3c-f8c4-4ccc-8de2-81dd67f478a0",
+      "author": "home",
+      "text": "Chapter complete: every child task is closed; the querying behaviors live in features/02_querying and are green on feat/local-store (PR #4).",
+      "created_at": "2026-10-03T11:36:57.668400Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:15:16.948650Z",
-  "updated_at": "2026-10-02T21:44:38.104074Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:36:58.141864Z",
+  "closed_at": "2026-10-03T11:36:58.141837Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
