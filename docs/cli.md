@@ -60,7 +60,7 @@ botspy
   show       open one session; walk its messages and parts
   doctor     per-source diagnostics
   snapshot   take a WAL-safe snapshot of a SQLite source and inspect it
-  scan       mine the adapters into the local store (CDC pass, no pruning)
+  scan       mine the adapters into the local store, in a loop (CDC pass, no pruning)
 ```
 
 ### `botspy sessions`
@@ -112,21 +112,46 @@ source that reports nothing (an unreadable root, an agent that has not
 run yet) can never delete stored history. On an empty store the first
 scan is the cold ingest; later scans touch only what changed.
 
+A scan runs one full pass to start, then keeps running: it re-scans
+every `--interval <SECONDS>` seconds (default 60) until it is
+interrupted. The interval is measured from the end of the previous
+pass, so a pass that outlasts the interval can never overlap the next
+one — the loop is strictly one pass at a time. `scan` is an ordinary
+foreground process: background it with your own tooling (`&`, tmux,
+a process manager); there is no daemon, no pidfile, no detach. An
+interrupt (SIGINT/SIGTERM) lets the current pass finish and commit —
+the pass is one store transaction, so nothing is left half-written —
+then stops the loop with exit code 130. Errors inside one pass are
+reported in that pass's output and never kill the loop; the next pass
+tries again. Pruning stays off for the whole loop.
+
 Flags: `--source`, `--since <cutoff>` (an RFC 3339 timestamp, an ISO
 date `YYYY-MM-DD`, or a relative duration like `7d`/`24h`),
 `--store <path>` (default `<home>/.botspy/store.db`), `--dry-run`,
-plus output globals. The cutoff filters what is read; nothing already
-stored is ever deleted — sessions older than the cutoff are skipped,
-not dropped. Zero sessions and open errors are reported per source,
-never silently swallowed.
+`--interval <SECONDS>` (default 60; values below 1 are a usage error),
+`--once` (run exactly one pass and exit — the shape scripts and CI
+want), plus output globals. Each pass emits a full report in the
+chosen output mode — written and flushed as the pass finishes, so
+piped or redirected output streams live: human gets a `pass N` banner
+per report, JSON gets
+one document per pass (with a `pass` field), and NDJSON streams one
+line per source per pass. The cutoff filters what is read; nothing
+already stored is ever deleted — sessions older than the cutoff are
+skipped, not dropped. Zero sessions and open errors are reported per
+source, never silently swallowed.
 
 ```console
-$ botspy scan --since 7d
+$ botspy scan --once --since 7d
 store  ~/.botspy/store.db
 SOURCE       ADDED  UPDATED  UNCHANGED  SKIPPED  ERRORS  MESSAGES
 claude_code      2        1         11        3       0        +4
 cursor           0        1          9        0       0        +2
 scanned 2 sources in 1.7s: 2 added, 2 updated, 20 unchanged, 3 skipped, 0 errors
+
+$ botspy scan --interval 60
+pass 1
+store  ~/.botspy/store.db
+...
 ```
 
 ### `botspy sources`

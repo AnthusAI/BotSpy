@@ -47,8 +47,26 @@ where
     I: IntoIterator<Item = T>,
     T: Into<OsString> + Clone,
 {
-    match Cli::try_parse_from(argv) {
-        Ok(cli) => execute(cli),
+    run_parsed(Cli::try_parse_from(argv), None)
+}
+
+/// Like [`run_from`], but a scan loop streams each pass's report
+/// through `scan_sink` as soon as the pass finishes, instead of holding
+/// everything until exit. Other verbs ignore the sink.
+pub fn run_from_with_sink<I, T>(argv: I, scan_sink: &mut dyn FnMut(&str)) -> RunOutcome
+where
+    I: IntoIterator<Item = T>,
+    T: Into<OsString> + Clone,
+{
+    run_parsed(Cli::try_parse_from(argv), Some(scan_sink))
+}
+
+fn run_parsed(
+    parsed: clap::error::Result<Cli>,
+    scan_sink: Option<&mut dyn FnMut(&str)>,
+) -> RunOutcome {
+    match parsed {
+        Ok(cli) => execute(cli, scan_sink),
         Err(err) => {
             let rendered = err.render().to_string();
             let (stdout, stderr) = if err.use_stderr() {
@@ -222,14 +240,14 @@ pub struct SnapshotArgs {
     pub out: Option<PathBuf>,
 }
 
-fn execute(cli: Cli) -> RunOutcome {
+fn execute(cli: Cli, scan_sink: Option<&mut dyn FnMut(&str)>) -> RunOutcome {
     match cli.command {
         Command::Sources(args) => sources(args),
         Command::Sessions(args) => sessions(args),
         Command::Show(args) => show(args),
         Command::Doctor(args) => doctor(args),
         Command::Snapshot(args) => snapshot(args),
-        Command::Scan(args) => scan::scan(args),
+        Command::Scan(args) => scan::scan(args, scan_sink),
     }
 }
 

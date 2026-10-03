@@ -742,3 +742,122 @@ fn fixture_store_holds(world: &mut BotSpyWorld, count: String) {
         "the fixture store holds a different number of sessions"
     );
 }
+
+// The scan loop: one pass to start, then re-scans on the interval until
+// an interrupt. Tests drive the loop through an injected scripted
+// ticker — virtual time, bounded passes, no real sleeps.
+
+struct ScriptedTicker {
+    now_ms: u64,
+    script: std::collections::VecDeque<cli::scan::Wake>,
+}
+
+impl cli::scan::ScanTicker for ScriptedTicker {
+    fn now_ms(&self) -> u64 {
+        self.now_ms
+    }
+
+    fn wait_until(&mut self, deadline_ms: u64) -> cli::scan::Wake {
+        self.now_ms = deadline_ms;
+        self.script
+            .pop_front()
+            .unwrap_or(cli::scan::Wake::Completed)
+    }
+
+    fn stop_requested(&self) -> bool {
+        false
+    }
+}
+
+fn run_scan_loop(world: &mut BotSpyWorld, args: &str, ticks: usize, interrupt_after: bool) {
+    let mut argv: Vec<String> = vec!["botspy".to_string(), "scan".to_string()];
+    argv.extend(
+        expand_with(world, args)
+            .split_whitespace()
+            .map(str::to_string),
+    );
+    let mut script: std::collections::VecDeque<cli::scan::Wake> =
+        (0..ticks).map(|_| cli::scan::Wake::Tick).collect();
+    if interrupt_after {
+        script.push_back(cli::scan::Wake::Interrupted);
+    }
+    let mut ticker = ScriptedTicker { now_ms: 0, script };
+    let home = world.cli_home.clone().expect("fixture home");
+    std::env::set_var("BOTSPY_HOME", &home);
+    world.cli_run = Some(cli::scan::scan_with_ticker(argv, &mut ticker));
+    std::env::remove_var("BOTSPY_HOME");
+}
+
+#[when(
+    regex = r#"^I scan "botspy scan (.*)" in a loop for ([0-9]+) ticks? with BOTSPY_HOME at the fixture home$"#
+)]
+fn scan_loop_ticks(world: &mut BotSpyWorld, args: String, ticks: usize) {
+    run_scan_loop(world, &args, ticks, false);
+}
+
+#[when(
+    regex = r#"^I scan "botspy scan (.*)" in a loop for ([0-9]+) ticks? and then the interrupt lands with BOTSPY_HOME at the fixture home$"#
+)]
+fn scan_loop_ticks_interrupt(world: &mut BotSpyWorld, args: String, ticks: usize) {
+    run_scan_loop(world, &args, ticks, true);
+}
+
+#[when(
+    regex = r#"^I scan "botspy scan (.*)" and the interrupt lands during the first pass with BOTSPY_HOME at the fixture home$"#
+)]
+fn scan_loop_interrupt_first(world: &mut BotSpyWorld, args: String) {
+    run_scan_loop(world, &args, 0, true);
+}
+
+#[then(regex = r#"^stdout reports the passes (.*) in order$"#)]
+fn passes_in_order(world: &mut BotSpyWorld, expected: String) {
+    let wanted: Vec<u64> = expected
+        .replace(" and ", ", ")
+        .split(',')
+        .map(|part| part.trim().parse().expect("pass number"))
+        .collect();
+    let reported: Vec<u64> = run(world)
+        .stdout
+        .lines()
+        .filter_map(|line| line.strip_prefix("pass "))
+        .filter_map(|rest| rest.parse::<u64>().ok())
+        .collect();
+    assert_eq!(
+        reported, wanted,
+        "the loop reported different passes: {reported:?}"
+    );
+}
+
+#[then(regex = r#"^stdout parses as ([0-9]+) JSON documents$"#)]
+fn json_documents(world: &mut BotSpyWorld, count: usize) {
+    let stdout = &run(world).stdout;
+    let docs: Vec<Value> = serde_json::Deserializer::from_str(stdout)
+        .into_iter()
+        .collect::<Result<_, _>>()
+        .expect("stdout parses as concatenated JSON documents");
+    assert_eq!(
+        docs.len(),
+        count,
+        "stdout holds different documents: {stdout:?}"
+    );
+}
+
+#[then(regex = r#"^JSON document ([0-9]+) has "([^"]+)" (-?[0-9]+)$"#)]
+fn json_document_number(world: &mut BotSpyWorld, index: usize, key: String, expected: String) {
+    let stdout = &run(world).stdout;
+    let docs: Vec<Value> = serde_json::Deserializer::from_str(stdout)
+        .into_iter()
+        .collect::<Result<_, _>>()
+        .expect("stdout parses as concatenated JSON documents");
+    let document = docs
+        .get(index - 1)
+        .unwrap_or_else(|| panic!("no document {index}: {stdout:?}"));
+    let actual = document
+        .get(&key)
+        .and_then(Value::as_i64)
+        .unwrap_or_else(|| panic!("missing or non-numeric {key}: {document:?}"));
+    assert_eq!(
+        actual,
+        expected.parse::<i64>().expect("numeric expectation")
+    );
+}
