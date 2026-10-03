@@ -31,3 +31,8 @@ Spec files (`@wip` until each scenario's implementation task lands):
   chosen k, a 0.3 cosine relevance floor, reciprocal-rank-fusion hybrid
   ranking, clean empty semantic result without an embedder, and the
   meta model-id mismatch policy.
+- `09_semantic_model.feature` — the semantic model itself: the store
+  records the embedding model it embeds with (and a store without an
+  embedder records none), a paraphrase with no shared word finds its
+  session, and k composes with the relevance floor. Runs the real
+  MiniLM model, ungated per the BOTSPY-bb60bb decision.

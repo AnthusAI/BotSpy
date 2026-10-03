@@ -210,6 +210,14 @@ impl Store {
         &self.path
     }
 
+    /// The embedding model recorded in the store's meta — the identity
+    /// of the model behind the store's vectors — or `None` while the
+    /// store has never embedded anything (no embedder configured, or
+    /// nothing worth embedding has been ingested yet).
+    pub fn embedding_model(&self) -> Result<Option<String>, StoreError> {
+        stored_embedding_model(&self.conn)
+    }
+
     fn connect(conn: Connection, path: PathBuf) -> Result<Self, StoreError> {
         conn.busy_timeout(BUSY_TIMEOUT)
             .map_err(|err| open_error(&path, err))?;
