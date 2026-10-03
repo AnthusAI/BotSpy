@@ -8,6 +8,9 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  # The embedding-model cache the setup step fills once (BOTSPY-c3cf41);
+  # every job reads it from here, never the network at runtime.
+  BOTSPY_MODELS: ${{ github.workspace }}/.botspy-models
 
 jobs:
   lint:
@@ -41,6 +44,11 @@ jobs:
         with:
           targets: ${{ matrix.target }}
       - uses: Swatinem/rust-cache@v2
+      - uses: actions/cache@v4
+        with:
+          path: .botspy-models
+          key: botspy-models-${{ hashFiles('src/store/assets.rs') }}
+      - run: cargo run --example setup_models
       - run: cargo test --target ${{ matrix.target }}
       - run: cargo test --target ${{ matrix.target }} --test bdd
       - run: cargo test --doc
@@ -57,4 +65,23 @@ jobs:
         with:
           targets: ${{ matrix.target }}
       - run: cargo install cross --locked
+      - uses: actions/cache@v4
+        with:
+          path: .botspy-models
+          key: botspy-models-${{ hashFiles('src/store/assets.rs') }}
+      - run: cargo run --example setup_models
+        env:
+          BOTSPY_MODELS: ${{ github.workspace }}/.botspy-models
+      # cross mounts the workspace at /project inside its container, so
+      # the model cache the host just filled sits at /project there.
+      # sqlite-vec 0.1.9's C source typedefs its bytes off the BSD-style
+      # u_intN_t names, which musl libc does not define; cc-rs appends
+      # CFLAGS_<target> to every compile it runs, so alias them to the
+      # standard <stdint.h> names. Cross.toml passthrough carries these
+      # and BOTSPY_MODELS into the container (cross does not forward
+      # host env by default).
       - run: cross test --target ${{ matrix.target }}
+        env:
+          BOTSPY_MODELS: /project/.botspy-models
+          CFLAGS_x86_64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t
+          CFLAGS_aarch64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t

@@ -6,10 +6,13 @@ diagrams — which used to live in `README.md`. The user-facing README is
 now a shorter how-to; this page keeps the background story.
 
 Note: this narrative was written while the Local Store Initiative was
-still landing, so items marked "planned" in the diagrams below were in
-flight at the time of writing. The CLI verbs that actually shipped are
-the ones documented in the current `README.md` (`sources`, `sessions`,
-`show`, `doctor`, `snapshot`).
+landing. The unified store, querying, and semantic search have since
+landed (the whole of
+[`features/02_querying/`](../features/02_querying/) is executable and
+green — see the status FAQ entry below); the CLI verbs that actually
+shipped are the ones documented in the current `README.md` (`sources`,
+`sessions`, `show`, `doctor`, `snapshot`), and the store-backed CLI
+verbs remain planned under the CLI epic (BOTSPY-7c2705).
 
 ## Press release
 
@@ -80,8 +83,8 @@ flowchart LR
 
     ADAPTERS -->|"extract(): records stream one at a time<br/>SkipCounter: malformed / unknown / partial"| SCHEMA["Normalized schema (SCHEMA_VERSION = 1)<br/>Session → Turn + Message → Part<br/>text · thinking · tool_call · tool_result · attachment · inline_data · blob · system<br/>+ Provenance, Usage, SessionMetadata"]
     SCHEMA --> STORE["SessionStore<br/>list_sessions() / open()"]
-    STORE -.->|"planned: Local Store Initiative"| UNIFIED["Unified SQLite store<br/>SQLite + sqlite-vec"]
-    UNIFIED -.->|"planned"| SEM["Semantic search<br/>all-MiniLM-L6-v2 embeddings"]
+    STORE -->|"landed: Local Store Initiative"| UNIFIED["Unified SQLite store<br/>SQLite + sqlite-vec"]
+    UNIFIED -->|"landed"| SEM["Semantic search<br/>all-MiniLM-L6-v2 embeddings"]
 ```
 
 > "We run Claude Code, Cursor, and Codex on the same repos every day. I
@@ -127,9 +130,10 @@ Both behaviors are pinned by implemented specs:
 ### Where does my data go? Is it private?
 
 Nowhere. The library reads local files and returns in-memory values; there
-is no network, no telemetry, no server. The planned unified store is a
-local SQLite file, and the planned semantic search runs local embeddings
-(all-MiniLM-L6-v2 on CPU) — nothing leaves the machine.
+is no network, no telemetry, no server. The unified store is a local
+SQLite file, and semantic search runs local embeddings
+(all-MiniLM-L6-v2 on CPU, weights fetched once by an explicit setup step
+and cached under your home directory) — nothing leaves the machine.
 
 ### Which agents are supported?
 
@@ -225,7 +229,7 @@ The storage survey measured 1.4 GB Claude Code trees and 6 GB Cursor
 stores; single transcripts exceed 100 MB. Nothing is loaded whole:
 extraction streams one `RawRecord` at a time with bounded memory
 (`peak_buffered`), append-only transcripts resume from byte offsets, and
-discovery is incremental by identity. The planned query engine exists
+discovery is incremental by identity. The query engine exists
 precisely so callers never hold every record in memory to filter.
 
 ### What happens when the agents change their formats?
@@ -266,7 +270,10 @@ For example: `botspy sessions --source cursor --project botspy`, or
 
 Note: when this was written, `search`, `import`, `watch`, and `stats`
 were planned verbs. The verbs that shipped in the CLI are `sources`,
-`sessions`, `show`, `doctor`, and `snapshot` — see `README.md`.
+`sessions`, `show`, `doctor`, and `snapshot` — see `README.md`. The
+store-backed verbs (`search`, `import`, `watch`, `stats`) stay planned:
+they are the CLI epic's work (BOTSPY-7c2705), wiring the landed store
+into the command line.
 
 ### What can I build on top of BotSpy?
 
@@ -287,22 +294,26 @@ The protocol, step by step, with a class diagram:
 
 ### What is the status of the unified store, querying, and semantic search?
 
-Planned, specified, not built. The Local Store Initiative (BOTSPY-c7795b
-on the Kanbus board) is one local SQLite file (WAL mode) with the
-sqlite-vec extension for similarity search; the query interface is
-specified in [`features/02_querying/`](../features/02_querying/) (iteration,
-filters by source / project / part kind / time window, laziness — all
-`@wip` until it lands). All five sources are built; the store and the
-wiring into it are planned — every adapter converges into one store:
+Built, specified, green. The Local Store Initiative (BOTSPY-c7795b
+on the Kanbus board) delivered one local SQLite file (WAL mode) with the
+sqlite-vec extension for similarity search; the whole query interface is
+implemented and executable in
+[`features/02_querying/`](../features/02_querying/) (store opening and
+persistence, iteration, filters by source / project / part kind / time
+window, laziness, ingestion, incremental refresh, FTS5 text search,
+sqlite-vec semantic search over all-MiniLM-L6-v2 embeddings, and hybrid
+ranking — all green, the semantic scenarios running the real model).
+What stays planned is the CLI wiring: every adapter already converges
+into one store,
 
 ```mermaid
 flowchart LR
-    CLA["ClaudeCodeSource"] -.-> STORE
-    CUR["CursorSource / CursorCliSource"] -.-> STORE
-    COD["CodexSource"] -.-> STORE
-    GRK["GrokBotSource"] -.-> STORE
-    ANT["AntigravitySource"] -.-> STORE
-    STORE[("Unified SQLite store<br/>(planned: Local Store Initiative)<br/>SQLite + sqlite-vec")]
+    CLA["ClaudeCodeSource"] --> STORE
+    CUR["CursorSource / CursorCliSource"] --> STORE
+    COD["CodexSource"] --> STORE
+    GRK["GrokBotSource"] --> STORE
+    ANT["AntigravitySource"] --> STORE
+    STORE[("Unified SQLite store<br/>(landed: Local Store Initiative)<br/>SQLite + sqlite-vec")]
 ```
 
 Over it, one query path — lexical and semantic, hybrid-ranked back to
@@ -311,11 +322,11 @@ sessions, messages, and parts:
 ```mermaid
 flowchart LR
     CALLERS["Future callers: scanning, examples, tools (planned)"]
-    API["Query API (planned)"]
-    LEX["SQLite FTS lexical query (planned)"]
-    VEC["sqlite-vec embedding query (planned)"]
-    MODEL["all-MiniLM-L6-v2 embeddings (planned)"]
-    RANK["Hybrid ranking back to sessions, messages, parts (planned)"]
+    API["Query API (landed)"]
+    LEX["SQLite FTS lexical query (landed)"]
+    VEC["sqlite-vec embedding query (landed)"]
+    MODEL["all-MiniLM-L6-v2 embeddings (landed)"]
+    RANK["Hybrid ranking back to sessions, messages, parts (landed)"]
 
     CALLERS --> API
     API --> LEX

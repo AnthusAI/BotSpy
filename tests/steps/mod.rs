@@ -19,6 +19,7 @@ pub mod schema_steps;
 pub mod session_steps;
 pub mod sqlite_steps;
 pub mod status_steps;
+pub mod store_steps;
 pub mod timestamp_steps;
 pub mod turn_steps;
 pub mod unified_steps;
@@ -153,6 +154,49 @@ pub struct BotSpyWorld {
     pub cli_home: Option<std::path::PathBuf>,
     /// The outcome of the most recent CLI run.
     pub cli_run: Option<botspy::cli::RunOutcome>,
+    /// The local store under test (store steps).
+    pub local_store: Option<botspy::store::Store>,
+    /// A second reader connection open on the same store file.
+    pub local_reader: Option<botspy::store::Store>,
+    /// The reader's mid-iteration cursor.
+    pub local_reader_iter: Option<botspy::store::SessionIter>,
+    /// Whether the reader's iteration ran to completion.
+    pub local_reader_finished: bool,
+    /// Session summaries from the most recent local-store iteration.
+    pub local_sessions: Vec<botspy::SessionSummary>,
+    /// The error from the most recent store-open attempt, when it failed.
+    pub local_open_error: Option<botspy::store::StoreError>,
+    /// The session materialized out of the store by the most recent open.
+    pub local_opened: Option<Result<botspy::Session, botspy::store::StoreError>>,
+    /// The id of the session the query surface last materialized.
+    pub local_opened_id: Option<String>,
+    /// Messages streamed out of the store by the most recent iteration.
+    pub local_messages: Vec<botspy::Message>,
+    /// Parts streamed out of the store by the most recent iteration.
+    pub local_parts: Vec<botspy::Part>,
+    /// The query counters of the most recent query surface use.
+    pub local_query_counters: Option<botspy::QueryCounters>,
+    /// The report of the most recent ingest or refresh pass.
+    pub ingest_report: Option<botspy::IngestReport>,
+    /// Digest of the fixture adapters' sessions before an ingest pass.
+    pub local_digest_before: Option<String>,
+    /// Digest of the fixture adapters' sessions after an ingest pass.
+    pub local_digest_after: Option<String>,
+    /// The part-kind filter of the most recent filtered message iteration.
+    pub local_message_filter: Option<String>,
+    /// The hits of the most recent store search (text or semantic).
+    pub local_search_hits: Vec<botspy::SearchHit>,
+    /// The embedder a store-open step requested, applied when the store
+    /// is next opened for ingest.
+    pub local_embedder_model: Option<String>,
+    /// The error from the most recent ingest attempt, when it failed.
+    pub local_ingest_error: Option<botspy::store::StoreError>,
+    /// The fixture adapters' open() call count before a refresh pass.
+    pub local_open_count_before: Option<usize>,
+    /// The fixture adapters' open() call count after a refresh pass.
+    pub local_open_count_after: Option<usize>,
+    /// The BOTSPY_HOME value before the store steps overrode it.
+    pub saved_botspy_home: Option<std::ffi::OsString>,
 }
 
 pub fn parse_agent(name: &str) -> Agent {

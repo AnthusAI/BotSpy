@@ -382,12 +382,14 @@ fn sessions(args: SessionsArgs) -> RunOutcome {
     }
     if let Some(since) = &args.since {
         summaries.retain(|summary| {
-            !summary.last_activity_at.is_empty() && summary.last_activity_at.as_str() >= since
+            !summary.last_activity_at.is_empty()
+                && summary.last_activity_at.as_str() >= since.as_str()
         });
     }
     if let Some(until) = &args.until {
         summaries.retain(|summary| {
-            summary.last_activity_at.is_empty() || summary.last_activity_at.as_str() <= until
+            summary.last_activity_at.is_empty()
+                || summary.last_activity_at.as_str() <= until.as_str()
         });
     }
     if let Some(limit) = args.limit {
