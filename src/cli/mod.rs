@@ -16,6 +16,7 @@
 //! Cursor's adapter wants the KV store file, not the directory).
 
 pub mod render;
+pub mod scan;
 
 use std::ffi::OsString;
 use std::path::{Path, PathBuf};
@@ -46,8 +47,26 @@ where
     I: IntoIterator<Item = T>,
     T: Into<OsString> + Clone,
 {
-    match Cli::try_parse_from(argv) {
-        Ok(cli) => execute(cli),
+    run_parsed(Cli::try_parse_from(argv), None)
+}
+
+/// Like [`run_from`], but a scan loop streams each pass's report
+/// through `scan_sink` as soon as the pass finishes, instead of holding
+/// everything until exit. Other verbs ignore the sink.
+pub fn run_from_with_sink<I, T>(argv: I, scan_sink: &mut dyn FnMut(&str)) -> RunOutcome
+where
+    I: IntoIterator<Item = T>,
+    T: Into<OsString> + Clone,
+{
+    run_parsed(Cli::try_parse_from(argv), Some(scan_sink))
+}
+
+fn run_parsed(
+    parsed: clap::error::Result<Cli>,
+    scan_sink: Option<&mut dyn FnMut(&str)>,
+) -> RunOutcome {
+    match parsed {
+        Ok(cli) => execute(cli, scan_sink),
         Err(err) => {
             let rendered = err.render().to_string();
             let (stdout, stderr) = if err.use_stderr() {
@@ -114,6 +133,8 @@ pub enum Command {
     Doctor(DoctorArgs),
     /// Take a WAL-safe snapshot of a SQLite source and inspect it.
     Snapshot(SnapshotArgs),
+    /// Mine the adapters into the local store.
+    Scan(scan::ScanArgs),
 }
 
 /// Flags shared by every verb.
@@ -219,13 +240,14 @@ pub struct SnapshotArgs {
     pub out: Option<PathBuf>,
 }
 
-fn execute(cli: Cli) -> RunOutcome {
+fn execute(cli: Cli, scan_sink: Option<&mut dyn FnMut(&str)>) -> RunOutcome {
     match cli.command {
         Command::Sources(args) => sources(args),
         Command::Sessions(args) => sessions(args),
         Command::Show(args) => show(args),
         Command::Doctor(args) => doctor(args),
         Command::Snapshot(args) => snapshot(args),
+        Command::Scan(args) => scan::scan(args, scan_sink),
     }
 }
 
@@ -273,7 +295,7 @@ struct SourceFacts {
 
 /// The selected source names, or every known source when none given.
 /// All names are validated before anything is resolved.
-fn selected_sources(names: &[String]) -> Result<Vec<String>, UnknownSource> {
+pub(crate) fn selected_sources(names: &[String]) -> Result<Vec<String>, UnknownSource> {
     if names.is_empty() {
         return Ok(ALL_SOURCES.iter().map(|name| name.to_string()).collect());
     }
@@ -485,7 +507,7 @@ fn sessions_human(summaries: &[SessionSummary], no_truncate: bool) -> String {
 /// activity-window filters compare the library's recorded timestamps
 /// lexicographically, so the argument must share that shape — an
 /// off-shape value would silently match nothing.
-fn valid_rfc3339(value: &str) -> bool {
+pub(crate) fn valid_rfc3339(value: &str) -> bool {
     if !value.is_ascii() {
         return false;
     }
@@ -1018,7 +1040,10 @@ pub fn build_store(
 }
 
 /// The adapter behind a source name, rooted at its resolved location.
-fn real_source(name: &str, options: &SourceOptions) -> Result<Box<dyn Adapter>, UnknownSource> {
+pub(crate) fn real_source(
+    name: &str,
+    options: &SourceOptions,
+) -> Result<Box<dyn Adapter>, UnknownSource> {
     if !ALL_SOURCES.contains(&name) {
         return Err(UnknownSource {
             name: name.to_string(),
@@ -1052,7 +1077,7 @@ pub fn resolved_root(name: &str, options: &SourceOptions) -> PathBuf {
 
 /// The home the default roots derive from: `--home`, then `BOTSPY_HOME`,
 /// then `$HOME`.
-fn home_of(options: &SourceOptions) -> PathBuf {
+pub(crate) fn home_of(options: &SourceOptions) -> PathBuf {
     options
         .home
         .clone()
@@ -1078,7 +1103,7 @@ pub fn agent_name(agent: Agent) -> &'static str {
 }
 
 /// The agent behind a registry name.
-fn agent_of(name: &str) -> Option<Agent> {
+pub(crate) fn agent_of(name: &str) -> Option<Agent> {
     match name {
         "claude_code" => Some(Agent::ClaudeCode),
         "cursor" => Some(Agent::Cursor),
@@ -1091,7 +1116,7 @@ fn agent_of(name: &str) -> Option<Agent> {
 
 /// `--root` pairs with exactly one source; anything else is a usage
 /// error.
-fn check_root(args: &GlobalArgs) -> Option<RunOutcome> {
+pub(crate) fn check_root(args: &GlobalArgs) -> Option<RunOutcome> {
     if args.root.is_some() && args.source.len() != 1 {
         return Some(RunOutcome::fail(
             2,

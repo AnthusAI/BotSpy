@@ -30,9 +30,12 @@
 //! [`snapshot`](../../features/cli/50_snapshot.feature) — plus the
 //! global command contract
 //! ([`00_global.feature`](../../features/cli/00_global.feature)):
-//! version, usage errors, and the `BOTSPY_HOME` override. Later phases
-//! (import, stats, search, watch) extend this chapter; `export` stays
-//! out entirely (YAGNI).
+//! version, usage errors, and the `BOTSPY_HOME` override. The
+//! [`scan`](../../features/cli/60_scan.feature) verb joins them: the
+//! store's ingest/CDC pass on the command line, pruning disabled so a
+//! source reporting nothing can never delete stored history. Later
+//! phases (import, stats, search, watch) extend this chapter; `export`
+//! stays out entirely (YAGNI).
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -53,5 +56,8 @@
     "\n```\n\n",
     "### 50_snapshot.feature\n\n```gherkin\n",
     include_str!("../../features/cli/50_snapshot.feature"),
+    "\n```\n\n",
+    "### 60_scan.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/60_scan.feature"),
     "\n```\n"
 )]

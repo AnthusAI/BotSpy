@@ -126,7 +126,7 @@ pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
 pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};
 pub use store::{
     default_store_path,
-    ingest::IngestReport,
+    ingest::{AdapterIngestReport, DetailedIngestReport, IngestOptions, IngestReport},
     query::{MessageFilter, Query, QueryCounters, SessionFilter},
     text::SearchHit,
     SessionIter, Store, StoreError,
