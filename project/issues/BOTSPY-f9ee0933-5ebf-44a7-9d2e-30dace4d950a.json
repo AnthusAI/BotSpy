@@ -3,7 +3,7 @@
   "title": "Docs",
   "description": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded feature files, spec-coverage guard test, rustdoc and doctests in CI).",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -17,11 +17,18 @@
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:26.299866Z",
       "comment_type": "default"
+    },
+    {
+      "id": "b4c02321-b558-47a9-bc87-396b3dbaa946",
+      "author": "example-user",
+      "text": "Restoring the docs epic to closed: the README-overview task BOTSPY-99afd6 landed via PR 16 (merge commit 7e727f3) and is closed. The epic was reopened only to host that task.",
+      "created_at": "2026-10-03T17:23:37.650035Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T16:15:24.317480Z",
-  "updated_at": "2026-10-03T15:43:11.956812Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T17:23:38.286998Z",
+  "closed_at": "2026-10-03T17:23:38.286964Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

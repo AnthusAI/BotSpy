@@ -3,7 +3,7 @@
   "title": "Rewrite README as high-level project overview with key diagrams",
   "description": "",
   "type": "task",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -38,11 +38,18 @@
       "text": "CI on PR 16 flagged the personal-data guard: six event files from this session carry actor_id stamped from the machine username, which collides with the anonymized actor id the guard forbids. The shared kbs daemon was started without KANBUS_USER and stamped the events; stopping the daemon and running kbs with KANBUS_USER=example-user fixes the stamping. Sanitizing those six actor_id values now, same class of operation as the earlier anonymize-board-data chore.",
       "created_at": "2026-10-03T17:05:23.700769Z",
       "comment_type": "default"
+    },
+    {
+      "id": "6b54ca6c-7098-44b2-a76a-059f23869b0b",
+      "author": "example-user",
+      "text": "Merged: PR 16 landed on develop as merge commit 7e727f3. The README is now a high-level project overview: intro, C4 context, what-it-does bullets, top-level data flow, containers view, local-only guarantees, compact agent table, install, and a Learn-more section linking the docs pages. Three diagrams moved up with absolute raw URLs so they render on crates.io too (context, dataflow, containers); no new PNGs in the crate. README-only CLI detail (sources and doctor transcripts, missing-source note, synthetic-corpus disclaimer) moved into docs/cli.md. tests/no_real_personal_data.rs gained a README.md exemption for the org-name needle (crates.io readme must embed raw URLs at the repository, like Cargo.toml). Gates: fmt and clippy clean; full cargo test green locally (64 lib tests, BDD 40 features / 213 scenarios with 2 skipped, guards incl. spec_docs_coverage and no_real_personal_data, 8 doc tests); CI green on all 8 jobs before merge. One wrinkle fixed on the way: six session event files carried actor_id stamped from the machine username by a daemon started without KANBUS_USER; sanitized to the anonymized actor id and future kbs calls run with KANBUS_USER set.",
+      "created_at": "2026-10-03T17:23:32.632047Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T15:43:12.737656Z",
-  "updated_at": "2026-10-03T17:05:23.700797Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T17:23:33.816998Z",
+  "closed_at": "2026-10-03T17:23:33.815810Z",
   "agent": {
     "platform": "cursor",
     "model": "Composer 2.5",
