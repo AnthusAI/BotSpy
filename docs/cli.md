@@ -62,6 +62,9 @@ botspy
   snapshot   take a WAL-safe snapshot of a SQLite source and inspect it
 ```
 
+Example output in this document comes from the synthetic test corpus,
+so ids, paths, and titles are fixtures, not real sessions.
+
 ### `botspy sessions`
 
 One unified listing across every registered adapter, most recent
@@ -110,6 +113,18 @@ resolved root (after `--root`/`--home` overrides), the adapter behind
 it, the session count, and a status. Discovery runs live: every call
 walks the sources again. The verb prints no skip stats.
 
+```console
+$ botspy sources
+SOURCE        ROOT                                        SESSIONS  STATUS
+claude_code   /tmp/demo/.claude/projects                  4         ok
+cursor        /tmp/demo/.cursor/state.vscdb               2         ok
+codex         /tmp/demo/.codex                            2         ok
+grok_bot      …mp/demo/.grok/sand-client-persistence      3         ok
+antigravity   /tmp/demo/.gemini/antigravity               2         ok
+```
+
+A source whose files are missing is listed as `missing`, never hidden.
+
 Flags: `--source` (detail one or more). Planned flag (BOTSPY-98386a):
 `-v, --verbose` — per-source discovery detail, for example Cursor's
 IDE store versus its CLI transcripts.
@@ -118,7 +133,17 @@ IDE store versus its CLI transcripts.
 
 Per-source diagnostics: the root path, the discovered counts, and the
 adapter's issues list. Doctor reports; it does not gate — the exit
-code stays 0 unless a source is unreadable.
+code stays 0 unless a source is unreadable. Skipped files and missing
+stores are data about your machine, not failures.
+
+```console
+$ botspy doctor
+claude_code   ok    3 project dirs, 4 transcripts, 0 issues
+cursor        ok    2 composers, 4 bubbles, 0 issues
+codex         ok    2 threads, 0 issues
+grok_bot      ok    2 entry logs, 1 cloud agents, 0 issues
+antigravity   ok    2 conversations, 2 transcripts, 0 issues
+```
 
 Flags: `--source`. Planned flag (BOTSPY-98386a): `--parity` — the
 golden round-trip check per agent, and digest verification that no

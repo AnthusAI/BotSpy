@@ -12,6 +12,10 @@
 //! - `CHANGELOG.md` and `Cargo.toml` still point release-history links and
 //!   the `repository` metadata at the old org; those are updated at move
 //!   time and are exempt until then.
+//! - `README.md` is also the crates.io readme. crates.io renders it with
+//!   no base URL, so the embedded architecture diagrams must use absolute
+//!   raw URLs at the repository; the README therefore names the org the
+//!   same way `Cargo.toml` does.
 //!
 //! Patterns are assembled from concatenated fragments at runtime so this
 //! source file itself never contains a real identifier.
@@ -114,6 +118,7 @@ const EXEMPTED: &[(&str, &[&str])] = &[
     ("LICENSE", &["ry", "an", "porter"]),
     ("CHANGELOG.md", &["anth", "us"]),
     ("Cargo.toml", &["anth", "us"]),
+    ("README.md", &["anth", "us"]),
 ];
 
 fn is_exempt(path: &str, needle: &str) -> bool {
