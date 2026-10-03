@@ -21,7 +21,7 @@
     {
       "id": "9d3933dc-23b0-47fe-b39d-15b0bdfd7659",
       "author": "example-user",
-      "text": "PR opened: https://github.com/AnthusAI/BotSpy/pull/15 (targets develop). Local verification: cargo package --list 201 -> 90 files; cargo package 12,504,802 -> 141,764 bytes; cargo publish --dry-run green; full cargo test green (BDD: 40 features, 213 scenarios, 923 steps). CI (lint + 5-platform test matrix + musl + new package-size guard) pending on the PR. Task stays in_progress until the change lands; the maintainer reruns the release-plz publish after merge.",
+      "text": "PR opened: https://github.com/DataParade-io/BotSpy/pull/15 (targets develop). Local verification: cargo package --list 201 -> 90 files; cargo package 12,504,802 -> 141,764 bytes; cargo publish --dry-run green; full cargo test green (BDD: 40 features, 213 scenarios, 923 steps). CI first run failed: the committed issue JSON contained the old org name in this task's comments; comments repointed to the new org. CI re-running on the rebased branch. Task stays in_progress until the change lands; the maintainer reruns the release-plz publish after merge.",
       "created_at": "2026-10-03T16:27:16.601961Z",
       "comment_type": "default"
     },
@@ -34,7 +34,7 @@
     }
   ],
   "created_at": "2026-10-03T16:26:02.324370Z",
-  "updated_at": "2026-10-03T17:36:28.519454Z",
+  "updated_at": "2026-10-03T17:36:39.803287Z",
   "closed_at": null,
   "right_now_summary": null,
   "right_now_updated_at": null,
