@@ -152,6 +152,8 @@ pub struct BotSpyWorld {
     pub example_sources: Option<String>,
     /// Fixture home the CLI steps laid out for the current scenario.
     pub cli_home: Option<std::path::PathBuf>,
+    /// The scenario's scratch output directory: stable across steps.
+    pub cli_out_dir: Option<std::path::PathBuf>,
     /// The outcome of the most recent CLI run.
     pub cli_run: Option<botspy::cli::RunOutcome>,
     /// The local store under test (store steps).
@@ -178,6 +180,9 @@ pub struct BotSpyWorld {
     pub local_query_counters: Option<botspy::QueryCounters>,
     /// The report of the most recent ingest or refresh pass.
     pub ingest_report: Option<botspy::IngestReport>,
+    /// The detailed report (per adapter) of the most recent option-carrying
+    /// ingest or refresh pass.
+    pub detailed_ingest_report: Option<botspy::DetailedIngestReport>,
     /// Digest of the fixture adapters' sessions before an ingest pass.
     pub local_digest_before: Option<String>,
     /// Digest of the fixture adapters' sessions after an ingest pass.
