@@ -31,10 +31,17 @@
       "text": "Rebased onto origin/develop (picks up README PR 16). Root cause of the red CI run 37136917747: the no_real_personal_data guard failed on the committed issue JSON because this task's comments carried the old org name. Fix: repointed all comments to the new org, repointed README URLs (21) and Cargo.toml repository to the new org, verified all six raw diagram image URLs return HTTP 200.",
       "created_at": "2026-10-03T17:36:28.519418Z",
       "comment_type": "default"
+    },
+    {
+      "id": "978c88ab-594b-4c1b-9b89-d8d1f1a221fe",
+      "author": "example-user",
+      "text": "CI green on rebased head 6dd4472 (run 37141362647): lint, package-size, and all 7 test jobs pass (macos-14, macos-15-intel, ubuntu-latest, ubuntu-24.04-arm, windows-latest, musl x86_64 + aarch64). Post-rebase packaged crate: 153,969 bytes (92 files). Release dry-run dispatch on develop (run 37142811073) computed version 0.2.0 and skipped only the crates.io upload, tag v0.2.0, and GitHub release — confirming a push to main publishes botspy 0.2.0 via direct release-plz release, no binaries. The failed main rerun 37133510867 hit the same 413 (200 files, 11.8MiB compressed) that this PR fixes. PR marked ready for review; awaiting maintainer merge and release rerun.",
+      "created_at": "2026-10-03T18:07:21.775837Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T16:26:02.324370Z",
-  "updated_at": "2026-10-03T17:36:39.803287Z",
+  "updated_at": "2026-10-03T18:07:21.776245Z",
   "closed_at": null,
   "right_now_summary": null,
   "right_now_updated_at": null,
