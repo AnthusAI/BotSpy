@@ -41,7 +41,8 @@
 //! 2. [Querying](crate::spec::ch02_querying) —
 //!    one query interface backed by SQLite + sqlite-vec, completely
 //!    transparent to callers; implemented by the Local Store Initiative
-//!    (BOTSPY-c7795b). Mirrors `features/02_querying/` (specified next).
+//!    (BOTSPY-c7795b). Mirrors `features/02_querying/` (implemented and
+//!    green — see the chapter's status section).
 //! 3. [Importers / CDC](crate::spec::ch03_importers) —
 //!    the change-data-capture pipeline (detect new or changed transcripts,
 //!    hand off to normalization, retry), with per-agent importer
@@ -107,6 +108,7 @@ pub mod schema;
 pub mod session;
 pub mod snapshot;
 pub mod spec;
+pub mod store;
 
 pub use adapter::Adapter;
 pub use adapters::fixture::FixtureAdapter;
@@ -122,3 +124,10 @@ pub use schema::{
 };
 pub use session::{Session, SessionStore, SessionSummary, UnknownSession};
 pub use snapshot::{count_events, count_rows, snapshot_sqlite, SnapshotError};
+pub use store::{
+    default_store_path,
+    ingest::IngestReport,
+    query::{MessageFilter, Query, QueryCounters, SessionFilter},
+    text::SearchHit,
+    SessionIter, Store, StoreError,
+};
