@@ -3,7 +3,7 @@
   "title": "Docs wrap-up: chapter status, README flip, wiki page, board close-out",
   "description": "**Files:** `src/spec/ch02_querying.rs` (status sections); `src/lib.rs` (chapter index line for querying — drop the stale \"(specified next)\"); `README.md` (status FAQ + mermaid \"planned\" labels flipped for what landed; the future CLI verbs stay described as planned under the CLI epic BOTSPY-7c2705); `project/wiki/store.md` (new: store path, WAL, DDL v1, refresh model, embedder seam, model-id policy).\n\n**Acceptance:** docs-coverage guardrail green; no stale \"planned\" claims about landed behavior; `kbs wiki render` on the new page is clean; the landed epics are closed with DoD comments (the MiniLM epic stays open and blocked on its gate).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": "cursor-agent",
   "creator": null,
@@ -41,11 +41,23 @@
       "text": "README flip done (PR #6, merged to develop as 4e07a2e): README.md replaced with a real user-facing README — what BotSpy does, the five supported agents and where each one's data lives, cargo install botspy --locked with per-OS prerequisites, verified usage examples for botspy sources / doctor / sessions (--since, -o json) / show, local-only guarantees, MIT license, links to docs.rs and the features/ spec. Every example was run against the CLI built from develop over the committed synthetic fixture corpus (no real session content or paths; the sample outputs state that they come from the synthetic corpus). No export mention. The old press-release narrative and detailed FAQ moved verbatim to docs/DESIGN.md with an editorial note on which CLI verbs shipped. Gates green locally: fmt, clippy -D warnings, cargo test, cargo test --test bdd (169 passed / 2 skipped), spec_docs_coverage; cargo package --list still includes README.md and Cargo.toml readme field unchanged. CI green on the PR and on develop after merge. Remaining parts of this task (chapter status, wiki page, board close-out) still open.",
       "created_at": "2026-10-02T22:52:39.386779Z",
       "comment_type": "default"
+    },
+    {
+      "id": "a5737bba-1d87-4cc5-8223-9c8502babb6e",
+      "author": "home",
+      "text": "Done: docs wrap-up landed on feat/local-store (a9400d5) and merged to develop via PR #4 (fa32eb3) — lib.rs querying chapter no longer says 'specified next'; DESIGN.md status/FAQ flipped to built; README gained the library section; project/wiki/store.md added and linked from the index (`kbs wiki render store` clean).",
+      "created_at": "2026-10-03T12:15:22.167701Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:44:00.187091Z",
-  "updated_at": "2026-10-02T22:52:39.387039Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T12:15:23.032847Z",
+  "closed_at": "2026-10-03T12:15:23.032815Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

@@ -3,17 +3,25 @@
   "title": "Spec-chapter, README, and wiki wrap-up",
   "description": "Milestone 7 of the Local Store Initiative: the record matches the product. Chapter doc status sections current (src/spec/ch02_querying.rs), the stale \"(specified next)\" claim in src/lib.rs fixed, README status FAQ and mermaid \"planned\" labels flipped for what landed, a project wiki page documenting the store, and the board closed out for the landed epics. Per-task doc updates happen along the way (the docs-coverage guardrail: every .feature file embedded in a chapter); this epic is the final consolidation.\n\nWork in your own worktree off origin/develop, PR to develop only — never main. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "49e0e56f-64ed-49c3-8685-4d6317ff5920",
+      "author": "home",
+      "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+      "created_at": "2026-10-03T12:15:36.479796Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T21:43:45.866213Z",
-  "updated_at": "2026-10-02T21:43:45.866251Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T12:15:36.922955Z",
+  "closed_at": "2026-10-03T12:15:36.922926Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
