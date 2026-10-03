@@ -1,0 +1,59 @@
+title: Search - text, semantic, hybrid
+
+cli: {
+  label: "BotSpy CLI\nsearch <query>\n--mode text | semantic\n--source, --project, --kind, --role,\n--context N, --since, --until, --limit"
+  class: tool
+}
+
+text_path: {
+  label: "Text search (FTS5)\nQuery terms are quoted;\npunctuation and operators drop out.\nunicode61 tokenizer, implicit AND.\nSessions rank by matching-message\ncount, best bm25, then id.\nHit score = RRF 1 / (60 + rank)."
+  class: tool
+}
+
+fts_table: {
+  label: "🔒 message_fts\nplaintext index"
+  class: sensitive
+}
+
+sem_path: {
+  label: "Semantic search\nQuery text goes through the embedder.\nSimilarity = 1 - cosine distance,\nclamped to [-1, 1].\nSimilarity floor: 0.3.\nAt most 4096 neighbor rows.\nRanking: best similarity, ties by id.\nWithout an embedder: a clean, empty\nsemantic result; text search is unaffected."
+  class: tool
+}
+
+embedder: {
+  label: "Embedder\nall-MiniLM-L6-v2, tract ONNX, CPU.\nWordpiece tokens, seq length 128,\nmean pooling, L2 normalized.\n384 dimensions."
+  class: tool
+}
+
+models: {
+  label: "Model cache\n<home>/.botspy/models/\nall-MiniLM-L6-v2\n(no session data)"
+  class: tool
+}
+
+vec_table: {
+  label: "🔒 message_vec (vec0)\nembeddings, cosine distance"
+  class: sensitive
+}
+
+hybrid: {
+  label: "Hybrid search (store layer)\nFused score = text RRF 1 / (60 + rank)\n+ best cosine similarity.\nOrder: fused score, ties by id.\nText hits first, then semantic-only,\ndeduped by (session, message, part)."
+  class: tool
+}
+
+output: {
+  label: "🔒 Search hits (NDJSON)\nsession_id, message_ordinal, role,\npart_kind, text, provenance"
+  class: sensitive
+}
+
+cli -> text_path: "--mode text"
+text_path -> fts_table: "MATCH query"
+fts_table -> text_path: "bm25 ranks"
+cli -> sem_path: "--mode semantic"
+sem_path -> embedder: "embed the query text"
+embedder -> models: "loads model (read-only)"
+embedder -> vec_table: "query vector"
+vec_table -> sem_path: "nearest rows,\ncosine distance"
+sem_path -> hybrid: "semantic ranks"
+text_path -> hybrid: "text ranks"
+hybrid -> output: "fused, ordered hits"
+cli -> output: "streams NDJSON"

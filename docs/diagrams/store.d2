@@ -1,0 +1,72 @@
+title: Local store - SQLite with WAL
+
+path_note: {
+  label: "Store path\nBOTSPY_HOME → \$HOME.\nThe store lives at\n<home>/.botspy/store.db"
+  class: tool
+}
+
+open: {
+  label: "Store::open\ncreates parent directories,\nWAL mode,\nsynchronous = NORMAL,\nforeign_keys = ON,\nbusy_timeout 5000 ms.\nReader connections stay separate:\nqueries run while ingest commits."
+  class: tool
+}
+
+db: {
+  label: "🔒 <home>/.botspy/store.db"
+
+  sessions: {
+    label: "🔒 sessions\nid, agent, project, times,\nmessage count, content hash,\nfull session JSON"
+    class: sensitive
+  }
+  messages: {
+    label: "🔒 messages\nsession id, ordinal, role,\ntimestamp, full message JSON"
+    class: sensitive
+  }
+  parts: {
+    label: "🔒 parts\nkind, plaintext text"
+    class: sensitive
+  }
+  message_fts: {
+    label: "🔒 message_fts (FTS5)\nplaintext index over parts.text"
+    class: sensitive
+  }
+  message_vec_rows: {
+    label: "message_vec_rows\nrow id → session, message, part"
+    class: tool
+  }
+  message_vec: {
+    label: "🔒 message_vec (vec0)\nembeddings, cosine distance,\ncreated lazily on first embed"
+    class: sensitive
+  }
+  meta: {
+    label: "meta\nschema_version = 2,\nembedding_model"
+    class: tool
+  }
+}
+
+sidecars: {
+  label: "🔒 WAL sidecars\nstore.db-wal, store.db-shm\ncontain recent page writes"
+  class: sensitive
+  shape: cylinder
+}
+
+ingest: {
+  label: "Ingest\nOne transaction per import.\ncontent hash = SHA-256 of the\nsession JSON. Re-ingest deletes\nthe old rows (cascade), then\nwrites again: FTS rows re-indexed,\nvectors re-embedded.\nFirst report wins on\n(agent, id, project).\nThe embedding model is checked first;\na different model is refused."
+  class: tool
+}
+
+refresh: {
+  label: "Refresh\nCompares discovery summaries\n(last activity, message count)\nwith the stored rows.\nOpens only stale sessions,\nverifies change by content hash,\nprunes sessions that no longer\nexist upstream. Unchanged sessions\nare never re-opened."
+  class: tool
+}
+
+query: {
+  label: "Query surface\nFilters compile into SQL.\nKeyset pagination, lazy cursors.\nsessions / messages / open / parts."
+  class: tool
+}
+
+path_note -> open: "open the store"
+open -> db: "migrations to schema v2,\nsqlite-vec registered per process"
+db -> sidecars: "WAL writes land here first"
+ingest -> db: "upsert_session"
+refresh -> ingest: "stale sessions only"
+query -> db: "read-only, concurrent"

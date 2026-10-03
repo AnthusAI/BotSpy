@@ -1,0 +1,149 @@
+title: Data flow - from agent files to query results
+
+# --- The five sources, with their exact local paths ---
+
+cc_files: {
+  label: "🔒 Claude Code files\n\n~/.claude/projects/\n<encoded-cwd>/<session>.jsonl\nsubagents/agent-*.jsonl (skipped)"
+  class: sensitive
+}
+
+cursor_files: {
+  label: "🔒 Cursor files\n\n~/.cursor/state.vscdb\n(+ -wal, -shm)\n~/.cursor/projects/\n<encoded-cwd>/agent-transcripts/*.jsonl"
+  class: sensitive
+}
+
+codex_files: {
+  label: "🔒 Codex files\n\n~/.codex/state_5.sqlite\n~/.codex/thread_history_1.sqlite\n~/.codex/sessions/YYYY/MM/DD/\nrollout-*.jsonl"
+  class: sensitive
+}
+
+grok_files: {
+  label: "🔒 Grok Bot files\n\n~/.grok/sand-client-persistence/\nentry logs (*.json),\nroster.json, cloud-agents.json"
+  class: sensitive
+}
+
+ag_files: {
+  label: "🔒 Antigravity files\n\n~/.gemini/antigravity/\nconversation_summaries.db\nbrain/<id>/payload.db\nbrain/<id>/.system_generated/logs/\ntranscript.jsonl"
+  class: sensitive
+}
+
+# --- Snapshot copies that BotSpy creates ---
+
+cursor_snap: {
+  label: "🔒 Cursor snapshot copy\n\n\$TMPDIR/botspy-cursor-snaps/\n<pid>-<seq>/snapshot.db\nopened read-only"
+  class: sensitive
+}
+
+ag_snap: {
+  label: "🔒 Antigravity snapshot copies\n\n\$TMPDIR/botspy-ag-snaps/\n<pid>-<seq>/snapshot.db\nopened read-only"
+  class: sensitive
+}
+
+snap_cache: {
+  label: "🔒 Snapshot cache\n\n<home>/.botspy/snapshots/\n<source>/snapshot.db\nwritten by the snapshot verb"
+  class: sensitive
+}
+
+# --- The pipeline ---
+
+adapters: {
+  label: "Source adapters\nclaude_code, cursor, codex,\ngrok_bot, antigravity"
+  class: tool
+}
+
+schema: {
+  label: "Unified schema\nSession / Message / Part\n(provenance, usage, costs)"
+  class: tool
+}
+
+ingest: {
+  label: "Ingest\none transaction per import,\ncontent-hash change detection"
+  class: tool
+}
+
+store: {
+  label: "🔒 Local store  <home>/.botspy/store.db  (+ -wal, -shm)"
+
+  sessions: {
+    label: "🔒 sessions\nfull session JSON"
+    class: sensitive
+  }
+  messages: {
+    label: "🔒 messages\nfull message JSON"
+    class: sensitive
+  }
+  parts: {
+    label: "🔒 parts\nplaintext part text"
+    class: sensitive
+  }
+  message_fts: {
+    label: "🔒 message_fts\nplaintext FTS5 index"
+    class: sensitive
+  }
+  message_vec: {
+    label: "🔒 message_vec\nembeddings (derived,\nnot plaintext)"
+    class: sensitive
+  }
+  meta: {
+    label: "meta\nschema version,\nembedding model id"
+    class: tool
+  }
+}
+
+embedder: {
+  label: "Embedder\nall-MiniLM-L6-v2,\n384 dimensions"
+  class: tool
+}
+
+models: {
+  label: "Model cache\n<home>/.botspy/models/\nall-MiniLM-L6-v2\n(no session data)"
+  class: tool
+}
+
+query: {
+  label: "Query surface\nsessions, messages, open, parts;\ntext (FTS5), semantic (sqlite-vec),\nhybrid search"
+  class: tool
+}
+
+cli: {
+  label: "BotSpy CLI\nsessions, show, search, stats, ..."
+  class: tool
+}
+
+output: {
+  label: "🔒 CLI output\nstdout / JSON / NDJSON\nsessions, messages, search hits"
+  class: sensitive
+}
+
+user: {
+  label: User
+  shape: person
+}
+
+# --- Flows ---
+
+cursor_files -> cursor_snap: "SQLite online backup\n(WAL-safe, digest-verified)"
+cursor_snap -> adapters: "adapter reads the copy"
+ag_files -> ag_snap: "SQLite online backup\n(WAL-safe, digest-verified)"
+ag_snap -> adapters: "adapter reads the copy"
+cc_files -> adapters: "reads transcripts"
+codex_files -> adapters: "reads index and rollouts"
+grok_files -> adapters: "reads entry logs"
+
+adapters -> schema: "unified session objects"
+schema -> ingest: "sessions to store"
+ingest -> store.sessions: "rows"
+ingest -> store.messages: "rows"
+ingest -> store.parts: "rows"
+ingest -> store.message_fts: "text rows (plaintext)"
+ingest -> embedder: "text parts to embed"
+embedder -> models: "loads model (read-only)"
+embedder -> store.message_vec: "embeddings"
+
+user -> cli: "runs commands"
+cli -> snap_cache: "snapshot verb copies\na source database"
+cli -> query: "sessions, show, search, stats"
+query -> store: "reads (WAL readers)"
+query -> embedder: "embeds the query text\n(semantic, hybrid)"
+query -> output: "sessions, messages, hits"
+output -> user: "displayed"

@@ -1,0 +1,20 @@
+title: BotSpy - C4 context (level 1)
+
+user: {
+  label: User
+  shape: person
+}
+
+botspy: {
+  label: "BotSpy\nLocal CLI and library\nfor one machine"
+  class: tool
+}
+
+agent_data: {
+  label: "🔒 Coding agents on this machine\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent writes its session\ndata to its own local files"
+  class: sensitive
+}
+
+user -> botspy: "Runs commands:\nsources, sessions, show, search,\nimport, doctor, snapshot, stats, watch"
+botspy -> agent_data: "Reads session files\nand databases (read-only)"
+botspy -> user: "Sessions, messages,\nand search hits\n(human, JSON, NDJSON)"
