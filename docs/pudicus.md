@@ -129,7 +129,8 @@ BotSpy-specific rules in `.gitleaks.toml`:
   structural UUIDs).
 - `botspy-actor-id` — `actor_id` fields with quoted values (session
   provenance identifiers). Bare struct/field definitions in code do
-  not match.
+  not match. `project/` is exempt (Kanbus event provenance metadata
+  is structural).
 
 Scans are **patch-scoped** (staged diffs locally, commit ranges in CI),
 so content that predates this configuration is grandfathered and never

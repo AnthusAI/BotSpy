@@ -67,3 +67,10 @@ id = "botspy-actor-id"
 description = "actor_id with a value (session provenance identifier)"
 regex = '''actor_id["']?\s*[:=]\s*"[^"]{4,}"'''
 keywords = ["actor_id"]
+
+[rules.allowlist]
+paths = [
+  # Kanbus board event JSONs carry actor_id as structural provenance
+  # metadata; exempt like the UUID rule (sanitize at the source).
+  '''^project/''',
+]
