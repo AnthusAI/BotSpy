@@ -8,12 +8,18 @@ repository = "https://github.com/AnthusAI/BotSpy"
 readme = "README.md"
 keywords = ["coding-agents", "chat-history", "sessions", "ai", "cli"]
 categories = ["development-tools", "text-processing"]
-# Keep the packaged crate lean for crates.io (10 MB limit): no Kanbus
-# board data, no fixtures, no local tooling.
-exclude = [
-    "/project",
-    "/.kanbus.yml",
-    "/tests/fixtures",
+# Allowlist for the packaged crate: crates.io caps the .crate at 10 MiB,
+# and the git tree carries ~15 MiB of docs diagrams that the crate never
+# reads. features/ stays because src/spec/ embeds the .feature files with
+# include_str! at compile time.
+include = [
+    "/src",
+    "/features",
+    "/Cargo.toml",
+    "/Cargo.lock",
+    "/README.md",
+    "/LICENSE",
+    "/CHANGELOG.md",
 ]
 
 [dependencies]
