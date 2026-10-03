@@ -2,15 +2,15 @@
 
 The `botspy` command is a thin shell over the library. Every verb is
 one library call plus rendering. The CLI holds no state of its own: it
-reads the agent files, and it writes only BotSpy's own snapshot files.
+reads the agent files, and it writes only BotSpy's own store and
+snapshot files.
 
-Today the CLI has five verbs: `sources`, `sessions`, `show`,
-`doctor`, and `snapshot`. Each verb builds an in-memory `SessionStore`
-over the live source adapters and reads from it. The CLI does not read
-the local store at `<home>/.botspy/store.db` yet. The store-backed
-verbs (`search`, `import`, `stats`, `watch`) are planned; open Kanbus
-task BOTSPY-98386a tracks them. `botspy scan` is being added
-separately.
+Today the CLI has six verbs: `sources`, `sessions`, `show`, `doctor`,
+`snapshot`, and `scan`. The read-only verbs build an in-memory
+`SessionStore` over the live source adapters and read from it. `scan`
+reads and writes the local store at `<home>/.botspy/store.db`. The
+other store-backed verbs (`search`, `import`, `stats`, `watch`) are
+planned; open Kanbus task BOTSPY-98386a tracks them.
 
 ## Global flags
 
@@ -60,6 +60,7 @@ botspy
   show       open one session; walk its messages and parts
   doctor     per-source diagnostics
   snapshot   take a WAL-safe snapshot of a SQLite source and inspect it
+  scan       mine the adapters into the local store (CDC pass, no pruning)
 ```
 
 ### `botspy sessions`
@@ -101,6 +102,31 @@ Session synth-1a2b0008 (claude_code, example-app) — 117 messages, started 2026
   · thinking   (190 lines)
   · tool_call  Read path="src/snapshot.rs" [ok]
   · tool_result  412 B
+```
+
+### `botspy scan`
+
+Mine the adapters into the local store: one refresh-style CDC pass that
+discovers sessions and lands new messages. Pruning is disabled — a
+source that reports nothing (an unreadable root, an agent that has not
+run yet) can never delete stored history. On an empty store the first
+scan is the cold ingest; later scans touch only what changed.
+
+Flags: `--source`, `--since <cutoff>` (an RFC 3339 timestamp, an ISO
+date `YYYY-MM-DD`, or a relative duration like `7d`/`24h`),
+`--store <path>` (default `<home>/.botspy/store.db`), `--dry-run`,
+plus output globals. The cutoff filters what is read; nothing already
+stored is ever deleted — sessions older than the cutoff are skipped,
+not dropped. Zero sessions and open errors are reported per source,
+never silently swallowed.
+
+```console
+$ botspy scan --since 7d
+store  ~/.botspy/store.db
+SOURCE       ADDED  UPDATED  UNCHANGED  SKIPPED  ERRORS  MESSAGES
+claude_code      2        1         11        3       0        +4
+cursor           0        1          9        0       0        +2
+scanned 2 sources in 1.7s: 2 added, 2 updated, 20 unchanged, 3 skipped, 0 errors
 ```
 
 ### `botspy sources`
