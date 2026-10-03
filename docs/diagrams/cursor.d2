@@ -1,17 +1,17 @@
 title: Cursor source adapter
 
 store: {
-  label: "🔒 Cursor store\n~/.cursor/state.vscdb\n(+ -wal, -shm)\nkey-value table: cursorDiskKV"
+  label: "Sensitive data: Cursor store\n~/.cursor/state.vscdb\n(+ -wal, -shm)\nkey-value table: cursorDiskKV"
   class: sensitive
 }
 
 snap: {
-  label: "🔒 Snapshot copy\n\$TMPDIR/botspy-cursor-snaps/\n<pid>-<seq>/snapshot.db\nopened read-only\n(live store stays untouched)"
+  label: "Sensitive data: Snapshot copy\n\$TMPDIR/botspy-cursor-snaps/\n<pid>-<seq>/snapshot.db\nopened read-only\n(live store stays untouched)"
   class: sensitive
 }
 
 cli_dir: {
-  label: "🔒 CLI transcripts\n~/.cursor/projects/\n<encoded-cwd>/agent-transcripts/*.jsonl"
+  label: "Sensitive data: CLI transcripts\n~/.cursor/projects/\n<encoded-cwd>/agent-transcripts/*.jsonl"
   class: sensitive
 }
 

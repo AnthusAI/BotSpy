@@ -10,7 +10,8 @@ files BotSpy writes are its own store, its snapshot copies, and its
 model cache.
 
 Sensitive-data note: every diagram below marks places that read, copy,
-or store session content with the amber 🔒 border. The full inventory
+or store session content with the amber border and an explicit
+"Sensitive data" label. The full inventory
 of those places, with exact paths, is in
 [`sensitive-data.md`](sensitive-data.md).
 

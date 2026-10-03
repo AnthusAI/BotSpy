@@ -11,10 +11,17 @@ botspy: {
 }
 
 agent_data: {
-  label: "🔒 Coding agents on this machine\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent writes its session\ndata to its own local files"
+  label: "Sensitive data: coding agents on this machine\n\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity\n\nEach agent writes its session\ndata to its own local files"
+  class: sensitive
+}
+
+store: {
+  label: "Sensitive data: BotSpy local store\n\n~/.botspy/store.db\nCopies of session history:\nsessions, messages, parts,\nfull-text and vector indexes"
+  shape: cylinder
   class: sensitive
 }
 
 user -> botspy: "Runs commands:\nsources, sessions, show, search,\nimport, doctor, snapshot, stats, watch"
-botspy -> agent_data: "Reads session files\nand databases (read-only)"
-botspy -> user: "Sessions, messages,\nand search hits\n(human, JSON, NDJSON)"
+botspy -> agent_data: "Reads session files\nand databases (read-only).\nSensitive data: session-history content"
+botspy -> store: "Ingest writes copies of\nsession history.\nSensitive data: session-history content"
+botspy -> user: "Sessions, messages,\nand search hits\n(human, JSON, NDJSON).\nSensitive data: session-history content"

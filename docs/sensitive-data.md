@@ -12,10 +12,12 @@ the copies live. This page is that map.
 ## The marker
 
 Every diagram in this documentation marks a sensitive place with the
-same marker: an amber border, 3 px wide, with a lock icon 🔒. The
+same marker: an amber border, 3 px wide, plus the explicit text label
+"Sensitive data". The
 marker means: **this place reads, copies, or stores session content.**
-The legend on every diagram states the same rule, and the shared theme
-file `diagrams/_shared.d2` defines the marker once for all diagrams.
+It is not a claim that the data is protected, which is why no lock or
+shield icon appears anywhere; the shared theme file
+`diagrams/_shared.d2` defines the marker once for all diagrams.
 
 Places that only move or transform data — adapters, the CLI process,
 the model cache — keep the theme's default look.

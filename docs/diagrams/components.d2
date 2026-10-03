@@ -1,7 +1,7 @@
 title: BotSpy - C4 component (level 3)
 
 files: {
-  label: "🔒 Agent session files\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity"
+  label: "Sensitive data: Agent session files\nClaude Code, Cursor, Codex,\nGrok Bot, Antigravity"
   class: sensitive
 }
 
@@ -62,7 +62,7 @@ botspy: {
 }
 
 store_db: {
-  label: "🔒 store.db\n<home>/.botspy/store.db"
+  label: "Sensitive data: store.db\n<home>/.botspy/store.db"
   shape: cylinder
   class: sensitive
 }
@@ -79,19 +79,19 @@ user: {
 
 user -> botspy.cli: "runs"
 botspy.cli -> botspy.snapshot: "snapshot verb;\nWAL-safe reads"
-botspy.snapshot -> files: "copies live SQLite files\n(read-only backup)"
+botspy.snapshot -> files: "copies live SQLite files\n(read-only backup).\nSensitive data: live store pages"
 botspy.cli -> botspy.importer: "import, watch"
 botspy.importer -> botspy.adapters: "drives discovery and extraction"
-botspy.adapters -> files: "reads session files"
-botspy.adapters -> botspy.schema: "unified objects"
-botspy.schema -> botspy.store.ingest: "sessions to store"
-botspy.store.ingest -> store_db: "writes rows\nin one transaction"
-botspy.store.ingest -> botspy.store.embedder: "text parts to embed"
+botspy.adapters -> files: "reads session files.\nSensitive data: session history"
+botspy.adapters -> botspy.schema: "unified objects.\nSensitive data: session history"
+botspy.schema -> botspy.store.ingest: "sessions to store.\nSensitive data: session history"
+botspy.store.ingest -> store_db: "writes rows\nin one transaction.\nSensitive data: session history"
+botspy.store.ingest -> botspy.store.embedder: "text parts to embed.\nSensitive data: plaintext text"
 botspy.store.embedder -> models: "loads model once\n(read-only)"
 botspy.store.embedder -> store_db: "writes embeddings"
 botspy.cli -> botspy.store.query: "sessions, show, stats"
-botspy.store.query -> store_db: "reads (WAL readers)"
+botspy.store.query -> store_db: "reads (WAL readers).\nSensitive data: session history"
 botspy.cli -> botspy.store.search: "search"
-botspy.store.search -> store_db: "reads FTS5 and vector indexes"
+botspy.store.search -> store_db: "reads FTS5 and vector indexes.\nSensitive data: plaintext text"
 botspy.store.search -> botspy.store.embedder: "embeds the query text"
-botspy.cli -> user: "output (human, JSON, NDJSON)"
+botspy.cli -> user: "output (human, JSON, NDJSON).\nSensitive data: session history"

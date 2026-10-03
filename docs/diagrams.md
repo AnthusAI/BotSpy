@@ -29,11 +29,13 @@ picks the variant that matches the reader's color scheme:
 
 ## How to change a diagram
 
-1. Edit `diagrams/<name>.d2`. Do not define colors, classes, or the
-   legend there — the shared file already provides them (below).
+1. Edit `diagrams/<name>.d2`. Do not define colors or classes there —
+   the shared file already provides them (below).
 2. Mark every shape that reads, copies, or stores session content
-   with `class: sensitive` and put 🔒 in its label. Every diagram must
-   carry the sensitive marker.
+   with `class: sensitive` and write "Sensitive data" in its label.
+   Label every edge that carries session content the same way. There
+   is no legend: the explicit label is the explanation. Every diagram
+   must carry the sensitive marker.
 3. Run `scripts/render-diagrams.sh`.
 4. Commit the source **and** the three rendered files together, so
    the checked-in renders always match the sources.
@@ -66,10 +68,11 @@ root-level import, so the script concatenates instead — do not try
   - `store` — `shape: cylinder`, for BotSpy's own storage shapes.
   - `boundary` — a dashed border, for trust zones and file-system
     areas.
-- The **legend** — a small group that explains the sensitive marker
-  and the default look. It lives in the shared file, so it renders on
-  every diagram automatically. Do not add a legend to an individual
-  diagram.
+- There is **no legend**. The sensitive marker is explained by the
+  explicit "Sensitive data" label on every sensitive shape and edge;
+  no diagram carries a legend group, and no diagram uses a lock,
+  padlock, or shield icon — a lock would imply the data is protected,
+  and the marker only identifies what is sensitive.
 
 ### `scripts/render-diagrams.sh` — the pipeline settings
 

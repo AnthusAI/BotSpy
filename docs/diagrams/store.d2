@@ -11,22 +11,22 @@ open: {
 }
 
 db: {
-  label: "🔒 <home>/.botspy/store.db"
+  label: "Sensitive data: <home>/.botspy/store.db"
 
   sessions: {
-    label: "🔒 sessions\nid, agent, project, times,\nmessage count, content hash,\nfull session JSON"
+    label: "Sensitive data: sessions\nid, agent, project, times,\nmessage count, content hash,\nfull session JSON"
     class: sensitive
   }
   messages: {
-    label: "🔒 messages\nsession id, ordinal, role,\ntimestamp, full message JSON"
+    label: "Sensitive data: messages\nsession id, ordinal, role,\ntimestamp, full message JSON"
     class: sensitive
   }
   parts: {
-    label: "🔒 parts\nkind, plaintext text"
+    label: "Sensitive data: parts\nkind, plaintext text"
     class: sensitive
   }
   message_fts: {
-    label: "🔒 message_fts (FTS5)\nplaintext index over parts.text"
+    label: "Sensitive data: message_fts (FTS5)\nplaintext index over parts.text"
     class: sensitive
   }
   message_vec_rows: {
@@ -34,7 +34,7 @@ db: {
     class: tool
   }
   message_vec: {
-    label: "🔒 message_vec (vec0)\nembeddings, cosine distance,\ncreated lazily on first embed"
+    label: "Sensitive data: message_vec (vec0)\nembeddings, cosine distance,\ncreated lazily on first embed"
     class: sensitive
   }
   meta: {
@@ -44,7 +44,7 @@ db: {
 }
 
 sidecars: {
-  label: "🔒 WAL sidecars\nstore.db-wal, store.db-shm\ncontain recent page writes"
+  label: "Sensitive data: WAL sidecars\nstore.db-wal, store.db-shm\ncontain recent page writes"
   class: sensitive
   shape: cylinder
 }
@@ -66,7 +66,7 @@ query: {
 
 path_note -> open: "open the store"
 open -> db: "migrations to schema v2,\nsqlite-vec registered per process"
-db -> sidecars: "WAL writes land here first"
-ingest -> db: "upsert_session"
+db -> sidecars: "WAL writes land here first.\nSensitive data: recent page writes"
+ingest -> db: "upsert_session.\nSensitive data: session history"
 refresh -> ingest: "stale sessions only"
-query -> db: "read-only, concurrent"
+query -> db: "read-only, concurrent.\nSensitive data: session history"

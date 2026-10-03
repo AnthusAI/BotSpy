@@ -11,7 +11,7 @@ text_path: {
 }
 
 fts_table: {
-  label: "🔒 message_fts\nplaintext index"
+  label: "Sensitive data: message_fts\nplaintext index"
   class: sensitive
 }
 
@@ -31,7 +31,7 @@ models: {
 }
 
 vec_table: {
-  label: "🔒 message_vec (vec0)\nembeddings, cosine distance"
+  label: "Sensitive data: message_vec (vec0)\nembeddings, cosine distance"
   class: sensitive
 }
 
@@ -41,7 +41,7 @@ hybrid: {
 }
 
 output: {
-  label: "🔒 Search hits (NDJSON)\nsession_id, message_ordinal, role,\npart_kind, text, provenance"
+  label: "Sensitive data: Search hits (NDJSON)\nsession_id, message_ordinal, role,\npart_kind, text, provenance"
   class: sensitive
 }
 
@@ -55,5 +55,5 @@ embedder -> vec_table: "query vector"
 vec_table -> sem_path: "nearest rows,\ncosine distance"
 sem_path -> hybrid: "semantic ranks"
 text_path -> hybrid: "text ranks"
-hybrid -> output: "fused, ordered hits"
-cli -> output: "streams NDJSON"
+hybrid -> output: "fused, ordered hits.\nSensitive data: session history"
+cli -> output: "streams NDJSON.\nSensitive data: session history"

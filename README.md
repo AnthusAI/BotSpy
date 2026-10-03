@@ -15,8 +15,8 @@ write their session data to their own local files; BotSpy reads those
 files read-only and shows you the results.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/context.dark.png">
-  <img src="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/context.light.png" alt="C4 context diagram: user, BotSpy, and the coding agents on the machine">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/context.dark.png">
+  <img src="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/context.light.png" alt="C4 context diagram: user, BotSpy, and the coding agents on the machine">
 </picture>
 
 ## What BotSpy does
@@ -51,8 +51,8 @@ query surface answers over it — text, semantic, or hybrid. The diagram
 shows every source and every exact path.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/dataflow.dark.png">
-  <img src="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/dataflow.light.png" alt="Top-level data flow: five sources, snapshot copies, adapters, unified schema, ingest, store, query, output">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/dataflow.dark.png">
+  <img src="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/dataflow.light.png" alt="Top-level data flow: five sources, snapshot copies, adapters, unified schema, ingest, store, query, output">
 </picture>
 
 ## One machine, one store
@@ -65,8 +65,8 @@ process; it holds no data of its own. Delete `~/.botspy/` and no BotSpy
 copy of your sessions remains.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/containers.dark.png">
-  <img src="https://raw.githubusercontent.com/AnthusAI/BotSpy/develop/docs/diagrams/containers.light.png" alt="C4 container diagram: CLI, agent files, snapshot copies, store, model cache">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/containers.dark.png">
+  <img src="https://raw.githubusercontent.com/DataParade-io/BotSpy/develop/docs/diagrams/containers.light.png" alt="C4 container diagram: CLI, agent files, snapshot copies, store, model cache">
 </picture>
 
 ## Everything stays local
