@@ -241,7 +241,7 @@ and [`features/03_importers/wal_snapshot.feature`](features/03_importers/wal_sna
   [`features/03_importers/README.md`](features/03_importers/README.md).
 - The original design narrative and detailed FAQ are preserved in
   [`docs/DESIGN.md`](docs/DESIGN.md).
-- Repository: [github.com/AnthusAI/BotSpy](https://github.com/AnthusAI/BotSpy)
+- Repository: [github.com/example-org/example-repo](https://github.com/example-org/example-repo)
 
 ## License
 

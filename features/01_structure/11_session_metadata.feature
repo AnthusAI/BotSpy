@@ -12,20 +12,20 @@ Feature: Optional session metadata
 
   Scenario: A session exposes its title, branch, and PR link
     Given a fixture session "m1" from agent "claude_code" in project "demo"
-    When the session records title "Fix the release pipeline", git branch "claude/summarization-bug" and pr_url "https://github.com/AnthusAI/BotSpy/pull/7"
-    Then the session summary includes title "Fix the release pipeline"
-    And the session summary includes git branch "claude/summarization-bug"
-    And the session summary includes pr_url "https://github.com/AnthusAI/BotSpy/pull/7"
+    When the session records title "Fix the widget pipeline", git branch "claude/example-fix" and pr_url "https://github.com/example-org/example-repo/pull/42"
+    Then the session summary includes title "Fix the widget pipeline"
+    And the session summary includes git branch "claude/example-fix"
+    And the session summary includes pr_url "https://github.com/example-org/example-repo/pull/42"
 
   Scenario: Git coordinates include the commit when the agent records it
     Given a fixture session "m2" from agent "codex" in project "demo"
-    When the session records git branch "main", git commit "a50a9d8" and origin "git@github.com:AnthusAI/BotSpy.git"
-    Then the session summary includes git commit "a50a9d8"
+    When the session records git branch "main", git commit "1a2b3c4d" and origin "git@github.com:example-org/example-repo.git"
+    Then the session summary includes git commit "1a2b3c4d"
 
   Scenario: The working directory is recorded
     Given a fixture session "m3" from agent "codex" in project "demo"
-    When the session records cwd "/Users/home/Projects/BotSpy"
-    Then the session summary includes cwd "/Users/home/Projects/BotSpy"
+    When the session records cwd "/Users/example/Projects/example-repo"
+    Then the session summary includes cwd "/Users/example/Projects/example-repo"
 
   Scenario: Archive and status flags are preserved
     Given a fixture session "m4" from agent "codex" in project "demo"

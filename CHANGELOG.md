@@ -125,7 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - *(kanbus)* close BOTSPY-493cee as superseded — direct release rework (attempt A)
 - Merge pull request #3 from AnthusAI/fix/release-plz-b
 - *(kanbus)* BOTSPY-4df7c3 in progress
-- *(kanbus)* record Ryan's MiniLM decision, close BOTSPY-bb60bb, unblock E6
+- *(kanbus)* record the maintainer's MiniLM decision, close BOTSPY-bb60bb, unblock E6
 - *(kanbus)* close BOTSPY-3d9af8 — release-plz fix landed on develop
 - *(kanbus)* file local-store implementation plan under BOTSPY-c7795b (7 epics, 18 tasks)
 - *(release)* make release-plz work under GitFlow
