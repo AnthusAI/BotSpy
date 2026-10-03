@@ -40,7 +40,7 @@ files read-only and shows you the results.
   every verb is one library call plus rendering.
 - **Sensitive-data visibility.** BotSpy never hides where session
   content lives. Every architecture diagram marks the sensitive places,
-  and [`docs/sensitive-data.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/sensitive-data.md)
+  and [`docs/sensitive-data.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/sensitive-data.md)
   lists every path BotSpy reads, copies, or writes.
 
 ## How the data flows
@@ -86,9 +86,9 @@ copy of your sessions remains.
 
 Both read-only behavior and WAL-safe snapshotting are pinned by
 executed specifications:
-[`features/03_importers/contract.feature`](https://github.com/AnthusAI/BotSpy/blob/develop/features/03_importers/contract.feature)
+[`features/03_importers/contract.feature`](https://github.com/DataParade-io/BotSpy/blob/develop/features/03_importers/contract.feature)
 and
-[`features/03_importers/wal_snapshot.feature`](https://github.com/AnthusAI/BotSpy/blob/develop/features/03_importers/wal_snapshot.feature).
+[`features/03_importers/wal_snapshot.feature`](https://github.com/DataParade-io/BotSpy/blob/develop/features/03_importers/wal_snapshot.feature).
 
 ## Supported agents and where their data lives
 
@@ -103,7 +103,7 @@ and
 Default roots sit under your home directory; `--root` and `--home`
 override them. The full inventory of every exact path, in every
 category, is in
-[`docs/sensitive-data.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/sensitive-data.md).
+[`docs/sensitive-data.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/sensitive-data.md).
 
 ## Install
 
@@ -127,32 +127,32 @@ macOS (Apple Silicon and Intel), and Windows (MSVC).
 
 The docs pages are the deep reference; this README stays the overview.
 
-- [`docs/architecture.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/architecture.md)
+- [`docs/architecture.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/architecture.md)
   — the C4 views and the end-to-end data flow
-- [`docs/cli.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/cli.md)
+- [`docs/cli.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/cli.md)
   — the `botspy` command: every verb, flag, output mode, and exit code
-- [`docs/store.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/store.md)
+- [`docs/store.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/store.md)
   — the local store: where it lives, its tables, ingest, and
   incremental refresh; how to use BotSpy as a library
-- [`docs/search.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/search.md)
+- [`docs/search.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/search.md)
   — text search, semantic search, hybrid search, and the one-time model
   download
-- [`docs/sensitive-data.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/sensitive-data.md)
+- [`docs/sensitive-data.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/sensitive-data.md)
   — every path BotSpy reads, copies, or writes
-- [`docs/sources/`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/sources/)
+- [`docs/sources/`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/sources/)
   — one document per source adapter, plus the shared adapter protocol
-- [`docs/diagrams.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/diagrams.md)
+- [`docs/diagrams.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/diagrams.md)
   — the diagram sources and how to re-render them
-- [`docs/DESIGN.md`](https://github.com/AnthusAI/BotSpy/blob/develop/docs/DESIGN.md)
+- [`docs/DESIGN.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/DESIGN.md)
   — the original design narrative and detailed FAQ
 - API documentation: [docs.rs/botspy](https://docs.rs/botspy)
 - Executable specifications: the Gherkin behavior specs live under
-  [`features/`](https://github.com/AnthusAI/BotSpy/blob/develop/features/)
+  [`features/`](https://github.com/DataParade-io/BotSpy/blob/develop/features/)
   and run with `cargo test --test bdd`; the specs are the source of
   truth, and the implementation is generated from them
-- Example consumers of the public API: [`examples/`](https://github.com/AnthusAI/BotSpy/blob/develop/examples/)
+- Example consumers of the public API: [`examples/`](https://github.com/DataParade-io/BotSpy/blob/develop/examples/)
   — a session meter, local sentiment analysis, and a metrics stub
-- Repository: [github.com/AnthusAI/BotSpy](https://github.com/AnthusAI/BotSpy)
+- Repository: [github.com/DataParade-io/BotSpy](https://github.com/DataParade-io/BotSpy)
 
 ## License
 
