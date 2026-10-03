@@ -3,7 +3,7 @@
   "title": "Fix README diagrams: drop legend, explicit sensitive-data labels, store in context view",
   "description": "",
   "type": "task",
-  "status": "open",
+  "status": "in_progress",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -24,10 +24,17 @@
       "text": "Implementation done: legend removed from the shared theme (no diagram carries a legend now); every lock/padlock emoji removed from all 12 D2 sources; every sensitive element and every flow that carries session content carries an explicit 'Sensitive data: ...' text label; the C4 context diagram now shows the BotSpy local store as its own sensitive element with ingest flow from BotSpy and read flows labeled; README image URLs point at the DataParade-io org; docs prose that described the legend/lock marker (docs/README.md, architecture.md, diagrams.md, sensitive-data.md) updated to describe the explicit label rule. All 12 diagrams re-rendered with d2 v0.9.0 (tala, themes 0/200) and visually checked in light and dark. Gates: fmt clean, clippy -D warnings clean, full cargo test green (79 lib tests; BDD 41 features / 250 scenarios, 246 passed and 4 skipped; guards incl. no_real_personal_data and spec_docs_coverage; 8 doc tests). One local-toolchain detour: a disk-full event had corrupted the 1.78.0 rustup toolchain, which broke builds until repaired; CI unaffected.",
       "created_at": "2026-10-03T18:38:05.098258Z",
       "comment_type": "default"
+    },
+    {
+      "id": "1b5d11ad-fc53-4eb3-aa89-d1bfcb945710",
+      "author": "example-user",
+      "text": "Blocked on PR creation: the branch cursor/context-diagram-fix-fb2c is pushed to the DataParade-io remote (commits 3fde1ff diagram fix, 8fb4a54 board state, authored as Example Dev <agent@example.com>), all local gates are green, but the Cursor PR tool returns '[unauthenticated] Error' for the moved org on every attempt, so the pull request into develop could not be opened from this session. Machine gh login (endymion) has ADMIN access, so the PR can be opened from the branch in one click, or re-authenticating the Cursor GitHub integration should let a follow-up session create it. CI runs on the pull_request event, so no check run exists until the PR is open. Do not close this task yet.",
+      "created_at": "2026-10-03T18:41:56.255736Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T17:53:08.346633Z",
-  "updated_at": "2026-10-03T18:38:05.098609Z",
+  "updated_at": "2026-10-03T18:41:56.255793Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
