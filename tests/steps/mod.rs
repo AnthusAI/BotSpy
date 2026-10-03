@@ -152,6 +152,11 @@ pub struct BotSpyWorld {
     pub example_sources: Option<String>,
     /// Fixture home the CLI steps laid out for the current scenario.
     pub cli_home: Option<std::path::PathBuf>,
+    /// Scratch output directory for the current scenario (the `{out_dir}`
+    /// placeholder — stable within the scenario, fresh across scenarios).
+    pub cli_out_dir: Option<std::path::PathBuf>,
+    /// Store the background import steps filled for search/stats steps.
+    pub cli_store: Option<std::path::PathBuf>,
     /// The outcome of the most recent CLI run.
     pub cli_run: Option<botspy::cli::RunOutcome>,
     /// The local store under test (store steps).

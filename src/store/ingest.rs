@@ -137,6 +137,21 @@ impl Store {
     /// re-ingested only when the content hash actually moved; sessions the
     /// sources no longer report are pruned. One transaction per pass.
     pub fn refresh(&self, adapters: &[Arc<dyn Adapter>]) -> Result<IngestReport, StoreError> {
+        self.refresh_with(adapters, false)
+    }
+
+    /// Re-extract every reported session from byte zero: the staleness
+    /// shortcut is ignored, so fixes to an adapter's parsing show up as
+    /// updates instead of silently lingering. Pruning still applies.
+    pub fn refresh_full(&self, adapters: &[Arc<dyn Adapter>]) -> Result<IngestReport, StoreError> {
+        self.refresh_with(adapters, true)
+    }
+
+    fn refresh_with(
+        &self,
+        adapters: &[Arc<dyn Adapter>],
+        force: bool,
+    ) -> Result<IngestReport, StoreError> {
         let tx = self
             .conn
             .unchecked_transaction()
@@ -174,13 +189,14 @@ impl Store {
                 if !reported.insert(summary.id.clone()) {
                     continue;
                 }
-                let stale = match stored.get(&summary.id) {
-                    None => true,
-                    Some((last_activity_at, message_count, _)) => {
-                        *last_activity_at != summary.last_activity_at
-                            || *message_count != summary.message_count as i64
-                    }
-                };
+                let stale = force
+                    || match stored.get(&summary.id) {
+                        None => true,
+                        Some((last_activity_at, message_count, _)) => {
+                            *last_activity_at != summary.last_activity_at
+                                || *message_count != summary.message_count as i64
+                        }
+                    };
                 if !stale {
                     report.unchanged += 1;
                     continue;
