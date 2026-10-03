@@ -6,13 +6,13 @@ root: {
 }
 
 index: {
-  label: "🔒 Threads index\n~/.codex/state_5.sqlite\ntable threads:\nid, rollout_path, parent_id, cwd\nopened read-only"
+  label: "🔒 Threads index\n~/.codex/state_5.sqlite\nopened read-only, directly\n(no snapshot copy)\nquery: id, rollout_path, parent_id, cwd\nfrom table threads"
   class: sensitive
 }
 
-history: {
-  label: "🔒 History index\n~/.codex/thread_history_1.sqlite\nturn and item projections,\nrollout byte offsets"
-  class: sensitive
+bug: {
+  label: "Known bug BOTSPY-81143b\nthe real threads table has no\nparent_id column. The query fails,\nthe adapter swallows the error,\nreal installs report 0 sessions"
+  class: tool
 }
 
 rollouts: {
@@ -26,12 +26,12 @@ missing: {
 }
 
 parents: {
-  label: "Spawn edges\nparent_id links become\nparent_links in the session graph"
+  label: "Spawn edges\nparent links in the session graph\n(the real DB keeps them in\nthread_spawn_edges; the query's\nparent_id column is absent today)"
   class: tool
 }
 
 adapter: {
-  label: "CodexSource\nbyte-offset resume per session,\npartial trailing line held back"
+  label: "CodexSource\nrollout byte offsets in memory,\nresume per session,\npartial trailing line held back"
   class: tool
 }
 
@@ -51,10 +51,10 @@ session: {
 }
 
 root -> index: "reads thread list"
-index -> rollouts: "rollout_path per thread"
+index -> rollouts: "rollout_path per thread\n(absolute or relative)"
 rollouts -> adapter: "read record by record"
 index -> missing: "thread without a rollout file"
-root -> history: "referenced for projections\nand offsets"
+index -> bug: "query error swallowed\n(unwrap_or_default)"
 adapter -> ordering: "sorts by ordinal"
 ordering -> mapping: "each record type"
 mapping -> session: "extracted"

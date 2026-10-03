@@ -10,7 +10,8 @@ that all five adapters follow. One document per source goes deeper:
 
 1. The registry makes a source by name: `create_source(name, options)`.
 2. The names are the five registry names: `claude_code`, `cursor`,
-   `codex`, `grok_bot`, `antigravity`. Kebab-case names are accepted.
+   `codex`, `grok_bot`, `antigravity`. The names are exact; the
+   registry accepts no aliases.
 3. The options give the root directory and the home directory.
 
 The roots:
@@ -19,7 +20,7 @@ The roots:
 | --- | --- |
 | `claude_code` | `~/.claude/projects` |
 | `cursor` | `~/.cursor` (the IDE store is `~/.cursor/state.vscdb`; the CLI transcripts are under `~/.cursor/projects`) |
-| `codex` | `~/.codex` |
+| `codex` | `~/.codex/sessions` |
 | `grok_bot` | `~/.grok/sand-client-persistence` |
 | `antigravity` | `~/.gemini/antigravity` |
 
@@ -67,8 +68,9 @@ Two rules hold everywhere:
 ## Skips
 
 Skips are data, not errors. A malformed line, an unknown record type,
-or a missing file is skipped and counted. The counts surface in
-`doctor`, in `sources -v`, in `import`, and in the reports. Skips
+or a missing file is skipped and counted. The adapters count the
+skips; `doctor` surfaces the issues. The planned `sources -v` and
+`import` verbs will surface the counts too (BOTSPY-98386a). Skips
 never change the exit code.
 
 ## Snapshots

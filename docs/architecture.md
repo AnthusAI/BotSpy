@@ -83,8 +83,7 @@ Each adapter reads its agent's own files. The paths:
 - Claude Code: `~/.claude/projects/<encoded-cwd>/<session>.jsonl`
 - Cursor: `~/.cursor/state.vscdb` and
   `~/.cursor/projects/<encoded-cwd>/agent-transcripts/*.jsonl`
-- Codex: `~/.codex/state_5.sqlite`,
-  `~/.codex/thread_history_1.sqlite`, and
+- Codex: `~/.codex/state_5.sqlite` and
   `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl`
 - Grok Bot: `~/.grok/sand-client-persistence/*.json`
 - Antigravity: `~/.gemini/antigravity/conversation_summaries.db`,
