@@ -15,6 +15,15 @@ Multiple agents work in this repo in parallel at any given time and must avoid c
 
 **Do not open a pull request for project management.** Kanbus issues, comments, status changes, and `project/wiki` pages commit on `develop` and push. No feature branch, no PR, no review loop. Mixing board files into a product PR is also wrong: land the board on `develop` first.
 
+## Sensitive-information scanning (Pudicus) is mandatory
+
+Every commit must carry a Pudicus receipt. Before your first commit in a
+clone, run `bash scripts/setup-pudicus.sh` (installs the commit-msg hook
+that gitleak-scans and signs each commit). Never use `--no-verify`; the
+`pudicus-receipt-gate` required check on develop and main rejects
+unsigned commits. See docs/pudicus.md for receipts, exemptions, and
+recovery.
+
 ## Specs are the source of truth
 
 BotSpy is a behavior-driven specification project built as a Rust library crate (library only: no binary, no CLI, no server, no FFI). The Gherkin behavior specifications under `features/` are the backbone and the true source of the project; implementation code is considered generated from the specs. All planning is organized around features and their specs. Work always starts by writing or refining the feature spec (scenarios with concrete examples), then the step definitions (Rust, `cucumber` crate, run via `cargo test --test bdd`), then the implementation. On the Kanbus board, every feature-area epic starts with spec-writing tasks, and implementation tasks are blocked-by those spec tasks.
