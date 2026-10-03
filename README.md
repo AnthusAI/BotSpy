@@ -174,6 +174,27 @@ Session solo-abc (claude_code, extra-demo) — 2 messages, started 2026-09-15T12
 line. An unknown id is an error, never an empty result; an ambiguous
 prefix is an error listing the candidates, never a guess.
 
+## The library: one local store, searchable
+
+As a library, BotSpy keeps everything it ingests in one local SQLite
+store (WAL mode, with the sqlite-vec extension) at
+`~/.botspy/store.db` (`BOTSPY_HOME` moves it). You register the
+read-only adapters, ingest their sessions, and query through one
+interface — the engine stays invisible:
+
+- iteration over sessions, messages, and parts in order, with filters
+  by source, project, part kind, and time window pushed down to SQLite;
+- FTS5 text search, ranked and filter-composable;
+- semantic search over all-MiniLM-L6-v2 embeddings (computed on your
+  CPU, after the one-time `cargo run --example setup_models` fetch),
+  with a relevance floor so noise never ranks;
+- hybrid search that fuses the lexical and semantic halves.
+
+Incremental refresh keeps the store in step with the sources without
+re-mining everything. The whole behavior is pinned by the executable
+specs under [`features/02_querying/`](features/02_querying/) — see the
+chapter status in `cargo doc --open`.
+
 ## Everything stays local
 
 - Adapters are read-only by construction — the protocol has no surface

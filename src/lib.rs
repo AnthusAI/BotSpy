@@ -41,7 +41,8 @@
 //! 2. [Querying](crate::spec::ch02_querying) —
 //!    one query interface backed by SQLite + sqlite-vec, completely
 //!    transparent to callers; implemented by the Local Store Initiative
-//!    (BOTSPY-c7795b). Mirrors `features/02_querying/` (specified next).
+//!    (BOTSPY-c7795b). Mirrors `features/02_querying/` (implemented and
+//!    green — see the chapter's status section).
 //! 3. [Importers / CDC](crate::spec::ch03_importers) —
 //!    the change-data-capture pipeline (detect new or changed transcripts,
 //!    hand off to normalization, retry), with per-agent importer
