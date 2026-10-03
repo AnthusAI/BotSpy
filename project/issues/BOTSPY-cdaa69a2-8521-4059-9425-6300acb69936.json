@@ -3,7 +3,7 @@
   "title": "Implement botspy scan (CLI verb + store ingest options)",
   "description": "",
   "type": "sub-task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,18 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "c9a0506f-4461-43c4-9fc8-8aa3c00be796",
+      "author": "example-user",
+      "text": "Implementation done: scan verb + background loop shipped on branch cursor/scan-command-2500 and merged to develop via PR (merge commit e671b89). All CI checks green. Gates clean: fmt, clippy, doc, full test suite (unit, BDD, integration, doc-tests) and the personal-data guard.",
+      "created_at": "2026-10-03T17:34:28.918395Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-03T15:46:45.573867Z",
-  "updated_at": "2026-10-03T15:46:53.561700Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T17:34:29.828156Z",
+  "closed_at": "2026-10-03T17:34:29.828057Z",
   "agent": {
     "platform": "cursor",
     "model": "GLM 5.3 Flash",
@@ -26,5 +34,8 @@
   },
   "right_now_summary": null,
   "right_now_updated_at": null,
-  "custom": {}
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
 }

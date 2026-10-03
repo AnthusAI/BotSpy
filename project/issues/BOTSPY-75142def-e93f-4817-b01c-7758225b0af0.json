@@ -3,7 +3,7 @@
   "title": "botspy scan behavior specs (Gherkin)",
   "description": "",
   "type": "story",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -22,11 +22,18 @@
         "model": "GLM 5.3 Flash",
         "name": "Cursor Cloud Agent (local-store implementer)"
       }
+    },
+    {
+      "id": "9938c030-7521-4778-88a5-ccb4b8acc4a3",
+      "author": "example-user",
+      "text": "Specs landed and green: features/cli/60_scan.feature covers the scan verb and the background loop (interval, --once, clean shutdown, no overlap, per-pass reports, error visibility, no pruning). Ingest specs landed in features/02_querying/05_ingest.feature and 06_refresh.feature. PR merged to develop, CI green.",
+      "created_at": "2026-10-03T17:34:23.240589Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T15:46:41.389845Z",
-  "updated_at": "2026-10-03T15:46:44.657317Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T17:34:24.470172Z",
+  "closed_at": "2026-10-03T17:34:24.470087Z",
   "agent": {
     "platform": "cursor",
     "model": "GLM 5.3 Flash",
