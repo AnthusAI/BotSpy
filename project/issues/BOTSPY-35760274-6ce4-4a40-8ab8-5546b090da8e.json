@@ -3,7 +3,7 @@
   "title": "Codex adapter",
   "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
   "type": "epic",
-  "status": "closed",
+  "status": "open",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -32,8 +32,8 @@
     }
   ],
   "created_at": "2026-10-02T16:15:05.963109Z",
-  "updated_at": "2026-10-03T11:36:20.374257Z",
-  "closed_at": "2026-10-03T11:36:20.374182Z",
+  "updated_at": "2026-10-03T13:36:16.966981Z",
+  "closed_at": null,
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",
