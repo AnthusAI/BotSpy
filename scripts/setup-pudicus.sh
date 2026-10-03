@@ -59,4 +59,5 @@ else
 fi
 
 echo "Done. Commits in this clone (including all linked worktrees) are now"
-echo "scanned by gitleaks and signed with a Pudicus receipt trailer."
+echo "scanned by gitleaks (rules in .gitleaks.toml) and signed with a"
+echo "Pudicus receipt trailer."

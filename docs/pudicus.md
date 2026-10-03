@@ -109,9 +109,64 @@ changes through a PR, or coordinate with the repository admin.
 ## Checker configuration
 
 `.pudicus.yml` at the repository root defines the scanners run by the
-hook. Currently: `gitleaks protect --staged`. To add a checker, follow
-the Pudicus README (command checkers run any CLI; Tactus checkers run
-agent procedures).
+hook. Currently one checker: `gitleaks protect --staged --config
+.gitleaks.toml`, which applies gitleaks' default secret rules plus the
+BotSpy-specific rules in `.gitleaks.toml`:
+
+- `botspy-email` — email addresses. Allowlisted: GitHub noreply
+  addresses, `git@github.com` clone URLs, and
+  example/anthus/github placeholders on the .com/.ai/.org/.io/.net
+  domains.
+- `botspy-home-path` — absolute personal home paths
+  (`/Users/<name>/`, `/home/<name>/`). The rule reports only the path
+  component after the prefix (capture group), because gitleaks'
+  default ruleset carries global stopwords that would otherwise
+  suppress any secret containing the word "home". Exempted paths:
+  the `/tmp/home/...` test fixture in `src/importer.rs` and
+  `project/` (Kanbus board data, see below).
+- `botspy-session-uuid` — bare UUIDs (session and agent
+  identifiers). `project/` is exempt (Kanbus issue and event ids are
+  structural UUIDs).
+- `botspy-actor-id` — `actor_id` fields with quoted values (session
+  provenance identifiers). Bare struct/field definitions in code do
+  not match.
+
+Scans are **patch-scoped** (staged diffs locally, commit ranges in CI),
+so content that predates this configuration is grandfathered and never
+re-flagged.
+
+Known trade-off: `project/` (the Kanbus board) is exempt from the
+home-path and UUID rules because its event JSONs structurally contain
+machine paths and UUIDs. Those files can still carry real usernames —
+sanitize at the source (the board writer) rather than widening this
+exemption. To add a checker or rule, follow the Pudicus README
+(command checkers run any CLI; Tactus checkers run agent procedures).
+
+## TruffleHog: evaluated, not adopted
+
+[TruffleHog](https://github.com/trufflesecurity/trufflehog) (v3.97.9)
+was evaluated as a second hook checker against planted values in an
+isolated test repository. It was **not** adopted:
+
+- **No allowlist mechanism for custom detectors.** Infrastructure
+  identities that must stay scannable-but-allowed under gitleaks
+  (`git@github.com` URLs, `@users.noreply.github.com`, example.com
+  placeholders, the `/tmp/home` test fixture) all produce findings
+  under TruffleHog with no way to exempt them, so it would block
+  legitimate commits.
+- **Scans outside the patch.** The filesystem source reads `.git`
+  objects and gitignored files and re-reports findings per source,
+  breaking the grandfathering scope and flooding the hook with
+  duplicate findings (43 findings on the same content gitleaks
+  reports 6 for).
+- **Defaults overlap gitleaks without adding coverage.** Against
+  planted fake AWS credentials and a GitHub PAT, TruffleHog's default
+  detectors found 0 without network verification (`--no-verification`),
+  while gitleaks caught the AWS secret key.
+
+TruffleHog remains useful as a *verified* (network, non-blocking)
+secret sweeper run manually or in a scheduled advisory job, but it is
+not wired into the commit hook or the PR gate.
 
 ## Failure recovery
 
