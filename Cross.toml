@@ -1,0 +1,14 @@
+# Configuration for the musl cross jobs in .github/workflows/ci.yml
+# (BOTSPY-c7795b). cross does not forward arbitrary host env into its
+# containers; this passthrough list carries the two CFLAGS_<target>
+# aliases (sqlite-vec 0.1.9 derives uintN_t from the BSD-style u_intN_t
+# names, which musl libc does not define — cc-rs appends CFLAGS_<target>,
+# dashes replaced by underscores, to every compile) and BOTSPY_MODELS
+# (the workspace mounts at /project inside the container, so the model
+# cache filled on the host sits at /project/.botspy-models there).
+[build.env]
+passthrough = [
+    "CFLAGS_x86_64_unknown_linux_musl",
+    "CFLAGS_aarch64_unknown_linux_musl",
+    "BOTSPY_MODELS",
+]

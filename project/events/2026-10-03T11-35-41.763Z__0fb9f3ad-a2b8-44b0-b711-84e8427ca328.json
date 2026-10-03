@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "0fb9f3ad-a2b8-44b0-b711-84e8427ca328",
+  "issue_id": "BOTSPY-98386a25-dd8c-4ce9-b986-38fee99265d9",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T11:35:41.763Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Wire the CLI to the store: store-backed verbs and specs",
+    "description": "**Intent:** Phase 1 store verbs of the CLI design (comment 773667 on BOTSPY-7c2705). The local store has landed (BOTSPY-c7795b, feat/local-store PR #4: SQLite + WAL, FTS5, sqlite-vec, incremental refresh) — wire the botspy CLI to it.\n\n**Scope:** `import` (incremental CDC into the local store, `--dry-run` reporting, per-source skip summary, `--full`), `stats` (aggregates over the store: sessions/messages/turns/parts, usage where recorded, `--by day|source|project` pivots), `search --mode text` (FTS5 through the store), and engine-side `sessions` filters (source/project/kind/time, `--limit`). Specs first under `features/cli/`: Gherkin scenarios per verb (executable red before implementation), then the thinnest implementation — every verb is exactly one library call plus rendering; the store engine stays invisible to the flags; read-only MVP verbs (sources/sessions/show/doctor/snapshot) keep working unchanged.\n\n**Acceptance:** features/cli scenarios for the store-backed verbs reviewed and red first, then green via `cargo test --test bdd`; existing suites stay green; all gates pass (cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test; cargo test --test bdd). Work on a branch off origin/develop; PR to develop only (GitFlow, never main). 2>/dev/null; echo",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}

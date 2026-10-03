@@ -3,7 +3,7 @@
   "title": "Implement the query iteration surface (sessions, messages, parts)",
   "description": "**Files:** `src/store/query.rs` (new), `src/store/mod.rs`, `src/lib.rs` (re-exports), `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `01_iteration.feature` — remove its @wip (cross-source session iteration; in-order messages; in-order parts).\n\n**Acceptance:** `Store::query() -> Query`: `sessions()` lazy iterator (last activity desc, id tiebreak — the chapter-1 order); `open(id)` materializes one session (serde round-trip from rows; `UnknownSession` for unknown ids, never a silent empty); `messages(id)` and per-message parts iterators streaming in ordinal order. Iteration counters (opens / rows fetched) exposed for spec observability exactly like the importer protocol's `peak_buffered`/`SkipCounter` precedent. Iterators are prepared-statement cursors from day one — laziness is inherent; its epic only proves it. Engine invisible: no rusqlite types, SQL strings, or vec0 names in public signatures.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,23 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "0577dd28-9f00-4152-9c78-e2bcd3d99516",
+      "author": "home",
+      "text": "Done: the store's query surface iterates sessions, messages, and parts lazily with QueryCounters — cross-source ordering, streaming discipline, only consumed rows fetched (01_iteration.feature + 03_laziness.feature green). Committed to feat/local-store (9cc322f, PR #4).",
+      "created_at": "2026-10-03T11:34:33.104215Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:49.028728Z",
-  "updated_at": "2026-10-02T21:44:05.764638Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:34:33.997399Z",
+  "closed_at": "2026-10-03T11:34:33.997352Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

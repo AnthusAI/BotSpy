@@ -3,7 +3,7 @@
   "title": "Specify search (07_text_search.feature, 08_vector_search.feature red)",
   "description": "Specs first, red before green; no production code in this task.\n\n**Files:** `features/02_querying/07_text_search.feature` (new, @wip); `features/02_querying/08_vector_search.feature` (new, @wip); `tests/steps/store_steps.rs` (red); `src/spec/ch02_querying.rs` (embed both).\n\n**Specs:** text — find sessions and messages by words across every source, ranked, case-insensitive; no match is an empty result, never an error; search composes with filters. Vector — with the deterministic stub embedder configured, semantic search returns the nearest sessions for a query text with scores; k is caller-chosen; text + vector results merge into one hybrid ranking (reciprocal-rank fusion); a store opened without an embedder answers text search normally and semantic search with a clean empty result; stores never mix embedding models (meta model id).\n\n**Acceptance:** executable red; @wip kept on both files.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -27,11 +27,23 @@
         "model": "GLM 5.3 Flash",
         "name": "Cursor Cloud Agent (local-store implementer)"
       }
+    },
+    {
+      "id": "5a725db1-4b4b-4c28-8a96-92b8771665c7",
+      "author": "home",
+      "text": "Final: 07_text_search.feature and 08_vector_search.feature specified with red steps; green since BOTSPY-e5be2f and BOTSPY-c8c597. Done on feat/local-store (9e6abb3, PR #4).",
+      "created_at": "2026-10-03T11:35:18.676234Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:43:53.374328Z",
-  "updated_at": "2026-10-02T22:57:37.419730Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:35:19.344591Z",
+  "closed_at": "2026-10-03T11:35:19.344553Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

@@ -174,6 +174,27 @@ Session solo-abc (claude_code, extra-demo) — 2 messages, started 2026-09-15T12
 line. An unknown id is an error, never an empty result; an ambiguous
 prefix is an error listing the candidates, never a guess.
 
+## The library: one local store, searchable
+
+As a library, BotSpy keeps everything it ingests in one local SQLite
+store (WAL mode, with the sqlite-vec extension) at
+`~/.botspy/store.db` (`BOTSPY_HOME` moves it). You register the
+read-only adapters, ingest their sessions, and query through one
+interface — the engine stays invisible:
+
+- iteration over sessions, messages, and parts in order, with filters
+  by source, project, part kind, and time window pushed down to SQLite;
+- FTS5 text search, ranked and filter-composable;
+- semantic search over all-MiniLM-L6-v2 embeddings (computed on your
+  CPU, after the one-time `cargo run --example setup_models` fetch),
+  with a relevance floor so noise never ranks;
+- hybrid search that fuses the lexical and semantic halves.
+
+Incremental refresh keeps the store in step with the sources without
+re-mining everything. The whole behavior is pinned by the executable
+specs under [`features/02_querying/`](features/02_querying/) — see the
+chapter status in `cargo doc --open`.
+
 ## Everything stays local
 
 - Adapters are read-only by construction — the protocol has no surface
@@ -182,6 +203,16 @@ prefix is an error listing the candidates, never a guess.
   source file, WAL, and shm are never touched.
 - There is no network, no telemetry, no server. BotSpy reads local files
   and prints local answers; nothing leaves the machine.
+- **One honest exception:** semantic search runs a real embedding model
+  (quantized all-MiniLM-L6-v2 via ONNX on your CPU). Its weights and
+  tokenizer are fetched once — only when you explicitly run the setup
+  step (`cargo run --example setup_models`), digest-verified, and cached
+  under `~/.botspy/models/` (`BOTSPY_MODELS` overrides the location).
+  After that, everything is fully offline: the runtime library makes no
+  network calls, queries nothing, and reports no telemetry. A store
+  opened without the model still does everything except semantic
+  search; if the model is missing, that returns a clean error, never a
+  silent download.
 
 Both read-only behavior and WAL-safe snapshotting are pinned by executed
 specifications: [`features/03_importers/contract.feature`](features/03_importers/contract.feature)

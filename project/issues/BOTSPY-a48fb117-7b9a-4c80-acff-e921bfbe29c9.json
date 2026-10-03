@@ -3,7 +3,7 @@
   "title": "Implement ingestion: adapters → store, read-only, dedup, lossless round-trip",
   "description": "**Files:** `src/store/ingest.rs` (new), `src/store/mod.rs`, `tests/steps/store_steps.rs`. No src/adapters or src/cli changes.\n\n**Specs turned green:** `05_ingest.feature` — remove its @wip.\n\n**Acceptance:** `Store::ingest(&adapters) -> IngestReport`: per adapter discover(), then per session open() and one transaction — sessions row (projected columns + `session_json` minus messages + sha256 `content_hash` over the canonical session JSON), messages rows (`message_json` + projected columns), parts rows (kind + text projection), FTS rows for text-bearing parts. First-report-wins dedup within a pass. Optional-embedder hook: an `Option<Arc<dyn Embedder>>` configured on the store is called at ingest to produce session embeddings into the vec0 table (no default embedder yet — the seam lands with the search epic; store the model id in `meta` and refuse a mismatched one). Sources stay read-only by construction — the adapters have no write surface; the digest steps prove it. Round-trip equality holds for every fixtures-corpus session.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -26,11 +26,23 @@
       "text": "Heads-up from the sessions-listing bug run: the chapter-1 dedupe rule in SessionStore::list_sessions (src/session.rs) silently drops transcripts when the same session id appears in two project dirs (observed 63→61 on real data; bug BOTSPY-17e4aad9). The fix keys dedupe on (agent, id, project_id). When you implement first-report-wins ingestion here, please adopt the same keying so the store matches the fixed listing rule.",
       "created_at": "2026-10-02T22:17:20.674888Z",
       "comment_type": "default"
+    },
+    {
+      "id": "f2fac8cc-28a2-4938-a072-087604ed8c6f",
+      "author": "home",
+      "text": "Done: adapter-driven ingestion mines every registered adapter into the store — strictly read-only sources (digest before/after), first-report-wins dedup, lossless session round-trip, FTS projections written at ingest. 05_ingest.feature green. Committed to feat/local-store (bc1aa42, PR #4).",
+      "created_at": "2026-10-03T11:34:31.635656Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:43:48.369842Z",
-  "updated_at": "2026-10-02T22:17:20.674913Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:34:32.323236Z",
+  "closed_at": "2026-10-03T11:34:32.323207Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

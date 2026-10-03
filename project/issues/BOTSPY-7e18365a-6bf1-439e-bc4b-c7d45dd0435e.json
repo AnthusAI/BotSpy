@@ -1,9 +1,9 @@
 {
   "id": "BOTSPY-7e18365a-6bf1-439e-bc4b-c7d45dd0435e",
-  "title": "Real-model semantic search end-to-end (gated specs)",
+  "title": "Real-model semantic search end-to-end (ungated specs)",
   "description": "**Files:** `features/02_querying/09_semantic_model.feature` (new; ungated per Ryan's decision — CI runs the real model); `tests/steps/store_steps.rs`; `src/store/vector.rs`; `src/spec/ch02_querying.rs` (embed); `.github/workflows` CI steps (download the model once and cache it, e.g. actions/cache keyed on model version/hash, or a pre-downloaded copy).\n\n**Acceptance:** end-to-end, red first then green: ingest with the real MiniLM embedder → semantic search returns the semantically right fixtures → hybrid ranking composes. Per Ryan's decision (BOTSPY-bb60bb closed): no gating, no @wip, no ignored tests — CI runs the real model on all 8 jobs (incl. Windows and musl); the stub remains an internal unit-test seam only.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -15,10 +15,23 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "180e0ef9-34a8-4219-9e71-cea871143d35",
+      "author": "home",
+      "text": "Done: 09_semantic_model.feature — the store records its embedding model id in meta (Store::embedding_model), a store that never embedded records none, and paraphrase queries find their session through the real ungated MiniLM, composing across k=2 over five fixture sessions. Ungated per Ryan's decision BOTSPY-bb60bb (no @wip, no ignored tests). Committed to feat/local-store (124cc00, PR #4).",
+      "created_at": "2026-10-03T11:35:02.064817Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:59.036622Z",
-  "updated_at": "2026-10-02T21:49:12.951227Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:35:02.779921Z",
+  "closed_at": "2026-10-03T11:35:02.779887Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

@@ -3,7 +3,7 @@
   "title": "Direct release workflow: no release PR, tag and GitHub release on main push",
   "description": "",
   "type": "chore",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -38,11 +38,23 @@
       "text": "First real release executed (Ryan: 'Yes release it'). Promoted origin/develop b6a9033 to main as a fast-forward; Release run 37081751572 green: release commit 93ff67d 'chore: release botspy v0.1.0' on main, tag v0.1.0, GitHub release https://github.com/AnthusAI/BotSpy/releases/tag/v0.1.0, crates.io publish of botspy 0.1.0 (https://crates.io/crates/botspy, created 2026-10-03T00:22:31Z, 'prs':[] — no PR ever opened). Verified: cargo search shows 0.1.0; cargo install botspy --locked into /tmp/botspy-install-check succeeded, --version reports botspy 0.1.0; 'botspy sources' lists 5 sources (claude_code 63 sessions, ok); 'botspy sessions --limit 5' lists 5 sessions; temp install removed. Synced back to develop by fast-forward (b6a9033..93ff67d), CI 37082028507 green on all 8 jobs. Closing.",
       "created_at": "2026-10-03T00:30:12.839922Z",
       "comment_type": "default"
+    },
+    {
+      "id": "71c5f868-d17f-4ca1-be8a-4d28cb8f9a52",
+      "author": "home",
+      "text": "Done: the first real release 0.1.0 shipped via the direct-release workflow (no release PR) — tag v0.1.0, GitHub release published, crates.io release. Develop: 93ff67d (release commit) + 8c7046d (board close-out).",
+      "created_at": "2026-10-03T11:35:26.357527Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:55:54.481422Z",
-  "updated_at": "2026-10-03T00:30:12.840153Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:35:26.977705Z",
+  "closed_at": "2026-10-03T11:35:26.977658Z",
   "right_now_summary": null,
   "right_now_updated_at": null,
   "custom": {}
