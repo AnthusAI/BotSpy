@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:32:46.537Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R3 tool result status",
     "description": "",

@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "106ddbd6-734b-4fbc-94de-777ecf9a285c",
-      "author": "home",
+      "author": "example-user",
       "text": "R10 done: role mapping conventions implemented and passing (10_role_mapping.feature un-tagged @wip); see impl sub-task BOTSPY-4782d9.",
       "created_at": "2026-10-02T19:08:30.118634Z",
       "comment_type": "default"

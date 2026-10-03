@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:30:12.456Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Schema R4: Turn grouping with turn-level timing and errors",
     "description": "",

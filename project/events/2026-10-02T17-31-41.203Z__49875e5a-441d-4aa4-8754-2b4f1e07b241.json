@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:31:41.203Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R1 ",
     "description": "",

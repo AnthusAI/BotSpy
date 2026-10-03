@@ -4,9 +4,9 @@
   "issue_id": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
   "event_type": "comment_added",
   "occurred_at": "2026-10-02T18:54:54.830Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "comment_id": "0d007419-9a00-48d4-a2a0-c5a3dffbc915",
-    "comment_author": "home"
+    "comment_author": "example-user"
   }
 }

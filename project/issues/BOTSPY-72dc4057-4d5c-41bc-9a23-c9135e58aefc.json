@@ -22,7 +22,7 @@
   "comments": [
     {
       "id": "ab480f79-8559-498a-af7e-c5b5f0af12f3",
-      "author": "home",
+      "author": "example-user",
       "text": "T9 done: SessionFilter (source/project/part-kind/since/until) + MessageFilter compiled into the prepared-statement cursors; limit enforced by the iterator so keyset pagination stays intact. 02_filters.feature green; 02_querying chapter status + README updated. Committed to feat/local-store (PR #4); closes when it merges to develop.",
       "created_at": "2026-10-02T22:57:35.424003Z",
       "comment_type": "default",
@@ -34,7 +34,7 @@
     },
     {
       "id": "1ff80ea9-ed8c-4652-a657-a2fd50982296",
-      "author": "home",
+      "author": "example-user",
       "text": "Final: query filters (source, project, part kind, time window) pushed down to SQLite — 02_filters.feature green. Done on feat/local-store (e94591e, PR #4).",
       "created_at": "2026-10-03T11:35:16.007778Z",
       "comment_type": "default",

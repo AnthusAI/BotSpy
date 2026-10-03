@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "664a2ed0-a7bd-4b5e-8abd-7fa92c42d3e5",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: 05_ingest.feature specified (ingest report counts, first-report-wins dedup, lossless round-trip, sources stay read-only, empty registry is a clean no-op) plus the red step definitions for 01_iteration.feature — green since BOTSPY-a48fb1 and BOTSPY-a927fc. Committed to feat/local-store (558617d, PR #4).",
       "created_at": "2026-10-03T11:34:29.439655Z",
       "comment_type": "default",

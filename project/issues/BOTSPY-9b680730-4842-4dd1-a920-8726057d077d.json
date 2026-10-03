@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "905cd972-14f5-4f34-be39-3710a46e4803",
-      "author": "home",
+      "author": "example-user",
       "text": "ci.yml: push+PR, Python 3.11/3.12 matrix with uv, ruff check + format check, behave, pytest. release.yml: python-semantic-release on push to main with contents+id-token write; PyPI publish commented out.",
       "created_at": "2026-10-02T16:27:16.752663Z",
       "comment_type": "default"

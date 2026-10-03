@@ -13,8 +13,8 @@
   "comments": [
     {
       "id": "37d7864b-2634-4b84-8dbe-f0ac3bd46a4c",
-      "author": "home",
-      "text": "Stale '(deferred on asset decision)' wording removed from title/description: per Ryan's decision BOTSPY-bb60bb the MiniLM asset question is settled — download-once, digest-verified cache, no cargo feature gate, ungated CI — and the embedder is built on feat/local-store (PR #4: 3e6b787 embedder, 07272ec asset setup, 39094e1 vector search, 124cc00 ungated semantic-model specs).",
+      "author": "example-user",
+      "text": "Stale '(deferred on asset decision)' wording removed from title/description: per the maintainer's decision BOTSPY-bb60bb the MiniLM asset question is settled — download-once, digest-verified cache, no cargo feature gate, ungated CI — and the embedder is built on feat/local-store (PR #4: 3e6b787 embedder, 07272ec asset setup, 39094e1 vector search, 124cc00 ungated semantic-model specs).",
       "created_at": "2026-10-03T11:35:34.037081Z",
       "comment_type": "default",
       "agent": {
@@ -25,7 +25,7 @@
     },
     {
       "id": "27b347b5-7dc0-4cc1-b298-a43ba8f74af4",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
       "created_at": "2026-10-03T12:15:35.596154Z",
       "comment_type": "default"

@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-3b5e9216-4fb2-42a0-8528-03f5132d9ae3",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:40:36.837Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Configure release-plz for library releases",
     "description": "release-plz workflow on main: version bumps, changelog, tags, GitHub releases for the library crate; no binary release assets; crates.io publish disabled (release-plz.toml publish = false). Done when: the release workflow runs green on main.",

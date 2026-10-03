@@ -5,7 +5,7 @@
   "type": "chore",
   "status": "closed",
   "priority": 2,
-  "assignee": "cursor@anthus.ai",
+  "assignee": "agent@example.com",
   "creator": null,
   "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
   "labels": [],
@@ -13,14 +13,14 @@
   "comments": [
     {
       "id": "f1d7ad86-22ff-4d36-9646-1cfdc7e481e5",
-      "author": "home",
+      "author": "example-user",
       "text": "Milestone: implemented in worktree /tmp/botspy-docs-fix on branch cursor/docs-fix-inaccuracies-d281 (off origin/develop at 88f86e0). Commit 56bf8e4: cli.md five-verb rewrite with planned flags under BOTSPY-98386a, Codex docs corrected (no thread_history_1.sqlite, in-memory offsets, swallowed parent_id error / 0-sessions bug 81143b, live state_5.sqlite open), registry root ~/.codex/sessions, snapshot-protection claim scoped, codex.d2 re-rendered with svg + light/dark png. PR opening into develop.",
       "created_at": "2026-10-03T14:15:21.692175Z",
       "comment_type": "default"
     },
     {
       "id": "eb0da701-1c51-48b1-8b47-ea621bfe9ec5",
-      "author": "home",
+      "author": "example-user",
       "text": "Closed: PR #9 merged into develop as d7c80212d912891ff5a430700ffa8acaee22c101 (2026-10-03 14:34Z). All 8 CI checks green (lint, musl aarch64/x86_64, test macos-14/macos-15-intel/ubuntu-arm/ubuntu/windows). Files changed: docs/cli.md, docs/architecture.md, docs/sensitive-data.md, docs/sources/README.md, docs/sources/codex.md, docs/diagrams/codex.d2 + codex.svg + codex.light.png + codex.dark.png. docs/DESIGN.md untouched. No code changes.",
       "created_at": "2026-10-03T14:35:05.466493Z",
       "comment_type": "default"

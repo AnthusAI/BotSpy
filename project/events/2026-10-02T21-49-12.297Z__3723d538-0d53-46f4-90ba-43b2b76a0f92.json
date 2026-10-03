@@ -4,12 +4,12 @@
   "issue_id": "BOTSPY-c3cf4128-48ab-4d14-b16c-845cd917bc16",
   "event_type": "field_updated",
   "occurred_at": "2026-10-02T21:49:12.297Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "changes": {
       "description": {
         "from": "**Files:** per the decision task's answer (e.g. `src/store/assets.rs`; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** fetch-on-first-use with content digest and cache under ~/.botspy/models/ (or the decided location), download-once semantics, clean typed errors when offline, no telemetry. The README privacy claim is updated to state the one-time fetch honestly.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
-        "to": "**Files:** `src/store/assets.rs` (setup acquisition per Ryan's decision — a setup function/command fetches the weights + tokenizer; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** per Ryan's decision (BOTSPY-bb60bb closed): a setup step/command downloads the quantized all-MiniLM-L6-v2 ONNX weights + tokenizer.json once (content digest verified, download-once/idempotent semantics) and caches them under `~/.botspy/models/` (BOTSPY_MODELS honored); the runtime library makes no network calls and nothing leaves the machine at runtime; clean typed errors when offline and the files are missing; no telemetry. The README privacy claim is updated to state the one-time setup fetch honestly."
+        "to": "**Files:** `src/store/assets.rs` (setup acquisition per the maintainer's decision — a setup function/command fetches the weights + tokenizer; consumer docs — no CLI changes); `README.md` privacy FAQ; `src/spec/ch02_querying.rs`.\n\n**Acceptance:** per the maintainer's decision (BOTSPY-bb60bb closed): a setup step/command downloads the quantized all-MiniLM-L6-v2 ONNX weights + tokenizer.json once (content digest verified, download-once/idempotent semantics) and caches them under `~/.botspy/models/` (BOTSPY_MODELS honored); the runtime library makes no network calls and nothing leaves the machine at runtime; clean typed errors when offline and the files are missing; no telemetry. The README privacy claim is updated to state the one-time setup fetch honestly."
       }
     }
   }

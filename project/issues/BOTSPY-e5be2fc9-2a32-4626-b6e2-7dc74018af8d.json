@@ -22,7 +22,7 @@
   "comments": [
     {
       "id": "f813d276-dfc0-41fd-943d-9664943d53d0",
-      "author": "home",
+      "author": "example-user",
       "text": "T12 done: src/store/text.rs — Query::search/search_with compile the caller's query into quoted FTS5 terms (no syntax injection), sessions rank by matching-message count then bm25 then id; filter conjuncts shared with the session cursor so search composes with SessionFilter. 07_text_search.feature green (202/204 passing overall). Committed to feat/local-store (PR #4); closes when it merges to develop.",
       "created_at": "2026-10-02T22:57:38.032490Z",
       "comment_type": "default",
@@ -34,7 +34,7 @@
     },
     {
       "id": "fd9cd2e5-98ea-4270-938a-1ca1dd03ec1f",
-      "author": "home",
+      "author": "example-user",
       "text": "Final: FTS5 text search — ranked hits, filter-composable, clean typed empty results (07_text_search.feature green). Done on feat/local-store (08ccd33, PR #4).",
       "created_at": "2026-10-03T11:35:20.020451Z",
       "comment_type": "default",

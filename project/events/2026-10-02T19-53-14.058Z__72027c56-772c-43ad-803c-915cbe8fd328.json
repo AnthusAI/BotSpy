@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
   "event_type": "state_transition",
   "occurred_at": "2026-10-02T19:53:14.058Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "from_status": "open",
     "to_status": "in_progress"

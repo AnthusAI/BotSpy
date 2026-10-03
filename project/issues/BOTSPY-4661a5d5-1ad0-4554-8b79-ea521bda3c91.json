@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91",
   "title": "Cursor adapter",
-  "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: scanner-sentiment cursor adapter, read-only.",
+  "description": "Tap Cursor history: IDE SQLite stores (state.vscdb composer data; per-workspace and central composer indexes) and ~/.cursor agent transcripts and chats metadata. Requires WAL-safe snapshotting. Extract ALL part types. Reference: example-scanner cursor adapter, read-only.",
   "type": "epic",
   "status": "closed",
   "priority": 2,
@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "12b53a6b-321c-4428-ada0-3087826daa4f",
-      "author": "home",
+      "author": "example-user",
       "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
       "created_at": "2026-10-02T17:58:32.277149Z",
       "comment_type": "default",
@@ -25,7 +25,7 @@
     },
     {
       "id": "56871a84-b259-47da-acc7-73d4f809d72b",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:18.632677Z",
       "comment_type": "default"

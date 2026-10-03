@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "0577dd28-9f00-4152-9c78-e2bcd3d99516",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: the store's query surface iterates sessions, messages, and parts lazily with QueryCounters — cross-source ordering, streaming discipline, only consumed rows fetched (01_iteration.feature + 03_laziness.feature green). Committed to feat/local-store (9cc322f, PR #4).",
       "created_at": "2026-10-03T11:34:33.104215Z",
       "comment_type": "default",

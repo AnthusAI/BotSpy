@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-9fa44d6a-2c99-4b05-bef1-56829bbd0077",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:17:28.178Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Extract all part types from Codex session JSONL",
     "description": "Map user, assistant, thinking/reasoning, tool_call, and tool_result entries to normalized parts with line provenance. Done when: fixture extraction yields the expected parts with skip counting.",

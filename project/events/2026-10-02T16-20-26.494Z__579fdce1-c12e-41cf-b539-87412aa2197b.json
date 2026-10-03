@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:20:26.494Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement the botspy CLI",
     "description": "Subcommands to list sources, list sessions, dump sessions, and export, with source and window flags. Done when: the feature scenarios in features/cli pass.",

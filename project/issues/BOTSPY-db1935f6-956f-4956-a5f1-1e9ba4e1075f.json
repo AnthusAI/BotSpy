@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "183f75ee-7c78-4afb-9899-18ec8bbfa36a",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. The three @wip scenarios in features/01_structure/provenance.feature are un-tagged and pass (40 scenarios total). Schema: Provenance widened with record_id, record_type, ordinal, parent_record (all Option, serde default); ordering step checks non-decreasing ordinals. fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T18:59:21.419771Z",
       "comment_type": "default"

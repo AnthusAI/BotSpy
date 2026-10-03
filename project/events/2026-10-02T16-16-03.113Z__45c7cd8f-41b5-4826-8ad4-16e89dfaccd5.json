@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:16:03.113Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Project setup and tooling",
     "description": "Chores that stood the project up: python package, Kanbus, semantic-release, MIT license, ruff, GitHub CI. Each closes when its change lands and local checks pass.",

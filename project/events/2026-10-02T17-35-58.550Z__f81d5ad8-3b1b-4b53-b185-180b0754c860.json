@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:35:58.550Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R9 inline data and attachments",
     "description": "",

@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
   "title": "Codex adapter",
-  "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
+  "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: example-scanner codex adapter, read-only.",
   "type": "epic",
   "status": "open",
   "priority": 2,
@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "8e3ad940-8701-46a9-8306-b942674f0fad",
-      "author": "home",
+      "author": "example-user",
       "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
       "created_at": "2026-10-02T17:58:35.211064Z",
       "comment_type": "default",
@@ -25,7 +25,7 @@
     },
     {
       "id": "20d78a39-e6ea-42ad-a137-11a66e6da5de",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:19.913354Z",
       "comment_type": "default"

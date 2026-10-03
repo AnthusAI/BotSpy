@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-3d9af881-2a80-46cb-968a-e7a4ea83d83c",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T21:38:10.750Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Fix release-plz workflow (403 opening PR) for GitFlow releases from main",
     "description": "",

@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-dc7ec834-5802-4ee9-ad40-50de70448bf1",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:19:34.633Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: Cursor adapter behaviors",
     "description": "Author features/adapters/cursor/*.feature: discovery across composer indexes and agent transcripts, WAL-safe snapshot reads, extraction of all part kinds with row provenance, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",

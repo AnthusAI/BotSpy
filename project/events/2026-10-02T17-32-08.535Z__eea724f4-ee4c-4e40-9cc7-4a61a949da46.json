@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:32:08.535Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: R2 usage and cost metrics",
     "description": "",

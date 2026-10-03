@@ -4,10 +4,10 @@
   "issue_id": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T22:16:37.268Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "sessions listing bugs from first real-data CLI run",
-    "description": "Five bugs found running the merged CLI (PR #1, origin/develop 9fc6584) against Ryan's real ~/.claude data (63 transcripts, read-only). sources, doctor and show work correctly on real data; every bug below is in the sessions listing path (or its interaction with it). Fixes target develop via feature branch; each bug carries repro, expected behavior, suspected code location, and acceptance criteria with a synthetic-fixture regression test (never Ryan's real transcripts).",
+    "description": "Five bugs found running the merged CLI (PR #1, origin/develop 9fc6584) against the maintainer's real ~/.claude data (45 transcripts, read-only). sources, doctor and show work correctly on real data; every bug below is in the sessions listing path (or its interaction with it). Fixes target develop via feature branch; each bug carries repro, expected behavior, suspected code location, and acceptance criteria with a synthetic-fixture regression test (never the maintainer's real transcripts).",
     "issue_type": "epic",
     "status": "open",
     "priority": 1,

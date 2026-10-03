@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-93e9e520-ee78-4e6b-a7f4-538d9df377c3",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:19:25.031Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: adapter contract",
     "description": "Author features/adapters/contract.feature: discovery finds sessions, extraction streams without loading whole files, malformed input is skipped and counted, sources are read-only. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",

@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-81d4bf9e-1903-4d01-8ef6-9df41b0a4f13",
   "event_type": "issue_created",
   "occurred_at": "2026-10-03T11:35:54.609Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Validate ingestion and refresh on real agent histories",
     "description": "**Intent:** Prove the store against reality: run ingestion (BOTSPY-a48fb1) and incremental refresh (BOTSPY-d5b2c4) over real session histories from all five agents — Claude Code, Cursor, Codex, Grok Bot, Antigravity — on this machine, not fixtures. Fixtures stay the specification surface; this task is the reality check.\n\n**What to verify:** discovery counts match the real sources; ingestion is strictly read-only (digests before/after, the importer-contract proof); lossless round-trip on real transcripts (weird encodings, huge sessions, partial files surface as skip counters, never errors); refresh re-ingests only changed sessions and prunes vanished ones with an honest per-outcome report; FTS search finds known real messages; the MiniLM embedder ingests real text without error and a paraphrase of a real message ranks its session first (semantic spot-check).\n\n**Acceptance:** a recorded run log on this task (per-source counts, skip counters, refresh report, digests unchanged); any adapter bug found is filed as a bug under the owning adapter epic and this task notes it; no product code changes unless a bug is confirmed. Run against read-only copies of the sources — never mutate agent data.",

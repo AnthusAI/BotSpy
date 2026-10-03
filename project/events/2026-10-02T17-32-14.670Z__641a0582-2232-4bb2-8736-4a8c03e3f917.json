@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:32:14.670Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R2 usage and cost metrics",
     "description": "",

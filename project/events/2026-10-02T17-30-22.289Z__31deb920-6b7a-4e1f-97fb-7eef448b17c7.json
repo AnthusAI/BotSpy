@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:30:22.289Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Schema R6: Provenance widened with record id, type, ordinal, parent",
     "description": "",

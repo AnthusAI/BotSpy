@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "77b90d67-30a3-452f-9901-63662d7f95ac",
-      "author": "home",
+      "author": "example-user",
       "text": "Synthetic Claude Code fixture + BDD: discovery finds one session per transcript, sidechain subagents skipped and counted (doctor reports 1 skipped subagent). ClaudeCodeSource::new(root) + discover() in src/adapters/claude_code.rs; fixture steps in tests/steps/claude_code_steps.rs. Full gate green (bdd 86/86, 0 skipped).",
       "created_at": "2026-10-02T19:52:31.256625Z",
       "comment_type": "default"

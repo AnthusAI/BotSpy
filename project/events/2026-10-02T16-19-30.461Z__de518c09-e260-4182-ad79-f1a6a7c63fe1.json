@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-35476684-bf41-4e84-9231-689ad82a7ae6",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:19:30.461Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: Claude Code adapter behaviors",
     "description": "Author features/adapters/claude_code/*.feature: discovery over the projects layout, extraction of all part kinds with timestamps and provenance, skip counting, doctor reporting, with concrete examples. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",

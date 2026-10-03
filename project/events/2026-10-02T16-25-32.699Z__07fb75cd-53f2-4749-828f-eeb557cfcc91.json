@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-14a04b8d-1904-427a-9679-7ffc35cd6351",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:25:32.699Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Add Kanbus as dev dependency and initialize BOTSPY board",
     "description": "",

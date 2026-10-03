@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-93cba905-d3c3-478c-af66-54a0cd6c59b0",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:30:28.792Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Schema R7: Raw-string tool-call arguments",
     "description": "",

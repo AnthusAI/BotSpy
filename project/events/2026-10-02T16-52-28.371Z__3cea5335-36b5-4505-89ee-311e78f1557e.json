@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba",
   "event_type": "field_updated",
   "occurred_at": "2026-10-02T16:52:28.371Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "changes": {
       "description": {

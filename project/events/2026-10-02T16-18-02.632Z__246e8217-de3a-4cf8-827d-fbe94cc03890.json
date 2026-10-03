@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:18:02.632Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Antigravity parity tests and doctor diagnostics",
     "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",

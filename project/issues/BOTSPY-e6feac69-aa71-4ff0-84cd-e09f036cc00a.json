@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "263da7f4-289e-42a4-8d52-48630976292e",
-      "author": "home",
+      "author": "example-user",
       "text": "superseded: the Python sessions() API was removed in the Rust pivot; the query API is specified under the Layer 3 epic",
       "created_at": "2026-10-02T16:39:36.017745Z",
       "comment_type": "default"

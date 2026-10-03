@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-6acb77e6-1ab0-4c7a-a3b0-c4bfd46fbd8f",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:20:36.379Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Build synthetic fixture corpus for all five agents",
     "description": "Synthetic-only fixtures mirroring real on-disk layouts; no real transcripts or secrets. Done when: every adapter fixture is committed with a generator script and a guard test proves no secrets.",

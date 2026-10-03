@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "d29c5fa2-cd55-436f-85c6-f0eb0a22c99f",
-      "author": "home",
+      "author": "example-user",
       "text": "home: Stub landed at examples/metrics_stub/main.rs — a SessionMetric extension point (name + score(&Session) via the public API only) with a placeholder implementation, candidate metrics documented in the module docs (code-time share, interruption count, topic drift, turn latency), runnable over the committed corpus via cargo run --example metrics_stub. Same consumer-only constraints as the meter and sentiment examples; the existing 'Examples depend only on the public API' scenario automatically scans it since it walks all of examples/. Referenced from docs: README intro now points at examples/meter, examples/sentiment, and examples/metrics_stub; the system-flow diagram's store-backed scanning node was relabeled for accuracy (examples consume per-source sources today, not the store). Mermaid re-validated with Mermaid 11. Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 24 features/118 scenarios/448 steps, spec_docs_coverage, 37 lib tests, fixture corpus guards, all three examples run.",
       "created_at": "2026-10-02T20:31:48.779041Z",
       "comment_type": "default"

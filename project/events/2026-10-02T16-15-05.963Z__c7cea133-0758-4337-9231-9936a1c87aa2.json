@@ -4,10 +4,10 @@
   "issue_id": "BOTSPY-35760274-6ce4-4a40-8ab8-5546b090da8e",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:15:05.963Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Codex adapter",
-    "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: scanner-sentiment codex adapter, read-only.",
+    "description": "Tap Codex on-disk history: JSONL sessions under CODEX_HOME (default ~/.codex). Extract ALL part types. Reference: example-scanner codex adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

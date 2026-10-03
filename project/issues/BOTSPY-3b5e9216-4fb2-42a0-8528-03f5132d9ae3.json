@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "ac491aa8-7cb7-4279-bbd5-989b59f12170",
-      "author": "home",
+      "author": "example-user",
       "text": "release.yml runs release-plz-action on main; release-plz.toml sets publish = false (no crates.io) and no binary artifacts.",
       "created_at": "2026-10-02T16:41:35.620380Z",
       "comment_type": "default"

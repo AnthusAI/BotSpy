@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:20:31.544Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: unified history behaviors",
     "description": "Author features/schema/unified_history.feature: sessions from all five adapters pile into one unified agent-session history with consistent ordering, dedup, and provenance. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",

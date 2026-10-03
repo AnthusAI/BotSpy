@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:14:50.761Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Core normalized schema",
     "description": "Design the standard normalized schema: sessions, messages, and typed content parts with a small fixed kind set (text, thinking, tool_call, tool_result, attachment, system) plus an extensible extra/raw passthrough. Every record carries timestamps, session/project identifiers, and source provenance (file, line or row). Done when the schema is specified, versioned, and round-trips through JSON.",

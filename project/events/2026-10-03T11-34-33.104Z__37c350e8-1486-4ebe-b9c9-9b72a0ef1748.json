@@ -4,10 +4,10 @@
   "issue_id": "BOTSPY-a927fc7e-0ea6-40f5-9a45-29a18e0414ea",
   "event_type": "comment_added",
   "occurred_at": "2026-10-03T11:34:33.104Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "comment_id": "0577dd28-9f00-4152-9c78-e2bcd3d99516",
-    "comment_author": "home",
+    "comment_author": "example-user",
     "agent": {
       "platform": "cursor",
       "model": "GLM 5.3 Flash",

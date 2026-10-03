@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "be25a15a-2f31-4338-a212-9efb32acee42",
-      "author": "home",
+      "author": "example-user",
       "text": "R4 done: Turn.duration_ms/time_to_first_token_ms, Message.turn_position (TurnPosition promptIndex/turnIndex) and step_duration_ms. Only 09 remains @wip in Chapter 1.",
       "created_at": "2026-10-02T19:20:19.299789Z",
       "comment_type": "default"

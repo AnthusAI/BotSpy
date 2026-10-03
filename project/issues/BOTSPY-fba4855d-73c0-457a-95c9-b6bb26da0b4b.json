@@ -13,14 +13,14 @@
   "comments": [
     {
       "id": "59db986c-ceb8-48f4-8b91-72d5df482bef",
-      "author": "home",
+      "author": "example-user",
       "text": "Recorded the twelve schema recommendations from the five-agent storage survey as layer-2 Gherkin specs (features/02_schema/01_usage_tokens, 02_tool_result_status, 03_session_graph, 04_turn_grouping, 05_compaction, provenance extension, 07_tool_call_arguments, 08_inline_data, 09_optional_timestamp, 10_role_mapping, 11_session_metadata, 12_raw_blob_escape_hatch). All new scenarios tagged wip and excluded from the cucumber run (tests/bdd.rs filter) until implemented; embedded in the ch02 rustdoc chapter; spec tasks closed, implementation tasks open with blocked-by deps. Spec commit 4c81421.",
       "created_at": "2026-10-02T17:44:20.383362Z",
       "comment_type": "default"
     },
     {
       "id": "c62125b4-585e-4b80-8bc6-44f9620893c6",
-      "author": "home",
+      "author": "example-user",
       "text": "Merged into Chapter 1: Structure (BOTSPY-7adf26) per the final chapter order; its tasks were re-parented there. Feature files moved to features/01_structure/ (byte-for-byte identical scenarios).",
       "created_at": "2026-10-02T17:56:27.645014Z",
       "comment_type": "default"

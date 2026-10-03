@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "7c54ecd4-d7ea-43f4-bce3-302387f9633c",
-      "author": "home",
+      "author": "example-user",
       "text": "won't-do: library only by decision; no CLI/binary/server/FFI",
       "created_at": "2026-10-02T16:39:15.031394Z",
       "comment_type": "default"

@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "d739fb1b-e693-4621-90ad-1670f3466ab9",
-      "author": "home",
+      "author": "example-user",
       "text": "Synthetic Antigravity fixture + BDD: conversation_summaries.db drives conversation discovery (3 conversations -> 3 sessions); brain/<id>/.system_generated/logs/transcript.jsonl preferred with per-conversation payload.db fallback for linkage. AntigravitySource::new(root) + discover()/doctor() in src/adapters/antigravity.rs; fixture steps in tests/steps/antigravity_steps.rs. Full gate green (bdd 114/114).",
       "created_at": "2026-10-02T20:14:28.080282Z",
       "comment_type": "default"

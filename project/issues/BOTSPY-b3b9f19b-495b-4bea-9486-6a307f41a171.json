@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "526a7023-f4d6-418f-ab58-ff4d67a82f25",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. @wip dropped from features/01_structure/07_tool_call_arguments.feature; all 3 scenarios pass (43 total). Schema: ToolCall.arguments now Option<ToolArguments> — value (structured JSON object), raw (kept verbatim), parsed (first parse only, never double-decoded). Gherkin-level \" escapes in feature text handled in the fixture steps, not the library. fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T19:03:19.600452Z",
       "comment_type": "default"

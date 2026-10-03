@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-82d64fba-9260-4605-a228-e29710cee0cf",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:42:05.796Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R12 raw blob escape hatch",
     "description": "",

@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:30:45.590Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Schema R10: Role mapping conventions for developer, inter-agent, injected",
     "description": "",

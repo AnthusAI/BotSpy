@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "d1d0e1b7-5f28-414a-b24a-c92733dc568d",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: 06_refresh.feature specified — the refresh reports new/updated/pruned per outcome and unchanged sessions are never re-opened (fixture open counter); green since BOTSPY-d5b2c4. Committed to feat/local-store (5a778f5, PR #4).",
       "created_at": "2026-10-03T11:34:45.971796Z",
       "comment_type": "default",

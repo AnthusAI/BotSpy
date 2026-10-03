@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-a48fb117-7b9a-4c80-acff-e921bfbe29c9",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T21:43:48.369Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement ingestion: adapters → store, read-only, dedup, lossless round-trip",
     "description": "**Files:** `src/store/ingest.rs` (new), `src/store/mod.rs`, `tests/steps/store_steps.rs`. No src/adapters or src/cli changes.\n\n**Specs turned green:** `05_ingest.feature` — remove its @wip.\n\n**Acceptance:** `Store::ingest(&adapters) -> IngestReport`: per adapter discover(), then per session open() and one transaction — sessions row (projected columns + `session_json` minus messages + sha256 `content_hash` over the canonical session JSON), messages rows (`message_json` + projected columns), parts rows (kind + text projection), FTS rows for text-bearing parts. First-report-wins dedup within a pass. Optional-embedder hook: an `Option<Arc<dyn Embedder>>` configured on the store is called at ingest to produce session embeddings into the vec0 table (no default embedder yet — the seam lands with the search epic; store the model id in `meta` and refuse a mismatched one). Sources stay read-only by construction — the adapters have no write surface; the digest steps prove it. Round-trip equality holds for every fixtures-corpus session.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",

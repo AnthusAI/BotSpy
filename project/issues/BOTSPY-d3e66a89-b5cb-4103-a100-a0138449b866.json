@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "0d007419-9a00-48d4-a2a0-c5a3dffbc915",
-      "author": "home",
+      "author": "example-user",
       "text": "R3 done: session graph implemented and passing (03_session_graph.feature un-tagged @wip); see impl sub-task BOTSPY-9dcf08.",
       "created_at": "2026-10-02T18:54:54.830128Z",
       "comment_type": "default"

@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-bd3ddd4e-1c6c-4540-938b-d43d99a12d88",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:19:57.948Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: export behaviors",
     "description": "Author features/export/*.feature: JSON and JSONL export round-trips into the schema with stable field order and schema version. Done when: scenarios are reviewed and executable (failing or pending is fine before implementation).",

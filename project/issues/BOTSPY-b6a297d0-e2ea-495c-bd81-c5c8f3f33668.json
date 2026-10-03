@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "040b0f2c-2e8e-4cb9-aa49-e68dc5fef5b8",
-      "author": "home",
+      "author": "example-user",
       "text": "R12 done: KnownPart::Blob escape hatch, Thinking with optional text/signature/encrypted, PartialHistory/PartialReason flags on Session and SessionSummary. All 12 Chapter 1 structure features except 04/09 implemented; spec doc updated.",
       "created_at": "2026-10-02T19:17:46.466090Z",
       "comment_type": "default"

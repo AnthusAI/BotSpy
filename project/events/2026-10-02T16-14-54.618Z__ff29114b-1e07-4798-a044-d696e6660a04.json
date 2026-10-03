@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-e0bcfa56-d47c-436d-af46-517ca7e5c00f",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:14:54.618Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Adapter contract",
     "description": "Define the shared adapter interface every source adapter implements: discovery, streaming extraction (files can exceed 100MB), skip counters, read-only access to source data, and safe snapshotting of SQLite/WAL sources. Done when the contract is typed, tested, and documented.",

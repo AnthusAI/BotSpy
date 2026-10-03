@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-3b468d26-1832-4f5a-a6dc-28244ec5599b",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:18:57.677Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Export (features/export)",
     "description": "JSON and JSONL export of sessions, messages, and parts with stable field order and schema version. Specs first: features/export/*.feature; implementation generated from the specs.",

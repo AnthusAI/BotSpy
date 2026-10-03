@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-c7bc4aba-7f5b-4fb0-beda-6b1cbff640b5",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:17:05.252Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Claude Code parity tests and doctor diagnostics",
     "description": "Doctor reports roots, transcript counts, skipped subagents, and issues. Done when: parity tests on the fixture pass and doctor output matches the expected report.",

@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "22dccdcf-c173-4f4c-9ae8-a20380001a95",
-      "author": "home",
+      "author": "example-user",
       "text": "Parity covered by 5 lib unit tests (discovery + roster + cloud stubs, seq ordering, persona author + raw voice call + unknown-type skip counting, capped partial flag, doctor flags unreadable blobs) plus 6 executable BDD scenarios (wip tag dropped; the capped-view Then step reworded to 'the extracted session is flagged as a partial local view' because the R12 partial-session step already owns the original wording for fixture sessions). Full gate green.",
       "created_at": "2026-10-02T20:10:37.898632Z",
       "comment_type": "default"

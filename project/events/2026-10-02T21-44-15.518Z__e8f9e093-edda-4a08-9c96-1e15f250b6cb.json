@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725",
   "event_type": "dependency_added",
   "occurred_at": "2026-10-02T21:44:15.518Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "dependency_type": "blocked-by",
     "target_id": "BOTSPY-a2811dcc-bcc9-4fb7-92c5-045e3ad2434b"

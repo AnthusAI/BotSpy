@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-7020e7a0-4034-4025-bce6-463694108223",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T16:51:57.909Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Chapter per spec layer with narrative prose, doctests, embedded Gherkin",
     "description": "",

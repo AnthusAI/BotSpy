@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:30:07.884Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Schema R3: Session graph (parent/root, sub-agents, forks, battles)",
     "description": "",

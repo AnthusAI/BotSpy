@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:33:13.509Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Write Gherkin spec: R4 session graph",
     "description": "",

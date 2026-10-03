@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df",
   "event_type": "issue_created",
   "occurred_at": "2026-10-02T17:33:19.402Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Implement until spec passes: R4 session graph",
     "description": "",
