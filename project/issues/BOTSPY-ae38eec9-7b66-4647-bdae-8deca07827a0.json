@@ -31,10 +31,17 @@
       "text": "Dry-run verified (run 37073639742, workflow_dispatch dry_run=true on develop, green): computed next version 0.1.0 (0.x as required; note: not the 0.2.0 Ryan expected — see report: with no registry release and no tag, release-plz ships the current manifest version as the first release; version bumps from conventional commits kick in from the second release onward, once botspy 0.1.0 exists in the registry/tag), changelog diff +168 lines ([0.1.0] entry with all commits), and the skip list shows exactly what a real promotion would do: [cargo registry upload, creation of tag 'v0.1.0', creation of git release] — a direct release plus crates.io publish, no PR. 48 stale release-plz-* branches deleted (all release-plz-* on the remote; zero remain). All develop CI runs green. Task stays in_progress until the first real release from main completes.",
       "created_at": "2026-10-02T22:43:14.613525Z",
       "comment_type": "default"
+    },
+    {
+      "id": "6784cbb9-68f6-4171-93ee-33c1ae870ad2",
+      "author": "home",
+      "text": "First real release executed (Ryan: 'Yes release it'). Promoted origin/develop b6a9033 to main as a fast-forward; Release run 37081751572 green: release commit 93ff67d 'chore: release botspy v0.1.0' on main, tag v0.1.0, GitHub release https://github.com/AnthusAI/BotSpy/releases/tag/v0.1.0, crates.io publish of botspy 0.1.0 (https://crates.io/crates/botspy, created 2026-10-03T00:22:31Z, 'prs':[] — no PR ever opened). Verified: cargo search shows 0.1.0; cargo install botspy --locked into /tmp/botspy-install-check succeeded, --version reports botspy 0.1.0; 'botspy sources' lists 5 sources (claude_code 63 sessions, ok); 'botspy sessions --limit 5' lists 5 sessions; temp install removed. Synced back to develop by fast-forward (b6a9033..93ff67d), CI 37082028507 green on all 8 jobs. Closing.",
+      "created_at": "2026-10-03T00:30:12.839922Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-02T21:55:54.481422Z",
-  "updated_at": "2026-10-02T22:43:14.613552Z",
+  "updated_at": "2026-10-03T00:30:12.840153Z",
   "closed_at": null,
   "right_now_summary": null,
   "right_now_updated_at": null,
