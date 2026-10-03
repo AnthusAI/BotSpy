@@ -97,13 +97,19 @@ fn no_store_exists_at(_world: &mut BotSpyWorld, path: String) {
     remove_store_files(&path);
 }
 
-#[when(regex = r#"^I open a store at "([^"]+)"$"#)]
-fn open_store_at(world: &mut BotSpyWorld, path: String) {
+/// Open a store at the given path (relative to the scenario temp dir),
+/// recording a typed open error instead of panicking.
+fn open_store_recording_error(world: &mut BotSpyWorld, path: &str) {
     world.local_open_error = None;
-    match Store::open(store_path(&path)) {
+    match Store::open(store_path(path)) {
         Ok(store) => world.local_store = Some(store),
         Err(err) => world.local_open_error = Some(err),
     }
+}
+
+#[when(regex = r#"^I open a store at "([^"]+)"$"#)]
+fn open_store_at(world: &mut BotSpyWorld, path: String) {
+    open_store_recording_error(world, &path);
 }
 
 #[then(regex = r#"^the store file exists at "([^"]+)"$"#)]
@@ -165,11 +171,7 @@ fn store_with_sessions_ingested(world: &mut BotSpyWorld, path: String) {
 
 #[when(regex = r#"^I reopen a store at "([^"]+)"$"#)]
 fn reopen_store_at(world: &mut BotSpyWorld, path: String) {
-    world.local_open_error = None;
-    match Store::open(store_path(&path)) {
-        Ok(store) => world.local_store = Some(store),
-        Err(err) => world.local_open_error = Some(err),
-    }
+    open_store_recording_error(world, &path);
 }
 
 #[when(regex = r#"^I iterate the store's sessions$"#)]
@@ -965,9 +967,9 @@ fn iterate_sessions_active_between(world: &mut BotSpyWorld, after: String, befor
     iterate_filtered_sessions(world, &filter);
 }
 // 07_text_search.feature — FTS5 text search (green with BOTSPY-e5be2f).
-// 08_vector_search.feature's semantic steps stay todo!() until the
-// vector-search implementation (BOTSPY-c8c597); the shared "the search
-// yields" steps below serve both.
+// 08_vector_search.feature reuses the same store/search steps for its
+// semantic scenarios (BOTSPY-c8c597); the shared "the search yields"
+// steps below serve both.
 
 #[given(regex = r#"^session "([^"]+)" has messages (.+)$"#)]
 fn session_by_id_has_messages(world: &mut BotSpyWorld, id: String, texts: String) {
