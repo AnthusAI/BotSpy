@@ -72,4 +72,11 @@ jobs:
       - run: cargo run --example setup_models
       # cross mounts the workspace at /project inside its container, so
       # the model cache the host just filled sits at /project there.
+      # sqlite-vec 0.1.9's C source typedefs its bytes off the BSD-style
+      # u_intN_t names, which musl libc does not define; cc-rs appends
+      # CFLAGS_<target> to every compile it runs, so alias them to the
+      # standard <stdint.h> names for the cross build only.
       - run: BOTSPY_MODELS=/project/.botspy-models cross test --target ${{ matrix.target }}
+        env:
+          CFLAGS_x86_64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t
+          CFLAGS_aarch64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t
