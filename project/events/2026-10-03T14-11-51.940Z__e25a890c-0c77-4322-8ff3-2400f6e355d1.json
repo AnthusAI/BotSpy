@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "event_id": "e25a890c-0c77-4322-8ff3-2400f6e355d1",
+ "issue_id": "BOTSPY-5909a138-0bf8-4ea0-bba9-200435c5d68c",
+ "event_type": "issue_created",
+ "occurred_at": "2026-10-03T14:11:51.940Z",
+ "actor_id": "example-user",
+ "payload": {
+  "title": "Anonymize real personal data before org move",
+  "description": "",
+  "issue_type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "parent": "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c",
+  "labels": []
+ }
+}
