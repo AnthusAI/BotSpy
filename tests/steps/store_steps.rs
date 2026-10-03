@@ -67,10 +67,14 @@ fn store_files(path: &Path) -> Vec<PathBuf> {
 }
 
 /// Remove the store file and its WAL sidecars.
-fn remove_store_files(path: &str) {
-    for candidate in store_files(&store_path(path)) {
+fn remove_store_files_at(path: &Path) {
+    for candidate in store_files(path) {
         let _ = std::fs::remove_file(candidate);
     }
+}
+
+fn remove_store_files(path: &str) {
+    remove_store_files_at(&store_path(path));
 }
 
 /// Every fixture session known to the world's adapters, in stable order.
@@ -295,8 +299,8 @@ fn open_default_store(world: &mut BotSpyWorld) {
 
 #[given(regex = r#"^a store at "([^"]+)"$"#)]
 fn a_store_at(world: &mut BotSpyWorld, path: String) {
-    remove_store_files(&path);
     let file = store_path(&format!("stores/{}-{path}", scenario_scope()));
+    remove_store_files_at(&file);
     world.local_store = Some(Store::open(&file).expect("store opens"));
 }
 
@@ -1014,6 +1018,31 @@ fn fixture_sessions_two_plain(world: &mut BotSpyWorld, id1: String, id2: String,
 }
 
 #[given(
+    regex = r#"^fixture sessions "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)", and "([^"]+)" from "([^"]+)" in project "([^"]+)"$"#
+)]
+#[allow(clippy::too_many_arguments)]
+fn fixture_sessions_five_one_project(
+    world: &mut BotSpyWorld,
+    id1: String,
+    id2: String,
+    id3: String,
+    id4: String,
+    id5: String,
+    agent: String,
+    project: String,
+) {
+    for id in [&id1, &id2, &id3, &id4, &id5] {
+        let adapter = adapter_for(world, &agent);
+        adapter.add_session(fixture_session(
+            id,
+            parse_agent(&agent),
+            &project,
+            "2026-10-01T09:00:00Z",
+        ));
+    }
+}
+
+#[given(
     regex = r#"^a fixture session "([^"]+)" from agent "([^"]+)" in project "([^"]+)" is registered$"#
 )]
 #[when(
@@ -1210,6 +1239,34 @@ fn search_still_yields(world: &mut BotSpyWorld, query: String, ids: String) {
     let query_surface = store.query();
     world.local_search_hits = query_surface.search(&query);
     search_yields_sessions(world, ids);
+}
+
+/// The embedding model recorded in the store's meta, read through the
+/// public surface the specs pin (BOTSPY-7e1836).
+fn recorded_embedding_model(world: &BotSpyWorld) -> Option<String> {
+    world
+        .local_store
+        .as_ref()
+        .expect("no store is open")
+        .embedding_model()
+        .expect("reading the recorded embedding model")
+}
+
+#[then(regex = r#"^the store's embedding model is "([^"]+)"$"#)]
+fn store_embedding_model_is(world: &mut BotSpyWorld, model: String) {
+    assert_eq!(
+        recorded_embedding_model(world).as_deref(),
+        Some(model.as_str()),
+        "the store recorded a different embedding model"
+    );
+}
+
+#[then(regex = r#"^the store records no embedding model$"#)]
+fn store_records_no_embedding_model(world: &mut BotSpyWorld) {
+    assert!(
+        recorded_embedding_model(world).is_none(),
+        "a store that never embedded must record no embedding model"
+    );
 }
 
 #[then(regex = r#"^the ingest fails with a model mismatch error$"#)]

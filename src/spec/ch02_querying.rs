@@ -42,8 +42,7 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: iteration, ingestion, filters, refresh, text search, and
-//! laziness are green
+//! ## Status: chapter 2 is green through the semantic model
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
 //! below. Executable and green: the local store itself
@@ -58,9 +57,14 @@
 //! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature)),
 //! text search
 //! ([`07_text_search.feature`](../../features/02_querying/07_text_search.feature)),
-//! and query laziness
-//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
-//! The vector-search spec remains `@wip` until the MiniLM epic lands.
+//! query laziness
+//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)),
+//! semantic and hybrid vector search
+//! ([`08_vector_search.feature`](../../features/02_querying/08_vector_search.feature)),
+//! and the semantic model's identity and paraphrase behavior
+//! ([`09_semantic_model.feature`](../../features/02_querying/09_semantic_model.feature))
+//! — the last two run the real MiniLM model, ungated per the
+//! BOTSPY-bb60bb decision.
 //!
 //! ## Model assets: fetched once at setup, never at runtime
 //!
@@ -101,5 +105,8 @@
     "\n```\n\n",
     "### 08_vector_search.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/08_vector_search.feature"),
+    "\n```\n\n",
+    "### 09_semantic_model.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/09_semantic_model.feature"),
     "\n```\n"
 )]
