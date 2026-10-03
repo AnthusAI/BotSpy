@@ -22,10 +22,22 @@
         "model": "GLM 5.3 Flash",
         "name": "Cursor Cloud Agent (local-store implementer)"
       }
+    },
+    {
+      "id": "0d86bfb5-4d18-4cae-b0f3-e029a4a947ec",
+      "author": "example-user",
+      "text": "**Implementation log (running) — the scan loop:**\n\nNew requirement in scope: `botspy scan` runs one full pass to start, then keeps running, re-scanning periodically and updating the store incrementally, instead of exiting after one pass. Designed and implemented in the same PR:\n\n- `--interval <SECONDS>` (default 60), measured from the end of the previous pass so passes never overlap; the loop is strictly one pass at a time.\n- `--once` preserves the exactly-one-pass shape for scripts and CI (loop-by-default is the requirement; scripts state the single pass explicitly).\n- SIGINT/SIGTERM set a stop flag (async-signal-safe handler); the current pass finishes and commits (a pass is one store transaction), the wait is sliced so the flag is noticed promptly, and the process exits 130.\n- Errors inside one pass are reported in that pass's output and never kill the loop; argument and store-open failures still exit 1/2/3 before any pass.\n- Pruning stays off for the whole loop.\n- Each pass streams its report in the chosen output mode as it finishes (a per-pass sink in the binary), so redirected output is live: human gets a `pass N` banner, JSON one document per pass with a `pass` field, NDJSON one line per source per pass.\n- \"Background\" means a foreground long-running process the user backgrounds with their own tooling — no daemon, matching the CLI design's no-daemon decision.\n- Determinism: the loop's clock is the injectable `ScanTicker` trait; tests use a scripted ticker with bounded ticks and virtual time, no real sleeps, synthetic fixtures only.\n\nSpecs first, red then green: `features/cli/60_scan.feature` grew 11 loop scenarios; the existing single-pass scenarios became `--once` scenarios. Gates green on the commit: fmt, clippy (`-D warnings`), doc, full `cargo test` (79 unit; 250 BDD scenarios — 246 passed, 4 planned skips; 3 integration; 8 doc-tests) including the personal-data guard. Real-run verification of the loop (streaming reports, SIGINT → exit 130) was done with the maintainer in chat; no real values are recorded here.",
+      "created_at": "2026-10-03T16:57:04.749306Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-03T15:46:36.687290Z",
-  "updated_at": "2026-10-03T15:46:54.587501Z",
+  "updated_at": "2026-10-03T16:57:04.749330Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
