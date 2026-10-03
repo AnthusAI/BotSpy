@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "event_id": "877005be-027a-4f6f-bced-8c05b70118c3",
+  "issue_id": "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-03T15:46:41.389Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "botspy scan behavior specs (Gherkin)",
+    "description": "",
+    "issue_type": "story",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+    "labels": [],
+    "agent": {
+      "platform": "cursor",
+      "model": "GLM 5.3 Flash",
+      "name": "Cursor Cloud Agent (local-store implementer)"
+    }
+  }
+}

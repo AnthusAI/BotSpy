@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-10-03T15:42:48Z",
+  "built_at": "2026-10-03T16:51:17Z",
   "file_mtimes": {
     "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1791042157.491152,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1791042157.491373,
@@ -74,6 +74,7 @@
     "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb.json": 1791042157.504831,
     "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63.json": 1791042157.50501,
     "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc.json": 1791042157.505207,
+    "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0.json": 1791046267.219813,
     "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1791042157.505427,
     "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772.json": 1791042157.505624,
     "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1791042157.505784,
@@ -92,6 +93,7 @@
     "BOTSPY-8b0accaa-11ce-4894-9383-fed148ae05c3.json": 1791042157.508348,
     "BOTSPY-8bd136e5-2579-42b2-9743-365c0eb7d014.json": 1791042157.508492,
     "BOTSPY-8e4dd6c1-d775-4e24-a1c2-1520e077a432.json": 1791042157.508635,
+    "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc.json": 1791046267.22,
     "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3.json": 1791042157.50878,
     "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6.json": 1791042157.508949,
     "BOTSPY-91790178-f14a-4fe0-9361-025dc99abab0.json": 1791042157.509124,
@@ -101,6 +103,7 @@
     "BOTSPY-9677d2a4-bb20-4b70-9196-0a17af7f01d6.json": 1791042157.509862,
     "BOTSPY-98386a25-dd8c-4ce9-b986-38fee99265d9.json": 1791042157.509977,
     "BOTSPY-999f5f2e-688f-4f2d-bd8e-d8347ba759f1.json": 1791042157.510111,
+    "BOTSPY-99afd609-ebd3-455e-a71f-cd77da167aca.json": 1791045568.768992,
     "BOTSPY-9b680730-4842-4dd1-a920-8726057d077d.json": 1791042157.510323,
     "BOTSPY-9cdd6647-acb4-4646-9dfb-c3018a5bc084.json": 1791042157.510754,
     "BOTSPY-9dcf08b9-d9c7-4e72-bb30-c971614c3a86.json": 1791042157.510985,
@@ -130,6 +133,7 @@
     "BOTSPY-cbaa7ec0-8437-4d42-9cb6-111f9c0340f5.json": 1791042157.515911,
     "BOTSPY-cc16994b-578a-458f-9ee9-72e4fee05117.json": 1791042157.516154,
     "BOTSPY-cd620902-58fa-4cbb-8aac-f3bc2b88c0c6.json": 1791042157.516306,
+    "BOTSPY-cdaa69a2-8521-4059-9425-6300acb69936.json": 1791046267.220078,
     "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9.json": 1791042157.516453,
     "BOTSPY-d365f915-8c51-4fec-a27a-5b4aef5b8aac.json": 1791042157.516599,
     "BOTSPY-d3e66a89-b5cb-4103-a100-a0138449b866.json": 1791042157.516965,
@@ -157,7 +161,7 @@
     "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1791042157.520891,
     "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1791042157.521026,
     "BOTSPY-f8428807-b72f-4831-af15-b7b54abd785b.json": 1791042157.521166,
-    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1791042157.521306,
+    "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a.json": 1791042191.956952,
     "BOTSPY-fba4855d-73c0-457a-95c9-b6bb26da0b4b.json": 1791042157.521445,
     "BOTSPY-fd3c5de1-5ebc-40d7-bfe4-3328f4bf7591.json": 1791042157.521566,
     "BOTSPY-ff7d4f49-7d2b-4356-96ce-e3eb9b39e1be.json": 1791042157.52172
@@ -2895,6 +2899,47 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0",
+      "title": "botspy scan behavior specs (Gherkin)",
+      "description": "",
+      "type": "story",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "58514e58-729a-43e3-8324-43a931b5385b",
+          "author": "home",
+          "text": "**Behavior specs (Gherkin, red before implementation):**\n\nFeature: botspy scan\n  `botspy scan` mines the adapters into the local store — the CDC pass behind the store, on the command line. Default: every registered source into the one store at $BOTSPY_HOME/.botspy/store.db. The pass adds new sessions and updates changed ones; it never prunes (an adapter reporting 0 must never delete stored history — bug BOTSPY-81143b). Exit codes: 0 success, 1 unknown source, 2 usage error, 3 store failure.\n\n  Scenario: A default scan fills the store from every source (12 fixture sessions added of 13 discovered; dry run leaves the store empty)\n  Scenario: `--source` scans a single adapter; repeated `--source` scans a list\n  Scenario: `--since <RFC3339|YYYY-MM-DD|7d>` cuts off what the pass picks up (skipped counted, nothing older deleted)\n  Scenario: `--store <path>` overrides the store path; the default honors $BOTSPY_HOME\n  Scenario: `--dry-run` reports what would change and writes nothing\n  Scenario: `-o json` serializes the per-adapter report; ndjson streams one entry per source\n  Scenario: An adapter reporting 0 sessions shows its zero row visibly (codex under bug BOTSPY-81143b must never hide)\n  Scenario: Unknown source exits 1; bad `--since` exits 2; unusable store exits 3\n\nStore-level specs (features/02_querying/05_ingest.feature, 06_refresh.feature): cutoff `since` on the ingest and refresh passes; skipped sessions counted; dry-run passes roll back; per-adapter detailed report.\n\nFull feature files land in features/cli/60_scan.feature and the two 02_querying files.",
+          "created_at": "2026-10-03T15:46:44.657296Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "GLM 5.3 Flash",
+            "name": "Cursor Cloud Agent (local-store implementer)"
+          }
+        }
+      ],
+      "created_at": "2026-10-03T15:46:41.389845Z",
+      "updated_at": "2026-10-03T15:46:44.657317Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
+    },
+    {
       "id": "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7",
       "title": "Antigravity parity tests and doctor diagnostics",
       "description": "Done when: parity tests pass on fixtures and doctor reports both roots.",
@@ -3573,6 +3618,47 @@
       "custom": {}
     },
     {
+      "id": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+      "title": "botspy scan: mine the adapters into the local store from the CLI",
+      "description": "**Intent:** As a BotSpy user, I want `botspy scan` to mine my coding-agent history into the local store from the command line, so that the store at ~/.botspy/store.db stays fresh without writing library code of my own.\n\nExposes the store's ingest/CDC pass (src/store/ingest.rs) as a CLI verb, per the maintainer's request. Default: all five adapters (claude_code, cursor, codex, grok_bot, antigravity) into the one store at `default_store_path()` ($BOTSPY_HOME/.botspy/store.db). Flags: repeatable `--source` (single adapter or list), `--since` cutoff (ISO date or relative duration like `7d`), `--store` path override, `--dry-run` (report what would change, write nothing), `-o human|json|ndjson` consistent with the other verbs.\n\n**Output:** per-adapter summary — sessions and messages added, updated, unchanged, skipped, plus discovered counts (so an adapter yielding 0 sessions is visible, see bug BOTSPY-81143b — scan must never hide that) — and totals, elapsed time. Exit codes per the CLI convention: 0 ok, 1 unknown source, 2 usage error, 3 store failure.\n\n**Decisions (recorded):**\n\n- The CDC pass behind scan is a refresh-style pass with pruning disabled: pruning would delete stored sessions for any adapter that currently reports 0 (the Codex bug BOTSPY-81143b, or a missing root), so scan adds new and updates changed sessions but never prunes. On an empty store the pass IS the cold ingest the maintainer measured (~44 min); a warm pass is the ~1.7 s incremental refresh.\n- `--since` cutoff lands inside the store's ingest/refresh passes as an `IngestOptions` (specs first in features/02_querying), not as CLI filtering.\n- Uses the real `crate::store::Store`, not the in-memory `SessionStore` that `build_store` wires.\n- Keep src/cli/mod.rs changes minimal and separated: BOTSPY-98386a (store-backed verbs) is also planned against that file.\n\n**Definition of Done:** specs reviewed and red first, then green via `cargo test --test bdd`; cargo fmt/clippy/doc/test gates pass; real run of `botspy scan` and `botspy scan --since 7d --source claude_code` on the maintainer's machine; PR to develop (GitFlow, never main); merged once CI is green; task closed with a comment.",
+      "type": "task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "03bf5e5b-b813-45ee-8701-e10b79758e8b",
+          "author": "home",
+          "text": "**Implementation log (running):**\n\nImplemented on feature branch `cursor/scan-command-2500` (based on develop):\n\n- `feat(store)`: ingest passes with a cutoff, dry-run, and per-adapter report — `IngestOptions{since, dry_run, prune}`, `AdapterIngestReport`/`DetailedIngestReport`, `Store::ingest_with`/`refresh_with`; `prune` defaults to false so scans never delete; `refresh()` keeps pruning. Re-exported at the crate root.\n- `feat(cli)`: the `botspy scan` verb (`--source` repeatable, `--since`, `--store`, `--dry-run`, `-o human|json|ndjson`), dispatching to `refresh_with` with pruning disabled.\n- `test(steps)`: BDD steps for cutoffs, dry runs, and per-adapter reports.\n- Spec truth settled at 12 fixture sessions added of 13 discovered (grok_bot discovers 3 but adds 2 with 1 open error); all specs use 12. `parse_cutoff` fixes: ISO-date validation bug, `10000w` saturates to epoch instead of erroring.\n- Doc structure followed develop's leaner 6-verb CLI chapter; scan is the first verb that writes the store.\n\nGates (all green on the final commit): fmt, clippy (`-D warnings`), doc, full `cargo test` (75 unit; 239 BDD scenarios — 235 passed, 4 planned skips; 3 integration; 8 doc-tests), including the personal-data guard. Real-run verification of `botspy scan` and `botspy scan --since 7d --source claude_code` was done with the maintainer in chat; no real values are recorded here.\n\nNext: PR to develop, CI, merge, then close this task, the story, and the sub-task.",
+          "created_at": "2026-10-03T15:46:54.587470Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "GLM 5.3 Flash",
+            "name": "Cursor Cloud Agent (local-store implementer)"
+          }
+        }
+      ],
+      "created_at": "2026-10-03T15:46:36.687290Z",
+      "updated_at": "2026-10-03T15:46:54.587501Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {
+        "project_label": "BOTSPY",
+        "source": "shared"
+      }
+    },
+    {
       "id": "BOTSPY-903c783b-32b9-4ff1-a692-f1d087e8d8f3",
       "title": "Implement until spec passes: R8 inline data and attachments",
       "description": "Done when: the wip tag is removed from 08_inline_data.feature, step definitions are written, and cargo test --test bdd passes for its scenarios.",
@@ -3894,6 +3980,53 @@
       },
       "right_now_summary": "The session graph spec is written and embedded in the chapter docs.",
       "right_now_updated_at": "2026-10-02T17:38:21.822598Z",
+      "custom": {}
+    },
+    {
+      "id": "BOTSPY-99afd609-ebd3-455e-a71f-cd77da167aca",
+      "title": "Rewrite README as high-level project overview with key diagrams",
+      "description": "",
+      "type": "task",
+      "status": "in_progress",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+      "labels": [],
+      "dependencies": [],
+      "comments": [
+        {
+          "id": "60b3cc5e-6061-4428-b7e4-cc9b2b415bec",
+          "author": "home",
+          "text": "Intent: rewrite the main README.md from a CLI-usage/programmer page into a high-level project overview (what BotSpy is, read-only local reading of Claude Code/Cursor/Codex/Grok Bot/Antigravity histories, one normalized schema, local SQLite store with FTS + vector search, everything local/privacy). Move a small selection of docs diagrams up into the README with the docs picture light/dark pattern, using absolute raw-dot-githubusercontent URLs at the repo org so the image links also work on crates.io. Detailed CLI and library usage moves to a short Learn-more section linking docs pages; any CLI detail not already covered goes into docs/cli.md (not deleted). docs/ pages stay unchanged otherwise. Diagram picks: C4 context, top-level dataflow, C4 containers. Worktree /private/tmp/botspy-readme, branch cursor/readme-overview-fb2c, PR into develop.",
+          "created_at": "2026-10-03T15:43:17.554254Z",
+          "comment_type": "default"
+        },
+        {
+          "id": "96755128-fb27-4f5c-9802-053a0bea4cdc",
+          "author": "home",
+          "text": "Progress: README rewritten as high-level overview (intro, C4 context, what BotSpy does, dataflow, containers, everything-stays-local, compact agent table, install, Learn-more links to docs pages, license). Three diagrams embedded with absolute raw URLs (context, dataflow, containers) — all six PNGs verified reachable on origin/develop; no new PNGs added to the crate. tests/no_real_personal_data.rs: added a README.md exemption for the org-name needle because the crates.io readme must embed raw URLs at the repository (same rationale as the existing Cargo.toml exemption). docs/cli.md gained the detail that was README-only: sources and doctor example transcripts, the missing-source note, and the synthetic-corpus disclaimer. fmt and clippy -D warnings pass locally. Full cargo test running.",
+          "created_at": "2026-10-03T15:53:51.628707Z",
+          "comment_type": "default"
+        },
+        {
+          "id": "0f699fb8-debd-4efc-9bfc-a821ace3e11b",
+          "author": "example-user",
+          "text": "PR 16 opened into develop (branch cursor/readme-overview-fb2c, commits b68ccf1 docs rewrite plus 17cefc0 board state). Pre-push checks clean: no agent-email or home-path strings in history, README free of personal data. Local gates green: fmt, clippy -D warnings, full cargo test (64 lib tests; BDD 40 features, 213 scenarios, 211 passed and 2 skipped; fixture guards, personal-data guard, spec_docs_coverage, 8 doc tests). Waiting for CI, then merge.",
+          "created_at": "2026-10-03T16:39:28.768566Z",
+          "comment_type": "default"
+        }
+      ],
+      "created_at": "2026-10-03T15:43:12.737656Z",
+      "updated_at": "2026-10-03T16:39:28.768592Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "Composer 2.5",
+        "name": "Cloud Agent"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
       "custom": {}
     },
     {
@@ -5041,6 +5174,36 @@
       }
     },
     {
+      "id": "BOTSPY-cdaa69a2-8521-4059-9425-6300acb69936",
+      "title": "Implement botspy scan (CLI verb + store ingest options)",
+      "description": "",
+      "type": "sub-task",
+      "status": "open",
+      "priority": 2,
+      "assignee": null,
+      "creator": null,
+      "parent": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+      "labels": [],
+      "dependencies": [
+        {
+          "target": "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0",
+          "type": "blocked-by"
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-10-03T15:46:45.573867Z",
+      "updated_at": "2026-10-03T15:46:53.561700Z",
+      "closed_at": null,
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      },
+      "right_now_summary": null,
+      "right_now_updated_at": null,
+      "custom": {}
+    },
+    {
       "id": "BOTSPY-d202a240-cb13-4d00-b3e3-4fe0cd6f45c9",
       "title": "Synthetic fixture and discovery for Cursor IDE and agent stores",
       "description": "Fixture mirrors the Cursor User dir (state.vscdb composer stores with per-workspace and central indexes) and the ~/.cursor agent transcripts and chats metadata. Done when: discovery unions all composer indexes and finds agent sessions.",
@@ -6070,7 +6233,7 @@
       "title": "Docs",
       "description": "Documentation: rustdoc chapters organized around the Gherkin specs (crate index, one chapter per spec layer with embedded feature files, spec-coverage guard test, rustdoc and doctests in CI).",
       "type": "epic",
-      "status": "closed",
+      "status": "open",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -6087,8 +6250,8 @@
         }
       ],
       "created_at": "2026-10-02T16:15:24.317480Z",
-      "updated_at": "2026-10-03T11:36:26.803070Z",
-      "closed_at": "2026-10-03T11:36:26.802684Z",
+      "updated_at": "2026-10-03T15:43:11.956812Z",
+      "closed_at": null,
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -6270,6 +6433,9 @@
     ],
     "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc": [
       "BOTSPY-c8c59795-dba2-44bb-8e03-795d6882410f"
+    ],
+    "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0": [
+      "BOTSPY-cdaa69a2-8521-4059-9425-6300acb69936"
     ],
     "BOTSPY-7e15b784-ff1a-4063-8422-559a4af2450f": [
       "BOTSPY-90ad8e5e-08d6-4e46-beb5-882038ac8ca6"

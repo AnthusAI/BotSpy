@@ -1,0 +1,41 @@
+{
+  "id": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+  "title": "botspy scan: mine the adapters into the local store from the CLI",
+  "description": "**Intent:** As a BotSpy user, I want `botspy scan` to mine my coding-agent history into the local store from the command line, so that the store at ~/.botspy/store.db stays fresh without writing library code of my own.\n\nExposes the store's ingest/CDC pass (src/store/ingest.rs) as a CLI verb, per the maintainer's request. Default: all five adapters (claude_code, cursor, codex, grok_bot, antigravity) into the one store at `default_store_path()` ($BOTSPY_HOME/.botspy/store.db). Flags: repeatable `--source` (single adapter or list), `--since` cutoff (ISO date or relative duration like `7d`), `--store` path override, `--dry-run` (report what would change, write nothing), `-o human|json|ndjson` consistent with the other verbs.\n\n**Output:** per-adapter summary — sessions and messages added, updated, unchanged, skipped, plus discovered counts (so an adapter yielding 0 sessions is visible, see bug BOTSPY-81143b — scan must never hide that) — and totals, elapsed time. Exit codes per the CLI convention: 0 ok, 1 unknown source, 2 usage error, 3 store failure.\n\n**Decisions (recorded):**\n\n- The CDC pass behind scan is a refresh-style pass with pruning disabled: pruning would delete stored sessions for any adapter that currently reports 0 (the Codex bug BOTSPY-81143b, or a missing root), so scan adds new and updates changed sessions but never prunes. On an empty store the pass IS the cold ingest the maintainer measured (~44 min); a warm pass is the ~1.7 s incremental refresh.\n- `--since` cutoff lands inside the store's ingest/refresh passes as an `IngestOptions` (specs first in features/02_querying), not as CLI filtering.\n- Uses the real `crate::store::Store`, not the in-memory `SessionStore` that `build_store` wires.\n- Keep src/cli/mod.rs changes minimal and separated: BOTSPY-98386a (store-backed verbs) is also planned against that file.\n\n**Definition of Done:** specs reviewed and red first, then green via `cargo test --test bdd`; cargo fmt/clippy/doc/test gates pass; real run of `botspy scan` and `botspy scan --since 7d --source claude_code` on the maintainer's machine; PR to develop (GitFlow, never main); merged once CI is green; task closed with a comment.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "03bf5e5b-b813-45ee-8701-e10b79758e8b",
+      "author": "home",
+      "text": "**Implementation log (running):**\n\nImplemented on feature branch `cursor/scan-command-2500` (based on develop):\n\n- `feat(store)`: ingest passes with a cutoff, dry-run, and per-adapter report — `IngestOptions{since, dry_run, prune}`, `AdapterIngestReport`/`DetailedIngestReport`, `Store::ingest_with`/`refresh_with`; `prune` defaults to false so scans never delete; `refresh()` keeps pruning. Re-exported at the crate root.\n- `feat(cli)`: the `botspy scan` verb (`--source` repeatable, `--since`, `--store`, `--dry-run`, `-o human|json|ndjson`), dispatching to `refresh_with` with pruning disabled.\n- `test(steps)`: BDD steps for cutoffs, dry runs, and per-adapter reports.\n- Spec truth settled at 12 fixture sessions added of 13 discovered (grok_bot discovers 3 but adds 2 with 1 open error); all specs use 12. `parse_cutoff` fixes: ISO-date validation bug, `10000w` saturates to epoch instead of erroring.\n- Doc structure followed develop's leaner 6-verb CLI chapter; scan is the first verb that writes the store.\n\nGates (all green on the final commit): fmt, clippy (`-D warnings`), doc, full `cargo test` (75 unit; 239 BDD scenarios — 235 passed, 4 planned skips; 3 integration; 8 doc-tests), including the personal-data guard. Real-run verification of `botspy scan` and `botspy scan --since 7d --source claude_code` was done with the maintainer in chat; no real values are recorded here.\n\nNext: PR to develop, CI, merge, then close this task, the story, and the sub-task.",
+      "created_at": "2026-10-03T15:46:54.587470Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
+  "created_at": "2026-10-03T15:46:36.687290Z",
+  "updated_at": "2026-10-03T15:46:54.587501Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "GLM 5.3 Flash",
+    "name": "Cursor Cloud Agent (local-store implementer)"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
+}

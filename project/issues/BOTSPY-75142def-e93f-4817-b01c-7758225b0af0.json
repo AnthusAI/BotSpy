@@ -1,0 +1,41 @@
+{
+  "id": "BOTSPY-75142def-e93f-4817-b01c-7758225b0af0",
+  "title": "botspy scan behavior specs (Gherkin)",
+  "description": "",
+  "type": "story",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-8ef5a59c-cdef-4636-bc7d-dd549ffdb3bc",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "58514e58-729a-43e3-8324-43a931b5385b",
+      "author": "home",
+      "text": "**Behavior specs (Gherkin, red before implementation):**\n\nFeature: botspy scan\n  `botspy scan` mines the adapters into the local store — the CDC pass behind the store, on the command line. Default: every registered source into the one store at $BOTSPY_HOME/.botspy/store.db. The pass adds new sessions and updates changed ones; it never prunes (an adapter reporting 0 must never delete stored history — bug BOTSPY-81143b). Exit codes: 0 success, 1 unknown source, 2 usage error, 3 store failure.\n\n  Scenario: A default scan fills the store from every source (12 fixture sessions added of 13 discovered; dry run leaves the store empty)\n  Scenario: `--source` scans a single adapter; repeated `--source` scans a list\n  Scenario: `--since <RFC3339|YYYY-MM-DD|7d>` cuts off what the pass picks up (skipped counted, nothing older deleted)\n  Scenario: `--store <path>` overrides the store path; the default honors $BOTSPY_HOME\n  Scenario: `--dry-run` reports what would change and writes nothing\n  Scenario: `-o json` serializes the per-adapter report; ndjson streams one entry per source\n  Scenario: An adapter reporting 0 sessions shows its zero row visibly (codex under bug BOTSPY-81143b must never hide)\n  Scenario: Unknown source exits 1; bad `--since` exits 2; unusable store exits 3\n\nStore-level specs (features/02_querying/05_ingest.feature, 06_refresh.feature): cutoff `since` on the ingest and refresh passes; skipped sessions counted; dry-run passes roll back; per-adapter detailed report.\n\nFull feature files land in features/cli/60_scan.feature and the two 02_querying files.",
+      "created_at": "2026-10-03T15:46:44.657296Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
+  "created_at": "2026-10-03T15:46:41.389845Z",
+  "updated_at": "2026-10-03T15:46:44.657317Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "cursor",
+    "model": "GLM 5.3 Flash",
+    "name": "Cursor Cloud Agent (local-store implementer)"
+  },
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {
+    "project_label": "BOTSPY",
+    "source": "shared"
+  }
+}
