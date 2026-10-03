@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0](https://github.com/AnthusAI/BotSpy/compare/v0.1.0...v0.2.0) - 2026-10-03
+
+### Added
+
+- *(store)* semantic-model spec — identity in meta, paraphrase matching (BOTSPY-7e1836)
+- *(store)* sqlite-vec vector search — embed at ingest, semantic + hybrid ranking (BOTSPY-c8c597)
+- *(store)* model asset setup — download-once, digest-verified (BOTSPY-c3cf41)
+- *(store)* MiniLMEmbedder — all-MiniLM-L6-v2 via tract ONNX on CPU (BOTSPY-e95fe9)
+- *(store)* FTS5 text search, ranked and filter-composable (BOTSPY-e5be2f)
+- *(store)* query filters pushed down to SQLite (BOTSPY-72dc40)
+- *(store)* incremental refresh — staleness, re-ingest, prune (BOTSPY-d5b2c4)
+- *(store)* query iteration surface with laziness counters (BOTSPY-a927fc)
+- *(store)* adapter-driven ingestion with FTS projections (BOTSPY-a48fb1)
+- *(store)* store skeleton — open/create, WAL, migrations, sqlite-vec + FTS5 walking skeleton (BOTSPY-5c1c7d)
+
+### Fixed
+
+- *(ci)* passthrough BOTSPY_MODELS to the cross containers too
+- *(ci)* passthrough the musl CFLAGS into the cross container
+- *(ci)* pass the musl typedef alias into the cross container via Cross.toml
+- *(ci)* alias sqlite-vec's BSD u_intN_t typedefs for musl cross builds
+
+### Other
+
+- *(kanbus)* commit board state (issues)
+- *(kanbus)* commit board state (issues)
+- Merge branch 'develop' into cursor/full-documentation-af6b
+- *(kanbus)* BOTSPY-81d4bf real-history validation logged; codex schema-drift bug 81143b filed
+- *(kanbus)* commit board state (issues)
+- *(kanbus)* BOTSPY-c7795b close-out — PR #4 merged (fa32eb3), store epics closed
+- *(kanbus)* commit board state (issues)
+- *(steps)* drop stale todo note, share the store-open helper
+- flip landed-store claims, add the store wiki page (BOTSPY-526284)
+- *(store)* specify text and semantic/hybrid search; red steps (BOTSPY-e2f3fb)
+- *(store)* specify query filters; red steps for 02_filters (BOTSPY-a2811d)
+- *(store)* specify incremental refresh; fixture open counter (BOTSPY-5893ab)
+- *(store)* specify ingestion; red steps for 05_ingest and 01_iteration (BOTSPY-2c0dc3)
+- *(store)* specify the local store in Gherkin (BOTSPY-4df7c3)
+
 ## [0.1.0](https://github.com/AnthusAI/BotSpy/releases/tag/v0.1.0) - 2026-10-03
 
 ### Added
