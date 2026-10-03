@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "built_at": "2026-10-03T11:36:37Z",
+  "built_at": "2026-10-03T12:15:38Z",
   "file_mtimes": {
-    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1791027161.014143,
+    "BOTSPY-047770d3-e26d-40b4-bfa2-4ac7d19d3f28.json": 1791027418.141983,
     "BOTSPY-053443c3-4edb-4816-af2a-3ef38bcd68d1.json": 1791027161.014247,
     "BOTSPY-05c594d3-0a28-4cf7-af30-ae668ceae72c.json": 1791027377.274296,
     "BOTSPY-060f40ab-5029-4343-b6f5-387cbed71725.json": 1791027317.959888,
@@ -14,13 +14,13 @@
     "BOTSPY-17e4aad9-d687-4af6-b03b-d863c5f17078.json": 1791027161.015017,
     "BOTSPY-185f838f-c0a0-4f03-baa5-f767677a506b.json": 1791027161.015107,
     "BOTSPY-18b2d9ed-1eda-470b-b7a7-76c99d4d2148.json": 1791027161.015187,
-    "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124.json": 1791027161.015269,
+    "BOTSPY-1d7b8594-782b-4297-8b23-1d36a838e124.json": 1791029736.923042,
     "BOTSPY-219424f8-3fc8-45fc-b76c-6e1bdcb0e5ee.json": 1791027161.015363,
     "BOTSPY-21fbd796-283e-4dfd-8578-0ad4843bdaa7.json": 1791027161.015441,
     "BOTSPY-27c8f6e3-6c35-4531-a70d-e6c9fde1ba63.json": 1791027161.015534,
     "BOTSPY-296d2cff-a01d-42e4-8eeb-f96caa2ff6ad.json": 1791027161.015607,
     "BOTSPY-2c0dc327-99e4-44d1-a8f1-0ad5ba38209a.json": 1791027270.376681,
-    "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7.json": 1791027334.037256,
+    "BOTSPY-2cddcf99-4723-4c95-bc1e-f8c12909e0a7.json": 1791029736.030192,
     "BOTSPY-2d5b7e6e-623c-4997-8101-6d1f21b1a549.json": 1791027161.015843,
     "BOTSPY-31f6f7e5-b34b-4487-9636-b0da17b04f37.json": 1791027161.015913,
     "BOTSPY-3208c642-35e1-4dd3-b19c-14653c1562ca.json": 1791027161.015992,
@@ -37,7 +37,7 @@
     "BOTSPY-40c88043-40a0-4f59-9bf1-6cc2367bcdaf.json": 1791027161.016808,
     "BOTSPY-45f1b2f5-b177-41d5-b4c4-15b5acce56ba.json": 1791027161.016884,
     "BOTSPY-4661a5d5-1ad0-4554-8b79-ea521bda3c91.json": 1791027379.089834,
-    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1791027161.017046,
+    "BOTSPY-47117d63-9d92-4604-9ec2-4fd3526d1d8c.json": 1791027418.986198,
     "BOTSPY-4782d97d-d053-4fc3-a697-c53150024b32.json": 1791027161.017122,
     "BOTSPY-493cee0b-bb83-4f55-9ad7-1958aaf81704.json": 1791027161.017199,
     "BOTSPY-4c8521a3-75c0-49b2-9d36-523f6a0bd6bf.json": 1791027161.017295,
@@ -46,7 +46,7 @@
     "BOTSPY-4df7c3b7-e141-4f13-9a54-9f710ca42e4e.json": 1791027161.017511,
     "BOTSPY-4df866e8-aaa5-47f6-a844-ce6cd67a6d53.json": 1791027161.017605,
     "BOTSPY-502c4e3d-8a0e-440e-b57d-efd3caf67ff7.json": 1791027161.017685,
-    "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148.json": 1791027161.017779,
+    "BOTSPY-52628401-ae5d-4cea-b720-4e7c3cbf4148.json": 1791029723.032948,
     "BOTSPY-53334e09-8ba2-48fc-9257-a49aa04f3edd.json": 1791027161.017845,
     "BOTSPY-541f5a0b-0090-4b7b-8d8b-7a3708668992.json": 1791027161.017914,
     "BOTSPY-54a21925-b846-4bb2-91c7-97b8d22199e7.json": 1791027161.017991,
@@ -56,7 +56,7 @@
     "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9.json": 1791027381.280936,
     "BOTSPY-5a97008b-4068-4e9d-bcf8-3fcab8328103.json": 1791027161.018357,
     "BOTSPY-5ac7ce60-3659-463e-8e38-5bce09fd638e.json": 1791027161.018435,
-    "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab.json": 1791027325.747687,
+    "BOTSPY-5c1c7de1-f557-4010-be3d-16fc403421ab.json": 1791029714.526314,
     "BOTSPY-61d66585-b6d4-4ad2-9dc7-87fa2771020e.json": 1791027161.018577,
     "BOTSPY-62676b58-d60a-484f-b3f2-98c77fd79b63.json": 1791027161.018678,
     "BOTSPY-637da20d-273a-4f07-8707-5459377fa93a.json": 1791027161.018754,
@@ -68,12 +68,12 @@
     "BOTSPY-6e165b20-27ef-4b14-ba82-1ad6dbc2a162.json": 1791027161.01921,
     "BOTSPY-6f173df5-e927-4a57-b3de-901ed4df9466.json": 1791027161.019298,
     "BOTSPY-7020e7a0-4034-4025-bce6-463694108223.json": 1791027161.019364,
-    "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5.json": 1791027161.019444,
+    "BOTSPY-71196e41-80d5-474c-aaad-6cd43279b3e5.json": 1791029734.085478,
     "BOTSPY-71308791-e0fc-46ec-b527-c5b9d91bc1bb.json": 1791027161.019514,
     "BOTSPY-727bb618-1e59-497a-bef4-ddc3f4549b63.json": 1791027161.019605,
     "BOTSPY-72dc4057-4d5c-41bc-9a23-c9135e58aefc.json": 1791027316.664626,
     "BOTSPY-77f2ecf8-f5c0-48bb-ab84-3d6f8141b6f7.json": 1791027161.019869,
-    "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772.json": 1791027161.019951,
+    "BOTSPY-798ba479-19e4-427e-9a48-7f5c9fa06772.json": 1791029733.201363,
     "BOTSPY-7adf2646-9327-4496-91c0-233298584b8e.json": 1791027384.107146,
     "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb.json": 1791027161.020155,
     "BOTSPY-7cc4ea07-484a-4c9e-b66c-ac4befdba6ad.json": 1791027161.020251,
@@ -145,11 +145,11 @@
     "BOTSPY-e95fe98c-0d39-4536-a97e-f29a779ffe2f.json": 1791027299.311147,
     "BOTSPY-e9eca3c2-e632-4e46-8b3b-32045be47797.json": 1791027161.025174,
     "BOTSPY-eb1cdb25-d8cf-40b4-985d-35d3435b0176.json": 1791027161.025245,
-    "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e.json": 1791027161.025317,
+    "BOTSPY-ed56f3f6-401c-4fc7-8af5-adf63b54707e.json": 1791029735.110696,
     "BOTSPY-edda72d6-52a8-46e2-ab0d-cc35768ae44a.json": 1791027161.025399,
     "BOTSPY-eef45b7c-9745-4703-98e8-a734a4dcc9cf.json": 1791027161.02547,
     "BOTSPY-efbe1d15-4edc-486d-9ef2-06eeee05caac.json": 1791027161.025536,
-    "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a.json": 1791027161.025603,
+    "BOTSPY-f12bdb84-1d0b-40d6-b0e8-d8a9df42b79a.json": 1791029737.927669,
     "BOTSPY-f2b72b11-12a8-4f9c-875c-fd30f8a8c63b.json": 1791027161.025681,
     "BOTSPY-f57fe5ad-41d6-4844-9f19-ea41cdcbb882.json": 1791027161.025765,
     "BOTSPY-f7b4d6ec-1752-4e24-b58c-b1383876f4df.json": 1791027161.02583,
@@ -165,7 +165,7 @@
       "title": "Chapter 2: Querying (features/02_querying)",
       "description": "Querying implemented with SQLite and the sqlite-vec extension underneath. The engine is completely invisible to callers: one query interface, with different query functions on one class and SQLite underneath, so callers never see which engine is running. Supersedes the old property-based filtering over in-memory objects from the former features/03_query_export chapter. Implementation of record: BOTSPY-c7795b (Local Store Initiative). Specs first: features/02_querying/*.feature.",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -179,11 +179,18 @@
           "text": "Implementation plan for this chapter is filed under the initiative of record, BOTSPY-c7795b: store foundation (SQLite + sqlite-vec + FTS5, cross-platform), ingestion + unified iteration, incremental refresh, filters + laziness, text + vector search, MiniLM embeddings (deferred on open asset questions), docs wrap-up. The existing @wip specs (01_iteration, 02_filters, 03_laziness) turn green as the query-interface epics land; new store / ingest / refresh / search specs join the same folder (features/02_querying/).",
           "created_at": "2026-10-02T21:44:38.104046Z",
           "comment_type": "default"
+        },
+        {
+          "id": "21ac0b3c-f8c4-4ccc-8de2-81dd67f478a0",
+          "author": "home",
+          "text": "Chapter complete: every child task is closed; the querying behaviors live in features/02_querying and are green on feat/local-store (PR #4).",
+          "created_at": "2026-10-03T11:36:57.668400Z",
+          "comment_type": "default"
         }
       ],
       "created_at": "2026-10-02T16:15:16.948650Z",
-      "updated_at": "2026-10-02T21:44:38.104074Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T11:36:58.141864Z",
+      "closed_at": "2026-10-03T11:36:58.141837Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -607,17 +614,25 @@
       "title": "Spec-chapter, README, and wiki wrap-up",
       "description": "Milestone 7 of the Local Store Initiative: the record matches the product. Chapter doc status sections current (src/spec/ch02_querying.rs), the stale \"(specified next)\" claim in src/lib.rs fixed, README status FAQ and mermaid \"planned\" labels flipped for what landed, a project wiki page documenting the store, and the board closed out for the landed epics. Per-task doc updates happen along the way (the docs-coverage guardrail: every .feature file embedded in a chapter); this epic is the final consolidation.\n\nWork in your own worktree off origin/develop, PR to develop only — never main. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "49e0e56f-64ed-49c3-8685-4d6317ff5920",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:36.479796Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:45.866213Z",
-      "updated_at": "2026-10-02T21:43:45.866251Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:36.922955Z",
+      "closed_at": "2026-10-03T12:15:36.922926Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -812,7 +827,7 @@
       "title": "MiniLM embeddings via tract ONNX on CPU",
       "description": "Milestone 6 of the Local Store Initiative (decided by BOTSPY-bb60bb, recorded on BOTSPY-c7795b; built on feat/local-store, PR #4): the real embedder — all-MiniLM-L6-v2 through tract (ONNX) on CPU, one model, one set of weights, one engine so vectors are consistent by construction, batch embedding at ingest (the scanner-batch milestone). Decision: the real model is NOT committed to the repo and NOT behind a cargo feature — it is downloaded by a setup step/command once (digest-verified) and cached locally (e.g. ~/.botspy/models/); at runtime nothing leaves the machine and the library makes no network calls; CI runs the real model ungated (downloaded once and cached, or pre-downloaded). The store records the embedding model id in meta and refuses mixed-model vectors. Vector/semantic search specs exercise the real model; the deterministic stub remains only as an internal unit-test seam.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -831,11 +846,18 @@
             "model": "GLM 5.3 Flash",
             "name": "Cursor Cloud Agent (local-store implementer)"
           }
+        },
+        {
+          "id": "27b347b5-7dc0-4cc1-b298-a43ba8f74af4",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:35.596154Z",
+          "comment_type": "default"
         }
       ],
       "created_at": "2026-10-02T21:43:45.401725Z",
-      "updated_at": "2026-10-03T11:35:34.037126Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:36.029924Z",
+      "closed_at": "2026-10-03T12:15:36.029861Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -1439,17 +1461,25 @@
       "title": "Cross-platform build and release (Rust library)",
       "description": "Library crate releases only: release-plz on main for versioning, changelog, tags and GitHub releases; no binary artifacts, no crates.io publish. CI builds and runs the tests (unit + bdd) per target: macOS aarch64 and x86_64, Linux x86_64 and aarch64 (AWS; gnu natively, musl via cross), Windows MSVC. rustfmt + clippy -D warnings.",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "fc456c33-9f52-4f2e-85dc-559f1465f4a5",
+          "author": "home",
+          "text": "Epic complete: every child task is closed — release-plz configured, direct-release workflow shipped 0.1.0 (tag, GitHub release, crates.io), and the cross-platform CI matrix runs the library tests per target.",
+          "created_at": "2026-10-03T11:36:58.558802Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T16:15:27.329103Z",
-      "updated_at": "2026-10-02T16:40:02.978520Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T11:36:58.985960Z",
+      "closed_at": "2026-10-03T11:36:58.985891Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -1760,7 +1790,7 @@
       "title": "Docs wrap-up: chapter status, README flip, wiki page, board close-out",
       "description": "**Files:** `src/spec/ch02_querying.rs` (status sections); `src/lib.rs` (chapter index line for querying — drop the stale \"(specified next)\"); `README.md` (status FAQ + mermaid \"planned\" labels flipped for what landed; the future CLI verbs stay described as planned under the CLI epic BOTSPY-7c2705); `project/wiki/store.md` (new: store path, WAL, DDL v1, refresh model, embedder seam, model-id policy).\n\n**Acceptance:** docs-coverage guardrail green; no stale \"planned\" claims about landed behavior; `kbs wiki render` on the new page is clean; the landed epics are closed with DoD comments (the MiniLM epic stays open and blocked on its gate).\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "task",
-      "status": "in_progress",
+      "status": "closed",
       "priority": 2,
       "assignee": "cursor-agent",
       "creator": null,
@@ -1798,11 +1828,23 @@
           "text": "README flip done (PR #6, merged to develop as 4e07a2e): README.md replaced with a real user-facing README — what BotSpy does, the five supported agents and where each one's data lives, cargo install botspy --locked with per-OS prerequisites, verified usage examples for botspy sources / doctor / sessions (--since, -o json) / show, local-only guarantees, MIT license, links to docs.rs and the features/ spec. Every example was run against the CLI built from develop over the committed synthetic fixture corpus (no real session content or paths; the sample outputs state that they come from the synthetic corpus). No export mention. The old press-release narrative and detailed FAQ moved verbatim to docs/DESIGN.md with an editorial note on which CLI verbs shipped. Gates green locally: fmt, clippy -D warnings, cargo test, cargo test --test bdd (169 passed / 2 skipped), spec_docs_coverage; cargo package --list still includes README.md and Cargo.toml readme field unchanged. CI green on the PR and on develop after merge. Remaining parts of this task (chapter status, wiki page, board close-out) still open.",
           "created_at": "2026-10-02T22:52:39.386779Z",
           "comment_type": "default"
+        },
+        {
+          "id": "a5737bba-1d87-4cc5-8223-9c8502babb6e",
+          "author": "home",
+          "text": "Done: docs wrap-up landed on feat/local-store (a9400d5) and merged to develop via PR #4 (fa32eb3) — lib.rs querying chapter no longer says 'specified next'; DESIGN.md status/FAQ flipped to built; README gained the library section; project/wiki/store.md added and linked from the index (`kbs wiki render store` clean).",
+          "created_at": "2026-10-03T12:15:22.167701Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "GLM 5.3 Flash",
+            "name": "Cursor Cloud Agent (local-store implementer)"
+          }
         }
       ],
       "created_at": "2026-10-02T21:44:00.187091Z",
-      "updated_at": "2026-10-02T22:52:39.387039Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:23.032847Z",
+      "closed_at": "2026-10-03T12:15:23.032815Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2160,7 +2202,7 @@
       "title": "Store skeleton: open/create, WAL, migrations; sqlite-vec + FTS5 walking skeleton green on every CI target",
       "description": "**Files:** `Cargo.toml` (add `sqlite-vec = \"=0.1.10-alpha.4\"`, exact pin: alpha crate); `src/store/mod.rs`, `src/store/migrations.rs` (new module, isolated from src/cli and src/adapters); `src/lib.rs` (pub mod store); `src/spec/ch02_querying.rs` (status); `tests/steps/store_steps.rs` (make the scenarios green).\n\n**Specs turned green:** `04_store.feature` — remove its @wip when every scenario passes.\n\n**Acceptance:** `Store::open(path)` plus default-path resolution (BOTSPY_HOME/$HOME → ~/.botspy/store.db); WAL + busy_timeout pragmas; `meta` table with versioned embedded DDL v1 — sessions, messages, parts with projected filter columns (agent, project_id, started_at, last_activity_at, message_count, role, timestamp, turn_id, part kind, text projection) plus lossless `session_json`/`message_json` serde columns; indexes on activity, agent, project, kind. sqlite-vec registered via `sqlite3_auto_extension` before connections open. Walking-skeleton unit tests: `vec_version()` smoke, vec0 create+insert+k-NN, FTS5 create+match (bundled SQLite ships FTS5 — the test asserts it so a target without it fails loudly; no silent LIKE fallback).\n\n**Cross-platform gate:** this task is the sqlite-vec proof point — the crate compiles sqlite-vec.c from source via cc, the same build path as rusqlite's bundled SQLite, so the matrix should hold; the PR's CI must be fully green on Linux x86/arm gnu, musl x86/arm (cross), macOS 14 + 15-intel, and Windows MSVC before this task closes. If a target fails, stop and report on this task.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "task",
-      "status": "in_progress",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
@@ -2196,11 +2238,23 @@
             "model": "GLM 5.3 Flash",
             "name": "Cursor Cloud Agent (local-store implementer)"
           }
+        },
+        {
+          "id": "5acf0723-d027-4bfe-9fb5-73fc84705e46",
+          "author": "home",
+          "text": "CI fully green: all 8 jobs (lint, 5 glibc/macOS/Windows test targets, both musl cross jobs) pass after 7a4444f — the fix was carrying the CFLAGS alias and BOTSPY_MODELS into the cross containers via Cross.toml [build.env] passthrough. PR #4 merged to develop (fa32eb3). Store skeleton open/create, WAL, migrations, sqlite-vec + FTS5 all in. Closing.",
+          "created_at": "2026-10-03T12:15:12.799361Z",
+          "comment_type": "default",
+          "agent": {
+            "platform": "cursor",
+            "model": "GLM 5.3 Flash",
+            "name": "Cursor Cloud Agent (local-store implementer)"
+          }
         }
       ],
       "created_at": "2026-10-02T21:43:46.999215Z",
-      "updated_at": "2026-10-03T11:35:25.747576Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:14.526190Z",
+      "closed_at": "2026-10-03T12:15:14.526134Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2599,17 +2653,25 @@
       "title": "One query surface: text search + vector search",
       "description": "Milestone 5 of the Local Store Initiative: the press release's \"searchable\" — one query interface, two engines beneath it, neither visible. Lexical: FTS5 over message texts. Semantic: sqlite-vec vec0 k-NN over 384-dim session embeddings produced at ingest through an `Embedder` seam — a deterministic stub embedder for the specs now; the real all-MiniLM-L6-v2/tract model is the deferred MiniLM epic after this one. Hybrid ranking merges both paths into one ranked result. A store opened without an embedder answers text search normally and semantic search with a clean empty result; stores never mix embedding models. Turns `07_text_search.feature` and `08_vector_search.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "aa1c7179-2ce1-4641-a7c5-b75e93b74eed",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:33.633358Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:44.957289Z",
-      "updated_at": "2026-10-02T21:43:44.957366Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:34.085367Z",
+      "closed_at": "2026-10-03T12:15:34.085332Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -2779,17 +2841,25 @@
       "title": "Query filters and laziness",
       "description": "Milestone 4 of the Local Store Initiative (implements the @wip specs in features/02_querying/): filters by source, project, part kind, and time window are pushed down to SQLite — the engine does the filtering; callers never pull every record into memory to compare properties (the 1.4 GB Claude trees and 6 GB Cursor stores make that unscalable). Laziness is proven, not assumed: taking one session opens only it, dropping an iterator stops the work, message iteration streams without materializing the session. Turns `02_filters.feature` and `03_laziness.feature` green and removes their @wip tags.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "d731d917-7545-489b-a1d3-5568f0da6ea5",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:32.463480Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:44.497482Z",
-      "updated_at": "2026-10-02T21:43:44.497509Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:33.201159Z",
+      "closed_at": "2026-10-03T12:15:33.201101Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -5553,17 +5623,25 @@
       "title": "Incremental refresh (CDC into the store)",
       "description": "Milestone 3 of the Local Store Initiative: keep the store current without re-mining the world — the store-side twin of the importers' incremental-by-identity discovery. A refresh pass compares each adapter's discover() summaries against stored rows, opens and re-ingests only new or changed sessions, prunes what vanished from the source, and reports per outcome (`IngestReport` — the SkipCounter precedent). Unchanged sessions are never re-opened from their adapters. Turns `06_refresh.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "3602147a-f0cf-4512-acd7-31d96eff1f8a",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:34.581941Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:44.039232Z",
-      "updated_at": "2026-10-02T21:43:44.039268Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:35.110610Z",
+      "closed_at": "2026-10-03T12:15:35.110588Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
@@ -5685,17 +5763,25 @@
       "title": "Store foundation: SQLite + sqlite-vec + FTS5 (cross-platform)",
       "description": "The unified store's chassis, milestone 1 of the Local Store Initiative (implements the Chapter 2 record, BOTSPY-047770). A new isolated src/store/ module: one SQLite file in WAL mode (an out-of-process writer can write while readers query; a Swift app can share the same file), versioned embedded DDL, and both query engines compiled in — the sqlite-vec crate builds sqlite-vec.c from source via cc (no prebuilt binaries, the same build path as rusqlite's bundled SQLite) and bundled SQLite ships FTS5. The walking-skeleton task proves both on every CI target (Linux x86/arm gnu, musl x86/arm via cross, macOS 14 arm, macOS 15 intel, Windows MSVC — green today, required to stay green) before anything is built on them. Spec first (04_store.feature, red), then the skeleton. No src/cli or src/adapters changes.",
       "type": "epic",
-      "status": "open",
+      "status": "closed",
       "priority": 2,
       "assignee": null,
       "creator": null,
       "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
       "labels": [],
       "dependencies": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "98938617-113a-45f8-8d61-2627e90f07e9",
+          "author": "home",
+          "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
+          "created_at": "2026-10-03T12:15:37.479024Z",
+          "comment_type": "default"
+        }
+      ],
       "created_at": "2026-10-02T21:43:04.071884Z",
-      "updated_at": "2026-10-02T21:43:04.071922Z",
-      "closed_at": null,
+      "updated_at": "2026-10-03T12:15:37.927438Z",
+      "closed_at": "2026-10-03T12:15:37.927386Z",
       "agent": {
         "platform": "cursor",
         "model": "glm-5.3-flash",
