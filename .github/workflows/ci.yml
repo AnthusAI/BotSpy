@@ -85,3 +85,23 @@ jobs:
           BOTSPY_MODELS: /project/.botspy-models
           CFLAGS_x86_64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t
           CFLAGS_aarch64_unknown_linux_musl: -Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t
+
+  # crates.io rejects .crate uploads over 10 MiB (HTTP 413); keep a MiB
+  # of headroom so a stray asset cannot block a release again.
+  package-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo package --locked
+      - name: Fail if the packaged crate exceeds the crates.io budget
+        run: |
+          max_bytes=$((9 * 1024 * 1024))
+          crate_path=$(ls target/package/botspy-*.crate)
+          crate_bytes=$(stat -c%s "$crate_path")
+          echo "packaged crate: ${crate_bytes} bytes (${crate_path})"
+          if [ "${crate_bytes}" -gt "${max_bytes}" ]; then
+            echo "::error title=Crate too large::${crate_path} is ${crate_bytes} bytes, over the ${max_bytes}-byte budget (crates.io limit is 10 MiB). Check the include allowlist in Cargo.toml."
+            exit 1
+          fi
