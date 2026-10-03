@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "db36326c-0cd1-4e5f-9999-6e50f0dc4601",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: [[bin]] botspy + thin main.rs; library cli module with clap arg definitions (global flags: -s/--source repeatable, --root, --home, -o/--output human|json|ndjson, --no-truncate) and run_from/RunOutcome plumbing the specs exercise in-process; store builder wiring real adapters by name with per-agent root derivation (--home / BOTSPY_HOME / $HOME; codex root is ~/.codex not .codex/sessions, cursor root is the state.vscdb file); Adapter impls for the five real sources (their RefCell state became Mutex so they are Sync behind Arc<dyn Adapter>); executable steps for features/cli/. Spec run: 36 CLI scenarios fail on todo!() verbs (red), 3 plumbing scenarios pass. Library-only doc claims updated in lib.rs. README on develop already describes the CLI working-backwards, including the not-yet-built verbs; left as-is.",
       "created_at": "2026-10-02T20:52:52.437981Z",
       "comment_type": "default"

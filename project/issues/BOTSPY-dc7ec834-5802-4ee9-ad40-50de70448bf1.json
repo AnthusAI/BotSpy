@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "154398e7-4381-43af-bc4f-e5c071eb5507",
-      "author": "home",
+      "author": "example-user",
       "text": "Spec authored at features/03_importers/cursor/adapter.feature (7 @wip scenarios): composer discovery from composerHeaders, re-detection by lastUpdatedAt, bubble order from fullConversationHeadersOnly (not keys), bubble-to-message mapping with thinking/toolFormerData, blob-only tool results as blob references, CLI transcript discovery, and hot-WAL snapshot-copy reading. Embedded in src/spec/ch03_importers/cursor.rs. All gates green.",
       "created_at": "2026-10-02T19:41:48.663757Z",
       "comment_type": "default"

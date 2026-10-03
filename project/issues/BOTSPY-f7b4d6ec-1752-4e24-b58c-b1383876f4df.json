@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "123f96e3-18c1-4ff7-aa93-6cd4a83d8df0",
-      "author": "home",
+      "author": "example-user",
       "text": "turn_steps registered; turn-ensuring steps set last_turn, position/duration steps 569Xlanchored to avoid ambiguity with the longer variants. 15 features / 70 scenarios / 274 steps green; fmt, clippy -D warnings, doc -D warnings, doc tests pass.",
       "created_at": "2026-10-02T19:20:05.450354Z",
       "comment_type": "default"

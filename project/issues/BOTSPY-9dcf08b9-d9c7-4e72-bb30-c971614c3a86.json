@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "8ceef309-10b1-4d0e-aaba-84e18a4dd030",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. @wip dropped from features/01_structure/03_session_graph.feature; all 8 scenarios pass (31 total). Schema: Session.parent_id/root_id, SubagentInfo (kind, nesting_depth), ForkPoint.ordinal, BattleLink (battle_id, winning_conversation_id on the winner), Peer (peer_id, status, has_local_transcript=false). fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T18:54:42.466134Z",
       "comment_type": "default"

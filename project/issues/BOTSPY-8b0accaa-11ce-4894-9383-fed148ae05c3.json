@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "fd5d6210-a5c8-4639-ab5d-8c50d1c9495c",
-      "author": "home",
+      "author": "example-user",
       "text": "Implemented until the spec passes. @wip dropped from features/01_structure/02_tool_result_status.feature; all 7 scenarios pass (24 total). Schema: PartStatus (ok/error/interrupted/loading/failed/success) on ToolResult and ToolCall, TurnStatus (completed/failed/aborted) with aborted_reason and error on Turn, Message.is_error flag; turn end markers close turns. fmt/clippy/doc/doctests/BDD green.",
       "created_at": "2026-10-02T18:51:29.345788Z",
       "comment_type": "default"

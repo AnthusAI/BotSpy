@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "5b7b737e-5190-4a7c-a819-7e41d614cedc",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: single Rust library crate (no bin/CLI/server/FFI targets); Python package, behave, pytest, ruff and python-semantic-release configs removed from the tree (only local cache dirs remain, untracked); cucumber-rs runs the specs via tests/bdd.rs; release-plz configured (release-plz.toml). cargo fmt/clippy/test green and CI green on main (only the known release-plz 403 Release failure). The per-target CI matrix is tracked separately as BOTSPY-3fa1b4.",
       "created_at": "2026-10-02T19:38:52.831531Z",
       "comment_type": "default"

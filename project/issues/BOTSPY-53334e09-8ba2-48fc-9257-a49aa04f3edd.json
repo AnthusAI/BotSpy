@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "a25df232-a8a4-4873-af1e-b979f64071a3",
-      "author": "home",
+      "author": "example-user",
       "text": "README, AGENTS.md and CONTRIBUTING_AGENT.md now state that Gherkin specs are the backbone and true source; planning is organized around features; spec -> steps -> implementation.",
       "created_at": "2026-10-02T16:27:31.111024Z",
       "comment_type": "default"

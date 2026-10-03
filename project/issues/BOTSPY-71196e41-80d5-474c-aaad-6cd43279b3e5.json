@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "aa1c7179-2ce1-4641-a7c5-b75e93b74eed",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed; the work is merged to develop via PR #4 (fa32eb3).",
       "created_at": "2026-10-03T12:15:33.633358Z",
       "comment_type": "default"

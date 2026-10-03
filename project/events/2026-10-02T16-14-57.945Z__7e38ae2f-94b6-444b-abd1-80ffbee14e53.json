@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "title": "Claude Code adapter",
-    "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: scanner-sentiment adapter, read-only.",
+    "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: example-scanner adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

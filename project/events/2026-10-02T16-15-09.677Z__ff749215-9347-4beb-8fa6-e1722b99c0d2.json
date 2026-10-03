@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "title": "Grok Bot adapter",
-    "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
+    "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: example-scanner grok-bot adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

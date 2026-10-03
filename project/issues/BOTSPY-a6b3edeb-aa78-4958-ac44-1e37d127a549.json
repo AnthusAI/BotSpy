@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-a6b3edeb-aa78-4958-ac44-1e37d127a549",
   "title": "sessions listing bugs from first real-data CLI run",
-  "description": "Five bugs found running the merged CLI (PR #1, origin/develop 9fc6584) against Ryan's real ~/.claude data (63 transcripts, read-only). sources, doctor and show work correctly on real data; every bug below is in the sessions listing path (or its interaction with it). Fixes target develop via feature branch; each bug carries repro, expected behavior, suspected code location, and acceptance criteria with a synthetic-fixture regression test (never Ryan's real transcripts).",
+  "description": "Five bugs found running the merged CLI (PR #1, origin/develop 9fc6584) against the maintainer's real ~/.claude data (45 transcripts, read-only). sources, doctor and show work correctly on real data; every bug below is in the sessions listing path (or its interaction with it). Fixes target develop via feature branch; each bug carries repro, expected behavior, suspected code location, and acceptance criteria with a synthetic-fixture regression test (never the maintainer's real transcripts).",
   "type": "epic",
   "status": "closed",
   "priority": 1,
@@ -13,28 +13,28 @@
   "comments": [
     {
       "id": "3cf88de6-4ec3-4880-8bc4-4701d7fedeea",
-      "author": "home",
-      "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+      "author": "example-user",
+      "text": "Filed from the first real-data CLI run (read-only, the maintainer's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
       "created_at": "2026-10-02T22:17:11.919617Z",
       "comment_type": "default"
     },
     {
       "id": "2a06a265-359b-4d8c-86bd-2decc6d2e189",
-      "author": "home",
-      "text": "Filed from the first real-data CLI run (read-only, Ryan's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
+      "author": "example-user",
+      "text": "Filed from the first real-data CLI run (read-only, the maintainer's ~/.claude, origin/develop 9fc6584). Five bugs: 4c8521a3 discover() empty summaries; 3f3ec558 --since filter/validation; 3ccc4fc9 sort-by-id; 17e4aad9 dedupe collision (63→61); bc3ae3db human table alignment. sources/doctor/show verified working on the same data. Bug 17e4aad9 is linked to local-store task BOTSPY-a48fb1 (dedup overlap; the fix stays in src/session.rs, which that task does not touch).",
       "created_at": "2026-10-02T22:17:20.119233Z",
       "comment_type": "default"
     },
     {
       "id": "101a1bf3-b733-4a2a-97f4-5be60d4acce2",
-      "author": "home",
-      "text": "All five bugs fixed and closed. Each went spec-first (Gherkin scenario(s) in features/cli/20_sessions.feature, watched red, then green) with synthetic-fixture regression tests only — no real transcripts anywhere. Fixes, in order, each ff-landed on develop from fix/sessions-listing-bugs-a:\n- BOTSPY-4c8521a3 bc4caa7 — discover() summaries carry message counts/timestamps/titles via a side-effect-free throwaway scanner.\n- BOTSPY-3f3ec558 f887561 — --since/--until window works and invalid values exit 2 with a stderr message (RFC 3339 validator + unit tests).\n- BOTSPY-3ccc4fc9 fc830d0 — most-recent-first order pinned (CLI order scenario + tie-break/empty-last unit test, doc comment).\n- BOTSPY-17e4aad9 6fa7bf7 — dedupe keyed on (agent, id, project_id); Agent derives PartialOrd/Ord; linked to local-store task BOTSPY-a48fb1 which was notified to adopt the same keying.\n- BOTSPY-bc3ae3db 8e4b9e6 — sessions table aligned in both truncation modes via dynamic column widths; show fragment-elision note left to CLI epic BOTSPY-7c2705.\nEnd-to-end check on the original real-data repro (read-only): sessions --limit 6 now shows real counts (5461/7779/...), true most-recent-first order, aligned in default and --no-truncate modes. Gates after every fix: cargo fmt --all, clippy --all-targets -D warnings, RUSTDOCFLAGS=\"-D warnings\" cargo doc, cargo test, cargo test --test bdd (169 passed, 2 skipped). release.yml/release-plz.toml untouched; no files from the local-store agent's branch (src/store/*, features/02_querying/*, Cargo.toml, src/lib.rs, src/spec/ch02_querying.rs, tests/steps/store_steps.rs) touched. Follow-up recorded: the other four adapters' discover() share the empty-summary defect — belongs to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
+      "author": "example-user",
+      "text": "All five bugs fixed and closed. Each went spec-first (Gherkin scenario(s) in features/cli/20_sessions.feature, watched red, then green) with synthetic-fixture regression tests only — no real transcripts anywhere. Fixes, in order, each ff-landed on develop from fix/sessions-listing-bugs-a:\n- BOTSPY-4c8521a3 bc4caa7 — discover() summaries carry message counts/timestamps/titles via a side-effect-free throwaway scanner.\n- BOTSPY-3f3ec558 f887561 — --since/--until window works and invalid values exit 2 with a stderr message (RFC 3339 validator + unit tests).\n- BOTSPY-3ccc4fc9 fc830d0 — most-recent-first order pinned (CLI order scenario + tie-break/empty-last unit test, doc comment).\n- BOTSPY-17e4aad9 6fa7bf7 — dedupe keyed on (agent, id, project_id); Agent derives PartialOrd/Ord; linked to local-store task BOTSPY-a48fb1 which was notified to adopt the same keying.\n- BOTSPY-bc3ae3db 8e4b9e6 — sessions table aligned in both truncation modes via dynamic column widths; show fragment-elision note left to CLI epic BOTSPY-7c2705.\nEnd-to-end check on the original real-data repro (read-only): sessions --limit 6 now shows real counts (4120/5870/...), true most-recent-first order, aligned in default and --no-truncate modes. Gates after every fix: cargo fmt --all, clippy --all-targets -D warnings, RUSTDOCFLAGS=\"-D warnings\" cargo doc, cargo test, cargo test --test bdd (169 passed, 2 skipped). release.yml/release-plz.toml untouched; no files from the local-store agent's branch (src/store/*, features/02_querying/*, Cargo.toml, src/lib.rs, src/spec/ch02_querying.rs, tests/steps/store_steps.rs) touched. Follow-up recorded: the other four adapters' discover() share the empty-summary defect — belongs to their adapter epics (BOTSPY-4661a5, BOTSPY-357602, BOTSPY-5a3bed, BOTSPY-55ea2f).",
       "created_at": "2026-10-02T22:27:19.581296Z",
       "comment_type": "default"
     },
     {
       "id": "a2512a64-8632-4f75-a49c-344fc69ebebc",
-      "author": "home",
+      "author": "example-user",
       "text": "All five child bugs (4c8521a3, 3f3ec558, 3ccc4fc9, 17e4aad9, bc3ae3db) are fixed and closed on develop; see the wrap-up log above. Follow-ups live elsewhere: the other four adapters' empty-summary discover() belongs to their adapter epics, and the show fragment-elision story to BOTSPY-7c2705.",
       "created_at": "2026-10-02T22:34:17.843762Z",
       "comment_type": "default"

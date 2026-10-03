@@ -7,7 +7,7 @@
   "actor_id": "example-user",
   "payload": {
     "title": "Antigravity adapter",
-    "description": "Tap Antigravity history: ~/.gemini/antigravity and antigravity-cli roots (conversations with protobuf user-turn payloads, conversation_summaries.db SQLite). Extract ALL part types. Reference: scanner-sentiment antigravity adapter, read-only.",
+    "description": "Tap Antigravity history: ~/.gemini/antigravity and antigravity-cli roots (conversations with protobuf user-turn payloads, conversation_summaries.db SQLite). Extract ALL part types. Reference: example-scanner antigravity adapter, read-only.",
     "issue_type": "epic",
     "status": "open",
     "priority": 2,

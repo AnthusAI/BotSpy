@@ -18,8 +18,8 @@
   "comments": [
     {
       "id": "ee8b2507-cb3b-484b-823a-0fa7621ef367",
-      "author": "home",
-      "text": "Store skeleton implemented on `feat/local-store` (PR https://github.com/AnthusAI/BotSpy/pull/4, CI pending before merge): `04_store.feature` green, `@wip` removed; WAL + DDL v1 + default path + lazy session iteration + minimal `ingest_sessions`. Walking-skeleton unit tests prove vec_version(), vec0 k-NN, FTS5. Deviation: sqlite-vec pinned to stable 0.1.9 — the planned 0.1.10-alpha.4 (and alpha.3) are broken upstream: the crate defaults SQLITE_VEC_ENABLE_DISKANN=1 but the shipped tarball omits sqlite-vec-diskann.c, so it cannot compile on any target.",
+      "author": "example-user",
+      "text": "Store skeleton implemented on `feat/local-store` (PR https://github.com/example-org/example-repo/pull/4, CI pending before merge): `04_store.feature` green, `@wip` removed; WAL + DDL v1 + default path + lazy session iteration + minimal `ingest_sessions`. Walking-skeleton unit tests prove vec_version(), vec0 k-NN, FTS5. Deviation: sqlite-vec pinned to stable 0.1.9 — the planned 0.1.10-alpha.4 (and alpha.3) are broken upstream: the crate defaults SQLITE_VEC_ENABLE_DISKANN=1 but the shipped tarball omits sqlite-vec-diskann.c, so it cannot compile on any target.",
       "created_at": "2026-10-02T22:13:31.447089Z",
       "comment_type": "default",
       "agent": {
@@ -30,7 +30,7 @@
     },
     {
       "id": "ba6e059d-216d-4944-aea8-8f8f0f18adbf",
-      "author": "home",
+      "author": "example-user",
       "text": "CI update: no longer pending — lint and the 5 glibc/macOS/Windows test jobs are green on PR #4 (feat/local-store); both musl jobs are still red after fix commits 0c40a7e and 2e61486 (sqlite-vec 0.1.9's BSD u_intN_t typedefs do not exist under musl; the CFLAGS alias is being routed into the cross container via Cross.toml). The musl fix is still being worked; task stays in progress.",
       "created_at": "2026-10-03T11:35:25.747548Z",
       "comment_type": "default",
@@ -42,7 +42,7 @@
     },
     {
       "id": "5acf0723-d027-4bfe-9fb5-73fc84705e46",
-      "author": "home",
+      "author": "example-user",
       "text": "CI fully green: all 8 jobs (lint, 5 glibc/macOS/Windows test targets, both musl cross jobs) pass after 7a4444f — the fix was carrying the CFLAGS alias and BOTSPY_MODELS into the cross containers via Cross.toml [build.env] passthrough. PR #4 merged to develop (fa32eb3). Store skeleton open/create, WAL, migrations, sqlite-vec + FTS5 all in. Closing.",
       "created_at": "2026-10-03T12:15:12.799361Z",
       "comment_type": "default",

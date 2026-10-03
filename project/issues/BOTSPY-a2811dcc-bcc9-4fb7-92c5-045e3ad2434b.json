@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "ce366d5b-50ca-41e0-931e-0fa39a7bc0e8",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: 02_filters.feature and 03_laziness.feature specified with red step definitions — green since BOTSPY-e94591e (filters) and BOTSPY-a927fc (laziness counters). Committed to feat/local-store (60ca1c9, PR #4).",
       "created_at": "2026-10-03T11:34:44.533697Z",
       "comment_type": "default",

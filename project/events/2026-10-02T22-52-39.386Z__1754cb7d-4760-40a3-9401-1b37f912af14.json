@@ -7,6 +7,6 @@
   "actor_id": "example-user",
   "payload": {
     "comment_id": "f4ed21b3-0fbf-437e-9a00-666d6ef42c69",
-    "comment_author": "home"
+    "comment_author": "example-user"
   }
 }

@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "dd853f8a-f540-4aec-abaf-ce684dd8b45d",
-      "author": "home",
+      "author": "example-user",
       "text": "SessionStore, SessionSummary, UnknownSession and FixtureAdapter implemented in src/session.rs, src/adapter.rs, src/adapters/fixture.rs; all 11 bdd scenarios pass, clippy -D warnings and rustfmt clean.",
       "created_at": "2026-10-02T16:41:24.687020Z",
       "comment_type": "default"

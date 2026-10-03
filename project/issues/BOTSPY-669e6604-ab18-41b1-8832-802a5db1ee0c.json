@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-669e6604-ab18-41b1-8832-802a5db1ee0c",
   "title": "Claude Code adapter",
-  "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: scanner-sentiment adapter, read-only.",
+  "description": "Tap Claude Code on-disk history: JSONL transcripts under ~/.claude/projects (honors CLAUDE_CONFIG_DIR, plus archive roots). Extract ALL part types (user, assistant, thinking, tool calls and results, attachments), not only human messages. Reference: example-scanner adapter, read-only.",
   "type": "epic",
   "status": "closed",
   "priority": 2,
@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "80296d13-a77e-4ec9-9caf-d87740f51690",
-      "author": "home",
+      "author": "example-user",
       "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
       "created_at": "2026-10-02T17:58:27.962387Z",
       "comment_type": "default",
@@ -25,7 +25,7 @@
     },
     {
       "id": "d127fea6-59e7-45c4-aa1b-7ecda9cf1116",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:17.784284Z",
       "comment_type": "default"

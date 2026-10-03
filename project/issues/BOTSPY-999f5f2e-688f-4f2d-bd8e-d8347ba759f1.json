@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "226a4f81-3c26-4ccf-a38e-d8d00257ea86",
-      "author": "home",
+      "author": "example-user",
       "text": "Spec written and embedded in the docs (commit 4c81421).",
       "created_at": "2026-10-02T17:33:00.070984Z",
       "comment_type": "default"

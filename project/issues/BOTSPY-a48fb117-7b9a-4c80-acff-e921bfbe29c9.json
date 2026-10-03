@@ -22,14 +22,14 @@
   "comments": [
     {
       "id": "5c6eb0c7-a39b-4fd1-8492-14753bd515d0",
-      "author": "home",
+      "author": "example-user",
       "text": "Heads-up from the sessions-listing bug run: the chapter-1 dedupe rule in SessionStore::list_sessions (src/session.rs) silently drops transcripts when the same session id appears in two project dirs (observed 63→61 on real data; bug BOTSPY-17e4aad9). The fix keys dedupe on (agent, id, project_id). When you implement first-report-wins ingestion here, please adopt the same keying so the store matches the fixed listing rule.",
       "created_at": "2026-10-02T22:17:20.674888Z",
       "comment_type": "default"
     },
     {
       "id": "f2fac8cc-28a2-4938-a072-087604ed8c6f",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: adapter-driven ingestion mines every registered adapter into the store — strictly read-only sources (digest before/after), first-report-wins dedup, lossless session round-trip, FTS projections written at ingest. 05_ingest.feature green. Committed to feat/local-store (bc1aa42, PR #4).",
       "created_at": "2026-10-03T11:34:31.635656Z",
       "comment_type": "default",

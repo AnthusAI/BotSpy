@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "0efe6666-bb29-4c36-b4b2-6608a6cf9530",
-      "author": "home",
+      "author": "example-user",
       "text": "Contract spec authored at features/03_importers/contract.feature: discovery under roots, incremental detection, streaming extraction (bounded memory), malformed/unknown records skipped and counted, no source mutation, and WAL snapshot-copy reading. Tagged @wip; embedded in src/spec/ch03_importers/mod.rs. All gates green.",
       "created_at": "2026-10-02T19:26:44.916403Z",
       "comment_type": "default"

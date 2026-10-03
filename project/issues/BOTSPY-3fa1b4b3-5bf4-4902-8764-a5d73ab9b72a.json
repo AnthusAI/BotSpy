@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "7803c160-0846-499b-b161-1a58b63060a7",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: the CI workflow (.github/workflows/ci.yml) already runs the library tests on a five-target matrix (linux x86_64 + aarch64, macOS aarch64 + x86_64, windows-msvc) plus a musl cross matrix, per target, fail-fast disabled. CI green on main.",
       "created_at": "2026-10-02T19:39:28.769955Z",
       "comment_type": "default"

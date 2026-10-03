@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "d7f5a7c5-2451-4ec4-ae40-a003fa4203bd",
-      "author": "home",
+      "author": "example-user",
       "text": "Spec authored at features/03_importers/claude_code/adapter.feature (7 @wip scenarios): per-project discovery, sub-agent sidechains linking to parents, append-follow by byte offset, uuid/parentUuid as provenance, auxiliary records parking in session metadata, and partial-trailing-line retry with malformed skip counting. Embedded in src/spec/ch03_importers/claude_code.rs. All gates green.",
       "created_at": "2026-10-02T19:41:39.891750Z",
       "comment_type": "default"

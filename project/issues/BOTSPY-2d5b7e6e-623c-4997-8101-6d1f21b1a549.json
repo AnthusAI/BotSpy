@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "79f1d7ad-a328-4335-9481-38dfc2effd9c",
-      "author": "home",
+      "author": "example-user",
       "text": "Parity covered by 7 lib unit tests (discovery order + spawn edges, doctor flags missing rollouts, ordinal order, stored-offset resume, response_item part-kind mapping, usage/compaction/task_complete state, partial+malformed skip counting) plus the 8 executable BDD scenarios (wip tag dropped). SkipCounter gained a partial counter held-back trailing lines count as skipped per the spec, total() includes it. Full gate green.",
       "created_at": "2026-10-02T19:58:27.648845Z",
       "comment_type": "default"

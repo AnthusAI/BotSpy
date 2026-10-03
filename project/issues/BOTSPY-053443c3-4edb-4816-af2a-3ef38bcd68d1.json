@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "b72db5bd-5ba2-49af-bd3d-af73bda4b141",
-      "author": "home",
+      "author": "example-user",
       "text": "Spec authored at features/03_importers/antigravity/adapter.feature (7 @wip scenarios): summaries-index discovery, transcript.jsonl as preferred source, record-type mapping (USER_INPUT/PLANNER_RESPONSE/CHECKPOINT/ERROR_MESSAGE), step_index ordering, SQLite payload DB supplying tool-call linkage, hot-WAL snapshot reading, malformed-step skip counting. Embedded in src/spec/ch03_importers/antigravity.rs. All gates green.",
       "created_at": "2026-10-02T19:42:15.373352Z",
       "comment_type": "default"

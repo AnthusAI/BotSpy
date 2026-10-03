@@ -22,7 +22,7 @@
   "comments": [
     {
       "id": "881ad7fb-982b-4b0a-9749-1c76c453a996",
-      "author": "home",
+      "author": "example-user",
       "text": "home: unified_history.feature fully executable — @wip lifted, all five scenarios green (123 scenarios / 465 steps): five agents listing together, last-activity ordering across sessions (u7, u8, u6), dedup of the same session reported by two discovery passes (listed once), provenance surviving the merge (rollout.jsonl line 42 intact after store open), and per-session agent/project identity. Implementation: SessionStore::list_sessions now deduplicates by session id (first report wins) before the last-activity sort; new tests/steps/unified_steps.rs drives the store through the in-memory fixture adapters (layer-1 semantics — the committed corpus keeps feeding the importers and example consumers). Two new unit tests cover dedup and sort order (39 lib tests). Full gate green: fmt, clippy -D warnings, doc -D warnings, 8 doc tests, BDD 25 features/123 scenarios/465 steps, spec_docs_coverage, 39 lib tests, fixture corpus guards.",
       "created_at": "2026-10-02T20:34:09.760583Z",
       "comment_type": "default"

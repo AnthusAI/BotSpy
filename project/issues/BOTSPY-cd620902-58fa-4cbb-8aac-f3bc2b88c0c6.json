@@ -18,7 +18,7 @@
   "comments": [
     {
       "id": "fef3b9b2-1eb6-480c-82cd-e3cb8bc987b0",
-      "author": "home",
+      "author": "example-user",
       "text": "R9 done: Message.timestamp is Option<Timestamp>, ordering never depends on it, Session.file_modified_at carries the transcript mtime. All 12 Chapter 1 schema recommendations now implemented and @wip-free.",
       "created_at": "2026-10-02T19:23:26.760880Z",
       "comment_type": "default"

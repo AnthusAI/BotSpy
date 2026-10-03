@@ -22,7 +22,7 @@
   "comments": [
     {
       "id": "288983d6-3964-4d58-af94-2ec5bc166378",
-      "author": "home",
+      "author": "example-user",
       "text": "Done: incremental refresh — staleness against stored rows, re-ingest only new or changed sessions, prune what vanished from the source, per-outcome IngestReport; unchanged sessions are never re-opened from their adapters. 06_refresh.feature green. Committed to feat/local-store (49a8f1c, PR #4).",
       "created_at": "2026-10-03T11:34:47.327068Z",
       "comment_type": "default",

@@ -13,8 +13,8 @@
   "comments": [
     {
       "id": "a09e5b3c-df9e-4f03-bbc3-df31ebe0777e",
-      "author": "home",
-      "text": "LICENSE added with standard MIT text, Copyright (c) 2026 Ryan Porter; license = \"MIT\" in pyproject.toml.",
+      "author": "example-user",
+      "text": "LICENSE added with standard MIT text, Copyright (c) 2026 the maintainer; license = \"MIT\" in pyproject.toml.",
       "created_at": "2026-10-02T16:26:43.001040Z",
       "comment_type": "default"
     }

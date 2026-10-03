@@ -1,7 +1,7 @@
 {
   "id": "BOTSPY-5a3bedc1-a11a-448e-be99-a1372d8fd0d9",
   "title": "Grok Bot adapter",
-  "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: scanner-sentiment grok-bot adapter, read-only.",
+  "description": "Tap Grok Bot app data: base32-named blob replicas ending in .transcript.replicas.<conversation-uuid> under ~/Library/Application Support/Grok Bot. Extract ALL part types. Reference: example-scanner grok-bot adapter, read-only.",
   "type": "epic",
   "status": "closed",
   "priority": 2,
@@ -13,7 +13,7 @@
   "comments": [
     {
       "id": "7cbffef5-e51b-4774-bd2b-e79e7cddb712",
-      "author": "home",
+      "author": "example-user",
       "text": "Scope note: this adapter epic is the per-agent translation of Chapter 3: Importers / Change Data Capture (epic BOTSPY-e0bcfa, features/03_importers). It owns only this agent's side of the CDC pipeline — watching the source and emitting normalized records as they appear — not the pipeline mechanics, which live in Chapter 3. Parenting stays on initiative BOTSPY-65cc21 per board rules.",
       "created_at": "2026-10-02T17:58:38.168491Z",
       "comment_type": "default",
@@ -25,7 +25,7 @@
     },
     {
       "id": "2f5ef2da-4051-4f81-8778-a08a9e9347f8",
-      "author": "home",
+      "author": "example-user",
       "text": "Epic complete: every child task is closed.",
       "created_at": "2026-10-03T11:36:20.847119Z",
       "comment_type": "default"
