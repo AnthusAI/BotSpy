@@ -7,7 +7,9 @@
 
 use crate::adapter::Adapter;
 use crate::session::{Session, UnknownSession};
-use crate::store::{session_content_hash, sqlite_error, upsert_session, Store, StoreError};
+use crate::store::{
+    delete_session_vectors, session_content_hash, sqlite_error, upsert_session, Store, StoreError,
+};
 use rusqlite::{params, OptionalExtension};
 use std::collections::{BTreeMap, BTreeSet};
 use std::sync::Arc;
@@ -36,6 +38,9 @@ impl Store {
             .conn
             .unchecked_transaction()
             .map_err(sqlite_error("begin ingest transaction"))?;
+        if let Some(embedder) = self.embedder.as_deref() {
+            crate::store::check_embedding_model(&tx, embedder)?;
+        }
         let stored: BTreeSet<String> = self.stored_session_ids()?;
         let mut report = IngestReport::default();
         // First report wins within the pass: the first adapter to name an
@@ -51,7 +56,7 @@ impl Store {
                     continue;
                 }
                 if let Some(session) = adapter.open(&summary.id) {
-                    upsert_session(&tx, &session)?;
+                    upsert_session(&tx, &session, self.embedder.as_deref())?;
                     report.new += 1;
                 }
             }
@@ -136,6 +141,9 @@ impl Store {
             .conn
             .unchecked_transaction()
             .map_err(sqlite_error("begin refresh transaction"))?;
+        if let Some(embedder) = self.embedder.as_deref() {
+            crate::store::check_embedding_model(&tx, embedder)?;
+        }
         let stored: BTreeMap<String, (String, i64, String)> = {
             let mut map = BTreeMap::new();
             let mut stmt = self
@@ -182,7 +190,7 @@ impl Store {
                 };
                 match stored.get(&summary.id) {
                     None => {
-                        upsert_session(&tx, &session)?;
+                        upsert_session(&tx, &session, self.embedder.as_deref())?;
                         report.new += 1;
                     }
                     Some((_, _, content_hash)) => {
@@ -191,7 +199,7 @@ impl Store {
                             report.unchanged += 1;
                             continue;
                         }
-                        upsert_session(&tx, &session)?;
+                        upsert_session(&tx, &session, self.embedder.as_deref())?;
                         report.updated += 1;
                     }
                 }
@@ -203,6 +211,7 @@ impl Store {
             }
             tx.execute("DELETE FROM message_fts WHERE session_id = ?1", params![id])
                 .map_err(sqlite_error("prune session"))?;
+            delete_session_vectors(&tx, id)?;
             tx.execute("DELETE FROM sessions WHERE id = ?1", params![id])
                 .map_err(sqlite_error("prune session"))?;
             report.pruned += 1;

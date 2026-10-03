@@ -4,15 +4,20 @@
 //! operators dropped — so nothing a caller types can inject FTS syntax,
 //! and a query that matches nothing is an empty result, never an error.
 
+use crate::store::vector;
 use crate::store::StoreError;
 use rusqlite::params;
 use rusqlite::types::Value;
 use rusqlite::Connection;
 
-/// One matched message part: where the match lives and the text that
-/// matched. Hits are ordered best session first, then by message and part
-/// ordinal within a session.
-#[derive(Debug, Clone, PartialEq, Eq)]
+/// One matched message part: where the match lives, the text that
+/// matched, and the session's ranking score. Hits are ordered best
+/// session first, then by message and part ordinal within a session.
+///
+/// The score is the hit's session's reciprocal-rank-fusion contribution
+/// (`1 / (60 + session_rank)`): comparable with the semantic path's
+/// similarity score, and additive with it in the hybrid ranking.
+#[derive(Debug, Clone, PartialEq)]
 pub struct SearchHit {
     /// The session the match belongs to.
     pub session_id: String,
@@ -22,6 +27,8 @@ pub struct SearchHit {
     pub part_ordinal: usize,
     /// The text that matched.
     pub text: String,
+    /// The session's ranking score in the search that produced the hit.
+    pub score: f64,
 }
 
 /// Compile a caller's query into an FTS5 MATCH expression: each
@@ -71,7 +78,11 @@ pub(crate) fn search(
         .map(|row| row.map_err(sqlite_error("read ranked session id")))
         .collect::<Result<Vec<_>, _>>()?;
     let mut hits = Vec::new();
-    for session_id in session_ids {
+    for (rank, session_id) in session_ids.iter().enumerate() {
+        // The session's reciprocal-rank contribution: comparable with the
+        // semantic path's similarity scores and additive in the hybrid
+        // ranking (see vector::hybrid_merge).
+        let score = 1.0 / (vector::RRF_K + (rank + 1) as f64);
         let rows = conn
             .prepare_cached(
                 "SELECT message_ordinal, part_ordinal, text FROM message_fts \
@@ -85,6 +96,7 @@ pub(crate) fn search(
                     message_ordinal: row.get::<_, i64>(0)? as usize,
                     part_ordinal: row.get::<_, i64>(1)? as usize,
                     text: row.get(2)?,
+                    score,
                 })
             })
             .map_err(sqlite_error("fetch text search hits"))?

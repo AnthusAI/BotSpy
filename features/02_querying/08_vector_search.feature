@@ -1,11 +1,12 @@
-@wip
 Feature: Semantic and hybrid search
   With the store's embedder configured (all-MiniLM-L6-v2, 384-dim), ingest
   embeds every session and semantic search returns the nearest sessions
   for a query text, each with a similarity score and a caller-chosen k.
   Text and vector results merge into one hybrid ranking (reciprocal-rank
   fusion): a session that both words-match and embeds near the query
-  ranks first. A store opened without an embedder answers text search
+  ranks first. A semantic match must clear a 0.3 cosine relevance floor —
+  below it, similarity is noise for the shipped model, not a weak
+  ranking. A store opened without an embedder answers text search
   normally and answers semantic search with a clean empty result. Stores
   never mix embedding models: the first embed records the model id in
   meta, and a different one is refused.

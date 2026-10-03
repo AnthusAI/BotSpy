@@ -10,7 +10,7 @@ use rusqlite::Connection;
 use super::StoreError;
 
 /// The schema version this build of the store reads and writes.
-pub(crate) const SCHEMA_VERSION: i64 = 1;
+pub(crate) const SCHEMA_VERSION: i64 = 2;
 
 /// The v1 DDL: normalized rows plus projected filter columns. Message and
 /// part rows hang off their session and cascade away with it; the serde
@@ -57,6 +57,19 @@ CREATE VIRTUAL TABLE message_fts USING fts5(
 );
 "#;
 
+/// The v2 DDL: the rowid mapping for the vector index. The vec0 table
+/// itself is created lazily on the first embed (the embedder's dimension
+/// fixes the table's, and a store that never embeds never needs it).
+const DDL_V2: &str = r#"
+CREATE TABLE message_vec_rows (
+    vec_rowid INTEGER PRIMARY KEY,
+    session_id TEXT NOT NULL,
+    message_ordinal INTEGER NOT NULL,
+    part_ordinal INTEGER NOT NULL
+);
+CREATE INDEX idx_message_vec_rows_session ON message_vec_rows(session_id);
+"#;
+
 /// Create the `meta` table (key/value settings) when it does not exist.
 fn ensure_meta(conn: &Connection) -> Result<(), rusqlite::Error> {
     conn.execute_batch(
@@ -100,6 +113,22 @@ pub(crate) fn run(conn: &Connection) -> Result<(), StoreError> {
             conn.execute_batch(DDL_V1)
                 .map_err(|err| StoreError::Sqlite {
                     context: "apply schema v1".into(),
+                    source: err,
+                })?;
+            conn.execute_batch(DDL_V2)
+                .map_err(|err| StoreError::Sqlite {
+                    context: "apply schema v2".into(),
+                    source: err,
+                })?;
+            set_version(conn, SCHEMA_VERSION)?;
+            Ok(())
+        }
+        // v1 stores gain the vector-row mapping without touching their
+        // rows: no vector index exists yet, so nothing to rebuild.
+        Some(1) => {
+            conn.execute_batch(DDL_V2)
+                .map_err(|err| StoreError::Sqlite {
+                    context: "migrate schema v1 to v2".into(),
                     source: err,
                 })?;
             set_version(conn, SCHEMA_VERSION)?;

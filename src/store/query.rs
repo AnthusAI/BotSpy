@@ -7,7 +7,10 @@
 use crate::schema::{Agent, Message, Part};
 use crate::session::{Session, UnknownSession};
 use crate::store::text::{self, SearchHit};
-use crate::store::{agent_code, SessionIter, Store, StoreError, SESSIONS_PREFIX, SESSIONS_SUFFIX};
+use crate::store::{
+    agent_code, ensure_vector_table, vector, SessionIter, Store, StoreError, SESSIONS_PREFIX,
+    SESSIONS_SUFFIX,
+};
 use rusqlite::types::Value;
 use rusqlite::{params, OptionalExtension};
 use std::cell::Cell;
@@ -218,6 +221,83 @@ impl<'s> Query<'s> {
             .expect("reader connection for text search");
         let (conjuncts, values) = filter_conjuncts(filter, 2);
         text::search(&conn, query, &conjuncts, &values).expect("store text search failed")
+    }
+
+    /// Semantic search over the stored embeddings: the `k` sessions whose
+    /// parts embed nearest the query text, best similarity first. Each
+    /// hit carries its session's best cosine similarity. A store opened
+    /// without an embedder answers with a clean empty result — text
+    /// search is unaffected.
+    pub fn search_semantic(&self, query: &str, k: usize) -> Vec<SearchHit> {
+        self.search_semantic_with(query, k, &SessionFilter::default())
+    }
+
+    /// Semantic search composed with a session filter.
+    pub fn search_semantic_with(
+        &self,
+        query: &str,
+        k: usize,
+        filter: &SessionFilter,
+    ) -> Vec<SearchHit> {
+        let Some(embedder) = self.store.embedder() else {
+            return Vec::new();
+        };
+        let vector = self.embed_query(embedder, query);
+        let conn = self
+            .store
+            .reader_conn()
+            .expect("reader connection for semantic search");
+        ensure_vector_table(&conn, embedder.dim()).expect("store vector index");
+        let (conjuncts, values) = filter_conjuncts(filter, 1);
+        vector::semantic_matches(&conn, &vector, &conjuncts, &values, Some(k.max(1)))
+            .expect("store semantic search failed")
+            .hits
+    }
+
+    /// Hybrid search: the text (FTS5) and semantic (vector) halves merge
+    /// into one ranking by reciprocal-rank fusion — a session's fused
+    /// score is its text-rank contribution plus its best cosine
+    /// similarity, so a session that both words-matches and embeds near
+    /// the query ranks first. A store without an embedder falls back to
+    /// the text ranking.
+    pub fn search_hybrid(&self, query: &str) -> Vec<SearchHit> {
+        self.search_hybrid_with(query, &SessionFilter::default())
+    }
+
+    /// Hybrid search composed with a session filter.
+    pub fn search_hybrid_with(&self, query: &str, filter: &SessionFilter) -> Vec<SearchHit> {
+        let conn = self
+            .store
+            .reader_conn()
+            .expect("reader connection for hybrid search");
+        let (text_conjuncts, text_values) = filter_conjuncts(filter, 2);
+        let text_hits = text::search(&conn, query, &text_conjuncts, &text_values)
+            .expect("store text search failed");
+        let semantic = match self.store.embedder() {
+            Some(embedder) => {
+                let vector = self.embed_query(embedder, query);
+                ensure_vector_table(&conn, embedder.dim()).expect("store vector index");
+                let (conjuncts, values) = filter_conjuncts(filter, 1);
+                Some(
+                    vector::semantic_matches(&conn, &vector, &conjuncts, &values, None)
+                        .expect("store semantic search failed"),
+                )
+            }
+            None => None,
+        };
+        vector::hybrid_merge(text_hits, semantic)
+    }
+
+    fn embed_query(
+        &self,
+        embedder: &std::sync::Arc<dyn crate::store::embed::Embedder>,
+        query: &str,
+    ) -> Vec<f32> {
+        let mut vectors = embedder
+            .embed(&[query])
+            .expect("store semantic search failed");
+        assert_eq!(vectors.len(), 1, "one query text, one query vector");
+        vectors.remove(0)
     }
 
     /// The parts of one message, in part-ordinal order, rebuilt losslessly
