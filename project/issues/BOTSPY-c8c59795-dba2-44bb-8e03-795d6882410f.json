@@ -3,7 +3,7 @@
   "title": "Implement sqlite-vec vector search + Embedder seam + hybrid ranking",
   "description": "**Files:** `src/store/embed.rs` (new: `Embedder` trait — model id, dim 384, batch embed; `StubEmbedder` kept solely as an internal unit-test seam), `src/store/vector.rs` (new: vec0 k-NN + cosine scores), `src/store/query.rs` (hybrid merge via reciprocal-rank fusion, deterministic), `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `08_vector_search.feature` — remove its @wip.\n\n**Acceptance:** per Ryan's decision (BOTSPY-bb60bb closed): `08_vector_search.feature` exercises the REAL all-MiniLM-L6-v2 embedder — the deterministic stub is never the shipped embedder and never drives vector/semantic search specs (internal unit tests only). The embedder is a store-open concern (no embedder configured → semantic queries return a clean empty result, text queries unaffected); meta model id set on first embed, a mismatched model refused with a clean error; hybrid merge of FTS + k-NN results via reciprocal-rank fusion, composable with filters, one ranked result type for both paths; engine invisible.",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -23,10 +23,23 @@
       "type": "blocked-by"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "1b770b68-c5d0-470a-8035-e4e8590a88cf",
+      "author": "home",
+      "text": "Done: sqlite-vec vector search — sessions/messages/parts embedded at ingest behind the Embedder seam, semantic k-NN with a 0.3 cosine relevance floor, hybrid ranking fusing text RRF with cosine; 08_vector_search.feature green. Also fixed the real-embedder quality bug: the Xenova tokenizer pads to a fixed 128 tokens, so pooling must weight by the attention mask, not the id count. Committed to feat/local-store (39094e1, PR #4).",
+      "created_at": "2026-10-03T11:34:48.733423Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
+    }
+  ],
   "created_at": "2026-10-02T21:43:54.760688Z",
-  "updated_at": "2026-10-02T21:49:13.694991Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:34:49.390069Z",
+  "closed_at": "2026-10-03T11:34:49.390032Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

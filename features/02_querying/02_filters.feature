@@ -1,4 +1,3 @@
-@wip
 Feature: Query filters
   The query interface filters sessions and messages by source, project,
   part kind, and time window. The engine does the filtering — callers

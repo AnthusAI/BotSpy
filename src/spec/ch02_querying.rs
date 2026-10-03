@@ -42,17 +42,43 @@
 //! CPU. See that initiative for the storage, vector-search, model, and
 //! performance decisions.
 //!
-//! ## Status: specified, awaiting the local store
+//! ## Status: chapter 2 is green through the semantic model
 //!
 //! The query scenarios live in `features/02_querying/` and are embedded
-//! below, tagged `@wip` until the Local Store implementation lands. They
-//! pin down the query surface the engine will be built to satisfy:
-//! iteration over sessions, messages, and parts
+//! below. Executable and green: the local store itself
+//! ([`04_store.feature`](../../features/02_querying/04_store.feature)), the
+//! query iteration surface
 //! ([`01_iteration.feature`](../../features/02_querying/01_iteration.feature)),
-//! filters by source, project, part kind, and time window
+//! adapter-driven ingestion
+//! ([`05_ingest.feature`](../../features/02_querying/05_ingest.feature)),
+//! engine-pushed-down query filters
 //! ([`02_filters.feature`](../../features/02_querying/02_filters.feature)),
-//! and laziness
-//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)).
+//! incremental refresh
+//! ([`06_refresh.feature`](../../features/02_querying/06_refresh.feature)),
+//! text search
+//! ([`07_text_search.feature`](../../features/02_querying/07_text_search.feature)),
+//! query laziness
+//! ([`03_laziness.feature`](../../features/02_querying/03_laziness.feature)),
+//! semantic and hybrid vector search
+//! ([`08_vector_search.feature`](../../features/02_querying/08_vector_search.feature)),
+//! and the semantic model's identity and paraphrase behavior
+//! ([`09_semantic_model.feature`](../../features/02_querying/09_semantic_model.feature))
+//! — the last two run the real MiniLM model, ungated per the
+//! BOTSPY-bb60bb decision.
+//!
+//! ## Model assets: fetched once at setup, never at runtime
+//!
+//! The embedding model is not committed to the repository, and the
+//! runtime library makes no network calls — ever. A one-time setup step
+//! (`cargo run --example setup_models`, or the equivalent
+//! [`fetch_assets`](crate::store::assets::fetch_assets) call) downloads
+//! the quantized all-MiniLM-L6-v2 ONNX weights and its tokenizer exactly
+//! once, verifies each file against a pinned SHA-256 digest (a
+//! truncated or tampered download never lands in the cache), and caches
+//! it under the models dir (`BOTSPY_MODELS` or `$HOME/.botspy/models`).
+//! Setup is idempotent: already-verified files are left untouched.
+//! After setup the store is fully offline — nothing leaves the machine,
+//! and a missing model is a clean typed error, never a silent download.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -64,5 +90,23 @@
     "\n```\n\n",
     "### 03_laziness.feature\n\n```gherkin\n",
     include_str!("../../features/02_querying/03_laziness.feature"),
+    "\n```\n\n",
+    "### 04_store.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/04_store.feature"),
+    "\n```\n\n",
+    "### 05_ingest.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/05_ingest.feature"),
+    "\n```\n\n",
+    "### 06_refresh.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/06_refresh.feature"),
+    "\n```\n\n",
+    "### 07_text_search.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/07_text_search.feature"),
+    "\n```\n\n",
+    "### 08_vector_search.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/08_vector_search.feature"),
+    "\n```\n\n",
+    "### 09_semantic_model.feature\n\n```gherkin\n",
+    include_str!("../../features/02_querying/09_semantic_model.feature"),
     "\n```\n"
 )]

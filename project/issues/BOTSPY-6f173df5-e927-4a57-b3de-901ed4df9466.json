@@ -3,17 +3,25 @@
   "title": "Ingestion and unified iteration (adapters → store)",
   "description": "Milestone 2 of the Local Store Initiative (implements BOTSPY-047770): mine every registered adapter into the store, strictly read-only with respect to source data, then iterate the unified history out of the store. Ingestion drives the existing `Adapter` trait (discover() + open()) — zero adapter changes — writes normalized sessions, messages, and parts plus the FTS index in per-session transactions, dedups by first-report-wins (the chapter-1 rule), proves the sources untouched (digest before/after, the importer-contract precedent), and round-trips sessions losslessly. The first face of the one query interface lands here: lazy iteration over sessions, messages, and parts with the engine invisible. Turns `01_iteration.feature` and `05_ingest.feature` green.\n\nEvery task in this epic: work in your own worktree off origin/develop (unique path, e.g. /tmp/botspy-<task-id>-<short>), branch `feat/store-<short>`, PR to develop only — never main (GitFlow). Log milestone comments on the task; close only when its DoD is met. Gates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-c7795b2d-950b-4802-aa21-d2d54d2491d1",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "139a10b3-e3fe-4986-9b90-d807476eb17f",
+      "author": "home",
+      "text": "Epic complete: every child task is closed — ingestion, iteration, and the real-history validation all done; the codex adapter finding lives on BOTSPY-81143b under the Codex adapter epic.",
+      "created_at": "2026-10-03T13:36:29.821972Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T21:43:43.549855Z",
-  "updated_at": "2026-10-02T21:43:43.549891Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T13:36:30.298904Z",
+  "closed_at": "2026-10-03T13:36:30.298881Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

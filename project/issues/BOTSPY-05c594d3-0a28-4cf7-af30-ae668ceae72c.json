@@ -3,17 +3,25 @@
   "title": "Project setup and tooling",
   "description": "Chores that stood the project up: python package, Kanbus, semantic-release, MIT license, ruff, GitHub CI. Each closes when its change lands and local checks pass.",
   "type": "epic",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-11036cdc-3afb-43ed-9cec-c79bf9896917",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "82e7e02d-0e77-4b99-b10d-cea7a974482c",
+      "author": "home",
+      "text": "Epic complete: every child task is closed.",
+      "created_at": "2026-10-03T11:36:16.827261Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-02T16:16:03.113577Z",
-  "updated_at": "2026-10-02T16:16:03.113620Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:36:17.274138Z",
+  "closed_at": "2026-10-03T11:36:17.274056Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

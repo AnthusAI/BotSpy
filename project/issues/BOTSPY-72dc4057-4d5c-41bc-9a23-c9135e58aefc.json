@@ -3,7 +3,7 @@
   "title": "Implement query filters pushed down to SQLite",
   "description": "**Files:** `src/store/query.rs`, `tests/steps/store_steps.rs`.\n\n**Specs turned green:** `02_filters.feature` — remove its @wip.\n\n**Acceptance:** composable filter methods on `Query` (source/agent, project, part kind via EXISTS over parts, activity since/until, limit) compiled into the WHERE clauses of the existing prepared statements — the engine filters; callers never materialize everything to compare properties. The filter surface deliberately mirrors the existing `botspy sessions` flags (--source/--project/--since/--until/--limit) so a future CLI verb over the store is a thin shell — but no CLI changes in this initiative.\n\nGates: cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test and cargo test --test bdd. All existing suites stay green (features/01_structure, features/03_importers, features/04_examples, features/cli).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -31,11 +31,23 @@
         "model": "GLM 5.3 Flash",
         "name": "Cursor Cloud Agent (local-store implementer)"
       }
+    },
+    {
+      "id": "1ff80ea9-ed8c-4652-a657-a2fd50982296",
+      "author": "home",
+      "text": "Final: query filters (source, project, part kind, time window) pushed down to SQLite — 02_filters.feature green. Done on feat/local-store (e94591e, PR #4).",
+      "created_at": "2026-10-03T11:35:16.007778Z",
+      "comment_type": "default",
+      "agent": {
+        "platform": "cursor",
+        "model": "GLM 5.3 Flash",
+        "name": "Cursor Cloud Agent (local-store implementer)"
+      }
     }
   ],
   "created_at": "2026-10-02T21:43:51.913477Z",
-  "updated_at": "2026-10-02T22:57:35.427448Z",
-  "closed_at": null,
+  "updated_at": "2026-10-03T11:35:16.664525Z",
+  "closed_at": "2026-10-03T11:35:16.664491Z",
   "agent": {
     "platform": "cursor",
     "model": "glm-5.3-flash",

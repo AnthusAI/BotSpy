@@ -1,7 +1,38 @@
-# Chapter 2 — Querying (placeholder)
+# Chapter 2 — Querying
 
-Specs for the transparent query interface over SQLite + sqlite-vec live
-here once written. The engine (SQLite underneath) is invisible to callers;
-implementation is tracked by the Local Store Initiative on the Kanbus
-board (BOTSPY-c7795b). See `src/spec/ch02_querying.rs` for the outline.
-No scenarios exist yet — this chapter is specified next.
+Specs for the transparent query interface over SQLite + sqlite-vec: one
+query interface, with the engine (SQLite underneath) invisible to callers.
+Implementation is tracked by the Local Store Initiative on the Kanbus
+board (BOTSPY-c7795b); see `src/spec/ch02_querying.rs` for the embedded
+specs and status.
+
+Spec files (`@wip` until each scenario's implementation task lands):
+
+- `01_iteration.feature` — iteration over sessions, messages, and parts
+  in order.
+- `02_filters.feature` — filters by source, project, part kind, and time
+  window, pushed down to the engine.
+- `03_laziness.feature` — iteration reads only what the caller consumes.
+- `04_store.feature` — the local store: opening at a caller-given path,
+  persistence across reopens, a reader querying while an ingest commits,
+  clean typed errors for files that are not a store, and the
+  BOTSPY_HOME-derived default path.
+- `05_ingest.feature` — ingesting the registered adapters into the store:
+  report counts, first-report-wins dedup, lossless round-trip, sources
+  stay read-only, empty registry is a no-op.
+- `06_refresh.feature` — incremental refresh: only new/changed sessions
+  re-opened, gone sessions pruned, idempotent, unchanged sessions never
+  re-opened from their adapters (open-count proof).
+- `07_text_search.feature` (green) — FTS5 text search: ranked,
+  case-insensitive, composes with the session filters; no match is
+  empty, never an error.
+- `08_vector_search.feature` — semantic and hybrid search: nearest
+  sessions with scores over the embedder's session embeddings, caller-
+  chosen k, a 0.3 cosine relevance floor, reciprocal-rank-fusion hybrid
+  ranking, clean empty semantic result without an embedder, and the
+  meta model-id mismatch policy.
+- `09_semantic_model.feature` — the semantic model itself: the store
+  records the embedding model it embeds with (and a store without an
+  embedder records none), a paraphrase with no shared word finds its
+  session, and k composes with the relevance floor. Runs the real
+  MiniLM model, ungated per the BOTSPY-bb60bb decision.
