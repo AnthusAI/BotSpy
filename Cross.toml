@@ -1,0 +1,9 @@
+# Configuration for the musl cross jobs in .github/workflows/ci.yml
+# (BOTSPY-c7795b). cross does not forward arbitrary host env into its
+# containers, so the sqlite-vec 0.1.9 typedef alias has to be declared
+# here: its C source derives uintN_t from the BSD-style u_intN_t names,
+# which musl libc does not define. cc-rs appends CFLAGS_<target> (dashes
+# replaced by underscores) to every compile it runs for that target.
+[env]
+CFLAGS_x86_64_unknown_linux_musl = "-Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t"
+CFLAGS_aarch64_unknown_linux_musl = "-Du_int8_t=uint8_t -Du_int16_t=uint16_t -Du_int32_t=uint32_t -Du_int64_t=uint64_t"
