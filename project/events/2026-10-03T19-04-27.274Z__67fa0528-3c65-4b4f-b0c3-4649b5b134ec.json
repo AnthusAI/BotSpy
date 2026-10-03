@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "event_id": "67fa0528-3c65-4b4f-b0c3-4649b5b134ec",
+  "issue_id": "BOTSPY-135edab9-67a2-480f-aac7-44f3bc1a5ba6",
+  "event_type": "comment_updated",
+  "occurred_at": "2026-10-03T19:04:27.274Z",
+  "actor_id": "example-user",
+  "payload": {
+    "comment_id": "1b5d11ad-fc53-4eb3-aa89-d1bfcb945710",
+    "comment_author": "example-user",
+    "changed_fields": [
+      "text"
+    ]
+  }
+}
