@@ -4,7 +4,7 @@
   "issue_id": "BOTSPY-99afd609-ebd3-455e-a71f-cd77da167aca",
   "event_type": "issue_created",
   "occurred_at": "2026-10-03T15:43:12.737Z",
-  "actor_id": "home",
+  "actor_id": "example-user",
   "payload": {
     "title": "Rewrite README as high-level project overview with key diagrams",
     "description": "",

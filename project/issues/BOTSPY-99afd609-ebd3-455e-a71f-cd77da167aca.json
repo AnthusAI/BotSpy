@@ -31,10 +31,17 @@
       "text": "PR 16 opened into develop (branch cursor/readme-overview-fb2c, commits b68ccf1 docs rewrite plus 17cefc0 board state). Pre-push checks clean: no agent-email or home-path strings in history, README free of personal data. Local gates green: fmt, clippy -D warnings, full cargo test (64 lib tests; BDD 40 features, 213 scenarios, 211 passed and 2 skipped; fixture guards, personal-data guard, spec_docs_coverage, 8 doc tests). Waiting for CI, then merge.",
       "created_at": "2026-10-03T16:39:28.768566Z",
       "comment_type": "default"
+    },
+    {
+      "id": "211e0487-59db-436f-b768-42ab33c60217",
+      "author": "example-user",
+      "text": "CI on PR 16 flagged the personal-data guard: six event files from this session carry actor_id stamped from the machine username, which collides with the anonymized actor id the guard forbids. The shared kbs daemon was started without KANBUS_USER and stamped the events; stopping the daemon and running kbs with KANBUS_USER=example-user fixes the stamping. Sanitizing those six actor_id values now, same class of operation as the earlier anonymize-board-data chore.",
+      "created_at": "2026-10-03T17:05:23.700769Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T15:43:12.737656Z",
-  "updated_at": "2026-10-03T16:39:28.768592Z",
+  "updated_at": "2026-10-03T17:05:23.700797Z",
   "closed_at": null,
   "agent": {
     "platform": "cursor",
