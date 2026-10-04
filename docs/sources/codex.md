@@ -11,7 +11,7 @@ the adapter at `~/.codex`, where `state_5.sqlite` lives.
 
 | Path | Content |
 | --- | --- |
-| `~/.codex/state_5.sqlite` | The threads index. The adapter opens the database read-only, directly — not through a snapshot copy. The query selects `id`, `rollout_path`, `parent_id`, `cwd` from the table `threads`. |
+| `~/.codex/state_5.sqlite` | The threads index. The adapter reads it through a snapshot copy, never in place. The `threads` query selects `id`, `rollout_path`, `cwd`, `title`, `model`, `git_branch`, `git_origin_url`, `git_sha`, and the created/updated instants. The table has no parent column. |
 | `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl` | The rollouts. One file holds one session. |
 
 The adapter never opens `~/.codex/thread_history_1.sqlite`. The
@@ -19,27 +19,23 @@ rollout byte offsets live in memory, inside the `CodexSource` process
 (`set_offset` seeds one by hand, as that index would have recorded
 it). A process restart loses the offsets.
 
-## A known bug: 0 sessions on real installs
-
-The `threads` query expects a `parent_id` column. The real Codex
-database does not have that column (spawn edges live in the table
-`thread_spawn_edges`). The query fails, the adapter swallows the
-error (`unwrap_or_default`), and discovery silently reports 0
-sessions on real installs. Open Kanbus bug BOTSPY-81143b tracks the
-fix: read the spawn edges, surface a schema mismatch as a doctor
-issue, and stop swallowing the error.
-
 ## Discovery
 
-1. The adapter opens `state_5.sqlite` read-only and reads the
-   `threads` table.
+1. The adapter snapshots `state_5.sqlite` over a read-only connection
+   and reads the `threads` table on the copy. A schema mismatch is an
+   issue in `CodexDiscovery`, never a silent empty result.
 2. Each thread gives its rollout path. The path may be absolute or
-   relative to the root.
+   relative to the root; the adapter resolves both explicitly.
 3. A thread with a missing rollout file is skipped and counted.
-4. `parent_id` links become `parent_links` in the session graph. On
-   real installs this step never runs today; see the bug above.
-5. `CodexDiscovery` gives: the thread count, the missing rollouts, and
-   the parent links.
+4. The spawn edges come from the table `thread_spawn_edges`
+   (`parent_thread_id`, `child_thread_id`, `status`) and become
+   `parent_links` in the session graph. A missing or drifted edge
+   table is also an issue, while the threads keep indexing.
+5. The thread metadata (title, model, git branch and origin, cwd,
+   created/updated instants) maps into `SessionMetadata` (R11) and the
+   summary instants.
+6. `CodexDiscovery` gives: the thread count, the missing rollouts,
+   the parent links, and the issues.
 
 ## Extraction and ordering
 

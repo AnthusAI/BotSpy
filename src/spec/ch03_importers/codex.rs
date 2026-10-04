@@ -5,15 +5,22 @@
 //!
 //! The Codex importer is the per-agent translation of the CDC pipeline for
 //! Codex's storage: rollout JSONL event logs under
-//! `~/.codex/sessions/YYYY/MM/DD/`, indexed by `state_5.sqlite` (threads,
-//! projects, spawn edges) and `thread_history_1.sqlite` (turn and item
-//! projections with rollout byte offsets).
+//! `~/.codex/sessions/YYYY/MM/DD/`, indexed by `state_5.sqlite` — the
+//! `threads` table (with the thread metadata, and no parent column) plus
+//! the `thread_spawn_edges` edge table — and `thread_history_1.sqlite`
+//! (turn and item projections with rollout byte offsets). The index is a
+//! live database: it is read through a safe snapshot copy, never in
+//! place.
 //!
 //! ## Pipeline translation
 //!
-//! - **Detection**: watch the session index and the threads table for
-//!   new/updated rollouts; follow each rollout by byte offset (the
-//!   projection tables store the offsets).
+//! - **Detection**: the threads index is snapshotted and read on the
+//!   copy; each thread names its rollout (absolute or relative to the
+//!   home root); the spawn edges come from `thread_spawn_edges`; a query
+//!   failure is a visible issue, never a silent empty result.
+//! - **Metadata**: the thread's title, model, git branch and origin, cwd,
+//!   and created/updated instants map into `SessionMetadata` (R11) and
+//!   the summary instants.
 //! - **Normalization handoff**: every record carries an explicit
 //!   `ordinal` — the authoritative order; `response_item` records become
 //!   messages (roles user/assistant/developer, reasoning summaries, tool
@@ -26,8 +33,8 @@
 //! ## Status: specified
 //!
 //! The scenarios live in [`adapter.feature`](../../../features/03_importers/codex/adapter.feature)
-//! and are embedded below, tagged `@wip` until this importer's
-//! implementation lands.
+//! and are embedded below; every scenario is implemented by
+//! `adapters::codex::CodexSource`.
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -35,6 +42,3 @@
     include_str!("../../../features/03_importers/codex/adapter.feature"),
     "\n```\n"
 )]
-//!
-//! No scenarios exist yet; `features/03_importers/codex/` is a placeholder
-//! and this page is the outline its specs will be written against.
