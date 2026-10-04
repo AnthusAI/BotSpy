@@ -21,7 +21,8 @@ Feature: botspy stats
     Then the exit code is 0
     And stdout reports "12 sessions"
     And stdout contains "extra-demo" "1"
-    And stdout contains "no project" "4"
+    And stdout contains "/workspace/alpha" "2"
+    And stdout contains "no project" "2"
 
   Scenario: --by day buckets by the day of last activity
     When I run "botspy stats --by day --db {out_dir}/store.db" against the fixture home
