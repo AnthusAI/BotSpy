@@ -14,14 +14,14 @@
     {
       "id": "7df73f78-fb74-4326-998d-1fb5dfe296ea",
       "author": "home",
-      "text": "Chore opened to install Pudicus (AnthusAI/Pudicus v0.1.2, commit 3acc2a7) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate will verify only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "text": "Chore opened to install Pudicus (pudicus v0.1.2 from PyPI) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate will verify only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
       "created_at": "2026-10-03T14:19:18.590301Z",
       "comment_type": "default"
     },
     {
       "id": "f2c0f52a-60d1-462a-8b34-23a39ce52ce9",
       "author": "home",
-      "text": "Chore opened to install Pudicus (AnthusAI/Pudicus v0.1.2, commit 3acc2a7) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate verifies only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "text": "Chore opened to install Pudicus (pudicus v0.1.2 from PyPI) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate verifies only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
       "created_at": "2026-10-03T14:19:21.554429Z",
       "comment_type": "default"
     },
@@ -31,12 +31,19 @@
       "text": "PR #10 opened (cursor/pudicus-install-b3b8 -> develop). Installed: .pudicus.yml (gitleaks checker), scripts/setup-pudicus.sh (pinned pudicus==0.1.2 in per-user venv, commit-msg hook into common git dir, shared secret), scripts/pudicus_gate.sh + .github/workflows/pudicus-gate.yml (check name pudicus-receipt-gate: verifies receipts of commits new to the base branch via pudicus verify pooling, re-runs gitleaks; merge commits and github-actions/release-plz bot commits exempt; pre-gate history grandfathered). docs/pudicus.md + AGENTS.md/CONTRIBUTING_AGENT.md updated. Repo secret PUDICUS_SECRET set. Demos: fake-secret commit blocked by hook (exit 1); unsigned-commit demo PR #11 failed the gate and was closed. Waiting on: full CI green, then the history anonymization force-push, then rebase onto new develop, then ruleset making pudicus-receipt-gate required on develop+main (github-actions integration bypassed so release.yml can push to main), then merge.",
       "created_at": "2026-10-03T14:32:25.083910Z",
       "comment_type": "default"
+    },
+    {
+      "id": "deff71c0-ad16-4a69-8a25-dac3fd564f98",
+      "author": "example-user",
+      "text": "Taken over 2026-10-04 after the bot fleet stopped (PR #10 had been closed unmerged). Branch chore/pudicus-0.2-gate merges cursor/pudicus-install-b3b8 onto current develop and upgrades to pudicus 0.2.0: replaces the hand-written .gitleaks.toml with the shipped ruleset at .pudicus/gitleaks.toml (adds OpenAI/Anthropic keys, wallet keys, Windows home paths, user_id/author_id, Kanbus-aware UUID allowlist), pins 0.2.0 in setup script and CI gate.",
+      "created_at": "2026-10-04T19:13:14.385242Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T14:19:15.050604Z",
-  "updated_at": "2026-10-03T14:32:25.083929Z",
+  "updated_at": "2026-10-04T19:17:21.775014Z",
   "closed_at": null,
-  "right_now_summary": null,
-  "right_now_updated_at": null,
+  "right_now_summary": "The branch now upgrades Pudicus to 0.2.0 and uses its shipped gitleaks ruleset.",
+  "right_now_updated_at": "2026-10-04T19:17:23.639671Z",
   "custom": {}
 }
