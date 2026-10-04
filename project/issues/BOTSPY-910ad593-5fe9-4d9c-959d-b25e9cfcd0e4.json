@@ -3,7 +3,7 @@
   "title": "Install Pudicus inspection gate: hook, receipts, PR gate",
   "description": "",
   "type": "chore",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -38,12 +38,19 @@
       "text": "Taken over 2026-10-04 after the bot fleet stopped (PR #10 had been closed unmerged). Branch chore/pudicus-0.2-gate merges cursor/pudicus-install-b3b8 onto current develop and upgrades to pudicus 0.2.0: replaces the hand-written .gitleaks.toml with the shipped ruleset at .pudicus/gitleaks.toml (adds OpenAI/Anthropic keys, wallet keys, Windows home paths, user_id/author_id, Kanbus-aware UUID allowlist), pins 0.2.0 in setup script and CI gate.",
       "created_at": "2026-10-04T19:13:14.385242Z",
       "comment_type": "default"
+    },
+    {
+      "id": "27d9d6eb-f696-435a-a666-f9e52c357bf9",
+      "author": "example-user",
+      "text": "Landed on develop via PR #24 (519a714): pudicus 0.2.0 commit-msg hook with shipped gitleaks ruleset (.pudicus/gitleaks.toml), HMAC receipts, and the pudicus-receipt-gate PR check (green on #24). Making the check required on develop/main is a separate admin decision, not done.",
+      "created_at": "2026-10-04T21:38:35.790594Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T14:19:15.050604Z",
-  "updated_at": "2026-10-04T19:17:21.775014Z",
-  "closed_at": null,
-  "right_now_summary": "The branch now upgrades Pudicus to 0.2.0 and uses its shipped gitleaks ruleset.",
-  "right_now_updated_at": "2026-10-04T19:17:23.639671Z",
+  "updated_at": "2026-10-04T21:38:38.852379Z",
+  "closed_at": "2026-10-04T21:38:38.852288Z",
+  "right_now_summary": "Pudicus 0.2.0 and its green receipt gate are on develop; requiring the check on develop and main awaits admin approval.",
+  "right_now_updated_at": "2026-10-04T21:38:40.812906Z",
   "custom": {}
 }
