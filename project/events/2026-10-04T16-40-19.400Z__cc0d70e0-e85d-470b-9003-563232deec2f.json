@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "cc0d70e0-e85d-470b-9003-563232deec2f",
+  "issue_id": "BOTSPY-980e4d99-5dd0-4506-b19f-2e680be7e219",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-04T16:40:19.400Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Bug: develop CI red - stale stats --by project and --version specs",
+    "description": "develop CI has failed since PR #22 (e1073f0). (1) features/cli/80_stats.feature expects 'no project' 4, but PR #21 (codex schema drift) now maps codex project_id from the thread cwd, so the two corpus codex sessions bucket under /workspace/alpha and 'no project' is 2. #22's spec predates #21 and was never rebased. (2) After the v0.2.1 release back-merge, features/cli/00_global.feature still expects 'botspy 0.2.0'. Fix: update both specs to the intended behavior (spec-only change; implementation is correct).",
+    "issue_type": "bug",
+    "status": "open",
+    "priority": 1,
+    "assignee": null,
+    "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
+    "labels": []
+  }
+}
