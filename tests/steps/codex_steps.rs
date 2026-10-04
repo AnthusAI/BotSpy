@@ -1,7 +1,8 @@
 //! Steps for the Codex importer (spec 03_importers/codex/adapter.feature).
 
 use crate::steps::BotSpyWorld;
-use botspy::adapters::codex::{CodexDiscovery, CodexSource};
+use botspy::adapters::codex::{CodexDiscovery, CodexReport, CodexSource};
+use botspy::snapshot::digest_files;
 use cucumber::{given, then, when};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -19,21 +20,90 @@ fn new_root(world: &mut BotSpyWorld) -> PathBuf {
     base
 }
 
-fn write_threads_index(root: &Path, rows: &[(&str, &str, Option<&str>, &str)]) {
+/// The threads-index shape the importer reads: no parent column — spawn
+/// edges live in `thread_spawn_edges` — and the metadata columns Codex
+/// really carries.
+fn open_index(root: &Path, with_edges: bool) -> rusqlite::Connection {
     let conn =
         rusqlite::Connection::open(root.join("state_5.sqlite")).expect("open Codex threads index");
-    conn.execute(
-        "CREATE TABLE threads (id TEXT PRIMARY KEY, rollout_path TEXT NOT NULL, parent_id TEXT, cwd TEXT)",
-        [],
+    conn.execute_batch(
+        "CREATE TABLE threads (
+            id TEXT PRIMARY KEY,
+            rollout_path TEXT NOT NULL,
+            cwd TEXT NOT NULL,
+            title TEXT NOT NULL DEFAULT '',
+            source TEXT NOT NULL DEFAULT '',
+            model_provider TEXT NOT NULL DEFAULT '',
+            created_at INTEGER NOT NULL DEFAULT 0,
+            updated_at INTEGER NOT NULL DEFAULT 0,
+            created_at_ms INTEGER,
+            updated_at_ms INTEGER,
+            archived INTEGER NOT NULL DEFAULT 0,
+            git_sha TEXT,
+            git_branch TEXT,
+            git_origin_url TEXT,
+            model TEXT
+        );",
     )
     .expect("create threads table");
-    for (id, rollout_path, parent_id, cwd) in rows {
-        conn.execute(
-            "INSERT INTO threads (id, rollout_path, parent_id, cwd) VALUES (?1, ?2, ?3, ?4)",
-            rusqlite::params![id, rollout_path, parent_id, cwd],
+    if with_edges {
+        conn.execute_batch(
+            "CREATE TABLE thread_spawn_edges (
+                parent_thread_id TEXT NOT NULL,
+                child_thread_id TEXT NOT NULL PRIMARY KEY,
+                status TEXT NOT NULL
+            );",
         )
-        .expect("insert thread row");
+        .expect("create thread_spawn_edges table");
     }
+    conn
+}
+
+/// One synthetic row for the threads index.
+#[derive(Default)]
+struct ThreadRow {
+    id: String,
+    rollout_path: String,
+    cwd: String,
+    title: Option<String>,
+    model: Option<String>,
+    git_branch: Option<String>,
+    git_origin_url: Option<String>,
+    git_sha: Option<String>,
+    created_at_ms: Option<i64>,
+    updated_at_ms: Option<i64>,
+}
+
+fn insert_thread(conn: &rusqlite::Connection, row: &ThreadRow) {
+    conn.execute(
+        "INSERT INTO threads (id, rollout_path, cwd, title, model, git_branch, git_origin_url, \
+         git_sha, created_at, updated_at, created_at_ms, updated_at_ms) \
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+        rusqlite::params![
+            row.id,
+            row.rollout_path,
+            row.cwd,
+            row.title.clone().unwrap_or_default(),
+            row.model,
+            row.git_branch,
+            row.git_origin_url,
+            row.git_sha,
+            row.created_at_ms.map(|ms| ms / 1000).unwrap_or(0),
+            row.updated_at_ms.map(|ms| ms / 1000).unwrap_or(0),
+            row.created_at_ms,
+            row.updated_at_ms,
+        ],
+    )
+    .expect("insert thread row");
+}
+
+fn insert_edge(conn: &rusqlite::Connection, parent: &str, child: &str) {
+    conn.execute(
+        "INSERT INTO thread_spawn_edges (parent_thread_id, child_thread_id, status) \
+         VALUES (?1, ?2, 'open')",
+        rusqlite::params![parent, child],
+    )
+    .expect("insert spawn edge");
 }
 
 fn write_rollout(root: &Path, path: &str, lines: &[String], partial: Option<&str>) {
@@ -53,9 +123,47 @@ fn response_message(ordinal: u64, timestamp: &str, text: &str) -> String {
     )
 }
 
+fn index_for_single_rollout(root: &Path) {
+    let conn = open_index(root, false);
+    insert_thread(&conn, &index_thread("t1"));
+    drop(conn);
+}
+
 fn finish_setup(world: &mut BotSpyWorld, thread: String) {
     let root = world.cx_root.clone().expect("no Codex home root");
     world.cx_thread = Some(thread);
+    world.cx_source = Some(CodexSource::new(root));
+}
+
+fn index_thread(id: &str) -> ThreadRow {
+    ThreadRow {
+        id: id.to_string(),
+        rollout_path: format!("sessions/2026/10/01/rollout-{id}.jsonl"),
+        cwd: "/workspace/alpha".to_string(),
+        ..ThreadRow::default()
+    }
+}
+
+fn setup_threads(world: &mut BotSpyWorld, rows: &[ThreadRow], edges: &[(&str, &str)]) {
+    let root = new_root(world);
+    let conn = open_index(&root, !edges.is_empty());
+    for row in rows {
+        insert_thread(&conn, row);
+        write_rollout(
+            &root,
+            &row.rollout_path,
+            &[response_message(
+                1,
+                "2026-10-01T09:00:00Z",
+                &format!("thread {}", row.id),
+            )],
+            None,
+        );
+    }
+    for (parent, child) in edges {
+        insert_edge(&conn, parent, child);
+    }
+    drop(conn);
     world.cx_source = Some(CodexSource::new(root));
 }
 
@@ -63,26 +171,129 @@ const ROLLOUT: &str = "sessions/2026/10/01/rollout-t1.jsonl";
 
 #[given(regex = r#"^a Codex threads index with ([0-9]+) threads pointing at rollout files$"#)]
 fn threads_index(world: &mut BotSpyWorld, count: usize) {
+    let rows: Vec<ThreadRow> = (1..=count)
+        .map(|i| index_thread(&format!("t{i}")))
+        .collect();
+    setup_threads(world, &rows, &[]);
+}
+
+#[given(regex = r#"^a Codex threads index where thread "([^"]+)" is spawned by thread "([^"]+)"$"#)]
+fn threads_with_spawn_edge(world: &mut BotSpyWorld, child: String, parent: String) {
+    let mut parent_row = index_thread(&parent);
+    parent_row.rollout_path = "sessions/2026/10/01/rollout-t1.jsonl".to_string();
+    let mut child_row = index_thread(&child);
+    child_row.rollout_path = "sessions/2026/10/01/rollout-t2.jsonl".to_string();
+    setup_threads(
+        world,
+        &[parent_row, child_row],
+        &[(parent.as_str(), child.as_str())],
+    );
+    world.cx_thread = Some(child);
+}
+
+#[given(
+    regex = r#"^a Codex threads index where thread "([^"]+)" carries title "([^"]*)", model "([^"]*)", git branch "([^"]*)", git origin "([^"]*)", and cwd "([^"]*)"$"#
+)]
+fn threads_with_metadata(
+    world: &mut BotSpyWorld,
+    id: String,
+    title: String,
+    model: String,
+    git_branch: String,
+    git_origin: String,
+    cwd: String,
+) {
+    let row = ThreadRow {
+        id: id.clone(),
+        rollout_path: format!("sessions/2026/10/01/rollout-{id}.jsonl"),
+        cwd,
+        title: Some(title),
+        model: Some(model),
+        git_branch: Some(git_branch),
+        git_origin_url: Some(git_origin),
+        git_sha: Some("abcdef1234567890".to_string()),
+        ..ThreadRow::default()
+    };
+    setup_threads(world, &[row], &[]);
+    world.cx_thread = Some(id);
+}
+
+#[given(
+    regex = r#"^a Codex threads index where thread "([^"]+)" was created at ([0-9]+) and last updated at ([0-9]+)$"#
+)]
+fn threads_with_instants(world: &mut BotSpyWorld, id: String, created_ms: i64, updated_ms: i64) {
+    let row = ThreadRow {
+        id: id.clone(),
+        rollout_path: format!("sessions/2026/10/01/rollout-{id}.jsonl"),
+        cwd: "/workspace/alpha".to_string(),
+        created_at_ms: Some(created_ms),
+        updated_at_ms: Some(updated_ms),
+        ..ThreadRow::default()
+    };
+    setup_threads(world, &[row], &[]);
+    world.cx_thread = Some(id);
+}
+
+#[given(
+    regex = r#"^a Codex threads index where thread "([^"]+)" points at an absolute rollout path$"#
+)]
+fn threads_with_absolute_rollout(world: &mut BotSpyWorld, id: String) {
     let root = new_root(world);
-    let rows: Vec<(String, String, Option<&str>, &str)> = (1..=count)
-        .map(|i| {
-            (
-                format!("t{i}"),
-                format!("sessions/2026/10/01/rollout-t{i}.jsonl"),
-                None,
-                "/repo/demo",
-            )
-        })
-        .collect();
-    let row_refs: Vec<(&str, &str, Option<&str>, &str)> = rows
-        .iter()
-        .map(|(id, path, parent, cwd)| (id.as_str(), path.as_str(), *parent, *cwd))
-        .collect();
-    write_threads_index(&root, &row_refs);
-    for (id, path, _, _) in &rows {
+    let absolute = root
+        .join("sessions/2026/10/01/rollout-abs.jsonl")
+        .display()
+        .to_string();
+    write_rollout(
+        &root,
+        &absolute,
+        &[response_message(
+            1,
+            "2026-10-01T09:00:00Z",
+            "absolute path rollout",
+        )],
+        None,
+    );
+    let conn = open_index(&root, false);
+    insert_thread(
+        &conn,
+        &ThreadRow {
+            id: id.clone(),
+            rollout_path: absolute,
+            cwd: "/workspace/alpha".to_string(),
+            ..ThreadRow::default()
+        },
+    );
+    drop(conn);
+    world.cx_source = Some(CodexSource::new(root));
+}
+
+#[given(regex = r#"^a Codex threads index with a legacy schema carrying a parent column$"#)]
+fn threads_index_legacy_schema(world: &mut BotSpyWorld) {
+    let root = new_root(world);
+    let conn =
+        rusqlite::Connection::open(root.join("state_5.sqlite")).expect("open Codex threads index");
+    conn.execute(
+        "CREATE TABLE threads (id TEXT PRIMARY KEY, rollout_path TEXT NOT NULL, parent_id TEXT, cwd TEXT)",
+        [],
+    )
+    .expect("create legacy threads table");
+    for (id, parent) in [("t1", None), ("t2", Some("t1"))] {
+        conn.execute(
+            "INSERT INTO threads (id, rollout_path, parent_id, cwd) VALUES (?1, ?2, ?3, ?4)",
+            rusqlite::params![
+                id,
+                format!("sessions/2026/10/01/rollout-{id}.jsonl"),
+                parent,
+                "/workspace/alpha"
+            ],
+        )
+        .expect("insert legacy thread row");
+    }
+    drop(conn);
+    for id in ["t1", "t2"] {
         write_rollout(
             &root,
-            path,
+            &format!("sessions/2026/10/01/rollout-{id}.jsonl"),
             &[response_message(
                 1,
                 "2026-10-01T09:00:00Z",
@@ -94,38 +305,26 @@ fn threads_index(world: &mut BotSpyWorld, count: usize) {
     world.cx_source = Some(CodexSource::new(root));
 }
 
-#[given(regex = r#"^a Codex threads index where thread "([^"]+)" is spawned by thread "([^"]+)"$"#)]
-fn threads_with_spawn_edge(world: &mut BotSpyWorld, child: String, parent: String) {
+#[given(regex = r#"^a Codex threads index whose spawn edge table is missing$"#)]
+fn threads_index_without_edges(world: &mut BotSpyWorld) {
     let root = new_root(world);
-    write_threads_index(
-        &root,
-        &[
-            (
-                parent.as_str(),
-                "sessions/2026/10/01/rollout-t1.jsonl",
-                None,
-                "/repo/demo",
-            ),
-            (
-                child.as_str(),
-                "sessions/2026/10/01/rollout-t2.jsonl",
-                Some(parent.as_str()),
-                "/repo/demo",
-            ),
-        ],
-    );
-    write_rollout(
-        &root,
-        "sessions/2026/10/01/rollout-t1.jsonl",
-        &[response_message(1, "2026-10-01T09:00:00Z", "parent work")],
-        None,
-    );
-    write_rollout(
-        &root,
-        "sessions/2026/10/01/rollout-t2.jsonl",
-        &[response_message(1, "2026-10-01T09:00:05Z", "child work")],
-        None,
-    );
+    let conn = open_index(&root, false);
+    for id in ["t1", "t2"] {
+        insert_thread(&conn, &index_thread(id));
+    }
+    drop(conn);
+    for id in ["t1", "t2"] {
+        write_rollout(
+            &root,
+            &format!("sessions/2026/10/01/rollout-{id}.jsonl"),
+            &[response_message(
+                1,
+                "2026-10-01T09:00:00Z",
+                &format!("thread {id}"),
+            )],
+            None,
+        );
+    }
     world.cx_source = Some(CodexSource::new(root));
 }
 
@@ -134,7 +333,7 @@ fn threads_with_spawn_edge(world: &mut BotSpyWorld, child: String, parent: Strin
 )]
 fn rollout_with_shuffled_ordinals(world: &mut BotSpyWorld, first: u64, second: u64, third: u64) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     write_rollout(
         &root,
         ROLLOUT,
@@ -153,7 +352,7 @@ fn rollout_with_shuffled_ordinals(world: &mut BotSpyWorld, first: u64, second: u
 )]
 fn rollout_with_stored_offset(world: &mut BotSpyWorld, count: usize, after: usize) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     let lines: Vec<String> = (1..=count)
         .map(|i| response_message(i as u64, "2026-10-01T09:00:00Z", &format!("record {i}")))
         .collect();
@@ -172,7 +371,7 @@ fn rollout_with_stored_offset(world: &mut BotSpyWorld, count: usize, after: usiz
 )]
 fn rollout_with_response_items(world: &mut BotSpyWorld) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     write_rollout(
         &root,
         ROLLOUT,
@@ -192,7 +391,7 @@ fn rollout_with_response_items(world: &mut BotSpyWorld) {
 #[given(regex = r#"^a Codex rollout holding a "token_usage_record" and a "compacted" record$"#)]
 fn rollout_with_usage_and_compaction(world: &mut BotSpyWorld) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     write_rollout(
         &root,
         ROLLOUT,
@@ -214,7 +413,7 @@ fn rollout_with_task_complete(
     time_to_first_token_ms: u64,
 ) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     write_rollout(
         &root,
         ROLLOUT,
@@ -231,7 +430,7 @@ fn rollout_with_task_complete(
 )]
 fn rollout_with_malformed_and_partial(world: &mut BotSpyWorld) {
     let root = new_root(world);
-    write_threads_index(&root, &[("t1", ROLLOUT, None, "/repo/demo")]);
+    index_for_single_rollout(&root);
     write_rollout(
         &root,
         ROLLOUT,
@@ -243,12 +442,41 @@ fn rollout_with_malformed_and_partial(world: &mut BotSpyWorld) {
     finish_setup(world, "t1".to_string());
 }
 
+fn index_paths(world: &BotSpyWorld) -> Vec<PathBuf> {
+    let root = world.cx_root.as_ref().expect("no Codex home root");
+    let db = root.join("state_5.sqlite");
+    let mut wal = db.as_os_str().to_owned();
+    wal.push("-wal");
+    vec![db, PathBuf::from(wal)]
+}
+
 #[when(regex = r#"^the importer detects changes$"#)]
 fn detect_changes(world: &mut BotSpyWorld) {
     let source = world.cx_source.as_ref().expect("no Codex source");
     let (summaries, discovery) = source.discover();
     world.discovered = summaries;
     world.cx_discovery = Some(discovery);
+}
+
+#[when(regex = r#"^the importer reads the threads index through a snapshot copy$"#)]
+fn read_through_snapshot(world: &mut BotSpyWorld) {
+    let paths = index_paths(world);
+    world.cx_digest_before = Some(digest_files(
+        &paths.iter().map(|path| path.as_path()).collect::<Vec<_>>(),
+    ));
+    let source = world.cx_source.as_ref().expect("no Codex source");
+    let (summaries, discovery) = source.discover();
+    world.discovered = summaries;
+    world.cx_discovery = Some(discovery);
+    world.cx_digest_after = Some(digest_files(
+        &paths.iter().map(|path| path.as_path()).collect::<Vec<_>>(),
+    ));
+}
+
+#[when(regex = r#"^the doctor checks the Codex source$"#)]
+fn doctor_checks(world: &mut BotSpyWorld) {
+    let source = world.cx_source.as_ref().expect("no Codex source");
+    world.cx_report = Some(source.doctor());
 }
 
 #[when(regex = r#"^the importer extracts the rollout(?: from the stored offset)?$"#)]
@@ -272,6 +500,100 @@ fn session_links_to_parent(world: &mut BotSpyWorld, child: String, parent: Strin
         discovery.parent_links.get(&child).map(String::as_str),
         Some(parent.as_str()),
         "spawn edge {child} -> {parent} missing"
+    );
+}
+
+#[then(regex = r#"^session "([^"]+)" carries the title, model, git branch, git origin, and cwd$"#)]
+fn session_carries_metadata(world: &mut BotSpyWorld, id: String) {
+    let summary = world
+        .discovered
+        .iter()
+        .find(|summary| summary.id == id)
+        .expect("no summary for the session");
+    let metadata = &summary.metadata;
+    assert_eq!(metadata.title.as_deref(), Some("Alpha build fix"));
+    assert_eq!(metadata.models, vec!["synthetic-model".to_string()]);
+    assert_eq!(metadata.git_branch.as_deref(), Some("feat/alpha"));
+    assert_eq!(
+        metadata.git_origin_url.as_deref(),
+        Some("https://git.example.com/acme/alpha.git")
+    );
+    assert_eq!(metadata.cwd.as_deref(), Some("/workspace/alpha"));
+    assert_eq!(summary.project_id, "/workspace/alpha");
+}
+
+#[then(regex = r#"^session "([^"]+)" starts at "([^"]+)" and was last active at "([^"]+)"$"#)]
+fn session_has_instants(world: &mut BotSpyWorld, id: String, started: String, active: String) {
+    let summary = world
+        .discovered
+        .iter()
+        .find(|summary| summary.id == id)
+        .expect("no summary for the session");
+    assert_eq!(summary.started_at, started, "wrong started instant");
+    assert_eq!(summary.last_activity_at, active, "wrong last activity");
+}
+
+#[then(
+    regex = r#"^the session carries the title, model, git branch, git origin, and cwd as project$"#
+)]
+fn extraction_carries_metadata(world: &mut BotSpyWorld) {
+    let extraction = world.cx_extraction.as_ref().expect("no Codex extraction");
+    let session = &extraction.session;
+    let metadata = &session.metadata;
+    assert_eq!(metadata.title.as_deref(), Some("Alpha build fix"));
+    assert_eq!(metadata.models, vec!["synthetic-model".to_string()]);
+    assert_eq!(metadata.git_branch.as_deref(), Some("feat/alpha"));
+    assert_eq!(
+        metadata.git_origin_url.as_deref(),
+        Some("https://git.example.com/acme/alpha.git")
+    );
+    assert_eq!(metadata.cwd.as_deref(), Some("/workspace/alpha"));
+    assert_eq!(session.project_id, "/workspace/alpha");
+}
+
+#[then(regex = r#"^the threads index was never mutated$"#)]
+fn index_unmutated(world: &mut BotSpyWorld) {
+    let before = world.cx_digest_before.as_ref().expect("digest before");
+    let after = world.cx_digest_after.as_ref().expect("digest after");
+    assert_eq!(before, after, "reading the threads index mutated it");
+}
+
+#[then(regex = r#"^discovery reports an issue about the threads index$"#)]
+fn discovery_reports_index_issue(world: &mut BotSpyWorld) {
+    let discovery = world.cx_discovery.as_ref().expect("no Codex discovery");
+    assert!(
+        discovery
+            .issues
+            .iter()
+            .any(|issue| issue.contains("threads index")),
+        "no threads index issue reported: {:?}",
+        discovery.issues
+    );
+}
+
+#[then(regex = r#"^discovery reports an issue about the spawn edges$"#)]
+fn discovery_reports_edge_issue(world: &mut BotSpyWorld) {
+    let discovery = world.cx_discovery.as_ref().expect("no Codex discovery");
+    assert!(
+        discovery
+            .issues
+            .iter()
+            .any(|issue| issue.contains("spawn edge")),
+        "no spawn edge issue reported: {:?}",
+        discovery.issues
+    );
+}
+
+#[then(regex = r#"^the doctor reports the schema drift issue$"#)]
+fn doctor_reports_drift(world: &mut BotSpyWorld) {
+    let report: &CodexReport = world.cx_report.as_ref().expect("no Codex doctor report");
+    assert!(
+        report
+            .issues
+            .iter()
+            .any(|issue| issue.contains("threads index")),
+        "doctor did not report the schema drift: {:?}",
+        report.issues
     );
 }
 

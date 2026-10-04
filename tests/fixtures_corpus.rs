@@ -132,31 +132,70 @@ fn build_codex(root: &Path) {
     std::fs::create_dir_all(root).expect("create Codex home dir");
     let conn =
         rusqlite::Connection::open(root.join("state_5.sqlite")).expect("open Codex threads index");
-    conn.execute(
-        "CREATE TABLE threads (id TEXT PRIMARY KEY, rollout_path TEXT NOT NULL, parent_id TEXT, cwd TEXT)",
-        [],
+    conn.pragma_update(None, "journal_mode", "WAL")
+        .expect("enable WAL mode");
+    // The real threads table: no parent column — spawn edges live in
+    // thread_spawn_edges — plus the metadata columns the adapter maps.
+    conn.execute_batch(
+        "CREATE TABLE threads (
+    id TEXT PRIMARY KEY,
+    rollout_path TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    model_provider TEXT NOT NULL,
+    cwd TEXT NOT NULL,
+    title TEXT NOT NULL,
+    sandbox_policy TEXT NOT NULL,
+    approval_mode TEXT NOT NULL,
+    tokens_used INTEGER NOT NULL DEFAULT 0,
+    has_user_event INTEGER NOT NULL DEFAULT 0,
+    archived INTEGER NOT NULL DEFAULT 0,
+    archived_at INTEGER,
+    git_sha TEXT,
+    git_branch TEXT,
+    git_origin_url TEXT
+, cli_version TEXT NOT NULL DEFAULT '', first_user_message TEXT NOT NULL DEFAULT '', agent_nickname TEXT, agent_role TEXT, memory_mode TEXT NOT NULL DEFAULT 'enabled', model TEXT, reasoning_effort TEXT, agent_path TEXT, created_at_ms INTEGER, updated_at_ms INTEGER, thread_source TEXT, preview TEXT NOT NULL DEFAULT '', recency_at INTEGER NOT NULL DEFAULT 0, recency_at_ms INTEGER NOT NULL DEFAULT 0, history_mode TEXT NOT NULL DEFAULT 'legacy', name TEXT, is_pinned INTEGER NOT NULL DEFAULT 0, thread_section_id TEXT, section_position INTEGER, section_entered_at_ms INTEGER, project_id TEXT, originator TEXT, daybreak_enabled BOOLEAN, creator_user_id TEXT, creator_account_id TEXT);
+CREATE TABLE thread_spawn_edges (
+    parent_thread_id TEXT NOT NULL,
+    child_thread_id TEXT NOT NULL PRIMARY KEY,
+    status TEXT NOT NULL
+);",
     )
-    .expect("create threads table");
-    for (id, rollout_path, parent_id, cwd) in [
+    .expect("create Codex index tables");
+    for (id, rollout_path, title, created_s, updated_s) in [
         (
             CODEX_THREAD_1,
             "sessions/2026/10/01/rollout-synth-1.jsonl",
-            None,
-            "/workspace/alpha",
+            "Alpha build fix",
+            1790812800,
+            1790845220,
         ),
         (
             "t-synth-2",
             "sessions/2026/10/01/rollout-synth-2.jsonl",
-            Some(CODEX_THREAD_1),
-            "/workspace/alpha",
+            "Alpha subagent run",
+            1790845200,
+            1790845500,
         ),
     ] {
         conn.execute(
-            "INSERT INTO threads (id, rollout_path, parent_id, cwd) VALUES (?1, ?2, ?3, ?4)",
-            rusqlite::params![id, rollout_path, parent_id, cwd],
+            "INSERT INTO threads (id, rollout_path, created_at, updated_at, source, \
+             model_provider, cwd, title, sandbox_policy, approval_mode, git_sha, git_branch, \
+             git_origin_url, model, created_at_ms, updated_at_ms) \
+             VALUES (?1, ?2, ?3, ?4, 'cli', 'synthetic', '/workspace/alpha', ?5, 'off', 'never', \
+             'abcdef1234567890', 'feat/alpha', 'https://git.example.com/acme/alpha.git', \
+             'synthetic-model', ?3 * 1000, ?4 * 1000)",
+            rusqlite::params![id, rollout_path, created_s, updated_s, title],
         )
         .expect("insert thread row");
     }
+    conn.execute(
+        "INSERT INTO thread_spawn_edges (parent_thread_id, child_thread_id, status) \
+         VALUES (?1, 't-synth-2', 'open')",
+        rusqlite::params![CODEX_THREAD_1],
+    )
+    .expect("insert spawn edge");
     drop(conn);
 
     let rollout_dir = root.join("sessions/2026/10/01");
