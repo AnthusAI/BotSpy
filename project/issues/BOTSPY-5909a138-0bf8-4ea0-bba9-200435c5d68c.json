@@ -3,7 +3,7 @@
   "title": "Anonymize real personal data before org move",
   "description": "",
   "type": "task",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -29,11 +29,18 @@
         "model": "GLM 5.3 Flash",
         "name": "Cloud Agent"
       }
+    },
+    {
+      "id": "4f02e81f-7051-47d2-9309-ee7209d99e88",
+      "author": "home",
+      "text": "Anonymization landed on develop (history rewrite merged; origin/cursor/anonymize-personal-data-9bed fully contained in develop). Closed during branch consolidation 2026-10-04.",
+      "created_at": "2026-10-04T16:29:29.564659Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T14:11:51.940339Z",
-  "updated_at": "2026-10-03T14:46:03.450950Z",
-  "closed_at": null,
+  "updated_at": "2026-10-04T16:29:31.571376Z",
+  "closed_at": "2026-10-04T16:29:31.571356Z",
   "agent": {
     "platform": "cursor",
     "model": "GLM 5.3 Flash",
