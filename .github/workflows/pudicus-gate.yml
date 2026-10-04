@@ -25,7 +25,7 @@ jobs:
 
       - name: Install pudicus and gitleaks (pinned versions)
         run: |
-          pip install --quiet "pudicus==0.1.2"
+          pip install --quiet "pudicus==0.2.0"
           curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
             | tar -xz -C /usr/local/bin gitleaks
           gitleaks version

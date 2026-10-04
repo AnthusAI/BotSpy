@@ -1,6 +1,6 @@
 # Pudicus: sensitive-information gate
 
-BotSpy uses [Pudicus](https://github.com/AnthusAI/Pudicus) to keep
+BotSpy uses [Pudicus](https://pypi.org/project/pudicus/) to keep
 secrets and other sensitive information out of the source code. It
 works in two layers, like an agricultural inspector's produce sticker:
 
@@ -8,8 +8,8 @@ works in two layers, like an agricultural inspector's produce sticker:
    scanners against every commit. If the commit is clean, Pudicus mints
    an HMAC receipt and appends it to the commit message as trailers.
    If a scanner finds something, the commit is blocked.
-2. **CI gate (post-merge protection).** The `pudicus-receipt-gate`
-   required status check re-verifies the receipts of every commit new
+2. **CI gate (pull requests).** The `pudicus-receipt-gate` check
+   (not yet a required check; see below) re-verifies the receipts of every commit new
    to the base branch and re-runs the scan, so a commit made with
    `--no-verify` cannot land.
 
@@ -91,57 +91,57 @@ configured as the repository secret `PUDICUS_SECRET` and restored to
 `pudicus verify` (or mints receipts) must hold the same secret — share
 it only with trusted environments.
 
-## Required status check
+## Required status check (not yet enforced)
 
-The check name is `pudicus-receipt-gate`. It is required on `develop`
-and `main` through a repository ruleset:
+The check name is `pudicus-receipt-gate`. It runs on every pull request
+to `develop` and `main`, but it is **not yet a required check**: neither
+branch has protection or a ruleset today. Making it required is a
+repository-admin setting:
 
-- ruleset covers `develop` and `main`;
+- ruleset covering `develop` and `main`;
 - rule: require status check `pudicus-receipt-gate` to pass;
 - bypass: the GitHub Actions integration, so `release.yml` can push
-  release commits (authored by `github-actions[bot]`) to `main`;
-- enforcement: active.
+  release commits (authored by `github-actions[bot]`) to `main`.
 
-Consequence: direct pushes to `develop` (for example board-state
-commits) are rejected unless they carry passing checks — push such
-changes through a PR, or coordinate with the repository admin.
+Consequence once enabled: direct pushes to `develop` (for example
+board-state commits, which AGENTS.md lands on `develop` without a PR)
+are rejected unless the ruleset also bypasses them — decide that before
+enforcing.
 
 ## Checker configuration
 
 `.pudicus.yml` at the repository root defines the scanners run by the
 hook. Currently one checker: `gitleaks protect --staged --config
-.gitleaks.toml`, which applies gitleaks' default secret rules plus the
-BotSpy-specific rules in `.gitleaks.toml`:
+.pudicus/gitleaks.toml`. That file is the ruleset shipped with Pudicus
+0.2.0, copied in unmodified by `pudicus install`; it extends gitleaks'
+default secret rules (AWS, Google/Gemini `AIza...`, PEM private keys,
+generic API keys in keyword context, ...) with:
 
-- `botspy-email` — email addresses. Allowlisted: GitHub noreply
-  addresses, `git@github.com` clone URLs, and
-  example/anthus/github placeholders on the .com/.ai/.org/.io/.net
-  domains.
-- `botspy-home-path` — absolute personal home paths
-  (`/Users/<name>/`, `/home/<name>/`). The rule reports only the path
-  component after the prefix (capture group), because gitleaks'
-  default ruleset carries global stopwords that would otherwise
-  suppress any secret containing the word "home". Exempted paths:
-  the `/tmp/home/...` test fixture in `src/importer.rs` and
-  `project/` (Kanbus board data, see below).
-- `botspy-session-uuid` — bare UUIDs (session and agent
-  identifiers). `project/` is exempt (Kanbus issue and event ids are
-  structural UUIDs).
-- `botspy-actor-id` — `actor_id` fields with quoted values (session
-  provenance identifiers). Bare struct/field definitions in code do
-  not match. `project/` is exempt (Kanbus event provenance metadata
-  is structural).
+| Rule | Catches |
+|---|---|
+| `pudicus-personal-email` | Personal email addresses (`git@github.com`, `@users.noreply.github.com`, `@example.*`, `@github.*` allowlisted) |
+| `pudicus-home-path-posix` | `/Users/<name>`, `/home/<name>` (mid-path segments like `/tmp/home/...` and `example` placeholders do not match) |
+| `pudicus-home-path-windows` | `C:\Users\<name>`, `\Users\<name>` |
+| `pudicus-session-uuid` | Bare UUIDs outside structural id fields (Kanbus `id`/`issue_id`/`event_id`-style fields, `BOTSPY-<uuid>` ids, and the `00000000-0000-4000-8000-...` fixture shape are allowlisted; `session_id`-style fields and free text are reported) |
+| `pudicus-actor-id` | `actor_id` / `user_id` / `author_id` JSON values other than `example...` placeholders |
+| `pudicus-openai-key` | OpenAI `sk-`, `sk-proj-`, `sk-svcacct-` keys |
+| `pudicus-anthropic-key` | Anthropic `sk-ant-` keys |
+| `pudicus-eth-private-key` | `0x`-prefixed 64-hex private keys |
+| `pudicus-wif-key` | Bitcoin WIF private keys |
+| `pudicus-bip39-mnemonic` | 12–24 word seed phrases in seed/mnemonic/recovery context |
 
 Scans are **patch-scoped** (staged diffs locally, commit ranges in CI),
 so content that predates this configuration is grandfathered and never
 re-flagged.
 
-Known trade-off: `project/` (the Kanbus board) is exempt from the
-home-path and UUID rules because its event JSONs structurally contain
-machine paths and UUIDs. Those files can still carry real usernames —
-sanitize at the source (the board writer) rather than widening this
-exemption. To add a checker or rule, follow the Pudicus README
-(command checkers run any CLI; Tactus checkers run agent procedures).
+Unlike the hand-written rules this replaced, `project/` (the Kanbus
+board) is **not** exempt: the UUID rule allowlists only structural id
+fields, and `actor_id` must be the anonymized `example-user`. Run `kbs`
+with `KANBUS_USER=example-user` so board events never stamp a machine
+username. To upgrade the ruleset, re-copy it from a newer Pudicus
+release (`pudicus install` never overwrites an existing file). To add a
+BotSpy-only rule, create a config that `[extend]`s
+`.pudicus/gitleaks.toml` rather than editing the shipped file.
 
 ## TruffleHog: evaluated, not adopted
 

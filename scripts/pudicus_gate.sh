@@ -71,6 +71,6 @@ fi
 
 # Defense in depth: scan the PR's commits for sensitive information,
 # independent of any receipts. Same rule set as the hook.
-gitleaks detect --log-opts="$base_sha..HEAD" --config .gitleaks.toml --no-banner --redact
+gitleaks detect --log-opts="$base_sha..HEAD" --config .pudicus/gitleaks.toml --no-banner --redact
 
 echo "Pudicus receipt gate passed."

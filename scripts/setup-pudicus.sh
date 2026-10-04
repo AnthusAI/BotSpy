@@ -12,10 +12,10 @@
 # moves, or force a hook reinstall with PUDICUS_REINSTALL=1. See
 # docs/pudicus.md for how the hook, receipts, and CI gate fit together.
 #
-# Tool: https://github.com/AnthusAI/Pudicus
+# Tool: https://pypi.org/project/pudicus/
 set -euo pipefail
 
-PUDICUS_VERSION="${PUDICUS_VERSION:-0.1.2}"
+PUDICUS_VERSION="${PUDICUS_VERSION:-0.2.0}"
 PUDICUS_VENV="${PUDICUS_VENV:-$HOME/.pudicus/venv}"
 
 if ! command -v git >/dev/null 2>&1; then
@@ -59,5 +59,5 @@ else
 fi
 
 echo "Done. Commits in this clone (including all linked worktrees) are now"
-echo "scanned by gitleaks (rules in .gitleaks.toml) and signed with a"
+echo "scanned by gitleaks (rules in .pudicus/gitleaks.toml) and signed with a"
 echo "Pudicus receipt trailer."
