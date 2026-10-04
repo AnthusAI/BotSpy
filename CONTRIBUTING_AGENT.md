@@ -50,6 +50,20 @@ Merge accepted, green work into `develop` as soon as it is ready, and continuous
 
 Multiple agents work in this repo in parallel at any given time and must avoid colliding: each agent uses its own git worktree and feature branch, never checks out branches or edits files in the shared checkout, keeps branches short, and merges or rebases from `develop` often.
 
+## Sensitive-information scanning (Pudicus) is mandatory
+
+Every commit must carry a Pudicus receipt. Before your first commit in a
+clone, run `bash scripts/setup-pudicus.sh` — it installs the commit-msg
+hook that scans each commit with gitleaks and, when clean, signs it with
+HMAC receipt trailers. Never bypass the hook with `--no-verify`: the
+`pudicus-receipt-gate` check on pull requests to develop and main fails
+on commits without receipts. Run `kbs` with `KANBUS_USER=example-user`
+so board events carry the anonymized actor id the scan allows. For commits made without the hook, add a
+retroactive receipt with `pudicus approve <range>` (creates an empty
+paperwork commit; see docs/pudicus.md). Do not put real paths,
+usernames, emails, or session data into anything you commit — the hook
+blocks such leaks at commit time.
+
 ## Specs come first
 
 BotSpy is a behavior-driven specification project. The Gherkin behavior specifications under `features/` are the backbone and the true source of the project; implementation code is considered generated from the specs. All planning is organized around features and their specs.
