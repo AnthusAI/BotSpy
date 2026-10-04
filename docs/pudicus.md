@@ -9,7 +9,7 @@ works in two layers, like an agricultural inspector's produce sticker:
    an HMAC receipt and appends it to the commit message as trailers.
    If a scanner finds something, the commit is blocked.
 2. **CI gate (pull requests).** The `pudicus-receipt-gate` check
-   (not yet a required check; see below) re-verifies the receipts of every commit new
+   (required for merging into `develop`; see below) re-verifies the receipts of every commit new
    to the base branch and re-runs the scan, so a commit made with
    `--no-verify` cannot land.
 
@@ -91,22 +91,30 @@ configured as the repository secret `PUDICUS_SECRET` and restored to
 `pudicus verify` (or mints receipts) must hold the same secret — share
 it only with trusted environments.
 
-## Required status check (not yet enforced)
+## Required status check
 
 The check name is `pudicus-receipt-gate`. It runs on every pull request
-to `develop` and `main`, but it is **not yet a required check**: neither
-branch has protection or a ruleset today. Making it required is a
-repository-admin setting:
+to `develop` and `main`. It is a **required status check on `develop`**,
+enforced by the repository ruleset "Pudicus receipt gate (develop)"
+(id 24472362): a pull request cannot merge into `develop` until the
+check passes.
 
-- ruleset covering `develop` and `main`;
-- rule: require status check `pudicus-receipt-gate` to pass;
-- bypass: the GitHub Actions integration, so `release.yml` can push
-  release commits (authored by `github-actions[bot]`) to `main`.
+- **Admin bypass.** The ruleset's bypass actors are repository admins
+  (bypass mode "always"). AGENTS.md lands board-state commits directly
+  on `develop` without a PR; those pushes keep working for admins. The
+  local commit-msg hook still scans and signs them.
+- **`main` is not covered yet.** The ruleset is not applied to `main`
+  because `.github/workflows/release.yml` pushes the release
+  version-bump commit straight to `main` with `GITHUB_TOKEN`, and GitHub
+  rejected the GitHub Actions integration as a bypass actor on this
+  repository. On `main` the check still runs on PRs but is not required.
 
-Consequence once enabled: direct pushes to `develop` (for example
-board-state commits, which AGENTS.md lands on `develop` without a PR)
-are rejected unless the ruleset also bypasses them — decide that before
-enforcing.
+Two options for covering `main` (follow-up work, not done yet):
+
+1. Have the release flow push through a deploy key that is a ruleset
+   bypass actor.
+2. Have the release flow open a pull request for the version bump
+   instead of pushing directly.
 
 ## Checker configuration
 

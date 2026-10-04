@@ -20,8 +20,8 @@ Multiple agents work in this repo in parallel at any given time and must avoid c
 Every commit must carry a Pudicus receipt. Before your first commit in a
 clone, run `bash scripts/setup-pudicus.sh` (installs the commit-msg hook
 that gitleak-scans and signs each commit). Never use `--no-verify`; the
-`pudicus-receipt-gate` check on pull requests to develop and main
-fails on unsigned commits. Run `kbs` with `KANBUS_USER=example-user`
+`pudicus-receipt-gate` check runs on pull requests to develop and main
+and is required for merging into develop. Run `kbs` with `KANBUS_USER=example-user`
 so board events pass the scan. See docs/pudicus.md for receipts, exemptions, and
 recovery.
 

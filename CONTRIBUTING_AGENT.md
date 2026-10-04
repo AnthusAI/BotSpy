@@ -56,8 +56,8 @@ Every commit must carry a Pudicus receipt. Before your first commit in a
 clone, run `bash scripts/setup-pudicus.sh` — it installs the commit-msg
 hook that scans each commit with gitleaks and, when clean, signs it with
 HMAC receipt trailers. Never bypass the hook with `--no-verify`: the
-`pudicus-receipt-gate` check on pull requests to develop and main fails
-on commits without receipts. Run `kbs` with `KANBUS_USER=example-user`
+`pudicus-receipt-gate` check runs on pull requests to develop and main
+and is required for merging into develop; it fails on commits without receipts. Run `kbs` with `KANBUS_USER=example-user`
 so board events carry the anonymized actor id the scan allows. For commits made without the hook, add a
 retroactive receipt with `pudicus approve <range>` (creates an empty
 paperwork commit; see docs/pudicus.md). Do not put real paths,
