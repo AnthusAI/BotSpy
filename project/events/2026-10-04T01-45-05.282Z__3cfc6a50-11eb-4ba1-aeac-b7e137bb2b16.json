@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "3cfc6a50-11eb-4ba1-aeac-b7e137bb2b16",
+  "issue_id": "BOTSPY-0d47b90f-c714-4373-803f-4f701c3eb020",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-04T01:45:05.282Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Restore README usage examples below diagram overview",
+    "description": "Re-add install/quick-start CLI examples from pre-PR-16 README under the current diagram overview; verify flags against botspy 0.2.0 help; synthetic corpus only.",
+    "issue_type": "task",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+    "labels": []
+  }
+}
