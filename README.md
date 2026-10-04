@@ -36,8 +36,9 @@ files read-only and shows you the results.
 - **Search three ways.** Full-text search, semantic search, or the
   hybrid fusion of both.
 - **One command line over all agents.** `botspy sources`, `doctor`,
-  `sessions`, `show`, `snapshot`, and `scan` — a thin shell over the
-  library; every verb is one library call plus rendering.
+  `sessions`, `show`, `snapshot`, `scan`, `import`, `search`, and
+  `stats` — a thin shell over the library; every verb is one library
+  call plus rendering.
 - **Sensitive-data visibility.** BotSpy never hides where session
   content lives. Every architecture diagram marks the sensitive places,
   and [`docs/sensitive-data.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/sensitive-data.md)
@@ -296,13 +297,57 @@ claude_code       0        0          4        0       0  0
 relative duration like `7d` / `24h`. `--dry-run` reports what would
 change without writing.
 
-### Store-backed verbs (planned)
+### One-shot import into the local store
 
-`search`, `import`, `stats`, and `watch` are specified and tracked on
-the board but not shipped in `0.2.0` yet. They will query and refresh the
-local store at `~/.botspy/store.db`. See
+`botspy import` runs a single CDC pass with pruning on: sessions the
+sources no longer report are removed. The default store is
+`<home>/.botspy/store.db` (override with `--db <path>`). Use `--full` to
+re-extract every session from byte zero; `--dry-run` reports what would
+land and writes nothing.
+
+```console
+$ botspy import --home /tmp/demo --no-embed --db /tmp/demo/.botspy/store.db
+12 new sessions, 0 updated sessions, 0 unchanged sessions, 0 pruned sessions
+store: /tmp/demo/.botspy/store.db
+```
+
+`scan` loops on an interval with pruning off; `import` is the one-shot,
+prune-on shape for scripts and ad-hoc refreshes.
+
+### Search the store
+
+`botspy search` reads the local store, not the live sources. Text mode
+(FTS5) is the default; `--mode semantic` and `--mode hybrid` need
+embeddings (omit `--no-embed` on import, or run
+`cargo run --example setup_models` once).
+
+```console
+$ botspy search parser --home /tmp/demo --no-truncate --db /tmp/demo/.botspy/store.db
+SESSION                               MSG  SCORE  TEXT
+00000000-0000-4000-8000-000000000001    0  0.016  kick off the parser work
+00000000-0000-4000-8000-000000000001    3  0.016  the parser work is done
+2 hits in 1 session
+```
+
+### Stats over the store
+
+`botspy stats` buckets sessions by source (default), project (`--by
+project`), or day of last activity (`--by day`).
+
+```console
+$ botspy stats --home /tmp/demo --db /tmp/demo/.botspy/store.db
+SOURCE       SESSIONS
+claude_code         4
+antigravity         2
+codex               2
+cursor              2
+grok_bot            2
+total: 12 sessions
+```
+
+`watch` is specified on the board but not shipped yet. See
 [`docs/cli.md`](https://github.com/DataParade-io/BotSpy/blob/develop/docs/cli.md)
-for the planned flags and output shapes.
+for every flag.
 
 ### Pipe and compose
 

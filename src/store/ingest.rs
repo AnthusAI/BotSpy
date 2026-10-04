@@ -46,6 +46,11 @@ pub struct IngestOptions {
     /// Refresh passes only: prune sessions the sources no longer report.
     /// Ingest passes never prune, whatever this says.
     pub prune: bool,
+    /// Refresh passes only: ignore the staleness shortcut and re-extract
+    /// every reported session from byte zero, so fixes to an adapter's
+    /// parsing reach the store even when the discover summary (id,
+    /// last_activity_at, message_count) looks unchanged.
+    pub force_full: bool,
 }
 
 /// What one adapter contributed to an ingest or refresh pass. `discovered`
@@ -148,7 +153,9 @@ impl Store {
     /// (id, last_activity_at, message_count), so unchanged sessions are
     /// never opened from their adapters; changed sessions are opened and
     /// re-ingested only when the content hash actually moved; with
-    /// `prune`, sessions the sources no longer report are removed.
+    /// `prune`, sessions the sources no longer report are removed; with
+    /// `force_full`, every reported session is re-extracted regardless of
+    /// what its discover summary says.
     /// One transaction per pass; `dry_run` rolls it back, reporting what
     /// would have changed.
     pub fn refresh_with(
@@ -247,7 +254,8 @@ impl Store {
                             totals.unchanged += 1;
                         }
                         PassMode::Refresh => {
-                            let stale = stored_row.last_activity_at != summary.last_activity_at
+                            let stale = options.force_full
+                                || stored_row.last_activity_at != summary.last_activity_at
                                 || stored_row.message_count != summary.message_count as i64;
                             if !stale {
                                 row.unchanged_sessions += 1;
@@ -527,5 +535,42 @@ mod tests {
         let report = store.refresh(&adapters).expect("refresh with pruning");
         assert_eq!(report.pruned, 1, "the plain refresh still prunes");
         assert_eq!(store.sessions().count(), 0, "the gone session was pruned");
+    }
+
+    #[test]
+    fn a_full_refresh_reopens_even_unchanged_sessions() {
+        let store = temp_store("full-refresh");
+        let adapter = Arc::new(one_session_adapter(
+            Agent::ClaudeCode,
+            "f1",
+            "2026-10-01T09:00:00Z",
+        ));
+        let adapters: Vec<Arc<dyn Adapter>> = vec![adapter.clone()];
+        store.ingest(&adapters).expect("ingest");
+        assert_eq!(adapter.open_count(), 1, "the ingest opened the session");
+        let report = store
+            .refresh_with(&adapters, &IngestOptions::default())
+            .expect("plain refresh");
+        assert_eq!(report.totals.unchanged, 1, "the session is unchanged");
+        assert_eq!(
+            adapter.open_count(),
+            1,
+            "the plain refresh never re-opened it"
+        );
+        let report = store
+            .refresh_with(
+                &adapters,
+                &IngestOptions {
+                    force_full: true,
+                    prune: true,
+                    ..IngestOptions::default()
+                },
+            )
+            .expect("full refresh");
+        assert_eq!(
+            report.totals.unchanged, 1,
+            "identical content still counts unchanged"
+        );
+        assert_eq!(adapter.open_count(), 2, "the full refresh re-extracted it");
     }
 }
