@@ -1,0 +1,28 @@
+{
+  "id": "BOTSPY-0d47b90f-c714-4373-803f-4f701c3eb020",
+  "title": "Restore README usage examples below diagram overview",
+  "description": "Re-add install/quick-start CLI examples from pre-PR-16 README under the current diagram overview; verify flags against botspy 0.2.0 help; synthetic corpus only.",
+  "type": "task",
+  "status": "open",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-f9ee0933-5ebf-44a7-9d2e-30dace4d950a",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "48d835aa-cead-41c0-ae23-85c8290a598c",
+      "author": "example-user",
+      "text": "Restored README Usage section below Install: sources, doctor, sessions, show, snapshot, scan (--once and --interval loop), JSON output, planned store verbs, library blurb. Examples captured from release botspy against synthetic corpus with --home /tmp/demo.",
+      "created_at": "2026-10-04T01:45:50.210969Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-04T01:45:05.282685Z",
+  "updated_at": "2026-10-04T01:45:50.210987Z",
+  "closed_at": null,
+  "right_now_summary": null,
+  "right_now_updated_at": null,
+  "custom": {}
+}
