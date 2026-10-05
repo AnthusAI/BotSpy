@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-b2abf432-f181-49fd-a4bb-2d4155f73fec",
+  "title": "Prepare v0.3.0 release bump",
+  "description": "Run scripts/prepare-release.sh on a branch cut from develop to bump version, Cargo.lock and CHANGELOG for the develop to main promotion PR (DataParade-io/BotSpy#23).",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "c1f8027b-a4eb-4b4e-82eb-7cc9348fd456",
+      "author": "example-user",
+      "text": "Ran scripts/prepare-release.sh: botspy 0.2.1 -> 0.3.0 (feat commits, features_always_increment_minor). Fixed script upstream bug, trimmed changelog noise, updated hard-coded --version spec. cargo test and cargo publish --dry-run pass. PR opened to develop.",
+      "created_at": "2026-10-05T11:03:37.972313Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-05T10:48:46.336608Z",
+  "updated_at": "2026-10-05T11:03:42.330263Z",
+  "closed_at": "2026-10-05T11:03:42.330218Z",
+  "agent": {
+    "platform": "claude_code",
+    "model": "Claude Opus 5.5",
+    "name": "Release Prep Agent"
+  },
+  "right_now_summary": "Release prep is complete, with version and changelog updates applied and a pull request opened.",
+  "right_now_updated_at": "2026-10-05T11:03:44.098769Z",
+  "custom": {}
+}

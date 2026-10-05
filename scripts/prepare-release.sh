@@ -61,6 +61,16 @@ else
   fi
 fi
 
+# release-plz checks out the branch named by the current branch's upstream
+# (e.g. origin/develop) in a temporary worktree. On a feature branch that
+# tracks origin/develop (the default for `git worktree add -b <branch>
+# origin/develop`) that fails with "'develop' is already checked out"
+# whenever develop is checked out elsewhere. Drop the tracking config on
+# feature branches; `git push -u` sets the right upstream later.
+if [ "$branch" != "develop" ] && git rev-parse --abbrev-ref "@{upstream}" >/dev/null 2>&1; then
+  git branch --unset-upstream
+fi
+
 release-plz update
 
 if [ -z "$(git status --porcelain)" ]; then

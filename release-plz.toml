@@ -11,3 +11,18 @@ features_always_increment_minor = true
 # once the first release exists on crates.io. Re-enable (delete this
 # line) after the first release.
 semver_check = false
+
+[changelog]
+# Keep the changelog about the crate: drop kanbus board-state commits,
+# release/CI plumbing, merge back-ports and the Pudicus gate setup.
+commit_parsers = [
+  { message = "^[a-z]+\\((kanbus|pudicus|release|ci)\\)", skip = true },
+  { message = "(?i)^(back-merge|pudicus)", skip = true },
+  { message = "^(chore|ci)", skip = true },
+  { message = "^feat", group = "Added" },
+  { message = "^fix", group = "Fixed" },
+  { message = "^perf", group = "Performance" },
+  { message = "^refactor", group = "Changed" },
+  { message = "^docs", group = "Documentation" },
+  { message = ".*", group = "Other" },
+]
