@@ -239,6 +239,7 @@ fn run_scan(
         since: cutoff.clone(),
         dry_run: args.dry_run,
         prune: false,
+        ..IngestOptions::default()
     };
     let ctx = PassContext {
         names,

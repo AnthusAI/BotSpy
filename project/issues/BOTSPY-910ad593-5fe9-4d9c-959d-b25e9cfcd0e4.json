@@ -1,0 +1,56 @@
+{
+  "id": "BOTSPY-910ad593-5fe9-4d9c-959d-b25e9cfcd0e4",
+  "title": "Install Pudicus inspection gate: hook, receipts, PR gate",
+  "description": "",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "7df73f78-fb74-4326-998d-1fb5dfe296ea",
+      "author": "home",
+      "text": "Chore opened to install Pudicus (pudicus v0.1.2 from PyPI) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate will verify only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "created_at": "2026-10-03T14:19:18.590301Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "f2c0f52a-60d1-462a-8b34-23a39ce52ce9",
+      "author": "home",
+      "text": "Chore opened to install Pudicus (pudicus v0.1.2 from PyPI) into BotSpy. Scope: reproducible commit-msg hook install, HMAC receipt trailers on every commit, GitHub Actions PR gate with required status check. Gate verifies only commits new in a PR; merge commits and release-plz/github-actions bot commits are exempted per design. Sequenced after the pending history anonymization force-push; branch rebased onto new develop before enabling the required check.",
+      "created_at": "2026-10-03T14:19:21.554429Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "9be16851-8628-41e4-a9ee-382329390cd4",
+      "author": "home",
+      "text": "PR #10 opened (cursor/pudicus-install-b3b8 -> develop). Installed: .pudicus.yml (gitleaks checker), scripts/setup-pudicus.sh (pinned pudicus==0.1.2 in per-user venv, commit-msg hook into common git dir, shared secret), scripts/pudicus_gate.sh + .github/workflows/pudicus-gate.yml (check name pudicus-receipt-gate: verifies receipts of commits new to the base branch via pudicus verify pooling, re-runs gitleaks; merge commits and github-actions/release-plz bot commits exempt; pre-gate history grandfathered). docs/pudicus.md + AGENTS.md/CONTRIBUTING_AGENT.md updated. Repo secret PUDICUS_SECRET set. Demos: fake-secret commit blocked by hook (exit 1); unsigned-commit demo PR #11 failed the gate and was closed. Waiting on: full CI green, then the history anonymization force-push, then rebase onto new develop, then ruleset making pudicus-receipt-gate required on develop+main (github-actions integration bypassed so release.yml can push to main), then merge.",
+      "created_at": "2026-10-03T14:32:25.083910Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "deff71c0-ad16-4a69-8a25-dac3fd564f98",
+      "author": "example-user",
+      "text": "Taken over 2026-10-04 after the bot fleet stopped (PR #10 had been closed unmerged). Branch chore/pudicus-0.2-gate merges cursor/pudicus-install-b3b8 onto current develop and upgrades to pudicus 0.2.0: replaces the hand-written .gitleaks.toml with the shipped ruleset at .pudicus/gitleaks.toml (adds OpenAI/Anthropic keys, wallet keys, Windows home paths, user_id/author_id, Kanbus-aware UUID allowlist), pins 0.2.0 in setup script and CI gate.",
+      "created_at": "2026-10-04T19:13:14.385242Z",
+      "comment_type": "default"
+    },
+    {
+      "id": "27d9d6eb-f696-435a-a666-f9e52c357bf9",
+      "author": "example-user",
+      "text": "Landed on develop via PR #24 (519a714): pudicus 0.2.0 commit-msg hook with shipped gitleaks ruleset (.pudicus/gitleaks.toml), HMAC receipts, and the pudicus-receipt-gate PR check (green on #24). Making the check required on develop/main is a separate admin decision, not done.",
+      "created_at": "2026-10-04T21:38:35.790594Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-03T14:19:15.050604Z",
+  "updated_at": "2026-10-04T21:38:38.852379Z",
+  "closed_at": "2026-10-04T21:38:38.852288Z",
+  "right_now_summary": "Pudicus 0.2.0 and its green receipt gate are on develop; requiring the check on develop and main awaits admin approval.",
+  "right_now_updated_at": "2026-10-04T21:38:40.812906Z",
+  "custom": {}
+}

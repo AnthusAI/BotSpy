@@ -1,9 +1,14 @@
 //! The Codex importer.
 //!
 //! Watches rollout JSONL event logs under `~/.codex/sessions/YYYY/MM/DD/`,
-//! indexed by `state_5.sqlite` (threads, projects, spawn edges) and
-//! `thread_history_1.sqlite` (turn and item projections with rollout byte
-//! offsets), and emits normalized records as they appear. Every rollout
+//! indexed by `state_5.sqlite` — the `threads` table (with the thread
+//! metadata, and no parent column) plus the `thread_spawn_edges` edge
+//! table — and `thread_history_1.sqlite` (turn and item projections with
+//! rollout byte offsets). The index is a live database: it is read
+//! through a snapshot copy, never in place, and a schema mismatch
+//! surfaces as an issue instead of a silently empty result. The thread
+//! metadata (title, model, git branch and origin, cwd, created/updated
+//! instants) maps into `SessionMetadata` (R11). Every rollout
 //! record carries an explicit `ordinal` — the authoritative order, so
 //! extraction sorts by ordinal instead of file order. `response_item`
 //! records become messages (user/assistant/developer roles, reasoning
@@ -20,21 +25,100 @@ use crate::schema::{
     Usage,
 };
 use crate::session::SessionSummary;
+use crate::snapshot::snapshot_sqlite;
 use rusqlite::OpenFlags;
 use serde_json::Value;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{Read, Seek, SeekFrom};
 use std::path::{Path, PathBuf};
+use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Mutex;
 
-/// One row of the threads index (`state_5.sqlite`).
+static SNAPSHOT_SEQ: AtomicUsize = AtomicUsize::new(0);
+
+/// One row of the threads index (`state_5.sqlite`). The real table has no
+/// parent column: spawn edges live in `thread_spawn_edges`.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
 struct ThreadRow {
     id: String,
     rollout_path: String,
-    parent_id: Option<String>,
     cwd: String,
+    title: Option<String>,
+    model: Option<String>,
+    git_branch: Option<String>,
+    git_origin_url: Option<String>,
+    git_sha: Option<String>,
+    /// Creation instant in epoch milliseconds (from `created_at_ms`, or
+    /// `created_at` seconds scaled up).
+    created_at_ms: Option<i64>,
+    /// Last-update instant in epoch milliseconds (same fallback rule).
+    updated_at_ms: Option<i64>,
+    archived: Option<i64>,
+}
+
+impl ThreadRow {
+    /// The R11 metadata the threads index carries.
+    fn metadata(&self) -> crate::schema::SessionMetadata {
+        let models: Vec<String> = self
+            .model
+            .clone()
+            .filter(|model| !model.is_empty())
+            .into_iter()
+            .collect();
+        crate::schema::SessionMetadata {
+            title: self.title.clone().filter(|title| !title.is_empty()),
+            git_branch: self.git_branch.clone(),
+            git_commit: self.git_sha.clone(),
+            git_origin_url: self.git_origin_url.clone(),
+            cwd: Some(self.cwd.clone()).filter(|cwd| !cwd.is_empty()),
+            archived: self.archived.map(|flag| flag != 0),
+            models,
+            ..crate::schema::SessionMetadata::default()
+        }
+    }
+
+    fn started_at(&self) -> String {
+        self.created_at_ms
+            .filter(|ms| *ms > 0)
+            .map(rfc3339_utc)
+            .unwrap_or_default()
+    }
+
+    fn last_activity_at(&self) -> String {
+        self.updated_at_ms
+            .filter(|ms| *ms > 0)
+            .map(rfc3339_utc)
+            .unwrap_or_default()
+    }
+}
+
+/// Format an epoch-milliseconds instant as RFC3339 UTC (second
+/// precision). Non-positive instants map to the empty timestamp.
+fn rfc3339_utc(epoch_ms: i64) -> String {
+    if epoch_ms <= 0 {
+        return String::new();
+    }
+    let secs = epoch_ms.div_euclid(1000);
+    let days = secs.div_euclid(86_400);
+    let secs_of_day = secs.rem_euclid(86_400);
+    // Inverse of Howard Hinnant's days_from_civil.
+    let z = days + 719_468;
+    let era = z.div_euclid(146_097);
+    let doe = z.rem_euclid(146_097);
+    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
+    let year = yoe + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let day = doy - (153 * mp + 2) / 5 + 1;
+    let month = if mp < 10 { mp + 3 } else { mp - 9 };
+    let year = if month <= 2 { year + 1 } else { year };
+    format!(
+        "{year:04}-{month:02}-{day:02}T{:02}:{:02}:{:02}Z",
+        secs_of_day / 3600,
+        (secs_of_day % 3600) / 60,
+        secs_of_day % 60
+    )
 }
 
 /// What discovery saw in the threads index.
@@ -44,8 +128,13 @@ pub struct CodexDiscovery {
     pub threads: usize,
     /// Threads whose rollout file is missing, skipped by discovery.
     pub missing_rollouts: usize,
+    /// Rollout paths that are missing (doctor detail).
+    pub missing_rollout_paths: Vec<String>,
     /// Spawn edges: child thread id -> parent thread id.
     pub parent_links: BTreeMap<String, String>,
+    /// Read failures: schema drift, unreadable index, and similar.
+    /// Discovery never swallows a broken threads index silently.
+    pub issues: Vec<String>,
 }
 
 /// Diagnostics over a Codex home root.
@@ -101,39 +190,129 @@ impl CodexSource {
             .insert(session_id.to_string(), offset);
     }
 
-    fn read_threads(&self) -> rusqlite::Result<Vec<ThreadRow>> {
-        let path = self.root.join("state_5.sqlite");
-        let conn = rusqlite::Connection::open_with_flags(&path, OpenFlags::SQLITE_OPEN_READ_ONLY)?;
-        let mut stmt = conn.prepare("SELECT id, rollout_path, parent_id, cwd FROM threads")?;
+    /// A read-only connection to a snapshot copy of the threads index.
+    /// The live index is never read in place.
+    fn snapshot_threads_index(&self) -> Result<PathBuf, crate::snapshot::SnapshotError> {
+        let dir = std::env::temp_dir()
+            .join("botspy-codex-snaps")
+            .join(format!(
+                "{}-{}",
+                std::process::id(),
+                SNAPSHOT_SEQ.fetch_add(1, Ordering::SeqCst)
+            ));
+        snapshot_sqlite(&self.root.join("state_5.sqlite"), &dir)
+    }
+
+    fn open_snapshot(snapshot: &Path) -> Result<rusqlite::Connection, String> {
+        rusqlite::Connection::open_with_flags(snapshot, OpenFlags::SQLITE_OPEN_READ_ONLY)
+            .map_err(|err| err.to_string())
+    }
+
+    /// The threads rows on an open snapshot connection. Any query failure
+    /// (a missing column is schema drift) is returned, never swallowed.
+    fn query_threads(conn: &rusqlite::Connection) -> rusqlite::Result<Vec<ThreadRow>> {
+        let mut stmt = conn.prepare(
+            "SELECT id, rollout_path, cwd, title, model, git_branch, git_origin_url, git_sha, \
+             created_at_ms, updated_at_ms, created_at, updated_at, archived FROM threads",
+        )?;
         let rows = stmt.query_map([], |row| {
+            let created_ms: Option<i64> = row.get(8)?;
+            let updated_ms: Option<i64> = row.get(9)?;
+            let created_s: i64 = row.get(10)?;
+            let updated_s: i64 = row.get(11)?;
             Ok(ThreadRow {
                 id: row.get(0)?,
                 rollout_path: row.get(1)?,
-                parent_id: row.get(2)?,
-                cwd: row.get::<_, Option<String>>(3)?.unwrap_or_default(),
+                cwd: row.get::<_, Option<String>>(2)?.unwrap_or_default(),
+                title: row.get(3)?,
+                model: row.get(4)?,
+                git_branch: row.get(5)?,
+                git_origin_url: row.get(6)?,
+                git_sha: row.get(7)?,
+                created_at_ms: Some(created_ms.unwrap_or(created_s * 1000)),
+                updated_at_ms: Some(updated_ms.unwrap_or(updated_s * 1000)),
+                archived: row.get(12)?,
             })
         })?;
         rows.collect()
     }
 
-    /// Discover sessions via the threads index. Threads whose rollout file
-    /// is missing are skipped and counted; spawn edges are reported as
-    /// parent links.
-    pub fn discover(&self) -> (Vec<SessionSummary>, CodexDiscovery) {
+    /// The spawn edges (child -> parent) on an open snapshot connection.
+    fn query_edges(conn: &rusqlite::Connection) -> rusqlite::Result<BTreeMap<String, String>> {
+        let mut stmt =
+            conn.prepare("SELECT child_thread_id, parent_thread_id FROM thread_spawn_edges")?;
+        let rows = stmt.query_map([], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, String>(1)?))
+        })?;
+        rows.collect()
+    }
+
+    /// Scan the threads index: summaries, spawn edges, missing rollouts,
+    /// and issues. A broken or drifted index is reported as an issue, not
+    /// silently swallowed.
+    fn scan(&self) -> (Vec<SessionSummary>, CodexDiscovery) {
         let mut summaries = Vec::new();
         let mut stats = CodexDiscovery::default();
-        for thread in self.read_threads().unwrap_or_default() {
-            if !self.root.join(&thread.rollout_path).is_file() {
+        if !self.root.join("state_5.sqlite").is_file() {
+            stats
+                .issues
+                .push("threads index state_5.sqlite is missing".to_string());
+            return (summaries, stats);
+        }
+        let conn = match self.snapshot_threads_index() {
+            Ok(snapshot) => match Self::open_snapshot(&snapshot) {
+                Ok(conn) => conn,
+                Err(err) => {
+                    stats.issues.push(format!(
+                        "threads index could not be read through a snapshot: {err}"
+                    ));
+                    return (summaries, stats);
+                }
+            },
+            Err(err) => {
+                stats.issues.push(format!(
+                    "threads index could not be read through a snapshot: {err}"
+                ));
+                return (summaries, stats);
+            }
+        };
+        let threads = match Self::query_threads(&conn) {
+            Ok(threads) => threads,
+            Err(err) => {
+                stats
+                    .issues
+                    .push(format!("threads index could not be read: {err}"));
+                return (summaries, stats);
+            }
+        };
+        let edges = match Self::query_edges(&conn) {
+            Ok(edges) => edges,
+            Err(err) => {
+                stats
+                    .issues
+                    .push(format!("spawn edge table could not be read: {err}"));
+                BTreeMap::new()
+            }
+        };
+        for thread in threads {
+            let path = self.resolve_rollout(&thread.rollout_path);
+            if !path.is_file() {
                 stats.missing_rollouts += 1;
+                stats
+                    .missing_rollout_paths
+                    .push(thread.rollout_path.clone());
                 continue;
             }
-            if let Some(parent) = &thread.parent_id {
+            if let Some(parent) = edges.get(&thread.id) {
                 stats.parent_links.insert(thread.id.clone(), parent.clone());
             }
             summaries.push(SessionSummary {
-                id: thread.id,
+                id: thread.id.clone(),
                 agent: Agent::Codex,
-                project_id: thread.cwd,
+                project_id: thread.cwd.clone(),
+                started_at: thread.started_at(),
+                last_activity_at: thread.last_activity_at(),
+                metadata: thread.metadata(),
                 ..SessionSummary::default()
             });
             stats.threads += 1;
@@ -142,43 +321,64 @@ impl CodexSource {
         (summaries, stats)
     }
 
+    /// `rollout_path` may be absolute or relative to the home root; both
+    /// are resolved explicitly.
+    fn resolve_rollout(&self, rollout_path: &str) -> PathBuf {
+        let path = Path::new(rollout_path);
+        if path.is_absolute() {
+            path.to_path_buf()
+        } else {
+            self.root.join(path)
+        }
+    }
+
+    /// Discover sessions via the threads index. Threads whose rollout file
+    /// is missing are skipped and counted; spawn edges are reported as
+    /// parent links; read failures surface as issues.
+    pub fn discover(&self) -> (Vec<SessionSummary>, CodexDiscovery) {
+        self.scan()
+    }
+
     /// The doctor report: threads, missing rollouts, and issues.
     pub fn doctor(&self) -> CodexReport {
-        let discovery = self.discover().1;
+        let (_, stats) = self.scan();
         let mut report = CodexReport {
             root: self.root.clone(),
-            threads: discovery.threads,
-            missing_rollouts: discovery.missing_rollouts,
-            issues: Vec::new(),
+            threads: stats.threads,
+            missing_rollouts: stats.missing_rollouts,
+            issues: stats.issues,
         };
-        if !self.root.join("state_5.sqlite").is_file() {
-            report
-                .issues
-                .push("threads index state_5.sqlite is missing".to_string());
-        }
-        for thread in self.read_threads().unwrap_or_default() {
-            if !self.root.join(&thread.rollout_path).is_file() {
-                report
-                    .issues
-                    .push(format!("rollout {} is missing", thread.rollout_path));
-            }
+        for path in &stats.missing_rollout_paths {
+            report.issues.push(format!("rollout {path} is missing"));
         }
         report
     }
 
-    fn rollout_path(&self, session_id: &str) -> Option<PathBuf> {
-        self.read_threads()
-            .ok()?
+    /// The thread row for one session id, with its spawn-edge parent.
+    fn thread_row(&self, session_id: &str) -> Option<(ThreadRow, Option<String>)> {
+        if !self.root.join("state_5.sqlite").is_file() {
+            return None;
+        }
+        let snapshot = self.snapshot_threads_index().ok()?;
+        let conn = Self::open_snapshot(&snapshot).ok()?;
+        let threads = Self::query_threads(&conn).ok()?;
+        // A missing or drifted edge table must not hide the rollout:
+        // discovery and the doctor report the drift instead.
+        let parent = Self::query_edges(&conn)
+            .ok()
+            .and_then(|edges| edges.get(session_id).cloned());
+        threads
             .into_iter()
             .find(|thread| thread.id == session_id)
-            .map(|thread| self.root.join(thread.rollout_path))
+            .map(|thread| (thread, parent))
     }
 
     /// Extract one rollout, resuming from the stored byte offset. Records
     /// are ordered by their explicit `ordinal`, not by file order. Returns
     /// `None` when no thread with that id exists.
     pub fn extract(&self, session_id: &str) -> Option<CodexExtraction> {
-        let path = self.rollout_path(session_id)?;
+        let (row, parent) = self.thread_row(session_id)?;
+        let path = self.resolve_rollout(&row.rollout_path);
         let mut file = File::open(&path).ok()?;
         let offset = *self
             .offsets
@@ -193,6 +393,9 @@ impl CodexSource {
         let mut session = crate::session::Session {
             id: session_id.to_string(),
             agent: Agent::Codex,
+            project_id: row.cwd.clone(),
+            metadata: row.metadata(),
+            parent_id: parent,
             ..crate::session::Session::default()
         };
         let mut good = 0;
@@ -254,6 +457,15 @@ impl CodexSource {
                 "task_complete" => apply_task_complete(&mut session, record.get("payload")),
                 _ => skipped.unknown += 1,
             }
+        }
+
+        // The threads index carries the session bounds; record timestamps
+        // win when present, index instants fill the gaps.
+        if session.started_at.is_empty() {
+            session.started_at = row.started_at();
+        }
+        if session.last_activity_at.is_empty() {
+            session.last_activity_at = row.last_activity_at();
         }
 
         self.offsets
@@ -501,20 +713,68 @@ mod tests {
         .unwrap();
     }
 
-    fn write_threads_index(root: &Path, rows: &[(&str, &str, Option<&str>, &str)]) {
+    fn write_threads_index(root: &Path, rows: &[(&str, &str, &str)]) {
         let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
-        conn.execute(
-            "CREATE TABLE threads (id TEXT PRIMARY KEY, rollout_path TEXT NOT NULL, parent_id TEXT, cwd TEXT)",
-            [],
+        conn.execute_batch(
+            "CREATE TABLE threads (
+                id TEXT PRIMARY KEY,
+                rollout_path TEXT NOT NULL,
+                cwd TEXT NOT NULL,
+                title TEXT NOT NULL DEFAULT '',
+                source TEXT NOT NULL DEFAULT '',
+                model_provider TEXT NOT NULL DEFAULT '',
+                created_at INTEGER NOT NULL DEFAULT 0,
+                updated_at INTEGER NOT NULL DEFAULT 0,
+                created_at_ms INTEGER,
+                updated_at_ms INTEGER,
+                archived INTEGER NOT NULL DEFAULT 0,
+                git_sha TEXT,
+                git_branch TEXT,
+                git_origin_url TEXT,
+                model TEXT
+            );
+            CREATE TABLE thread_spawn_edges (
+                parent_thread_id TEXT NOT NULL,
+                child_thread_id TEXT NOT NULL PRIMARY KEY,
+                status TEXT NOT NULL
+            );",
         )
         .unwrap();
-        for (id, rollout_path, parent_id, cwd) in rows {
+        for (id, rollout_path, cwd) in rows {
             conn.execute(
-                "INSERT INTO threads (id, rollout_path, parent_id, cwd) VALUES (?1, ?2, ?3, ?4)",
-                rusqlite::params![id, rollout_path, parent_id, cwd],
+                "INSERT INTO threads (id, rollout_path, cwd) VALUES (?1, ?2, ?3)",
+                rusqlite::params![id, rollout_path, cwd],
             )
             .unwrap();
         }
+    }
+
+    fn write_spawn_edge(root: &Path, parent: &str, child: &str) {
+        let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
+        conn.execute(
+            "INSERT INTO thread_spawn_edges (parent_thread_id, child_thread_id, status) \
+             VALUES (?1, ?2, 'open')",
+            rusqlite::params![parent, child],
+        )
+        .unwrap();
+    }
+
+    fn set_thread_metadata(
+        root: &Path,
+        id: &str,
+        metadata: (&str, &str, &str, &str),
+        created_ms: i64,
+        updated_ms: i64,
+    ) {
+        let (title, model, branch, origin) = metadata;
+        let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
+        conn.execute(
+            "UPDATE threads SET title = ?2, model = ?3, git_branch = ?4, git_origin_url = ?5, \
+             created_at = ?6 / 1000, updated_at = ?7 / 1000, created_at_ms = ?6, updated_at_ms = ?7 \
+             WHERE id = ?1",
+            rusqlite::params![id, title, model, branch, origin, created_ms, updated_ms],
+        )
+        .unwrap();
     }
 
     fn user_record(ordinal: u64, timestamp: &str, text: &str) -> String {
@@ -536,20 +796,11 @@ mod tests {
         write_threads_index(
             &root,
             &[
-                (
-                    "t2",
-                    "sessions/2026/10/01/rollout-t2.jsonl",
-                    Some("t1"),
-                    "/repo/demo",
-                ),
-                (
-                    "t1",
-                    "sessions/2026/10/01/rollout-t1.jsonl",
-                    None,
-                    "/repo/demo",
-                ),
+                ("t2", "sessions/2026/10/01/rollout-t2.jsonl", "/repo/demo"),
+                ("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo/demo"),
             ],
         );
+        write_spawn_edge(&root, "t1", "t2");
         write_rollout(
             &root,
             "sessions/2026/10/01/rollout-t1.jsonl",
@@ -579,7 +830,7 @@ mod tests {
         let root = temp_root("doctor");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         let source = CodexSource::new(&root);
         let report = source.doctor();
@@ -596,7 +847,7 @@ mod tests {
         let root = temp_root("ordinal");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         write_rollout(
             &root,
@@ -630,7 +881,7 @@ mod tests {
         let root = temp_root("offset");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         write_rollout(
             &root,
@@ -669,7 +920,7 @@ mod tests {
         let root = temp_root("parts");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         write_rollout(
             &root,
@@ -711,7 +962,7 @@ mod tests {
         let root = temp_root("aux");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         write_rollout(
             &root,
@@ -744,7 +995,7 @@ mod tests {
         let root = temp_root("partial");
         write_threads_index(
             &root,
-            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", None, "/repo")],
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo")],
         );
         let full = root.join("sessions/2026/10/01/rollout-t1.jsonl");
         std::fs::create_dir_all(full.parent().unwrap()).unwrap();
@@ -776,5 +1027,178 @@ mod tests {
         let recovered = source.extract("t1").expect("extract again");
         assert_eq!(recovered.good, 1);
         assert_eq!(recovered.pending_partial, 0);
+    }
+
+    #[test]
+    fn rfc3339_utc_formats_epoch_milliseconds() {
+        assert_eq!(rfc3339_utc(0), "");
+        assert_eq!(rfc3339_utc(-5), "");
+        assert_eq!(rfc3339_utc(1767225600000), "2026-01-01T00:00:00Z");
+        assert_eq!(rfc3339_utc(1767229200000), "2026-01-01T01:00:00Z");
+        assert_eq!(rfc3339_utc(1704067200000), "2024-01-01T00:00:00Z");
+        assert_eq!(rfc3339_utc(1735689599999), "2024-12-31T23:59:59Z");
+    }
+
+    #[test]
+    fn thread_metadata_maps_into_summaries_and_extractions() {
+        let root = temp_root("metadata");
+        write_threads_index(
+            &root,
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo/demo")],
+        );
+        set_thread_metadata(
+            &root,
+            "t1",
+            (
+                "Alpha build fix",
+                "synthetic-model",
+                "feat/alpha",
+                "https://git.example.com/acme/alpha.git",
+            ),
+            1767225600000,
+            1767229200000,
+        );
+        write_rollout(
+            &root,
+            "sessions/2026/10/01/rollout-t1.jsonl",
+            &[user_record(1, "2026-10-01T09:00:00Z", "hi")],
+        );
+        let source = CodexSource::new(&root);
+        let (summaries, _) = source.discover();
+        assert_eq!(summaries.len(), 1);
+        let summary = &summaries[0];
+        assert_eq!(summary.metadata.title.as_deref(), Some("Alpha build fix"));
+        assert_eq!(summary.metadata.models, vec!["synthetic-model".to_string()]);
+        assert_eq!(summary.metadata.git_branch.as_deref(), Some("feat/alpha"));
+        assert_eq!(
+            summary.metadata.git_origin_url.as_deref(),
+            Some("https://git.example.com/acme/alpha.git")
+        );
+        assert_eq!(summary.metadata.cwd.as_deref(), Some("/repo/demo"));
+        assert_eq!(summary.started_at, "2026-01-01T00:00:00Z");
+        assert_eq!(summary.last_activity_at, "2026-01-01T01:00:00Z");
+
+        let extraction = source.extract("t1").expect("extract");
+        let session = &extraction.session;
+        assert_eq!(session.metadata.title.as_deref(), Some("Alpha build fix"));
+        assert_eq!(
+            session.metadata.git_origin_url.as_deref(),
+            Some("https://git.example.com/acme/alpha.git")
+        );
+        assert_eq!(session.project_id, "/repo/demo");
+    }
+
+    #[test]
+    fn index_instants_fill_missing_record_timestamps() {
+        let root = temp_root("instants");
+        write_threads_index(
+            &root,
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo/demo")],
+        );
+        set_thread_metadata(&root, "t1", ("", "", "", ""), 1767225600000, 1767229200000);
+        write_rollout(
+            &root,
+            "sessions/2026/10/01/rollout-t1.jsonl",
+            &[r#"{"ordinal":1,"type":"response_item","payload":{"type":"message","id":"m1","role":"user","content":[{"type":"input_text","text":"no timestamp here"}]}}"#.to_string()],
+        );
+        let source = CodexSource::new(&root);
+        let extraction = source.extract("t1").expect("extract");
+        assert_eq!(extraction.session.started_at, "2026-01-01T00:00:00Z");
+        assert_eq!(extraction.session.last_activity_at, "2026-01-01T01:00:00Z");
+    }
+
+    #[test]
+    fn absolute_rollout_paths_resolve_to_themselves() {
+        let root = temp_root("absolute");
+        write_threads_index(&root, &[("t1", "elsewhere/rollout-t1.jsonl", "/repo/demo")]);
+        write_rollout(
+            &root,
+            "elsewhere/rollout-t1.jsonl",
+            &[user_record(1, "2026-10-01T09:00:00Z", "absolute")],
+        );
+        let absolute = root
+            .join("elsewhere/rollout-t1.jsonl")
+            .display()
+            .to_string();
+        let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
+        conn.execute(
+            "UPDATE threads SET rollout_path = ?1 WHERE id = 't1'",
+            rusqlite::params![absolute],
+        )
+        .unwrap();
+        drop(conn);
+        let source = CodexSource::new(&root);
+        let (summaries, stats) = source.discover();
+        assert_eq!(summaries.len(), 1);
+        assert_eq!(stats.threads, 1);
+        assert_eq!(stats.missing_rollouts, 0);
+    }
+
+    #[test]
+    fn legacy_schema_drift_is_reported_not_swallowed() {
+        let root = temp_root("drift");
+        let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
+        conn.execute(
+            "CREATE TABLE threads (id TEXT PRIMARY KEY, rollout_path TEXT NOT NULL, parent_id TEXT, cwd TEXT)",
+            [],
+        )
+        .unwrap();
+        drop(conn);
+        write_rollout(
+            &root,
+            "sessions/2026/10/01/rollout-t1.jsonl",
+            &[user_record(1, "2026-10-01T09:00:00Z", "hi")],
+        );
+        let source = CodexSource::new(&root);
+        let (summaries, stats) = source.discover();
+        assert!(summaries.is_empty(), "drifted index yielded sessions");
+        assert!(
+            stats
+                .issues
+                .iter()
+                .any(|issue| issue.contains("threads index")),
+            "drift was not reported: {:?}",
+            stats.issues
+        );
+        let report = source.doctor();
+        assert_eq!(report.threads, 0);
+        assert!(
+            report
+                .issues
+                .iter()
+                .any(|issue| issue.contains("threads index")),
+            "doctor did not report the drift: {:?}",
+            report.issues
+        );
+    }
+
+    #[test]
+    fn missing_edge_table_is_reported_but_threads_still_index() {
+        let root = temp_root("no-edges");
+        write_threads_index(
+            &root,
+            &[("t1", "sessions/2026/10/01/rollout-t1.jsonl", "/repo/demo")],
+        );
+        let conn = rusqlite::Connection::open(root.join("state_5.sqlite")).unwrap();
+        conn.execute("DROP TABLE thread_spawn_edges", []).unwrap();
+        drop(conn);
+        write_rollout(
+            &root,
+            "sessions/2026/10/01/rollout-t1.jsonl",
+            &[user_record(1, "2026-10-01T09:00:00Z", "hi")],
+        );
+        let source = CodexSource::new(&root);
+        let (summaries, stats) = source.discover();
+        assert_eq!(summaries.len(), 1, "threads stopped indexing");
+        assert!(
+            stats
+                .issues
+                .iter()
+                .any(|issue| issue.contains("spawn edge")),
+            "missing edge table was not reported: {:?}",
+            stats.issues
+        );
+        let extraction = source.extract("t1").expect("extract without edge table");
+        assert_eq!(extraction.good, 1);
     }
 }

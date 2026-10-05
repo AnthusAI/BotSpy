@@ -94,6 +94,12 @@ pub struct BotSpyWorld {
     pub cx_discovery: Option<botspy::adapters::codex::CodexDiscovery>,
     /// Result of the most recent Codex extraction pass.
     pub cx_extraction: Option<botspy::adapters::codex::CodexExtraction>,
+    /// Result of the most recent Codex doctor report.
+    pub cx_report: Option<botspy::adapters::codex::CodexReport>,
+    /// Digest of the threads index + WAL before the snapshot read.
+    pub cx_digest_before: Option<String>,
+    /// Digest of the threads index + WAL after the snapshot read.
+    pub cx_digest_after: Option<String>,
     /// Cursor KV store file under construction (Cursor steps).
     pub cur_store: Option<std::path::PathBuf>,
     /// The Cursor KV source watching that store.
@@ -154,6 +160,8 @@ pub struct BotSpyWorld {
     pub cli_home: Option<std::path::PathBuf>,
     /// The scenario's scratch output directory: stable across steps.
     pub cli_out_dir: Option<std::path::PathBuf>,
+    /// Store the background import steps filled for search/stats steps.
+    pub cli_store: Option<std::path::PathBuf>,
     /// The outcome of the most recent CLI run.
     pub cli_run: Option<botspy::cli::RunOutcome>,
     /// The local store under test (store steps).

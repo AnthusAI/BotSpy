@@ -27,15 +27,19 @@
 //! [`sessions`](../../features/cli/20_sessions.feature),
 //! [`show`](../../features/cli/30_show.feature),
 //! [`doctor`](../../features/cli/40_doctor.feature), and
-//! [`snapshot`](../../features/cli/50_snapshot.feature) — plus the
+//! [`snapshot`](../../features/cli/50_snapshot.feature) — the store-backed
+//! verbs [`import`](../../features/cli/60_import.feature),
+//! [`search`](../../features/cli/70_search.feature), and
+//! [`stats`](../../features/cli/80_stats.feature) — plus the
 //! global command contract
 //! ([`00_global.feature`](../../features/cli/00_global.feature)):
 //! version, usage errors, and the `BOTSPY_HOME` override. The
 //! [`scan`](../../features/cli/60_scan.feature) verb joins them: the
-//! store's ingest/CDC pass on the command line, pruning disabled so a
-//! source reporting nothing can never delete stored history. Later
-//! phases (import, stats, search, watch) extend this chapter; `export`
-//! stays out entirely (YAGNI).
+//! store's ingest/CDC pass on the command line, looping on an interval
+//! with pruning disabled so a source reporting nothing can never delete
+//! stored history — the one-shot `import` verb above runs the same pass
+//! once, pruning on, with `--full` forcing a re-extract from byte zero.
+//! `export` stays out entirely (YAGNI).
 //!
 #![doc = concat!(
     "## Behavior specification\n\n",
@@ -57,7 +61,16 @@
     "### 50_snapshot.feature\n\n```gherkin\n",
     include_str!("../../features/cli/50_snapshot.feature"),
     "\n```\n\n",
-    "### 60_scan.feature\n\n```gherkin\n",
+"### 60_scan.feature\n\n```gherkin\n",
     include_str!("../../features/cli/60_scan.feature"),
+    "\n```\n\n",
+    "### 60_import.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/60_import.feature"),
+    "\n```\n\n",
+    "### 70_search.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/70_search.feature"),
+    "\n```\n\n",
+    "### 80_stats.feature\n\n```gherkin\n",
+    include_str!("../../features/cli/80_stats.feature"),
     "\n```\n"
 )]

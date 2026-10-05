@@ -3,17 +3,25 @@
   "title": "Wire the CLI to the store: store-backed verbs and specs",
   "description": "**Intent:** Phase 1 store verbs of the CLI design (comment 773667 on BOTSPY-7c2705). The local store has landed (BOTSPY-c7795b, feat/local-store PR #4: SQLite + WAL, FTS5, sqlite-vec, incremental refresh) — wire the botspy CLI to it.\n\n**Scope:** `import` (incremental CDC into the local store, `--dry-run` reporting, per-source skip summary, `--full`), `stats` (aggregates over the store: sessions/messages/turns/parts, usage where recorded, `--by day|source|project` pivots), `search --mode text` (FTS5 through the store), and engine-side `sessions` filters (source/project/kind/time, `--limit`). Specs first under `features/cli/`: Gherkin scenarios per verb (executable red before implementation), then the thinnest implementation — every verb is exactly one library call plus rendering; the store engine stays invisible to the flags; read-only MVP verbs (sources/sessions/show/doctor/snapshot) keep working unchanged.\n\n**Acceptance:** features/cli scenarios for the store-backed verbs reviewed and red first, then green via `cargo test --test bdd`; existing suites stay green; all gates pass (cargo fmt --all; cargo clippy --all-targets -- -D warnings; RUSTDOCFLAGS=\"-D warnings\" cargo doc --no-deps; cargo test; cargo test --test bdd). Work on a branch off origin/develop; PR to develop only (GitFlow, never main).",
   "type": "task",
-  "status": "open",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
   "parent": "BOTSPY-7c2705bc-8499-4118-b86a-0dff9e6205cb",
   "labels": [],
   "dependencies": [],
-  "comments": [],
+  "comments": [
+    {
+      "id": "0a210d9b-684a-444f-b82e-efaf541218dc",
+      "author": "home",
+      "text": "Landed on develop via PR #22 (e1073f0): store-backed import, search, and stats verbs with specs and README docs. Superseded branch cursor/cli-store-wiring-b3ce (v1) not merged. Closed during branch consolidation 2026-10-04.",
+      "created_at": "2026-10-04T16:29:44.629131Z",
+      "comment_type": "default"
+    }
+  ],
   "created_at": "2026-10-03T11:35:41.763681Z",
-  "updated_at": "2026-10-03T11:35:48.118029Z",
-  "closed_at": null,
+  "updated_at": "2026-10-04T16:29:46.214861Z",
+  "closed_at": "2026-10-04T16:29:46.214837Z",
   "right_now_summary": null,
   "right_now_updated_at": null,
   "custom": {}

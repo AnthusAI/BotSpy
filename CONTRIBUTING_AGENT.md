@@ -42,13 +42,27 @@ Operational discipline: use the minimum commands needed. To inspect work, run `k
 
 All new feature-branch work starts from `develop`: branch from `origin/develop`, never from `main`, and open pull requests that target `develop`.
 
-`main` is the release branch. The release-plz workflow runs only from `main`. Do not treat a merge to `develop` as a release. Do not merge product work straight to `main`; promote `develop` to `main` when you intend a release, not as the daily integration path.
+`main` is the release branch. Releases are two steps. First, on an up-to-date `develop`, run `scripts/prepare-release.sh`: it runs `release-plz update` and commits `chore: release botspy v<version>` locally (it never pushes); push or PR that commit into `develop`. Second, open the `develop` -> `main` promotion PR. The release workflow on `main` only tags, publishes to crates.io, and creates the GitHub release; no automation ever pushes commits to `main`. Do not treat a merge to `develop` as a release. Do not merge product work straight to `main`; promote `develop` to `main` when you intend a release, not as the daily integration path.
 
 Merge accepted, green work into `develop` as soon as it is ready, and continuously push as you go. Do not park completed work on long-lived feature branches waiting for `main`.
 
 **Do not open a pull request for project management.** Kanbus issues, comments, status changes, and `project/wiki` pages commit on `develop` and push. No feature branch, no PR, no review loop. Mixing board files into a product PR is also wrong: land the board on `develop` first.
 
 Multiple agents work in this repo in parallel at any given time and must avoid colliding: each agent uses its own git worktree and feature branch, never checks out branches or edits files in the shared checkout, keeps branches short, and merges or rebases from `develop` often.
+
+## Sensitive-information scanning (Pudicus) is mandatory
+
+Every commit must carry a Pudicus receipt. Before your first commit in a
+clone, run `bash scripts/setup-pudicus.sh` — it installs the commit-msg
+hook that scans each commit with gitleaks and, when clean, signs it with
+HMAC receipt trailers. Never bypass the hook with `--no-verify`: the
+`pudicus-receipt-gate` check runs on pull requests to develop and main
+and is required for merging into develop; it fails on commits without receipts. Run `kbs` with `KANBUS_USER=example-user`
+so board events carry the anonymized actor id the scan allows. For commits made without the hook, add a
+retroactive receipt with `pudicus approve <range>` (creates an empty
+paperwork commit; see docs/pudicus.md). Do not put real paths,
+usernames, emails, or session data into anything you commit — the hook
+blocks such leaks at commit time.
 
 ## Specs come first
 

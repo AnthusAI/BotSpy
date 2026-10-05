@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "f8e202d5-c458-4b98-a097-ad1e4ced414b",
+  "issue_id": "BOTSPY-ab14049e-bd1d-41c3-8bc5-a8b4a7c6b3af",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-04T23:13:51.254Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Document required Pudicus gate on develop",
+    "description": "Update docs to say the pudicus-receipt-gate check is now a required check on develop via ruleset, with admin bypass; main not yet covered.",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": []
+  }
+}

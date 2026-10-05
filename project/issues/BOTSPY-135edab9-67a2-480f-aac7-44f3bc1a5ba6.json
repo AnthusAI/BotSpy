@@ -3,7 +3,7 @@
   "title": "Fix README diagrams: drop legend, explicit sensitive-data labels, store in context view",
   "description": "",
   "type": "task",
-  "status": "in_progress",
+  "status": "closed",
   "priority": 2,
   "assignee": null,
   "creator": null,
@@ -31,11 +31,18 @@
       "text": "Blocked on PR creation: the branch cursor/context-diagram-fix-fb2c is pushed to the repository remote (commits 3fde1ff diagram fix, 8fb4a54 board state, authored as Example Dev <agent@example.com>), all local gates are green, but the Cursor PR tool returns '[unauthenticated] Error' for the moved org on every attempt, so the pull request into develop could not be opened from this session. The machine's own forge login has admin access to the repository, so the PR can be opened from the branch in one click, or re-authenticating the Cursor GitHub integration should let a follow-up session create it. CI runs on the pull_request event, so no check run exists until the PR is open. Do not close this task yet.",
       "created_at": "2026-10-03T18:41:56.255736Z",
       "comment_type": "default"
+    },
+    {
+      "id": "8b7d92f3-e157-42f3-9ccc-4b3107bdeabd",
+      "author": "home",
+      "text": "Landed on develop via PR #18 (aa5b80e). Closed during branch consolidation 2026-10-04.",
+      "created_at": "2026-10-04T16:29:25.936987Z",
+      "comment_type": "default"
     }
   ],
   "created_at": "2026-10-03T17:53:08.346633Z",
-  "updated_at": "2026-10-03T19:04:27.274408Z",
-  "closed_at": null,
+  "updated_at": "2026-10-04T16:29:27.458091Z",
+  "closed_at": "2026-10-04T16:29:27.458067Z",
   "agent": {
     "platform": "cursor",
     "model": "Composer 2.5",

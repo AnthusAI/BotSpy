@@ -1,0 +1,33 @@
+{
+  "id": "BOTSPY-0342c9e1-a6b9-4eb3-9fd5-319b99515e05",
+  "title": "Release flow without pushes to main",
+  "description": "Move the release-plz version bump to a local scripts/prepare-release.sh run on develop; release.yml on main only tags, publishes and creates the GitHub release, so no automation pushes to main and pudicus-receipt-gate can be required there.",
+  "type": "chore",
+  "status": "closed",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [
+    {
+      "id": "54f93769-194f-4816-a30d-5661ffc50eaf",
+      "author": "example-user",
+      "text": "Added scripts/prepare-release.sh, made release.yml publish-only (no update, commit, or push), and updated docs. release-plz release is a no-op when all packages are already published (per release-plz docs). release-plz not installed locally, so the script dry run was skipped.",
+      "created_at": "2026-10-05T00:01:21.682863Z",
+      "comment_type": "default"
+    }
+  ],
+  "created_at": "2026-10-05T00:00:28.042466Z",
+  "updated_at": "2026-10-05T00:01:24.719755Z",
+  "closed_at": "2026-10-05T00:01:24.719723Z",
+  "agent": {
+    "platform": "claude_code",
+    "model": "Claude Opus 5.5",
+    "name": "release-flow"
+  },
+  "right_now_summary": "Version bumps now run locally, while main only tags, publishes packages, and creates GitHub releases.",
+  "right_now_updated_at": "2026-10-05T00:01:26.627940Z",
+  "custom": {}
+}
