@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "4a27748e-3507-4352-a4c4-81ccd8deca89",
+  "issue_id": "BOTSPY-0342c9e1-a6b9-4eb3-9fd5-319b99515e05",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-05T00:00:28.042Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Release flow without pushes to main",
+    "description": "Move the release-plz version bump to a local scripts/prepare-release.sh run on develop; release.yml on main only tags, publishes and creates the GitHub release, so no automation pushes to main and pudicus-receipt-gate can be required there.",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": []
+  }
+}
