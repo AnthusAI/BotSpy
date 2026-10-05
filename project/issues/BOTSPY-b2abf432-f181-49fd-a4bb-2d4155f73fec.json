@@ -1,0 +1,25 @@
+{
+  "id": "BOTSPY-b2abf432-f181-49fd-a4bb-2d4155f73fec",
+  "title": "Prepare v0.3.0 release bump",
+  "description": "Run scripts/prepare-release.sh on a branch cut from develop to bump version, Cargo.lock and CHANGELOG for the develop to main promotion PR (DataParade-io/BotSpy#23).",
+  "type": "chore",
+  "status": "in_progress",
+  "priority": 2,
+  "assignee": null,
+  "creator": null,
+  "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+  "labels": [],
+  "dependencies": [],
+  "comments": [],
+  "created_at": "2026-10-05T10:48:46.336608Z",
+  "updated_at": "2026-10-05T10:48:53.899035Z",
+  "closed_at": null,
+  "agent": {
+    "platform": "claude_code",
+    "model": "Claude Opus 5.5",
+    "name": "Release Prep Agent"
+  },
+  "right_now_summary": "The release bump is awaiting preparation on a branch from develop.",
+  "right_now_updated_at": "2026-10-05T10:48:55.948532Z",
+  "custom": {}
+}
