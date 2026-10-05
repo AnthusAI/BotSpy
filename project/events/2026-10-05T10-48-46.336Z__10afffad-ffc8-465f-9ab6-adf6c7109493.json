@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "event_id": "10afffad-ffc8-465f-9ab6-adf6c7109493",
+  "issue_id": "BOTSPY-b2abf432-f181-49fd-a4bb-2d4155f73fec",
+  "event_type": "issue_created",
+  "occurred_at": "2026-10-05T10:48:46.336Z",
+  "actor_id": "example-user",
+  "payload": {
+    "title": "Prepare v0.3.0 release bump",
+    "description": "Run scripts/prepare-release.sh on a branch cut from develop to bump version, Cargo.lock and CHANGELOG for the develop to main promotion PR (DataParade-io/BotSpy#23).",
+    "issue_type": "chore",
+    "status": "open",
+    "priority": 2,
+    "assignee": null,
+    "parent": "BOTSPY-65cc2188-6204-4f4b-935b-47825bc16845",
+    "labels": []
+  }
+}
