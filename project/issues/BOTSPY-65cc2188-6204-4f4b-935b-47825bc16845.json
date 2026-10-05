@@ -19,7 +19,7 @@
     "model": "glm-5.3-flash",
     "name": "BotSpy bootstrap"
   },
-  "right_now_summary": "The team is validating adapters, schemas, exports, queries, and releases across five coding-agent sources.",
-  "right_now_updated_at": "2026-10-05T10:48:58.593396Z",
+  "right_now_summary": "The team is building and testing adapters, schemas, exports, queries, and docs for unified session history.",
+  "right_now_updated_at": "2026-10-05T11:03:45.929738Z",
   "custom": {}
 }
