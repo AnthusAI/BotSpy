@@ -42,7 +42,7 @@ Operational discipline: use the minimum commands needed. To inspect work, run `k
 
 All new feature-branch work starts from `develop`: branch from `origin/develop`, never from `main`, and open pull requests that target `develop`.
 
-`main` is the release branch. The release-plz workflow runs only from `main`. Do not treat a merge to `develop` as a release. Do not merge product work straight to `main`; promote `develop` to `main` when you intend a release, not as the daily integration path.
+`main` is the release branch. Releases are two steps. First, on an up-to-date `develop`, run `scripts/prepare-release.sh`: it runs `release-plz update` and commits `chore: release botspy v<version>` locally (it never pushes); push or PR that commit into `develop`. Second, open the `develop` -> `main` promotion PR. The release workflow on `main` only tags, publishes to crates.io, and creates the GitHub release; no automation ever pushes commits to `main`. Do not treat a merge to `develop` as a release. Do not merge product work straight to `main`; promote `develop` to `main` when you intend a release, not as the daily integration path.
 
 Merge accepted, green work into `develop` as soon as it is ready, and continuously push as you go. Do not park completed work on long-lived feature branches waiting for `main`.
 

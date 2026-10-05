@@ -1,18 +1,22 @@
 name: Release
 
-# Direct releases under GitFlow: a push to main is the release promotion.
-# The workflow computes the next version from conventional commits, bumps
-# Cargo.toml/Cargo.lock and CHANGELOG.md, commits that directly to main,
-# then publishes to crates.io, tags, and creates the GitHub release. No
-# release pull request is ever opened, so the repo's "Allow GitHub
-# Actions to create and approve pull requests" setting is irrelevant.
+# Publish-only releases under GitFlow. The version bump is NOT made here:
+# scripts/prepare-release.sh runs `release-plz update` on develop and
+# commits "chore: release botspy vX" there as an ordinary commit, which
+# reaches main through the develop -> main promotion PR. A push to main
+# then only runs `release-plz release`: tag, crates.io publish, and
+# GitHub release. This workflow never commits or pushes to any branch
+# (tags are not covered by branch rulesets), which is what allows the
+# pudicus-receipt-gate check to be required on main. If the version on
+# main is already tagged and published, `release-plz release` does
+# nothing.
 on:
   push:
     branches: [main]
   workflow_dispatch:
     inputs:
       dry_run:
-        description: Compute the release without pushing, tagging, or creating a GitHub release
+        description: Verify the release with release-plz release --dry-run (no tag, publish, or GitHub release)
         type: boolean
         default: true
 
@@ -28,8 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # release-plz reads GIT_TOKEN (not GITHUB_TOKEN) for its git/forge
-      # operations: committing the release bump, pushing the tag, and
-      # creating the GitHub release. CARGO_REGISTRY_TOKEN (crates.io
+      # operations: pushing the tag and creating the GitHub release. CARGO_REGISTRY_TOKEN (crates.io
       # token scoped to publish-new/publish-update) authorizes the
       # `cargo publish` upload release-plz performs on each release.
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,20 +51,6 @@ jobs:
           sudo install /tmp/release-plz /usr/local/bin/release-plz
           release-plz --version
 
-      # Belt-and-braces loop guard: pushes made with GITHUB_TOKEN do not
-      # retrigger workflows, but a re-run or a manual push of the release
-      # commit should not recompute the bump. release-plz release stays
-      # idempotent, so a release commit only skips the update.
-      - name: Loop guard
-        id: guard
-        if: github.event_name == 'push'
-        run: |
-          subject="$(git log -1 --pretty=%s)"
-          if [[ "$subject" == chore:\ release* ]]; then
-            echo "Head commit is a release commit; skipping the version bump."
-            echo "skip_update=true" >> "$GITHUB_OUTPUT"
-          fi
-
       # Non-dry-run dispatches are only meaningful on main; anything else
       # must use dry_run.
       - name: Guard dispatch ref
@@ -72,49 +61,15 @@ jobs:
             exit 1
           fi
 
-      - name: Compute next version and update changelog
-        if: >-
-          (github.event_name == 'push' && steps.guard.outputs.skip_update != 'true')
-          || github.event_name == 'workflow_dispatch'
-        run: release-plz update
-
-      - name: Commit and push release bump
-        if: >-
-          (github.event_name == 'push' && steps.guard.outputs.skip_update != 'true')
-          || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet; then
-            echo "No version bump to commit."
-          else
-            version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "botspy") | .version')"
-            git add -A
-            git commit -m "chore: release botspy v${version}"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
-
-      - name: Dry run — computed release
+      # release-plz release --dry-run runs cargo's packaging checks and
+      # verifies the tag, GitHub release, and crates.io upload without
+      # creating or pushing anything. The tree is clean because the bump
+      # is already committed, so no local commit/reset is needed.
+      - name: Dry run - release
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run == true
-        run: |
-          version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "botspy") | .version')"
-          echo "Computed next version: ${version}"
-          git diff --stat
-          # release-plz release --dry-run still runs cargo's packaging
-          # checks, which refuse a dirty tree. Commit the computed bump
-          # locally (never pushed) so the dry run can verify the tag,
-          # GitHub release, and crates.io upload, then reset.
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet; then
-            git add -A
-            git commit -m "chore: release botspy v${version} (dry run)"
-            committed=true
-          fi
-          release-plz release --dry-run -o json
-          if [ "${committed:-}" = "true" ]; then git reset --hard HEAD~1; fi
+        run: release-plz release --dry-run -o json
 
-      - name: Tag and create GitHub release
+      - name: Tag, publish, and create GitHub release
         if: >-
           github.event_name == 'push'
           || (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)

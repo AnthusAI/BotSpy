@@ -79,8 +79,10 @@ Two kinds of new commits are **exempt** from the receipt requirement:
   where local hooks cannot run. (A merge commit's tree is also
   derivable from its already-receipted parents' content.)
 - **Release-bot commits** authored by `github-actions[bot]` or
-  `release-plz[bot]`. The release workflow commits version bumps
-  directly from CI, where local hooks do not run.
+  `release-plz[bot]`. Releases no longer produce such commits (version
+  bumps are made locally by `scripts/prepare-release.sh` and signed by
+  the hook), so this exemption is now vestigial; it is kept in
+  `scripts/pudicus_gate.sh` because it is harmless.
 
 The gitleaks re-scan step is *not* exempt for anything: it covers the
 entire PR diff.
@@ -94,27 +96,22 @@ it only with trusted environments.
 ## Required status check
 
 The check name is `pudicus-receipt-gate`. It runs on every pull request
-to `develop` and `main`. It is a **required status check on `develop`**,
-enforced by the repository ruleset "Pudicus receipt gate (develop)"
-(id 24472362): a pull request cannot merge into `develop` until the
-check passes.
+to `develop` and `main`. It is a **required status check on both `develop` and `main`**,
+enforced by repository rulesets: a pull request cannot merge into either
+branch until the check passes.
 
-- **Admin bypass.** The ruleset's bypass actors are repository admins
+- **Admin bypass.** The rulesets' bypass actors are repository admins
   (bypass mode "always"). AGENTS.md lands board-state commits directly
   on `develop` without a PR; those pushes keep working for admins. The
   local commit-msg hook still scans and signs them.
-- **`main` is not covered yet.** The ruleset is not applied to `main`
-  because `.github/workflows/release.yml` pushes the release
-  version-bump commit straight to `main` with `GITHUB_TOKEN`, and GitHub
-  rejected the GitHub Actions integration as a bypass actor on this
-  repository. On `main` the check still runs on PRs but is not required.
-
-Two options for covering `main` (follow-up work, not done yet):
-
-1. Have the release flow push through a deploy key that is a ruleset
-   bypass actor.
-2. Have the release flow open a pull request for the version bump
-   instead of pushing directly.
+- **Releases never push to `main`.** `.github/workflows/release.yml`
+  only tags, publishes to crates.io, and creates the GitHub release
+  (tags are not covered by branch rulesets). The version bump is a
+  normal commit made on `develop` with `scripts/prepare-release.sh`, so
+  it reaches `main` through the develop to main promotion pull request
+  like any other change. GitHub refuses GitHub Actions as a ruleset
+  bypass actor on this repository, which is why no automation may push
+  to `main`.
 
 ## Checker configuration
 
